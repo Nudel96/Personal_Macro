@@ -2,7 +2,35 @@
 
 Lokales persönliches Macro-, Seasonality-, COT-, Heatmap- und Tradingjournal-Tool.
 
-Der aktuelle Branch enthält ausschließlich das Audit des privaten Referenzsystems und die geplante Zielarchitektur. Es wurde noch keine Produktimplementierung begonnen.
+Der Branch `research/source-system-audit` enthält das Audit des privaten
+Referenzsystems und die Zielarchitektur. Produktcode entsteht getrennt in
+Implementierungs-Branches.
+
+## Erste Produktimplementierung: Leitzinsen
+
+Der Branch `codex/phase-1-policy-rates` startet den ersten lokalen Produkt-Slice:
+eine FastAPI-Rate-Engine, eine React-Ansicht sowie Tests für erwartete
+Leitzinsänderungen und die relative USD-Stance. Die UI verwendet bewusst nur
+synthetische Demo-Daten, bis ein manueller Forecast-Import oder ein erlaubter
+Provideradapter eingerichtet ist.
+
+Backend lokal starten:
+
+```powershell
+cd apps/api
+uv sync --python 3.12
+uv run uvicorn app.main:app --reload --port 8000
+```
+
+Frontend in einem zweiten Terminal starten:
+
+```powershell
+cd apps/web
+pnpm install
+pnpm dev
+```
+
+Danach ist die Leitzinsansicht unter `http://localhost:5173` erreichbar.
 
 ## Audit-Dokumente
 
