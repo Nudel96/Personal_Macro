@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.api.journal import router as journal_router
+from app.api.market_data import router as market_data_router
 from app.api.policy_rates import router as policy_rate_router
 
 app = FastAPI(
@@ -18,6 +20,8 @@ app.add_middleware(
 )
 
 app.include_router(policy_rate_router)
+app.include_router(market_data_router)
+app.include_router(journal_router)
 
 
 @app.get("/health")

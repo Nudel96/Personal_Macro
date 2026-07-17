@@ -6,13 +6,16 @@ Der Branch `research/source-system-audit` enthält das Audit des privaten
 Referenzsystems und die Zielarchitektur. Produktcode entsteht getrennt in
 Implementierungs-Branches.
 
-## Erste Produktimplementierung: Leitzinsen
+## Lokaler MVP
 
-Der Branch `codex/phase-1-policy-rates` startet den ersten lokalen Produkt-Slice:
-eine FastAPI-Rate-Engine, eine React-Ansicht sowie Tests für erwartete
-Leitzinsänderungen und die relative USD-Stance. Die UI verwendet bewusst nur
-synthetische Demo-Daten, bis ein manueller Forecast-Import oder ein erlaubter
-Provideradapter eingerichtet ist.
+Der Branch `codex/phase-1-policy-rates` enthält eine zusammenhängende lokale
+Arbeitsoberfläche mit Übersicht, Macro-Heatmap, Pair-Vergleich, Saisonality,
+Leitzinsen und einem dauerhaft in SQLite gespeicherten Tradingjournal.
+
+Heatmap, Saisonality und Zinsen verwenden klar gekennzeichnete synthetische
+Beispieldaten, bis manuelle Importe oder erlaubte Provideradapter eingerichtet
+sind. Journal-Einträge sind echte lokale Nutzerdaten und werden nicht in Git
+aufgenommen.
 
 Backend lokal starten:
 
@@ -30,7 +33,11 @@ pnpm install
 pnpm dev
 ```
 
-Danach ist die Leitzinsansicht unter `http://localhost:5173` erreichbar.
+Danach ist der gesamte Workspace unter `http://localhost:5173` erreichbar.
+
+Die Journal-Datenbank liegt standardmäßig unter
+`apps/api/data/personal_macro.sqlite3`. Mit der Umgebungsvariable
+`PERSONAL_MACRO_JOURNAL_DB` kann ein anderer lokaler Speicherort gesetzt werden.
 
 ## Audit-Dokumente
 
@@ -50,4 +57,6 @@ Danach ist die Leitzinsansicht unter `http://localhost:5173` erreichbar.
 
 ## Sicherheitsstatus
 
-Lokale Datenbanken, Brokerimporte, Anhänge, Exporte, Backups und `.env`-Dateien sind über `.gitignore` ausgeschlossen. `.env.example` enthält ausschließlich leere Platzhalter für optionale kostenlose API-Keys.
+Lokale Datenbanken, Brokerimporte, Anhänge, Exporte, Backups und `.env`-Dateien
+sind über `.gitignore` ausgeschlossen. `.env.example` enthält ausschließlich
+leere Platzhalter für optionale API-Keys und lokale Pfade.

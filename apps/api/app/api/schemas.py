@@ -1,7 +1,8 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from decimal import Decimal
+from typing import Literal
 
 from pydantic import BaseModel, Field, field_validator
 
@@ -39,3 +40,26 @@ class PolicyRateExpectationInput(BaseModel):
 class PolicyRatePreviewRequest(BaseModel):
     expectations: list[PolicyRateExpectationInput]
     min_foreign_coverage: int = Field(default=4, ge=1, le=20)
+
+
+class JournalTradeCreate(BaseModel):
+    instrument: str = Field(min_length=1, max_length=40)
+    direction: Literal["long", "short"]
+    status: Literal["open", "closed"] = "closed"
+    trade_date: date
+    entry_price: float | None = Field(default=None, ge=0)
+    exit_price: float | None = Field(default=None, ge=0)
+    result_r: float | None = None
+    pnl_amount: float | None = None
+    strategy: str | None = Field(default=None, max_length=80)
+    setup: str | None = Field(default=None, max_length=120)
+    thesis: str | None = Field(default=None, max_length=2_000)
+    emotion: str | None = Field(default=None, max_length=80)
+    macro_context: str | None = Field(default=None, max_length=500)
+    seasonality_context: str | None = Field(default=None, max_length=500)
+    notes: str | None = Field(default=None, max_length=4_000)
+
+
+class JournalTradeResponse(JournalTradeCreate):
+    id: int
+    created_at: datetime
