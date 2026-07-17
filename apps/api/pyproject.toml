@@ -1,0 +1,19 @@
+[project]
+name = "personal-macro-api"
+version = "0.1.0"
+description = "Local API for Personal_Macro"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115,<1",
+  "pydantic>=2.8,<3",
+  "uvicorn[standard]>=0.30,<1",
+]
+
+[dependency-groups]
+dev = [
+  "pytest>=8.3,<9",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

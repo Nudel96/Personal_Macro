@@ -1,5 +1,12 @@
 # Vorgeschlagene Zielarchitektur
 
+> **Statushinweis (17. Juli 2026):** Die FastAPI-Laufzeit in diesem frühen
+> Auditentwurf ist für die Desktop- und Journal-Implementierung durch
+> [`trading-journal-tauri-implementation-plan.md`](../planning/trading-journal-tauri-implementation-plan.md)
+> abgelöst. Das Dokument bleibt als Historie für Source-, Scoring- und
+> Provenance-Anforderungen erhalten. Die Zielanwendung verwendet Tauri Commands,
+> Rust und SQLite ohne lokalen HTTP-Server.
+
 ## Entscheidung
 
 Empfohlen wird eine lokale, API-getrennte Anwendung:
