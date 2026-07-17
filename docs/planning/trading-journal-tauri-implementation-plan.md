@@ -304,6 +304,8 @@ Charts und Heatmaps aus derselben gefilterten Population und gibt immer zurück:
 
 Die verbindlichen Formeln stehen in
 `docs/planning/journal-metrics-and-heatmap-v1.md`.
+Die Widget-Anordnung und der gemeinsame Dashboard-Datenvertrag stehen in
+`docs/planning/trading-journal-ui-reference-analysis.md`.
 
 ### Filter Engine
 
