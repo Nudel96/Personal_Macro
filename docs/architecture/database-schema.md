@@ -79,9 +79,21 @@ Logische Beobachtung: `id`, `source_series_id`, `reference_period`, `period_star
 
 ### `observation_revision`
 
-`id`, `observation_id`, `revision_number`, `value_text`, `value_numeric`, `unit`, `seasonal_adjustment`, `status` (advance/preliminary/final/corrected), `previous_value_numeric`, `forecast_value_numeric`, `forecast_source_id`, `published_at_utc`, `retrieved_at_utc`, `raw_payload_id`, `source_locator`, `is_latest`, `quality_status`, `quality_reasons_json`, `created_at`.
+`id`, `observation_id`, `revision_number`, `value_text`, `value_numeric`, `unit`, `seasonal_adjustment`, `status` (advance/preliminary/final/corrected), `previous_value_numeric`, `revised_previous_value_numeric`, `published_at_utc`, `retrieved_at_utc`, `raw_payload_id`, `source_locator`, `is_latest`, `quality_status`, `quality_reasons_json`, `created_at`.
 
 Unique: `(observation_id, revision_number)` und `(observation_id) WHERE is_latest` logisch über Anwendung/Index.
+
+### `forecast_consensus`
+
+Versionierter Konsens unabhängig vom offiziellen Actual: `id`, `event_id`,
+`indicator_id`, `country_code`, `currency_code`, `reference_period`,
+`provider_source_id`, `provider_event_id`, `value_numeric`, `unit`,
+`published_at_utc`, `retrieved_at_utc`, `raw_payload_id`, `source_locator`,
+`is_latest`, `quality_status`, `quality_reasons_json`, `created_at`.
+
+Unique über Provider, Event/Indikator, Referenzperiode und Abrufversion. Damit
+können manuelle Imports und lizenzierte Drittanbieter-Forecasts nachvollziehbar
+neben offiziellen Beobachtungen bestehen.
 
 ### `economic_event`
 
@@ -101,11 +113,15 @@ Dedupe-Fingerprint nutzt bevorzugt `source_event_id`, sonst Source+Country+Indic
 
 ### `indicator_score`
 
-`id`, `scoring_version_id`, `indicator_id`, `currency_code`, `as_of_utc`, `score`, `label`, `coverage`, `confidence`, `freshness_status`, `surprise_component`, `trend_component`, `momentum_component`, `target_component`, `weight`, `reason_codes_json`, `input_hash`, `created_at`.
+`id`, `scoring_version_id`, `indicator_id`, `currency_code`, `as_of_utc`,
+`score` (-1/0/+1), `label`, `availability_status`, `freshness_status`,
+`actual_value`, `forecast_value`, `surprise_raw`, `direction_policy`,
+`reason_codes_json`, `input_hash`, `created_at`.
 
 ### `indicator_score_input`
 
-`indicator_score_id`, `observation_revision_id`, `role`, `transformation`, `transformed_value`, `baseline_json`, `effective_weight`.
+`indicator_score_id`, `observation_revision_id`, `forecast_consensus_id`,
+`role`, `transformation`, `transformed_value`, `baseline_json`.
 
 ### `currency_score_snapshot`
 
@@ -114,6 +130,23 @@ Dedupe-Fingerprint nutzt bevorzugt `source_event_id`, sonst Source+Country+Indic
 ### `currency_group_score`
 
 `currency_score_snapshot_id`, `category`, `score`, `coverage`, `effective_weight`, `reason_codes_json`.
+
+### `cot_signal_snapshot`
+
+`id`, `scoring_version_id`, `currency_code`, `cot_market_id`, `report_id`,
+`group_code`, `position_signal`, `change_signal`, `z_signal`, `score`,
+`availability_status`, `reason_codes_json`, `input_hash`, `created_at`.
+
+### `pair_score_snapshot` / `pair_score_cell`
+
+`pair_score_snapshot`: `id`, `scoring_version_id`, `base_currency`,
+`quote_currency`, `as_of_utc`, `raw_score`, `normalized_score`, `coverage`,
+`enabled_factor_count`, `available_factor_count`, `bias_label`,
+`quality_status`, `input_hash`, `created_at`.
+
+`pair_score_cell`: `id`, `pair_score_snapshot_id`, `factor_key`, `category`,
+`base_score`, `quote_score`, `pair_score` (-2..+2), `availability_status`,
+`reason_codes_json`, `input_hash`.
 
 ## COT
 

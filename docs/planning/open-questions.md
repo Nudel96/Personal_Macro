@@ -1,12 +1,43 @@
-# Echte offene Fragen vor der Implementierung
+# Entscheidungen und verbleibende offene Fragen
 
-Diese Punkte lassen sich weder aus dem Quellcode noch aus offiziellen technischen Dokumentationen zuverlässig ableiten. Sie blockieren nicht das Audit, aber einzelne Produktentscheidungen.
+## Entscheidet und in die Planung übernommen
 
-1. **Forecast/Consensus:** Soll die erste Version vollständig forecast-frei starten, oder möchtest du Consensuswerte manuell importieren bzw. einen bestimmten kostenlosen Drittanbieter zulassen? Ohne explizite Quelle bleibt die Surprise-Komponente leer.
-2. **Seasonality-Universum:** Welche Assets außerhalb der 28 G8-FX-Paare haben für den ersten Release Priorität, und stehen dafür eigene lizenzierte Broker-/CSV-Historien bereit? Das bestimmt, welche Preisadapter zuerst nötig sind.
-3. **COT-Primärsicht:** Welche Berichtsfamilie und Gruppe soll je Asset standardmäßig hervorgehoben werden (z. B. Legacy Non-Commercial für FX, TFF Leveraged Funds für Financials, Disaggregated Managed Money für Commodities)? Alle Daten können gespeichert werden; die Default-Interpretation ist eine persönliche Analyseentscheidung.
-4. **Scoring-Präferenz:** Soll Macro-Scoring primär relative Currency Strength, zyklisches Wachstum/Inflation oder erwartete Zentralbankreaktion abbilden? Die Engine unterstützt Versionen, aber die Defaultgewichte benötigen deine Präferenz.
-5. **Journal-Migration:** Existieren reale Trade-/Account-/Ritualdaten aus dem bisherigen Tool oder Brokerexporte, die beim ersten produktiven Schema zwingend verlustfrei migriert werden müssen?
-6. **Datenschutz/Backup:** Reicht ein lokaler unverschlüsselter Datenordner mit OS-Dateirechten, oder soll Verschlüsselung/App-Sperre bereits in Phase 1 statt im späteren Hardening enthalten sein?
+1. **Forecast/Consensus:** Manuelle Imports und Drittanbieter sind zulässig. Der
+   Adapter bleibt optional, versioniert und lizenz-/quellennachweisbar. Ohne
+   validen Forecast erhält ein Macro-Event keinen Score; es wird nicht aus
+   Previous, Trend oder Momentum ersetzt.
+2. **Asset-Universum:** Fiat-Futures allgemein über eine aktivierbare
+   Contract-Registry, dazu Gold, Silber, Platin und Palladium sowie ein
+   konfigurierbares Set von fünf bis zehn großen Kryptowerten. Der erste
+   Currency-Strength-Slice ist USD, EUR, GBP, JPY, CHF, AUD, CAD und NZD.
+3. **Scoring:** Relative Currency Strength über COT, Growth, Inflation, Labour
+   und Seasonality. Jeder Macro-Release ist in v1 ausschließlich bullish,
+   bearish oder bei Gleichheit neutral aus Actual gegen Forecast. Der
+   Paarvergleich ist immer Base minus Quote und ergibt pro Faktor -2 bis +2.
 
-Empfohlene Defaults, falls keine andere Vorgabe erfolgt: forecast-freier Start; zuerst G8 FX + WTI/Gold über lokalen Import; quellen-/assetklassenspezifische COT-Defaults; zentralbankreaktionsorientiertes, aber gruppenbalanciertes Scoring; keine Altdatenmigration; lokale Backups mit OS-Schutz und spätere optionale Verschlüsselung.
+Die vollständige Berechnungs-, Coverage- und Darstellungsregel steht in
+[scoring-model-v1.md](scoring-model-v1.md).
+
+## Noch zu entscheiden, aber kein Blocker für das Fundament
+
+1. **COT-Primärsicht:** Welche Berichtsfamilie und Trader-Gruppe soll je Asset
+   standardmäßig hervorgehoben werden? Vorgeschlagener konfigurierbarer Default:
+   TFF Leveraged Funds für Fiat-Futures, Disaggregated Managed Money für
+   Edelmetalle.
+2. **Technik, Zinsen und Crowd-Sentiment:** Die Referenzbilder zeigen diese
+   Kontextfelder, die beschriebene v1-Logik umfasst jedoch nur COT, Growth,
+   Inflation, Labour und Seasonality. Sie bleiben daher außerhalb des v1-Total
+   Scores, bis du sie ausdrücklich aktivierst.
+3. **Journal-Migration:** Existieren reale Trade-/Account-/Ritualdaten oder
+   Brokerexporte, die beim ersten produktiven Schema verlustfrei migriert
+   werden müssen?
+4. **Datenschutz/Backup:** Reicht zunächst ein lokaler Datenordner mit
+   OS-Dateirechten, oder soll Verschlüsselung/App-Sperre bereits in Phase 1
+   enthalten sein?
+
+## Arbeitsdefaults
+
+Der Kern nutzt offizielle Datenquellen. Forecasts können zusätzlich manuell
+oder von zugelassenen Drittanbietern kommen. Fehlende, stale oder unpassende
+Daten reduzieren Coverage und bleiben sichtbar; sie werden nie als neutral
+oder als künstliches Signal in eine Pair-Matrix übernommen.

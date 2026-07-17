@@ -35,7 +35,10 @@ flowchart TB
 
 ### `connectors`
 
-Ein Adapter je Anbieter. Verantwortlich nur für Request, Rate Limit, Pagination, Raw Response, Provider Error und Source Metadata. Keine Businessscores.
+Ein Adapter je Anbieter, einschließlich optionaler lizenzierter
+Drittanbieter für Forecast/Consensus oder Marktpreise. Verantwortlich nur für
+Request, Rate Limit, Pagination, Raw Response, Provider Error und Source
+Metadata. Keine Businessscores.
 
 ### `normalization`
 
@@ -60,6 +63,14 @@ Dünne, versionierte JSON-Endpunkte. Kein Berechnungscode in Routen. Mutierende 
 ### `web`
 
 Dashboard, Heatmap, Events, Seasonality, COT, Journal, Data Quality und Settings. Farbe ist nie alleinige Information; Score, Richtung, Gründe, Datenstand und Coverage werden textlich/numerisch gezeigt.
+
+### Asset Registry
+
+Fiat-Futures, Edelmetalle und Kryptowährungen werden über `instrument`,
+Contract-Mapping und Asset-Profile aktiviert, nicht über hart codierte UI-Listen.
+Das Currency-Strength-Modell wird nur für Fiatwährungen berechnet. Ein
+Edelmetall oder Kryptoasset zeigt ausschließlich eigene verfügbare Faktoren;
+fehlende nationale Makrodaten bleiben `unavailable`.
 
 ## Datenfluss und Provenance
 
@@ -116,7 +127,8 @@ Manueller Refresh ruft exakt denselben Jobcode auf. Scheduler-Zeiten werden in U
 ### Zentrales Dashboard
 
 - Currency Ranking mit Score, Δ, Coverage und Freshness.
-- Heatmap nach Gruppen Inflation, Labour, Growth, Rates, External/Risk.
+- Pair-Matrix und Currency-Drilldown nach COT, Growth, Inflation, Labour und
+  Seasonality.
 - kommende Events und zuletzt veröffentlichte Actual/Forecast/Previous/Revised.
 - größte standardisierte Surprises, aber nur bei vergleichbarer Scale.
 - COT-Extremzonen und saisonale Fenster mit Quality Badge.
@@ -129,9 +141,14 @@ Jede Kachel öffnet Raw Value, Einheit, Frequency, Source Link, Reference/Releas
 ## Konfigurierbares Scoring
 
 - YAML/DB-Definitionen werden validiert und als immutable Version veröffentlicht.
-- Indicator Direction ist keine einzelne Bool-Flag, sondern eine Funktion/Policy: positive, inverse, target-band, regime-dependent oder disabled.
-- Missing Component reduziert Coverage; niemals implizit neutral.
-- Currency Score wird nur veröffentlicht, wenn Gruppen-/Gesamtcoverage und Freshness die konfigurierten Grenzen erfüllen.
+- Scoring v1 nutzt für Macro-Releases nur Actual gegen Forecast: positive,
+  inverse und disabled sind die erlaubten Richtungsregeln. Target-Band,
+  Trend, Momentum und regimeabhängige Logik sind spätere, neue Versionen.
+- Missing Forecast/Component reduziert Coverage und ist `unavailable`, niemals
+  implizit neutral.
+- Pair-Zellen folgen `Base − Quote` und liegen je Faktor zwischen `-2` und `+2`.
+- Currency Score wird nur veröffentlicht, wenn Gruppen-/Gesamtcoverage und
+  Freshness die konfigurierten Grenzen erfüllen.
 - Versionen werden nicht rückwirkend überschrieben; Recompute erzeugt neue Snapshots.
 
 ## Sicherheit und Datenschutz

@@ -38,7 +38,11 @@ Lokale Imports sind der garantierte Fallback für Assetklassen ohne freie stabil
 
 ### Tier 4 – optionale Drittanbieter
 
-Alpha Vantage oder ein Kalender-/Market-Data-Provider darf nur als Plugin-Adapter existieren, wenn Free Tier, Terms, Limits und Lizenz dokumentiert sind. Der Core darf nicht davon abhängen. Scraping ist standardmäßig deaktiviert.
+Ein Forecast-/Calendar-/Market-Data-Provider darf als Plugin-Adapter existieren,
+wenn Terms, Lizenz, Kostenmodell, Limits, Quellenattribution und
+Raw-Payload-Retention dokumentiert sind. Ein Free Tier ist willkommen, aber
+keine fachliche Voraussetzung; der Core darf nie von einem konkreten Provider
+abhängen. Scraping ist standardmäßig deaktiviert.
 
 ## Abdeckung nach Modul
 
@@ -47,10 +51,11 @@ Alpha Vantage oder ein Kalender-/Market-Data-Provider darf nur als Plugin-Adapte
 | COT | CFTC API + annual ZIP | lokaler CFTC-Import |
 | Macro | nationale Statistikämter/Zentralbanken | FRED als Aggregator; lokaler Import |
 | Events | offizielle Calendars/ICS/RSS | manueller Eventimport; gekennzeichneter Scraper |
-| Forecast | keiner zwingend | manuelle Datei oder optionaler lizenzierter Adapter |
+| Forecast | manueller, versionierter Import | optionaler lizenzierter Drittanbieter-Adapter |
 | Seasonality FX | offizielle Referenzkurse/Crosses | lokaler Broker-/Providerexport |
 | Seasonality Energie/Rates | EIA/FRED/Zentralbanken | lokaler Export |
-| Seasonality Aktien/Futures/Krypto | lokaler Export | optionaler Free Provider/Exchange Adapter |
+| Seasonality Fiat-Futures/Edelmetalle | lokaler, lizenzierter Preisexport | dokumentierter Provideradapter |
+| Seasonality Krypto | lokaler CSV-Import; öffentliche Exchange-Candles | zweiter Exchangeadapter |
 | Journal | vollständig lokal | keine externe Quelle nötig |
 
 ## Betriebsmodell
@@ -86,9 +91,14 @@ Alpha Vantage oder ein Kalender-/Market-Data-Provider darf nur als Plugin-Adapte
 - Exporte enthalten Source Attribution und Access Date.
 - Automatisierter Quartalscheck erinnert an Terms-/Endpoint-Review; keine automatische Rechtsbehauptung.
 
-## Forecast-freier Score
+## Forecast-Handhabung in Scoring v1
 
-Ein fehlender Consensus darf das System nicht blockieren. Indicator Score nutzt dann Trend, Momentum und Target/Level mit reduzierter Coverage. Die Surprise-Komponente ist `null`. Das Dashboard zeigt „kein Forecast verfügbar“ statt „neutral“.
+Der permanente kostenfreie Betrieb bleibt möglich, weil Forecasts manuell
+importiert werden können. Für den fachlichen Macro-Score v1 gilt jedoch strikt:
+Nur ein valides Actual/Forecast-Paar erzeugt bullish, bearish oder neutral. Ein
+fehlender Forecast erzeugt `unavailable`, nicht Trend-, Momentum- oder
+Target-Ersatz. Previous und Revised Previous bleiben für die Erklärung und
+Revision sichtbar, aber nicht Teil der Punktzahl.
 
 ## Schlüsselmanagement
 
@@ -101,9 +111,10 @@ Ein fehlender Consensus darf das System nicht blockieren. Indicator Score nutzt 
 ## Minimaler kostenfreier Startumfang
 
 1. USD/EUR: BLS, BEA, FRED, Eurostat, ECB + offizielle Kalender.
-2. COT: CFTC für FX und ausgewählte Commodities.
-3. Seasonality: G8 FX Referenzkurse plus lokaler Import.
-4. Journal: vollständig lokal.
-5. Danach GBP/JPY/CHF/CAD/AUD/NZD schrittweise über die Quellenmatrix.
+2. Danach GBP/JPY/CHF/CAD/AUD/NZD über die jeweilige Quellenmatrix.
+3. COT: CFTC für aktivierte Fiat-Futures und Gold, Silber, Platin, Palladium.
+4. Seasonality: G10-FX-Referenzkurse sowie lokale/zugelassene Preisimporte für
+   Fiat-Futures, Edelmetalle und das konfigurierte Krypto-Set.
+5. Journal: vollständig lokal.
 
 Damit entsteht früh ein ehrlicher, belastbarer Kern statt einer optisch vollständigen Heatmap mit unzuverlässigen Füllwerten.

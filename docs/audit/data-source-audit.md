@@ -102,6 +102,7 @@ Stand: 17. Juli 2026. Aussagen zu APIs, Limits und Lizenzen müssen vor der prod
 | Öl/Gas/Energie | EIA/FRED offizielle Spot-/Benchmarkserien | lokaler CSV; optional Alpha Vantage | Spot ist nicht Futures-Continuous; keine Vermischung |
 | Bonds/Yields | Zentralbank-/Treasury-Serien | FRED | Rendite statt handelbarem Total-Return-Index klar kennzeichnen |
 | Aktien/Indizes/Futures | lokaler, vom Nutzer lizenzierter Export | optionaler kostenloser Provider nach Terms-Prüfung | dauerhaft kostenlose offizielle 20-Jahres-OHLC-Daten sind nicht flächendeckend verfügbar |
+| Fiat-Futures/Edelmetalle | lokaler lizenzierter Preisexport | dokumentierter Provideradapter | Kontraktspezifikation, Roll- und Continuous-Future-Policy strikt speichern |
 | Krypto | lokaler CSV-Import; optional öffentliche Exchange-Candles | zweiter Exchangeadapter | Exchange-, Paar-, Zeitzonen- und Survivorship-Unterschiede |
 
 Die Quell-Alpha-Vantage-Integration darf optional bleiben, aber nicht Voraussetzung sein. Die [offizielle Dokumentation](https://www.alphavantage.co/documentation/) zeigt, dass Entitlements und Full-History-Verfügbarkeit endpointabhängig sind; der Zielbetrieb muss ohne bezahlten Tarif funktionieren.
@@ -114,14 +115,21 @@ Die Quell-Alpha-Vantage-Integration darf optional bleiben, aber nicht Voraussetz
 - Zentralbanken: Meetingkalender, statistische Kalender, ICS/RSS.
 - FRED Release Calendar kann als Discovery/Fallback dienen, deckt aber laut API-Dokumentation zukünftige Release Dates nicht vollständig über `release/dates` ab.
 
-### Forecast-Problem
+### Forecast-Problem und beschlossene Lösung
 
-Offizielle Stellen veröffentlichen in der Regel Actual, Previous/Revised und Release Schedule, aber keinen Markt-Konsens. Ein kostenloser, global konsistenter Consensus-Feed mit verlässlicher Lizenz wurde nicht gefunden. Deshalb:
+Offizielle Stellen veröffentlichen in der Regel Actual, Previous/Revised und
+Release Schedule, aber keinen Markt-Konsens. Ein kostenloser, global
+konsistenter Consensus-Feed mit verlässlicher Lizenz wurde nicht gefunden.
+Deshalb gilt:
 
-1. Event-Scanner und Actual/Revision funktionieren vollständig ohne Forecast.
-2. Surprise Score bleibt `null`, wenn kein Forecast vorliegt.
-3. Forecast kann manuell importiert oder über einen optionalen, separat lizenzierten Adapter ergänzt werden.
-4. Drittseiten-Scraping darf nie still als offizielle Quelle erscheinen.
+1. Forecast kann manuell importiert oder über einen optionalen, separat
+   lizenzierten Drittanbieter-Adapter ergänzt werden.
+2. Ein Macro-Signal wird nur aus einem validen Actual/Forecast-Paar gebildet.
+   Fehlt der Forecast, ist der Score `unavailable`, nicht `neutral`.
+3. Previous/Revised Previous werden gespeichert und angezeigt, aber in
+   Scoring v1 nicht als Ersatz für einen Forecast verwendet.
+4. Drittseiten-Scraping darf nie still als offizielle Quelle erscheinen und
+   ist standardmäßig deaktiviert.
 
 ## Datenqualitätsregeln pro Abruf
 

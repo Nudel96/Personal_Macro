@@ -38,13 +38,16 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 ### Epic 1.1: Canonical Data Model
 
 - Country/Currency/Indicator/Source Registry.
-- Observation + Revision, Event + Schedule Revision, Raw Payload und Job Runs.
+- Observation + Revision, versionierter Forecast/Consensus, Event + Schedule
+  Revision, Raw Payload und Job Runs.
 - Unit/Frequency/Seasonal Adjustment/Reference Period Enums und Mappings.
 - Provenance-API und Data Quality Read Model.
 
 ### Epic 1.2: Erste Quellenadapter
 
 - CFTC, FRED/ALFRED, BLS, BEA, Eurostat, ECB.
+- Adapter-Vertrag für manuelle und optionale lizenzierte
+  Forecast-/Consensus-Drittanbieter; kein konkreter Anbieter ist Pflicht.
 - Contract Tests gegen gespeicherte, redigierte Fixtures.
 - Retry, Timeout, Rate Limit, Pagination, Watermark, Quarantine.
 - Original Source URL und Lizenzmetadaten.
@@ -54,6 +57,8 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 - offizielle Kalenderadapter für initial USA/EUR und Framework für übrige Räume;
 - stabile Event Identity und Dedupe;
 - neue Events, Verschiebungen, Absagen und Actual-Ergänzung;
+- Actual, Forecast, Previous und Revised Previous getrennt, revisionierbar und
+  mit individueller Quellenkette;
 - Original Timezone/Text + UTC;
 - täglicher lokaler Schedule und manueller Refresh;
 - Failure Log und sichtbare Gaps.
@@ -70,6 +75,8 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 - Wiederholter Job erzeugt keine Duplikate.
 - Terminverschiebung erzeugt Event Revision statt neues Event.
 - Missing/Failed/Stale sind unterscheidbar.
+- Actual, Forecast, Previous und Revised Previous bleiben getrennt
+  nachvollziehbar; ein fehlender Forecast wird nicht als neutral gespeichert.
 - Mindestens USD und EUR haben getestete Kernindikatoren für Inflation, Labour, Growth und Rates.
 
 ### Pflicht-Tests
@@ -80,23 +87,27 @@ HTTP-Fehler/429/Timeout, Schema Drift, Missing/Zero, Revision, Dedupe, DST, Jahr
 
 ### Epic 2.1: Scoring Engine v1
 
-- Indicator Policies: positive, inverse, target band, regime-dependent.
-- Surprise, Trend, Momentum, Target Components.
-- historischer Scale/Z-Score, Winsorization/Clipping.
-- versionierte Gewichte, Reason Codes, Coverage und Confidence.
-- stale/quality gating und Recompute.
+- binäre Macro-Signale ausschließlich aus Actual gegen Forecast mit positiver
+  oder inverser Indicator Direction;
+- separate, versionierte Forecast-Provenance; Previous/Revised Previous sind
+  sichtbar, aber nicht Teil der v1-Punktzahl;
+- institutioneller COT-Bias aus Netto-Position, Nettoänderung und historischem
+  Z-Score;
+- Seasonality-Signal für ein konfigurierbares Vorschaufenster;
+- Reason Codes, Coverage, Freshness Gate und deterministischer Recompute.
 
 ### Epic 2.2: Aggregation
 
-- Gruppen Inflation/Labour/Growth/Rates/External/Risk.
-- Währungsscore, Score Delta, Ranking und Historie.
-- effective weights/coverage statt impliziter Neutralwerte.
+- Gruppen COT, Growth, Inflation, Labour und Seasonality.
+- Currency-Signal je Faktor sowie Base-minus-Quote-Pair-Zellen von -2 bis +2.
+- Rohscore, normierter Score, Coverage, Ranking und Historie.
+- unavailable statt impliziter Neutralwerte; keine Punkte ohne valide Inputs.
 
 ### Epic 2.3: UI
 
-- zentrale Heatmap mit Wert, Richtung, Score, Reason, Source und Aktualität;
-- Currency Drilldown und Ranking;
-- Upcoming/Recent Events und standardized Surprises;
+- zentrale Pair-Matrix mit Wert, Richtung, Score, Reason, Source und Aktualität;
+- Currency Drilldown, Ranking und Base/Quote-Vergleich;
+- Upcoming/Recent Events mit Actual, Forecast, Previous, Revision und Surprise;
 - Quality Panel und Job Status.
 
 ### Risiken
@@ -106,19 +117,23 @@ Scoring kann Scheingenauigkeit erzeugen; Inflation/Rates sind regimesensitiv; In
 ### Akzeptanzkriterien
 
 - Jeder Score ist vollständig erklärbar und reproduzierbar.
+- AUD/CHF mit Base-GDP +1 und Quote-GDP -1 erzeugt nachweisbar eine GDP-Zelle +2.
 - Configänderung erzeugt neue Version und verändert alte Snapshots nicht.
 - Farbe ist nie alleinige Information.
 - Ungenügende Coverage unterdrückt Ranking/Signal klar sichtbar.
 
 ### Pflicht-Tests
 
-positive/inverse/target direction, missing Forecast, stale Data, Weight Renormalization, Regime Switch, Score Boundaries, Snapshot Determinism, Accessibility/Color Independence.
+positive/inverse direction, exact Forecast match, missing Forecast, stale Data,
+COT tie, Pair-Delta -2/0/+2, Score Boundaries, Snapshot Determinism,
+Accessibility/Color Independence.
 
 ## Phase 3 – Seasonality Engine und Visualisierung (Priorität 3)
 
 ### Epic 3.1: Preis- und Kalenderfundament
 
-- lokale Dateiimporte und offizielle FX/Energieadapter;
+- lokale Dateiimporte und offizielle FX-Adapter sowie Preisadapter für
+  Fiat-Futures, Edelmetalle und Krypto;
 - Instrument/Price Series/Calendar Registry;
 - Gap-, Duplicate-, Split/Adjustment- und Source Checks.
 
@@ -154,6 +169,8 @@ Leap Day, ISO Week 53, Holidays, 24/7 Crypto, missing sessions, incomplete year,
 
 - sechs CFTC-Datasets backfillen und inkrementell aktualisieren;
 - Contract Registry und Asset Mapping;
+- konfigurierbare Default-Gruppe je Assetklasse, zunächst TFF Leveraged Funds
+  für Fiat-Futures und Disaggregated Managed Money für Edelmetalle;
 - Long/Short/Spreading/Net/%OI und 1/4/13/26-Wochenänderungen;
 - configurable rolling Z-Scores/percentiles/extreme zones;
 - Timeseries, Tables, Rankings und Data Freshness;
