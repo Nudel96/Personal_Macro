@@ -1,0 +1,55 @@
+# Secrets and local configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Personal/local data
+data/*
+!data/README.md
+!data/fixtures/
+!data/fixtures/**
+attachments/
+imports/
+exports/
+backups/
+*.db
+*.db-*
+*.sqlite
+*.sqlite3
+*.duckdb
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+*.egg-info/
+
+# Node/frontend
+node_modules/
+.next/
+.vite/
+coverage/
+playwright-report/
+test-results/
+*.tsbuildinfo
+
+# IDE/OS/logs
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+tmp/
+.tmp/
