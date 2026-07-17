@@ -115,6 +115,7 @@ Jeder angezeigte Macro-Wert verlinkt auf `observation_revision → raw_payload �
 | Event discovery | täglich, zusätzlich sonntags weiter Horizont | Upsert über Source Event ID/Fingerprint; Terminänderung als Revision |
 | Event actual completion | nach erwarteter Veröffentlichung in Backoff-Fenstern | nur neue Revision; Timeout führt zu visible gap |
 | Macro observations | quellen-/indikatorspezifisch | Watermark + release calendar; letzte gute Version bleibt stale |
+| Policy-rate expectations | täglich, vor Zentralbankterminen häufiger | Provider-Snapshot vor Termin einfrieren; Konflikt unterdrückt Rate-Score |
 | COT | Freitag nach Veröffentlichung plus Retry | Schlüssel Dataset+Contract+Report Date+Scope |
 | Prices | täglich nach Quell-Cutoff | Source+Instrument+Session Date; Gap Check |
 | Scores | nach validiertem Input und täglich | deterministisch nach Version/Input Hash |
@@ -127,8 +128,8 @@ Manueller Refresh ruft exakt denselben Jobcode auf. Scheduler-Zeiten werden in U
 ### Zentrales Dashboard
 
 - Currency Ranking mit Score, Δ, Coverage und Freshness.
-- Pair-Matrix und Currency-Drilldown nach COT, Growth, Inflation, Labour und
-  Seasonality.
+- Pair-Matrix und Currency-Drilldown nach COT, Growth, Inflation, Labour,
+  Leitzinsen und Seasonality.
 - kommende Events und zuletzt veröffentlichte Actual/Forecast/Previous/Revised.
 - größte standardisierte Surprises, aber nur bei vergleichbarer Scale.
 - COT-Extremzonen und saisonale Fenster mit Quality Badge.
@@ -144,6 +145,9 @@ Jede Kachel öffnet Raw Value, Einheit, Frequency, Source Link, Reference/Releas
 - Scoring v1 nutzt für Macro-Releases nur Actual gegen Forecast: positive,
   inverse und disabled sind die erlaubten Richtungsregeln. Target-Band,
   Trend, Momentum und regimeabhängige Logik sind spätere, neue Versionen.
+- Leitzinsen sind eine eigene Domäne mit aktuellem Zielzins, erwartetem
+  Zielzins, Zinsentscheidung und - für USD - relativer Stance gegen den
+  abgedeckten ausländischen Zentralbankkorb.
 - Missing Forecast/Component reduziert Coverage und ist `unavailable`, niemals
   implizit neutral.
 - Pair-Zellen folgen `Base − Quote` und liegen je Faktor zwischen `-2` und `+2`.

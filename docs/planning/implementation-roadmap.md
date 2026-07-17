@@ -46,6 +46,7 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 ### Epic 1.2: Erste Quellenadapter
 
 - CFTC, FRED/ALFRED, BLS, BEA, Eurostat, ECB.
+- Offizielle Zentralbankadapter für aktuellen Leitzins und Entscheidungstermine.
 - Adapter-Vertrag für manuelle und optionale lizenzierte
   Forecast-/Consensus-Drittanbieter; kein konkreter Anbieter ist Pflicht.
 - Contract Tests gegen gespeicherte, redigierte Fixtures.
@@ -59,6 +60,8 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 - neue Events, Verschiebungen, Absagen und Actual-Ergänzung;
 - Actual, Forecast, Previous und Revised Previous getrennt, revisionierbar und
   mit individueller Quellenkette;
+- Zentralbanktermine, aktuelle Leitzinsen und erwartete Zielzinsen als eigener
+  Event-/Datenpfad;
 - Original Timezone/Text + UTC;
 - täglicher lokaler Schedule und manueller Refresh;
 - Failure Log und sichtbare Gaps.
@@ -77,6 +80,8 @@ Migration round-trip, Settings Validation, Path Traversal für Data/Attachment P
 - Missing/Failed/Stale sind unterscheidbar.
 - Actual, Forecast, Previous und Revised Previous bleiben getrennt
   nachvollziehbar; ein fehlender Forecast wird nicht als neutral gespeichert.
+- Für mindestens USD, EUR und GBP sind aktueller Leitzins, nächster Termin und
+  ein versionierter erwarteter Zielzins mit Quality Status darstellbar.
 - Mindestens USD und EUR haben getestete Kernindikatoren für Inflation, Labour, Growth und Rates.
 
 ### Pflicht-Tests
@@ -93,12 +98,14 @@ HTTP-Fehler/429/Timeout, Schema Drift, Missing/Zero, Revision, Dedupe, DST, Jahr
   sichtbar, aber nicht Teil der v1-Punktzahl;
 - institutioneller COT-Bias aus Netto-Position, Nettoänderung und historischem
   Z-Score;
+- Leitzinsdomäne mit erwarteter Zinsänderung, Entscheidungssurprise und
+  USD-Relativwirkung gegenüber dem abgedeckten Auslandskorb;
 - Seasonality-Signal für ein konfigurierbares Vorschaufenster;
 - Reason Codes, Coverage, Freshness Gate und deterministischer Recompute.
 
 ### Epic 2.2: Aggregation
 
-- Gruppen COT, Growth, Inflation, Labour und Seasonality.
+- Gruppen COT, Growth, Inflation, Labour, Leitzinsen und Seasonality.
 - Currency-Signal je Faktor sowie Base-minus-Quote-Pair-Zellen von -2 bis +2.
 - Rohscore, normierter Score, Coverage, Ranking und Historie.
 - unavailable statt impliziter Neutralwerte; keine Punkte ohne valide Inputs.
@@ -118,6 +125,8 @@ Scoring kann Scheingenauigkeit erzeugen; Inflation/Rates sind regimesensitiv; In
 
 - Jeder Score ist vollständig erklärbar und reproduzierbar.
 - AUD/CHF mit Base-GDP +1 und Quote-GDP -1 erzeugt nachweisbar eine GDP-Zelle +2.
+- Ein erwarteter Fed-Hike von +25 bp bei durchschnittlich +25 bp im
+  Auslandskorb erzeugt einen USD-Relativwert 0.
 - Configänderung erzeugt neue Version und verändert alte Snapshots nicht.
 - Farbe ist nie alleinige Information.
 - Ungenügende Coverage unterdrückt Ranking/Signal klar sichtbar.
@@ -125,8 +134,8 @@ Scoring kann Scheingenauigkeit erzeugen; Inflation/Rates sind regimesensitiv; In
 ### Pflicht-Tests
 
 positive/inverse direction, exact Forecast match, missing Forecast, stale Data,
-COT tie, Pair-Delta -2/0/+2, Score Boundaries, Snapshot Determinism,
-Accessibility/Color Independence.
+COT tie, Rate-Hike/Hold/Cut, USD-Relativwirkung, Pair-Delta -2/0/+2, Score
+Boundaries, Snapshot Determinism, Accessibility/Color Independence.
 
 ## Phase 3 – Seasonality Engine und Visualisierung (Priorität 3)
 

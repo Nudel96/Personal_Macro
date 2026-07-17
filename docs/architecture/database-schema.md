@@ -95,6 +95,39 @@ Unique über Provider, Event/Indikator, Referenzperiode und Abrufversion. Damit
 können manuelle Imports und lizenzierte Drittanbieter-Forecasts nachvollziehbar
 neben offiziellen Beobachtungen bestehen.
 
+### `central_bank` / `policy_rate`
+
+`central_bank`: `id`, `code`, `name`, `country_code`, `currency_code`,
+`official_source_id`, `timezone`, `active`, `metadata_json`.
+
+`policy_rate`: versionierter offizieller Zielzins: `id`, `central_bank_id`,
+`effective_at_utc`, `target_rate`, `lower_bound`, `upper_bound`,
+`decision_event_id`, `official_observation_revision_id`, `source_locator`,
+`quality_status`, `created_at`.
+
+### `policy_rate_expectation`
+
+`id`, `central_bank_id`, `next_decision_event_id`, `provider_source_id`,
+`provider_event_id`, `current_target_rate`, `expected_target_rate`,
+`expected_delta_bps`, `provider_snapshot_at_utc`, `retrieved_at_utc`,
+`raw_payload_id`, `source_locator`, `is_latest`, `quality_status`,
+`quality_reasons_json`, `created_at`.
+
+Der letzte valide Erwartungssnapshot vor der Entscheidung wird mit dem späteren
+Actual verknüpft und nie rückwirkend überschrieben.
+
+### `policy_rate_score_snapshot`
+
+`id`, `scoring_version_id`, `currency_code`, `central_bank_id`, `as_of_utc`,
+`current_target_rate`, `expected_target_rate`, `expected_delta_bps`,
+`expected_stance_signal`, `actual_target_rate`, `decision_surprise_bps`,
+`decision_surprise_signal`, `foreign_pressure_bps`,
+`relative_stance_bps`, `relative_stance_signal`, `coverage`,
+`availability_status`, `reason_codes_json`, `input_hash`, `created_at`.
+
+Für USD referenziert der Snapshot zusätzlich die verwendeten ausländischen
+Zentralbank-Snapshots und den Korb/Weighting-Parameter der Scoring-Version.
+
 ### `economic_event`
 
 `id`, `source_id`, `source_event_id`, `indicator_id`, `country_code`, `currency_code`, `reference_period`, `event_kind`, `natural_key_hash`, `first_seen_at`, `status`.

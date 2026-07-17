@@ -98,7 +98,9 @@ Referenzansicht ab. Ein späteres, regimeabhängiges Zentralbankmodell wäre ein
 neue Scoring-Version und darf historische v1-Snapshots nicht umdeuten.
 
 Policy-Rates, technische Trends und Crowd-Sentiment dürfen als Kontext sichtbar
-sein, fließen aber nicht in den v1-Gesamtscore ein.
+sein. Leitzinsen werden jedoch als eigene v1-Domäne nach
+policy-rate-model-v1.md bewertet; technische Trends und Crowd-Sentiment fließen
+weiterhin nicht in den v1-Gesamtscore ein.
 
 ## Institutioneller COT-Bias
 
@@ -131,9 +133,9 @@ Fiatwährung ausgegeben werden.
 
 ## Currency- und Pair-Matrix
 
-Jede Fiatwährung erhält pro aktivem Einzelindikator sowie für COT und
-Seasonality genau einen -1-, 0- oder +1-Wert. Der Paarvergleich folgt direkt
-der gewünschten Base/Quote-Logik:
+Jede Fiatwährung erhält pro aktivem Einzelindikator sowie für COT, Leitzinsen
+und Seasonality genau einen -1-, 0- oder +1-Wert. Der Paarvergleich folgt
+direkt der gewünschten Base/Quote-Logik:
 
     pair_cell(base, quote, factor) = base_factor - quote_factor
 
@@ -158,9 +160,10 @@ oberhalb einer konfigurierbaren Mindestabdeckung veröffentlicht.
 ## Darstellung und Nachvollziehbarkeit
 
 Die UI folgt dem Informationsaufbau der Referenzbilder: Currency-Drilldown mit
-COT, Growth, Inflation, Labour und Seasonality sowie eine Matrix der
-Base/Quote-Paare. Jede Zelle zeigt Zahl, Textlabel, Aktualität, Datenabdeckung
-und einen Drilldown zu Actual/Forecast/Previous, Quelle und Revisionskette.
+COT, Growth, Inflation, Labour, Leitzinsen und Seasonality sowie eine Matrix
+der Base/Quote-Paare. Jede Zelle zeigt Zahl, Textlabel, Aktualität,
+Datenabdeckung und einen Drilldown zu Actual/Forecast/Previous, Quelle und
+Revisionskette.
 
 Blau/Rot/Grau dürfen die Richtung unterstützen, aber nie die einzige
 Information sein. 0 wird als neutraler berechneter Gleichstand gezeigt;

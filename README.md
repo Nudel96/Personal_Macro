@@ -15,6 +15,8 @@ Der aktuelle Branch enthält ausschließlich das Audit des privaten Referenzsyst
 - [`docs/architecture/database-schema.md`](docs/architecture/database-schema.md)
 - [`docs/planning/implementation-roadmap.md`](docs/planning/implementation-roadmap.md)
 - [`docs/planning/free-data-strategy.md`](docs/planning/free-data-strategy.md)
+- [`docs/planning/forecast-acquisition-policy.md`](docs/planning/forecast-acquisition-policy.md)
+- [`docs/planning/policy-rate-model-v1.md`](docs/planning/policy-rate-model-v1.md)
 - [`docs/planning/scoring-model-v1.md`](docs/planning/scoring-model-v1.md)
 - [`docs/planning/open-questions.md`](docs/planning/open-questions.md)
 

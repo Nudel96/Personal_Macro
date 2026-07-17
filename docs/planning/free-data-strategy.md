@@ -100,6 +100,20 @@ fehlender Forecast erzeugt `unavailable`, nicht Trend-, Momentum- oder
 Target-Ersatz. Previous und Revised Previous bleiben für die Erklärung und
 Revision sichtbar, aber nicht Teil der Punktzahl.
 
+ForexFactory wird nicht automatisiert importiert: Die dortigen Notices
+untersagen die Kopie/Weitergabe der Kalenderdaten und Zugriffe außerhalb der
+vorgegebenen Oberfläche/Anweisungen. Details und die erlaubte Adapterkette
+stehen in `forecast-acquisition-policy.md`.
+
+## Leitzinsdaten
+
+Aktuelle Zielzinsen und Entscheidungstermine stammen aus offiziellen
+Zentralbankquellen. Erwartete Zielzinsen können manuell oder von einem
+aktivierten, lizenzierten Forecast-Adapter kommen. Das Modell bleibt ohne
+Provider funktionsfähig, zeigt dann aber keinen erwartungsbasierten Rate-Score.
+Die USD-Relativwirkung nutzt nur den dokumentierten abgedeckten Auslandskorb,
+nie eine unbelegte Behauptung über alle Zentralbanken weltweit.
+
 ## Schlüsselmanagement
 
 - `.env.example` enthält nur Namen und Beschreibungen.

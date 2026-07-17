@@ -18,7 +18,7 @@ Stand: 17. Juli 2026. Aussagen zu APIs, Limits und Lizenzen müssen vor der prod
 | CFTC Public Reporting Environment | Legacy, Disaggregated, TFF; Futures-only/combined | kostenlos, laut CFTC derzeit ohne Token bei angemessener Nutzung | beste vorhandene Pipeline; keine Raw-Historie/Publish Date/Pagination | **Primärquelle COT** |
 | FRED API | WTI, Brent, Gas und Fallback-Preisreihen | kostenloser Key; API-Terms und 429-Limits | brauchbar, aber Metadaten/Vintages werden ignoriert | **Aggregator/Fallback**, für Revisionen ALFRED-Funktionen nutzen |
 | Alpha Vantage | FX, Krypto, Rohstoffe | kostenloser Key mit engen Limits; einige Full-History-Endpunkte/Entitlements tarifabhängig | Quellcode ist gleichzeitig auf Free- und Pro-Annahmen getrimmt; nicht garantiert kostenlos skalierbar | **Optionaler Adapter**, nicht zwingende Grundlage |
-| ForexFactory | Kalender, Actual, Forecast, Previous | kein API-Key; Browser-Scraping | instabil, Drittquelle, keine stabilen IDs/Zeitzonen; Terms/robots vor Nutzung prüfen | nur gekennzeichneter Fallback oder vollständig ersetzen |
+| ForexFactory | Kalender, Actual, Forecast, Previous | Website/Exporte, kein freigegebener Produkt-API-Vertrag | Terms untersagen Kopie/Weitergabe der Kalenderdaten und nicht vorgesehene Zugriffsmethoden | nicht automatisiert ingestieren; nur manuell ansehen, durch offizielle Quellen + lizenzierte Adapter ersetzen |
 | statische manuelle Heatmapdaten | Seed/Fallback | keine | nicht reproduzierbar, teils uneinheitliche Herkunft | nicht als Live-Daten übernehmen |
 | „Retail Sentiment“ | COT Nonreportables + zufällig simulierte Tageswerte | keine echte Quelle | simulierte Werte sind unzulässig | vollständig entfernen |
 

@@ -14,9 +14,20 @@
    und Seasonality. Jeder Macro-Release ist in v1 ausschließlich bullish,
    bearish oder bei Gleichheit neutral aus Actual gegen Forecast. Der
    Paarvergleich ist immer Base minus Quote und ergibt pro Faktor -2 bis +2.
+4. **Leitzinsen:** Eigene Domäne mit aktuellem Zielzins, nächstem Termin,
+   erwartetem Zielzins und Rate Surprise. Für USD wird die erwartete bzw.
+   tatsächliche Fed-Änderung gegen den abgedeckten ausländischen
+   Zentralbankkorb relativiert.
+5. **Journal:** Das Tool startet mit einem sauberen, neuen Journal. Es ist
+   keine Migration aus dem Referenzsystem oder bestehenden Brokerexporten
+   erforderlich.
+6. **Datenschutz:** Ausschließliche Einzelnutzung. Es gibt keine Anmeldung,
+   Benutzerverwaltung oder Cloud-Synchronisierung; lokale OS-Dateirechte sind
+   der Startschutz, optionale Verschlüsselung bleibt später möglich.
 
 Die vollständige Berechnungs-, Coverage- und Darstellungsregel steht in
-[scoring-model-v1.md](scoring-model-v1.md).
+[scoring-model-v1.md](scoring-model-v1.md) und
+[policy-rate-model-v1.md](policy-rate-model-v1.md).
 
 ## Noch zu entscheiden, aber kein Blocker für das Fundament
 
@@ -25,15 +36,9 @@ Die vollständige Berechnungs-, Coverage- und Darstellungsregel steht in
    TFF Leveraged Funds für Fiat-Futures, Disaggregated Managed Money für
    Edelmetalle.
 2. **Technik, Zinsen und Crowd-Sentiment:** Die Referenzbilder zeigen diese
-   Kontextfelder, die beschriebene v1-Logik umfasst jedoch nur COT, Growth,
-   Inflation, Labour und Seasonality. Sie bleiben daher außerhalb des v1-Total
-   Scores, bis du sie ausdrücklich aktivierst.
-3. **Journal-Migration:** Existieren reale Trade-/Account-/Ritualdaten oder
-   Brokerexporte, die beim ersten produktiven Schema verlustfrei migriert
-   werden müssen?
-4. **Datenschutz/Backup:** Reicht zunächst ein lokaler Datenordner mit
-   OS-Dateirechten, oder soll Verschlüsselung/App-Sperre bereits in Phase 1
-   enthalten sein?
+   Kontextfelder. Leitzinsen sind jetzt eine eigene v1-Domäne. Technische
+   Trends und Crowd-Sentiment bleiben außerhalb des v1-Total-Scores, bis du
+   sie ausdrücklich aktivierst.
 
 ## Arbeitsdefaults
 
