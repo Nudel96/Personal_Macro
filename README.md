@@ -53,6 +53,8 @@ Die Journal-Datenbank liegt standardmäßig unter
 - [`docs/planning/forecast-acquisition-policy.md`](docs/planning/forecast-acquisition-policy.md)
 - [`docs/planning/policy-rate-model-v1.md`](docs/planning/policy-rate-model-v1.md)
 - [`docs/planning/scoring-model-v1.md`](docs/planning/scoring-model-v1.md)
+- [`docs/planning/trading-journal-tauri-implementation-plan.md`](docs/planning/trading-journal-tauri-implementation-plan.md)
+- [`docs/planning/journal-metrics-and-heatmap-v1.md`](docs/planning/journal-metrics-and-heatmap-v1.md)
 - [`docs/planning/open-questions.md`](docs/planning/open-questions.md)
 
 ## Sicherheitsstatus
