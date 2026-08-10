@@ -140,7 +140,17 @@ function pair(base: string, quote: string): FundamentalPairView {
     quote,
     fundamentalScore,
     biasLabel: fundamentalScore ? "Bullish" : "Neutral",
-    cells: fields.map(pairCell),
+    cells: fields.map((field) => {
+      const cell = pairCell(field);
+      return base === "USD" && quote === "CAD" && field[0] === "gdp"
+        ? {
+            ...cell,
+            baseScore: 1,
+            quoteScore: -1,
+            score: 2,
+          }
+        : cell;
+    }),
   };
 }
 
@@ -158,10 +168,13 @@ function dashboard(): MacroFundamentalsDashboard {
 }
 
 function cotContract(currency: string): CotContractView {
-  const latestChangeSignal = currency === "USD" ? 1 : currency === "CAD" ? -1 : 0;
+  const latestChangeSignal =
+    currency === "USD" ? 1 : currency === "CAD" ? -1 : 0;
   const pipelineSignal = currency === "CAD" ? 1 : 0;
-  const longChange = latestChangeSignal === 1 ? 28 : latestChangeSignal === -1 ? 8 : 18;
-  const shortChange = latestChangeSignal === 1 ? 8 : latestChangeSignal === -1 ? 28 : 18;
+  const longChange =
+    latestChangeSignal === 1 ? 28 : latestChangeSignal === -1 ? 8 : 18;
+  const shortChange =
+    latestChangeSignal === 1 ? 8 : latestChangeSignal === -1 ? 28 : 18;
   return {
     symbol: currency,
     displayName: `${currency} COT`,
@@ -381,5 +394,43 @@ describe("MacroPage", () => {
     await user.click(screen.getByRole("button", { name: "COT aktualisieren" }));
 
     expect(api.syncCot).toHaveBeenCalledTimes(1);
+  });
+
+  it("exposes semantic intensity and unavailable states for every heatmap family", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+
+    renderPage();
+    const rows = await screen.findAllByTestId("forex-pair-row");
+    const usdCad = rows.find((row) =>
+      within(row).queryByRole("rowheader", { name: "USDCAD" }),
+    )!;
+    const total = within(usdCad).getByTitle("Fundamentals +2");
+    expect(total.className).toContain("heatmap-positive");
+    expect(total.getAttribute("data-intensity")).toBe("2");
+
+    const gdp = within(usdCad).getByTitle(/GDP: Base \+1, Quote -1/);
+    expect(gdp.className).toContain("heatmap-positive");
+    expect(gdp.getAttribute("data-intensity")).toBe("2");
+
+    const latest = within(usdCad).getByTitle(
+      /Latest Buys\/Sells: Base USD \+1, Quote CAD -1/,
+    );
+    expect(latest.className).toContain("heatmap-positive");
+    expect(latest.getAttribute("data-intensity")).toBe("2");
+
+    const pipeline = within(usdCad).getByTitle(
+      /COT Pipeline: Base USD 0, Quote CAD \+1/,
+    );
+    expect(pipeline.className).toContain("heatmap-negative");
+    expect(pipeline.getAttribute("data-intensity")).toBe("1");
+
+    const usdCny = rows.find((row) =>
+      within(row).queryByRole("rowheader", { name: "USDCNY" }),
+    )!;
+    const unavailable = within(usdCny).getByTitle(
+      /Latest Buys\/Sells: Base USD \+1, Quote CNY —.*nicht verfügbar/,
+    );
+    expect(unavailable.className).toContain("heatmap-unavailable");
+    expect(unavailable.textContent).toBe("—");
   });
 });

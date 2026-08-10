@@ -24,9 +24,7 @@ export interface InstitutionalPairActivity {
 }
 
 function sumAvailable(values: Array<number | null>) {
-  const available = values.filter(
-    (value): value is number => value !== null,
-  );
+  const available = values.filter((value): value is number => value !== null);
   return {
     score: available.length
       ? available.reduce((sum, value) => sum + value, 0)
@@ -87,10 +85,7 @@ export function buildInstitutionalPairActivity(
     baseActivity.pipelineSignal,
     quoteActivity.pipelineSignal,
   );
-  const { score, coverage } = sumAvailable([
-    latestChangeScore,
-    pipelineScore,
-  ]);
+  const { score, coverage } = sumAvailable([latestChangeScore, pipelineScore]);
 
   return {
     base,

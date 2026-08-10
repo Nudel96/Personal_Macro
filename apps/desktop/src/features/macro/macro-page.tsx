@@ -400,7 +400,11 @@ function FundamentalHeatmap({
           <th colSpan={4} scope="colgroup">
             Output
           </th>
-          <th className="institutional-group-heading" colSpan={2} scope="colgroup">
+          <th
+            className="institutional-group-heading"
+            colSpan={2}
+            scope="colgroup"
+          >
             Institutional Activity
           </th>
           {groups.map((group) => (
@@ -443,6 +447,11 @@ function FundamentalHeatmap({
               <td className={biasTone(pair.biasLabel)}>{pair.biasLabel}</td>
               <td
                 className={toneForScore(pair.fundamentalScore)}
+                data-intensity={
+                  pair.fundamentalScore === 0
+                    ? undefined
+                    : scoreIntensity(pair.fundamentalScore)
+                }
                 title={`Fundamentals ${signed(pair.fundamentalScore)}`}
               >
                 {signed(pair.fundamentalScore)}
@@ -506,9 +515,7 @@ function InstitutionalPairCell({
   label: string;
 }) {
   const score =
-    kind === "latest"
-      ? activity.latestChangeScore
-      : activity.pipelineScore;
+    kind === "latest" ? activity.latestChangeScore : activity.pipelineScore;
   const baseSignal =
     kind === "latest"
       ? activity.baseActivity.latestChangeSignal
@@ -557,6 +564,7 @@ function FundamentalCell({ cell }: { cell?: FundamentalPairCellView }) {
   return (
     <td
       className={`${toneForScore(cell.score)}${cell.available ? "" : " heatmap-derived-from-zero"}`}
+      data-intensity={cell.score === 0 ? undefined : scoreIntensity(cell.score)}
       title={`${cell.label}: Base ${signed(cell.baseScore)}, Quote ${signed(cell.quoteScore)}${releaseContext}${diagnostic}`}
     >
       {signed(cell.score)}
@@ -832,17 +840,13 @@ function IndicatorRow({ indicator }: { indicator: FundamentalIndicatorView }) {
   );
 }
 
-function ScoreRow({
-  label,
-  score,
-}: {
-  label: string;
-  score: number | null;
-}) {
+function ScoreRow({ label, score }: { label: string; score: number | null }) {
   return (
     <div>
       <dt>{label}</dt>
-      <dd className={score === null ? "heatmap-unavailable" : toneForScore(score)}>
+      <dd
+        className={score === null ? "heatmap-unavailable" : toneForScore(score)}
+      >
         {score === null ? "—" : signed(score)}
       </dd>
     </div>

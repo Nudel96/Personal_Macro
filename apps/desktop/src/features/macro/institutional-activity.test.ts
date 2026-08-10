@@ -63,9 +63,7 @@ function contract(
   };
 }
 
-function cotDashboard(
-  fixtures: Record<string, SignalFixture>,
-): CotDashboard {
+function cotDashboard(fixtures: Record<string, SignalFixture>): CotDashboard {
   return {
     sourceUrl: "https://publicreporting.cftc.gov/stories/s/r4w3-av2u",
     lastSyncedAt: "2026-08-08T18:00:00Z",
