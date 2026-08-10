@@ -527,7 +527,7 @@ export interface CotContractView {
   symbol: string;
   displayName: string;
   assetClass: string;
-  reportFamily: "tff" | "disaggregated";
+  reportFamily: "legacy" | "tff" | "disaggregated";
   traderGroup: string;
   currency?: string | null;
   reportDate?: string | null;
@@ -540,6 +540,10 @@ export interface CotContractView {
   netChange?: number | null;
   netPositionPctOi?: number | null;
   netChangePctOi?: number | null;
+  openInterestChange?: number | null;
+  longShare?: number | null;
+  shortShare?: number | null;
+  weeklyLongShareChange?: number | null;
   positionPercentile?: number | null;
   changePercentile?: number | null;
   positionSignal?: -1 | 0 | 1 | null;

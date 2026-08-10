@@ -24,7 +24,7 @@ const MIN_HISTORY_WEEKS: usize = 104;
 const VALID_HISTORY_WEEKS: usize = 156;
 const EVALUATION_LOOKBACK_WEEKS: usize = 260;
 const REPORT_STALE_AFTER_DAYS: i64 = 10;
-const SCORING_VERSION: &str = "cot-v3";
+const SCORING_VERSION: &str = "cot-v4-legacy-noncommercial";
 const HISTORY_YEARS: i64 = 15;
 static COT_SYNC_LOCK: Mutex<()> = Mutex::const_new(());
 
@@ -317,10 +317,14 @@ pub struct CotContractView {
     pub long_change: Option<i64>,
     pub short_change: Option<i64>,
     pub open_interest: Option<i64>,
+    pub open_interest_change: Option<i64>,
     pub net_positions: Option<i64>,
     pub net_change: Option<i64>,
     pub net_position_pct_oi: Option<f64>,
     pub net_change_pct_oi: Option<f64>,
+    pub long_share: Option<f64>,
+    pub short_share: Option<f64>,
+    pub weekly_long_share_change: Option<f64>,
     pub position_percentile: Option<f64>,
     pub change_percentile: Option<f64>,
     pub position_signal: Option<i8>,
@@ -505,10 +509,14 @@ struct ObservationRow {
     long_change: i64,
     short_change: i64,
     open_interest: i64,
+    open_interest_change: i64,
     net_positions: i64,
     net_change: i64,
     net_position_pct_oi: String,
     net_change_pct_oi: String,
+    long_share: String,
+    short_share: String,
+    weekly_long_share_change: Option<String>,
 }
 
 #[derive(Debug, Clone, FromRow)]
@@ -647,16 +655,17 @@ async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
         let Some(observation) = parse_legacy_observation(&row, url.as_ref()) else {
             continue;
         };
-        let weekly_change = previous_positions.get(&contract.id).and_then(
-            |&(previous_long, previous_short)| {
-                weekly_long_share_change(
-                    observation.long_positions,
-                    observation.short_positions,
-                    previous_long,
-                    previous_short,
-                )
-            },
-        );
+        let weekly_change =
+            previous_positions
+                .get(&contract.id)
+                .and_then(|&(previous_long, previous_short)| {
+                    weekly_long_share_change(
+                        observation.long_positions,
+                        observation.short_positions,
+                        previous_long,
+                        previous_short,
+                    )
+                });
         let observation_fingerprint = fingerprint(&format!(
             "legacy|Non-Commercial|{}|{}|{}|{}|{}",
             contract.id,
@@ -743,9 +752,7 @@ fn weekly_long_share_change(
     previous_long: i64,
     previous_short: i64,
 ) -> Option<f64> {
-    Some(
-        long_share(current_long, current_short)? - long_share(previous_long, previous_short)?,
-    )
+    Some(long_share(current_long, current_short)? - long_share(previous_long, previous_short)?)
 }
 
 fn parse_legacy_observation(row: &Value, source_url: &str) -> Option<ParsedLegacyObservation> {
@@ -817,7 +824,7 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
     let mut views = Vec::new();
     let mut currencies = BTreeMap::new();
     for contract in contracts {
-        let observations: Vec<ObservationRow> = sqlx::query_as("SELECT report_date,long_positions,short_positions,long_change,short_change,open_interest,net_positions,net_change,net_position_pct_oi,net_change_pct_oi FROM cot_observations WHERE contract_id=? AND report_date >= ? ORDER BY report_date")
+        let observations: Vec<ObservationRow> = sqlx::query_as("SELECT report_date,long_positions,short_positions,long_change,short_change,open_interest,open_interest_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi,long_share,short_share,weekly_long_share_change FROM cot_legacy_observations WHERE contract_id=? AND report_date >= ? ORDER BY report_date")
             .bind(&contract.id).bind((Utc::now().date_naive() - Duration::days(HISTORY_YEARS * 366)).format("%Y-%m-%d").to_string()).fetch_all(&state.db).await?;
         let latest = observations.last();
         let assessment = assess_observations(&observations, Utc::now().date_naive());
@@ -877,8 +884,8 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
             symbol: contract.symbol,
             display_name: contract.display_name,
             asset_class: contract.asset_class,
-            report_family: contract.report_family,
-            trader_group: contract.trader_group,
+            report_family: "legacy".into(),
+            trader_group: "Non-Commercial".into(),
             currency: contract.currency,
             report_date: latest.map(|row| row.report_date.clone()),
             long_positions: latest.map(|row| row.long_positions),
@@ -886,10 +893,16 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
             long_change: latest.map(|row| row.long_change),
             short_change: latest.map(|row| row.short_change),
             open_interest: latest.map(|row| row.open_interest),
+            open_interest_change: latest.map(|row| row.open_interest_change),
             net_positions: latest.map(|row| row.net_positions),
             net_change: latest.map(|row| row.net_change),
             net_position_pct_oi: latest.and_then(|row| row.net_position_pct_oi.parse().ok()),
             net_change_pct_oi: latest.and_then(|row| row.net_change_pct_oi.parse().ok()),
+            long_share: latest.and_then(|row| row.long_share.parse().ok()),
+            short_share: latest.and_then(|row| row.short_share.parse().ok()),
+            weekly_long_share_change: latest
+                .and_then(|row| row.weekly_long_share_change.as_deref())
+                .and_then(|value| value.parse().ok()),
             position_percentile,
             change_percentile,
             position_signal,
@@ -901,7 +914,10 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
     }
     let currencies: Vec<_> = currencies.into_values().collect();
     let pairs = currency_pairs(&currencies);
-    let last_synced_at = sqlx::query_scalar("SELECT completed_at FROM cot_sync_runs WHERE status='complete' ORDER BY completed_at DESC LIMIT 1").fetch_optional(&state.db).await?;
+    let last_synced_at = sqlx::query_scalar("SELECT completed_at FROM cot_sync_runs WHERE status='complete' AND source_url=? ORDER BY completed_at DESC LIMIT 1")
+        .bind(LEGACY_URL)
+        .fetch_optional(&state.db)
+        .await?;
     Ok(CotDashboard {
         source_url: CFTC_COT_LANDING_URL.into(),
         last_synced_at,
@@ -946,7 +962,20 @@ fn latest_change_signal(observation: Option<&ObservationRow>, today: NaiveDate) 
     if report_is_stale(Some(&observation.report_date), today) {
         return None;
     }
-    Some((observation.long_change - observation.short_change).signum() as i8)
+    observation
+        .weekly_long_share_change
+        .as_deref()?
+        .parse::<f64>()
+        .ok()
+        .map(|value| {
+            if value > 0.0 {
+                1
+            } else if value < 0.0 {
+                -1
+            } else {
+                0
+            }
+        })
 }
 
 fn component(
@@ -1010,7 +1039,7 @@ fn theil_sen_slope(values: &[f64]) -> Option<f64> {
 fn assess_observations(observations: &[ObservationRow], today: NaiveDate) -> CotAssessment {
     let values: Vec<f64> = observations
         .iter()
-        .filter_map(|row| row.net_position_pct_oi.parse().ok())
+        .filter_map(|row| row.long_share.parse().ok())
         .collect();
     let report_date = observations.last().map(|row| row.report_date.clone());
     let position_value = values.last().copied();
@@ -1107,7 +1136,7 @@ fn assess_observations(observations: &[ObservationRow], today: NaiveDate) -> Cot
     };
     if let Some(percentile) = position_percentile {
         why.push(format!(
-            "Netto-Positionierung liegt bei P{:.0} im rollierenden Fünfjahresfenster.",
+            "Der Non-Commercial-Long-Anteil liegt bei P{:.0} im rollierenden Fünfjahresfenster.",
             percentile * 100.0
         ));
     }
@@ -1509,12 +1538,11 @@ mod tests {
     #[tokio::test]
     async fn migration_adds_isolated_legacy_cot_storage() {
         let state = crate::database::initialize_headless().await.unwrap();
-        let columns: Vec<String> = sqlx::query_scalar(
-            "SELECT name FROM pragma_table_info('cot_contracts') ORDER BY cid",
-        )
-        .fetch_all(&state.db)
-        .await
-        .unwrap();
+        let columns: Vec<String> =
+            sqlx::query_scalar("SELECT name FROM pragma_table_info('cot_contracts') ORDER BY cid")
+                .fetch_all(&state.db)
+                .await
+                .unwrap();
         assert!(
             columns
                 .iter()
@@ -1543,21 +1571,19 @@ mod tests {
     }
 
     #[test]
-    fn latest_change_signal_uses_long_change_minus_short_change() {
+    fn latest_change_signal_uses_weekly_long_share_change() {
         let today = NaiveDate::from_ymd_opt(2026, 8, 10).unwrap();
         let mut row = observations(1, 0.0).remove(0);
         row.report_date = "2026-08-04".into();
-
-        row.long_change = 30;
-        row.short_change = 10;
+        row.long_change = 10_000;
+        row.short_change = 0;
+        row.weekly_long_share_change = Some("0.01".into());
         assert_eq!(latest_change_signal(Some(&row), today), Some(1));
 
-        row.long_change = 10;
-        row.short_change = 30;
+        row.weekly_long_share_change = Some("-0.01".into());
         assert_eq!(latest_change_signal(Some(&row), today), Some(-1));
 
-        row.long_change = 25;
-        row.short_change = 25;
+        row.weekly_long_share_change = Some("0".into());
         assert_eq!(latest_change_signal(Some(&row), today), Some(0));
     }
 
@@ -1568,6 +1594,7 @@ mod tests {
         row.report_date = "2026-07-14".into();
         row.long_change = 30;
         row.short_change = 10;
+        row.weekly_long_share_change = Some("0.02".into());
 
         assert_eq!(latest_change_signal(None, today), None);
         assert_eq!(latest_change_signal(Some(&row), today), None);
@@ -1596,8 +1623,7 @@ mod tests {
 
     #[test]
     fn screenshot_reference_vectors_use_week_over_week_long_share_change() {
-        let jpy =
-            weekly_long_share_change(147_228, 192_701, 101_271, 264_683).unwrap();
+        let jpy = weekly_long_share_change(147_228, 192_701, 101_271, 264_683).unwrap();
         let usd = weekly_long_share_change(35_247, 12_748, 35_339, 18_142).unwrap();
 
         assert!((jpy - 0.1564).abs() < 0.00005, "JPY was {jpy}");
@@ -1611,10 +1637,7 @@ mod tests {
 
     #[test]
     fn dow_uses_the_reference_djia_x5_contract() {
-        let dow = CONTRACTS
-            .iter()
-            .find(|seed| seed.symbol == "DOW")
-            .unwrap();
+        let dow = CONTRACTS.iter().find(|seed| seed.symbol == "DOW").unwrap();
         assert_eq!(dow.legacy_cftc_code, "124603");
     }
 
@@ -1624,8 +1647,8 @@ mod tests {
             symbol: "USD".into(),
             display_name: "U.S. Dollar Index".into(),
             asset_class: "Währung".into(),
-            report_family: "tff".into(),
-            trader_group: "Leveraged Funds".into(),
+            report_family: "legacy".into(),
+            trader_group: "Non-Commercial".into(),
             currency: Some("USD".into()),
             report_date: Some("2026-08-04".into()),
             long_positions: Some(600),
@@ -1633,10 +1656,14 @@ mod tests {
             long_change: Some(30),
             short_change: Some(10),
             open_interest: Some(1_000),
+            open_interest_change: Some(-50),
             net_positions: Some(200),
             net_change: Some(20),
             net_position_pct_oi: Some(0.2),
             net_change_pct_oi: Some(0.02),
+            long_share: Some(0.6),
+            short_share: Some(0.4),
+            weekly_long_share_change: Some(0.03),
             position_percentile: Some(0.8),
             change_percentile: Some(0.75),
             position_signal: Some(1),
@@ -1659,30 +1686,61 @@ mod tests {
 
         let json = serde_json::to_value(view).unwrap();
         assert_eq!(json["latestChangeSignal"], 1);
+        assert_eq!(json["reportFamily"], "legacy");
+        assert_eq!(json["traderGroup"], "Non-Commercial");
+        assert_eq!(json["openInterestChange"], -50);
+        assert_eq!(json["longShare"], 0.6);
+        assert_eq!(json["weeklyLongShareChange"], 0.03);
+        assert_eq!(
+            json["assessment"]["scoringVersion"],
+            "cot-v4-legacy-noncommercial"
+        );
         assert!(json.get("latest_change_signal").is_none());
     }
 
     fn observations(count: usize, step: f64) -> Vec<ObservationRow> {
         (0..count)
-            .map(|index| ObservationRow {
-                report_date: (NaiveDate::from_ymd_opt(2023, 1, 3).unwrap()
-                    + Duration::weeks(index as i64))
-                .to_string(),
-                long_positions: 1_000 + index as i64,
-                short_positions: 500,
-                long_change: 1,
-                short_change: 0,
-                open_interest: 10_000,
-                net_positions: 500 + index as i64,
-                net_change: 1,
-                net_position_pct_oi: (index as f64 * step).to_string(),
-                net_change_pct_oi: step.to_string(),
+            .map(|index| {
+                let position = 0.4 + step * (index as f64 + (index * index) as f64 / 200.0);
+                ObservationRow {
+                    report_date: (NaiveDate::from_ymd_opt(2023, 1, 3).unwrap()
+                        + Duration::weeks(index as i64))
+                    .to_string(),
+                    long_positions: 1_000 + index as i64,
+                    short_positions: 500,
+                    long_change: 1,
+                    short_change: 0,
+                    open_interest: 10_000,
+                    open_interest_change: 0,
+                    net_positions: 500 + index as i64,
+                    net_change: 1,
+                    net_position_pct_oi: (index as f64 * step).to_string(),
+                    net_change_pct_oi: step.to_string(),
+                    long_share: position.to_string(),
+                    short_share: (1.0 - position).to_string(),
+                    weekly_long_share_change: Some(step.to_string()),
+                }
             })
             .collect()
     }
 
     #[test]
-    fn v2_requires_minimum_history_and_confirms_aligned_components() {
+    fn v4_scores_long_share_instead_of_net_percent_open_interest() {
+        let mut rows = observations(156, 0.001);
+        for (index, row) in rows.iter_mut().enumerate() {
+            row.net_position_pct_oi = (-(index as f64) * 0.001).to_string();
+        }
+        let today =
+            NaiveDate::parse_from_str(&rows.last().unwrap().report_date, "%Y-%m-%d").unwrap();
+
+        let assessment = assess_observations(&rows, today);
+
+        assert_eq!(assessment.scoring_version, "cot-v4-legacy-noncommercial");
+        assert_eq!(assessment.bias_signal, Some(1));
+    }
+
+    #[test]
+    fn v4_requires_minimum_history_and_confirms_aligned_components() {
         let short = observations(103, 0.001);
         let assessment = assess_observations(&short, NaiveDate::from_ymd_opt(2025, 1, 1).unwrap());
         assert_eq!(assessment.status, "unavailable");
@@ -1696,7 +1754,7 @@ mod tests {
     }
 
     #[test]
-    fn v2_marks_stale_reports_unavailable_for_pair_scoring() {
+    fn v4_marks_stale_reports_unavailable_for_pair_scoring() {
         let full = observations(156, 0.001);
         let assessment = assess_observations(&full, NaiveDate::from_ymd_opt(2030, 1, 1).unwrap());
         assert_eq!(assessment.status, "stale");
@@ -1752,5 +1810,4 @@ mod tests {
         assert_eq!(aud_chf.persistence_score.unwrap(), 2);
         assert_eq!(aud_chf.confirmed_score.unwrap(), 2);
     }
-
 }
