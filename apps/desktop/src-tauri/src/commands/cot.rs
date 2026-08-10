@@ -1552,6 +1552,35 @@ fn close_on_or_before(candles: &[DailyCloseRow], report_date: &str) -> Option<f6
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[tokio::test]
+    async fn migration_adds_isolated_legacy_cot_storage() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        let columns: Vec<String> = sqlx::query_scalar(
+            "SELECT name FROM pragma_table_info('cot_contracts') ORDER BY cid",
+        )
+        .fetch_all(&state.db)
+        .await
+        .unwrap();
+        assert!(
+            columns
+                .iter()
+                .any(|name| name == "legacy_cftc_contract_market_code"),
+            "cot_contracts is missing its Legacy CFTC code"
+        );
+
+        for table in ["cot_legacy_source_rows", "cot_legacy_observations"] {
+            let count: i64 = sqlx::query_scalar(
+                "SELECT COUNT(*) FROM sqlite_master WHERE type='table' AND name=?",
+            )
+            .bind(table)
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+            assert_eq!(count, 1, "missing table: {table}");
+        }
+    }
+
     #[test]
     fn percentile_thresholds_are_neutral_in_the_middle() {
         assert_eq!(percentile_signal(0.29), -1);
