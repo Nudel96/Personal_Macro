@@ -886,8 +886,7 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
         let position_signal = position_component.and_then(|item| item.signal);
         let change_signal = flow_component.and_then(|item| item.signal);
         let persistence_signal = persistence_component.and_then(|item| item.signal);
-        let latest_change_signal =
-            latest_change_signal(latest, Utc::now().date_naive());
+        let latest_change_signal = latest_change_signal(latest, Utc::now().date_naive());
         // DXY is exposed as an explicit USD proxy. The canonical heatmap applies
         // the reduced 0.25 weight and retains the basket provenance.
         if let (
@@ -985,9 +984,7 @@ fn percentile_signal(percentile: f64) -> i8 {
 fn report_is_stale(report_date: Option<&str>, today: NaiveDate) -> bool {
     report_date
         .and_then(|value| NaiveDate::parse_from_str(value, "%Y-%m-%d").ok())
-        .map(|date| {
-            (today - (date + Duration::days(3))).num_days() > REPORT_STALE_AFTER_DAYS
-        })
+        .map(|date| (today - (date + Duration::days(3))).num_days() > REPORT_STALE_AFTER_DAYS)
         .unwrap_or(true)
 }
 
