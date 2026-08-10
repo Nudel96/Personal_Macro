@@ -15,8 +15,10 @@ use crate::{
     errors::{AppError, CommandResult},
 };
 
-const TFF_URL: &str = "https://publicreporting.cftc.gov/resource/gpe5-46if.json";
-const DISAGGREGATED_URL: &str = "https://publicreporting.cftc.gov/resource/72hh-3qpy.json";
+const LEGACY_URL: &str = "https://publicreporting.cftc.gov/resource/6dca-aqww.json";
+const LEGACY_SELECT: &str = "cftc_contract_market_code,report_date_as_yyyy_mm_dd,\
+open_interest_all,change_in_open_interest_all,noncomm_positions_long_all,\
+noncomm_positions_short_all,change_in_noncomm_long_all,change_in_noncomm_short_all";
 const CFTC_COT_LANDING_URL: &str = "https://publicreporting.cftc.gov/stories/s/r4w3-av2u";
 const MIN_HISTORY_WEEKS: usize = 104;
 const VALID_HISTORY_WEEKS: usize = 156;
@@ -34,6 +36,7 @@ struct ContractSeed {
     report_family: &'static str,
     trader_group: &'static str,
     cftc_code: &'static str,
+    legacy_cftc_code: &'static str,
     currency: Option<&'static str>,
     order: i64,
 }
@@ -48,6 +51,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "232741",
+        legacy_cftc_code: "232741",
         currency: Some("AUD"),
         order: 10,
     },
@@ -58,6 +62,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "090741",
+        legacy_cftc_code: "090741",
         currency: Some("CAD"),
         order: 20,
     },
@@ -68,6 +73,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "092741",
+        legacy_cftc_code: "092741",
         currency: Some("CHF"),
         order: 30,
     },
@@ -78,6 +84,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "099741",
+        legacy_cftc_code: "099741",
         currency: Some("EUR"),
         order: 40,
     },
@@ -88,6 +95,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "096742",
+        legacy_cftc_code: "096742",
         currency: Some("GBP"),
         order: 50,
     },
@@ -98,6 +106,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "097741",
+        legacy_cftc_code: "097741",
         currency: Some("JPY"),
         order: 60,
     },
@@ -108,6 +117,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "112741",
+        legacy_cftc_code: "112741",
         currency: Some("NZD"),
         order: 70,
     },
@@ -118,6 +128,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "098662",
+        legacy_cftc_code: "098662",
         currency: Some("USD"),
         order: 80,
     },
@@ -128,6 +139,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "13874+",
+        legacy_cftc_code: "13874+",
         currency: None,
         order: 100,
     },
@@ -138,6 +150,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "20974+",
+        legacy_cftc_code: "20974+",
         currency: None,
         order: 110,
     },
@@ -148,6 +161,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "12460+",
+        legacy_cftc_code: "124603",
         currency: None,
         order: 120,
     },
@@ -158,6 +172,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "239742",
+        legacy_cftc_code: "239742",
         currency: None,
         order: 130,
     },
@@ -168,6 +183,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "042601",
+        legacy_cftc_code: "042601",
         currency: None,
         order: 140,
     },
@@ -178,6 +194,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "044601",
+        legacy_cftc_code: "044601",
         currency: None,
         order: 150,
     },
@@ -188,6 +205,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "043602",
+        legacy_cftc_code: "043602",
         currency: None,
         order: 160,
     },
@@ -198,6 +216,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "133741",
+        legacy_cftc_code: "133741",
         currency: None,
         order: 170,
     },
@@ -208,6 +227,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "tff",
         trader_group: "Leveraged Funds",
         cftc_code: "146021",
+        legacy_cftc_code: "146021",
         currency: None,
         order: 180,
     },
@@ -218,6 +238,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "disaggregated",
         trader_group: "Managed Money",
         cftc_code: "088691",
+        legacy_cftc_code: "088691",
         currency: None,
         order: 200,
     },
@@ -228,6 +249,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "disaggregated",
         trader_group: "Managed Money",
         cftc_code: "084691",
+        legacy_cftc_code: "084691",
         currency: None,
         order: 210,
     },
@@ -238,6 +260,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "disaggregated",
         trader_group: "Managed Money",
         cftc_code: "085692",
+        legacy_cftc_code: "085692",
         currency: None,
         order: 220,
     },
@@ -248,6 +271,7 @@ const CONTRACTS: &[ContractSeed] = &[
         report_family: "disaggregated",
         trader_group: "Managed Money",
         cftc_code: "067651",
+        legacy_cftc_code: "067651",
         currency: None,
         order: 230,
     },
@@ -470,7 +494,7 @@ struct ContractRow {
     asset_class: String,
     report_family: String,
     trader_group: String,
-    cftc_contract_market_code: String,
+    legacy_cftc_contract_market_code: Option<String>,
     currency: Option<String>,
 }
 #[derive(Debug, Clone, FromRow)]
@@ -526,7 +550,7 @@ async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
     let now = Utc::now().to_rfc3339();
     let run_id = Uuid::new_v4().to_string();
     sqlx::query("INSERT INTO cot_sync_runs (id,status,started_at,records_upserted,source_url) VALUES (?, 'running', ?, 0, ?)")
-        .bind(&run_id).bind(&now).bind(TFF_URL).execute(&state.db).await?;
+        .bind(&run_id).bind(&now).bind(LEGACY_URL).execute(&state.db).await?;
     let result = sync_cot_inner(state).await;
     match result {
         Ok(imported) => {
@@ -554,211 +578,145 @@ async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
     let cutoff = (Utc::now().date_naive() - Duration::days(HISTORY_YEARS * 366))
         .format("%Y-%m-%d")
         .to_string();
-    let mut imported = 0;
-    for family in ["tff", "disaggregated"] {
-        let selected: Vec<_> = contracts
-            .iter()
-            .filter(|contract| contract.report_family == family)
-            .collect();
-        if selected.is_empty() {
-            continue;
-        }
-        let codes = selected
-            .iter()
-            .map(|contract| format!("'{}'", contract.cftc_contract_market_code))
-            .collect::<Vec<_>>()
-            .join(",");
-        let endpoint = if family == "tff" {
-            TFF_URL
-        } else {
-            DISAGGREGATED_URL
-        };
-        let select = cftc_field_select(family);
-        let where_clause = format!(
-            "cftc_contract_market_code in({codes}) AND report_date_as_yyyy_mm_dd >= '{cutoff}T00:00:00.000'"
-        );
-        let url = Url::parse_with_params(
-            endpoint,
-            &[
-                ("$limit", "50000"),
-                ("$select", select),
-                (
-                    "$order",
-                    "report_date_as_yyyy_mm_dd ASC, cftc_contract_market_code ASC",
-                ),
-                ("$where", &where_clause),
-            ],
-        )
-        .map_err(|error| AppError::DataTransfer(format!("CFTC-URL ist ungültig: {error}")))?;
-        let rows: Vec<Value> = client
-            .get(url.clone())
-            .send()
-            .await
-            .map_err(|error| AppError::DataTransfer(format!("CFTC-Abruf fehlgeschlagen: {error}")))?
-            .error_for_status()
-            .map_err(|error| {
-                AppError::DataTransfer(format!("CFTC antwortete mit Fehler: {error}"))
-            })?
-            .json()
-            .await
-            .map_err(|error| AppError::DataTransfer(format!("CFTC-JSON ist ungültig: {error}")))?;
-        if rows.is_empty() {
-            return Err(AppError::DataTransfer(format!(
-                "Die offizielle CFTC-Quelle lieferte für die COT-Reportfamilie {family} keine Daten."
-            )));
-        }
-        let by_code: HashMap<_, _> = selected
-            .iter()
-            .map(|contract| (contract.cftc_contract_market_code.as_str(), *contract))
-            .collect();
-        let mut tx = state.db.begin().await?;
-        for row in rows {
-            let Some(code) = value_string(&row, "cftc_contract_market_code") else {
-                continue;
-            };
-            let Some(contract) = by_code.get(code.as_str()) else {
-                continue;
-            };
-            let Some(observation) = parse_observation(&row, family, url.as_ref()) else {
-                continue;
-            };
-            let observation_fingerprint = fingerprint(&format!(
-                "{}|{}|{}|{}|{}",
-                contract.id,
-                observation.report_date,
-                observation.long_positions,
-                observation.short_positions,
-                observation.open_interest
-            ));
-            let raw_payload = row.to_string();
-            let raw_fingerprint = fingerprint(&raw_payload);
-            sqlx::query("INSERT INTO cot_source_rows (id,contract_id,report_date,report_family,report_scope,source_url,fetched_at,source_fingerprint,raw_payload) VALUES (?,?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date,report_scope) DO UPDATE SET report_family=excluded.report_family,source_url=excluded.source_url,fetched_at=excluded.fetched_at,source_fingerprint=excluded.source_fingerprint,raw_payload=excluded.raw_payload")
-                .bind(Uuid::new_v4().to_string()).bind(&contract.id).bind(&observation.report_date).bind(family).bind("futures_only").bind(url.as_str()).bind(Utc::now().to_rfc3339()).bind(raw_fingerprint).bind(raw_payload).execute(&mut *tx).await?;
-            sqlx::query("INSERT INTO cot_observations (id,contract_id,report_date,fetched_at,source_url,source_fingerprint,open_interest,long_positions,short_positions,long_change,short_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date) DO UPDATE SET fetched_at=excluded.fetched_at, source_url=excluded.source_url, source_fingerprint=excluded.source_fingerprint, open_interest=excluded.open_interest, long_positions=excluded.long_positions, short_positions=excluded.short_positions, long_change=excluded.long_change, short_change=excluded.short_change, net_positions=excluded.net_positions, net_change=excluded.net_change, net_position_pct_oi=excluded.net_position_pct_oi, net_change_pct_oi=excluded.net_change_pct_oi")
-                .bind(Uuid::new_v4().to_string()).bind(&contract.id).bind(&observation.report_date).bind(Utc::now().to_rfc3339()).bind(&observation.source_url).bind(observation_fingerprint).bind(observation.open_interest).bind(observation.long_positions).bind(observation.short_positions).bind(observation.long_change).bind(observation.short_change).bind(observation.net_positions).bind(observation.net_change).bind(observation.net_position_pct_oi.to_string()).bind(observation.net_change_pct_oi.to_string()).execute(&mut *tx).await?;
-            for group in parse_group_observations(&row, family, observation.open_interest) {
-                sqlx::query("INSERT INTO cot_group_observations(contract_id,report_date,participant_group,long_positions,short_positions,spreading_positions,net_positions,net_position_pct_oi) VALUES(?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date,participant_group) DO UPDATE SET long_positions=excluded.long_positions,short_positions=excluded.short_positions,spreading_positions=excluded.spreading_positions,net_positions=excluded.net_positions,net_position_pct_oi=excluded.net_position_pct_oi")
-                    .bind(&contract.id).bind(&observation.report_date).bind(group.name).bind(group.long).bind(group.short).bind(group.spreading).bind(group.long-group.short).bind(((group.long-group.short) as f64/observation.open_interest as f64).to_string()).execute(&mut *tx).await?;
-            }
-            imported += 1;
-        }
-        tx.commit().await?;
+    if contracts
+        .iter()
+        .any(|contract| contract.legacy_cftc_contract_market_code.is_none())
+    {
+        return Err(AppError::DataTransfer(
+            "Mindestens einem aktiven COT-Kontrakt fehlt der Legacy-CFTC-Code.".into(),
+        ));
     }
+
+    let codes = contracts
+        .iter()
+        .filter_map(|contract| contract.legacy_cftc_contract_market_code.as_deref())
+        .map(|code| format!("'{code}'"))
+        .collect::<Vec<_>>()
+        .join(",");
+    let where_clause = format!(
+        "cftc_contract_market_code in({codes}) AND report_date_as_yyyy_mm_dd >= '{cutoff}T00:00:00.000'"
+    );
+    let url = Url::parse_with_params(
+        LEGACY_URL,
+        &[
+            ("$limit", "50000"),
+            ("$select", LEGACY_SELECT),
+            (
+                "$order",
+                "report_date_as_yyyy_mm_dd ASC, cftc_contract_market_code ASC",
+            ),
+            ("$where", &where_clause),
+        ],
+    )
+    .map_err(|error| AppError::DataTransfer(format!("CFTC-URL ist ungültig: {error}")))?;
+    let rows: Vec<Value> = client
+        .get(url.clone())
+        .send()
+        .await
+        .map_err(|error| AppError::DataTransfer(format!("CFTC-Abruf fehlgeschlagen: {error}")))?
+        .error_for_status()
+        .map_err(|error| AppError::DataTransfer(format!("CFTC antwortete mit Fehler: {error}")))?
+        .json()
+        .await
+        .map_err(|error| AppError::DataTransfer(format!("CFTC-JSON ist ungültig: {error}")))?;
+    if rows.is_empty() {
+        return Err(AppError::DataTransfer(
+            "Die offizielle CFTC-Quelle lieferte keine Legacy-Futures-Only-Daten.".into(),
+        ));
+    }
+
+    let by_code: HashMap<_, _> = contracts
+        .iter()
+        .filter_map(|contract| {
+            contract
+                .legacy_cftc_contract_market_code
+                .as_deref()
+                .map(|code| (code, contract))
+        })
+        .collect();
+    let mut previous_positions: HashMap<String, (i64, i64)> = HashMap::new();
+    let mut imported = 0;
+    let mut tx = state.db.begin().await?;
+    for row in rows {
+        let Some(code) = value_string(&row, "cftc_contract_market_code") else {
+            continue;
+        };
+        let Some(contract) = by_code.get(code.as_str()) else {
+            continue;
+        };
+        let Some(observation) = parse_legacy_observation(&row, url.as_ref()) else {
+            continue;
+        };
+        let weekly_change = previous_positions.get(&contract.id).and_then(
+            |&(previous_long, previous_short)| {
+                weekly_long_share_change(
+                    observation.long_positions,
+                    observation.short_positions,
+                    previous_long,
+                    previous_short,
+                )
+            },
+        );
+        let observation_fingerprint = fingerprint(&format!(
+            "legacy|Non-Commercial|{}|{}|{}|{}|{}",
+            contract.id,
+            observation.report_date,
+            observation.long_positions,
+            observation.short_positions,
+            observation.open_interest
+        ));
+        let raw_payload = row.to_string();
+        let fetched_at = Utc::now().to_rfc3339();
+        sqlx::query("INSERT INTO cot_legacy_source_rows (id,contract_id,report_date,report_family,participant_group,report_scope,source_url,fetched_at,source_fingerprint,raw_payload) VALUES (?,?,?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date) DO UPDATE SET source_url=excluded.source_url,fetched_at=excluded.fetched_at,source_fingerprint=excluded.source_fingerprint,raw_payload=excluded.raw_payload")
+            .bind(Uuid::new_v4().to_string())
+            .bind(&contract.id)
+            .bind(&observation.report_date)
+            .bind("legacy")
+            .bind("Non-Commercial")
+            .bind("futures_only")
+            .bind(url.as_str())
+            .bind(&fetched_at)
+            .bind(fingerprint(&raw_payload))
+            .bind(raw_payload)
+            .execute(&mut *tx)
+            .await?;
+        sqlx::query("INSERT INTO cot_legacy_observations (id,contract_id,report_date,fetched_at,source_url,source_fingerprint,open_interest,open_interest_change,long_positions,short_positions,long_change,short_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi,long_share,short_share,weekly_long_share_change) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date) DO UPDATE SET fetched_at=excluded.fetched_at,source_url=excluded.source_url,source_fingerprint=excluded.source_fingerprint,open_interest=excluded.open_interest,open_interest_change=excluded.open_interest_change,long_positions=excluded.long_positions,short_positions=excluded.short_positions,long_change=excluded.long_change,short_change=excluded.short_change,net_positions=excluded.net_positions,net_change=excluded.net_change,net_position_pct_oi=excluded.net_position_pct_oi,net_change_pct_oi=excluded.net_change_pct_oi,long_share=excluded.long_share,short_share=excluded.short_share,weekly_long_share_change=excluded.weekly_long_share_change")
+            .bind(Uuid::new_v4().to_string())
+            .bind(&contract.id)
+            .bind(&observation.report_date)
+            .bind(&fetched_at)
+            .bind(&observation.source_url)
+            .bind(observation_fingerprint)
+            .bind(observation.open_interest)
+            .bind(observation.open_interest_change)
+            .bind(observation.long_positions)
+            .bind(observation.short_positions)
+            .bind(observation.long_change)
+            .bind(observation.short_change)
+            .bind(observation.net_positions)
+            .bind(observation.net_change)
+            .bind(observation.net_position_pct_oi.to_string())
+            .bind(observation.net_change_pct_oi.to_string())
+            .bind(observation.long_share.to_string())
+            .bind(observation.short_share.to_string())
+            .bind(weekly_change.map(|value| value.to_string()))
+            .execute(&mut *tx)
+            .await?;
+        previous_positions.insert(
+            contract.id.clone(),
+            (observation.long_positions, observation.short_positions),
+        );
+        imported += 1;
+    }
+    tx.commit().await?;
     Ok(imported)
 }
 
-struct ParsedGroup {
-    name: &'static str,
-    long: i64,
-    short: i64,
-    spreading: Option<i64>,
-}
-
-type ParticipantGroupFields = (
-    &'static str,
-    &'static [&'static str],
-    &'static [&'static str],
-    &'static [&'static str],
-);
-
-fn group_value(row: &Value, keys: &[&str]) -> Option<i64> {
-    keys.iter().find_map(|key| value_i64(row, key))
-}
-fn parse_group_observations(row: &Value, family: &str, _open_interest: i64) -> Vec<ParsedGroup> {
-    let groups: &[ParticipantGroupFields] = if family == "tff" {
-        &[
-            (
-                "Dealer/Intermediary",
-                &["dealer_positions_long_all", "dealer_positions_long"],
-                &["dealer_positions_short_all", "dealer_positions_short"],
-                &["dealer_positions_spread_all", "dealer_positions_spread"],
-            ),
-            (
-                "Asset Manager",
-                &["asset_mgr_positions_long", "asset_mgr_positions_long_all"],
-                &["asset_mgr_positions_short", "asset_mgr_positions_short_all"],
-                &[
-                    "asset_mgr_positions_spread",
-                    "asset_mgr_positions_spread_all",
-                ],
-            ),
-            (
-                "Leveraged Funds",
-                &["lev_money_positions_long", "lev_money_positions_long_all"],
-                &["lev_money_positions_short", "lev_money_positions_short_all"],
-                &[
-                    "lev_money_positions_spread",
-                    "lev_money_positions_spread_all",
-                ],
-            ),
-            (
-                "Other Reportables",
-                &["other_rept_positions_long", "other_rept_positions_long_all"],
-                &[
-                    "other_rept_positions_short",
-                    "other_rept_positions_short_all",
-                ],
-                &[
-                    "other_rept_positions_spread",
-                    "other_rept_positions_spread_all",
-                ],
-            ),
-        ]
-    } else {
-        &[
-            (
-                "Producer/Merchant",
-                &["prod_merc_positions_long", "prod_merc_positions_long_all"],
-                &["prod_merc_positions_short", "prod_merc_positions_short_all"],
-                &[],
-            ),
-            (
-                "Swap Dealers",
-                &["swap_positions_long_all", "swap_positions_long"],
-                &[
-                    "swap__positions_short_all",
-                    "swap_positions_short_all",
-                    "swap_positions_short",
-                ],
-                &["swap__positions_spread_all", "swap_positions_spread_all"],
-            ),
-            (
-                "Managed Money",
-                &["m_money_positions_long_all", "m_money_positions_long"],
-                &["m_money_positions_short_all", "m_money_positions_short"],
-                &["m_money_positions_spread_all", "m_money_positions_spread"],
-            ),
-            (
-                "Other Reportables",
-                &["other_rept_positions_long_all", "other_rept_positions_long"],
-                &[
-                    "other_rept_positions_short_all",
-                    "other_rept_positions_short",
-                ],
-                &[
-                    "other_rept_positions_spread_all",
-                    "other_rept_positions_spread",
-                ],
-            ),
-        ]
-    };
-    groups
-        .iter()
-        .filter_map(|(name, long_keys, short_keys, spread_keys)| {
-            Some(ParsedGroup {
-                name,
-                long: group_value(row, long_keys)?,
-                short: group_value(row, short_keys)?,
-                spreading: group_value(row, spread_keys),
-            })
-        })
-        .collect()
-}
-
-struct ParsedObservation {
+struct ParsedLegacyObservation {
     report_date: String,
     source_url: String,
     open_interest: i64,
+    open_interest_change: i64,
     long_positions: i64,
     short_positions: i64,
     long_change: i64,
@@ -767,40 +725,50 @@ struct ParsedObservation {
     net_change: i64,
     net_position_pct_oi: f64,
     net_change_pct_oi: f64,
+    long_share: f64,
+    short_share: f64,
 }
-fn parse_observation(row: &Value, family: &str, source_url: &str) -> Option<ParsedObservation> {
+
+fn long_share(long_positions: i64, short_positions: i64) -> Option<f64> {
+    if long_positions < 0 || short_positions < 0 {
+        return None;
+    }
+    let total = long_positions.checked_add(short_positions)?;
+    (total > 0).then(|| long_positions as f64 / total as f64)
+}
+
+fn weekly_long_share_change(
+    current_long: i64,
+    current_short: i64,
+    previous_long: i64,
+    previous_short: i64,
+) -> Option<f64> {
+    Some(
+        long_share(current_long, current_short)? - long_share(previous_long, previous_short)?,
+    )
+}
+
+fn parse_legacy_observation(row: &Value, source_url: &str) -> Option<ParsedLegacyObservation> {
     let report_date = value_string(row, "report_date_as_yyyy_mm_dd")?
         .get(..10)?
         .to_string();
     let open_interest = value_i64(row, "open_interest_all")?;
+    let open_interest_change = value_i64(row, "change_in_open_interest_all")?;
+    let long_positions = value_i64(row, "noncomm_positions_long_all")?;
+    let short_positions = value_i64(row, "noncomm_positions_short_all")?;
+    let long_change = value_i64(row, "change_in_noncomm_long_all")?;
+    let short_change = value_i64(row, "change_in_noncomm_short_all")?;
     if open_interest <= 0 {
         return None;
     }
-    let (long_key, short_key, long_change_key, short_change_key) = if family == "tff" {
-        (
-            "lev_money_positions_long",
-            "lev_money_positions_short",
-            "change_in_lev_money_long",
-            "change_in_lev_money_short",
-        )
-    } else {
-        (
-            "m_money_positions_long_all",
-            "m_money_positions_short_all",
-            "change_in_m_money_long_all",
-            "change_in_m_money_short_all",
-        )
-    };
-    let long_positions = value_i64(row, long_key)?;
-    let short_positions = value_i64(row, short_key)?;
-    let long_change = value_i64(row, long_change_key)?;
-    let short_change = value_i64(row, short_change_key)?;
+    let long_share = long_share(long_positions, short_positions)?;
     let net_positions = long_positions - short_positions;
     let net_change = long_change - short_change;
-    Some(ParsedObservation {
+    Some(ParsedLegacyObservation {
         report_date,
         source_url: source_url.into(),
         open_interest,
+        open_interest_change,
         long_positions,
         short_positions,
         long_change,
@@ -809,8 +777,11 @@ fn parse_observation(row: &Value, family: &str, source_url: &str) -> Option<Pars
         net_change,
         net_position_pct_oi: net_positions as f64 / open_interest as f64,
         net_change_pct_oi: net_change as f64 / open_interest as f64,
+        long_share,
+        short_share: 1.0 - long_share,
     })
 }
+
 fn value_string(row: &Value, key: &str) -> Option<String> {
     row.get(key)?.as_str().map(str::to_string)
 }
@@ -823,35 +794,17 @@ fn fingerprint(input: &str) -> String {
         .map(|byte| format!("{byte:02x}"))
         .collect()
 }
-fn cftc_field_select(family: &str) -> &'static str {
-    if family == "tff" {
-        "cftc_contract_market_code,report_date_as_yyyy_mm_dd,open_interest_all,\
-dealer_positions_long_all,dealer_positions_short_all,dealer_positions_spread_all,\
-asset_mgr_positions_long,asset_mgr_positions_short,asset_mgr_positions_spread,\
-lev_money_positions_long,lev_money_positions_short,lev_money_positions_spread,\
-other_rept_positions_long,other_rept_positions_short,other_rept_positions_spread,\
-change_in_lev_money_long,change_in_lev_money_short"
-    } else {
-        "cftc_contract_market_code,report_date_as_yyyy_mm_dd,open_interest_all,\
-prod_merc_positions_long,prod_merc_positions_short,\
-swap_positions_long_all,swap__positions_short_all,swap__positions_spread_all,\
-m_money_positions_long_all,m_money_positions_short_all,m_money_positions_spread,\
-other_rept_positions_long,other_rept_positions_short,other_rept_positions_spread,\
-change_in_m_money_long_all,change_in_m_money_short_all"
-    }
-}
-
 async fn seed_contracts(state: &AppState) -> Result<(), AppError> {
     let mut tx = state.db.begin().await?;
     for seed in CONTRACTS {
-        sqlx::query("INSERT INTO cot_contracts (id,symbol,display_name,asset_class,report_family,trader_group,cftc_contract_market_code,currency,sort_order,is_active) VALUES (?,?,?,?,?,?,?,?,?,1) ON CONFLICT(symbol) DO UPDATE SET display_name=excluded.display_name,asset_class=excluded.asset_class,report_family=excluded.report_family,trader_group=excluded.trader_group,cftc_contract_market_code=excluded.cftc_contract_market_code,currency=excluded.currency,sort_order=excluded.sort_order,is_active=1")
-            .bind(Uuid::new_v4().to_string()).bind(seed.symbol).bind(seed.display_name).bind(seed.asset_class).bind(seed.report_family).bind(seed.trader_group).bind(seed.cftc_code).bind(seed.currency).bind(seed.order).execute(&mut *tx).await?;
+        sqlx::query("INSERT INTO cot_contracts (id,symbol,display_name,asset_class,report_family,trader_group,cftc_contract_market_code,legacy_cftc_contract_market_code,currency,sort_order,is_active) VALUES (?,?,?,?,?,?,?,?,?,?,1) ON CONFLICT(symbol) DO UPDATE SET display_name=excluded.display_name,asset_class=excluded.asset_class,report_family=excluded.report_family,trader_group=excluded.trader_group,cftc_contract_market_code=excluded.cftc_contract_market_code,legacy_cftc_contract_market_code=excluded.legacy_cftc_contract_market_code,currency=excluded.currency,sort_order=excluded.sort_order,is_active=1")
+            .bind(Uuid::new_v4().to_string()).bind(seed.symbol).bind(seed.display_name).bind(seed.asset_class).bind(seed.report_family).bind(seed.trader_group).bind(seed.cftc_code).bind(seed.legacy_cftc_code).bind(seed.currency).bind(seed.order).execute(&mut *tx).await?;
     }
     tx.commit().await?;
     Ok(())
 }
 async fn contract_rows(state: &AppState) -> Result<Vec<ContractRow>, AppError> {
-    sqlx::query_as("SELECT id,symbol,display_name,asset_class,report_family,trader_group,cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order").fetch_all(&state.db).await.map_err(Into::into)
+    sqlx::query_as("SELECT id,symbol,display_name,asset_class,report_family,trader_group,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order").fetch_all(&state.db).await.map_err(Into::into)
 }
 
 #[tauri::command]
@@ -1621,6 +1574,51 @@ mod tests {
     }
 
     #[test]
+    fn legacy_parser_uses_noncommercial_fields() {
+        let row = serde_json::json!({
+            "report_date_as_yyyy_mm_dd": "2026-08-04T00:00:00.000",
+            "open_interest_all": "419393",
+            "change_in_open_interest_all": "-12973",
+            "noncomm_positions_long_all": "147228",
+            "noncomm_positions_short_all": "192701",
+            "change_in_noncomm_long_all": "45957",
+            "change_in_noncomm_short_all": "-71982"
+        });
+
+        let parsed = parse_legacy_observation(&row, "source").unwrap();
+        assert_eq!(parsed.report_date, "2026-08-04");
+        assert_eq!(parsed.long_positions, 147_228);
+        assert_eq!(parsed.short_positions, 192_701);
+        assert_eq!(parsed.open_interest_change, -12_973);
+        assert_eq!(parsed.net_positions, -45_473);
+        assert_eq!(parsed.net_change, 117_939);
+    }
+
+    #[test]
+    fn screenshot_reference_vectors_use_week_over_week_long_share_change() {
+        let jpy =
+            weekly_long_share_change(147_228, 192_701, 101_271, 264_683).unwrap();
+        let usd = weekly_long_share_change(35_247, 12_748, 35_339, 18_142).unwrap();
+
+        assert!((jpy - 0.1564).abs() < 0.00005, "JPY was {jpy}");
+        assert!((usd - 0.0736).abs() < 0.00005, "USD was {usd}");
+    }
+
+    #[test]
+    fn long_share_is_unavailable_for_zero_denominator() {
+        assert_eq!(long_share(0, 0), None);
+    }
+
+    #[test]
+    fn dow_uses_the_reference_djia_x5_contract() {
+        let dow = CONTRACTS
+            .iter()
+            .find(|seed| seed.symbol == "DOW")
+            .unwrap();
+        assert_eq!(dow.legacy_cftc_code, "124603");
+    }
+
+    #[test]
     fn contract_view_serializes_latest_change_signal_in_camel_case() {
         let view = CotContractView {
             symbol: "USD".into(),
@@ -1755,57 +1753,4 @@ mod tests {
         assert_eq!(aud_chf.confirmed_score.unwrap(), 2);
     }
 
-    #[test]
-    fn parses_tff_and_disaggregated_speculative_cohorts() {
-        let tff = serde_json::json!({
-            "report_date_as_yyyy_mm_dd": "2026-07-14T00:00:00.000",
-            "open_interest_all": "1000",
-            "lev_money_positions_long": "600",
-            "lev_money_positions_short": "400",
-            "change_in_lev_money_long": "30",
-            "change_in_lev_money_short": "10"
-        });
-        let disaggregated = serde_json::json!({
-            "report_date_as_yyyy_mm_dd": "2026-07-14T00:00:00.000",
-            "open_interest_all": "1000",
-            "m_money_positions_long_all": "300",
-            "m_money_positions_short_all": "550",
-            "change_in_m_money_long_all": "10",
-            "change_in_m_money_short_all": "50"
-        });
-        let tff = parse_observation(&tff, "tff", "source").unwrap();
-        let disaggregated = parse_observation(&disaggregated, "disaggregated", "source").unwrap();
-        assert_eq!(tff.net_positions, 200);
-        assert_eq!(tff.net_change, 20);
-        assert_eq!(disaggregated.net_positions, -250);
-        assert_eq!(disaggregated.net_change, -40);
-    }
-
-    #[test]
-    fn cftc_field_selection_contains_every_field_used_by_the_parser() {
-        let tff = cftc_field_select("tff");
-        for field in [
-            "cftc_contract_market_code",
-            "report_date_as_yyyy_mm_dd",
-            "open_interest_all",
-            "lev_money_positions_long",
-            "lev_money_positions_short",
-            "change_in_lev_money_long",
-            "change_in_lev_money_short",
-        ] {
-            assert!(tff.contains(field), "TFF field missing: {field}");
-        }
-        let disaggregated = cftc_field_select("disaggregated");
-        for field in [
-            "m_money_positions_long_all",
-            "m_money_positions_short_all",
-            "change_in_m_money_long_all",
-            "change_in_m_money_short_all",
-        ] {
-            assert!(
-                disaggregated.contains(field),
-                "Disaggregated field missing: {field}"
-            );
-        }
-    }
 }
