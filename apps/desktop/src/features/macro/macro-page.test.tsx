@@ -179,8 +179,8 @@ function cotContract(currency: string): CotContractView {
     symbol: currency,
     displayName: `${currency} COT`,
     assetClass: "Währung",
-    reportFamily: "tff",
-    traderGroup: "Leveraged Funds",
+    reportFamily: "legacy",
+    traderGroup: "Non-Commercial",
     currency,
     reportDate: "2026-08-04",
     longPositions: 600,
@@ -188,10 +188,15 @@ function cotContract(currency: string): CotContractView {
     longChange,
     shortChange,
     openInterest: 1_000,
+    openInterestChange: -50,
     netPositions: 200,
     netChange: longChange - shortChange,
     netPositionPctOi: 0.2,
     netChangePctOi: (longChange - shortChange) / 1_000,
+    longShare: 0.6,
+    shortShare: 0.4,
+    weeklyLongShareChange:
+      latestChangeSignal === 1 ? 0.1564 : latestChangeSignal === -1 ? -0.02 : 0,
     positionPercentile: 0.8,
     changePercentile: 0.75,
     positionSignal: 1,
@@ -199,7 +204,7 @@ function cotContract(currency: string): CotContractView {
     persistenceSignal: 1,
     latestChangeSignal,
     assessment: {
-      scoringVersion: "cot-v3",
+      scoringVersion: "cot-v4-legacy-noncommercial",
       status: "available",
       quality: "high",
       biasSignal: pipelineSignal,
@@ -286,6 +291,20 @@ describe("MacroPage", () => {
       within(screen.getAllByTestId("forex-pair-row")[0]).getByRole("rowheader")
         .textContent,
     ).toBe("USDCAD");
+    const usdInstitutional = screen.getByLabelText(
+      "USD Institutional Activity",
+    );
+    expect(
+      within(usdInstitutional).getByText(
+        "Legacy Futures Only · Non-Commercial",
+      ),
+    ).toBeTruthy();
+    expect(
+      within(usdInstitutional).getByText("Long-Anteil Δ +15,64 PP"),
+    ).toBeTruthy();
+    expect(
+      within(usdInstitutional).getByText("cot-v4-legacy-noncommercial"),
+    ).toBeTruthy();
   });
 
   it("selects a currency and shows its actual, forecast and surprise", async () => {
@@ -308,9 +327,9 @@ describe("MacroPage", () => {
     const institutional = screen.getByLabelText("CAD Institutional Activity");
     expect(within(institutional).getByText("Latest Buys/Sells")).toBeTruthy();
     expect(within(institutional).getByText("COT Pipeline")).toBeTruthy();
-    expect(within(institutional).getByText("Long Δ +8")).toBeTruthy();
-    expect(within(institutional).getByText("Short Δ +28")).toBeTruthy();
-    expect(within(institutional).getByText("Netto Δ -20")).toBeTruthy();
+    expect(
+      within(institutional).getByText("Long-Anteil Δ -2,00 PP"),
+    ).toBeTruthy();
     expect(within(institutional).getByText(/Coverage 2\/2/)).toBeTruthy();
   });
 

@@ -11,6 +11,7 @@ import { PageHeader } from "../../components/ui/page-header";
 import { dateTime } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
 import type {
+  CotContractView,
   CotDashboard,
   EodhdFeedStatus,
   EodhdMappingCandidate,
@@ -780,9 +781,17 @@ function InstitutionalActivityPanel({
             >
               {signalLabel(activity.latestChangeSignal)}
             </span>
+            <span>
+              {contract
+                ? `${reportFamilyLabel(contract.reportFamily)} · ${contract.traderGroup}`
+                : "—"}
+            </span>
             <span>Long Δ {signedInteger(contract?.longChange)}</span>
             <span>Short Δ {signedInteger(contract?.shortChange)}</span>
-            <span>Netto Δ {signedInteger(contract?.netChange)}</span>
+            <span>
+              Long-Anteil Δ{" "}
+              {signedPercentagePoints(contract?.weeklyLongShareChange)}
+            </span>
             <span>{contract?.reportDate ?? "—"}</span>
           </div>
           <div className="institutional-activity-row">
@@ -796,6 +805,7 @@ function InstitutionalActivityPanel({
             <span>{assessment?.biasLabel ?? "Nicht verfügbar"}</span>
             <span>Qualität {qualityLabel(assessment?.quality)}</span>
             <span>{assessment?.crowdingStatus ?? "Nicht bewertbar"}</span>
+            <span>{assessment?.scoringVersion ?? "—"}</span>
             <span>{assessment?.reportDate ?? contract?.reportDate ?? "—"}</span>
           </div>
           {!contract && (
@@ -941,6 +951,21 @@ function signedInteger(value?: number | null) {
   if (value === null || value === undefined) return "—";
   const formatted = integerFormatter.format(value);
   return value > 0 ? `+${formatted}` : formatted;
+}
+
+function signedPercentagePoints(value?: number | null) {
+  if (value === null || value === undefined) return "—";
+  const formatted = (value * 100).toLocaleString("de-DE", {
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  });
+  return `${value > 0 ? "+" : ""}${formatted} PP`;
+}
+
+function reportFamilyLabel(reportFamily: CotContractView["reportFamily"]) {
+  if (reportFamily === "legacy") return "Legacy Futures Only";
+  if (reportFamily === "tff") return "Traders in Financial Futures";
+  return "Disaggregated Futures Only";
 }
 
 function qualityLabel(quality?: string) {
