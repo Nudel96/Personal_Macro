@@ -605,6 +605,8 @@ export interface CotSeriesPoint {
   shortPositions: number;
   netPositions: number;
   netPositionPctOi: number;
+  longShare: number;
+  weeklyLongShareChange?: number | null;
   openInterest: number;
   zScore?: number | null;
   percentile?: number | null;
@@ -630,6 +632,7 @@ export interface CotGroupSummary {
   participantGroup: string;
   netPositions?: number | null;
   netPositionPctOi?: number | null;
+  longShare?: number | null;
   zScore?: number | null;
   percentile?: number | null;
 }
@@ -647,6 +650,8 @@ export interface CotAssetDetail {
   netPositions?: number | null;
   netPositionPctOi?: number | null;
   netChange?: number | null;
+  longShare?: number | null;
+  weeklyLongShareChange?: number | null;
   brokerSymbol?: string | null;
   assessment: CotAssessment;
   historicalOutcomes: CotHistoricalOutcomes;

@@ -401,6 +401,8 @@ pub struct CotSeriesPoint {
     pub short_positions: i64,
     pub net_positions: i64,
     pub net_position_pct_oi: f64,
+    pub long_share: f64,
+    pub weekly_long_share_change: Option<f64>,
     pub open_interest: i64,
     pub z_score: Option<f64>,
     pub percentile: Option<f64>,
@@ -433,6 +435,7 @@ pub struct CotGroupSummary {
     pub participant_group: String,
     pub net_positions: Option<i64>,
     pub net_position_pct_oi: Option<f64>,
+    pub long_share: Option<f64>,
     pub z_score: Option<f64>,
     pub percentile: Option<f64>,
 }
@@ -453,6 +456,8 @@ pub struct CotAssetDetail {
     pub net_positions: Option<i64>,
     pub net_position_pct_oi: Option<f64>,
     pub net_change: Option<i64>,
+    pub long_share: Option<f64>,
+    pub weekly_long_share_change: Option<f64>,
     pub broker_symbol: Option<String>,
     pub assessment: CotAssessment,
     pub historical_outcomes: CotHistoricalOutcomes,
@@ -496,8 +501,6 @@ struct ContractRow {
     symbol: String,
     display_name: String,
     asset_class: String,
-    report_family: String,
-    trader_group: String,
     legacy_cftc_contract_market_code: Option<String>,
     currency: Option<String>,
 }
@@ -519,16 +522,6 @@ struct ObservationRow {
     weekly_long_share_change: Option<String>,
 }
 
-#[derive(Debug, Clone, FromRow)]
-struct GroupObservationRow {
-    report_date: String,
-    participant_group: String,
-    long_positions: i64,
-    short_positions: i64,
-    net_positions: i64,
-    net_position_pct_oi: String,
-    open_interest: i64,
-}
 #[derive(Debug, FromRow)]
 struct DailyCloseRow {
     candle_time: i64,
@@ -811,7 +804,7 @@ async fn seed_contracts(state: &AppState) -> Result<(), AppError> {
     Ok(())
 }
 async fn contract_rows(state: &AppState) -> Result<Vec<ContractRow>, AppError> {
-    sqlx::query_as("SELECT id,symbol,display_name,asset_class,report_family,trader_group,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order").fetch_all(&state.db).await.map_err(Into::into)
+    sqlx::query_as("SELECT id,symbol,display_name,asset_class,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order").fetch_all(&state.db).await.map_err(Into::into)
 }
 
 #[tauri::command]
@@ -1278,40 +1271,47 @@ pub async fn get_cot_asset_detail(
     state: State<'_, AppState>,
     input: CotDetailInput,
 ) -> CommandResult<CotAssetDetail> {
+    cot_asset_detail(state.inner(), input).await
+}
+
+async fn cot_asset_detail(
+    state: &AppState,
+    input: CotDetailInput,
+) -> CommandResult<CotAssetDetail> {
     let lookback = input.lookback_weeks.unwrap_or(156);
     if lookback != 0 && ![52, 156, 260, 520, 780].contains(&lookback) {
         return Err(crate::errors::CommandError::validation(
             "Der COT-Lookback muss 52, 156, 260, 520, 780 oder Gesamt sein.",
         ));
     }
-    let contract: Option<ContractRow> = sqlx::query_as("SELECT id,symbol,display_name,asset_class,report_family,trader_group,cftc_contract_market_code,currency FROM cot_contracts WHERE symbol=? AND is_active=1")
+    if input
+        .participant_group
+        .as_deref()
+        .is_some_and(|group| group != "Non-Commercial")
+    {
+        return Err(crate::errors::CommandError::validation(
+            "Für die aktive COT-Bewertung ist ausschließlich die Gruppe Non-Commercial verfügbar.",
+        ));
+    }
+    let contract: Option<ContractRow> = sqlx::query_as("SELECT id,symbol,display_name,asset_class,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE symbol=? AND is_active=1")
         .bind(input.symbol.trim()).fetch_optional(&state.db).await.map_err(AppError::from)?;
     let contract = contract.ok_or_else(|| {
         crate::errors::CommandError::validation(
             "Der ausgewÃ¤hlte CFTC-Kontrakt ist nicht verfÃ¼gbar.",
         )
     })?;
-    let selected_group = input
-        .participant_group
-        .unwrap_or(contract.trader_group.clone());
-    let rows: Vec<GroupObservationRow> = sqlx::query_as("SELECT cgo.report_date,cgo.participant_group,cgo.long_positions,cgo.short_positions,cgo.net_positions,cgo.net_position_pct_oi,co.open_interest FROM cot_group_observations cgo JOIN cot_observations co ON co.contract_id=cgo.contract_id AND co.report_date=cgo.report_date WHERE cgo.contract_id=? ORDER BY cgo.report_date")
+    let primary_observations: Vec<ObservationRow> = sqlx::query_as("SELECT report_date,long_positions,short_positions,long_change,short_change,open_interest,open_interest_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi,long_share,short_share,weekly_long_share_change FROM cot_legacy_observations WHERE contract_id=? ORDER BY report_date")
         .bind(&contract.id).fetch_all(&state.db).await.map_err(AppError::from)?;
-    let primary_observations: Vec<ObservationRow> = sqlx::query_as("SELECT report_date,long_positions,short_positions,long_change,short_change,open_interest,net_positions,net_change,net_position_pct_oi,net_change_pct_oi FROM cot_observations WHERE contract_id=? ORDER BY report_date")
-        .bind(&contract.id).fetch_all(&state.db).await.map_err(AppError::from)?;
-    let mut selected: Vec<_> = rows
-        .iter()
-        .filter(|row| row.participant_group == selected_group)
-        .cloned()
-        .collect();
+    let mut selected = primary_observations.clone();
     if lookback > 0 && selected.len() > lookback {
         selected.drain(0..selected.len() - lookback);
     }
     let values: Vec<f64> = selected
         .iter()
-        .filter_map(|row| row.net_position_pct_oi.parse().ok())
+        .filter_map(|row| row.long_share.parse().ok())
         .collect();
     let latest = selected.last();
-    let current = latest.and_then(|row| row.net_position_pct_oi.parse::<f64>().ok());
+    let current = latest.and_then(|row| row.long_share.parse::<f64>().ok());
     let current_z_score = current.and_then(|value| z_score(&values, value));
     let percentile_value = current.map(|value| percentile(&values, value));
     let current_cot_index = current.and_then(|value| cot_index(&values, value));
@@ -1337,69 +1337,56 @@ pub async fn get_cot_asset_detail(
         .iter()
         .enumerate()
         .filter_map(|(index, row)| {
-            let value = row.net_position_pct_oi.parse::<f64>().ok()?;
+            let value = row.long_share.parse::<f64>().ok()?;
             Some(CotSeriesPoint {
                 report_date: row.report_date.clone(),
                 long_positions: row.long_positions,
                 short_positions: row.short_positions,
                 net_positions: row.net_positions,
-                net_position_pct_oi: value,
+                net_position_pct_oi: row.net_position_pct_oi.parse().ok()?,
+                long_share: value,
+                weekly_long_share_change: row
+                    .weekly_long_share_change
+                    .as_deref()
+                    .and_then(|item| item.parse().ok()),
                 open_interest: row.open_interest,
                 z_score: z_score(&values, value),
                 percentile: Some(percentile(&values, value)),
                 cot_index: cot_index(&values, value),
                 flow_4w: index.checked_sub(4).map(|prior| value - values[prior]),
-                persistence_13w: index.checked_sub(13).map(|prior| value - values[prior]),
+                persistence_13w: index
+                    .checked_sub(12)
+                    .and_then(|prior| theil_sen_slope(&values[prior..=index])),
                 broker_price: close_on_or_before(&broker_candles, &row.report_date),
             })
         })
         .collect();
-    let mut groups: BTreeMap<String, Vec<&GroupObservationRow>> = BTreeMap::new();
-    for row in &rows {
-        groups
-            .entry(row.participant_group.clone())
-            .or_default()
-            .push(row);
-    }
-    let groups = groups
-        .into_iter()
-        .map(|(name, values)| {
-            let latest = values.last();
-            let values: Vec<f64> = values
-                .iter()
-                .filter_map(|row| row.net_position_pct_oi.parse().ok())
-                .collect();
-            let current = latest.and_then(|row| row.net_position_pct_oi.parse().ok());
-            CotGroupSummary {
-                participant_group: name,
-                net_positions: latest.map(|row| row.net_positions),
-                net_position_pct_oi: current,
-                z_score: current.and_then(|value| z_score(&values, value)),
-                percentile: current.map(|value| percentile(&values, value)),
-            }
-        })
-        .collect();
-    let net_change = if selected.len() >= 2 {
-        Some(
-            selected[selected.len() - 1].net_positions - selected[selected.len() - 2].net_positions,
-        )
-    } else {
-        None
-    };
+    let groups = vec![CotGroupSummary {
+        participant_group: "Non-Commercial".into(),
+        net_positions: latest.map(|row| row.net_positions),
+        net_position_pct_oi: latest.and_then(|row| row.net_position_pct_oi.parse().ok()),
+        long_share: current,
+        z_score: current_z_score,
+        percentile: percentile_value,
+    }];
     Ok(CotAssetDetail {
         symbol: contract.symbol,
         display_name: contract.display_name,
         asset_class: contract.asset_class,
-        report_family: contract.report_family,
-        participant_group: selected_group,
+        report_family: "legacy".into(),
+        participant_group: "Non-Commercial".into(),
         lookback_weeks: lookback,
         sample_size: values.len(),
         z_score: current_z_score,
         percentile: percentile_value,
         cot_index: current_cot_index,
         net_positions: latest.map(|row| row.net_positions),
-        net_position_pct_oi: current,
-        net_change,
+        net_position_pct_oi: latest.and_then(|row| row.net_position_pct_oi.parse().ok()),
+        net_change: latest.map(|row| row.net_change),
+        long_share: current,
+        weekly_long_share_change: latest
+            .and_then(|row| row.weekly_long_share_change.as_deref())
+            .and_then(|value| value.parse().ok()),
         broker_symbol,
         assessment,
         historical_outcomes,
@@ -1560,6 +1547,83 @@ mod tests {
             .unwrap();
             assert_eq!(count, 1, "missing table: {table}");
         }
+    }
+
+    #[tokio::test]
+    async fn asset_detail_uses_only_legacy_noncommercial_observations() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        seed_contracts(&state).await.unwrap();
+        let contract_id: String =
+            sqlx::query_scalar("SELECT id FROM cot_contracts WHERE symbol='USD'")
+                .fetch_one(&state.db)
+                .await
+                .unwrap();
+        for (date, long, short, weekly_change) in [
+            ("2026-07-28", 50_i64, 50_i64, None),
+            ("2026-08-04", 60_i64, 40_i64, Some("0.1")),
+        ] {
+            sqlx::query("INSERT INTO cot_legacy_observations (id,contract_id,report_date,fetched_at,source_url,source_fingerprint,open_interest,open_interest_change,long_positions,short_positions,long_change,short_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi,long_share,short_share,weekly_long_share_change) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
+                .bind(Uuid::new_v4().to_string())
+                .bind(&contract_id)
+                .bind(date)
+                .bind("2026-08-08T00:00:00Z")
+                .bind(LEGACY_URL)
+                .bind(format!("legacy-{date}"))
+                .bind(100_i64)
+                .bind(0_i64)
+                .bind(long)
+                .bind(short)
+                .bind(10_i64)
+                .bind(-10_i64)
+                .bind(long - short)
+                .bind(20_i64)
+                .bind(((long - short) as f64 / 100.0).to_string())
+                .bind("0.2")
+                .bind((long as f64 / (long + short) as f64).to_string())
+                .bind((short as f64 / (long + short) as f64).to_string())
+                .bind(weekly_change)
+                .execute(&state.db)
+                .await
+                .unwrap();
+        }
+        sqlx::query("INSERT INTO cot_observations (id,contract_id,report_date,fetched_at,source_url,source_fingerprint,open_interest,long_positions,short_positions,long_change,short_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)")
+            .bind(Uuid::new_v4().to_string())
+            .bind(&contract_id)
+            .bind("2026-08-04")
+            .bind("2026-08-08T00:00:00Z")
+            .bind("https://example.invalid/old")
+            .bind("old-row")
+            .bind(1_000_i64)
+            .bind(50_i64)
+            .bind(950_i64)
+            .bind(0_i64)
+            .bind(0_i64)
+            .bind(-900_i64)
+            .bind(0_i64)
+            .bind("-0.9")
+            .bind("0")
+            .execute(&state.db)
+            .await
+            .unwrap();
+
+        let detail = cot_asset_detail(
+            &state,
+            CotDetailInput {
+                symbol: "USD".into(),
+                participant_group: Some("Non-Commercial".into()),
+                lookback_weeks: Some(52),
+            },
+        )
+        .await
+        .unwrap();
+
+        assert_eq!(detail.report_family, "legacy");
+        assert_eq!(detail.participant_group, "Non-Commercial");
+        assert_eq!(detail.net_positions, Some(20));
+        assert_eq!(detail.long_share, Some(0.6));
+        assert_eq!(detail.weekly_long_share_change, Some(0.1));
+        assert_eq!(detail.series.len(), 2);
+        assert_eq!(detail.groups.len(), 1);
     }
 
     #[test]
