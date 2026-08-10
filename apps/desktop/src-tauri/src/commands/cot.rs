@@ -529,7 +529,7 @@ struct DailyCloseRow {
 }
 
 pub async fn scheduled_cot_sync(state: &AppState) -> Result<(), AppError> {
-    let recent: Option<String> = sqlx::query_scalar("SELECT completed_at FROM cot_sync_runs WHERE status='complete' ORDER BY completed_at DESC LIMIT 1").fetch_optional(&state.db).await?;
+    let recent = latest_completed_sync_at(state, LEGACY_URL).await?;
     let due = recent
         .and_then(|value| chrono::DateTime::parse_from_rfc3339(&value).ok())
         .map(|value| Utc::now() - value.with_timezone(&Utc) > Duration::hours(6))
@@ -538,6 +538,17 @@ pub async fn scheduled_cot_sync(state: &AppState) -> Result<(), AppError> {
         sync_cot(state).await?;
     }
     Ok(())
+}
+
+async fn latest_completed_sync_at(
+    state: &AppState,
+    source_url: &str,
+) -> Result<Option<String>, AppError> {
+    sqlx::query_scalar("SELECT completed_at FROM cot_sync_runs WHERE status='complete' AND source_url=? ORDER BY completed_at DESC LIMIT 1")
+        .bind(source_url)
+        .fetch_optional(&state.db)
+        .await
+        .map_err(Into::into)
 }
 
 #[tauri::command]
@@ -1547,6 +1558,24 @@ mod tests {
             .unwrap();
             assert_eq!(count, 1, "missing table: {table}");
         }
+    }
+
+    #[tokio::test]
+    async fn legacy_scheduler_ignores_recent_runs_from_retired_sources() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        sqlx::query("INSERT INTO cot_sync_runs (id,status,started_at,completed_at,records_upserted,source_url) VALUES (?,'complete',?,?,1,?)")
+            .bind(Uuid::new_v4().to_string())
+            .bind("2026-08-10T18:00:00Z")
+            .bind("2026-08-10T18:01:00Z")
+            .bind("https://publicreporting.cftc.gov/resource/gpe5-46if.json")
+            .execute(&state.db)
+            .await
+            .unwrap();
+
+        assert_eq!(
+            latest_completed_sync_at(&state, LEGACY_URL).await.unwrap(),
+            None
+        );
     }
 
     #[tokio::test]
