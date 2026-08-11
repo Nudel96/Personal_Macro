@@ -502,6 +502,53 @@ export interface EodhdSyncResult {
   snapshot: MacroFundamentalsDashboard;
 }
 
+export type PutCallSentiment =
+  "bullish" | "neutral" | "bearish" | "unavailable";
+
+export type PutCallSourceOrientation = "direct" | "inverse";
+
+export interface PutCallAsset {
+  symbol: string;
+  label: string;
+  sourceSymbol: string;
+  sourceOrientation: PutCallSourceOrientation;
+}
+
+export interface PutCallPoint {
+  tradeDate: string;
+  rawRatio: number;
+  ma5: number;
+  callNotionalUsd: number;
+  putNotionalUsd: number;
+}
+
+export interface PutCallThresholds {
+  bullish: number;
+  bearish: number;
+  sampleSize: number;
+}
+
+export interface PutCallDashboard {
+  assets: PutCallAsset[];
+  selectedAsset: PutCallAsset;
+  points: PutCallPoint[];
+  thresholds?: PutCallThresholds | null;
+  latestValue?: number | null;
+  sentiment: PutCallSentiment;
+  calibrationSampleSize: number;
+  lastSuccessfulSyncAt?: string | null;
+  lastTradeDate?: string | null;
+  lastRunStatus?: "success" | "failed" | null;
+  lastRunMessage?: string | null;
+  nativeOnly: boolean;
+}
+
+export interface PutCallSyncResult {
+  tradeDate: string;
+  storedAssets: number;
+  lastSyncedAt: string;
+}
+
 export interface CotSignalComponent {
   key: "positioning" | "flow_4w" | "persistence_13w";
   label: string;

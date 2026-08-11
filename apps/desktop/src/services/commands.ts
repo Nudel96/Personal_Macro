@@ -10,6 +10,10 @@ import {
   browserTrashTrade,
   browserUpdateTrade,
 } from "./browser-adapter";
+import {
+  browserPutCallDashboard,
+  browserSyncPutCall,
+} from "./put-call-browser";
 import type {
   BootstrapData,
   Account,
@@ -69,6 +73,8 @@ import type {
   Mt5Account,
   Mt5AccountsResponse,
   Mt5SyncResult,
+  PutCallDashboard,
+  PutCallSyncResult,
 } from "../types/domain";
 
 export const isTauri = () => "__TAURI_INTERNALS__" in window;
@@ -370,6 +376,12 @@ export const api = {
       : Promise.reject({
           message: "COT-Daten werden nur in der Desktop-App abgerufen.",
         }),
+  putCallDashboard: (assetSymbol = "EURUSD"): Promise<PutCallDashboard> =>
+    isTauri()
+      ? call("get_put_call_dashboard", { assetSymbol })
+      : browserPutCallDashboard(assetSymbol),
+  syncPutCall: (): Promise<PutCallSyncResult> =>
+    isTauri() ? call("sync_put_call_data") : browserSyncPutCall(),
   policyRates: (): Promise<PolicyRateDashboard> =>
     isTauri()
       ? call("get_policy_rates")
