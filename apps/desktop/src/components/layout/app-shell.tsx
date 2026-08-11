@@ -55,6 +55,14 @@ const dataNav = [
   { label: "Einstellungen", path: "/settings", icon: Settings },
 ];
 
+const researchNav = [
+  {
+    label: "Put/Call Ratio",
+    path: "/put-call-ratio",
+    icon: ChartNoAxesCombined,
+  },
+];
+
 function NavGroup({
   label,
   items,
@@ -81,6 +89,10 @@ function NavGroup({
   );
 }
 
+export function ResearchNavigation() {
+  return <NavGroup label="Research" items={researchNav} />;
+}
+
 const titles: Record<string, string> = {
   "/": "Übersicht",
   "/trades": "Trades",
@@ -96,6 +108,7 @@ const titles: Record<string, string> = {
   "/cot": "COT Analyse",
   "/seasonality": "Seasonality",
   "/rates": "Leitzinsen",
+  "/put-call-ratio": "Put/Call Ratio",
   "/import-export": "Import & Export",
   "/settings": "Einstellungen",
 };
@@ -159,6 +172,7 @@ export function AppShell() {
         <div className="sidebar-scroll" ref={sidebarScrollRef}>
           <NavGroup label="Tradingjournal" items={journalNav} />
           <NavGroup label="Marktkontext" items={macroNav} />
+          <ResearchNavigation />
           <NavGroup label="Daten & System" items={dataNav} />
         </div>
         <div className="sidebar-footer">

@@ -75,6 +75,11 @@ const RatesPage = lazy(() =>
     default: module.RatesPage,
   })),
 );
+const PutCallRatioPage = lazy(() =>
+  import("./features/put-call-ratio/put-call-ratio-page").then((module) => ({
+    default: module.PutCallRatioPage,
+  })),
+);
 const ImportExportPage = lazy(() =>
   import("./features/import-export/import-export-page").then((module) => ({
     default: module.ImportExportPage,
@@ -114,6 +119,7 @@ export default function App() {
                 <Route path="market" element={<MarketPage />} />
                 <Route path="seasonality" element={<SeasonalityPage />} />
                 <Route path="rates" element={<RatesPage />} />
+                <Route path="put-call-ratio" element={<PutCallRatioPage />} />
                 <Route path="import-export" element={<ImportExportPage />} />
                 <Route path="settings" element={<SettingsPage />} />
                 <Route path="*" element={<Navigate to="/" replace />} />

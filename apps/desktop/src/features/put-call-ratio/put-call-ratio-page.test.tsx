@@ -1,7 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router-dom";
 import { afterEach, describe, expect, it, vi } from "vitest";
+import { ResearchNavigation } from "../../components/layout/app-shell";
 import { api } from "../../services/commands";
 import {
   browserPutCallDashboard,
@@ -193,5 +195,20 @@ describe("PutCallRatioPage", () => {
     await user.selectOptions(select, "GBPUSD");
 
     expect(api.putCallDashboard).toHaveBeenCalledWith("GBPUSD");
+  });
+});
+
+describe("Put/Call research navigation", () => {
+  it("exposes the isolated Put/Call Ratio route in its own group", () => {
+    render(
+      <MemoryRouter>
+        <ResearchNavigation />
+      </MemoryRouter>,
+    );
+
+    expect(screen.getByText("Research")).toBeTruthy();
+    expect(
+      screen.getByRole("link", { name: "Put/Call Ratio" }).getAttribute("href"),
+    ).toBe("/put-call-ratio");
   });
 });
