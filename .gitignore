@@ -43,6 +43,8 @@ node_modules/
 coverage/
 playwright-report/
 test-results/
+.playwright-cli/
+/apps/desktop/output/
 *.tsbuildinfo
 
 # IDE/OS/logs

@@ -1,0 +1,134 @@
+relative_path,format,purpose
+01-master/MS-logo-dark.png,png,Master and branding variant
+01-master/MS-logo-flat-transparent.png,png,Master and branding variant
+01-master/MS-logo-light.png,png,Master and branding variant
+01-master/MS-logo-master.svg,svg,Master and branding variant
+01-master/MS-logo-monochrome-black.png,png,Master and branding variant
+01-master/MS-logo-monochrome-white.png,png,Master and branding variant
+01-master/MS-logo-original.png,png,Master and branding variant
+01-master/MS-logo-transparent.png,png,Master and branding variant
+02-app-icons/app-icon-128.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-16.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-20.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-24.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-256.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-32.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-48.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-512.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon-64.png,png,"Executable, taskbar and application icon"
+02-app-icons/app-icon.ico,ico,"Executable, taskbar and application icon"
+03-tray/tray-icon-black-16.png,png,Windows notification-area icon
+03-tray/tray-icon-black-20.png,png,Windows notification-area icon
+03-tray/tray-icon-black-24.png,png,Windows notification-area icon
+03-tray/tray-icon-black-32.png,png,Windows notification-area icon
+03-tray/tray-icon-black-48.png,png,Windows notification-area icon
+03-tray/tray-icon-color-16.png,png,Windows notification-area icon
+03-tray/tray-icon-color-20.png,png,Windows notification-area icon
+03-tray/tray-icon-color-24.png,png,Windows notification-area icon
+03-tray/tray-icon-color-32.png,png,Windows notification-area icon
+03-tray/tray-icon-color-48.png,png,Windows notification-area icon
+03-tray/tray-icon-white-16.png,png,Windows notification-area icon
+03-tray/tray-icon-white-20.png,png,Windows notification-area icon
+03-tray/tray-icon-white-24.png,png,Windows notification-area icon
+03-tray/tray-icon-white-32.png,png,Windows notification-area icon
+03-tray/tray-icon-white-48.png,png,Windows notification-area icon
+04-msix/SplashScreen.scale-100.png,png,Windows/MSIX package asset
+04-msix/SplashScreen.scale-125.png,png,Windows/MSIX package asset
+04-msix/SplashScreen.scale-150.png,png,Windows/MSIX package asset
+04-msix/SplashScreen.scale-200.png,png,Windows/MSIX package asset
+04-msix/SplashScreen.scale-400.png,png,Windows/MSIX package asset
+04-msix/Square150x150Logo.scale-100.png,png,Windows/MSIX package asset
+04-msix/Square150x150Logo.scale-125.png,png,Windows/MSIX package asset
+04-msix/Square150x150Logo.scale-150.png,png,Windows/MSIX package asset
+04-msix/Square150x150Logo.scale-200.png,png,Windows/MSIX package asset
+04-msix/Square150x150Logo.scale-400.png,png,Windows/MSIX package asset
+04-msix/Square310x310Logo.scale-100.png,png,Windows/MSIX package asset
+04-msix/Square310x310Logo.scale-125.png,png,Windows/MSIX package asset
+04-msix/Square310x310Logo.scale-150.png,png,Windows/MSIX package asset
+04-msix/Square310x310Logo.scale-200.png,png,Windows/MSIX package asset
+04-msix/Square310x310Logo.scale-400.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.scale-100.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.scale-125.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.scale-150.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.scale-200.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.scale-400.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-16_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-20_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-24_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-256_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-30_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-32_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-36_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-40_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-44_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-48_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-60_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-64_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-72_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-80_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/Square44x44Logo.targetsize-96_altform-unplated.png,png,Windows/MSIX package asset
+04-msix/StoreLogo.scale-100.png,png,Windows/MSIX package asset
+04-msix/StoreLogo.scale-125.png,png,Windows/MSIX package asset
+04-msix/StoreLogo.scale-150.png,png,Windows/MSIX package asset
+04-msix/StoreLogo.scale-200.png,png,Windows/MSIX package asset
+04-msix/StoreLogo.scale-400.png,png,Windows/MSIX package asset
+04-msix/Wide310x150Logo.scale-100.png,png,Windows/MSIX package asset
+04-msix/Wide310x150Logo.scale-125.png,png,Windows/MSIX package asset
+04-msix/Wide310x150Logo.scale-150.png,png,Windows/MSIX package asset
+04-msix/Wide310x150Logo.scale-200.png,png,Windows/MSIX package asset
+04-msix/Wide310x150Logo.scale-400.png,png,Windows/MSIX package asset
+05-installer/installer-banner-493x312.png,png,Installer artwork
+05-installer/installer-header-150x57.png,png,Installer artwork
+05-installer/installer-wizard-164x314.png,png,Installer artwork
+06-status/error-128.png,png,In-app status and notification symbol
+06-status/error-16.png,png,In-app status and notification symbol
+06-status/error-20.png,png,In-app status and notification symbol
+06-status/error-24.png,png,In-app status and notification symbol
+06-status/error-32.png,png,In-app status and notification symbol
+06-status/error-48.png,png,In-app status and notification symbol
+06-status/error-64.png,png,In-app status and notification symbol
+06-status/notification-128.png,png,In-app status and notification symbol
+06-status/notification-16.png,png,In-app status and notification symbol
+06-status/notification-20.png,png,In-app status and notification symbol
+06-status/notification-24.png,png,In-app status and notification symbol
+06-status/notification-32.png,png,In-app status and notification symbol
+06-status/notification-48.png,png,In-app status and notification symbol
+06-status/notification-64.png,png,In-app status and notification symbol
+06-status/success-128.png,png,In-app status and notification symbol
+06-status/success-16.png,png,In-app status and notification symbol
+06-status/success-20.png,png,In-app status and notification symbol
+06-status/success-24.png,png,In-app status and notification symbol
+06-status/success-32.png,png,In-app status and notification symbol
+06-status/success-48.png,png,In-app status and notification symbol
+06-status/success-64.png,png,In-app status and notification symbol
+06-status/update-128.png,png,In-app status and notification symbol
+06-status/update-16.png,png,In-app status and notification symbol
+06-status/update-20.png,png,In-app status and notification symbol
+06-status/update-24.png,png,In-app status and notification symbol
+06-status/update-32.png,png,In-app status and notification symbol
+06-status/update-48.png,png,In-app status and notification symbol
+06-status/update-64.png,png,In-app status and notification symbol
+06-status/warning-128.png,png,In-app status and notification symbol
+06-status/warning-16.png,png,In-app status and notification symbol
+06-status/warning-20.png,png,In-app status and notification symbol
+06-status/warning-24.png,png,In-app status and notification symbol
+06-status/warning-32.png,png,In-app status and notification symbol
+06-status/warning-48.png,png,In-app status and notification symbol
+06-status/warning-64.png,png,In-app status and notification symbol
+07-file-types/MS-document-128.png,png,Associated file-type icon
+07-file-types/MS-document-16.png,png,Associated file-type icon
+07-file-types/MS-document-24.png,png,Associated file-type icon
+07-file-types/MS-document-256.png,png,Associated file-type icon
+07-file-types/MS-document-32.png,png,Associated file-type icon
+07-file-types/MS-document-48.png,png,Associated file-type icon
+07-file-types/MS-document-64.png,png,Associated file-type icon
+07-file-types/MS-document.ico,ico,Associated file-type icon
+08-web/apple-touch-icon.png,png,Web and PWA branding
+08-web/favicon-16.png,png,Web and PWA branding
+08-web/favicon-192.png,png,Web and PWA branding
+08-web/favicon-32.png,png,Web and PWA branding
+08-web/favicon-48.png,png,Web and PWA branding
+08-web/favicon-512.png,png,Web and PWA branding
+08-web/favicon.ico,ico,Web and PWA branding
+README.md,md,Package metadata
+asset-manifest.csv,csv,Package metadata

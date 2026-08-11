@@ -97,10 +97,19 @@ Die Inflationsrichtung bildet bewusst die vorgegebene Score-Logik der
 Referenzansicht ab. Ein späteres, regimeabhängiges Zentralbankmodell wäre eine
 neue Scoring-Version und darf historische v1-Snapshots nicht umdeuten.
 
-Policy-Rates, technische Trends und Crowd-Sentiment dürfen als Kontext sichtbar
-sein. Leitzinsen werden jedoch als eigene v1-Domäne nach
-policy-rate-model-v1.md bewertet; technische Trends und Crowd-Sentiment fließen
-weiterhin nicht in den v1-Gesamtscore ein.
+Policy-Rates, technische Trends und Crowd-Sentiment sind eigenständige
+Heatmap-Spalten. Leitzinsen werden als eigene v1-Domäne nach
+policy-rate-model-v1.md bewertet. Ein importierter, verfügbarer Trend- oder
+Crowd-Score liefert je Währung ebenfalls genau -1, 0 oder +1 und fließt damit
+transparent in den Paarvergleich ein. Fehlt eine belastbare Quelle, bleibt die
+Zelle unavailable und wird nicht als 0 gezählt.
+
+## Technischer Trend und Crowd-Sentiment
+
+Der technische Trend und das Crowd-Sentiment werden ausschließlich aus einem
+explizit importierten, versionierten Währungssignal übernommen. Die Anwendung
+erfindet keinen Ersatzwert. Die Pair-Zelle folgt derselben Base-minus-Quote-Regel
+wie alle anderen Faktoren und liegt deshalb zwischen -2 und +2.
 
 ## Institutioneller COT-Bias
 
@@ -133,9 +142,9 @@ Fiatwährung ausgegeben werden.
 
 ## Currency- und Pair-Matrix
 
-Jede Fiatwährung erhält pro aktivem Einzelindikator sowie für COT, Leitzinsen
-und Seasonality genau einen -1-, 0- oder +1-Wert. Der Paarvergleich folgt
-direkt der gewünschten Base/Quote-Logik:
+Jede Fiatwährung erhält pro aktivem Einzelindikator sowie für technischen
+Trend, Seasonality, COT, Crowd-Sentiment und Leitzinsen genau einen -1-, 0- oder
++1-Wert. Der Paarvergleich folgt direkt der gewünschten Base/Quote-Logik:
 
     pair_cell(base, quote, factor) = base_factor - quote_factor
 
@@ -175,7 +184,9 @@ Dadurch kann eine historische Matrix jederzeit reproduziert werden.
 
 ## Nicht-Ziele von v1
 
-- keine Vermischung von Actual-vs-Forecast mit Previous-vs-Actual;
+- keine Vermischung von Actual-vs-Forecast mit Previous-vs-Actual; eine
+  optionale Research-Momentumansicht muss technisch, visuell und über ihre
+  Berechnungsversion getrennt bleiben;
 - keine versteckten Trend-, Momentum-, Target- oder Magnitude-Gewichte;
 - keine erfundenen Forecasts, Fake-Sentiment-Werte oder implizit neutralen
   Missing Values;
