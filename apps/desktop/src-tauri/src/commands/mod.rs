@@ -10,6 +10,7 @@ mod market;
 mod media;
 mod mt5_sync;
 mod policy_rates;
+mod put_call;
 mod seasonality;
 mod system;
 mod trades;
