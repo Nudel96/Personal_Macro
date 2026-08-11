@@ -2515,6 +2515,110 @@ textarea,
   }
 }
 
+/* Put/Call Ratio: one focused research surface, aligned with existing cards. */
+.put-call-page {
+  max-width: 1500px;
+}
+.put-call-card {
+  overflow: hidden;
+}
+.put-call-control {
+  display: grid;
+  grid-template-columns: auto minmax(150px, 190px);
+  align-items: center;
+  gap: 9px;
+  color: var(--text-2);
+  font-size: 10px;
+  font-weight: 700;
+}
+.put-call-control .select {
+  height: 34px;
+}
+.put-call-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 54px;
+  padding: 0 4px 13px;
+  border-bottom: 1px solid rgba(128, 160, 201, 0.09);
+}
+.put-call-current {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.put-call-current > span {
+  color: var(--text-3);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+.put-call-current strong {
+  color: var(--text);
+  font-size: 23px;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.03em;
+}
+.put-call-thresholds {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.put-call-threshold {
+  padding: 5px 9px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font-size: 10px;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+.put-call-threshold.bullish {
+  color: var(--positive);
+  border-color: rgba(55, 212, 129, 0.2);
+  background: var(--positive-soft);
+}
+.put-call-threshold.bearish {
+  color: var(--negative);
+  border-color: rgba(255, 94, 108, 0.2);
+  background: var(--negative-soft);
+}
+.put-call-calibration {
+  max-width: 510px;
+  color: var(--text-3);
+  font-size: 10px;
+  line-height: 1.5;
+  text-align: right;
+}
+.put-call-chart {
+  min-height: 500px;
+  margin: 8px -5px 0;
+}
+.put-call-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 17px;
+  padding: 12px 4px 0;
+  border-top: 1px solid rgba(128, 160, 201, 0.09);
+  color: var(--text-3);
+  font-size: 9px;
+  line-height: 1.5;
+}
+.put-call-card .notice {
+  margin-bottom: 13px;
+}
+
+@media (max-width: 1180px) {
+  .put-call-summary {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .put-call-calibration {
+    text-align: left;
+  }
+}
+
 /* Macro fundamentals + Institutional Activity: semantic signal layer. */
 .macro-scaffold-page .macro-scaffold-heatmap {
   width: max(100%, 1940px);
