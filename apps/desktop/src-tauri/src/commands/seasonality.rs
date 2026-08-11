@@ -1386,8 +1386,7 @@ fn annual_curve(
                 let base = rows.first().map(|(_, v)| *v);
                 let value = rows
                     .iter()
-                    .filter(|(date, _)| date.iso_week().week() as u8 == week)
-                    .next_back()
+                    .rfind(|(date, _)| date.iso_week().week() as u8 == week)
                     .map(|(_, v)| *v);
                 if let (Some(base), Some(value)) = (base, value) {
                     values.push(value / base * 100.0);

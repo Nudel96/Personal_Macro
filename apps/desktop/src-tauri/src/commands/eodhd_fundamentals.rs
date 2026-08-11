@@ -387,7 +387,7 @@ fn mapping_confidence(
 
 fn decide_mapping(scores: &[MappingScore]) -> MappingDecision {
     let mut ordered = scores.to_vec();
-    ordered.sort_by(|left, right| right.confidence.cmp(&left.confidence));
+    ordered.sort_by_key(|item| std::cmp::Reverse(item.confidence));
     let Some(best) = ordered.first() else {
         return MappingDecision::Unavailable;
     };
@@ -618,7 +618,7 @@ async fn ingest_events(
             })
             .collect::<Vec<_>>();
         let mut ordered_scores = scores.clone();
-        ordered_scores.sort_by(|left, right| right.confidence.cmp(&left.confidence));
+        ordered_scores.sort_by_key(|item| std::cmp::Reverse(item.confidence));
         let decision = approved
             .clone()
             .map(MappingDecision::Automatic)
