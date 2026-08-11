@@ -275,6 +275,160 @@ const CONTRACTS: &[ContractSeed] = &[
         currency: None,
         order: 230,
     },
+    ContractSeed {
+        symbol: "NATGAS",
+        display_name: "Natural Gas",
+        asset_class: "Energie",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "023651",
+        legacy_cftc_code: "023651",
+        currency: None,
+        order: 240,
+    },
+    ContractSeed {
+        symbol: "RBOB",
+        display_name: "RBOB Gasoline",
+        asset_class: "Energie",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "111659",
+        legacy_cftc_code: "111659",
+        currency: None,
+        order: 250,
+    },
+    ContractSeed {
+        symbol: "PLATINUM",
+        display_name: "Platin",
+        asset_class: "Metalle",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "076651",
+        legacy_cftc_code: "076651",
+        currency: None,
+        order: 260,
+    },
+    ContractSeed {
+        symbol: "PALLADIUM",
+        display_name: "Palladium",
+        asset_class: "Metalle",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "075651",
+        legacy_cftc_code: "075651",
+        currency: None,
+        order: 270,
+    },
+    ContractSeed {
+        symbol: "CORN",
+        display_name: "Mais",
+        asset_class: "Getreide",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "002602",
+        legacy_cftc_code: "002602",
+        currency: None,
+        order: 280,
+    },
+    ContractSeed {
+        symbol: "WHEAT",
+        display_name: "Weizen (SRW)",
+        asset_class: "Getreide",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "001602",
+        legacy_cftc_code: "001602",
+        currency: None,
+        order: 290,
+    },
+    ContractSeed {
+        symbol: "SOYBEANS",
+        display_name: "Sojabohnen",
+        asset_class: "Getreide",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "005602",
+        legacy_cftc_code: "005602",
+        currency: None,
+        order: 300,
+    },
+    ContractSeed {
+        symbol: "COFFEE",
+        display_name: "Kaffee",
+        asset_class: "Soft Commodities",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "083731",
+        legacy_cftc_code: "083731",
+        currency: None,
+        order: 310,
+    },
+    ContractSeed {
+        symbol: "COCOA",
+        display_name: "Kakao",
+        asset_class: "Soft Commodities",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "073732",
+        legacy_cftc_code: "073732",
+        currency: None,
+        order: 320,
+    },
+    ContractSeed {
+        symbol: "SUGAR",
+        display_name: "Zucker No. 11",
+        asset_class: "Soft Commodities",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "080732",
+        legacy_cftc_code: "080732",
+        currency: None,
+        order: 330,
+    },
+    ContractSeed {
+        symbol: "COTTON",
+        display_name: "Baumwolle No. 2",
+        asset_class: "Soft Commodities",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "033661",
+        legacy_cftc_code: "033661",
+        currency: None,
+        order: 340,
+    },
+    ContractSeed {
+        symbol: "LIVE_CATTLE",
+        display_name: "Live Cattle",
+        asset_class: "Vieh",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "057642",
+        legacy_cftc_code: "057642",
+        currency: None,
+        order: 350,
+    },
+    ContractSeed {
+        symbol: "LEAN_HOGS",
+        display_name: "Lean Hogs",
+        asset_class: "Vieh",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "054642",
+        legacy_cftc_code: "054642",
+        currency: None,
+        order: 360,
+    },
+    ContractSeed {
+        symbol: "FEEDER_CATTLE",
+        display_name: "Feeder Cattle",
+        asset_class: "Vieh",
+        report_family: "disaggregated",
+        trader_group: "Managed Money",
+        cftc_code: "061641",
+        legacy_cftc_code: "061641",
+        currency: None,
+        order: 370,
+    },
 ];
 
 #[derive(Debug, Clone, Serialize)]
@@ -1732,6 +1886,99 @@ mod tests {
     fn dow_uses_the_reference_djia_x5_contract() {
         let dow = CONTRACTS.iter().find(|seed| seed.symbol == "DOW").unwrap();
         assert_eq!(dow.legacy_cftc_code, "124603");
+    }
+
+    #[test]
+    fn approved_commodity_expansion_uses_exact_legacy_contracts() {
+        let expected = [
+            ("NATGAS", "Natural Gas", "Energie", "023651"),
+            ("RBOB", "RBOB Gasoline", "Energie", "111659"),
+            ("PLATINUM", "Platin", "Metalle", "076651"),
+            ("PALLADIUM", "Palladium", "Metalle", "075651"),
+            ("CORN", "Mais", "Getreide", "002602"),
+            ("WHEAT", "Weizen (SRW)", "Getreide", "001602"),
+            ("SOYBEANS", "Sojabohnen", "Getreide", "005602"),
+            ("COFFEE", "Kaffee", "Soft Commodities", "083731"),
+            ("COCOA", "Kakao", "Soft Commodities", "073732"),
+            ("SUGAR", "Zucker No. 11", "Soft Commodities", "080732"),
+            ("COTTON", "Baumwolle No. 2", "Soft Commodities", "033661"),
+            ("LIVE_CATTLE", "Live Cattle", "Vieh", "057642"),
+            ("LEAN_HOGS", "Lean Hogs", "Vieh", "054642"),
+            ("FEEDER_CATTLE", "Feeder Cattle", "Vieh", "061641"),
+        ];
+
+        for (symbol, display_name, asset_class, code) in expected {
+            let seed = CONTRACTS
+                .iter()
+                .find(|seed| seed.symbol == symbol)
+                .unwrap_or_else(|| panic!("missing approved COT contract: {symbol}"));
+            assert_eq!(seed.display_name, display_name);
+            assert_eq!(seed.asset_class, asset_class);
+            assert_eq!(seed.cftc_code, code);
+            assert_eq!(seed.legacy_cftc_code, code);
+            assert_eq!(seed.currency, None);
+        }
+    }
+
+    #[test]
+    fn cot_registry_has_unique_symbols_and_legacy_codes() {
+        use std::collections::HashSet;
+
+        let symbols = CONTRACTS
+            .iter()
+            .map(|seed| seed.symbol)
+            .collect::<HashSet<_>>();
+        let legacy_codes = CONTRACTS
+            .iter()
+            .map(|seed| seed.legacy_cftc_code)
+            .collect::<HashSet<_>>();
+
+        assert_eq!(symbols.len(), CONTRACTS.len(), "duplicate COT symbol");
+        assert_eq!(
+            legacy_codes.len(),
+            CONTRACTS.len(),
+            "duplicate Legacy CFTC code"
+        );
+    }
+
+    #[test]
+    fn cot_registry_stays_below_the_current_request_limit() {
+        let estimated_reports_per_contract = HISTORY_YEARS as usize * 53;
+
+        assert!(
+            CONTRACTS.len() * estimated_reports_per_contract < 50_000,
+            "CFTC sync requires pagination before adding more contracts"
+        );
+    }
+
+    #[test]
+    fn expanded_commodities_do_not_create_currency_pair_inputs() {
+        let symbols = [
+            "NATGAS",
+            "RBOB",
+            "PLATINUM",
+            "PALLADIUM",
+            "CORN",
+            "WHEAT",
+            "SOYBEANS",
+            "COFFEE",
+            "COCOA",
+            "SUGAR",
+            "COTTON",
+            "LIVE_CATTLE",
+            "LEAN_HOGS",
+            "FEEDER_CATTLE",
+        ];
+
+        for symbol in symbols {
+            let seed = CONTRACTS
+                .iter()
+                .find(|seed| seed.symbol == symbol)
+                .unwrap_or_else(|| panic!("missing approved COT contract: {symbol}"));
+            let currency = seed.currency.map(str::to_owned);
+            assert_eq!(seed.currency, None);
+            assert!(!is_pair_currency(seed.symbol, &currency));
+        }
     }
 
     #[test]
