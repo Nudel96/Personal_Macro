@@ -26,6 +26,7 @@ pub use market::*;
 pub use media::*;
 pub use mt5_sync::*;
 pub use policy_rates::*;
+pub use put_call::*;
 pub use seasonality::*;
 pub use system::*;
 pub use trades::*;

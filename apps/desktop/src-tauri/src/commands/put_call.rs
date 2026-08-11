@@ -1,8 +1,17 @@
+use std::time::Duration;
+
 use chrono::{NaiveDate, Utc};
+use regex::Regex;
+use reqwest::{Client, header};
 use serde::Serialize;
 use sqlx::SqlitePool;
+use tauri::State;
+use uuid::Uuid;
 
-use crate::errors::AppError;
+use crate::{
+    database::AppState,
+    errors::{AppError, CommandError, CommandResult},
+};
 
 const SOURCE_URL: &str = "https://www.cmegroup.com/reports/fx-put-call.pdf";
 
@@ -83,6 +92,12 @@ struct ProviderObservation {
     orientation: SourceOrientation,
 }
 
+#[derive(Debug, Clone)]
+struct ParsedReport {
+    trade_date: String,
+    observations: Vec<ProviderObservation>,
+}
+
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PutCallAsset {
@@ -147,6 +162,14 @@ pub struct PutCallDashboard {
     pub native_only: bool,
 }
 
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PutCallSyncResult {
+    pub trade_date: String,
+    pub stored_assets: usize,
+    pub last_synced_at: String,
+}
+
 fn daily_ratio(
     call_notional_usd: i64,
     put_notional_usd: i64,
@@ -201,6 +224,227 @@ fn classify(value: Option<f64>, calibrated: Option<(f64, f64)>) -> Sentiment {
         Sentiment::Bullish
     } else {
         Sentiment::Neutral
+    }
+}
+
+fn validate_pdf_response(content_type: Option<&str>, body: &[u8]) -> Result<(), AppError> {
+    let is_pdf_content_type = content_type
+        .map(|value| value.to_ascii_lowercase().starts_with("application/pdf"))
+        .unwrap_or(false);
+    if !is_pdf_content_type {
+        return Err(AppError::DataTransfer(
+            "CME hat keinen PDF-Report geliefert.".into(),
+        ));
+    }
+    if !body.starts_with(b"%PDF-") {
+        return Err(AppError::DataTransfer(
+            "Der CME-Report besitzt keine gültige PDF-Signatur.".into(),
+        ));
+    }
+    if body.len() > 8 * 1024 * 1024 {
+        return Err(AppError::DataTransfer(
+            "Der CME-Report überschreitet die zulässige Größe.".into(),
+        ));
+    }
+    Ok(())
+}
+
+fn parse_usd_notional(value: &str) -> Result<i64, AppError> {
+    value
+        .trim()
+        .trim_start_matches('$')
+        .replace(',', "")
+        .parse::<i64>()
+        .map_err(|_| AppError::DataTransfer("CME-Notional konnte nicht gelesen werden.".into()))
+}
+
+fn parse_report_text(text: &str) -> Result<ParsedReport, AppError> {
+    let date_regex = Regex::new(r"Daily FX Options Update:\s*(\d{2}/\d{2}/\d{4})\s+All Currencies")
+        .map_err(|error| AppError::DataTransfer(error.to_string()))?;
+    let date_capture = date_regex
+        .captures(text)
+        .and_then(|captures| captures.get(1))
+        .ok_or_else(|| AppError::DataTransfer("CME-Berichtsdatum fehlt.".into()))?;
+    let trade_date = NaiveDate::parse_from_str(date_capture.as_str(), "%m/%d/%Y")
+        .map_err(|_| AppError::DataTransfer("CME-Berichtsdatum ist ungültig.".into()))?
+        .format("%Y-%m-%d")
+        .to_string();
+
+    let mut observations = Vec::with_capacity(SUPPORTED_ASSETS.len());
+    for definition in SUPPORTED_ASSETS {
+        let row_regex = Regex::new(&format!(
+            r"(?m)^{}\s+(\$?[\d,]+)\s+(\$?[\d,]+)\s+(\$?[\d,]+)\s*$",
+            regex::escape(definition.source_symbol)
+        ))
+        .map_err(|error| AppError::DataTransfer(error.to_string()))?;
+        let matches = row_regex.captures_iter(text).collect::<Vec<_>>();
+        if matches.len() != 1 {
+            return Err(AppError::DataTransfer(format!(
+                "CME-Zeile für {} fehlt oder ist nicht eindeutig.",
+                definition.label
+            )));
+        }
+        let captures = &matches[0];
+        let call_notional_usd = parse_usd_notional(&captures[1])?;
+        let put_notional_usd = parse_usd_notional(&captures[2])?;
+        let total_notional_usd = parse_usd_notional(&captures[3])?;
+        if call_notional_usd + put_notional_usd != total_notional_usd {
+            return Err(AppError::DataTransfer(format!(
+                "CME-Summe für {} ist inkonsistent.",
+                definition.label
+            )));
+        }
+        observations.push(ProviderObservation {
+            asset_symbol: definition.symbol.into(),
+            source_symbol: definition.source_symbol.into(),
+            call_notional_usd,
+            put_notional_usd,
+            orientation: definition.orientation,
+        });
+    }
+
+    Ok(ParsedReport {
+        trade_date,
+        observations,
+    })
+}
+
+async fn fetch_report_pdf(url: &str) -> Result<Vec<u8>, AppError> {
+    let client = Client::builder()
+        .timeout(Duration::from_secs(30))
+        .user_agent("PersonalMacro/1 put-call-ratio")
+        .build()
+        .map_err(|error| AppError::DataTransfer(error.to_string()))?;
+    let response = client
+        .get(url)
+        .header(header::ACCEPT, "application/pdf")
+        .send()
+        .await
+        .map_err(|error| {
+            AppError::DataTransfer(format!(
+                "CME Put/Call-Report konnte nicht abgerufen werden: {}",
+                error.to_string().chars().take(220).collect::<String>()
+            ))
+        })?;
+    let status = response.status();
+    if !status.is_success() {
+        return Err(AppError::DataTransfer(format!(
+            "CME Put/Call-Report antwortet mit HTTP {}.",
+            status.as_u16()
+        )));
+    }
+    let content_type = response
+        .headers()
+        .get(header::CONTENT_TYPE)
+        .and_then(|value| value.to_str().ok())
+        .map(str::to_owned);
+    let body = response.bytes().await.map_err(|error| {
+        AppError::DataTransfer(format!(
+            "CME Put/Call-Report konnte nicht gelesen werden: {}",
+            error.to_string().chars().take(220).collect::<String>()
+        ))
+    })?;
+    validate_pdf_response(content_type.as_deref(), &body)?;
+    Ok(body.to_vec())
+}
+
+async fn record_sync_run(
+    db: &SqlitePool,
+    id: &str,
+    started_at: &str,
+    status: &str,
+    fetched_assets: usize,
+    stored_assets: usize,
+    message: Option<&str>,
+) -> Result<(), AppError> {
+    let bounded_message = message.map(|value| value.chars().take(280).collect::<String>());
+    sqlx::query(
+        "INSERT INTO put_call_sync_runs (
+            id, started_at, finished_at, status, fetched_assets, stored_assets, message
+         ) VALUES (?, ?, ?, ?, ?, ?, ?)",
+    )
+    .bind(id)
+    .bind(started_at)
+    .bind(Utc::now().to_rfc3339())
+    .bind(status)
+    .bind(fetched_assets as i64)
+    .bind(stored_assets as i64)
+    .bind(bounded_message)
+    .execute(db)
+    .await?;
+    Ok(())
+}
+
+#[tauri::command]
+pub async fn get_put_call_dashboard(
+    state: State<'_, AppState>,
+    asset_symbol: Option<String>,
+) -> CommandResult<PutCallDashboard> {
+    let symbol = asset_symbol
+        .unwrap_or_else(|| "EURUSD".into())
+        .trim()
+        .replace('/', "")
+        .to_ascii_uppercase();
+    load_dashboard(&state.db, &symbol)
+        .await
+        .map_err(CommandError::from)
+}
+
+#[tauri::command]
+pub async fn sync_put_call_data(state: State<'_, AppState>) -> CommandResult<PutCallSyncResult> {
+    let run_id = Uuid::new_v4().to_string();
+    let started_at = Utc::now().to_rfc3339();
+    let outcome = async {
+        let bytes = fetch_report_pdf(SOURCE_URL).await?;
+        let text = pdf_extract::extract_text_from_mem(&bytes).map_err(|error| {
+            AppError::DataTransfer(format!(
+                "CME-PDF konnte nicht ausgewertet werden: {}",
+                error.to_string().chars().take(220).collect::<String>()
+            ))
+        })?;
+        let report = parse_report_text(&text)?;
+        let stored_assets =
+            store_observations(&state.db, &report.trade_date, &report.observations).await?;
+        Ok::<_, AppError>((report.trade_date, stored_assets))
+    }
+    .await;
+
+    match outcome {
+        Ok((trade_date, stored_assets)) => {
+            record_sync_run(
+                &state.db,
+                &run_id,
+                &started_at,
+                "success",
+                stored_assets,
+                stored_assets,
+                None,
+            )
+            .await
+            .map_err(CommandError::from)?;
+            Ok(PutCallSyncResult {
+                trade_date,
+                stored_assets,
+                last_synced_at: Utc::now().to_rfc3339(),
+            })
+        }
+        Err(error) => {
+            let message = error.to_string();
+            if let Err(record_error) = record_sync_run(
+                &state.db,
+                &run_id,
+                &started_at,
+                "failed",
+                0,
+                0,
+                Some(&message),
+            )
+            .await
+            {
+                tracing::warn!(error = ?record_error, "Put/Call-Syncfehler konnte nicht protokolliert werden");
+            }
+            Err(CommandError::from(error))
+        }
     }
 }
 
@@ -338,6 +582,27 @@ async fn load_dashboard(db: &SqlitePool, asset_symbol: &str) -> Result<PutCallDa
 mod tests {
     use super::*;
     use crate::database::initialize_headless;
+    use std::io::{Read, Write};
+    use std::net::TcpListener;
+
+    fn serve_once(status: &str, content_type: &str, body: &'static [u8]) -> String {
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let address = listener.local_addr().unwrap();
+        let status = status.to_string();
+        let content_type = content_type.to_string();
+        std::thread::spawn(move || {
+            let (mut stream, _) = listener.accept().unwrap();
+            let mut request = [0_u8; 2048];
+            let _ = stream.read(&mut request);
+            let response = format!(
+                "HTTP/1.1 {status}\r\nContent-Type: {content_type}\r\nContent-Length: {}\r\nConnection: close\r\n\r\n",
+                body.len()
+            );
+            stream.write_all(response.as_bytes()).unwrap();
+            stream.write_all(body).unwrap();
+        });
+        format!("http://{address}/fx-put-call.pdf")
+    }
 
     #[test]
     fn direct_ratio_divides_put_by_call() {
@@ -464,5 +729,147 @@ mod tests {
         .await
         .unwrap();
         assert_eq!(persisted_call, 100);
+    }
+
+    const COMPLETE_CME_REPORT: &str = r#"
+Daily FX Options Update: 08/10/2026 All Currencies
+For questions regarding this report, please contact cmefxoptions@cmegroup.com
+Call Option Put Option TOTAL
+Currency $1,348,322,388 $1,208,124,325 $2,556,446,713
+Euro FX $510,416,015 $629,086,390 $1,139,502,405
+Japanese Yen $444,084,719 $351,568,172 $795,652,891
+Canadian Dollar $218,826,800 $35,979,830 $254,806,630
+British Pound $118,113,982 $129,517,302 $247,631,284
+Australian Dollar $52,503,665 $55,835,170 $108,338,835
+Mexican Peso $756,340 $4,580,680 $5,337,020
+Swiss Franc $3,561,982 $1,556,781 $5,118,763
+New Zealand Dollar $58,885 $10,000 $68,885
+"#;
+
+    #[test]
+    fn parses_complete_cme_summary() {
+        let report = parse_report_text(COMPLETE_CME_REPORT).unwrap();
+
+        assert_eq!(report.trade_date, "2026-08-10");
+        assert_eq!(report.observations.len(), 7);
+        let euro = report
+            .observations
+            .iter()
+            .find(|item| item.asset_symbol == "EURUSD")
+            .unwrap();
+        assert_eq!(euro.call_notional_usd, 510_416_015);
+        assert_eq!(euro.put_notional_usd, 629_086_390);
+        assert_eq!(euro.orientation, SourceOrientation::Direct);
+        let yen = report
+            .observations
+            .iter()
+            .find(|item| item.asset_symbol == "USDJPY")
+            .unwrap();
+        assert_eq!(yen.call_notional_usd, 444_084_719);
+        assert_eq!(yen.put_notional_usd, 351_568_172);
+        assert_eq!(yen.orientation, SourceOrientation::Inverse);
+    }
+
+    #[test]
+    fn rejects_incomplete_or_duplicate_cme_summary() {
+        let incomplete =
+            COMPLETE_CME_REPORT.replace("Swiss Franc $3,561,982 $1,556,781 $5,118,763\n", "");
+        assert!(matches!(
+            parse_report_text(&incomplete),
+            Err(AppError::DataTransfer(_))
+        ));
+
+        let duplicate =
+            format!("{COMPLETE_CME_REPORT}\nEuro FX $510,416,015 $629,086,390 $1,139,502,405");
+        assert!(matches!(
+            parse_report_text(&duplicate),
+            Err(AppError::DataTransfer(_))
+        ));
+    }
+
+    #[test]
+    fn rejects_invalid_pdf_response_and_missing_report_date() {
+        assert!(matches!(
+            validate_pdf_response(Some("text/html"), b"%PDF-content"),
+            Err(AppError::DataTransfer(_))
+        ));
+        assert!(matches!(
+            validate_pdf_response(Some("application/pdf"), b"<html>blocked</html>"),
+            Err(AppError::DataTransfer(_))
+        ));
+        let missing_date = COMPLETE_CME_REPORT.replace(
+            "Daily FX Options Update: 08/10/2026 All Currencies",
+            "Daily FX Options Update: All Currencies",
+        );
+        assert!(matches!(
+            parse_report_text(&missing_date),
+            Err(AppError::DataTransfer(_))
+        ));
+    }
+
+    #[tokio::test]
+    async fn fetch_report_pdf_accepts_a_bounded_pdf_response() {
+        let url = serve_once("200 OK", "application/pdf", b"%PDF-test");
+
+        let bytes = fetch_report_pdf(&url).await.unwrap();
+
+        assert_eq!(bytes, b"%PDF-test");
+    }
+
+    #[tokio::test]
+    async fn fetch_report_pdf_rejects_provider_status_and_html() {
+        let forbidden = serve_once("403 Forbidden", "application/json", b"blocked");
+        assert!(matches!(
+            fetch_report_pdf(&forbidden).await,
+            Err(AppError::DataTransfer(_))
+        ));
+
+        let html = serve_once("200 OK", "text/html", b"<html>blocked</html>");
+        assert!(matches!(
+            fetch_report_pdf(&html).await,
+            Err(AppError::DataTransfer(_))
+        ));
+    }
+
+    #[tokio::test]
+    async fn failed_sync_run_preserves_observations_and_is_visible() {
+        let state = initialize_headless().await.unwrap();
+        store_observations(
+            &state.db,
+            "2026-08-08",
+            &[ProviderObservation {
+                asset_symbol: "EURUSD".into(),
+                source_symbol: "Euro FX".into(),
+                call_notional_usd: 100,
+                put_notional_usd: 200,
+                orientation: SourceOrientation::Direct,
+            }],
+        )
+        .await
+        .unwrap();
+        record_sync_run(
+            &state.db,
+            "run-1",
+            "2026-08-11T12:00:00Z",
+            "failed",
+            0,
+            0,
+            Some("CME blockiert den Abruf."),
+        )
+        .await
+        .unwrap();
+
+        let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM put_call_observations")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+        let dashboard = load_dashboard(&state.db, "EURUSD").await.unwrap();
+
+        assert_eq!(count, 1);
+        assert_eq!(dashboard.last_run_status.as_deref(), Some("failed"));
+        assert_eq!(
+            dashboard.last_run_message.as_deref(),
+            Some("CME blockiert den Abruf.")
+        );
     }
 }

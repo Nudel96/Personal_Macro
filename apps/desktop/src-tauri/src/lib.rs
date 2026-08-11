@@ -99,6 +99,8 @@ pub fn run() {
             commands::get_cot_asset_detail,
             commands::link_cot_broker_symbol,
             commands::sync_cot_data,
+            commands::get_put_call_dashboard,
+            commands::sync_put_call_data,
             commands::get_policy_rates,
             commands::sync_policy_rates,
             commands::get_seasonality,
