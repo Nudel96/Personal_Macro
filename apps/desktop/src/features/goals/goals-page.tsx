@@ -1,3 +1,4 @@
+import { Goal as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Goal, Plus, Save, Target, X } from "lucide-react";
@@ -12,26 +13,54 @@ import { PageHeader } from "../../components/ui/page-header";
 import { localDate, number } from "../../lib/utils";
 import { api } from "../../services/commands";
 import type { GoalInput, GoalRecord } from "../../types/domain";
+import { CollectionToolbar } from "../../components/ui/collection-toolbar";
+import { WorkspaceSummary } from "../../components/ui/workspace-summary";
+import { useDialogFocus } from "../../components/ui/use-dialog-focus";
+
+const metricLabels: Record<string, string> = {
+  total_r: "Total R",
+  net_pnl: "Netto-P&L",
+  plan_adherence: "Plantreue",
+  process_score: "Prozess-Score",
+  review_rate: "Review-Quote",
+  max_drawdown: "Max. Drawdown",
+};
+const statusLabels: Record<string, string> = {
+  active: "Aktiv",
+  completed: "Erreicht",
+  paused: "Pausiert",
+  archived: "Archiviert",
+  cancelled: "Abgebrochen",
+};
 
 export function GoalsPage() {
   const query = useQuery({ queryKey: ["goals"], queryFn: api.goals });
   const [open, setOpen] = useState(false);
+  const { rememberFocus, restoreFocus } = useDialogFocus();
   const [selected, setSelected] = useState<GoalRecord>();
+  const [search, setSearch] = useState("");
+  const goals = query.data ?? [];
+  const visibleGoals = goals.filter((goal) =>
+    `${goal.name} ${goal.description ?? ""} ${metricLabels[goal.metricKey] ?? goal.metricKey}`
+      .toLocaleLowerCase("de")
+      .includes(search.trim().toLocaleLowerCase("de")),
+  );
   if (query.isLoading)
     return (
-      <div className="page">
+      <div className="page goals-page">
         <PageLoading />
       </div>
     );
   if (query.isError)
     return (
-      <div className="page">
+      <div className="page goals-page">
         <ErrorState message="Ziele konnten nicht geladen werden." />
       </div>
     );
   return (
-    <div className="page">
+    <div className="page goals-page">
       <PageHeader
+        icon={PageIcon}
         eyebrow="Prozess"
         title="Ziele"
         description="Ergebnis- und Prozessziele mit manuellem oder berechnetem Fortschritt."
@@ -39,6 +68,7 @@ export function GoalsPage() {
           <Button
             variant="primary"
             onClick={() => {
+              rememberFocus();
               setSelected(undefined);
               setOpen(true);
             }}
@@ -47,13 +77,44 @@ export function GoalsPage() {
           </Button>
         }
       />
-      {query.data?.length ? (
-        <div className="grid" style={{ gridTemplateColumns: "repeat(3, 1fr)" }}>
-          {query.data.map((goal) => (
+      {goals.length > 0 && (
+        <>
+          <WorkspaceSummary
+            items={[
+              {
+                label: "Aktive Ziele",
+                value: goals.filter((goal) => goal.status === "active").length,
+                detail: "Dein aktueller Fokus",
+              },
+              {
+                label: "Fortschritt erfasst",
+                value: goals.filter((goal) => goal.latestValue != null).length,
+                detail: "Ziele mit einer Beobachtung",
+              },
+              {
+                label: "Erreichte Ziele",
+                value: goals.filter((goal) => goal.status === "completed")
+                  .length,
+                detail: "Als abgeschlossen markiert",
+              },
+            ]}
+          />
+          <CollectionToolbar
+            label="Ziele durchsuchen"
+            value={search}
+            onChange={setSearch}
+            count={visibleGoals.length}
+          />
+        </>
+      )}
+      {visibleGoals.length ? (
+        <div className="grid responsive-card-grid">
+          {visibleGoals.map((goal) => (
             <GoalCard
               key={goal.id}
               goal={goal}
               onOpen={() => {
+                rememberFocus();
                 setSelected(goal);
                 setOpen(true);
               }}
@@ -64,78 +125,112 @@ export function GoalsPage() {
         <Card>
           <EmptyState
             icon={Goal}
-            title="Noch keine Ziele"
-            description="Kombiniere Ergebnisziele wie Total R mit Prozesszielen wie Plan-Adherence oder Review-Quote."
+            title={search ? "Keine passenden Ziele" : "Noch keine Ziele"}
+            description={
+              search
+                ? "Passe den Suchbegriff an oder setze die Suche zurück."
+                : "Kombiniere Ergebnisziele wie Total R mit Prozesszielen wie Plantreue oder Review-Quote."
+            }
             action={
-              <Button variant="primary" onClick={() => setOpen(true)}>
-                <Plus size={14} /> Erstes Ziel anlegen
-              </Button>
+              search ? (
+                <Button onClick={() => setSearch("")}>
+                  Suche zurücksetzen
+                </Button>
+              ) : (
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    rememberFocus();
+                    setSelected(undefined);
+                    setOpen(true);
+                  }}
+                >
+                  <Plus size={14} /> Erstes Ziel anlegen
+                </Button>
+              )
             }
           />
         </Card>
       )}
-      <GoalDialog open={open} onOpenChange={setOpen} goal={selected} />
+      <GoalDialog
+        open={open}
+        onOpenChange={setOpen}
+        goal={selected}
+        onCloseAutoFocus={restoreFocus}
+      />
     </div>
   );
 }
 function GoalCard({ goal, onOpen }: { goal: GoalRecord; onOpen: () => void }) {
-  const current = Number(goal.latestValue ?? 0),
+  const current = goal.latestValue == null ? null : Number(goal.latestValue),
     target = Number(goal.targetValue),
-    progress = target
-      ? Math.min(100, Math.max(0, (current / target) * 100))
-      : 0;
+    progress =
+      target && current != null
+        ? Math.min(100, Math.max(0, (current / target) * 100))
+        : 0;
   const queryClient = useQueryClient();
   const [progressOpen, setProgressOpen] = useState(false);
+  const { rememberFocus, restoreFocus } = useDialogFocus();
   return (
-    <Card style={{ cursor: "pointer" }} onClick={onOpen}>
+    <Card className="collection-card">
       <CardHeader
         title={goal.name}
+        onOpen={onOpen}
         subtitle={goal.description}
         action={
-          <Badge className={goal.status === "active" ? "primary" : "positive"}>
-            {goal.status}
+          <Badge
+            className={
+              goal.status === "active"
+                ? "primary"
+                : goal.status === "completed"
+                  ? "positive"
+                  : "neutral"
+            }
+          >
+            {statusLabels[goal.status] ?? goal.status}
           </Badge>
         }
       />
       <CardContent>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "end",
-          }}
-        >
+        <div className="goal-progress-value">
           <div>
-            <div className="muted" style={{ fontSize: 9 }}>
-              Fortschritt
-            </div>
-            <div style={{ fontSize: 25, fontWeight: 780, marginTop: 6 }}>
-              {number.format(current)}{" "}
-              <span className="muted" style={{ fontSize: 12 }}>
+            <div className="muted">Fortschritt</div>
+            <strong>
+              {current == null ? "—" : number.format(current)}{" "}
+              <small>
                 / {number.format(target)} {goal.unit}
-              </span>
-            </div>
+              </small>
+            </strong>
           </div>
-          <strong>{number.format(progress)} %</strong>
+          <span>
+            {current == null
+              ? "Noch nicht erfasst"
+              : `${number.format(progress)} %`}
+          </span>
         </div>
-        <div className="factor-track" style={{ margin: "13px 0" }}>
-          <div className="factor-bar" style={{ width: `${progress}%` }} />
+        <div className="goal-progress-track" aria-hidden="true">
+          <span style={{ width: `${progress}%` }} />
         </div>
         <div
           style={{
             display: "flex",
             justifyContent: "space-between",
-            fontSize: 9,
+            fontSize: 11,
           }}
         >
-          <span className="muted">{goal.metricKey}</span>
-          <span className="muted">bis {localDate(goal.endsAt)}</span>
+          <span className="muted">
+            {metricLabels[goal.metricKey] ?? goal.metricKey}
+          </span>
+          <span className="muted">
+            {goal.endsAt ? `bis ${localDate(goal.endsAt)}` : "Ohne Enddatum"}
+          </span>
         </div>
         <Button
           size="sm"
           style={{ marginTop: 14 }}
           onClick={(event) => {
             event.stopPropagation();
+            rememberFocus();
             setProgressOpen(true);
           }}
         >
@@ -145,6 +240,7 @@ function GoalCard({ goal, onOpen }: { goal: GoalRecord; onOpen: () => void }) {
           goal={goal}
           open={progressOpen}
           onOpenChange={setProgressOpen}
+          onCloseAutoFocus={restoreFocus}
           onSaved={() => queryClient.invalidateQueries({ queryKey: ["goals"] })}
         />
       </CardContent>
@@ -155,10 +251,12 @@ function GoalDialog({
   open,
   onOpenChange,
   goal,
+  onCloseAutoFocus,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
   goal?: GoalRecord;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const today = new Date().toISOString().slice(0, 10);
   const [draft, setDraft] = useState<GoalInput>(() => initialGoal(goal, today));
@@ -180,13 +278,17 @@ function GoalDialog({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content" aria-describedby={undefined}>
+        <Dialog.Content
+          className="dialog-content"
+          aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
+        >
           <header className="dialog-header">
             <Dialog.Title className="dialog-title">
               {goal ? "Ziel bearbeiten" : "Neues Ziel"}
             </Dialog.Title>
             <Dialog.Close asChild>
-              <Button size="icon" variant="ghost">
+              <Button size="icon" variant="ghost" aria-label="Dialog schließen">
                 <X size={17} />
               </Button>
             </Dialog.Close>
@@ -212,7 +314,7 @@ function GoalDialog({
                 >
                   <option value="total_r">Total R</option>
                   <option value="net_pnl">Netto-P&L</option>
-                  <option value="plan_adherence">Plan-Adherence</option>
+                  <option value="plan_adherence">Plantreue</option>
                   <option value="process_score">Prozess-Score</option>
                   <option value="review_rate">Review-Quote</option>
                   <option value="max_drawdown">Max. Drawdown</option>
@@ -310,11 +412,13 @@ function ProgressDialog({
   open,
   onOpenChange,
   onSaved,
+  onCloseAutoFocus,
 }: {
   goal: GoalRecord;
   open: boolean;
   onOpenChange: (open: boolean) => void;
   onSaved: () => void;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const [value, setValue] = useState(goal.latestValue ?? "0");
   const [note, setNote] = useState("");
@@ -343,6 +447,7 @@ function ProgressDialog({
         <Dialog.Content
           className="dialog-content"
           aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
           onClick={(event) => event.stopPropagation()}
         >
           <header className="dialog-header">
@@ -402,9 +507,9 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="field" style={{ marginBottom: 13 }}>
-      <label>{label}</label>
+    <label className="field" style={{ marginBottom: 13 }}>
+      <span>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }

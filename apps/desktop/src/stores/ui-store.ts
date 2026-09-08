@@ -19,7 +19,7 @@ interface UiState {
     | "90d"
     | "ytd"
     | "custom";
-  globalAccountIds: string[];
+  selectedJournalAccountId: string | null;
   globalSetupIds: string[];
   globalDirection: "all" | "long" | "short";
   globalDateFrom?: string;
@@ -30,19 +30,37 @@ interface UiState {
   setGuidedTradeOpen: (open: boolean) => void;
   setOnboardingCollapsed: (collapsed: boolean) => void;
   setOnboardingDismissed: (dismissed: boolean) => void;
+  setSelectedJournalAccountId: (accountId: string | null) => void;
   setGlobalDatePreset: (preset: UiState["globalDatePreset"]) => void;
   setGlobalFilters: (
     filters: Partial<
       Pick<
         UiState,
-        | "globalAccountIds"
-        | "globalSetupIds"
-        | "globalDirection"
-        | "globalDateFrom"
-        | "globalDateTo"
+        "globalSetupIds" | "globalDirection" | "globalDateFrom" | "globalDateTo"
       >
     >,
   ) => void;
+}
+
+export function migrateUiState(
+  persistedState: unknown,
+  version: number,
+): Record<string, unknown> {
+  const state =
+    persistedState && typeof persistedState === "object"
+      ? { ...(persistedState as Record<string, unknown>) }
+      : {};
+  const legacyAccountIds = state.globalAccountIds;
+
+  if (version < 1 && Array.isArray(legacyAccountIds)) {
+    state.selectedJournalAccountId =
+      legacyAccountIds.length === 1 && typeof legacyAccountIds[0] === "string"
+        ? legacyAccountIds[0]
+        : null;
+  }
+
+  delete state.globalAccountIds;
+  return state;
 }
 
 export const useUiStore = create<UiState>()(
@@ -55,7 +73,7 @@ export const useUiStore = create<UiState>()(
       onboardingCollapsed: false,
       onboardingDismissed: false,
       globalDatePreset: "all",
-      globalAccountIds: [],
+      selectedJournalAccountId: null,
       globalSetupIds: [],
       globalDirection: "all",
       toggleSidebar: () =>
@@ -67,9 +85,15 @@ export const useUiStore = create<UiState>()(
         set({ onboardingCollapsed }),
       setOnboardingDismissed: (onboardingDismissed) =>
         set({ onboardingDismissed }),
+      setSelectedJournalAccountId: (selectedJournalAccountId) =>
+        set({ selectedJournalAccountId }),
       setGlobalDatePreset: (globalDatePreset) => set({ globalDatePreset }),
       setGlobalFilters: (filters) => set(filters),
     }),
-    { name: "personal-macro:ui" },
+    {
+      name: "personal-macro:ui",
+      version: 1,
+      migrate: migrateUiState,
+    },
   ),
 );

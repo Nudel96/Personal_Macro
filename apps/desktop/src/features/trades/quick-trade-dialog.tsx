@@ -19,6 +19,10 @@ import { fromInputDateTime } from "../../lib/utils";
 import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import type { TradeInput } from "../../types/domain";
+import {
+  useJournalAccount,
+  type JournalAccountStatus,
+} from "../accounts/journal-account-context";
 import { PositionSizeCalculator } from "./position-size-calculator";
 
 const tradeSchema = z
@@ -115,9 +119,22 @@ function optionalBoolean(value: "" | "true" | "false") {
   return value === "" ? undefined : value === "true";
 }
 
+export function readyTradeAccountId(
+  status: JournalAccountStatus,
+  selectedAccountId: string | null,
+) {
+  return status === "ready" ? selectedAccountId : null;
+}
+
 export function QuickTradeDialog() {
   const { quickTradeOpen, setQuickTradeOpen, setGuidedTradeOpen } =
     useUiStore();
+  const { status: journalAccountStatus, selectedAccount } = useJournalAccount();
+  const readyAccountId = readyTradeAccountId(
+    journalAccountStatus,
+    selectedAccount?.id ?? null,
+  );
+  const ready = readyAccountId !== null;
   const queryClient = useQueryClient();
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
@@ -128,25 +145,17 @@ export function QuickTradeDialog() {
     defaultValues: defaults,
   });
   const status = form.watch("status");
-  const accountId = form.watch("accountId");
   const instrument = form.watch("instrument");
   const assetClass = form.watch("assetClass");
   const actualEntry = form.watch("actualEntry");
   const initialStopLoss = form.watch("initialStopLoss");
   const plannedRisk = form.watch("plannedRisk");
   const riskPercent = form.watch("riskPercent");
-  const sizingAccount = bootstrap.data?.accounts.find(
-    (account) => account.id === accountId,
-  );
   useEffect(() => {
-    if (
-      quickTradeOpen &&
-      !form.getValues("accountId") &&
-      bootstrap.data?.accounts[0]
-    ) {
-      form.setValue("accountId", bootstrap.data.accounts[0].id);
-    }
-  }, [bootstrap.data, form, quickTradeOpen]);
+    if (quickTradeOpen && !ready) setQuickTradeOpen(false);
+    if (quickTradeOpen && selectedAccount)
+      form.setValue("accountId", selectedAccount.id);
+  }, [form, quickTradeOpen, ready, selectedAccount, setQuickTradeOpen]);
   const setRiskPercent = useCallback(
     (value: string) => form.setValue("riskPercent", value),
     [form],
@@ -180,7 +189,7 @@ export function QuickTradeDialog() {
 
   const submit = form.handleSubmit((values) => {
     const input: TradeInput = {
-      accountId: values.accountId || undefined,
+      accountId: readyAccountId!,
       strategyId: undefined,
       setupId: values.setupId || undefined,
       status: values.status,
@@ -295,16 +304,6 @@ export function QuickTradeDialog() {
                       <option value="closed">Geschlossen</option>
                     </select>
                   </Field>
-                  <Field label="Konto">
-                    <select className="select" {...form.register("accountId")}>
-                      <option value="">Nicht zugeordnet</option>
-                      {bootstrap.data?.accounts.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
-                  </Field>
                   <Field label="Setup">
                     <select className="select" {...form.register("setupId")}>
                       <option value="">Ohne Setup</option>
@@ -366,7 +365,7 @@ export function QuickTradeDialog() {
               <section className="form-section">
                 <h3 className="form-section-title">Ausführung & Risiko</h3>
                 <PositionSizeCalculator
-                  account={sizingAccount}
+                  account={selectedAccount ?? undefined}
                   instrument={instrument}
                   assetClass={assetClass}
                   entryPrice={actualEntry ?? ""}
@@ -416,7 +415,7 @@ export function QuickTradeDialog() {
                     />
                   </Field>
                   <Field
-                    label={`Geplantes Risiko (${sizingAccount?.baseCurrency ?? "Kontowährung"})`}
+                    label={`Geplantes Risiko (${selectedAccount?.baseCurrency ?? "Kontowährung"})`}
                   >
                     <input
                       className="input"
@@ -553,7 +552,7 @@ export function QuickTradeDialog() {
                 <Button
                   variant="primary"
                   type="submit"
-                  disabled={mutation.isPending}
+                  disabled={!ready || mutation.isPending}
                 >
                   <Save size={15} />{" "}
                   {mutation.isPending ? "Speichert …" : "Trade speichern"}

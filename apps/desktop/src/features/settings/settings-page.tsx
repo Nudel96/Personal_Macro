@@ -1,3 +1,4 @@
+import { Settings2 as PageIcon } from "lucide-react";
 import * as Switch from "@radix-ui/react-switch";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -7,19 +8,16 @@ import {
   Database,
   HardDrive,
   Keyboard,
-  Link2,
   Palette,
   Plus,
-  RefreshCw,
   Save,
   ShieldCheck,
   SlidersHorizontal,
   Tags,
   WalletCards,
-  Wifi,
-  WifiOff,
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
@@ -28,13 +26,14 @@ import { PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { api, isTauri } from "../../services/commands";
 import { formatMoneyMinor } from "../../lib/utils";
-import type { Account, Mt5Account, TaxonomyItem } from "../../types/domain";
+import { useUiStore } from "../../stores/ui-store";
+import type { Account, TaxonomyItem } from "../../types/domain";
+import { AccountConnectionPanel } from "../accounts/account-connection-panel";
 
 const sections = [
   { id: "appearance", label: "Darstellung", icon: Palette },
   { id: "analytics", label: "Analytics", icon: BarChart3 },
   { id: "accounts", label: "Konten", icon: WalletCards },
-  { id: "mt5", label: "MetaTrader 5", icon: Wifi },
   { id: "custom", label: "Eigene Felder", icon: SlidersHorizontal },
   { id: "taxonomy", label: "Tags", icon: Tags },
   { id: "data", label: "Daten & Backup", icon: Database },
@@ -43,7 +42,20 @@ const sections = [
 ];
 
 export function SettingsPage() {
-  const [section, setSection] = useState("appearance");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const requestedSection = searchParams.get("section");
+  const initialSection = sections.some((item) => item.id === requestedSection)
+    ? requestedSection!
+    : "appearance";
+  const [section, setSection] = useState(initialSection);
+  useEffect(() => {
+    if (
+      requestedSection &&
+      sections.some((item) => item.id === requestedSection)
+    ) {
+      setSection(requestedSection);
+    }
+  }, [requestedSection]);
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
@@ -51,30 +63,41 @@ export function SettingsPage() {
   const settings = useQuery({ queryKey: ["settings"], queryFn: api.settings });
   if (bootstrap.isLoading || settings.isLoading)
     return (
-      <div className="page">
+      <div className="page settings-page">
         <PageLoading />
       </div>
     );
   return (
-    <div className="page">
+    <div className="page settings-page">
       <PageHeader
+        icon={PageIcon}
         eyebrow="Daten & System"
         title="Einstellungen"
         description="Lokale Darstellung, Analytics-Regeln, Backups und Datenschutz."
       />
       <div className="grid settings-grid">
-        <Card className="settings-nav">
+        <Card
+          className="settings-nav"
+          role="navigation"
+          aria-label="Einstellungsbereiche"
+        >
           {sections.map(({ id, label, icon: Icon }) => (
             <button
               className={section === id ? "active" : ""}
+              aria-current={section === id ? "page" : undefined}
               key={id}
-              onClick={() => setSection(id)}
+              onClick={() => {
+                setSection(id);
+                setSearchParams(id === "appearance" ? {} : { section: id }, {
+                  replace: true,
+                });
+              }}
             >
               <Icon size={15} /> {label}
             </button>
           ))}
         </Card>
-        <div>
+        <div className="settings-panel">
           {section === "appearance" && (
             <AppearanceSettings initial={settings.data?.settings.appearance} />
           )}
@@ -83,9 +106,6 @@ export function SettingsPage() {
           )}
           {section === "accounts" && (
             <AccountSettings accounts={bootstrap.data?.accounts ?? []} />
-          )}
-          {section === "mt5" && (
-            <Mt5Settings accounts={bootstrap.data?.accounts ?? []} />
           )}
           {section === "custom" && <CustomFieldSettings />}
           {section === "taxonomy" && (
@@ -106,171 +126,22 @@ export function SettingsPage() {
   );
 }
 
-function Mt5Settings({ accounts }: { accounts: Account[] }) {
-  const queryClient = useQueryClient();
-  const mt5 = useQuery({
-    queryKey: ["mt5", "accounts"],
-    queryFn: api.mt5Accounts,
-    refetchInterval: 5_000,
-  });
-  const sync = useMutation({
-    mutationFn: api.syncMt5Now,
-    onSuccess: async (result) => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["mt5"] }),
-        queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),
-        queryClient.invalidateQueries({ queryKey: ["trades"] }),
-        queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
-      ]);
-      if (result.status === "unmapped") {
-        toast.warning(result.message);
-      } else {
-        toast.success(result.message);
-      }
-    },
-    onError: (error: { message?: string }) =>
-      toast.error(error.message ?? "MT5 konnte nicht aktualisiert werden."),
-  });
-  const rows = mt5.data?.accounts ?? [];
-  return (
-    <div className="grid" style={{ gap: 14 }}>
-      <SettingsCard
-        title="MetaTrader-5-Konten"
-        subtitle={`Read-only · automatische Prüfung alle ${mt5.data?.automationIntervalSeconds ?? 10} Sekunden`}
-      >
-        <div className="page-actions" style={{ marginBottom: 14 }}>
-          <Button
-            onClick={() => sync.mutate()}
-            disabled={!isTauri() || sync.isPending}
-          >
-            <RefreshCw size={14} /> Jetzt synchronisieren
-          </Button>
-        </div>
-        {mt5.isLoading && (
-          <span className="muted">MT5-Konten werden geprüft …</span>
-        )}
-        {!mt5.isLoading && !rows.length && (
-          <div className="notice">
-            Noch kein MT5-Konto erkannt. Starte MetaTrader 5, melde dich an und
-            lasse Personal Macro geöffnet. Die Verbindung wird automatisch
-            erkannt.
-          </div>
-        )}
-        {rows.map((mt5Account) => (
-          <Mt5AccountSetting
-            key={mt5Account.id}
-            mt5Account={mt5Account}
-            accounts={accounts}
-          />
-        ))}
-        <div className="notice" style={{ marginTop: 15 }}>
-          Die Identität wird immer aus Server und MT5-Login gebildet. Ein
-          unbekannter Login importiert keine Trades, bis du ihn hier einem
-          Journal-Konto zuordnest. Passwörter und Orderfunktionen werden nicht
-          verwendet.
-        </div>
-      </SettingsCard>
-    </div>
-  );
-}
-
-function Mt5AccountSetting({
-  mt5Account,
-  accounts,
-}: {
-  mt5Account: Mt5Account;
-  accounts: Account[];
-}) {
-  const queryClient = useQueryClient();
-  const [localAccountId, setLocalAccountId] = useState(accounts[0]?.id ?? "");
-  const link = useMutation({
-    mutationFn: async () => {
-      await api.linkMt5Account(mt5Account.id, localAccountId);
-      return api.syncMt5Now();
-    },
-    onSuccess: async (result) => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["mt5"] }),
-        queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),
-        queryClient.invalidateQueries({ queryKey: ["trades"] }),
-        queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
-      ]);
-      toast.success(result.message);
-    },
-    onError: (error: { message?: string }) =>
-      toast.error(error.message ?? "MT5-Konto konnte nicht zugeordnet werden."),
-  });
-  const brokerValues = [
-    mt5Account.balanceMinor != null
-      ? `Balance ${formatMoneyMinor(mt5Account.balanceMinor)} ${mt5Account.currency ?? ""}`
-      : null,
-    mt5Account.equityMinor != null
-      ? `Equity ${formatMoneyMinor(mt5Account.equityMinor)} ${mt5Account.currency ?? ""}`
-      : null,
-  ]
-    .filter(Boolean)
-    .join(" · ");
-  return (
-    <div className="settings-row" style={{ alignItems: "flex-start" }}>
-      <div className="settings-row-copy">
-        <strong>
-          {mt5Account.accountName || `MT5 ${mt5Account.login}`}{" "}
-          <Badge className={mt5Account.isConnected ? "positive" : "warning"}>
-            {mt5Account.isConnected ? (
-              <Wifi size={11} />
-            ) : (
-              <WifiOff size={11} />
-            )}
-            {mt5Account.isConnected ? "Verbunden" : "Getrennt"}
-          </Badge>
-        </strong>
-        <span>
-          Login {mt5Account.login} · {mt5Account.server}
-          {mt5Account.company ? ` · ${mt5Account.company}` : ""}
-        </span>
-        {brokerValues && <span>{brokerValues}</span>}
-        {mt5Account.localAccountName && (
-          <span>Journal-Konto: {mt5Account.localAccountName}</span>
-        )}
-      </div>
-      {mt5Account.localAccountId ? (
-        <Badge className="positive">
-          <Link2 size={11} /> Sicher zugeordnet
-        </Badge>
-      ) : (
-        <div className="page-actions">
-          <select
-            className="select"
-            value={localAccountId}
-            onChange={(event) => setLocalAccountId(event.target.value)}
-          >
-            {accounts.map((account) => (
-              <option key={account.id} value={account.id}>
-                {account.name} · {account.baseCurrency}
-              </option>
-            ))}
-          </select>
-          <Button
-            variant="primary"
-            size="sm"
-            disabled={!localAccountId || link.isPending}
-            onClick={() => link.mutate()}
-          >
-            <Link2 size={12} /> Zuordnen
-          </Button>
-        </div>
-      )}
-    </div>
-  );
-}
-
 function AccountSettings({ accounts }: { accounts: Account[] }) {
   const queryClient = useQueryClient();
+  const selectedJournalAccountId = useUiStore(
+    (state) => state.selectedJournalAccountId,
+  );
+  const setSelectedJournalAccountId = useUiStore(
+    (state) => state.setSelectedJournalAccountId,
+  );
   const [name, setName] = useState("");
   const [broker, setBroker] = useState("");
   const [currency, setCurrency] = useState("EUR");
   const [initialBalance, setInitialBalance] = useState("");
   const [defaultRiskPercent, setDefaultRiskPercent] = useState("1");
+  const [creationMode, setCreationMode] = useState<"manual" | "connected">(
+    "manual",
+  );
   const [selectedAccountId, setSelectedAccountId] = useState(
     accounts[0]?.id ?? "",
   );
@@ -298,6 +169,7 @@ function AccountSettings({ accounts }: { accounts: Account[] }) {
       }),
     onSuccess: async (account) => {
       await queryClient.invalidateQueries({ queryKey: ["bootstrap"] });
+      setSelectedJournalAccountId(account.id);
       setSelectedAccountId(account.id);
       setName("");
       setBroker("");
@@ -310,8 +182,12 @@ function AccountSettings({ accounts }: { accounts: Account[] }) {
   });
   const archive = useMutation({
     mutationFn: api.archiveAccount,
-    onSuccess: async () => {
+    onSuccess: async (_, archivedAccountId) => {
       await queryClient.invalidateQueries({ queryKey: ["bootstrap"] });
+      if (selectedJournalAccountId === archivedAccountId) {
+        setSelectedJournalAccountId(null);
+      }
+      setSelectedAccountId("");
       toast.success("Konto archiviert.");
     },
     onError: (error: { message?: string }) =>
@@ -350,7 +226,7 @@ function AccountSettings({ accounts }: { accounts: Account[] }) {
           <Setting
             key={account.id}
             label={account.name}
-            copy={`${account.broker ?? "Ohne Broker"} · ${account.baseCurrency} · Journal ${formatMoneyMinor(account.currentBalanceMinor)}${account.brokerBalanceMinor != null ? ` · MT5 Balance ${formatMoneyMinor(account.brokerBalanceMinor)}` : ""}${account.brokerEquityMinor != null ? ` · MT5 Equity ${formatMoneyMinor(account.brokerEquityMinor)}` : ""} · Risiko ${account.defaultRiskPercent.toLocaleString("de-DE")} %`}
+            copy={`${account.broker ?? "Ohne Broker"} · ${account.baseCurrency} · Journal ${formatMoneyMinor(account.currentBalanceMinor)} · Risiko ${account.defaultRiskPercent.toLocaleString("de-DE")} %`}
           >
             <Button
               variant="danger"
@@ -362,62 +238,95 @@ function AccountSettings({ accounts }: { accounts: Account[] }) {
             </Button>
           </Setting>
         ))}
-        <div className="form-grid cols-3" style={{ marginTop: 16 }}>
-          <div className="field">
-            <label>Kontoname</label>
-            <input
-              className="input"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
-              placeholder="z. B. Prop Evaluation"
-            />
-          </div>
-          <div className="field">
-            <label>Broker / Firma</label>
-            <input
-              className="input"
-              value={broker}
-              onChange={(event) => setBroker(event.target.value)}
-            />
-          </div>
-          <div className="field">
-            <label>Basiswährung</label>
-            <input
-              className="input"
-              maxLength={3}
-              value={currency}
-              onChange={(event) => setCurrency(event.target.value)}
-            />
-          </div>
-          <div className="field">
-            <label>Startkapital</label>
-            <input
-              className="input"
-              inputMode="decimal"
-              value={initialBalance}
-              onChange={(event) => setInitialBalance(event.target.value)}
-              placeholder="0,00"
-            />
-          </div>
-          <div className="field">
-            <label>Standardrisiko (%)</label>
-            <input
-              className="input"
-              inputMode="decimal"
-              value={defaultRiskPercent}
-              onChange={(event) => setDefaultRiskPercent(event.target.value)}
-              placeholder="1,00"
-            />
-          </div>
-        </div>
-        <Button
-          variant="primary"
-          style={{ marginTop: 13 }}
-          disabled={!name.trim() || currency.length !== 3 || save.isPending}
-          onClick={() => save.mutate()}
+        <div
+          className="segmented account-creation-tabs"
+          aria-label="Konto anlegen"
         >
-          <Plus size={14} /> Konto anlegen
-        </Button>
+          <button
+            type="button"
+            className={creationMode === "manual" ? "active" : ""}
+            onClick={() => setCreationMode("manual")}
+          >
+            Manuell anlegen
+          </button>
+          <button
+            type="button"
+            className={creationMode === "connected" ? "active" : ""}
+            onClick={() => setCreationMode("connected")}
+          >
+            MT5 / cTrader verbinden
+          </button>
+        </div>
+        {creationMode === "manual" && (
+          <>
+            <div className="form-grid cols-3" style={{ marginTop: 16 }}>
+              <div className="field">
+                <label>Kontoname</label>
+                <input
+                  className="input"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="z. B. Prop Evaluation"
+                />
+              </div>
+              <div className="field">
+                <label>Broker / Firma</label>
+                <input
+                  className="input"
+                  value={broker}
+                  onChange={(event) => setBroker(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Basiswährung</label>
+                <input
+                  className="input"
+                  maxLength={3}
+                  value={currency}
+                  onChange={(event) => setCurrency(event.target.value)}
+                />
+              </div>
+              <div className="field">
+                <label>Startkapital</label>
+                <input
+                  className="input"
+                  inputMode="decimal"
+                  value={initialBalance}
+                  onChange={(event) => setInitialBalance(event.target.value)}
+                  placeholder="0,00"
+                />
+              </div>
+              <div className="field">
+                <label>Standardrisiko (%)</label>
+                <input
+                  className="input"
+                  inputMode="decimal"
+                  value={defaultRiskPercent}
+                  onChange={(event) =>
+                    setDefaultRiskPercent(event.target.value)
+                  }
+                  placeholder="1,00"
+                />
+              </div>
+            </div>
+            <Button
+              variant="primary"
+              style={{ marginTop: 13 }}
+              disabled={!name.trim() || currency.length !== 3 || save.isPending}
+              onClick={() => save.mutate()}
+            >
+              <Plus size={14} /> Konto anlegen
+            </Button>
+          </>
+        )}
+        {creationMode === "connected" && (
+          <AccountConnectionPanel
+            onAccountCreated={(accountId) => {
+              setSelectedJournalAccountId(accountId);
+              setSelectedAccountId(accountId);
+            }}
+          />
+        )}
       </SettingsCard>
       <SettingsCard
         title="Ein- und Auszahlungen"
@@ -722,16 +631,17 @@ function AppearanceSettings({ initial }: { initial: unknown }) {
     >
       <Setting
         label="Theme"
-        copy="Dark ist das Standardtheme; System und Light sind vorbereitet."
+        copy="Dunkles Workspace-Design. Ein helles Theme ist noch nicht verfügbar."
       >
         <select
           className="select"
           value={theme}
+          aria-label="Theme"
           onChange={(event) => setTheme(event.target.value)}
           style={{ width: 180 }}
         >
           <option value="dark">Dunkel</option>
-          <option value="system">System</option>
+          <option value="system">System (derzeit dunkel)</option>
           <option value="light" disabled>
             Hell (folgt)
           </option>
@@ -744,6 +654,7 @@ function AppearanceSettings({ initial }: { initial: unknown }) {
         <select
           className="select"
           value={density}
+          aria-label="Informationsdichte"
           onChange={(event) => setDensity(event.target.value)}
           style={{ width: 180 }}
         >
@@ -941,12 +852,6 @@ function PrivacySettings() {
       >
         <Badge className="positive">Aus</Badge>
       </Setting>
-      <Setting
-        label="Broker-Verbindung"
-        copy="Lokale Read-only-Verbindung zum bereits angemeldeten MetaTrader-5-Terminal."
-      >
-        <Badge className="positive">Keine Orderausführung</Badge>
-      </Setting>
       <div className="notice" style={{ marginTop: 15 }}>
         Optionale Datenanbieter für Forecasts werden nur über bewusst gestartete
         Import-Adapter angebunden. Quelle, Importzeit und Datenqualität bleiben
@@ -997,13 +902,22 @@ function SaveSetting({
   settingKey: string;
   value: unknown;
 }) {
+  const queryClient = useQueryClient();
   const mutation = useMutation({
     mutationFn: () => api.updateSetting(settingKey, value),
-    onSuccess: () => toast.success("Einstellung gespeichert."),
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["settings"] });
+      toast.success("Einstellung gespeichert.");
+    },
+    onError: () => toast.error("Einstellung konnte nicht gespeichert werden."),
   });
   return (
     <div style={{ display: "flex", justifyContent: "flex-end", marginTop: 15 }}>
-      <Button variant="primary" onClick={() => mutation.mutate()}>
+      <Button
+        variant="primary"
+        disabled={mutation.isPending}
+        onClick={() => mutation.mutate()}
+      >
         <Save size={14} /> Speichern
       </Button>
     </div>

@@ -9,23 +9,27 @@ import { dateTime, formatMoneyMinor } from "../../lib/utils";
 import { api } from "../../services/commands";
 
 export function TrashDialog({
+  accountId,
   open,
   onOpenChange,
 }: {
+  accountId?: string;
   open: boolean;
   onOpenChange: (open: boolean) => void;
 }) {
   const queryClient = useQueryClient();
   const query = useQuery({
-    queryKey: ["deleted-trades"],
-    queryFn: api.deletedTrades,
-    enabled: open,
+    queryKey: ["deleted-trades", accountId],
+    queryFn: () => api.deletedTrades(accountId!),
+    enabled: open && Boolean(accountId),
   });
   const restore = useMutation({
-    mutationFn: api.restoreTrade,
+    mutationFn: (id: string) => api.restoreTrade(accountId!, id),
     onSuccess: async () => {
       await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["deleted-trades"] }),
+        queryClient.invalidateQueries({
+          queryKey: ["deleted-trades", accountId],
+        }),
         queryClient.invalidateQueries({ queryKey: ["trades"] }),
         queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
         queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),

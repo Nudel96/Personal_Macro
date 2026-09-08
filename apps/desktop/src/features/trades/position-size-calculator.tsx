@@ -91,9 +91,7 @@ export function PositionSizeCalculator({
     }
   }, [account, riskPercent]);
 
-  const usesBrokerEquity = account?.brokerEquityMinor != null;
-  const capital =
-    (account?.brokerEquityMinor ?? account?.currentBalanceMinor ?? 0) / 100;
+  const capital = (account?.currentBalanceMinor ?? 0) / 100;
   const riskPercentNumber = parseTradeNumber(riskPercent);
   const automaticRisk =
     capital > 0 && riskPercentNumber > 0
@@ -151,7 +149,7 @@ export function PositionSizeCalculator({
       </div>
       <div className="form-grid cols-3">
         <CalculatorField
-          label={`${usesBrokerEquity ? "MT5-Equity" : "Kapital"} (${account?.baseCurrency ?? "Konto"})`}
+          label={`Kapital (${account?.baseCurrency ?? "Konto"})`}
         >
           <input
             className="input"
@@ -257,9 +255,9 @@ function CalculatorField({
   children: ReactNode;
 }) {
   return (
-    <div className="field">
-      <label>{label}</label>
+    <label className="field">
+      <span>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }

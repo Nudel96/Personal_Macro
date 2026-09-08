@@ -1,4 +1,9 @@
-import { browserBootstrap } from "./browser-adapter";
+import {
+  browserAccountTrades,
+  browserBootstrap,
+  browserGetTrade,
+  requireBrowserAccount,
+} from "./browser-adapter";
 import { uid } from "../lib/utils";
 import type {
   CustomField,
@@ -27,27 +32,38 @@ function save<T>(key: string, value: T) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
-export function listBrowserReviews() {
-  return Promise.resolve(
-    load<ReviewRecord[]>("personal-macro:browser-reviews:v1", []),
+export async function listBrowserReviews(accountId: string) {
+  const scopedAccountId = requireBrowserAccount(accountId);
+  return load<ReviewRecord[]>("personal-macro:browser-reviews:v1", []).filter(
+    (review) => review.accountId === scopedAccountId,
   );
 }
-export function saveBrowserReview(input: ReviewInput) {
+export async function saveBrowserReview(input: ReviewInput) {
+  const accountId = requireBrowserAccount(input.accountId);
   const rows = load<ReviewRecord[]>("personal-macro:browser-reviews:v1", []);
+  const existing = rows.find((item) => item.id === input.id);
+  if (existing && existing.accountId !== accountId) {
+    throw {
+      code: "NOT_FOUND",
+      message: "Review wurde nicht gefunden.",
+    };
+  }
   const now = new Date().toISOString();
+  const { metricSnapshot, ...recordInput } = input;
   const row: ReviewRecord = {
-    ...input,
+    ...recordInput,
     id: input.id ?? uid(),
-    metricSnapshotJson: JSON.stringify(input.metricSnapshot ?? {}),
+    accountId,
+    metricSnapshotJson: JSON.stringify(metricSnapshot ?? {}),
     completedAt: input.status === "completed" ? now : null,
-    createdAt: rows.find((item) => item.id === input.id)?.createdAt ?? now,
+    createdAt: existing?.createdAt ?? now,
     updatedAt: now,
   };
   const index = rows.findIndex((item) => item.id === row.id);
   if (index >= 0) rows[index] = row;
   else rows.unshift(row);
   save("personal-macro:browser-reviews:v1", rows);
-  return Promise.resolve(row);
+  return row;
 }
 
 export function listBrowserGoals() {
@@ -79,7 +95,9 @@ export function recordBrowserGoalProgress(goalId: string, value: string) {
   return Promise.resolve();
 }
 
-export function listBrowserPlaybook(): Promise<PlaybookSetup[]> {
+export async function listBrowserPlaybook(
+  accountId?: string,
+): Promise<PlaybookSetup[]> {
   const versions = load<Record<string, Partial<PlaybookSetup>>>(
     "personal-macro:browser-playbook:v1",
     {},
@@ -93,9 +111,16 @@ export function listBrowserPlaybook(): Promise<PlaybookSetup[]> {
       (setup) => !browserBootstrap.setups.some((base) => base.id === setup.id),
     ),
   ];
-  return Promise.resolve(
-    all.map((setup) => ({ ...setup, tradeCount: 0, ...versions[setup.id] })),
-  );
+  const trades =
+    accountId === undefined ? null : browserAccountTrades(accountId);
+  return all.map((setup) => ({
+    ...setup,
+    ...versions[setup.id],
+    tradeCount:
+      trades === null
+        ? null
+        : trades.filter((trade) => trade.setupId === setup.id).length,
+  }));
 }
 export function saveBrowserSetupVersion(
   setupId: string,
@@ -142,35 +167,60 @@ export function createBrowserSetup(input: {
   return Promise.resolve(setup);
 }
 
-export function browserMistakes(): Promise<MistakeAnalytics[]> {
-  return Promise.resolve(
-    browserBootstrap.mistakes.map((mistake) => ({
+export async function browserMistakes(
+  accountId: string,
+): Promise<MistakeAnalytics[]> {
+  const trades = browserAccountTrades(accountId);
+  const tradeIds = new Set(trades.map((trade) => trade.id));
+  const assignments = load<Record<string, TradeMistakeRecord[]>>(
+    "personal-macro:browser-trade-mistakes:v1",
+    {},
+  );
+  return browserBootstrap.mistakes.map((mistake) => {
+    const matching = [...tradeIds].flatMap((tradeId) =>
+      (assignments[tradeId] ?? []).filter(
+        (assignment) => assignment.mistakeId === mistake.id,
+      ),
+    );
+    return {
       ...mistake,
       description: null,
       countermeasure: null,
-      occurrences: 0,
-      estimatedCostMinor: 0,
-      averageSeverity: null,
-    })),
-  );
+      occurrences: matching.length,
+      estimatedCostMinor: matching.reduce(
+        (sum, assignment) => sum + (assignment.estimatedCostMinor ?? 0),
+        0,
+      ),
+      averageSeverity: matching.length
+        ? matching.reduce((sum, assignment) => sum + assignment.severity, 0) /
+          matching.length
+        : null,
+    };
+  });
 }
-export function listBrowserTradeMistakes(
+export async function listBrowserTradeMistakes(
+  accountId: string,
   tradeId: string,
 ): Promise<TradeMistakeRecord[]> {
-  return Promise.resolve(
+  await browserGetTrade(accountId, tradeId);
+  return (
     load<Record<string, TradeMistakeRecord[]>>(
       "personal-macro:browser-trade-mistakes:v1",
       {},
-    )[tradeId] ?? [],
+    )[tradeId] ?? []
   );
 }
-export function assignBrowserTradeMistake(input: {
-  tradeId: string;
-  mistakeId: string;
-  severity: number;
-  estimatedCostMinor?: number;
-  note?: string;
-}) {
+export async function assignBrowserTradeMistake(
+  accountId: string,
+  input: {
+    tradeId: string;
+    mistakeId: string;
+    severity: number;
+    estimatedCostMinor?: number;
+    note?: string;
+  },
+) {
+  await browserGetTrade(accountId, input.tradeId);
   const all = load<Record<string, TradeMistakeRecord[]>>(
     "personal-macro:browser-trade-mistakes:v1",
     {},
@@ -201,14 +251,22 @@ const emptyTradeContext: TradeContext = {
   emotions: [],
   customValues: [],
 };
-export function getBrowserTradeContext(tradeId: string) {
+export async function getBrowserTradeContext(
+  accountId: string,
+  tradeId: string,
+) {
+  await browserGetTrade(accountId, tradeId);
   const all = load<Record<string, TradeContext>>(
     "personal-macro:browser-trade-context:v1",
     {},
   );
-  return Promise.resolve(all[tradeId] ?? structuredClone(emptyTradeContext));
+  return all[tradeId] ?? structuredClone(emptyTradeContext);
 }
-export function saveBrowserTradeContext(input: TradeContextInput) {
+export async function saveBrowserTradeContext(
+  accountId: string,
+  input: TradeContextInput,
+) {
+  await browserGetTrade(accountId, input.tradeId);
   const all = load<Record<string, TradeContext>>(
     "personal-macro:browser-trade-context:v1",
     {},

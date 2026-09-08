@@ -1,3 +1,4 @@
+import { CalendarDays as PageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import {
   addMonths,
@@ -14,15 +15,19 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { formatMoneyMinor, formatR } from "../../lib/utils";
 import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import type { CalendarDay } from "../../types/domain";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import { useJournalAccount } from "../accounts/journal-account-context";
 
 export function CalendarPage() {
   const [month, setMonth] = useState(() => new Date());
   const setQuickTradeOpen = useUiStore((state) => state.setQuickTradeOpen);
+  const { status, selectedAccountId } = useJournalAccount();
+  const ready = status === "ready" && selectedAccountId !== null;
   const filter = useMemo(
     () => ({
       dateFrom: startOfMonth(month).toISOString(),
@@ -30,22 +35,27 @@ export function CalendarPage() {
     }),
     [month],
   );
+  const calendar = useQuery({
+    queryKey: ["calendar", selectedAccountId, "month", filter],
+    queryFn: () => api.calendar(selectedAccountId!, filter),
+    enabled: ready,
+  });
   const dashboard = useQuery({
-    queryKey: ["dashboard", "calendar", filter],
-    queryFn: () => api.dashboard(filter),
+    queryKey: ["dashboard", selectedAccountId, "calendar", filter],
+    queryFn: () => api.dashboard(selectedAccountId!, filter),
+    enabled: ready,
   });
   const year = month.getFullYear();
   const annual = useQuery({
-    queryKey: ["dashboard", "calendar-year", year],
+    queryKey: ["calendar", selectedAccountId, "year", year],
     queryFn: () =>
-      api.dashboard({
+      api.calendar(selectedAccountId!, {
         dateFrom: new Date(year, 0, 1).toISOString(),
         dateTo: new Date(year, 11, 31, 23, 59, 59).toISOString(),
       }),
+    enabled: ready,
   });
-  const data = new Map(
-    dashboard.data?.calendar.map((day) => [day.date, day]) ?? [],
-  );
+  const data = new Map(calendar.data?.map((day) => [day.date, day]) ?? []);
   const start = startOfMonth(month);
   const end = endOfMonth(month);
   const cells: (Date | null)[] = Array.from(
@@ -55,9 +65,25 @@ export function CalendarPage() {
   for (let day = 1; day <= end.getDate(); day += 1)
     cells.push(new Date(month.getFullYear(), month.getMonth(), day));
 
+  if (!ready)
+    return (
+      <div className="page calendar-page">
+        <JournalPageHeader
+          icon={PageIcon}
+          eyebrow="Tradingjournal"
+          title="Performance-Kalender"
+          description="Wähle ein Tradingkonto aus, um deinen Kalender zu sehen."
+        />
+        <JournalAccountGate>
+          <div />
+        </JournalAccountGate>
+      </div>
+    );
+
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page calendar-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Performance-Kalender"
         description="Tägliche Ergebnisse, R-Multiples und Trade-Aktivität im Monatskontext."
@@ -78,12 +104,14 @@ export function CalendarPage() {
             <div className="page-actions">
               <Button
                 size="icon"
+                aria-label="Vorheriger Monat"
                 onClick={() => setMonth((value) => subMonths(value, 1))}
               >
                 <ChevronLeft size={15} />
               </Button>
               <Button
                 size="icon"
+                aria-label="Nächster Monat"
                 onClick={() => setMonth((value) => addMonths(value, 1))}
               >
                 <ChevronRight size={15} />
@@ -91,12 +119,12 @@ export function CalendarPage() {
             </div>
           }
         />
-        <CardContent>
-          {dashboard.isLoading ? (
+        <CardContent className="calendar-month-scroll">
+          {calendar.isLoading ? (
             <PageLoading />
-          ) : dashboard.isError ? (
+          ) : calendar.isError ? (
             <ErrorState message="Kalender konnte nicht geladen werden." />
-          ) : !dashboard.data?.calendar.length ? (
+          ) : !calendar.data?.length ? (
             <EmptyState
               icon={CalendarDays}
               title="Dieser Monat ist noch leer"
@@ -190,14 +218,11 @@ export function CalendarPage() {
           {annual.isLoading ? (
             <PageLoading />
           ) : (
-            <YearHeatmap year={year} days={annual.data?.calendar ?? []} />
+            <YearHeatmap year={year} days={annual.data ?? []} />
           )}
         </CardContent>
       </Card>
-      <div
-        className="grid"
-        style={{ gridTemplateColumns: "repeat(4, 1fr)", marginTop: 14 }}
-      >
+      <div className="grid summary-grid" style={{ marginTop: 16 }}>
         <Summary
           label="Monats-P&L"
           value={formatMoneyMinor(dashboard.data?.metrics.netPnlMinor)}
@@ -218,7 +243,7 @@ export function CalendarPage() {
         />
         <Summary
           label="Handelstage"
-          value={String(dashboard.data?.calendar.length ?? 0)}
+          value={String(calendar.data?.length ?? 0)}
         />
         <Summary
           label="Trades"

@@ -17,11 +17,11 @@ import type {
 } from "../../types/domain";
 import { formatMoneyMinor, formatR, percent } from "../../lib/utils";
 
-async function allTrades() {
-  const first = await api.listTrades({ page: 1, pageSize: 250 });
+export async function allTrades(accountId: string) {
+  const first = await api.listTrades(accountId, { page: 1, pageSize: 250 });
   const pages = await Promise.all(
     Array.from({ length: Math.max(0, first.totalPages - 1) }, (_, index) =>
-      api.listTrades({ page: index + 2, pageSize: 250 }),
+      api.listTrades(accountId, { page: index + 2, pageSize: 250 }),
     ),
   );
   return [first, ...pages].flatMap((page) => page.items);
@@ -57,9 +57,9 @@ async function downloadBytes(
   return true;
 }
 
-export async function exportTradesExcel() {
+export async function exportTradesExcel(accountId: string) {
   const XLSX = await import("xlsx");
-  const trades = await allTrades();
+  const trades = await allTrades(accountId);
   const rows = trades.map((trade) => ({
     Instrument: trade.instrument,
     Assetklasse: trade.assetClass,
@@ -218,11 +218,16 @@ function PerformanceDocument({
   );
 }
 
-export async function exportPerformancePdf() {
+export async function loadPerformanceExportData(accountId: string) {
   const [dashboard, trades] = await Promise.all([
-    api.dashboard({}),
-    allTrades(),
+    api.dashboard(accountId, {}),
+    allTrades(accountId),
   ]);
+  return { dashboard, trades };
+}
+
+export async function exportPerformancePdf(accountId: string) {
+  const { dashboard, trades } = await loadPerformanceExportData(accountId);
   const blob = await pdf(
     <PerformanceDocument dashboard={dashboard} trades={trades} />,
   ).toBlob();

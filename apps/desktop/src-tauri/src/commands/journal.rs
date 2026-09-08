@@ -1,10 +1,11 @@
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
-use sqlx::FromRow;
+use sqlx::{FromRow, SqlitePool};
 use tauri::State;
 use uuid::Uuid;
 
 use crate::{
+    commands::journal_scope::require_trade_in_account,
     database::AppState,
     errors::{AppError, CommandResult},
 };
@@ -194,26 +195,29 @@ fn validate_context(input: &TradeContextInput) -> Result<(), AppError> {
 #[tauri::command]
 pub async fn get_trade_context(
     state: State<'_, AppState>,
+    account_id: String,
     trade_id: String,
 ) -> CommandResult<TradeContextRecord> {
-    let exists: bool =
-        sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM trades WHERE id = ? AND is_deleted = 0)")
-            .bind(&trade_id)
-            .fetch_one(&state.db)
-            .await?;
-    if !exists {
-        return Err(AppError::NotFound(format!("Trade {trade_id}")).into());
-    }
+    get_trade_context_for_pool(&state.db, &account_id, &trade_id).await
+}
+
+pub(crate) async fn get_trade_context_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
+    trade_id: &str,
+) -> CommandResult<TradeContextRecord> {
+    require_trade_in_account(db, account_id, trade_id).await?;
+    let trade_id = trade_id.trim();
     let legs = sqlx::query_as::<_, TradeLegRecord>("SELECT id, leg_type, occurred_at, price, quantity, fees_minor, note, sort_order FROM trade_legs WHERE trade_id = ? ORDER BY sort_order, occurred_at")
-        .bind(&trade_id).fetch_all(&state.db).await?;
+        .bind(trade_id).fetch_all(db).await?;
     let tags = sqlx::query_as::<_, TradeTagRecord>("SELECT g.id, g.name, g.color FROM tags g JOIN trade_tags tt ON tt.tag_id = g.id WHERE tt.trade_id = ? ORDER BY g.name COLLATE NOCASE")
-        .bind(&trade_id).fetch_all(&state.db).await?;
+        .bind(trade_id).fetch_all(db).await?;
     let checklist_items = sqlx::query_as::<_, TradeChecklistRecord>("SELECT id, label_snapshot, category_snapshot, is_required, is_checked, note, sort_order FROM trade_checklist_items WHERE trade_id = ? ORDER BY sort_order")
-        .bind(&trade_id).fetch_all(&state.db).await?;
+        .bind(trade_id).fetch_all(db).await?;
     let emotions = sqlx::query_as::<_, TradeEmotionRecord>("SELECT te.emotion_id, e.name, e.color, te.phase, te.intensity, te.note FROM trade_emotions te JOIN emotions e ON e.id = te.emotion_id WHERE te.trade_id = ? ORDER BY CASE te.phase WHEN 'before' THEN 0 WHEN 'during' THEN 1 ELSE 2 END")
-        .bind(&trade_id).fetch_all(&state.db).await?;
+        .bind(trade_id).fetch_all(db).await?;
     let custom_values = sqlx::query_as::<_, CustomFieldValueRecord>("SELECT custom_field_id, value_json FROM custom_field_values WHERE entity_type = 'trade' AND entity_id = ?")
-        .bind(&trade_id).fetch_all(&state.db).await?;
+        .bind(trade_id).fetch_all(db).await?;
     Ok(TradeContextRecord {
         legs,
         tags,
@@ -226,17 +230,30 @@ pub async fn get_trade_context(
 #[tauri::command]
 pub async fn save_trade_context(
     state: State<'_, AppState>,
+    account_id: String,
+    input: TradeContextInput,
+) -> CommandResult<TradeContextRecord> {
+    save_trade_context_for_pool(&state.db, &account_id, input).await
+}
+
+pub(crate) async fn save_trade_context_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
     input: TradeContextInput,
 ) -> CommandResult<TradeContextRecord> {
     validate_context(&input)?;
-    let mut transaction = state.db.begin().await?;
-    let exists: bool =
-        sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM trades WHERE id = ? AND is_deleted = 0)")
-            .bind(&input.trade_id)
-            .fetch_one(&mut *transaction)
-            .await?;
-    if !exists {
-        return Err(AppError::NotFound(format!("Trade {}", input.trade_id)).into());
+    require_trade_in_account(db, account_id, &input.trade_id).await?;
+    let mut transaction = db.begin().await?;
+    let guarded_parent = sqlx::query(
+        "UPDATE trades SET updated_at = updated_at WHERE id = ? AND account_id = ? AND is_deleted = 0 AND EXISTS (SELECT 1 FROM accounts WHERE id = ? AND is_archived = 0)",
+    )
+    .bind(input.trade_id.trim())
+    .bind(account_id.trim())
+    .bind(account_id.trim())
+    .execute(&mut *transaction)
+    .await?;
+    if guarded_parent.rows_affected() == 0 {
+        return Err(AppError::NotFound("Trade".into()).into());
     }
     sqlx::query("DELETE FROM trade_legs WHERE trade_id = ?")
         .bind(&input.trade_id)
@@ -289,7 +306,7 @@ pub async fn save_trade_context(
             .bind(Uuid::new_v4().to_string()).bind(&value.custom_field_id).bind(&input.trade_id).bind(&value.value_json).bind(&now).execute(&mut *transaction).await?;
     }
     transaction.commit().await?;
-    get_trade_context(state, input.trade_id).await
+    get_trade_context_for_pool(db, account_id, &input.trade_id).await
 }
 
 #[tauri::command]
@@ -378,4 +395,161 @@ pub async fn delete_custom_field(state: State<'_, AppState>, id: String) -> Comm
         .execute(&state.db)
         .await?;
     Ok(())
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use sqlx::{
+        SqlitePool,
+        sqlite::{SqliteConnectOptions, SqlitePoolOptions},
+    };
+    use std::str::FromStr;
+
+    async fn trade_child_database() -> SqlitePool {
+        let pool = SqlitePoolOptions::new()
+            .max_connections(1)
+            .connect_with(
+                SqliteConnectOptions::from_str("sqlite::memory:")
+                    .unwrap()
+                    .foreign_keys(true),
+            )
+            .await
+            .unwrap();
+        sqlx::migrate!("./migrations").run(&pool).await.unwrap();
+        for id in ["account-a", "account-b"] {
+            sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES (?, ?, '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')")
+                .bind(id)
+                .bind(id)
+                .execute(&pool)
+                .await
+                .unwrap();
+            sqlx::query("INSERT INTO trades (id, account_id, status, instrument, asset_class, direction, display_timezone, created_at, updated_at) VALUES (?, ?, 'closed', 'EURUSD', 'forex', 'long', 'Europe/Berlin', '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')")
+                .bind(format!("trade-{}", &id[8..]))
+                .bind(id)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        sqlx::query("INSERT INTO tags (id, name, created_at) VALUES ('tag-b', 'Tag B', '2026-01-01T00:00:00Z')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO emotions (id, name, created_at) VALUES ('emotion-b', 'Emotion B', '2026-01-01T00:00:00Z')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO custom_fields (id, entity_type, name, field_type, created_at, updated_at) VALUES ('field-b', 'trade', 'Field B', 'text', '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO trade_legs (id, trade_id, leg_type, occurred_at, price, quantity, fees_minor, note, sort_order, created_at) VALUES ('leg-b', 'trade-b', 'entry', '2026-01-01T01:00:00Z', '1.1', '2', 5, 'original leg', 0, '2026-01-01T00:00:00Z')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO trade_tags (trade_id, tag_id) VALUES ('trade-b', 'tag-b')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO trade_checklist_items (id, trade_id, label_snapshot, is_required, is_checked, note, sort_order) VALUES ('check-b', 'trade-b', 'Original check', 1, 1, 'original checklist', 0)")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO trade_emotions (trade_id, emotion_id, phase, intensity, note) VALUES ('trade-b', 'emotion-b', 'before', 4, 'original emotion')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        sqlx::query("INSERT INTO custom_field_values (id, custom_field_id, entity_type, entity_id, value_json, updated_at) VALUES ('value-b', 'field-b', 'trade', 'trade-b', '\"original\"', '2026-01-01T00:00:00Z')")
+            .execute(&pool)
+            .await
+            .unwrap();
+        pool
+    }
+
+    async fn child_snapshot(pool: &SqlitePool) -> (i64, i64, i64, i64, i64) {
+        sqlx::query_as(
+            r#"SELECT
+                (SELECT COUNT(*) FROM trade_legs WHERE trade_id = 'trade-b'),
+                (SELECT COUNT(*) FROM trade_tags WHERE trade_id = 'trade-b'),
+                (SELECT COUNT(*) FROM trade_checklist_items WHERE trade_id = 'trade-b'),
+                (SELECT COUNT(*) FROM trade_emotions WHERE trade_id = 'trade-b'),
+                (SELECT COUNT(*) FROM custom_field_values WHERE entity_type = 'trade' AND entity_id = 'trade-b')"#,
+        )
+        .fetch_one(pool)
+        .await
+        .unwrap()
+    }
+
+    #[tokio::test]
+    async fn trade_child_account_scope_blocks_foreign_context_reads_and_writes() {
+        let pool = trade_child_database().await;
+        let before = child_snapshot(&pool).await;
+
+        let read_error = get_trade_context_for_pool(&pool, "account-a", "trade-b")
+            .await
+            .unwrap_err();
+        assert_eq!(read_error.code, "NOT_FOUND");
+
+        let write_error = save_trade_context_for_pool(
+            &pool,
+            "account-a",
+            TradeContextInput {
+                trade_id: "trade-b".into(),
+                tag_ids: vec![],
+                legs: vec![TradeLegInput {
+                    id: None,
+                    leg_type: "exit".into(),
+                    occurred_at: "2026-01-02T01:00:00Z".into(),
+                    price: "1.2".into(),
+                    quantity: "1".into(),
+                    fees_minor: Some(0),
+                    note: Some("foreign replacement".into()),
+                    sort_order: Some(0),
+                }],
+                checklist_items: vec![],
+                emotions: vec![],
+                custom_values: vec![],
+            },
+        )
+        .await
+        .unwrap_err();
+        assert_eq!(write_error.code, "NOT_FOUND");
+        assert_eq!(child_snapshot(&pool).await, before);
+
+        let owned = get_trade_context_for_pool(&pool, "account-b", "trade-b")
+            .await
+            .unwrap();
+        assert_eq!(owned.legs.len(), 1);
+        assert_eq!(owned.tags.len(), 1);
+        assert_eq!(owned.checklist_items.len(), 1);
+        assert_eq!(owned.emotions.len(), 1);
+        assert_eq!(owned.custom_values.len(), 1);
+        assert_eq!(owned.legs[0].note.as_deref(), Some("original leg"));
+
+        let updated = save_trade_context_for_pool(
+            &pool,
+            "account-b",
+            TradeContextInput {
+                trade_id: "trade-b".into(),
+                tag_ids: vec!["tag-b".into()],
+                legs: vec![TradeLegInput {
+                    id: None,
+                    leg_type: "entry".into(),
+                    occurred_at: "2026-01-03T01:00:00Z".into(),
+                    price: "1.3".into(),
+                    quantity: "1".into(),
+                    fees_minor: Some(0),
+                    note: Some("owned update".into()),
+                    sort_order: Some(0),
+                }],
+                checklist_items: vec![],
+                emotions: vec![],
+                custom_values: vec![],
+            },
+        )
+        .await
+        .unwrap();
+        assert_eq!(updated.legs[0].note.as_deref(), Some("owned update"));
+        assert_eq!(updated.tags.len(), 1);
+    }
 }

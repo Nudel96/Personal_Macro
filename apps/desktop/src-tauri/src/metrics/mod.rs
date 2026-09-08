@@ -2,6 +2,7 @@ use chrono::DateTime;
 use serde::Serialize;
 
 pub mod policy_rates;
+pub mod technical_trend;
 
 pub const CALCULATION_VERSION: &str = "journal-metrics-v1";
 

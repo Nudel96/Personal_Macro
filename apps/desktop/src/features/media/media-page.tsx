@@ -1,3 +1,4 @@
+import { Images as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { convertFileSrc } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
@@ -38,6 +39,9 @@ import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
+import { CollectionToolbar } from "../../components/ui/collection-toolbar";
+import { WorkspaceSummary } from "../../components/ui/workspace-summary";
+import { useDialogFocus } from "../../components/ui/use-dialog-focus";
 import { dateTime, uid } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
 import type { MediaRecord } from "../../types/domain";
@@ -91,6 +95,14 @@ export function MediaPage() {
   const inputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
   const [selected, setSelected] = useState<MediaRecord>();
+  const { rememberFocus, restoreFocus } = useDialogFocus();
+  const [search, setSearch] = useState("");
+  const mediaFiles = query.data ?? [];
+  const visibleMedia = mediaFiles.filter((media) =>
+    media.originalFilename
+      .toLocaleLowerCase("de")
+      .includes(search.trim().toLocaleLowerCase("de")),
+  );
   const addMedia = async () => {
     setBusy(true);
     try {
@@ -150,19 +162,20 @@ export function MediaPage() {
   };
   if (query.isLoading)
     return (
-      <div className="page">
+      <div className="page media-page">
         <PageLoading />
       </div>
     );
   if (query.isError)
     return (
-      <div className="page">
+      <div className="page media-page">
         <ErrorState message="Medien konnten nicht geladen werden." />
       </div>
     );
   return (
-    <div className="page">
+    <div className="page media-page">
       <PageHeader
+        icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Medien"
         description="Lokale Screenshots mit unverändertem Original und nicht-destruktiven Chart-Anmerkungen."
@@ -179,13 +192,46 @@ export function MediaPage() {
         accept="image/*"
         onChange={(event) => browserFile(event.target.files?.[0])}
       />
-      {query.data?.length ? (
+      {mediaFiles.length > 0 && (
+        <>
+          <WorkspaceSummary
+            items={[
+              {
+                label: "Medienbibliothek",
+                value: mediaFiles.length,
+                detail: "Originale auf diesem Gerät",
+              },
+              {
+                label: "Mit Trades verknüpft",
+                value: mediaFiles.filter((media) => media.tradeCount > 0)
+                  .length,
+                detail: "Visueller Kontext für dein Journal",
+              },
+              {
+                label: "Speicherbedarf",
+                value: `${(mediaFiles.reduce((sum, media) => sum + media.sizeBytes, 0) / 1024 / 1024).toLocaleString("de-DE", { maximumFractionDigits: 1 })} MB`,
+                detail: "Größe der Originaldateien",
+              },
+            ]}
+          />
+          <CollectionToolbar
+            label="Medien durchsuchen"
+            value={search}
+            onChange={setSearch}
+            count={visibleMedia.length}
+          />
+        </>
+      )}
+      {visibleMedia.length ? (
         <div className="grid media-grid">
-          {query.data.map((media) => (
+          {visibleMedia.map((media) => (
             <MediaCard
               media={media}
               key={media.id}
-              onClick={() => setSelected(media)}
+              onClick={() => {
+                rememberFocus();
+                setSelected(media);
+              }}
             />
           ))}
         </div>
@@ -193,8 +239,12 @@ export function MediaPage() {
         <Card>
           <EmptyState
             icon={ImageIcon}
-            title="Noch keine Medien"
-            description="Importiere Screenshots. Die Desktop-App kopiert das Original in das lokale AppData-Verzeichnis und speichert einen SHA-256-Prüfwert."
+            title={search ? "Keine passenden Medien" : "Noch keine Medien"}
+            description={
+              search
+                ? "Suche nach einem anderen Dateinamen oder setze die Suche zurück."
+                : "Sammle Screenshots zu deinen Trades und ergänze Pfeile, Markierungen und Notizen. Das Original bleibt erhalten."
+            }
             action={
               <Button variant="primary" onClick={addMedia}>
                 <Plus size={14} /> Screenshot importieren
@@ -204,6 +254,7 @@ export function MediaPage() {
         </Card>
       )}
       <AnnotationDialog
+        onCloseAutoFocus={restoreFocus}
         media={selected}
         onOpenChange={(open) => !open && setSelected(undefined)}
       />
@@ -222,28 +273,17 @@ function MediaCard({
     ? media.absolutePath
     : convertFileSrc(media.absolutePath);
   return (
-    <Card style={{ overflow: "hidden", cursor: "pointer" }} onClick={onClick}>
-      <div
-        style={{
-          height: 185,
-          background: "#07101d",
-          display: "grid",
-          placeItems: "center",
-          overflow: "hidden",
-        }}
-      >
+    <Card className="collection-card">
+      <div className="media-preview">
         {media.mimeType.startsWith("image/") ? (
-          <img
-            src={src}
-            alt={media.originalFilename}
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
-          />
+          <img src={src} alt={media.originalFilename} />
         ) : (
           <FileImage size={32} className="muted" />
         )}
       </div>
       <CardHeader
         title={media.originalFilename}
+        onOpen={onClick}
         subtitle={dateTime(media.createdAt)}
         action={<Badge>{media.tradeCount} Trades</Badge>}
       />
@@ -253,7 +293,12 @@ function MediaCard({
             {(media.sizeBytes / 1024 / 1024).toFixed(2)} MB · {media.mimeType}
           </span>
           <span title={media.sha256}>Hash: {media.sha256.slice(0, 14)}…</span>
-          <span className="primary-text">Öffnen & annotieren</span>
+        </div>
+        <div className="collection-card-footer">
+          <span>Original erhalten</span>
+          <Button size="sm" onClick={onClick}>
+            Öffnen & annotieren
+          </Button>
         </div>
       </CardContent>
     </Card>
@@ -263,9 +308,11 @@ function MediaCard({
 function AnnotationDialog({
   media,
   onOpenChange,
+  onCloseAutoFocus,
 }: {
   media?: MediaRecord;
   onOpenChange: (open: boolean) => void;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const src = media
     ? media.absolutePath.startsWith("data:")
@@ -444,6 +491,7 @@ function AnnotationDialog({
         <Dialog.Content
           className="dialog-content wide annotation-dialog"
           aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
         >
           <header className="dialog-header">
             <div>
@@ -640,7 +688,7 @@ function AnnotationDialog({
           </div>
           <footer className="dialog-footer">
             <span className="muted">
-              {shapes.length} Elemente · separat als JSON gespeichert
+              {shapes.length} Elemente · Original bleibt erhalten
             </span>
             <Button
               variant="primary"

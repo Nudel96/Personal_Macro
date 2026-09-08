@@ -1,3 +1,4 @@
+import { BarChart3 as PageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
@@ -46,8 +47,10 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { OnboardingChecklist } from "../../components/ui/onboarding-checklist";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import { useJournalAccount } from "../accounts/journal-account-context";
 import {
   dateTime,
   formatMoneyMinor,
@@ -112,12 +115,18 @@ export function DashboardPage() {
     onboardingDismissed,
     setOnboardingCollapsed,
     setOnboardingDismissed,
-    globalAccountIds,
     globalSetupIds,
     globalDirection,
     globalDateFrom,
     globalDateTo,
   } = useUiStore();
+  const {
+    accounts: journalAccounts,
+    selectedAccountId,
+    status: journalAccountStatus,
+  } = useJournalAccount();
+  const hasSelectedJournalAccount =
+    journalAccountStatus === "ready" && selectedAccountId !== null;
   const [filterOpen, setFilterOpen] = useState(false);
   const [kpiOrder, setKpiOrder] = useState<string[]>(() => {
     try {
@@ -141,13 +150,11 @@ export function DashboardPage() {
   const filter = useMemo(
     () => ({
       ...presetFilter(globalDatePreset, globalDateFrom, globalDateTo),
-      accountIds: globalAccountIds.length ? globalAccountIds : undefined,
       setupIds: globalSetupIds.length ? globalSetupIds : undefined,
       directions: globalDirection === "all" ? undefined : [globalDirection],
     }),
     [
       globalDatePreset,
-      globalAccountIds,
       globalSetupIds,
       globalDirection,
       globalDateFrom,
@@ -155,31 +162,61 @@ export function DashboardPage() {
     ],
   );
   const dashboard = useQuery({
-    queryKey: ["dashboard", filter],
-    queryFn: () => api.dashboard(filter),
+    queryKey: ["dashboard", selectedAccountId, filter],
+    queryFn: () => api.dashboard(selectedAccountId!, filter),
+    enabled: hasSelectedJournalAccount,
   });
   const trades = useQuery({
-    queryKey: ["trades", "recent"],
-    queryFn: () => api.listTrades({ pageSize: 5 }),
+    queryKey: ["trades", selectedAccountId, "recent"],
+    queryFn: () => api.listTrades(selectedAccountId!, { pageSize: 5 }),
+    enabled: hasSelectedJournalAccount,
+  });
+  const reviews = useQuery({
+    queryKey: ["reviews", selectedAccountId],
+    queryFn: () => api.reviews(selectedAccountId!),
+    enabled: hasSelectedJournalAccount,
   });
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
   });
-  const reviews = useQuery({
-    queryKey: ["reviews"],
-    queryFn: api.reviews,
-  });
+  if (!hasSelectedJournalAccount) {
+    return (
+      <div className="page dashboard-page">
+        <JournalPageHeader
+          icon={PageIcon}
+          eyebrow="Tradingjournal"
+          title="Performance-Übersicht"
+          description="Wähle ein Tradingkonto aus, um deine Journal-Auswertung zu sehen."
+        />
+        <JournalAccountGate>
+          <div />
+        </JournalAccountGate>
+      </div>
+    );
+  }
 
   if (dashboard.isLoading)
     return (
-      <div className="page">
+      <div className="page dashboard-page">
+        <JournalPageHeader
+          icon={PageIcon}
+          eyebrow="Tradingjournal"
+          title="Performance-Übersicht"
+          description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
+        />
         <PageLoading />
       </div>
     );
   if (dashboard.isError || !dashboard.data)
     return (
-      <div className="page">
+      <div className="page dashboard-page">
+        <JournalPageHeader
+          icon={PageIcon}
+          eyebrow="Tradingjournal"
+          title="Performance-Übersicht"
+          description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
+        />
         <ErrorState
           message={
             (dashboard.error as Error)?.message ??
@@ -201,7 +238,7 @@ export function DashboardPage() {
       title: "Konto prüfen",
       description:
         "Kontowährung, Startkapital und Risikolimit bilden die Basis deiner Auswertung.",
-      complete: (bootstrap.data?.accounts.length ?? 0) > 0,
+      complete: journalAccounts.length > 0,
       action: (
         <Link className="button primary sm" to="/settings">
           Konten öffnen
@@ -341,8 +378,9 @@ export function DashboardPage() {
     );
   };
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page dashboard-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Performance-Übersicht"
         description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
@@ -378,10 +416,8 @@ export function DashboardPage() {
             </div>
             <Button onClick={() => setFilterOpen(true)}>
               <Filter size={14} /> Filter
-              {globalAccountIds.length +
-              globalSetupIds.length +
-              (globalDirection === "all" ? 0 : 1)
-                ? ` (${globalAccountIds.length + globalSetupIds.length + (globalDirection === "all" ? 0 : 1)})`
+              {globalSetupIds.length + (globalDirection === "all" ? 0 : 1)
+                ? ` (${globalSetupIds.length + (globalDirection === "all" ? 0 : 1)})`
                 : ""}
             </Button>
           </>
@@ -725,10 +761,10 @@ function DashboardFilterDialog({
     queryFn: api.bootstrap,
   });
   const state = useUiStore();
-  const toggle = (key: "globalAccountIds" | "globalSetupIds", id: string) => {
-    const values = state[key];
+  const toggleSetup = (id: string) => {
+    const values = state.globalSetupIds;
     state.setGlobalFilters({
-      [key]: values.includes(id)
+      globalSetupIds: values.includes(id)
         ? values.filter((value) => value !== id)
         : [...values, id],
     });
@@ -838,21 +874,6 @@ function DashboardFilterDialog({
               )}
             </section>
             <section className="form-section">
-              <h3 className="form-section-title">Konten</h3>
-              <div className="chip-list">
-                {bootstrap.data?.accounts.map((account) => (
-                  <button
-                    type="button"
-                    className={`tag-toggle${state.globalAccountIds.includes(account.id) ? " selected" : ""}`}
-                    key={account.id}
-                    onClick={() => toggle("globalAccountIds", account.id)}
-                  >
-                    {account.name}
-                  </button>
-                ))}
-              </div>
-            </section>
-            <section className="form-section">
               <h3 className="form-section-title">Setups</h3>
               <div className="chip-list">
                 {bootstrap.data?.setups.map((setup) => (
@@ -860,7 +881,7 @@ function DashboardFilterDialog({
                     type="button"
                     className={`tag-toggle${state.globalSetupIds.includes(setup.id) ? " selected" : ""}`}
                     key={setup.id}
-                    onClick={() => toggle("globalSetupIds", setup.id)}
+                    onClick={() => toggleSetup(setup.id)}
                   >
                     <span style={{ background: setup.color }} />
                     {setup.name}
@@ -892,7 +913,6 @@ function DashboardFilterDialog({
               onClick={() => {
                 state.setGlobalDatePreset("all");
                 state.setGlobalFilters({
-                  globalAccountIds: [],
                   globalSetupIds: [],
                   globalDirection: "all",
                   globalDateFrom: undefined,

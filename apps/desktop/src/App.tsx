@@ -4,6 +4,7 @@ import { AppProviders } from "./app/providers";
 import { AppErrorBoundary } from "./components/ui/app-error-boundary";
 import { AppShell } from "./components/layout/app-shell";
 import { PageLoading } from "./components/ui/loading";
+import { JournalAccountProvider } from "./features/accounts/journal-account-context";
 
 const DashboardPage = lazy(() =>
   import("./features/dashboard/dashboard-page").then((module) => ({
@@ -55,14 +56,24 @@ const MacroPage = lazy(() =>
     default: module.MacroPage,
   })),
 );
+const RegimeInsightsPage = lazy(() =>
+  import("./features/regime-insights/regime-insights-page").then((module) => ({
+    default: module.RegimeInsightsPage,
+  })),
+);
+const EconomicDataPage = lazy(() =>
+  import("./features/economic-data/economic-data-page").then((module) => ({
+    default: module.EconomicDataPage,
+  })),
+);
+const EconomicCalendarPage = lazy(() =>
+  import("./features/economic-calendar/economic-calendar-page").then(
+    (module) => ({ default: module.EconomicCalendarPage }),
+  ),
+);
 const CotPage = lazy(() =>
   import("./features/cot/cot-page").then((module) => ({
     default: module.CotPage,
-  })),
-);
-const MarketPage = lazy(() =>
-  import("./features/market/market-page").then((module) => ({
-    default: module.MarketPage,
   })),
 );
 const SeasonalityPage = lazy(() =>
@@ -74,6 +85,11 @@ const RatesPage = lazy(() =>
   import("./features/rates/rates-page").then((module) => ({
     default: module.RatesPage,
   })),
+);
+const CentralBankReportsPage = lazy(() =>
+  import("./features/central-bank-reports/central-bank-reports-page").then(
+    (module) => ({ default: module.CentralBankReportsPage }),
+  ),
 );
 const PutCallRatioPage = lazy(() =>
   import("./features/put-call-ratio/put-call-ratio-page").then((module) => ({
@@ -96,36 +112,50 @@ export default function App() {
     <AppErrorBoundary>
       <AppProviders>
         <BrowserRouter>
-          <Suspense
-            fallback={
-              <div className="page">
-                <PageLoading />
-              </div>
-            }
-          >
-            <Routes>
-              <Route element={<AppShell />}>
-                <Route index element={<DashboardPage />} />
-                <Route path="trades" element={<TradesPage />} />
-                <Route path="calendar" element={<CalendarPage />} />
-                <Route path="analytics" element={<AnalyticsPage />} />
-                <Route path="reviews" element={<ReviewsPage />} />
-                <Route path="playbook" element={<PlaybookPage />} />
-                <Route path="mistakes" element={<MistakesPage />} />
-                <Route path="media" element={<MediaPage />} />
-                <Route path="goals" element={<GoalsPage />} />
-                <Route path="macro" element={<MacroPage />} />
-                <Route path="cot" element={<CotPage />} />
-                <Route path="market" element={<MarketPage />} />
-                <Route path="seasonality" element={<SeasonalityPage />} />
-                <Route path="rates" element={<RatesPage />} />
-                <Route path="put-call-ratio" element={<PutCallRatioPage />} />
-                <Route path="import-export" element={<ImportExportPage />} />
-                <Route path="settings" element={<SettingsPage />} />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Route>
-            </Routes>
-          </Suspense>
+          <JournalAccountProvider>
+            <Suspense
+              fallback={
+                <div className="page">
+                  <PageLoading />
+                </div>
+              }
+            >
+              <Routes>
+                <Route element={<AppShell />}>
+                  <Route index element={<DashboardPage />} />
+                  <Route path="trades" element={<TradesPage />} />
+                  <Route path="calendar" element={<CalendarPage />} />
+                  <Route path="analytics" element={<AnalyticsPage />} />
+                  <Route path="reviews" element={<ReviewsPage />} />
+                  <Route path="playbook" element={<PlaybookPage />} />
+                  <Route path="mistakes" element={<MistakesPage />} />
+                  <Route path="media" element={<MediaPage />} />
+                  <Route path="goals" element={<GoalsPage />} />
+                  <Route path="macro" element={<MacroPage />} />
+                  <Route
+                    path="regime-insights"
+                    element={<RegimeInsightsPage />}
+                  />
+                  <Route path="economic-data" element={<EconomicDataPage />} />
+                  <Route
+                    path="economic-calendar"
+                    element={<EconomicCalendarPage />}
+                  />
+                  <Route path="cot" element={<CotPage />} />
+                  <Route path="seasonality" element={<SeasonalityPage />} />
+                  <Route path="rates" element={<RatesPage />} />
+                  <Route
+                    path="central-bank-reports"
+                    element={<CentralBankReportsPage />}
+                  />
+                  <Route path="put-call-ratio" element={<PutCallRatioPage />} />
+                  <Route path="import-export" element={<ImportExportPage />} />
+                  <Route path="settings" element={<SettingsPage />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Route>
+              </Routes>
+            </Suspense>
+          </JournalAccountProvider>
         </BrowserRouter>
       </AppProviders>
     </AppErrorBoundary>

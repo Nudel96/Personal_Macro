@@ -45,17 +45,30 @@ Primärquelle ist der offizielle CME-Report `Daily FX Options Update`:
 
 Der Report liefert tägliches Call- und Put-Notional in US-Dollar nach Währung und Fälligkeit. Die Anwendung aggregiert die im Report bereits ausgewiesene Gesamtsumme je Währung und speichert keine persönlichen Daten beim Provider.
 
+Für den historischen lokalen Backfill unterstützt die Anwendung zusätzlich
+offizielle Daily-Volume-Dateien aus dem öffentlichen CME-Archiv:
+
+`https://www.cmegroup.com/ftp/daily_volume/`
+
+Diese XLSX-Dateien liefern Kontraktvolumen, nicht das im PDF ausgewiesene
+USD-Notional. Sie werden deshalb ausschließlich als `CME Contract-Volume PCR`
+gespeichert und angezeigt. Automatisiertes Scraping des Archivs ist nicht Teil
+der Anwendung; der Benutzer öffnet das Archiv im normalen Browser und wählt
+mehrere lokal heruntergeladene Dateien für einen transaktionalen Batch-Import.
+Ein PDF-Wert besitzt für dasselbe Asset und denselben Handelstag stets die
+höhere Quellenpriorität.
+
 Die erste Ausbaustufe unterstützt:
 
-| Anzeige | CME-Underlying | Orientierung |
-| --- | --- | --- |
-| EUR/USD | Euro FX, EUR/USD | direkt |
-| GBP/USD | British Pound, GBP/USD | direkt |
-| AUD/USD | Australian Dollar, AUD/USD | direkt |
-| NZD/USD | New Zealand Dollar, NZD/USD | direkt |
-| USD/JPY | Japanese Yen, JPY/USD | invers |
-| USD/CAD | Canadian Dollar, CAD/USD | invers |
-| USD/CHF | Swiss Franc, CHF/USD | invers |
+| Anzeige | CME-Underlying              | Orientierung |
+| ------- | --------------------------- | ------------ |
+| EUR/USD | Euro FX, EUR/USD            | direkt       |
+| GBP/USD | British Pound, GBP/USD      | direkt       |
+| AUD/USD | Australian Dollar, AUD/USD  | direkt       |
+| NZD/USD | New Zealand Dollar, NZD/USD | direkt       |
+| USD/JPY | Japanese Yen, JPY/USD       | invers       |
+| USD/CAD | Canadian Dollar, CAD/USD    | invers       |
+| USD/CHF | Swiss Franc, CHF/USD        | invers       |
 
 Für inverse Anzeigen werden Put und Call fachlich vertauscht, bevor die Ratio gebildet wird. Dadurch bleibt die UI-Semantik konsistent: Ein hoher Wert ist immer bearish für das angezeigte Paar, ein niedriger Wert immer bullish.
 
@@ -127,7 +140,7 @@ Eine neue additive Migration legt zwei eigenständige Tabellen an.
 - `collected_at` – UTC/RFC3339
 - Primärschlüssel aus `asset_symbol` und `trade_date`
 
-Providerwerte werden unverändert in Providerorientierung gespeichert. Die Inversion geschieht in der Berechnungsschicht, nicht destruktiv beim Import.
+Providerwerte werden unverändert in Providerorientierung gespeichert. Die Inversion geschieht in der Berechnungsschicht, nicht destruktiv beim Import. Migration `0033` ergänzt Wert-Einheit, Berechnungsmethode, Quellenpriorität, Quelldatei, Vorläufigkeitsstatus, direkte beziehungsweise rekonstruierte Herkunft, Produktcodes und Parser-Version. Bestehende PDF-Zeilen werden kontrolliert als offizielles USD-Notional zurückgefüllt.
 
 ### `put_call_sync_runs`
 
@@ -166,7 +179,31 @@ Liefert:
 - ersetzt bei gleichem Asset/Datum nur denselben Provider-Snapshot,
 - erhält bei Fehlern den letzten guten Datenstand.
 
-Die Anwendung versucht keine erfundene historische Rückrechnung. Der kostenlose aktuelle Report baut die lokale Zeitreihe ab Einführung täglich auf. Ein lizenzierter DataMine-Backfill ist eine spätere, getrennte Erweiterung.
+Die Anwendung erfindet aus Kontraktzahlen keine historische USD-Notional-Reihe. Der kostenlose aktuelle PDF-Report baut die offizielle Notional-Zeitreihe ab Einführung täglich auf; importierte Daily-Volume-Dateien bleiben methodisch getrennte Kontraktvolumen-PCR. Ein lizenzierter DataMine-Backfill ist eine spätere, getrennte Erweiterung.
+
+### `import_put_call_xlsx`
+
+- akzeptiert mehrere lokale `daily_volume_YYYYMMDD.xlsx`-Dateien,
+- erkennt das produktbezogene Tabellenblatt und die Header unabhängig von festen Spaltenpositionen,
+- verwendet ausschließlich FX-Optionszeilen mit eindeutigem Call-/Put-Typ und positivem Total Volume,
+- ordnet nur die sieben unterstützten USD-Unterlyings zu und schließt Cross-Rates sowie Futures aus,
+- schreibt den gesamten Batch erst nach erfolgreicher Validierung aller Dateien,
+- lehnt doppelte Handelstage innerhalb eines Batches ab,
+- erhält höher priorisierte PDF-Beobachtungen unverändert,
+- speichert die rekonstruierte Reihe ausdrücklich als vorläufige Kontraktvolumen-PCR.
+
+### Kostenloser lokaler PDF-Import
+
+Da CME den direkten automatisierten Abruf des öffentlichen Reports mit HTTP 403 blockieren kann, bietet die native Seite einen gleichwertigen lokalen Importpfad:
+
+- `CME-Report öffnen` öffnet ausschließlich die fest hinterlegte offizielle CME-URL im Standardbrowser.
+- `PDF importieren` öffnet den nativen Dateidialog mit einem PDF-Filter.
+- `import_put_call_pdf(path)` akzeptiert genau eine lokale PDF-Datei, begrenzt sie auf 8 MiB und prüft PDF-Signatur, Berichtsdatum, alle sieben CME-Zeilen, Notionalwerte und Summen.
+- Der Import verwendet denselben Parser und dieselbe transaktionale Upsert-Logik wie der automatische Abruf.
+- Bei gleichem Asset und Handelstag wird ausschließlich dieser Snapshot aktualisiert. Andere Beobachtungen bleiben erhalten.
+- Abbruch des Dateidialogs ändert keinen Zustand. Ein Importfehler erhält alle gespeicherten Beobachtungen und zeigt eine deutsche Fehlermeldung.
+- Nach erfolgreichem Import wird ausschließlich der Query-Key `put-call` invalidiert.
+- Die Browser-Vorschau öffnet keine lokalen Dateien und behauptet keinen erfolgreichen Import.
 
 ## Frontend-Verträge und Browser-Vorschau
 
@@ -188,7 +225,7 @@ Die einzelne Card zeigt einen `EmptyState`: Noch keine CME-Tageswerte lokal gesp
 
 ### Weniger als fünf gültige Handelstage
 
-Die Card erklärt, wie viele Tageswerte bis zum ersten 5-Tage-Punkt fehlen. Es wird keine künstliche Linie gezeigt.
+Die Card zeigt die vorhandene tägliche PCR bereits ab dem ersten gültigen Handelstag. Die MA5-Serie bleibt bis zum fünften gültigen Wert nicht verfügbar; es werden keine künstlichen Glättungswerte ergänzt.
 
 ### Linie vorhanden, Schwellen noch nicht verfügbar
 
@@ -250,7 +287,8 @@ Nicht Bestandteil dieser Ausbaustufe sind:
 - Intraday-PCR,
 - automatische Tradingempfehlungen,
 - Macro-Heatmap- oder Pair-Score-Integration,
-- DataMine-Kauf, Lizenzierung oder historischer Backfill,
+- automatisiertes Scraping oder Umgehen von CME-Zugriffssperren,
+- DataMine-Kauf oder Lizenzierung,
 - weitere Research-Fenster.
 
 ## Quellenbasis

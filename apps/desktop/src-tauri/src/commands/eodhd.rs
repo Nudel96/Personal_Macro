@@ -163,12 +163,25 @@ pub fn normalize(value: &str) -> String {
         .join(" ")
 }
 
+pub fn is_interest_rate_decision_event(event_type: &str) -> bool {
+    let event = normalize(event_type);
+    event.contains("interest rate decision")
+        || event.contains("policy rate decision")
+        || event == "snb policy rate"
+        || event.contains("loan prime rate 1y")
+        || event.contains("loan prime rate 1 year")
+        || event.contains("1 year loan prime rate")
+}
+
 pub fn candidate_score(
     currency: &str,
     canonical_key: &str,
     source_label: &str,
     event_type: &str,
 ) -> i32 {
+    if canonical_key == "interest_rates" && !is_interest_rate_decision_event(event_type) {
+        return 0;
+    }
     let source = normalize(source_label);
     let event = normalize(event_type);
     let source_tokens = source
@@ -484,6 +497,38 @@ pub fn candidate_score(
                 score -= 100;
             }
         }
+        "industrial_production" => {
+            if has("industrial production") {
+                score += 80;
+            }
+            if has("manufacturing production") && !source_has("manufacturing") {
+                score -= 100;
+            }
+        }
+        "wage_growth" => {
+            if has("wage price index")
+                || has("average hourly wages")
+                || has("average hourly earnings")
+                || has("average earnings")
+                || has("average cash earnings")
+                || has("labour cost index")
+                || has("labor cost index")
+                || has("wage growth")
+            {
+                score += 75;
+            }
+            if has("real earnings") || has("unit labour costs") || has("unit labor costs") {
+                score -= 100;
+            }
+        }
+        "trade_balance" => {
+            if has("balance of trade") {
+                score += 85;
+            }
+            if has("goods trade") || has("non eu") || has("adjusted") {
+                score -= 100;
+            }
+        }
         _ => {}
     }
     if score > 0 {
@@ -502,11 +547,15 @@ pub fn candidate_score(
 }
 
 pub fn frequency(currency: &str, canonical_key: &str, event: &EconomicEvent) -> &'static str {
-    if canonical_key == "interest_rates" {
+    if matches!(canonical_key, "interest_rates" | "loan_prime_rate_5y") {
         return "Meeting";
     }
     if canonical_key == "unemployment_claims" {
-        return "Weekly";
+        return if currency == "GBP" {
+            "Monthly"
+        } else {
+            "Weekly"
+        };
     }
     if currency == "NZD" && (canonical_key == "nfp" || canonical_key == "unemployment_rate") {
         return "Quarterly";
@@ -641,6 +690,51 @@ mod tests {
         assert!(candidate_score("CNY", "gdp", "GDP q/y", "Inflation Rate") <= 0);
         assert!(candidate_score("AUD", "gdp", "GDP q/q", "GDP Capital Expenditure") <= 0);
         assert!(candidate_score("JPY", "gdp", "Prelim GDP q/q", "GDP External Demand") <= 0);
+        assert_eq!(
+            candidate_score(
+                "EUR",
+                "interest_rates",
+                "ECB Deposit Facility Rate",
+                "ECB President Lagarde Speech"
+            ),
+            0
+        );
+        assert_eq!(
+            candidate_score(
+                "JPY",
+                "interest_rates",
+                "BoJ Policy Rate",
+                "BoJ Monetary Policy Meeting Minutes"
+            ),
+            0
+        );
+        assert!(is_interest_rate_decision_event(
+            "BoE Interest Rate Decision"
+        ));
+        assert!(
+            candidate_score(
+                "USD",
+                "trade_balance",
+                "Balance of Trade",
+                "Balance of Trade"
+            ) > 0
+        );
+        assert!(
+            candidate_score(
+                "JPY",
+                "wage_growth",
+                "Average Cash Earnings",
+                "Average Cash Earnings"
+            ) > 0
+        );
+        assert!(
+            candidate_score(
+                "EUR",
+                "industrial_production",
+                "Industrial Production",
+                "Industrial Production"
+            ) > 0
+        );
     }
 
     #[test]
@@ -657,5 +751,36 @@ mod tests {
         };
         assert_eq!(frequency("NZD", "nfp", &event), "Quarterly");
         assert_eq!(frequency("NZD", "unemployment_rate", &event), "Quarterly");
+    }
+
+    #[test]
+    fn claimant_count_uses_the_country_native_frequency() {
+        let event = EconomicEvent {
+            event_type: "Claimant Count Change".into(),
+            comparison: None,
+            period: Some("Jul 2026".into()),
+            country: Some("UK".into()),
+            date: "2026-08-11 06:00:00".into(),
+            actual: Some(Value::from(5.0)),
+            previous: Some(Value::from(4.0)),
+            estimate: Some(Value::from(3.0)),
+        };
+        assert_eq!(frequency("GBP", "unemployment_claims", &event), "Monthly");
+        assert_eq!(frequency("USD", "unemployment_claims", &event), "Weekly");
+    }
+
+    #[test]
+    fn china_five_year_lpr_uses_meeting_frequency() {
+        let event = EconomicEvent {
+            event_type: "Loan Prime Rate 5Y".into(),
+            comparison: None,
+            period: Some("Aug 2026".into()),
+            country: Some("CN".into()),
+            date: "2026-08-20 01:15:00".into(),
+            actual: None,
+            previous: Some(Value::from(3.5)),
+            estimate: Some(Value::from(3.5)),
+        };
+        assert_eq!(frequency("CNY", "loan_prime_rate_5y", &event), "Meeting");
     }
 }

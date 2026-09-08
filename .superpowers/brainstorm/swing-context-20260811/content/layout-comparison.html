@@ -1,0 +1,152 @@
+<style>
+  :root {
+    --sc-bg: #07101f;
+    --sc-panel: #0d1728;
+    --sc-panel-2: #111d31;
+    --sc-border: #243550;
+    --sc-text: #f4f7fb;
+    --sc-muted: #8fa2bc;
+    --sc-positive: #36d399;
+    --sc-negative: #fb7185;
+    --sc-neutral: #94a3b8;
+    --sc-accent: #7c83ff;
+    --sc-blue: #47a3ff;
+  }
+  .design-board { color: var(--sc-text); }
+  .design-board h2 { margin-bottom: 4px; }
+  .design-board .subtitle { max-width: 900px; }
+  .decision-note {
+    display: flex; align-items: center; gap: 10px; margin: 18px 0 20px;
+    padding: 12px 14px; border: 1px solid rgba(124,131,255,.45);
+    background: rgba(124,131,255,.08); border-radius: 10px; color: #dfe2ff;
+  }
+  .decision-note strong { color: #fff; }
+  .direction-grid { display: grid; grid-template-columns: 1.45fr .78fr .78fr; gap: 16px; }
+  .direction-card {
+    min-width: 0; border: 1px solid var(--sc-border); border-radius: 14px;
+    background: var(--sc-bg); overflow: hidden; cursor: pointer;
+    transition: border-color .18s ease, transform .18s ease;
+  }
+  .direction-card:hover { border-color: #51688d; transform: translateY(-1px); }
+  .direction-card.selected { border-color: var(--sc-accent); box-shadow: 0 0 0 2px rgba(124,131,255,.18); }
+  .direction-head { padding: 14px 16px; border-bottom: 1px solid var(--sc-border); display:flex; justify-content:space-between; gap:12px; align-items:center; }
+  .direction-head h3 { margin: 0; font-size: 15px; }
+  .direction-head span { color: var(--sc-muted); font-size: 12px; }
+  .recommend { color:#fff !important; background:var(--sc-accent); padding:4px 8px; border-radius:999px; font-weight:700; letter-spacing:.03em; }
+  .app-frame { padding: 14px; background: linear-gradient(145deg, #091323, #050b15); min-height: 420px; }
+  .app-top { display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+  .app-title strong { display:block; font-size:16px; }
+  .app-title small { color:var(--sc-muted); }
+  .pair-pill { border:1px solid var(--sc-border); background:var(--sc-panel); padding:7px 10px; border-radius:8px; font-weight:700; font-size:12px; }
+  .panel { border:1px solid var(--sc-border); background:rgba(13,23,40,.96); border-radius:11px; padding:12px; }
+  .panel + .panel { margin-top:10px; }
+  .panel-label { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:10px; }
+  .panel-label strong { font-size:13px; }
+  .panel-label span { color:var(--sc-muted); font-size:10px; }
+  .alignment { display:flex; align-items:center; gap:8px; font-size:11px; color:#c9f8e6; }
+  .alignment i { width:7px; height:7px; background:var(--sc-positive); border-radius:50%; box-shadow:0 0 9px rgba(54,211,153,.8); }
+  .trend-row { display:grid; grid-template-columns:32px 1fr 56px; gap:9px; align-items:center; margin:9px 0; }
+  .trend-row b { font-size:11px; }
+  .trend-row em { color:var(--sc-positive); font-style:normal; text-align:right; font-size:10px; }
+  .axis { position:relative; height:15px; border-radius:999px; background:linear-gradient(90deg, rgba(251,113,133,.22), rgba(148,163,184,.14) 48%, rgba(54,211,153,.22)); overflow:hidden; }
+  .axis:after { content:""; position:absolute; left:50%; top:2px; bottom:2px; width:1px; background:#60708a; }
+  .fill-pos { position:absolute; left:50%; top:3px; bottom:3px; border-radius:0 999px 999px 0; background:linear-gradient(90deg,#248c70,var(--sc-positive)); }
+  .lower-grid { display:grid; grid-template-columns:.82fr 1.18fr; gap:10px; margin-top:10px; }
+  .ratio { margin:10px 0 12px; }
+  .ratio-title { display:flex; justify-content:space-between; font-size:10px; margin-bottom:5px; color:var(--sc-muted); }
+  .ratio-title b { color:var(--sc-text); font-size:12px; }
+  .ratio-track { height:9px; background:#15233a; border-radius:999px; overflow:hidden; }
+  .ratio-track span { display:block; height:100%; background:linear-gradient(90deg,var(--sc-blue),var(--sc-accent)); border-radius:999px; }
+  .small-multiple { height:70px; border-bottom:1px solid #253650; position:relative; margin-bottom:7px; }
+  .small-multiple .baseline { position:absolute; left:0; right:0; top:35px; border-top:1px dashed #53637a; }
+  .small-multiple svg { width:100%; height:70px; overflow:visible; }
+  .chart-caption { display:flex; justify-content:space-between; color:var(--sc-muted); font-size:9px; }
+  .why { padding:14px 16px 16px; color:var(--sc-muted); font-size:12px; line-height:1.45; }
+  .why strong { color:var(--sc-text); }
+  .mini-frame { padding:14px; min-height:420px; background:linear-gradient(145deg,#091323,#050b15); }
+  .gauge-stack { display:grid; gap:13px; margin-top:22px; }
+  .gauge { width:118px; height:59px; margin:0 auto; border-radius:118px 118px 0 0; background:conic-gradient(from 270deg at 50% 100%,var(--sc-negative),#38465d,var(--sc-positive) 50%,transparent 0); position:relative; }
+  .gauge:after { content:""; position:absolute; left:23px; right:23px; bottom:0; height:38px; border-radius:80px 80px 0 0; background:#08111f; }
+  .gauge-value { text-align:center; margin-top:5px; font-size:11px; color:var(--sc-muted); }
+  .noise-chart { height:126px; border:1px solid #263750; margin-top:12px; position:relative; overflow:hidden; background:linear-gradient(rgba(71,163,255,.03),rgba(71,163,255,0)); }
+  .noise-chart svg { width:100%; height:100%; }
+  .indicator-tags { display:flex; flex-wrap:wrap; gap:5px; margin-top:9px; }
+  .indicator-tags span { font-size:9px; padding:4px 6px; border-radius:5px; background:#13213a; color:#9fb0c7; }
+  .comparison-summary { margin-top:16px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .summary-cell { border:1px solid #283a56; border-radius:10px; padding:11px; background:rgba(9,18,32,.65); }
+  .summary-cell b { display:block; margin-bottom:4px; font-size:12px; }
+  .summary-cell p { margin:0; color:var(--sc-muted); font-size:11px; line-height:1.4; }
+  @media (max-width: 1050px) { .direction-grid { grid-template-columns:1fr; } .app-frame,.mini-frame { min-height:auto; } }
+</style>
+
+<div class="design-board">
+  <h2>Visuelle Richtung für „Swing-Kontext“</h2>
+  <p class="subtitle">Ziel: H4, D1 und tägliche Optionsdaten in wenigen Sekunden erfassen — ohne kurzfristige Marktgeräusche oder dekorative Kennzahlen.</p>
+
+  <div class="decision-note">
+    <strong>Meine Wahl: A — gerichtete Balken + Small Multiples.</strong>
+    Sie gewinnt den zweiten Vergleich, weil Richtung und Stärke sofort vergleichbar bleiben, während der Put/Call-Verlauf sichtbar ist.
+  </div>
+
+  <div class="direction-grid">
+    <div class="direction-card selected" data-choice="a" onclick="toggleSelect(this)">
+      <div class="direction-head"><h3>A · Ruhiger Entscheidungs-Layer</h3><span class="recommend">EMPFEHLUNG</span></div>
+      <div class="app-frame">
+        <div class="app-top">
+          <div class="app-title"><strong>Swing-Kontext</strong><small>Nur H4 · D1 · tägliche CME-Daten</small></div>
+          <div class="pair-pill">EURUSD⌄</div>
+        </div>
+        <div class="panel">
+          <div class="panel-label"><strong>Trend-Ausrichtung</strong><div class="alignment"><i></i>Bullish ausgerichtet</div></div>
+          <div class="trend-row"><b>H4</b><div class="axis"><span class="fill-pos" style="width:31%"></span></div><em>Bullish · 31</em></div>
+          <div class="trend-row"><b>D1</b><div class="axis"><span class="fill-pos" style="width:43%"></span></div><em>Bullish · 43</em></div>
+        </div>
+        <div class="lower-grid">
+          <div class="panel">
+            <div class="panel-label"><strong>Put/Call aktuell</strong><span>CME · Final</span></div>
+            <div class="ratio"><div class="ratio-title"><span>Volumen</span><b>0,84</b></div><div class="ratio-track"><span style="width:42%"></span></div></div>
+            <div class="ratio"><div class="ratio-title"><span>Open Interest</span><b>1,12</b></div><div class="ratio-track"><span style="width:56%"></span></div></div>
+          </div>
+          <div class="panel">
+            <div class="panel-label"><strong>20 Handelstage</strong><span>Neutralmarke 1,00</span></div>
+            <div class="small-multiple"><div class="baseline"></div><svg viewBox="0 0 240 70" preserveAspectRatio="none"><polyline fill="none" stroke="#47a3ff" stroke-width="2.2" points="0,44 15,42 30,46 45,35 60,37 75,30 90,33 105,29 120,38 135,34 150,31 165,27 180,30 195,25 210,28 225,23 240,26"/></svg></div>
+            <div class="small-multiple"><div class="baseline"></div><svg viewBox="0 0 240 70" preserveAspectRatio="none"><polyline fill="none" stroke="#8a83ff" stroke-width="2.2" points="0,30 15,28 30,32 45,30 60,27 75,29 90,25 105,24 120,26 135,29 150,25 165,22 180,21 195,24 210,20 225,18 240,19"/></svg></div>
+            <div class="chart-caption"><span>Volumen-PCR</span><span>OI-PCR</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="why"><strong>Warum gewählt:</strong> horizontale Achsen sind für positive/negative Richtung präziser als Winkel. Zwei getrennte Mini-Verläufe verhindern Liniengewirr. Detailindikatoren bleiben aus dem Hauptblick.</div>
+    </div>
+
+    <div class="direction-card" data-choice="b" onclick="toggleSelect(this)">
+      <div class="direction-head"><h3>B · Instrumenten-Gauges</h3><span>visuell auffällig</span></div>
+      <div class="mini-frame">
+        <div class="app-title"><strong>Swing-Kontext</strong><small>Vier Rundinstrumente</small></div>
+        <div class="gauge-stack">
+          <div><div class="gauge"></div><div class="gauge-value">H4 Trend · Bullish</div></div>
+          <div><div class="gauge"></div><div class="gauge-value">D1 Trend · Bullish</div></div>
+          <div><div class="gauge"></div><div class="gauge-value">Volume PCR · 0,84</div></div>
+          <div><div class="gauge"></div><div class="gauge-value">OI PCR · 1,12</div></div>
+        </div>
+      </div>
+      <div class="why"><strong>Warum verworfen:</strong> Gauges verbrauchen viel Fläche, Winkel lassen sich schlecht vergleichen und der historische Verlauf geht verloren.</div>
+    </div>
+
+    <div class="direction-card" data-choice="c" onclick="toggleSelect(this)">
+      <div class="direction-head"><h3>C · Analyse-Chart</h3><span>maximale Details</span></div>
+      <div class="mini-frame">
+        <div class="app-title"><strong>EURUSD · D1</strong><small>Candles + EMA 20/50 + ADX</small></div>
+        <div class="noise-chart"><svg viewBox="0 0 240 126" preserveAspectRatio="none"><polyline fill="none" stroke="#47a3ff" stroke-width="1.6" points="0,96 15,89 30,94 45,78 60,83 75,68 90,73 105,55 120,64 135,49 150,56 165,40 180,44 195,31 210,37 225,24 240,29"/><polyline fill="none" stroke="#8a83ff" stroke-width="1.4" points="0,102 20,96 40,91 60,84 80,78 100,70 120,64 140,57 160,51 180,45 200,39 220,34 240,30"/></svg></div>
+        <div class="indicator-tags"><span>EMA 20</span><span>EMA 50</span><span>ADX 31</span><span>ATR 0,0082</span><span>RSI 58</span></div>
+        <div class="noise-chart" style="height:88px"><svg viewBox="0 0 240 88" preserveAspectRatio="none"><polyline fill="none" stroke="#fb7185" stroke-width="1.8" points="0,53 15,38 30,49 45,27 60,58 75,34 90,60 105,44 120,31 135,63 150,41 165,52 180,28 195,59 210,46 225,35 240,55"/></svg></div>
+      </div>
+      <div class="why"><strong>Warum verworfen:</strong> liefert mehr Analyse als Entscheidungshilfe, zieht den Blick zu Indikatorbewegungen und reproduziert genau den Noise, den der Bereich vermeiden soll.</div>
+    </div>
+  </div>
+
+  <div class="comparison-summary">
+    <div class="summary-cell"><b>Vergleichbarkeit</b><p>A zeigt H4 und D1 auf derselben Achse. B nutzt schwer vergleichbare Winkel; C trennt die Zeitrahmen in Charts.</p></div>
+    <div class="summary-cell"><b>Informationsdichte</b><p>A zeigt nur Richtung, Stärke, aktuelle Ratios und Verlauf. B verliert Historie; C zeigt zu viele Rohsignale.</p></div>
+    <div class="summary-cell"><b>Swing-Fokus</b><p>A priorisiert abgeschlossene H4/D1- und Tagesdaten. Keine Echtzeitbewegung konkurriert um Aufmerksamkeit.</p></div>
+  </div>
+</div>

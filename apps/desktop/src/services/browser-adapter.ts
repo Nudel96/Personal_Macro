@@ -24,18 +24,7 @@ const setups = [
 ];
 
 export const browserBootstrap: BootstrapData = {
-  accounts: [
-    {
-      id: "browser-main",
-      name: "Hauptkonto",
-      accountType: "personal",
-      baseCurrency: "EUR",
-      initialBalanceMinor: 0,
-      currentBalanceMinor: 0,
-      defaultRiskPercent: 1,
-      isArchived: false,
-    },
-  ],
+  accounts: [],
   strategies: [],
   setups,
   tags: [],
@@ -82,6 +71,45 @@ function loadTrades(): TradeDetail[] {
 
 function saveTrades(trades: TradeDetail[]) {
   localStorage.setItem(TRADES_KEY, JSON.stringify(trades));
+}
+
+function accountError(code: "ACCOUNT_REQUIRED" | "ACCOUNT_NOT_FOUND") {
+  return {
+    code,
+    message:
+      code === "ACCOUNT_REQUIRED"
+        ? "Wähle zuerst ein aktives Tradingkonto aus."
+        : "Das ausgewählte Tradingkonto wurde nicht gefunden.",
+  };
+}
+
+export function requireBrowserAccount(accountId: string) {
+  const normalized = accountId.trim();
+  if (!normalized) throw accountError("ACCOUNT_REQUIRED");
+  if (
+    !browserBootstrap.accounts.some(
+      (account) => account.id === normalized && !account.isArchived,
+    )
+  ) {
+    throw accountError("ACCOUNT_NOT_FOUND");
+  }
+  return normalized;
+}
+
+export function browserAccountTrades(accountId: string): TradeDetail[] {
+  const scopedAccountId = requireBrowserAccount(accountId);
+  return loadTrades()
+    .filter(
+      (trade) =>
+        trade.accountId === scopedAccountId && trade.status !== "trashed",
+    )
+    .map((trade) => structuredClone(trade));
+}
+
+function requireBrowserScope(filter: TradeFilter) {
+  const accountIds = filter.accountIds ?? [];
+  if (accountIds.length !== 1) throw accountError("ACCOUNT_REQUIRED");
+  return requireBrowserAccount(accountIds[0] ?? "");
 }
 
 function summary(trade: TradeDetail): TradeSummary {
@@ -153,45 +181,70 @@ function normalizeTrade(
 }
 
 export async function browserCreateTrade(input: TradeInput) {
+  const accountId = requireBrowserAccount(input.accountId);
   const trades = loadTrades();
-  const trade = normalizeTrade(input);
+  const trade = normalizeTrade({ ...input, accountId });
   trades.unshift(trade);
   saveTrades(trades);
   return trade;
 }
 
-export async function browserUpdateTrade(id: string, input: TradeInput) {
+export async function browserUpdateTrade(
+  accountId: string,
+  id: string,
+  input: TradeInput,
+) {
+  const scopedAccountId = requireBrowserAccount(accountId);
   const trades = loadTrades();
-  const index = trades.findIndex((item) => item.id === id);
+  const index = trades.findIndex(
+    (item) => item.id === id && item.accountId === scopedAccountId,
+  );
   if (index < 0)
     throw { code: "NOT_FOUND", message: "Trade wurde nicht gefunden." };
-  const trade = normalizeTrade(input, trades[index]);
+  const trade = normalizeTrade(
+    { ...input, accountId: scopedAccountId },
+    trades[index],
+  );
   trades[index] = trade;
   saveTrades(trades);
   return trade;
 }
 
-export async function browserGetTrade(id: string) {
+export async function browserGetTrade(accountId: string, id: string) {
+  const scopedAccountId = requireBrowserAccount(accountId);
   const trade = loadTrades().find(
-    (item) => item.id === id && item.status !== "trashed",
+    (item) =>
+      item.id === id &&
+      item.accountId === scopedAccountId &&
+      item.status !== "trashed",
   );
   if (!trade)
     throw { code: "NOT_FOUND", message: "Trade wurde nicht gefunden." };
   return trade;
 }
 
-export async function browserTrashTrade(id: string) {
+export async function browserTrashTrade(accountId: string, id: string) {
+  const scopedAccountId = requireBrowserAccount(accountId);
   const trades = loadTrades();
-  const trade = trades.find((item) => item.id === id);
-  if (!trade) return;
+  const trade = trades.find(
+    (item) => item.id === id && item.accountId === scopedAccountId,
+  );
+  if (!trade)
+    throw { code: "NOT_FOUND", message: "Trade wurde nicht gefunden." };
   trade.status = "trashed";
   trade.updatedAt = new Date().toISOString();
   saveTrades(trades);
 }
 
-export async function browserListDeletedTrades(): Promise<DeletedTrade[]> {
+export async function browserListDeletedTrades(
+  accountId: string,
+): Promise<DeletedTrade[]> {
+  const scopedAccountId = requireBrowserAccount(accountId);
   return loadTrades()
-    .filter((trade) => trade.status === "trashed")
+    .filter(
+      (trade) =>
+        trade.status === "trashed" && trade.accountId === scopedAccountId,
+    )
     .sort((a, b) => b.updatedAt.localeCompare(a.updatedAt))
     .map((trade) => ({
       id: trade.id,
@@ -202,10 +255,14 @@ export async function browserListDeletedTrades(): Promise<DeletedTrade[]> {
     }));
 }
 
-export async function browserRestoreTrade(id: string) {
+export async function browserRestoreTrade(accountId: string, id: string) {
+  const scopedAccountId = requireBrowserAccount(accountId);
   const trades = loadTrades();
   const trade = trades.find(
-    (item) => item.id === id && item.status === "trashed",
+    (item) =>
+      item.id === id &&
+      item.accountId === scopedAccountId &&
+      item.status === "trashed",
   );
   if (!trade)
     throw {
@@ -256,13 +313,15 @@ function filteredTrades(filter: TradeFilter = {}) {
 export async function browserListTrades(
   filter: TradeFilter = {},
 ): Promise<PagedTrades> {
-  const trades = filteredTrades(filter).sort((a, b) =>
+  const accountId = requireBrowserScope(filter);
+  const scopedFilter = { ...filter, accountIds: [accountId] };
+  const trades = filteredTrades(scopedFilter).sort((a, b) =>
     (b.closedAt ?? b.openedAt ?? b.createdAt).localeCompare(
       a.closedAt ?? a.openedAt ?? a.createdAt,
     ),
   );
-  const page = Math.max(1, filter.page ?? 1);
-  const pageSize = Math.min(250, Math.max(1, filter.pageSize ?? 50));
+  const page = Math.max(1, scopedFilter.page ?? 1);
+  const pageSize = Math.min(250, Math.max(1, scopedFilter.pageSize ?? 50));
   return {
     items: trades.slice((page - 1) * pageSize, page * pageSize).map(summary),
     total: trades.length,
@@ -689,7 +748,9 @@ function groupPerformance(
 export async function browserDashboard(
   filter: TradeFilter = {},
 ): Promise<DashboardResponse> {
-  const trades = filteredTrades(filter);
+  const accountId = requireBrowserScope(filter);
+  const scopedFilter = { ...filter, accountIds: [accountId] };
+  const trades = filteredTrades(scopedFilter);
   const dayMap = new Map<string, CalendarDay>();
   for (const trade of trades.filter(
     (item) =>
@@ -723,6 +784,6 @@ export async function browserDashboard(
     accountPerformance: groupPerformance(trades, "account"),
     assetClassPerformance: groupPerformance(trades, "assetClass"),
     generatedAt: new Date().toISOString(),
-    filter,
+    filter: scopedFilter,
   };
 }

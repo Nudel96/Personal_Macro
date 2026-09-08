@@ -1,8 +1,9 @@
 use serde::Serialize;
-use sqlx::FromRow;
+use sqlx::{FromRow, SqlitePool};
 use tauri::State;
 
 use crate::{
+    commands::journal_scope::{require_active_account, scope_trade_filter},
     database::AppState,
     domain::models::{CalendarDay, TradeFilter},
     errors::{AppError, CommandResult},
@@ -43,20 +44,30 @@ pub struct DashboardResponse {
 #[tauri::command]
 pub async fn calculate_dashboard(
     state: State<'_, AppState>,
+    account_id: String,
     filter: Option<TradeFilter>,
 ) -> CommandResult<DashboardResponse> {
-    let filter = filter.unwrap_or_default();
-    let metric_trades = trades::metric_trades(&state.db, &filter).await?;
+    calculate_dashboard_for_pool(&state.db, &account_id, filter).await
+}
+
+pub(crate) async fn calculate_dashboard_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
+    filter: Option<TradeFilter>,
+) -> CommandResult<DashboardResponse> {
+    require_active_account(db, account_id).await?;
+    let filter = scope_trade_filter(account_id, filter);
+    let metric_trades = trades::metric_trades(db, &filter).await?;
     let metrics = metrics::calculate_dashboard(&metric_trades);
-    let calendar = calendar_data(&state, &filter).await?;
-    let setup_performance = group_performance(&state, &filter, "setup").await?;
-    let weekday_performance = group_performance(&state, &filter, "weekday").await?;
-    let session_performance = group_performance(&state, &filter, "session").await?;
-    let timeframe_performance = group_performance(&state, &filter, "timeframe").await?;
-    let instrument_performance = group_performance(&state, &filter, "instrument").await?;
-    let direction_performance = group_performance(&state, &filter, "direction").await?;
-    let account_performance = group_performance(&state, &filter, "account").await?;
-    let asset_class_performance = group_performance(&state, &filter, "asset_class").await?;
+    let calendar = calendar_data(db, &filter).await?;
+    let setup_performance = group_performance(db, &filter, "setup").await?;
+    let weekday_performance = group_performance(db, &filter, "weekday").await?;
+    let session_performance = group_performance(db, &filter, "session").await?;
+    let timeframe_performance = group_performance(db, &filter, "timeframe").await?;
+    let instrument_performance = group_performance(db, &filter, "instrument").await?;
+    let direction_performance = group_performance(db, &filter, "direction").await?;
+    let account_performance = group_performance(db, &filter, "account").await?;
+    let asset_class_performance = group_performance(db, &filter, "asset_class").await?;
     Ok(DashboardResponse {
         metrics,
         calendar,
@@ -76,12 +87,23 @@ pub async fn calculate_dashboard(
 #[tauri::command]
 pub async fn calculate_calendar(
     state: State<'_, AppState>,
+    account_id: String,
     filter: Option<TradeFilter>,
 ) -> CommandResult<Vec<CalendarDay>> {
-    calendar_data(&state, &filter.unwrap_or_default()).await
+    calculate_calendar_for_pool(&state.db, &account_id, filter).await
 }
 
-async fn calendar_data(state: &AppState, filter: &TradeFilter) -> CommandResult<Vec<CalendarDay>> {
+pub(crate) async fn calculate_calendar_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
+    filter: Option<TradeFilter>,
+) -> CommandResult<Vec<CalendarDay>> {
+    require_active_account(db, account_id).await?;
+    let filter = scope_trade_filter(account_id, filter);
+    calendar_data(db, &filter).await
+}
+
+async fn calendar_data(db: &SqlitePool, filter: &TradeFilter) -> CommandResult<Vec<CalendarDay>> {
     sqlx::query_as::<_, CalendarDay>(
         r#"SELECT substr(closed_at, 1, 10) AS date,
           COALESCE(SUM(net_pnl_minor), 0) AS net_pnl_minor,
@@ -106,14 +128,14 @@ async fn calendar_data(state: &AppState, filter: &TradeFilter) -> CommandResult<
     .bind(serialized(&filter.setup_ids)).bind(serialized(&filter.setup_ids))
     .bind(serialized(&filter.instruments)).bind(serialized(&filter.instruments))
     .bind(serialized(&filter.directions)).bind(serialized(&filter.directions))
-    .fetch_all(&state.db)
+    .fetch_all(db)
     .await
     .map_err(AppError::from)
     .map_err(Into::into)
 }
 
 async fn group_performance(
-    state: &AppState,
+    db: &SqlitePool,
     filter: &TradeFilter,
     group: &str,
 ) -> CommandResult<Vec<GroupPerformance>> {
@@ -184,7 +206,7 @@ async fn group_performance(
         .bind(serialized(&filter.instruments))
         .bind(serialized(&filter.directions))
         .bind(serialized(&filter.directions))
-        .fetch_all(&state.db)
+        .fetch_all(db)
         .await
         .map_err(AppError::from)
         .map_err(Into::into)
@@ -198,4 +220,91 @@ fn serialized(values: &Option<Vec<String>>) -> Option<String> {
             serde_json::to_string(items).ok()
         }
     })
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use sqlx::{
+        SqlitePool,
+        sqlite::{SqliteConnectOptions, SqlitePoolOptions},
+    };
+    use std::str::FromStr;
+
+    async fn account_scope_database() -> SqlitePool {
+        let pool = SqlitePoolOptions::new()
+            .max_connections(1)
+            .connect_with(
+                SqliteConnectOptions::from_str("sqlite::memory:")
+                    .unwrap()
+                    .foreign_keys(true),
+            )
+            .await
+            .unwrap();
+        sqlx::migrate!("./migrations").run(&pool).await.unwrap();
+
+        for (id, archived) in [
+            ("account-a", 0_i64),
+            ("account-b", 0_i64),
+            ("archived", 1_i64),
+        ] {
+            sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at, is_archived) VALUES (?, ?, '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z', ?)")
+                .bind(id)
+                .bind(id)
+                .bind(archived)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        for (id, account_id, net_pnl_minor, closed_at) in [
+            ("trade-a", "account-a", 12_500_i64, "2026-02-01T12:00:00Z"),
+            ("trade-b", "account-b", -7_500_i64, "2026-02-02T12:00:00Z"),
+        ] {
+            sqlx::query("INSERT INTO trades (id, account_id, status, instrument, asset_class, direction, closed_at, net_pnl_minor, created_at, updated_at) VALUES (?, ?, 'closed', 'EURUSD', 'forex', 'long', ?, ?, ?, ?)")
+                .bind(id)
+                .bind(account_id)
+                .bind(closed_at)
+                .bind(net_pnl_minor)
+                .bind(closed_at)
+                .bind(closed_at)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        pool
+    }
+
+    #[tokio::test]
+    async fn account_scope_dashboard_and_calendar_exclude_other_accounts() {
+        let pool = account_scope_database().await;
+
+        let response = calculate_dashboard_for_pool(&pool, "account-a", None)
+            .await
+            .unwrap();
+        assert_eq!(response.metrics.total_trades, 1);
+        assert_eq!(response.metrics.net_pnl_minor, 12_500);
+
+        let calendar = calculate_calendar_for_pool(&pool, "account-a", None)
+            .await
+            .unwrap();
+        assert_eq!(calendar.len(), 1);
+        assert_eq!(calendar[0].date, "2026-02-01");
+        assert_eq!(calendar[0].net_pnl_minor, 12_500);
+    }
+
+    #[tokio::test]
+    async fn account_scope_rejects_missing_archived_and_unknown_accounts() {
+        let pool = account_scope_database().await;
+
+        let error = calculate_dashboard_for_pool(&pool, "", None)
+            .await
+            .unwrap_err();
+        assert_eq!(error.code, "ACCOUNT_REQUIRED");
+        for account_id in ["archived", "missing"] {
+            let error = calculate_dashboard_for_pool(&pool, account_id, None)
+                .await
+                .unwrap_err();
+            assert_eq!(error.code, "ACCOUNT_NOT_FOUND");
+        }
+    }
 }

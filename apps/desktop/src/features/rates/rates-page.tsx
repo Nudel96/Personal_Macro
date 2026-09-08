@@ -1,3 +1,4 @@
+import { CirclePercent as PageIcon } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
   CirclePercent,
@@ -36,13 +37,13 @@ export function RatesPage() {
   });
   if (query.isLoading)
     return (
-      <div className="page">
+      <div className="page rates-page">
         <PageLoading />
       </div>
     );
   if (query.isError || !query.data)
     return (
-      <div className="page">
+      <div className="page rates-page">
         <ErrorState message="Leitzinsdaten konnten nicht geladen werden." />
       </div>
     );
@@ -54,8 +55,9 @@ export function RatesPage() {
     refreshIntervalHours: 6,
   };
   return (
-    <div className="page">
+    <div className="page rates-page">
       <PageHeader
+        icon={PageIcon}
         eyebrow="Marktkontext"
         title="Leitzinsen"
         description="Erwartete Zentralbankentscheidungen und relative USD-Wirkung im globalen Zinsumfeld."
@@ -99,15 +101,6 @@ export function RatesPage() {
               ? "Erwartungen und Quellen prüfen"
               : "Der erste automatische Abruf startet in der Desktop-App."
         }
-        action={
-          <Button
-            size="sm"
-            onClick={() => syncMutation.mutate()}
-            disabled={syncMutation.isPending || !automation.enabled}
-          >
-            <RefreshCw size={13} /> Aktualisieren
-          </Button>
-        }
       />
       {automation.errorMessage ? (
         <div className="notice" style={{ marginBottom: 14 }}>
@@ -115,10 +108,7 @@ export function RatesPage() {
           bestätigten Istwerte bleiben sichtbar. {automation.errorMessage}
         </div>
       ) : null}
-      <div
-        className="grid"
-        style={{ gridTemplateColumns: "1.1fr .9fr", marginBottom: 14 }}
-      >
+      <div className="grid workspace-split" style={{ marginBottom: 16 }}>
         <Card>
           <CardHeader
             title="USD-Relativwirkung"
@@ -127,56 +117,14 @@ export function RatesPage() {
           />
           <CardContent>
             {data.usdRelative.availabilityStatus === "available" ? (
-              <div
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "220px 1fr",
-                  gap: 25,
-                  alignItems: "center",
-                }}
-              >
-                <div style={{ textAlign: "center" }}>
-                  <div
-                    style={{
-                      width: 150,
-                      height: 150,
-                      margin: "0 auto",
-                      borderRadius: "50%",
-                      display: "grid",
-                      placeItems: "center",
-                      background:
-                        "conic-gradient(var(--primary) 0 70%, #142239 70%)",
-                      padding: 11,
-                    }}
+              <div className="rates-relative-layout">
+                <div className="rates-relative-value">
+                  <strong
+                    className={signalClass(data.usdRelative.relativeSignal)}
                   >
-                    <div
-                      style={{
-                        width: "100%",
-                        height: "100%",
-                        display: "grid",
-                        placeItems: "center",
-                        borderRadius: "50%",
-                        background: "#0b1628",
-                      }}
-                    >
-                      <div>
-                        <div
-                          className={signalClass(
-                            data.usdRelative.relativeSignal,
-                          )}
-                          style={{ fontSize: 25, fontWeight: 800 }}
-                        >
-                          {bps(data.usdRelative.relativeStanceBps)}
-                        </div>
-                        <div
-                          className="muted"
-                          style={{ fontSize: 9, marginTop: 4 }}
-                        >
-                          USD relativ
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                    {bps(data.usdRelative.relativeStanceBps)}
+                  </strong>
+                  <span>USD-Relativwirkung</span>
                 </div>
                 <div>
                   <RateMetric
@@ -185,7 +133,7 @@ export function RatesPage() {
                   />
                   <RateMetric
                     label="Abdeckung"
-                    value={`${data.usdRelative.coveredCentralBanks} / ${data.usdRelative.requiredCentralBanks} Zentralbanken`}
+                    value={`${data.usdRelative.coveredCentralBanks} nutzbar · mindestens ${data.usdRelative.requiredCentralBanks}`}
                   />
                   <div
                     className="grid"
@@ -236,13 +184,10 @@ export function RatesPage() {
             </div>
             <div style={{ marginTop: 17 }}>
               <RateMetric label="Formel" value="Fed Δbp − Ausland Δbp" />
-              <RateMetric
-                label="Fehlende Forecasts"
-                value="Unavailable, nicht neutral"
-              />
+              <RateMetric label="Fehlende Forecasts" value="Nicht verfügbar" />
               <RateMetric
                 label="Qualitätsregel"
-                value="Amtliche Istwerte + aktuelle Marktquelle"
+                value="EODHD · vollständige Erwartungswerte"
               />
             </div>
           </CardContent>
@@ -389,7 +334,7 @@ function Signal({ signal }: { signal?: number | null }) {
       }
     >
       {signal == null
-        ? "Unavailable"
+        ? "Nicht verfügbar"
         : signal > 0
           ? "Hawkish"
           : signal < 0
@@ -412,10 +357,8 @@ function bps(value?: string | null) {
 }
 function RateMetric({ label, value }: { label: string; value: string }) {
   return (
-    <div className="settings-row">
-      <div className="settings-row-copy">
-        <strong>{label}</strong>
-      </div>
+    <div className="rates-metric">
+      <span>{label}</span>
       <strong className="tabular">{value}</strong>
     </div>
   );

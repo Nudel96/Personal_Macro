@@ -55,8 +55,18 @@ export function CotPairHeatmap({
               onClick={() => onSelect([pair.base, pair.quote])}
             >
               <th scope="row" className="heatmap-symbol">
-                {pair.base}
-                {pair.quote}
+                <button
+                  type="button"
+                  className="table-link"
+                  aria-pressed={isSelected}
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    onSelect([pair.base, pair.quote]);
+                  }}
+                >
+                  {pair.base}
+                  {pair.quote}
+                </button>
               </th>
               <td style={cellStyle(pair.rawScore, 4)}>{pair.biasLabel}</td>
               <td className="heatmap-total" style={cellStyle(pair.rawScore, 4)}>
@@ -105,6 +115,16 @@ export function CotPairHeatmap({
             </tr>
           );
         })}
+        {!visiblePairs.length && (
+          <tr>
+            <td colSpan={6}>
+              <div className="cot-matrix-empty">
+                Noch keine COT-Paarwerte verfügbar. Die Datenherkunft und
+                Abdeckung findest du unterhalb der Matrix.
+              </div>
+            </td>
+          </tr>
+        )}
       </tbody>
     </table>
   );
@@ -239,6 +259,15 @@ export function CotOverview({ dashboard }: { dashboard?: CotDashboard }) {
               </tr>
             </thead>
             <tbody>
+              {contracts.length === 0 && (
+                <tr>
+                  <td colSpan={14} className="cot-matrix-empty">
+                    Noch keine COT-Reports verfügbar. Nach dem Datenabruf
+                    erscheinen hier Positionierung, Wochenänderung und
+                    Reportdatum.
+                  </td>
+                </tr>
+              )}
               {contracts.map((contract) => (
                 <tr key={contract.symbol}>
                   <td>

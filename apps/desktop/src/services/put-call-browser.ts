@@ -61,6 +61,7 @@ export function browserPutCallDashboard(
     selectedAsset,
     points: [],
     thresholds: null,
+    latestRawRatio: null,
     latestValue: null,
     sentiment: "unavailable",
     calibrationSampleSize: 0,

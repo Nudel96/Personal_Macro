@@ -71,7 +71,6 @@
     "immer": "^11.1.15",
     "jszip": "^3.10.1",
     "konva": "^10.3.0",
-    "lightweight-charts": "^5.2.0",
     "lucide-react": "^1.25.0",
     "papaparse": "^5.5.4",
     "react": "^19.1.0",

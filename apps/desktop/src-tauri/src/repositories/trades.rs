@@ -22,6 +22,9 @@ const TRADE_DETAIL_COLUMNS: &str = r#"
 "#;
 
 fn validate_trade(input: &TradeInput) -> Result<(), AppError> {
+    if input.account_id.trim().is_empty() {
+        return Err(AppError::Validation("Ein Konto ist erforderlich.".into()));
+    }
     let instrument = input.instrument.trim();
     if instrument.is_empty() || instrument.len() > 32 {
         return Err(AppError::Validation(
@@ -184,16 +187,18 @@ pub async fn create(db: &SqlitePool, input: TradeInput) -> Result<TradeDetail, A
         _ => AppError::Database(error),
     })?;
 
-    get(db, &id).await
+    get(db, &id, &input.account_id).await
 }
 
 pub async fn update(db: &SqlitePool, id: &str, input: TradeInput) -> Result<TradeDetail, AppError> {
     validate_trade(&input)?;
-    let exists: bool =
-        sqlx::query_scalar("SELECT EXISTS(SELECT 1 FROM trades WHERE id = ? AND is_deleted = 0)")
-            .bind(id)
-            .fetch_one(db)
-            .await?;
+    let exists: bool = sqlx::query_scalar(
+        "SELECT EXISTS(SELECT 1 FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0)",
+    )
+    .bind(id)
+    .bind(&input.account_id)
+    .fetch_one(db)
+    .await?;
     if !exists {
         return Err(AppError::NotFound(format!("Trade {id}")));
     }
@@ -212,7 +217,7 @@ pub async fn update(db: &SqlitePool, id: &str, input: TradeInput) -> Result<Trad
           followed_exit_rules=?, impulse_trade=?, process_score=?, execution_score=?, setup_quality=?,
           confidence_before=?, focus_before=?, stress_before=?, energy_before=?, satisfaction_after=?, reviewed_at=?,
           thesis_html=?, execution_notes_html=?, review_notes_html=?, lessons_html=?, source_metadata_json=?, updated_at=?
-        WHERE id=? AND is_deleted=0"#,
+        WHERE id=? AND account_id=? AND is_deleted=0"#,
     )
     .bind(&input.account_id).bind(&input.strategy_id).bind(&input.setup_id).bind(status)
     .bind(instrument).bind(input.asset_class.as_deref().unwrap_or("forex")).bind(&input.direction)
@@ -229,17 +234,19 @@ pub async fn update(db: &SqlitePool, id: &str, input: TradeInput) -> Result<Trad
     .bind(input.confidence_before).bind(input.focus_before).bind(input.stress_before)
     .bind(input.energy_before).bind(input.satisfaction_after).bind(&input.reviewed_at)
     .bind(&input.thesis_html).bind(&input.execution_notes_html).bind(&input.review_notes_html)
-    .bind(&input.lessons_html).bind(input.source_metadata_json.as_deref().unwrap_or("{}")).bind(&now).bind(id)
+    .bind(&input.lessons_html).bind(input.source_metadata_json.as_deref().unwrap_or("{}")).bind(&now).bind(id).bind(&input.account_id)
     .execute(db)
     .await?;
-    get(db, id).await
+    get(db, id, &input.account_id).await
 }
 
-pub async fn get(db: &SqlitePool, id: &str) -> Result<TradeDetail, AppError> {
-    let query =
-        format!("SELECT {TRADE_DETAIL_COLUMNS} FROM trades WHERE id = ? AND is_deleted = 0");
+pub async fn get(db: &SqlitePool, id: &str, account_id: &str) -> Result<TradeDetail, AppError> {
+    let query = format!(
+        "SELECT {TRADE_DETAIL_COLUMNS} FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0"
+    );
     sqlx::query_as::<_, TradeDetail>(&query)
         .bind(id)
+        .bind(account_id)
         .fetch_optional(db)
         .await?
         .ok_or_else(|| AppError::NotFound(format!("Trade {id}")))
@@ -465,17 +472,19 @@ pub async fn metric_trades(
         .collect())
 }
 
-pub async fn trash(db: &SqlitePool, id: &str) -> Result<(), AppError> {
+pub async fn trash(db: &SqlitePool, id: &str, account_id: &str) -> Result<(), AppError> {
     let mut transaction = db.begin().await?;
     let now = Utc::now().to_rfc3339();
-    let display_name: Option<String> =
-        sqlx::query_scalar("SELECT instrument FROM trades WHERE id = ? AND is_deleted = 0")
-            .bind(id)
-            .fetch_optional(&mut *transaction)
-            .await?;
+    let display_name: Option<String> = sqlx::query_scalar(
+        "SELECT instrument FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0",
+    )
+    .bind(id)
+    .bind(account_id)
+    .fetch_optional(&mut *transaction)
+    .await?;
     let display_name = display_name.ok_or_else(|| AppError::NotFound(format!("Trade {id}")))?;
-    sqlx::query("UPDATE trades SET is_deleted = 1, status = 'trashed', deleted_at = ?, updated_at = ? WHERE id = ?")
-        .bind(&now).bind(&now).bind(id).execute(&mut *transaction).await?;
+    sqlx::query("UPDATE trades SET is_deleted = 1, status = 'trashed', deleted_at = ?, updated_at = ? WHERE id = ? AND account_id = ?")
+        .bind(&now).bind(&now).bind(id).bind(account_id).execute(&mut *transaction).await?;
     sqlx::query("INSERT OR REPLACE INTO deleted_items (id, entity_type, entity_id, display_name, payload_json, deleted_at) VALUES (?, 'trade', ?, ?, '{}', ?)")
         .bind(Uuid::new_v4().to_string()).bind(id).bind(display_name).bind(&now)
         .execute(&mut *transaction).await?;
@@ -483,11 +492,11 @@ pub async fn trash(db: &SqlitePool, id: &str) -> Result<(), AppError> {
     Ok(())
 }
 
-pub async fn restore(db: &SqlitePool, id: &str) -> Result<TradeDetail, AppError> {
+pub async fn restore(db: &SqlitePool, id: &str, account_id: &str) -> Result<TradeDetail, AppError> {
     let mut transaction = db.begin().await?;
     let now = Utc::now().to_rfc3339();
-    let result = sqlx::query("UPDATE trades SET is_deleted = 0, status = CASE WHEN closed_at IS NOT NULL THEN 'closed' WHEN opened_at IS NOT NULL THEN 'open' ELSE 'draft' END, deleted_at = NULL, updated_at = ? WHERE id = ? AND is_deleted = 1")
-        .bind(&now).bind(id).execute(&mut *transaction).await?;
+    let result = sqlx::query("UPDATE trades SET is_deleted = 0, status = CASE WHEN closed_at IS NOT NULL THEN 'closed' WHEN opened_at IS NOT NULL THEN 'open' ELSE 'draft' END, deleted_at = NULL, updated_at = ? WHERE id = ? AND account_id = ? AND is_deleted = 1")
+        .bind(&now).bind(id).bind(account_id).execute(&mut *transaction).await?;
     if result.rows_affected() == 0 {
         return Err(AppError::NotFound(format!("Gelöschter Trade {id}")));
     }
@@ -496,16 +505,20 @@ pub async fn restore(db: &SqlitePool, id: &str) -> Result<TradeDetail, AppError>
         .execute(&mut *transaction)
         .await?;
     transaction.commit().await?;
-    get(db, id).await
+    get(db, id, account_id).await
 }
 
-pub async fn duplicate(db: &SqlitePool, id: &str) -> Result<TradeDetail, AppError> {
-    let original = get(db, id).await?;
+pub async fn duplicate(
+    db: &SqlitePool,
+    id: &str,
+    account_id: &str,
+) -> Result<TradeDetail, AppError> {
+    let original = get(db, id, account_id).await?;
     let duplicated = create(
         db,
         TradeInput {
             id: None,
-            account_id: original.account_id,
+            account_id: account_id.to_owned(),
             strategy_id: original.strategy_id,
             setup_id: original.setup_id,
             status: Some("draft".into()),
@@ -585,7 +598,7 @@ mod tests {
     fn input() -> TradeInput {
         TradeInput {
             id: None,
-            account_id: None,
+            account_id: "account-a".into(),
             strategy_id: None,
             setup_id: None,
             status: Some("closed".into()),
@@ -638,6 +651,7 @@ mod tests {
     #[tokio::test]
     async fn trade_round_trip_calculates_net_pnl_and_r() {
         let db = test_database().await;
+        sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES ('account-a', 'A', '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')").execute(&db).await.unwrap();
         let created = create(&db, input()).await.unwrap();
         assert_eq!(created.instrument, "EURUSD");
         assert_eq!(created.net_pnl_minor, Some(9_350));
@@ -649,11 +663,61 @@ mod tests {
     #[tokio::test]
     async fn trash_and_restore_round_trip() {
         let db = test_database().await;
+        sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES ('account-a', 'A', '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')").execute(&db).await.unwrap();
         let created = create(&db, input()).await.unwrap();
-        trash(&db, &created.id).await.unwrap();
-        assert!(get(&db, &created.id).await.is_err());
-        let restored = restore(&db, &created.id).await.unwrap();
+        trash(&db, &created.id, "account-a").await.unwrap();
+        assert!(get(&db, &created.id, "account-a").await.is_err());
+        let restored = restore(&db, &created.id, "account-a").await.unwrap();
         assert_eq!(restored.status, "closed");
+    }
+
+    #[tokio::test]
+    async fn account_scope_prevents_cross_account_trade_reads_writes_and_deleted_lists() {
+        let db = test_database().await;
+        for id in ["account-a", "account-b"] {
+            sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES (?, ?, '2026-01-01T00:00:00Z', '2026-01-01T00:00:00Z')")
+                .bind(id)
+                .bind(id)
+                .execute(&db)
+                .await
+                .unwrap();
+        }
+        let trade_a = create(&db, input()).await.unwrap();
+        let mut account_b_input = input();
+        account_b_input.account_id = "account-b".into();
+        account_b_input.instrument = "GBPUSD".into();
+        let trade_b = create(&db, account_b_input).await.unwrap();
+
+        let listed = list(
+            &db,
+            TradeFilter {
+                account_ids: Some(vec!["account-a".into()]),
+                ..Default::default()
+            },
+        )
+        .await
+        .unwrap();
+        assert_eq!(listed.total, 1);
+        assert_eq!(listed.items[0].id, trade_a.id);
+        assert!(get(&db, &trade_b.id, "account-a").await.is_err());
+        assert!(trash(&db, &trade_b.id, "account-a").await.is_err());
+        assert!(duplicate(&db, &trade_b.id, "account-a").await.is_err());
+
+        trash(&db, &trade_b.id, "account-b").await.unwrap();
+        let deleted = crate::commands::list_deleted_trades_for_pool(&db, "account-a")
+            .await
+            .unwrap();
+        assert!(deleted.is_empty());
+    }
+
+    #[tokio::test]
+    async fn account_scope_rejects_trade_writes_without_an_account() {
+        let db = test_database().await;
+        let mut missing_account = input();
+        missing_account.account_id.clear();
+
+        let error = create(&db, missing_account).await.unwrap_err();
+        assert!(matches!(error, AppError::Validation(_)));
     }
 
     #[tokio::test]

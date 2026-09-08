@@ -45,36 +45,38 @@ Den installierbaren Windows-Build erzeugen:
 pnpm tauri build
 ```
 
-## BlackBull MT5 Live Chart
+## Broker-Konto verbinden und historische Trades importieren
 
-Die Seite **Marktkontext → Live Chart** liest Kurse ausschließlich aus einem
-lokal angemeldeten BlackBull-MetaTrader-5-Terminal. Sie kann keine Orders
-senden und speichert keine Zugangsdaten.
+Unter **Einstellungen → Konten → MT5 / cTrader verbinden** kann ein bestehendes
+Broker-Konto als Journal-Konto angelegt werden. MT5 wird über das lokal geöffnete
+und bereits angemeldete Terminal erkannt; Passwörter werden nicht abgefragt oder
+gespeichert. cTrader verwendet den offiziellen OAuth-Flow mit reinem
+`accounts`-Scope. Die Verbindung liest Kontoinformationen und Broker-Balance,
+enthält aber ausdrücklich keine Orderfunktionen. cTrader benötigt einmalig eine
+freigegebene Open-API-App und die drei leeren Konfigurationswerte aus
+`.env.example`; Tokens werden außerhalb von SQLite im Windows-Anmeldedatenspeicher
+geschützt.
 
-1. Installiere MetaTrader 5 von BlackBull Markets und melde dich manuell an.
-2. Installiere das offizielle Python-Paket: `pip install MetaTrader5`.
-3. Starte Personal Macro. Die Verbindung wird automatisch erkannt; eine
-   manuelle Prüfung ist weiterhin im Live Chart möglich.
+Historische Trades werden weiterhin bewusst über eine geprüfte Vorschau einem
+ausgewählten Journal-Konto zugeordnet:
 
-Optional kann in `.env.local` ein lokaler Terminalpfad hinterlegt werden:
+1. In MetaTrader den klassischen History-/Kontohistorie-Report als HTML
+   speichern.
+2. In **Import & Export → MetaTrader HTML-Historie** das Zielkonto und die
+   Broker-Server-Zeitzone wählen.
+3. Die native Vorschau prüfen und anschließend atomar übernehmen.
 
-```env
-BLACKBULL_MT5_TERMINAL_PATH=
-BLACKBULL_MT5_SERVER=
-```
+Der Import führt HTML niemals aus. Reine grafische Aggregate-Reports ohne
+Trade-Ledger werden abgelehnt; wiederholte Imports werden über stabile
+Quellpositionen dedupliziert.
 
-Bleibt der Pfad leer, sucht MetaTrader 5 die lokale Installation selbst. Die
-Symbolauswahl wird immer aus dem tatsächlich verfügbaren BlackBull-Market-Watch
-gelesen; es werden keine Symbolnamen geraten.
-
-Unter **Einstellungen → MetaTrader 5** wird jeder erkannte Broker-Account über
-die unverwechselbare Kombination aus Server und MT5-Login einem lokalen
-Journal-Konto zugeordnet. Erst nach dieser Zuordnung importiert der
-Read-only-Connector Positionen und abgeschlossene Deals. Kontowechsel im
-Terminal werden automatisch erkannt; unbekannte Logins bleiben bis zur
-Bestätigung gesperrt. Balance und Equity werden als Broker-Snapshots getrennt
-vom lokal berechneten Journal-Kontostand gespeichert. Passwörter werden nicht
-gelesen oder gespeichert und es existiert keine Orderfunktion.
+Für cTrader steht unter **Import & Export → cTrader Statement** zusätzlich ein
+Import für HTML- und XLSX-Kontoauszüge bereit. Das ausgewählte Journal-Konto ist
+nur das Ziel; Berichtskonto und Berichtswährung dürfen abweichen. Netto-P&L wird
+bei abweichender Währung unverändert und ohne automatische FX-Umrechnung
+übernommen. Verwendet wird die `History`-Tabelle. Leere XLSX-Exporte enthalten
+keine Trades und werden mit einem klaren Hinweis abgelehnt; in diesem Fall den
+HTML-Kontoauszug exportieren.
 
 ## Automatische Positionsgröße und EODHD-Fundamentaldaten
 
@@ -98,9 +100,19 @@ manuellen Prüfliste und werden nicht automatisch gescored. Nach bekannten
 Release-Terminen prüft die Desktop-App gezielt nach; zusätzlich erfolgt ein
 täglicher vollständiger Abgleich, solange die App geöffnet ist.
 
-Die Konfiguration erfolgt ausschließlich über `EODHD_API_KEY` in `.env.local`;
-der Schlüssel wird weder protokolliert noch in der Datenbank gespeichert. Für
-COT und Seasonality bleiben die bestehenden getrennten Datenpfade aktiv.
+Die Konfiguration erfolgt ausschließlich über `EODHD_API_KEY` in der
+`.env.local` im Repository-Stamm. Eine installierte App kann dieselbe Datei
+alternativ unter
+`%APPDATA%\com.personal-macro.app\PersonalMacro\settings\.env.local` lesen.
+Die Auflösung ist unabhängig vom Startordner; der Schlüssel wird weder
+protokolliert noch in der Datenbank gespeichert. Für
+COT bleibt der eigenständige Datenpfad aktiv. Seasonality verwendet nun
+ausschließlich lokal gespeicherte EODHD-Tageshistorien: Forex, Indizes,
+Kryptowährungen und Edelmetall-Spots kommen aus dem EOD-Historical-Endpoint;
+täglich verfügbare Energie-Rohstoffe aus dem EODHD-Commodities-Endpoint.
+Provider-native Handelstage und Herkunft bleiben in der Analyse sichtbar.
+Unvollständige Jahre sowie Kohorten unter fünf Beobachtungen werden nicht als
+belastbare oder neutrale Evidenz gewertet.
 
 Voraussetzungen für den Desktop-Build sind Node.js, pnpm, Rust, Microsoft C++
 Build Tools und WebView2. Details stehen in

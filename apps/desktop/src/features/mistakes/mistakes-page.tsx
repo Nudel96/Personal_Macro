@@ -1,3 +1,4 @@
+import { Target as PageIcon } from "lucide-react";
 import { useQuery } from "@tanstack/react-query";
 import { AlertTriangle, ShieldAlert } from "lucide-react";
 import type { EChartsOption } from "echarts";
@@ -11,26 +12,50 @@ import {
 import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
 import { formatMoneyMinor, number } from "../../lib/utils";
 import { api } from "../../services/commands";
 import type { MistakeAnalytics } from "../../types/domain";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import { useJournalAccount } from "../accounts/journal-account-context";
 
 export function MistakesPage() {
+  const { selectedAccountId, status } = useJournalAccount();
+  const ready = status === "ready" && selectedAccountId !== null;
   const query = useQuery({
-    queryKey: ["mistakes"],
-    queryFn: api.mistakeAnalytics,
+    queryKey: ["mistakes", selectedAccountId],
+    queryFn: () => api.mistakeAnalytics(selectedAccountId!),
+    enabled: ready,
   });
+  const header = (
+    <JournalPageHeader
+      icon={PageIcon}
+      eyebrow="Prozess"
+      title="Fehleranalyse"
+      description="Häufigkeit, geschätzte Kosten und Gegenmaßnahmen deiner wiederkehrenden Fehler."
+    />
+  );
+  if (!ready)
+    return (
+      <div className="page mistakes-page">
+        {header}
+        <JournalAccountGate>
+          <div />
+        </JournalAccountGate>
+      </div>
+    );
   if (query.isLoading)
     return (
-      <div className="page">
+      <div className="page mistakes-page">
+        {header}
         <PageLoading />
       </div>
     );
   if (query.isError || !query.data)
     return (
-      <div className="page">
+      <div className="page mistakes-page">
+        {header}
         <ErrorState message="Fehleranalyse konnte nicht geladen werden." />
       </div>
     );
@@ -39,16 +64,9 @@ export function MistakesPage() {
   const cost = rows.reduce((sum, row) => sum + row.estimatedCostMinor, 0);
   const active = rows.filter((row) => row.occurrences > 0);
   return (
-    <div className="page">
-      <PageHeader
-        eyebrow="Prozess"
-        title="Fehleranalyse"
-        description="Häufigkeit, geschätzte Kosten und Gegenmaßnahmen deiner wiederkehrenden Fehler."
-      />
-      <div
-        className="grid"
-        style={{ gridTemplateColumns: "repeat(4, 1fr)", marginBottom: 14 }}
-      >
+    <div className="page mistakes-page">
+      {header}
+      <div className="grid summary-grid" style={{ marginBottom: 16 }}>
         <MistakeKpi label="Fehlerereignisse" value={String(total)} />
         <MistakeKpi
           label="Geschätzte Kosten"

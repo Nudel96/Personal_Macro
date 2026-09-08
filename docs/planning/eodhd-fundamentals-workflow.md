@@ -23,29 +23,51 @@ Fallback-Pipeline.
 Jedes Providerereignis wird gegen ein länderspezifisches Indikatorprofil
 bewertet. Eine automatische Zuordnung braucht ausreichende Konfidenz und einen
 klaren Abstand zur zweitbesten Zuordnung. Mehrdeutige Bezeichnungen landen in
-`eodhd_mapping_candidates` und bleiben bis zur Freigabe nicht verfügbar.
-Country-spezifische Reihen wie ISM/NBS, Core CPI, Median CPI, Trimmed Mean CPI,
-Loan Prime Rate und Initial Jobless Claims dürfen nicht mit ähnlich benannten
-Reihen vermischt werden.
+`eodhd_mapping_candidates` und bleiben bis zur Freigabe nicht verfügbar. Der
+Snapshot liest ausschließlich explizit in `eodhd_indicator_series` zugelassene
+Kombinationen aus Währung, Providerreihe und Vergleichsart. Eine manuelle
+Freigabe ergänzt diese Zulassungsliste. Country-spezifische Reihen wie ISM/NBS,
+Core CPI, Median CPI, Trimmed Mean CPI, Loan Prime Rate und Initial Jobless
+Claims dürfen nicht mit ähnlich benannten Reihen vermischt werden.
+Zentralbankreden, Protokolle, Bulletins und Pressekonferenzen sind für den
+numerischen Zins-Slot gesperrt; nur echte Leitzinsentscheidungen sind zulässig.
 
 ## Releaseauswahl und Scoring
 
 - Ein Indikator wird nur mit vorhandenem Actual und Forecast bewertet.
+- Releases in der Zukunft werden niemals als aktuelles Signal ausgewählt.
 - Der neueste vollständige Release bleibt aktiv, solange ein neuerer Release
   noch unvollständig ist. Der wartende Releasezeitpunkt wird separat angezeigt.
+- Wochen-, Monats-, Quartals- und Meeting-Reihen besitzen eigene
+  Frischefenster. Ein veralteter Release bleibt in der Historie sichtbar, wird
+  aber nicht mehr als aktuelles Heatmap-Signal verwendet.
 - Previous ist Kontext, nicht Scoring-Ersatz.
 - NZD-Quartalsreleases bleiben quartalsweise; andere Monats-, Quartals-,
   Wochen- oder Meeting-Releases werden nicht künstlich auf dieselbe Frequenz
   gebracht.
 - Im Paarvergleich gilt weiterhin `BaseSignal - QuoteSignal`. Eine fehlende
   Seite bleibt diagnostisch unavailable, geht numerisch aber als `0` ein.
-- Der Paarrohscore ist die Summe aller 14 fundamentalen Zellen. Die Matrix muss
+- Handelsbilanz (9 Währungen), Lohnentwicklung (7) und Industrieproduktion (6)
+  ergänzen die funktional vergleichbaren Gegenreihen. Wo EODHD kein belastbares
+  Äquivalent liefert, bleibt der Slot unverändert nicht verfügbar.
+- Der Reiter „Wirtschaftsdaten“ ergänzt für CNY provider-native Kontextreihen:
+  S&P Global/Caixin Manufacturing und Services PMI, Anlageinvestitionen,
+  Exporte und Importe, Industriegewinne, industrielle Kapazitätsauslastung,
+  Leistungsbilanz, Direktinvestitionen, Hauspreise, M2, neue Yuan-Kredite,
+  Gesamtfinanzierung und die 5-Jahres-LPR. Diese Reihen werden nur für China
+  angeboten und verändern mangels belastbarer Gegenreihen weder die 17
+  fundamentalen Paarzellen noch bestehende Paar-Scores.
+- Der Paarrohscore ist die Summe aller 17 fundamentalen Zellen. Die Matrix muss
   antisymmetrisch bleiben.
 
 ## Betrieb und Prüfung
 
 Die Oberfläche zeigt letzten Lauf, Anzahl geprüfter Releases, offene
-releasegebundene Jobs und manuell zu prüfende Mappings. Ein Live-Abnahmelauf
-muss einen Fundamentals-Snapshot mit 9 Währungen, 72 gerichteten Paaren und 14
-Zellen je Paar erzeugen. Der API-Schlüssel bleibt ausschließlich in
-`.env.local` oder der lokalen Prozessumgebung und darf nie geloggt werden.
+releasegebundene Jobs und manuell zu prüfende Mappings. Überschriebene
+Providerwerte werden vor dem Update in `eodhd_event_revisions` erhalten. Der
+Reiter „Wirtschaftsdaten“ zeigt zusätzlich Prognoseabdeckung,
+Überraschungsmetriken, Revisionen und den aktuellen 9-Währungs-Vergleich. Ein
+Live-Abnahmelauf muss einen Fundamentals-Snapshot mit 9 Währungen, 72
+gerichteten Paaren und 17 Zellen je Paar erzeugen. Der API-Schlüssel bleibt
+ausschließlich in `.env.local` oder der lokalen Prozessumgebung und darf nie
+geloggt werden.

@@ -1,3 +1,4 @@
+import { NotebookPen as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -15,88 +16,138 @@ import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
 import { formatMoneyMinor, formatR, localDate } from "../../lib/utils";
 import { api } from "../../services/commands";
 import type { ReviewInput, ReviewRecord } from "../../types/domain";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import { useJournalAccount } from "../accounts/journal-account-context";
+import { WorkspaceSummary } from "../../components/ui/workspace-summary";
+import { useDialogFocus } from "../../components/ui/use-dialog-focus";
 
 export function ReviewsPage() {
-  const query = useQuery({ queryKey: ["reviews"], queryFn: api.reviews });
-  const dashboard = useQuery({
-    queryKey: ["dashboard", "review-snapshot"],
-    queryFn: () => api.dashboard({}),
+  const { selectedAccountId, status } = useJournalAccount();
+  const ready = status === "ready" && selectedAccountId !== null;
+  const query = useQuery({
+    queryKey: ["reviews", selectedAccountId],
+    queryFn: () => api.reviews(selectedAccountId!),
+    enabled: ready,
   });
   const [open, setOpen] = useState(false);
+  const { rememberFocus, restoreFocus } = useDialogFocus();
   const [selected, setSelected] = useState<ReviewRecord>();
-  if (query.isLoading)
-    return (
-      <div className="page">
-        <PageLoading />
-      </div>
-    );
-  if (query.isError)
-    return (
-      <div className="page">
-        <ErrorState message="Reviews konnten nicht geladen werden." />
-      </div>
-    );
+  const [dialogAccountId, setDialogAccountId] = useState<string | null>(null);
+
+  useEffect(() => {
+    setOpen(false);
+    setSelected(undefined);
+    setDialogAccountId(null);
+  }, [selectedAccountId]);
+
+  const openReview = (review?: ReviewRecord) => {
+    if (!ready || !selectedAccountId) return;
+    rememberFocus();
+    setSelected(review);
+    setDialogAccountId(selectedAccountId);
+    setOpen(true);
+  };
+
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page reviews-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Prozess"
         title="Reviews"
         description="Tages-, Wochen- und Monatsreflexionen mit eingefrorenem Kennzahlen-Snapshot."
         actions={
           <Button
             variant="primary"
-            onClick={() => {
-              setSelected(undefined);
-              setOpen(true);
-            }}
+            disabled={!ready}
+            onClick={() => openReview()}
           >
             <Plus size={15} /> Review starten
           </Button>
         }
       />
-      <Tabs.Root defaultValue="all">
-        <Tabs.List
-          className="segmented"
-          style={{ width: "fit-content", marginBottom: 14 }}
-        >
-          <Tabs.Trigger value="all" asChild>
-            <button>Alle</button>
-          </Tabs.Trigger>
-          <Tabs.Trigger value="daily" asChild>
-            <button>Täglich</button>
-          </Tabs.Trigger>
-          <Tabs.Trigger value="weekly" asChild>
-            <button>Wöchentlich</button>
-          </Tabs.Trigger>
-          <Tabs.Trigger value="monthly" asChild>
-            <button>Monatlich</button>
-          </Tabs.Trigger>
-        </Tabs.List>
-        {["all", "daily", "weekly", "monthly"].map((type) => (
-          <Tabs.Content value={type} key={type}>
-            <ReviewList
-              reviews={(query.data ?? []).filter(
-                (review) => type === "all" || review.reviewType === type,
-              )}
-              onOpen={(review) => {
-                setSelected(review);
-                setOpen(true);
-              }}
+      <JournalAccountGate>
+        {query.isLoading ? (
+          <PageLoading />
+        ) : query.isError ? (
+          <ErrorState message="Reviews konnten nicht geladen werden." />
+        ) : (
+          <>
+            <WorkspaceSummary
+              items={[
+                {
+                  label: "Reviews",
+                  value: query.data?.length ?? 0,
+                  detail: "Reflexionen im ausgewählten Konto",
+                },
+                {
+                  label: "Abgeschlossen",
+                  value:
+                    query.data?.filter(
+                      (review) => review.status === "completed",
+                    ).length ?? 0,
+                  detail: "Mit festgehaltenen Erkenntnissen",
+                },
+                {
+                  label: "Entwürfe",
+                  value:
+                    query.data?.filter(
+                      (review) => review.status !== "completed",
+                    ).length ?? 0,
+                  detail: "Zur weiteren Bearbeitung",
+                },
+              ]}
             />
-          </Tabs.Content>
-        ))}
-      </Tabs.Root>
-      <ReviewDialog
-        open={open}
-        onOpenChange={setOpen}
-        review={selected}
-        metricSnapshot={dashboard.data?.metrics}
-      />
+            <Tabs.Root defaultValue="all">
+              <Tabs.List
+                className="segmented"
+                style={{ width: "fit-content", marginBottom: 14 }}
+              >
+                <Tabs.Trigger value="all" asChild>
+                  <button>Alle</button>
+                </Tabs.Trigger>
+                <Tabs.Trigger value="daily" asChild>
+                  <button>Täglich</button>
+                </Tabs.Trigger>
+                <Tabs.Trigger value="weekly" asChild>
+                  <button>Wöchentlich</button>
+                </Tabs.Trigger>
+                <Tabs.Trigger value="monthly" asChild>
+                  <button>Monatlich</button>
+                </Tabs.Trigger>
+              </Tabs.List>
+              {["all", "daily", "weekly", "monthly"].map((type) => (
+                <Tabs.Content value={type} key={type}>
+                  <ReviewList
+                    reviews={(query.data ?? []).filter(
+                      (review) => type === "all" || review.reviewType === type,
+                    )}
+                    onOpen={openReview}
+                  />
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
+            {selectedAccountId && (
+              <ReviewDialog
+                key={`${selectedAccountId}:${selected?.id ?? "new"}`}
+                accountId={selectedAccountId}
+                open={open && dialogAccountId === selectedAccountId}
+                onOpenChange={setOpen}
+                onCloseAutoFocus={restoreFocus}
+                review={
+                  selected?.accountId === selectedAccountId
+                    ? selected
+                    : undefined
+                }
+              />
+            )}
+          </>
+        )}
+      </JournalAccountGate>
     </div>
   );
 }
@@ -119,22 +170,16 @@ function ReviewList({
       </Card>
     );
   return (
-    <div
-      className="grid"
-      style={{ gridTemplateColumns: "repeat(3, minmax(0, 1fr))" }}
-    >
+    <div className="grid responsive-card-grid">
       {reviews.map((review) => {
         const snapshot = safeJson(review.metricSnapshotJson) as {
           netPnlMinor?: number;
           totalR?: { value?: number };
         };
         return (
-          <Card
-            key={review.id}
-            style={{ cursor: "pointer" }}
-            onClick={() => onOpen(review)}
-          >
+          <Card key={review.id} className="collection-card">
             <CardHeader
+              onOpen={() => onOpen(review)}
               title={`${reviewTypeLabel(review.reviewType)} · ${localDate(review.periodStart)}`}
               action={
                 <Badge
@@ -160,7 +205,7 @@ function ReviewList({
                   value={formatR(snapshot.totalR?.value)}
                 />
               </div>
-              <div className="muted" style={{ fontSize: 10, lineHeight: 1.55 }}>
+              <div className="collection-card-copy">
                 {review.lessonsHtml ||
                   review.actionsHtml ||
                   "Noch keine Erkenntnisse notiert."}
@@ -172,6 +217,15 @@ function ReviewList({
                   </Badge>
                 </div>
               )}
+              <div className="collection-card-footer">
+                <span>
+                  {localDate(review.periodStart)} –{" "}
+                  {localDate(review.periodEnd)}
+                </span>
+                <Button size="sm" onClick={() => onOpen(review)}>
+                  Review öffnen
+                </Button>
+              </div>
             </CardContent>
           </Card>
         );
@@ -181,34 +235,74 @@ function ReviewList({
 }
 
 function ReviewDialog({
+  accountId,
   open,
   onOpenChange,
   review,
-  metricSnapshot,
+  onCloseAutoFocus,
 }: {
+  accountId: string;
   open: boolean;
   onOpenChange: (value: boolean) => void;
   review?: ReviewRecord;
-  metricSnapshot?: unknown;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const queryClient = useQueryClient();
   const today = new Date().toISOString().slice(0, 10);
   const [draft, setDraft] = useState<ReviewInput>(() =>
-    initialReview(review, today, metricSnapshot),
+    initialReview(review, today, accountId),
   );
   useEffect(() => {
-    if (open) setDraft(initialReview(review, today, metricSnapshot));
-  }, [open, review, today, metricSnapshot]);
+    if (open) setDraft(initialReview(review, today, accountId));
+  }, [accountId, open, review, today]);
+  const snapshot = useQuery({
+    queryKey: [
+      "dashboard",
+      "review-snapshot",
+      accountId,
+      draft.periodStart,
+      draft.periodEnd,
+    ],
+    queryFn: () =>
+      api.dashboard(accountId, {
+        dateFrom: draft.periodStart,
+        dateTo: draft.periodEnd,
+      }),
+    enabled:
+      open &&
+      draft.accountId === accountId &&
+      Boolean(draft.periodStart && draft.periodEnd),
+  });
   const mutation = useMutation({
-    mutationFn: api.saveReview,
+    mutationFn: (input: ReviewInput) => {
+      if (input.accountId !== accountId) {
+        return Promise.reject({
+          code: "ACCOUNT_SCOPE_CHANGED",
+          message: "Das Tradingkonto hat sich geändert. Öffne das Review neu.",
+        });
+      }
+      return api.saveReview(input);
+    },
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["reviews"] });
+      queryClient.invalidateQueries({ queryKey: ["reviews", accountId] });
       toast.success("Review gespeichert.");
       onOpenChange(false);
     },
     onError: (error: { message?: string }) =>
       toast.error(error.message ?? "Review konnte nicht gespeichert werden."),
   });
+  const saveReview = (status: ReviewInput["status"]) => {
+    if (!snapshot.data) {
+      toast.error("Kennzahlen für den Review-Zeitraum werden noch geladen.");
+      return;
+    }
+    mutation.mutate({
+      ...draft,
+      accountId,
+      status,
+      metricSnapshot: snapshot.data.metrics,
+    });
+  };
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
@@ -216,6 +310,7 @@ function ReviewDialog({
         <Dialog.Content
           className="dialog-content wide"
           aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
         >
           <header className="dialog-header">
             <div>
@@ -227,7 +322,7 @@ function ReviewDialog({
               </div>
             </div>
             <Dialog.Close asChild>
-              <Button size="icon" variant="ghost">
+              <Button size="icon" variant="ghost" aria-label="Dialog schließen">
                 <X size={17} />
               </Button>
             </Dialog.Close>
@@ -354,14 +449,16 @@ function ReviewDialog({
                 </Button>
               )}
               <Button
-                onClick={() => mutation.mutate({ ...draft, status: "draft" })}
+                disabled={snapshot.isPending || mutation.isPending}
+                onClick={() => saveReview("draft")}
               >
                 <Save size={14} /> Als Entwurf
               </Button>
             </div>
             <Button
               variant="primary"
-              onClick={() => mutation.mutate({ ...draft, status: "completed" })}
+              disabled={snapshot.isPending || mutation.isPending}
+              onClick={() => saveReview("completed")}
             >
               <CheckCircle2 size={14} /> Abschließen
             </Button>
@@ -375,11 +472,12 @@ function ReviewDialog({
 function initialReview(
   review: ReviewRecord | undefined,
   today: string,
-  metricSnapshot: unknown,
+  accountId: string,
 ): ReviewInput {
   return review
     ? {
         id: review.id,
+        accountId,
         reviewType: review.reviewType,
         periodStart: review.periodStart.slice(0, 10),
         periodEnd: review.periodEnd.slice(0, 10),
@@ -392,11 +490,12 @@ function initialReview(
         processRating: review.processRating ?? undefined,
       }
     : {
+        accountId,
         reviewType: "weekly",
         periodStart: today,
         periodEnd: today,
         status: "draft",
-        metricSnapshot: metricSnapshot ?? {},
+        metricSnapshot: {},
         winsHtml: "",
         challengesHtml: "",
         lessonsHtml: "",
@@ -416,7 +515,7 @@ function reviewTypeLabel(value: string) {
 function ReviewMetric({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="muted" style={{ fontSize: 9 }}>
+      <div className="muted" style={{ fontSize: 11 }}>
         {label}
       </div>
       <strong style={{ display: "block", marginTop: 5, fontSize: 14 }}>
@@ -433,9 +532,9 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="field">
-      <label>{label}</label>
+    <label className="field">
+      <span>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }

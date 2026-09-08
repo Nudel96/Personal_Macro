@@ -55,3 +55,9 @@ Thumbs.db
 *.log
 tmp/
 .tmp/
+
+# Local Cargo caches and brainstorming session state
+/.tmp-cargo-*/
+/.superpowers/brainstorm/.last-port
+/.superpowers/brainstorm/.last-token
+/.superpowers/brainstorm/*/state/

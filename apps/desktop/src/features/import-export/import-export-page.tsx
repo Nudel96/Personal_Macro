@@ -1,3 +1,4 @@
+import { FolderSync as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
@@ -5,7 +6,6 @@ import {
   Archive,
   CheckCircle2,
   Download,
-  FileJson,
   FileSpreadsheet,
   FileText,
   FolderArchive,
@@ -15,7 +15,7 @@ import {
   X,
 } from "lucide-react";
 import Papa from "papaparse";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDropzone } from "react-dropzone";
 import * as XLSX from "xlsx";
 import { toast } from "sonner";
@@ -23,19 +23,39 @@ import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
-import { PageHeader } from "../../components/ui/page-header";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { dateTime } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
 import type {
   LegacyPreview,
+  MetaTraderHtmlPreview,
   RestorePreview,
   TradeInput,
 } from "../../types/domain";
+import {
+  useJournalAccount,
+  type JournalAccountStatus,
+} from "../accounts/journal-account-context";
+import { JournalResetDialog } from "./journal-reset-dialog";
+import { CTraderStatementImport } from "./ctrader-statement-import";
 
 type ImportRow = Record<string, unknown>;
 
+export function journalTransferReady(
+  status: JournalAccountStatus,
+  selectedAccountId: string | null,
+) {
+  return status === "ready" && selectedAccountId !== null;
+}
+
 export function ImportExportPage() {
   const queryClient = useQueryClient();
+  const { status: journalAccountStatus, selectedAccountId } =
+    useJournalAccount();
+  const journalReady = journalTransferReady(
+    journalAccountStatus,
+    selectedAccountId,
+  );
   const backups = useQuery({ queryKey: ["backups"], queryFn: api.backups });
   const [rows, setRows] = useState<ImportRow[]>([]);
   const [filename, setFilename] = useState("");
@@ -43,6 +63,12 @@ export function ImportExportPage() {
   const [restoreTarget, setRestoreTarget] = useState("");
   const [restorePreview, setRestorePreview] = useState<RestorePreview>();
   const [legacyPreview, setLegacyPreview] = useState<LegacyPreview>();
+  const [metaTraderPreview, setMetaTraderPreview] =
+    useState<MetaTraderHtmlPreview>();
+  const [sourceTimezone, setSourceTimezone] = useState("Europe/Berlin");
+  useEffect(() => {
+    setMetaTraderPreview(undefined);
+  }, [selectedAccountId]);
   const onDrop = useCallback(async (files: File[]) => {
     const file = files[0];
     if (!file) return;
@@ -95,18 +121,11 @@ export function ImportExportPage() {
       "application/json": [".json"],
     },
   });
-  const exportMutation = useMutation({
-    mutationFn: api.exportTrades,
-    onSuccess: (result) =>
-      toast.success(
-        `${result.recordCount} Trades als ${result.format.toUpperCase()} exportiert.`,
-      ),
-    onError: (error: { message?: string }) =>
-      toast.error(error.message ?? "Export fehlgeschlagen."),
-  });
   const excelMutation = useMutation({
     mutationFn: () =>
-      import("./document-exports").then((module) => module.exportTradesExcel()),
+      import("./document-exports").then((module) =>
+        module.exportTradesExcel(selectedAccountId!),
+      ),
     onSuccess: (result) =>
       result.saved &&
       toast.success(
@@ -118,7 +137,7 @@ export function ImportExportPage() {
   const pdfMutation = useMutation({
     mutationFn: () =>
       import("./document-exports").then((module) =>
-        module.exportPerformancePdf(),
+        module.exportPerformancePdf(selectedAccountId!),
       ),
     onSuccess: (result) =>
       result.saved && toast.success("Performance-Bericht als PDF exportiert."),
@@ -189,17 +208,73 @@ export function ImportExportPage() {
       );
     }
   };
+  const metaTraderPreviewMutation = useMutation({
+    mutationFn: (path: string) =>
+      api.previewMetaTraderHtml({
+        path,
+        accountId: selectedAccountId!,
+        sourceTimezone: sourceTimezone.trim(),
+      }),
+    onSuccess: setMetaTraderPreview,
+    onError: (error: { message?: string }) =>
+      toast.error(
+        error.message ?? "MetaTrader-Report konnte nicht geprüft werden.",
+      ),
+  });
+  const metaTraderCommitMutation = useMutation({
+    mutationFn: () =>
+      api.commitMetaTraderHtml({
+        runId: metaTraderPreview!.runId,
+        accountId: selectedAccountId!,
+      }),
+    onSuccess: async (result) => {
+      await Promise.all(
+        [
+          "trades",
+          "dashboard",
+          "calendar",
+          "analytics",
+          "playbook",
+          "mistakes",
+        ].map((key) => queryClient.invalidateQueries({ queryKey: [key] })),
+      );
+      toast.success(
+        `${result.inserted} historische Trades übernommen; ${result.duplicate} Duplikate übersprungen.`,
+      );
+      setMetaTraderPreview(undefined);
+    },
+    onError: (error: { message?: string }) =>
+      toast.error(error.message ?? "MetaTrader-Import fehlgeschlagen."),
+  });
+  const chooseMetaTraderHtml = async () => {
+    if (!journalReady || !selectedAccountId) {
+      toast.error("Wähle zuerst ein Tradingkonto aus.");
+      return;
+    }
+    if (!sourceTimezone.trim()) {
+      toast.error("Wähle die Broker-Server-Zeitzone aus.");
+      return;
+    }
+    const path = await open({
+      multiple: false,
+      filters: [
+        { name: "MetaTrader HTML-Historie", extensions: ["html", "htm"] },
+      ],
+    });
+    if (typeof path === "string") metaTraderPreviewMutation.mutate(path);
+  };
   const commitImport = async () => {
     setImporting(true);
     let imported = 0,
       failed = 0;
     for (const row of rows) {
-      const input = mapImportRow(row);
+      const input = mapImportRow(row, selectedAccountId ?? "");
       if (!input) {
         failed += 1;
         continue;
       }
       try {
+        if (!journalReady) throw new Error("ACCOUNT_REQUIRED");
         await api.createTrade(input);
         imported += 1;
       } catch {
@@ -218,15 +293,31 @@ export function ImportExportPage() {
     }
   };
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page import-export-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Daten & System"
         title="Import & Export"
         description="Lokaler Datenaustausch mit Vorschau, Validierung und nachvollziehbaren Berichten."
       />
+      <nav className="section-jump-nav" aria-label="Datenverwaltung">
+        <a href="#trade-transfer">
+          <FileSpreadsheet size={14} /> Dateien & Exporte
+        </a>
+        <a href="#broker-imports">
+          <FileText size={14} /> Broker-Historien
+        </a>
+        <a href="#workspace-backups">
+          <FolderArchive size={14} /> Backups
+        </a>
+        <a href="#workspace-migration">
+          <History size={14} /> Migration
+        </a>
+      </nav>
       <div
-        className="grid"
-        style={{ gridTemplateColumns: "1.1fr .9fr", marginBottom: 14 }}
+        id="trade-transfer"
+        className="grid workspace-split section-anchor"
+        style={{ marginBottom: 16 }}
       >
         <Card>
           <CardHeader
@@ -314,7 +405,7 @@ export function ImportExportPage() {
                 <Button
                   variant="primary"
                   onClick={commitImport}
-                  disabled={importing}
+                  disabled={!journalReady || importing}
                   style={{ marginTop: 13 }}
                 >
                   <CheckCircle2 size={14} />{" "}
@@ -329,32 +420,26 @@ export function ImportExportPage() {
         <Card>
           <CardHeader
             title="Trades exportieren"
-            subtitle="Aus der lokalen Source of Truth"
+            subtitle="Journal-Daten des ausgewählten Kontos"
           />
           <CardContent>
-            <ExportChoice
-              icon={FileSpreadsheet}
-              title="CSV-Export"
-              copy="Semikolon-getrennt, kompatibel mit deutschem Excel."
-              action={() => exportMutation.mutate("csv")}
-            />
-            <ExportChoice
-              icon={FileJson}
-              title="JSON-Export"
-              copy="Vollständige strukturierte Daten für Archiv und Migration."
-              action={() => exportMutation.mutate("json")}
-            />
+            <div className="notice">
+              CSV/JSON-Export wird erst mit dem kontosicheren nativen Vertrag
+              bereitgestellt.
+            </div>
             <ExportChoice
               icon={FileSpreadsheet}
               title="Excel-Arbeitsmappe"
               copy="Alle Trades in einer formatierten XLSX-Datei mit Analyse-Spalten."
               action={() => excelMutation.mutate()}
+              disabled={!journalReady || excelMutation.isPending}
             />
             <ExportChoice
               icon={FileText}
               title="Performance-Bericht (PDF)"
               copy="Kompakter Bericht mit Kernkennzahlen und den letzten Trades."
               action={() => pdfMutation.mutate()}
+              disabled={!journalReady || pdfMutation.isPending}
             />
             <div className="notice" style={{ marginTop: 18 }}>
               Exporte enthalten keine gelöschten Trades. Der Desktop-Export wird
@@ -363,6 +448,143 @@ export function ImportExportPage() {
           </CardContent>
         </Card>
       </div>
+      <h2 id="broker-imports" className="section-heading section-anchor">
+        <FileText size={18} /> Broker-Historien importieren
+      </h2>
+      <CTraderStatementImport />
+      <Card style={{ marginBottom: 14 }}>
+        <CardHeader
+          title="MetaTrader HTML-Historie"
+          subtitle="Klassischen MT5-History-Report prüfen und atomar in das ausgewählte Konto übernehmen"
+          action={
+            <Button
+              variant="primary"
+              disabled={
+                !isTauri() ||
+                !journalReady ||
+                !sourceTimezone.trim() ||
+                metaTraderPreviewMutation.isPending
+              }
+              onClick={chooseMetaTraderHtml}
+            >
+              <FileText size={14} /> HTML-Historie auswählen
+            </Button>
+          }
+        />
+        <CardContent>
+          <div className="settings-row">
+            <div className="settings-row-copy">
+              <strong>Broker-Server-Zeitzone</strong>
+              <span>
+                Report-Zeitstempel enthalten keinen Offset. Diese Zone wird für
+                die UTC-Umrechnung gespeichert und kann für dieselbe
+                Report-Identität später nicht still geändert werden.
+              </span>
+            </div>
+            <input
+              className="input"
+              style={{ maxWidth: 230 }}
+              value={sourceTimezone}
+              onChange={(event) => setSourceTimezone(event.target.value)}
+              placeholder="z. B. Europe/Berlin"
+              disabled={metaTraderPreviewMutation.isPending}
+            />
+          </div>
+          {!isTauri() ? (
+            <div className="notice">
+              Der sichere HTML-Import steht ausschließlich in der installierten
+              Desktop-App zur Verfügung.
+            </div>
+          ) : metaTraderPreview ? (
+            <div style={{ marginTop: 14 }}>
+              <div className="notice">
+                <strong>
+                  Quelle {metaTraderPreview.maskedSourceAccount} ·{" "}
+                  {metaTraderPreview.baseCurrency}
+                </strong>
+                <div style={{ marginTop: 7 }}>
+                  {metaTraderPreview.valid} gültig ·{" "}
+                  {metaTraderPreview.duplicate} Duplikate ·{" "}
+                  {metaTraderPreview.invalid} ungültig ·{" "}
+                  {metaTraderPreview.conflict} Konflikte ·{" "}
+                  {metaTraderPreview.openPositions} offene Positionen ignoriert
+                </div>
+              </div>
+              {metaTraderPreview.rows.length > 0 && (
+                <div
+                  className="table-wrap"
+                  style={{ maxHeight: 310, marginTop: 12 }}
+                >
+                  <table className="data-table">
+                    <thead>
+                      <tr>
+                        <th>Zeile</th>
+                        <th>Status</th>
+                        <th>Symbol</th>
+                        <th>Richtung</th>
+                        <th>Geschlossen</th>
+                        <th>Hinweis</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {metaTraderPreview.rows.slice(0, 100).map((row) => (
+                        <tr key={row.rowNumber}>
+                          <td>{row.rowNumber}</td>
+                          <td>
+                            <Badge
+                              className={
+                                row.status === "valid" ||
+                                row.status === "duplicate"
+                                  ? "positive"
+                                  : "negative"
+                              }
+                            >
+                              {row.status}
+                            </Badge>
+                          </td>
+                          <td>{row.symbol ?? "—"}</td>
+                          <td>{row.direction ?? "—"}</td>
+                          <td>{row.closedAt ? dateTime(row.closedAt) : "—"}</td>
+                          <td>{row.errors.join(", ") || "—"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+              <div className="page-actions" style={{ marginTop: 13 }}>
+                <Button onClick={() => setMetaTraderPreview(undefined)}>
+                  Verwerfen
+                </Button>
+                <Button
+                  variant="primary"
+                  disabled={
+                    !metaTraderPreview.canCommit ||
+                    metaTraderCommitMutation.isPending ||
+                    !journalReady
+                  }
+                  onClick={() => metaTraderCommitMutation.mutate()}
+                >
+                  <CheckCircle2 size={14} />{" "}
+                  {metaTraderCommitMutation.isPending
+                    ? "Übernimmt atomar …"
+                    : "Geprüfte Trades übernehmen"}
+                </Button>
+              </div>
+            </div>
+          ) : (
+            <div className="notice" style={{ marginTop: 14 }}>
+              Unterstützt wird der klassische MT5-History-Report mit
+              geschlossenen Positionen. Reine grafische Aggregate-Reports
+              enthalten keine importierbare Trade-Historie und werden klar
+              abgelehnt. HTML wird niemals in der Oberfläche ausgeführt.
+            </div>
+          )}
+        </CardContent>
+      </Card>
+      <h2 id="workspace-backups" className="section-heading section-anchor">
+        <FolderArchive size={18} /> Sichern & wiederherstellen
+      </h2>
       <Card>
         <CardHeader
           title="Backups"
@@ -440,7 +662,10 @@ export function ImportExportPage() {
           )}
         </CardContent>
       </Card>
-      <Card style={{ marginTop: 14 }}>
+      <h2 id="workspace-migration" className="section-heading section-anchor">
+        <History size={18} /> Bestehendes Journal übernehmen
+      </h2>
+      <Card>
         <CardHeader
           title="Migration aus dem bisherigen Journal"
           subtitle="Einmalige, idempotente Übernahme aus personal_macro.sqlite3"
@@ -481,6 +706,21 @@ export function ImportExportPage() {
               Imports erzeugen keine Duplikate.
             </div>
           )}
+        </CardContent>
+      </Card>
+      <Card className="danger-zone" style={{ marginTop: 22 }}>
+        <CardHeader
+          title="Gefahrenbereich"
+          subtitle="Journal-Konten und abhängige Daten nach verifiziertem Sicherheitsbackup entfernen"
+          action={<JournalResetDialog />}
+        />
+        <CardContent>
+          <div className="notice form-error">
+            Macro-, COT-, EODHD-, Leitzins-, Seasonality-, Markt- und
+            Put/Call-Daten bleiben erhalten. Der Reset startet das Journal ohne
+            Konto neu und kann nur mit der exakten Bestätigungsphrase ausgeführt
+            werden.
+          </div>
         </CardContent>
       </Card>
       <Dialog.Root
@@ -590,11 +830,13 @@ function ExportChoice({
   title,
   copy,
   action,
+  disabled = false,
 }: {
   icon: typeof Download;
   title: string;
   copy: string;
   action: () => void;
+  disabled?: boolean;
 }) {
   return (
     <div className="settings-row">
@@ -610,7 +852,7 @@ function ExportChoice({
           <span>{copy}</span>
         </div>
       </div>
-      <Button onClick={action}>
+      <Button onClick={action} disabled={disabled}>
         <Download size={13} /> Exportieren
       </Button>
     </div>
@@ -627,7 +869,10 @@ function minor(value?: string) {
   const number = Number(normalized);
   return Number.isFinite(number) ? Math.round(number * 100) : undefined;
 }
-function mapImportRow(row: ImportRow): TradeInput | null {
+export function mapImportRow(
+  row: ImportRow,
+  accountId: string,
+): TradeInput | null {
   const instrument = read(row, "instrument", "Instrument", "Symbol", "symbol");
   if (!instrument) return null;
   const directionRaw = read(
@@ -650,7 +895,7 @@ function mapImportRow(row: ImportRow): TradeInput | null {
   const openedAt = read(row, "opened_at", "openedAt", "Einstieg", "Open Time");
   const closedAt = read(row, "closed_at", "closedAt", "Ausstieg", "Close Time");
   return {
-    accountId: undefined,
+    accountId,
     strategyId: undefined,
     setupId: undefined,
     status,

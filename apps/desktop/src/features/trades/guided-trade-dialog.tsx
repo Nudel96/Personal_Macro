@@ -10,9 +10,11 @@ import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import type {
   BootstrapData,
+  Account,
   TradeContextInput,
   TradeInput,
 } from "../../types/domain";
+import { useJournalAccount } from "../accounts/journal-account-context";
 import { PositionSizeCalculator } from "./position-size-calculator";
 
 const DRAFT_KEY = "personal-macro:guided-trade-draft:v1";
@@ -137,9 +139,20 @@ const emptyValues: GuidedValues = {
   satisfaction: "",
 };
 
+export function resolveGuidedDraft(
+  saved: GuidedValues | null,
+  selectedAccountId: string | null,
+) {
+  return saved && saved.accountId === selectedAccountId
+    ? saved
+    : { ...emptyValues, accountId: selectedAccountId ?? "" };
+}
+
 const steps = ["Planung", "Ausführung", "Ergebnis", "Review"];
 export function GuidedTradeDialog() {
   const { guidedTradeOpen, setGuidedTradeOpen } = useUiStore();
+  const { status: journalAccountStatus, selectedAccount } = useJournalAccount();
+  const ready = journalAccountStatus === "ready" && selectedAccount !== null;
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
@@ -154,20 +167,15 @@ export function GuidedTradeDialog() {
       const saved = JSON.parse(
         localStorage.getItem(DRAFT_KEY) ?? "null",
       ) as GuidedValues | null;
-      setValues(saved ?? emptyValues);
+      setValues(resolveGuidedDraft(saved, selectedAccount?.id ?? null));
     } catch {
       setValues(emptyValues);
     }
     setStep(0);
-  }, [guidedTradeOpen]);
+  }, [guidedTradeOpen, selectedAccount]);
   useEffect(() => {
-    if (guidedTradeOpen && !values.accountId && bootstrap.data?.accounts[0]) {
-      setValues((current) => ({
-        ...current,
-        accountId: current.accountId || bootstrap.data!.accounts[0].id,
-      }));
-    }
-  }, [bootstrap.data, guidedTradeOpen, values.accountId]);
+    if (guidedTradeOpen && !ready) setGuidedTradeOpen(false);
+  }, [guidedTradeOpen, ready, setGuidedTradeOpen]);
   useEffect(() => {
     if (!guidedTradeOpen) return;
     const timer = window.setTimeout(() => {
@@ -182,8 +190,11 @@ export function GuidedTradeDialog() {
   );
   const mutation = useMutation({
     mutationFn: async (finalize: boolean) => {
-      const trade = await api.createTrade(toTradeInput(values, finalize));
+      const trade = await api.createTrade(
+        toTradeInput(values, finalize, selectedAccount!.id),
+      );
       await api.saveTradeContext(
+        selectedAccount!.id,
         toTradeContext(trade.id, values, bootstrap.data),
       );
       return trade;
@@ -269,6 +280,7 @@ export function GuidedTradeDialog() {
                 values={values}
                 set={set}
                 bootstrap={bootstrap.data}
+                selectedAccount={selectedAccount}
               />
             )}
             {step === 1 && <ExecutionStep values={values} set={set} />}
@@ -291,7 +303,9 @@ export function GuidedTradeDialog() {
               </Button>
               <Button
                 onClick={() => mutation.mutate(false)}
-                disabled={!values.instrument.trim() || mutation.isPending}
+                disabled={
+                  !ready || !values.instrument.trim() || mutation.isPending
+                }
               >
                 <Save size={14} /> Als Entwurf
               </Button>
@@ -307,7 +321,9 @@ export function GuidedTradeDialog() {
               <Button
                 variant="primary"
                 onClick={() => mutation.mutate(true)}
-                disabled={!values.instrument.trim() || mutation.isPending}
+                disabled={
+                  !ready || !values.instrument.trim() || mutation.isPending
+                }
               >
                 <Check size={14} /> Trade abschließen
               </Button>
@@ -327,10 +343,12 @@ function PlanningStep({
   values,
   set,
   bootstrap,
+  selectedAccount,
 }: {
   values: GuidedValues;
   set: Setter;
   bootstrap?: Awaited<ReturnType<typeof api.bootstrap>>;
+  selectedAccount: Account | null;
 }) {
   return (
     <>
@@ -363,19 +381,6 @@ function PlanningStep({
             value={values.direction}
             onChange={(value) => set("direction", value as "long" | "short")}
             options={["long", "short"]}
-          />
-          <Select
-            label="Konto"
-            value={values.accountId}
-            onChange={(value) => set("accountId", value)}
-            options={[
-              "",
-              ...(bootstrap?.accounts.map((item) => item.id) ?? []),
-            ]}
-            labels={[
-              "Nicht zugeordnet",
-              ...(bootstrap?.accounts.map((item) => item.name) ?? []),
-            ]}
           />
           <Select
             label="Strategie"
@@ -436,9 +441,7 @@ function PlanningStep({
       </Section>
       <Section title="Plan & Risiko">
         <PositionSizeCalculator
-          account={bootstrap?.accounts.find(
-            (account) => account.id === values.accountId,
-          )}
+          account={selectedAccount ?? undefined}
           instrument={values.instrument}
           assetClass={values.assetClass}
           entryPrice={values.plannedEntry}
@@ -466,7 +469,7 @@ function PlanningStep({
             onChange={(value) => set("takeProfit", value)}
           />
           <Input
-            label={`Geplantes Risiko (${bootstrap?.accounts.find((account) => account.id === values.accountId)?.baseCurrency ?? "Kontowährung"})`}
+            label={`Geplantes Risiko (${selectedAccount?.baseCurrency ?? "Kontowährung"})`}
             value={values.plannedRisk}
             onChange={(value) => set("plannedRisk", value)}
           />
@@ -824,7 +827,11 @@ function toTradeContext(
   };
 }
 
-function toTradeInput(values: GuidedValues, finalize: boolean): TradeInput {
+function toTradeInput(
+  values: GuidedValues,
+  finalize: boolean,
+  accountId: string,
+): TradeInput {
   const bool = (value: BoolValue) =>
     value === "" ? undefined : value === "true";
   const score = (value: string) => {
@@ -861,7 +868,7 @@ function toTradeInput(values: GuidedValues, finalize: boolean): TradeInput {
     emotionAfter: values.emotionAfter,
   };
   return {
-    accountId: values.accountId || undefined,
+    accountId,
     strategyId: values.strategyId || undefined,
     setupId: values.setupId || undefined,
     status: finalize ? (values.closedAt ? "closed" : "open") : "draft",

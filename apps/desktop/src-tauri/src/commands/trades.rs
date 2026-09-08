@@ -1,6 +1,7 @@
 use tauri::State;
 
 use crate::{
+    commands::journal_scope::{require_active_account, scope_trade_filter},
     database::AppState,
     domain::models::{PagedTrades, TradeDetail, TradeFilter, TradeInput},
     errors::{AppError, CommandResult},
@@ -10,8 +11,10 @@ use crate::{
 #[tauri::command]
 pub async fn create_trade(
     state: State<'_, AppState>,
-    input: TradeInput,
+    mut input: TradeInput,
 ) -> CommandResult<TradeDetail> {
+    input.account_id = input.account_id.trim().to_owned();
+    require_active_account(&state.db, &input.account_id).await?;
     trades::create(&state.db, input).await.map_err(Into::into)
 }
 
@@ -19,41 +22,73 @@ pub async fn create_trade(
 pub async fn update_trade(
     state: State<'_, AppState>,
     id: String,
-    input: TradeInput,
+    mut input: TradeInput,
 ) -> CommandResult<TradeDetail> {
+    input.account_id = input.account_id.trim().to_owned();
+    require_active_account(&state.db, &input.account_id).await?;
     trades::update(&state.db, &id, input)
         .await
         .map_err(Into::into)
 }
 
 #[tauri::command]
-pub async fn get_trade(state: State<'_, AppState>, id: String) -> CommandResult<TradeDetail> {
-    trades::get(&state.db, &id).await.map_err(Into::into)
-}
-
-#[tauri::command]
-pub async fn list_trades(
+pub async fn get_trade(
     state: State<'_, AppState>,
-    filter: Option<TradeFilter>,
-) -> CommandResult<PagedTrades> {
-    trades::list(&state.db, filter.unwrap_or_default())
+    id: String,
+    account_id: String,
+) -> CommandResult<TradeDetail> {
+    require_active_account(&state.db, &account_id).await?;
+    trades::get(&state.db, &id, account_id.trim())
         .await
         .map_err(Into::into)
 }
 
 #[tauri::command]
-pub async fn duplicate_trade(state: State<'_, AppState>, id: String) -> CommandResult<TradeDetail> {
-    trades::duplicate(&state.db, &id).await.map_err(Into::into)
+pub async fn list_trades(
+    state: State<'_, AppState>,
+    account_id: String,
+    filter: Option<TradeFilter>,
+) -> CommandResult<PagedTrades> {
+    require_active_account(&state.db, &account_id).await?;
+    trades::list(&state.db, scope_trade_filter(&account_id, filter))
+        .await
+        .map_err(Into::into)
 }
 
 #[tauri::command]
-pub async fn trash_trade(state: State<'_, AppState>, id: String) -> CommandResult<()> {
-    trades::trash(&state.db, &id).await.map_err(Into::into)
+pub async fn duplicate_trade(
+    state: State<'_, AppState>,
+    id: String,
+    account_id: String,
+) -> CommandResult<TradeDetail> {
+    require_active_account(&state.db, &account_id).await?;
+    trades::duplicate(&state.db, &id, account_id.trim())
+        .await
+        .map_err(Into::into)
 }
 
 #[tauri::command]
-pub async fn restore_trade(state: State<'_, AppState>, id: String) -> CommandResult<TradeDetail> {
-    trades::restore(&state.db, &id).await.map_err(Into::into)
+pub async fn trash_trade(
+    state: State<'_, AppState>,
+    id: String,
+    account_id: String,
+) -> CommandResult<()> {
+    require_active_account(&state.db, &account_id).await?;
+    trades::trash(&state.db, &id, account_id.trim())
+        .await
+        .map_err(Into::into)
+}
+
+#[tauri::command]
+pub async fn restore_trade(
+    state: State<'_, AppState>,
+    id: String,
+    account_id: String,
+) -> CommandResult<TradeDetail> {
+    require_active_account(&state.db, &account_id).await?;
+    trades::restore(&state.db, &id, account_id.trim())
+        .await
+        .map_err(Into::into)
 }
 
 #[derive(Debug, serde::Serialize, sqlx::FromRow)]
@@ -66,13 +101,25 @@ pub struct DeletedTrade {
     pub net_pnl_minor: Option<i64>,
 }
 
-#[tauri::command]
-pub async fn list_deleted_trades(state: State<'_, AppState>) -> CommandResult<Vec<DeletedTrade>> {
+pub(crate) async fn list_deleted_trades_for_pool(
+    db: &sqlx::SqlitePool,
+    account_id: &str,
+) -> CommandResult<Vec<DeletedTrade>> {
     sqlx::query_as::<_, DeletedTrade>(
-        "SELECT id, instrument, direction, deleted_at, net_pnl_minor FROM trades WHERE is_deleted = 1 ORDER BY deleted_at DESC",
+        "SELECT id, instrument, direction, deleted_at, net_pnl_minor FROM trades WHERE is_deleted = 1 AND account_id = ? ORDER BY deleted_at DESC",
     )
-    .fetch_all(&state.db)
+    .bind(account_id.trim())
+    .fetch_all(db)
     .await
     .map_err(AppError::from)
     .map_err(Into::into)
+}
+
+#[tauri::command]
+pub async fn list_deleted_trades(
+    state: State<'_, AppState>,
+    account_id: String,
+) -> CommandResult<Vec<DeletedTrade>> {
+    require_active_account(&state.db, &account_id).await?;
+    list_deleted_trades_for_pool(&state.db, &account_id).await
 }

@@ -1,7 +1,4 @@
-use std::{
-    cmp::Ordering,
-    collections::{BTreeMap, HashSet},
-};
+use std::{cmp::Ordering, collections::BTreeMap};
 
 use chrono::{Datelike, NaiveDate, TimeZone, Utc};
 use serde::{Deserialize, Serialize};
@@ -10,16 +7,33 @@ use tauri::State;
 use uuid::Uuid;
 
 use crate::{
-    commands::{
-        dukascopy,
-        market::{Candle, MarketSymbol, market_history, market_symbols},
-    },
+    commands::eodhd_prices,
     database::AppState,
     errors::{AppError, CommandError, CommandResult},
 };
 
-const CORE_CATEGORIES: [&str; 4] = ["Forex", "Commodities", "Indizes", "KryptowÃ¤hrungen"];
 const MIN_COMPLETE_YEARS: usize = 10;
+const EODHD_SOURCE_NAME: &str = "EODHD Historical Market Data";
+const EODHD_SOURCE_URL: &str =
+    "https://eodhd.com/financial-apis/api-for-historical-data-and-volumes";
+const SCHEDULED_SYNC_BATCH_SIZE: usize = 3;
+const INITIAL_SYNC_BATCH_SIZE: usize = 8;
+const MANUAL_SYNC_BATCH_SIZE: usize = 8;
+
+#[derive(Debug, Clone)]
+struct MarketSymbol {
+    symbol: String,
+    description: Option<String>,
+    category: String,
+    base_currency: Option<String>,
+    quote_currency: Option<String>,
+}
+
+#[derive(Debug, Clone)]
+struct Candle {
+    time: i64,
+    close: f64,
+}
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -34,15 +48,6 @@ pub struct SeasonalityItem {
     pub samples: Option<i64>,
     pub signal: Option<i8>,
     pub curve: Vec<f64>,
-}
-
-#[derive(Debug, Deserialize)]
-#[serde(rename_all = "camelCase")]
-pub struct SeasonalityImport {
-    pub source_name: String,
-    pub source_url: Option<String>,
-    pub snapshot_at: Option<String>,
-    pub items: Vec<SeasonalityItem>,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -142,6 +147,9 @@ pub struct SeasonalityDashboard {
     pub assets: Vec<SeasonalityAssetSummary>,
     pub collection_status: Option<String>,
     pub collection_error: Option<String>,
+    pub collection_completed: usize,
+    pub collection_total: usize,
+    pub last_synced_at: Option<String>,
     pub data_version: String,
 }
 
@@ -287,21 +295,9 @@ pub struct SeasonalityScreenerRow {
     pub missing_days: usize,
 }
 
-#[derive(Debug, FromRow)]
-struct SeasonalityRow {
-    asset: String,
-    symbol: String,
-    horizon: String,
-    sample_start: Option<String>,
-    sample_end: Option<String>,
-    average_return: Option<String>,
-    positive_ratio: Option<String>,
-    samples: Option<i64>,
-    signal: Option<i64>,
-    curve_json: String,
-}
 #[derive(Debug, Clone, FromRow)]
 struct ProfileRow {
+    provider_symbol: String,
     symbol: String,
     category: String,
     description: Option<String>,
@@ -319,7 +315,7 @@ struct ProfileRow {
 
 async fn provider_profile_rows(state: &AppState) -> CommandResult<Vec<ProfileRow>> {
     sqlx::query_as(
-        "SELECT pi.provider_symbol AS symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pp.calculated_at,pp.complete_years,pp.quality_status,pp.profile_json,'Dukascopy Historical Data' AS data_source,'https://www.dukascopy.com/swiss/english/marketwatch/historical/' AS data_source_url,pi.native_timezone,pp.missing_days FROM seasonality_provider_profiles pp JOIN seasonality_provider_instruments pi ON pi.provider=pp.provider AND pi.provider_symbol=pp.provider_symbol WHERE pp.provider='dukascopy' ORDER BY pi.category,pi.display_symbol",
+        "SELECT pi.provider_symbol,pi.display_symbol AS symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pp.calculated_at,pp.complete_years,pp.quality_status,pp.profile_json,'EODHD Historical Market Data' AS data_source,'https://eodhd.com/financial-apis/api-for-historical-data-and-volumes' AS data_source_url,pi.native_timezone,pp.missing_days FROM seasonality_provider_profiles pp JOIN seasonality_provider_instruments pi ON pi.provider=pp.provider AND pi.provider_symbol=pp.provider_symbol WHERE pp.provider='eodhd' ORDER BY pi.category,pi.display_symbol",
     )
     .fetch_all(&state.db)
     .await
@@ -331,84 +327,75 @@ async fn profile_row_for_symbol(
     state: &AppState,
     symbol: &str,
 ) -> CommandResult<Option<ProfileRow>> {
-    let provider: Option<ProfileRow> = sqlx::query_as("SELECT pi.provider_symbol AS symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pp.calculated_at,pp.complete_years,pp.quality_status,pp.profile_json,'Dukascopy Historical Data' AS data_source,'https://www.dukascopy.com/swiss/english/marketwatch/historical/' AS data_source_url,pi.native_timezone,pp.missing_days FROM seasonality_provider_profiles pp JOIN seasonality_provider_instruments pi ON pi.provider=pp.provider AND pi.provider_symbol=pp.provider_symbol WHERE pp.provider='dukascopy' AND lower(pi.provider_symbol)=lower(?)")
-        .bind(symbol).fetch_optional(&state.db).await.map_err(AppError::from)?;
-    if provider.is_some() {
-        return Ok(provider);
-    }
-    sqlx::query_as("SELECT sp.symbol,mi.category,mi.description,mi.base_currency,mi.quote_currency,sp.calculated_at,sp.complete_years,sp.quality_status,sp.profile_json,'BlackBull MT5' AS data_source,'https://www.blackbull.com' AS data_source_url,NULL AS native_timezone,0 AS missing_days FROM seasonality_profiles sp JOIN market_instruments mi ON mi.symbol=sp.symbol WHERE lower(sp.symbol)=lower(?)")
-        .bind(symbol).fetch_optional(&state.db).await.map_err(AppError::from).map_err(CommandError::from)
+    sqlx::query_as("SELECT pi.provider_symbol,pi.display_symbol AS symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pp.calculated_at,pp.complete_years,pp.quality_status,pp.profile_json,'EODHD Historical Market Data' AS data_source,'https://eodhd.com/financial-apis/api-for-historical-data-and-volumes' AS data_source_url,pi.native_timezone,pp.missing_days FROM seasonality_provider_profiles pp JOIN seasonality_provider_instruments pi ON pi.provider=pp.provider AND pi.provider_symbol=pp.provider_symbol WHERE pp.provider='eodhd' AND (lower(pi.display_symbol)=lower(?) OR lower(pi.provider_symbol)=lower(?))")
+        .bind(symbol).bind(symbol).fetch_optional(&state.db).await.map_err(AppError::from).map_err(CommandError::from)
 }
 
 async fn profile_candles(state: &AppState, row: &ProfileRow) -> CommandResult<Vec<(i64, f64)>> {
-    let query = if row.data_source == "Dukascopy Historical Data" {
-        "SELECT candle_time / 1000,mid_close FROM seasonality_provider_daily_candles WHERE provider='dukascopy' AND provider_symbol=? ORDER BY candle_time"
-    } else {
-        "SELECT candle_time,close FROM market_daily_candles WHERE symbol=? ORDER BY candle_time"
-    };
-    sqlx::query_as(query)
-        .bind(&row.symbol)
+    sqlx::query_as("SELECT candle_time / 1000,mid_close FROM seasonality_provider_daily_candles WHERE provider='eodhd' AND provider_symbol=? ORDER BY candle_time")
+        .bind(&row.provider_symbol)
         .fetch_all(&state.db)
         .await
         .map_err(AppError::from)
         .map_err(CommandError::from)
 }
 
-fn normalised_symbol(value: &str) -> String {
-    value
-        .chars()
-        .filter(|character| character.is_ascii_alphanumeric())
-        .collect::<String>()
-        .to_ascii_uppercase()
-}
-
 #[tauri::command]
 pub async fn get_seasonality(state: State<'_, AppState>) -> CommandResult<SeasonalityDashboard> {
-    let snapshot: Option<(String, String, String, Option<String>)> = sqlx::query_as(
-        "SELECT ms.id, ms.snapshot_at, ms.source_name, ms.source_url FROM macro_snapshots ms WHERE EXISTS (SELECT 1 FROM seasonality_snapshots ss WHERE ss.macro_snapshot_id = ms.id) ORDER BY ms.snapshot_at DESC, ms.imported_at DESC LIMIT 1",
-    ).fetch_optional(&state.db).await.map_err(AppError::from)?;
-    let mut items = Vec::new();
-    let (snapshot_at, source_name, source_url) = if let Some((id, at, name, url)) = snapshot {
-        items = sqlx::query_as::<_, SeasonalityRow>("SELECT asset, symbol, horizon, sample_start, sample_end, average_return, positive_ratio, samples, signal, curve_json FROM seasonality_snapshots WHERE macro_snapshot_id=? ORDER BY asset, symbol")
-            .bind(id).fetch_all(&state.db).await.map_err(AppError::from)?.into_iter().map(legacy_item).collect();
-        (Some(at), Some(name), url)
-    } else {
-        (None, None, None)
-    };
-    let mut assets = provider_profile_rows(&state).await?;
-    let primary_symbols: HashSet<String> = assets
-        .iter()
-        .filter(|row| row.quality_status == "available")
-        .map(|row| normalised_symbol(&row.symbol))
-        .collect();
-    let fallback: Vec<ProfileRow> = sqlx::query_as("SELECT sp.symbol,mi.category,mi.description,mi.base_currency,mi.quote_currency,sp.calculated_at,sp.complete_years,sp.quality_status,sp.profile_json,'BlackBull MT5' AS data_source,'https://www.blackbull.com' AS data_source_url,NULL AS native_timezone,0 AS missing_days FROM seasonality_profiles sp JOIN market_instruments mi ON mi.symbol=sp.symbol ORDER BY mi.category,sp.symbol")
-        .fetch_all(&state.db).await.map_err(AppError::from)?;
-    assets.extend(
-        fallback
-            .into_iter()
-            .filter(|row| !primary_symbols.contains(&normalised_symbol(&row.symbol))),
-    );
+    let assets = provider_profile_rows(&state).await?;
+    let latest_profile_at: Option<String> = sqlx::query_scalar(
+        "SELECT MAX(calculated_at) FROM seasonality_provider_profiles WHERE provider='eodhd'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let collection_total: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_instruments WHERE provider='eodhd'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let collection_completed: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_profiles WHERE provider='eodhd'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let last_synced_at: Option<String> = sqlx::query_scalar(
+        "SELECT MAX(completed_at) FROM seasonality_provider_sync_runs WHERE provider='eodhd' AND status='complete'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let mut assets = assets;
     assets.sort_by(|left, right| {
         left.category
             .cmp(&right.category)
             .then(left.symbol.cmp(&right.symbol))
     });
     let collection: Option<(String, Option<String>)> = sqlx::query_as(
-        "SELECT status,error_message FROM (SELECT status,error_message,started_at FROM seasonality_provider_sync_runs UNION ALL SELECT status,error_message,started_at FROM seasonality_sync_runs) ORDER BY started_at DESC LIMIT 1",
+        "SELECT status,error_message FROM seasonality_provider_sync_runs WHERE provider='eodhd' ORDER BY started_at DESC LIMIT 1",
     )
     .fetch_optional(&state.db)
     .await
     .map_err(AppError::from)?;
     let assets = assets.into_iter().filter_map(profile_summary).collect();
     Ok(SeasonalityDashboard {
-        snapshot_at,
-        source_name,
-        source_url,
-        items,
+        snapshot_at: latest_profile_at.clone(),
+        source_name: Some(EODHD_SOURCE_NAME.into()),
+        source_url: Some(EODHD_SOURCE_URL.into()),
+        items: Vec::new(),
         assets,
         collection_status: collection.as_ref().map(|value| value.0.clone()),
         collection_error: collection.and_then(|value| value.1),
-        data_version: Utc::now().format("%Y%m%d").to_string(),
+        collection_completed: collection_completed.max(0) as usize,
+        collection_total: collection_total.max(0) as usize,
+        last_synced_at,
+        data_version: format!(
+            "{}:{}",
+            latest_profile_at.unwrap_or_else(|| "empty".into()),
+            collection_completed.max(0)
+        ),
     })
 }
 
@@ -419,9 +406,7 @@ pub async fn get_seasonality_asset_detail(
 ) -> CommandResult<SeasonalityAssetDetail> {
     let row = profile_row_for_symbol(&state, symbol.trim()).await?;
     row.and_then(profile_detail).ok_or_else(|| {
-        CommandError::validation(
-            "FÃ¼r dieses Asset wurde noch keine BlackBull-Seasonality berechnet.",
-        )
+        CommandError::validation("Für dieses Asset wurde noch keine Seasonality berechnet.")
     })
 }
 
@@ -433,13 +418,13 @@ pub async fn analyze_seasonality(
     let symbol = input.symbol.trim().to_string();
     if symbol.is_empty() {
         return Err(CommandError::validation(
-            "Bitte wÃ¤hle ein BlackBull-Asset aus.",
+            "Bitte wähle ein Seasonality-Asset aus.",
         ));
     }
     let row = profile_row_for_symbol(&state, &symbol).await?;
     let row = row.ok_or_else(|| {
         CommandError::validation(
-            "FÃ¼r dieses Asset wurde noch keine lokale D1-Historie gespeichert.",
+            "Für dieses Asset wurde noch keine lokale D1-Historie gespeichert.",
         )
     })?;
     let candles = profile_candles(&state, &row).await?;
@@ -450,38 +435,19 @@ pub async fn analyze_seasonality(
 pub async fn get_seasonality_screener(
     state: State<'_, AppState>,
 ) -> CommandResult<Vec<SeasonalityScreenerRow>> {
-    let mut profiles = provider_profile_rows(&state).await?;
-    let primary_symbols: HashSet<String> = profiles
-        .iter()
-        .filter(|row| row.quality_status == "available")
-        .map(|row| normalised_symbol(&row.symbol))
-        .collect();
-    let fallback: Vec<ProfileRow> = sqlx::query_as("SELECT sp.symbol,mi.category,mi.description,mi.base_currency,mi.quote_currency,sp.calculated_at,sp.complete_years,sp.quality_status,sp.profile_json,'BlackBull MT5' AS data_source,'https://www.blackbull.com' AS data_source_url,NULL AS native_timezone,0 AS missing_days FROM seasonality_profiles sp JOIN market_instruments mi ON mi.symbol=sp.symbol ORDER BY mi.category,mi.symbol")
-        .fetch_all(&state.db).await.map_err(AppError::from)?;
-    profiles.extend(
-        fallback
-            .into_iter()
-            .filter(|row| !primary_symbols.contains(&normalised_symbol(&row.symbol))),
-    );
+    let profiles = provider_profile_rows(&state).await?;
     let mut output = Vec::with_capacity(profiles.len());
     for row in profiles {
         let candles = profile_candles(&state, &row).await?;
-        let input = SeasonalityAnalysisInput {
-            symbol: row.symbol.clone(),
-            reference_date: None,
-            year_filter: SeasonalityYearFilter::default(),
-            window_start: None,
-            window_trading_days: Some(20),
-        };
-        if let Ok(analysis) = analysis_from_candles(row.clone(), &candles, input) {
+        if let Some((bullish_window, bearish_window)) = screener_windows(&candles) {
             output.push(SeasonalityScreenerRow {
-                symbol: analysis.symbol,
-                category: analysis.category,
-                description: analysis.description,
+                symbol: row.symbol.clone(),
+                category: row.category.clone(),
+                description: row.description.clone(),
                 complete_years: row.complete_years.max(0) as usize,
-                quality_status: analysis.quality_status,
-                bullish_window: analysis.bullish_windows.into_iter().next(),
-                bearish_window: analysis.bearish_windows.into_iter().next(),
+                quality_status: row.quality_status.clone(),
+                bullish_window,
+                bearish_window,
                 calculated_at: row.calculated_at,
                 data_source: row.data_source,
                 missing_days: row.missing_days.max(0) as usize,
@@ -496,11 +462,72 @@ pub async fn get_seasonality_screener(
     Ok(output)
 }
 
+fn screener_windows(
+    candles: &[(i64, f64)],
+) -> Option<(
+    Option<SeasonalityWindowMetric>,
+    Option<SeasonalityWindowMetric>,
+)> {
+    let mut prices = candles
+        .iter()
+        .filter_map(|(time, close)| {
+            Utc.timestamp_opt(*time, 0)
+                .single()
+                .map(|value| (value.date_naive(), *close))
+        })
+        .filter(|(_, close)| close.is_finite() && *close > 0.0)
+        .collect::<Vec<_>>();
+    prices.sort_by_key(|(date, _)| *date);
+    prices.dedup_by_key(|(date, _)| *date);
+    if prices.is_empty() {
+        return None;
+    }
+    let mut by_year: BTreeMap<i32, Vec<(NaiveDate, f64)>> = BTreeMap::new();
+    for value in &prices {
+        by_year.entry(value.0.year()).or_default().push(*value);
+    }
+    let years = by_year
+        .iter()
+        .filter(|(year, values)| is_complete_calendar_year(**year, values))
+        .map(|(year, _)| *year)
+        .collect::<Vec<_>>();
+    if years.len() < MIN_RANKED_SAMPLES {
+        return Some((None, None));
+    }
+    let start_indices = seasonal_start_indices(&prices);
+    let mut bullish = Vec::new();
+    let mut bearish = Vec::new();
+    for day in (1..=365_u16).step_by(7) {
+        let date = date_for_seasonal_day(day);
+        for trading_days in [5, 10, 20, 30, 40, 60, 90] {
+            let metric = window_metric(
+                &prices,
+                &start_indices,
+                &years,
+                date.month(),
+                date.day(),
+                trading_days,
+            );
+            if metric.samples < MIN_RANKED_SAMPLES {
+                continue;
+            }
+            match metric.direction {
+                Some(1) => bullish.push(metric),
+                Some(-1) => bearish.push(metric),
+                _ => {}
+            }
+        }
+    }
+    sort_windows(&mut bullish, 1);
+    sort_windows(&mut bearish, -1);
+    Some((bullish.into_iter().next(), bearish.into_iter().next()))
+}
+
 #[tauri::command]
 pub async fn get_seasonality_forex_pairs(
     state: State<'_, AppState>,
 ) -> CommandResult<Vec<SeasonalityForexPair>> {
-    let rows: Vec<ProfileRow> = sqlx::query_as("SELECT sp.symbol,mi.category,mi.description,mi.base_currency,mi.quote_currency,sp.calculated_at,sp.complete_years,sp.quality_status,sp.profile_json,'BlackBull MT5' AS data_source,'https://www.blackbull.com' AS data_source_url,NULL AS native_timezone,0 AS missing_days FROM seasonality_profiles sp JOIN market_instruments mi ON mi.symbol=sp.symbol WHERE mi.category='Forex'")
+    let rows: Vec<ProfileRow> = sqlx::query_as("SELECT pi.provider_symbol,pi.display_symbol AS symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pp.calculated_at,pp.complete_years,pp.quality_status,pp.profile_json,'EODHD Historical Market Data' AS data_source,'https://eodhd.com/financial-apis/api-for-historical-data-and-volumes' AS data_source_url,pi.native_timezone,pp.missing_days FROM seasonality_provider_profiles pp JOIN seasonality_provider_instruments pi ON pi.provider=pp.provider AND pi.provider_symbol=pp.provider_symbol WHERE pp.provider='eodhd' AND pi.category='Forex'")
         .fetch_all(&state.db).await.map_err(AppError::from)?;
     Ok(rows
         .into_iter()
@@ -517,270 +544,403 @@ pub async fn get_seasonality_forex_pairs(
         .collect())
 }
 
-async fn refresh_instrument(
-    state: &AppState,
-    instrument: &MarketSymbol,
-    trigger: &str,
-) -> CommandResult<SeasonalityAssetDetail> {
-    let run_id = Uuid::new_v4().to_string();
-    let started_at = Utc::now().to_rfc3339();
-    sqlx::query("INSERT INTO seasonality_sync_runs(id,started_at,trigger,provider,symbol,requested_symbols,status) VALUES(?,?,?,?,?,1,'running')")
-        .bind(&run_id).bind(&started_at).bind(trigger).bind("BlackBull MT5").bind(&instrument.symbol)
-        .execute(&state.db).await.map_err(AppError::from)?;
-    let candles = match market_history(state, &instrument.symbol, "D1") {
-        Ok(candles) => candles,
-        Err(error) => {
-            finish_sync_run(state, &run_id, "failed", 0, 0, Some(&error.message)).await?;
-            return Err(error);
-        }
-    };
-    let now = Utc::now().to_rfc3339();
-    let mut tx = state.db.begin().await.map_err(AppError::from)?;
-    sqlx::query("INSERT INTO market_instruments(symbol,category,description,path,base_currency,quote_currency,last_seen_at) VALUES(?,?,?,?,?,?,?) ON CONFLICT(symbol) DO UPDATE SET category=excluded.category,description=excluded.description,path=excluded.path,base_currency=excluded.base_currency,quote_currency=excluded.quote_currency,last_seen_at=excluded.last_seen_at")
-        .bind(&instrument.symbol).bind(&instrument.category).bind(&instrument.description).bind(&instrument.path).bind(&instrument.base_currency).bind(&instrument.quote_currency).bind(&now).execute(&mut *tx).await.map_err(AppError::from)?;
-    for candle in &candles {
-        sqlx::query("INSERT INTO market_daily_candles(symbol,candle_time,open,high,low,close,volume,volume_kind,fetched_at) VALUES(?,?,?,?,?,?,?,?,?) ON CONFLICT(symbol,candle_time) DO UPDATE SET open=excluded.open,high=excluded.high,low=excluded.low,close=excluded.close,volume=excluded.volume,volume_kind=excluded.volume_kind,fetched_at=excluded.fetched_at")
-            .bind(&instrument.symbol).bind(candle.time).bind(candle.open).bind(candle.high).bind(candle.low).bind(candle.close).bind(candle.volume).bind(&candle.volume_kind).bind(&now).execute(&mut *tx).await.map_err(AppError::from)?;
-    }
-    let detail = calculate_profile(instrument, &candles, &now);
-    sqlx::query("INSERT INTO seasonality_profiles(symbol,calculated_at,history_start,history_end,complete_years,quality_status,profile_json) VALUES(?,?,?,?,?,?,?) ON CONFLICT(symbol) DO UPDATE SET calculated_at=excluded.calculated_at,history_start=excluded.history_start,history_end=excluded.history_end,complete_years=excluded.complete_years,quality_status=excluded.quality_status,profile_json=excluded.profile_json")
-        .bind(&detail.symbol).bind(&detail.calculated_at).bind(&detail.history_start).bind(&detail.history_end).bind(detail.complete_years as i64).bind(&detail.quality_status).bind(serde_json::to_string(&detail).unwrap_or_else(|_| "{}".into())).execute(&mut *tx).await.map_err(AppError::from)?;
-    tx.commit().await.map_err(AppError::from)?;
-    finish_sync_run(state, &run_id, "complete", 1, candles.len(), None).await?;
-    Ok(detail)
-}
-
-async fn finish_sync_run(
-    state: &AppState,
-    run_id: &str,
-    status: &str,
-    refreshed_symbols: usize,
-    fetched_candles: usize,
-    error: Option<&str>,
-) -> CommandResult<()> {
-    let message = error.map(|value| value.chars().take(500).collect::<String>());
-    sqlx::query("UPDATE seasonality_sync_runs SET completed_at=?,status=?,refreshed_symbols=?,fetched_candles=?,error_message=? WHERE id=?")
-        .bind(Utc::now().to_rfc3339()).bind(status).bind(refreshed_symbols as i64).bind(fetched_candles as i64).bind(message).bind(run_id)
-        .execute(&state.db).await.map_err(AppError::from)?;
-    Ok(())
-}
-
 pub async fn scheduled_seasonality_sync(state: &AppState) -> CommandResult<()> {
-    if let Err(error) = scheduled_dukascopy_sync(state).await {
-        tracing::warn!(code = %error.code, "Dukascopy-Seasonality-Sync wird später erneut versucht");
+    let Some(api_key) = eodhd_prices::api_key() else {
+        return Ok(());
+    };
+    release_stale_eodhd_runs(state).await?;
+    let running: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_sync_runs WHERE provider='eodhd' AND status='running'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    if running > 0 {
+        return Ok(());
     }
-    if let Err(error) = scheduled_blackbull_sync(state).await {
-        tracing::debug!(code = %error.code, "BlackBull-Fallback ist momentan nicht verfügbar");
+    let client = eodhd_prices::http_client()?;
+    let (catalogued, completed): (i64, i64) = sqlx::query_as(
+        "SELECT (SELECT COUNT(*) FROM seasonality_provider_instruments WHERE provider='eodhd'),(SELECT COUNT(*) FROM seasonality_provider_profiles WHERE provider='eodhd')",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let batch_size = if catalogued > completed {
+        INITIAL_SYNC_BATCH_SIZE
+    } else {
+        SCHEDULED_SYNC_BATCH_SIZE
+    };
+    if let Err(error) = sync_eodhd_batch(state, &client, &api_key, batch_size, "scheduler").await {
+        tracing::warn!(code = %error.code, "EODHD-Seasonality-Sync wird später erneut versucht");
     }
     Ok(())
 }
 
-async fn scheduled_blackbull_sync(state: &AppState) -> CommandResult<()> {
-    let cutoff = (Utc::now() - chrono::Duration::hours(24)).to_rfc3339();
-    let symbols = market_symbols(state)?;
-    let existing: HashSet<String> = sqlx::query_scalar("SELECT symbol FROM seasonality_profiles")
-        .fetch_all(&state.db)
-        .await
-        .map_err(AppError::from)?
-        .into_iter()
-        .collect();
-    let attempted_today: HashSet<String> = sqlx::query_scalar("SELECT DISTINCT symbol FROM seasonality_sync_runs WHERE started_at >= ? AND symbol IS NOT NULL")
-        .bind(&cutoff).fetch_all(&state.db).await.map_err(AppError::from)?.into_iter().collect();
-    let missing: Vec<_> = symbols
-        .iter()
-        .filter(|item| item.visible && CORE_CATEGORIES.contains(&item.category.as_str()))
-        .filter(|item| !existing.contains(&item.symbol) && !attempted_today.contains(&item.symbol))
-        .cloned()
-        .collect();
-    if let Some(instrument) = missing.into_iter().next() {
-        let _ = refresh_instrument(state, &instrument, "fallback_collection").await;
-        return Ok(());
+#[tauri::command]
+pub async fn refresh_seasonality_data(
+    state: State<'_, AppState>,
+) -> CommandResult<SeasonalityDashboard> {
+    let api_key = eodhd_prices::api_key().ok_or_else(|| {
+        CommandError::validation("EODHD_API_KEY ist im nativen Backend nicht konfiguriert.")
+    })?;
+    release_stale_eodhd_runs(&state).await?;
+    let running: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_sync_runs WHERE provider='eodhd' AND status='running'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    if running > 0 {
+        return Err(CommandError {
+            code: "CONFLICT".into(),
+            message: "Eine EODHD-Seasonality-Aktualisierung läuft bereits.".into(),
+            details: None,
+        });
     }
-    let symbol: Option<String> = sqlx::query_scalar(
-        "SELECT sp.symbol FROM seasonality_profiles sp WHERE sp.calculated_at < ? AND NOT EXISTS (SELECT 1 FROM seasonality_sync_runs sr WHERE sr.symbol=sp.symbol AND sr.started_at >= ?) ORDER BY sp.calculated_at ASC LIMIT 1",
-    ).bind(&cutoff).bind(&cutoff).fetch_optional(&state.db).await.map_err(AppError::from)?;
-    let Some(symbol) = symbol else {
-        return Ok(());
-    };
-    let instrument = symbols.into_iter().find(|value| value.symbol == symbol)
-        .ok_or_else(|| CommandError::validation("Das gespeicherte Seasonality-Asset ist im aktuellen BlackBull-Katalog nicht mehr verfÃ¼gbar."))?;
-    refresh_instrument(state, &instrument, "scheduler")
+    let client = eodhd_prices::http_client()?;
+    sync_eodhd_batch(&state, &client, &api_key, MANUAL_SYNC_BATCH_SIZE, "manual").await?;
+    get_seasonality(state).await
+}
+
+pub(crate) async fn refresh_eodhd_symbol(
+    state: &AppState,
+    symbol: &str,
+    trigger: &str,
+) -> CommandResult<()> {
+    let api_key = eodhd_prices::api_key().ok_or_else(|| {
+        CommandError::validation("EODHD_API_KEY ist im nativen Backend nicht konfiguriert.")
+    })?;
+    release_stale_eodhd_runs(state).await?;
+    let running: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_sync_runs WHERE provider='eodhd' AND status='running'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    if running > 0 {
+        return Err(CommandError {
+            code: "CONFLICT".into(),
+            message: "Eine EODHD-Marktdatenaktualisierung läuft bereits.".into(),
+            details: None,
+        });
+    }
+    let client = eodhd_prices::http_client()?;
+    ensure_eodhd_catalog(state, &client, &api_key, trigger).await?;
+    let normalized = symbol.trim().replace('/', "").to_ascii_lowercase();
+    let instrument: Option<ProviderInstrumentRow> = sqlx::query_as(
+        "SELECT provider_symbol,display_symbol,category,description,base_currency,
+                quote_currency,data_kind,COALESCE(source_code,provider_symbol) AS source_code,
+                native_timezone
+         FROM seasonality_provider_instruments
+         WHERE provider='eodhd'
+           AND (LOWER(REPLACE(display_symbol,'/',''))=?
+                OR LOWER(provider_symbol)=?)
+         ORDER BY sync_priority,provider_symbol LIMIT 1",
+    )
+    .bind(&normalized)
+    .bind(format!("{normalized}.forex"))
+    .fetch_optional(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let instrument = instrument.ok_or_else(|| {
+        CommandError::validation(format!(
+            "EODHD stellt für {symbol} im aktuellen Instrumentenkatalog keine Historie bereit."
+        ))
+    })?;
+    sync_eodhd_instrument(state, &client, &api_key, instrument, trigger).await
+}
+
+async fn release_stale_eodhd_runs(state: &AppState) -> CommandResult<()> {
+    let completed_at = Utc::now().to_rfc3339();
+    let cutoff = (Utc::now() - chrono::Duration::minutes(10)).to_rfc3339();
+    sqlx::query("UPDATE seasonality_provider_sync_runs SET status='failed',completed_at=?,error_message='Unterbrochene EODHD-Seasonality-Aktualisierung wurde freigegeben.' WHERE provider='eodhd' AND status='running' AND started_at<?")
+        .bind(completed_at)
+        .bind(cutoff)
+        .execute(&state.db)
         .await
-        .map(|_| ())
+        .map_err(AppError::from)?;
+    Ok(())
 }
 
 #[derive(Debug, Clone, FromRow)]
 struct ProviderInstrumentRow {
     provider_symbol: String,
+    display_symbol: String,
     category: String,
     description: Option<String>,
     base_currency: Option<String>,
     quote_currency: Option<String>,
-    earliest_daily_at: Option<i64>,
+    data_kind: String,
+    source_code: String,
     native_timezone: Option<String>,
 }
 
-async fn scheduled_dukascopy_sync(state: &AppState) -> CommandResult<()> {
-    let client = dukascopy::http_client()?;
-    let catalogued: i64 = sqlx::query_scalar(
-        "SELECT COUNT(*) FROM seasonality_provider_instruments WHERE provider='dukascopy'",
-    )
-    .fetch_one(&state.db)
-    .await
-    .map_err(AppError::from)?;
-    if catalogued == 0 {
-        let instruments = dukascopy::catalog(&client).await?;
-        let now = Utc::now().to_rfc3339();
-        let mut tx = state.db.begin().await.map_err(AppError::from)?;
-        for instrument in instruments {
-            sqlx::query("INSERT INTO seasonality_provider_instruments(provider,provider_symbol,display_symbol,category,description,base_currency,quote_currency,earliest_daily_at,native_timezone,last_catalogued_at) VALUES('dukascopy',?,?,?,?,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET display_symbol=excluded.display_symbol,category=excluded.category,description=excluded.description,base_currency=excluded.base_currency,quote_currency=excluded.quote_currency,earliest_daily_at=excluded.earliest_daily_at,native_timezone=excluded.native_timezone,last_catalogued_at=excluded.last_catalogued_at")
-                .bind(&instrument.symbol).bind(&instrument.display_symbol).bind(&instrument.category).bind(&instrument.description).bind(&instrument.base_currency).bind(&instrument.quote_currency).bind(instrument.earliest_daily_at).bind(&instrument.native_timezone).bind(&now)
-                .execute(&mut *tx).await.map_err(AppError::from)?;
+#[derive(Debug, Clone, FromRow)]
+struct LegacyProviderInstrumentRow {
+    provider_symbol: String,
+    category: String,
+    description: Option<String>,
+    base_currency: Option<String>,
+}
+
+async fn sync_eodhd_batch(
+    state: &AppState,
+    client: &reqwest::Client,
+    api_key: &str,
+    batch_size: usize,
+    trigger: &str,
+) -> CommandResult<()> {
+    ensure_eodhd_catalog(state, client, api_key, trigger).await?;
+    for _ in 0..batch_size {
+        let Some(instrument) = next_eodhd_instrument(state).await? else {
+            break;
+        };
+        if let Err(error) = sync_eodhd_instrument(state, client, api_key, instrument, trigger).await
+        {
+            tracing::warn!(code = %error.code, "Ein EODHD-Seasonality-Asset konnte nicht aktualisiert werden");
         }
-        tx.commit().await.map_err(AppError::from)?;
-    }
-    let cutoff = (Utc::now() - chrono::Duration::hours(24)).to_rfc3339();
-    let now = Utc::now().to_rfc3339();
-    let next: Option<ProviderInstrumentRow> = sqlx::query_as("SELECT pi.provider_symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pi.earliest_daily_at,pi.native_timezone FROM seasonality_provider_instruments pi LEFT JOIN seasonality_provider_profiles pp ON pp.provider=pi.provider AND pp.provider_symbol=pi.provider_symbol WHERE pi.provider='dukascopy' AND (pp.calculated_at IS NULL OR pp.calculated_at < ?) AND NOT EXISTS (SELECT 1 FROM seasonality_provider_retry_state retry WHERE retry.provider=pi.provider AND retry.provider_symbol=pi.provider_symbol AND retry.next_retry_at>?) ORDER BY CASE WHEN pi.category='Forex' AND pi.base_currency IN ('USD','EUR','GBP','JPY','CHF','AUD','CAD','NZD','CNY') AND pi.quote_currency IN ('USD','EUR','GBP','JPY','CHF','AUD','CAD','NZD','CNY') THEN 0 WHEN pi.category='Forex' THEN 1 ELSE 2 END,CASE WHEN COALESCE(pp.complete_years,0)<15 THEN 0 ELSE 1 END,pp.calculated_at IS NOT NULL,pp.calculated_at,pi.provider_symbol LIMIT 1")
-        .bind(cutoff).bind(now).fetch_optional(&state.db).await.map_err(AppError::from)?;
-    if let Some(instrument) = next {
-        sync_dukascopy_instrument(state, &client, instrument).await?;
     }
     Ok(())
 }
 
-async fn sync_dukascopy_instrument(
+async fn ensure_eodhd_catalog(
     state: &AppState,
     client: &reqwest::Client,
+    api_key: &str,
+    trigger: &str,
+) -> CommandResult<()> {
+    let catalogued: i64 = sqlx::query_scalar(
+        "SELECT COUNT(*) FROM seasonality_provider_instruments WHERE provider='eodhd'",
+    )
+    .fetch_one(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    if catalogued > 0 {
+        return Ok(());
+    }
+    let legacy: Vec<LegacyProviderInstrumentRow> = sqlx::query_as(
+        "SELECT provider_symbol,category,description,base_currency FROM seasonality_provider_instruments WHERE provider='dukascopy' ORDER BY category,provider_symbol",
+    )
+    .fetch_all(&state.db)
+    .await
+    .map_err(AppError::from)?;
+    let legacy = legacy
+        .into_iter()
+        .map(|item| eodhd_prices::LegacyInstrument {
+            provider_symbol: item.provider_symbol,
+            category: item.category,
+            description: item.description,
+            base_currency: item.base_currency,
+        })
+        .collect::<Vec<_>>();
+    let run_id = Uuid::new_v4().to_string();
+    let started_at = Utc::now().to_rfc3339();
+    sqlx::query("INSERT INTO seasonality_provider_sync_runs(id,provider,trigger,provider_symbol,started_at,status) VALUES(?,'eodhd',?,NULL,?,'running')")
+        .bind(&run_id).bind(trigger).bind(&started_at).execute(&state.db).await.map_err(AppError::from)?;
+    let instruments = match eodhd_prices::catalog(client, api_key, &legacy).await {
+        Ok(value) => value,
+        Err(error) => {
+            finish_eodhd_run(state, &run_id, "failed", 0, 0, Some(&error.message)).await?;
+            return Err(error);
+        }
+    };
+    let now = Utc::now().to_rfc3339();
+    let mut tx = state.db.begin().await.map_err(AppError::from)?;
+    for instrument in &instruments {
+        sqlx::query("INSERT INTO seasonality_provider_instruments(provider,provider_symbol,display_symbol,category,description,base_currency,quote_currency,earliest_daily_at,native_timezone,last_catalogued_at,data_kind,source_code,sync_priority) VALUES('eodhd',?,?,?,?,?,?,NULL,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET display_symbol=excluded.display_symbol,category=excluded.category,description=excluded.description,base_currency=excluded.base_currency,quote_currency=excluded.quote_currency,native_timezone=excluded.native_timezone,last_catalogued_at=excluded.last_catalogued_at,data_kind=excluded.data_kind,source_code=excluded.source_code,sync_priority=excluded.sync_priority")
+            .bind(&instrument.provider_symbol)
+            .bind(&instrument.display_symbol)
+            .bind(&instrument.category)
+            .bind(&instrument.description)
+            .bind(&instrument.base_currency)
+            .bind(&instrument.quote_currency)
+            .bind(&instrument.native_timezone)
+            .bind(&now)
+            .bind(&instrument.data_kind)
+            .bind(&instrument.source_code)
+            .bind(instrument.sync_priority)
+            .execute(&mut *tx)
+            .await
+            .map_err(AppError::from)?;
+    }
+    tx.commit().await.map_err(AppError::from)?;
+    finish_eodhd_run(state, &run_id, "complete", 0, instruments.len(), None).await
+}
+
+async fn next_eodhd_instrument(state: &AppState) -> CommandResult<Option<ProviderInstrumentRow>> {
+    let cutoff = (Utc::now() - chrono::Duration::hours(24)).to_rfc3339();
+    let now = Utc::now().to_rfc3339();
+    sqlx::query_as("SELECT pi.provider_symbol,pi.display_symbol,pi.category,pi.description,pi.base_currency,pi.quote_currency,pi.data_kind,COALESCE(pi.source_code,pi.provider_symbol) AS source_code,pi.native_timezone FROM seasonality_provider_instruments pi LEFT JOIN seasonality_provider_profiles pp ON pp.provider=pi.provider AND pp.provider_symbol=pi.provider_symbol WHERE pi.provider='eodhd' AND (pp.calculated_at IS NULL OR pp.calculated_at < ?) AND NOT EXISTS (SELECT 1 FROM seasonality_provider_retry_state retry WHERE retry.provider=pi.provider AND retry.provider_symbol=pi.provider_symbol AND retry.next_retry_at>?) ORDER BY pp.calculated_at IS NOT NULL,pi.sync_priority,pp.calculated_at,pi.category,pi.provider_symbol LIMIT 1")
+        .bind(cutoff).bind(now).fetch_optional(&state.db).await.map_err(AppError::from).map_err(CommandError::from)
+}
+
+async fn sync_eodhd_instrument(
+    state: &AppState,
+    client: &reqwest::Client,
+    api_key: &str,
     instrument: ProviderInstrumentRow,
+    trigger: &str,
 ) -> CommandResult<()> {
     let run_id = Uuid::new_v4().to_string();
     let now = Utc::now().to_rfc3339();
-    sqlx::query("INSERT INTO seasonality_provider_sync_runs(id,provider,trigger,provider_symbol,started_at,status) VALUES(?,'dukascopy','scheduler',?,?,'running')")
-        .bind(&run_id).bind(&instrument.provider_symbol).bind(&now).execute(&state.db).await.map_err(AppError::from)?;
-    let current_year = Utc::now().year();
-    let earliest_year = instrument
-        .earliest_daily_at
-        .and_then(|value| Utc.timestamp_millis_opt(value).single())
-        .map(|value| value.year());
-    let year_bounds = completed_year_bounds(current_year, earliest_year);
+    sqlx::query("INSERT INTO seasonality_provider_sync_runs(id,provider,trigger,provider_symbol,started_at,status) VALUES(?,'eodhd',?,?,?,'running')")
+        .bind(&run_id).bind(trigger).bind(&instrument.provider_symbol).bind(&now).execute(&state.db).await.map_err(AppError::from)?;
+    let provider_instrument = eodhd_prices::EodhdInstrument {
+        provider_symbol: instrument.provider_symbol.clone(),
+        display_symbol: instrument.display_symbol.clone(),
+        category: instrument.category.clone(),
+        description: instrument.description.clone(),
+        base_currency: instrument.base_currency.clone(),
+        quote_currency: instrument.quote_currency.clone(),
+        data_kind: instrument.data_kind.clone(),
+        source_code: instrument.source_code.clone(),
+        sync_priority: 0,
+        native_timezone: instrument
+            .native_timezone
+            .clone()
+            .unwrap_or_else(|| "EODHD provider-native trading date".into()),
+    };
     let mut fetched = 0_usize;
-    let mut requested = 0_usize;
+    let mut requested_years = 0_usize;
     let result: CommandResult<()> = async {
-        if let Some((first_year, last_year)) = year_bounds {
-            for year in first_year..=last_year {
-                let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM seasonality_provider_daily_candles WHERE provider='dukascopy' AND provider_symbol=? AND strftime('%Y', candle_time / 1000, 'unixepoch')=?")
-                    .bind(&instrument.provider_symbol).bind(year.to_string()).fetch_one(&state.db).await.map_err(AppError::from)?;
-                if count >= 100 { continue; }
-                requested += 1;
-                let bid = dukascopy::daily_bars(client, &instrument.provider_symbol, "BID", year).await?;
-                let ask = dukascopy::daily_bars(client, &instrument.provider_symbol, "ASK", year).await?;
-                let ask_by_time: BTreeMap<_, _> = ask.into_iter().map(|bar| (bar.time, bar)).collect();
-                let merged: Vec<_> = bid.into_iter().filter_map(|bar| ask_by_time.get(&bar.time).map(|ask| (bar, ask.clone()))).collect();
-                let start = Utc.with_ymd_and_hms(year, 1, 1, 0, 0, 0).single().expect("valid year").timestamp_millis();
-                let end = Utc.with_ymd_and_hms(year + 1, 1, 1, 0, 0, 0).single().expect("valid year").timestamp_millis();
-                let mut tx = state.db.begin().await.map_err(AppError::from)?;
-                sqlx::query("DELETE FROM seasonality_provider_daily_candles WHERE provider='dukascopy' AND provider_symbol=? AND candle_time>=? AND candle_time<?")
-                    .bind(&instrument.provider_symbol).bind(start).bind(end).execute(&mut *tx).await.map_err(AppError::from)?;
-                for (bid, ask) in &merged {
-                    sqlx::query("INSERT INTO seasonality_provider_daily_candles(provider,provider_symbol,candle_time,bid_open,bid_high,bid_low,bid_close,ask_open,ask_high,ask_low,ask_close,mid_close,volume,fetched_at) VALUES('dukascopy',?,?,?,?,?,?,?,?,?,?,?,?,?)")
-                        .bind(&instrument.provider_symbol).bind(bid.time).bind(bid.open).bind(bid.high).bind(bid.low).bind(bid.close).bind(ask.open).bind(ask.high).bind(ask.low).bind(ask.close).bind((bid.close + ask.close) / 2.0).bind(bid.volume.or(ask.volume)).bind(&now)
-                        .execute(&mut *tx).await.map_err(AppError::from)?;
-                }
-                tx.commit().await.map_err(AppError::from)?;
-                fetched += merged.len();
-                tokio::time::sleep(std::time::Duration::from_millis(120)).await;
-            }
-        }
-        let prices: Vec<(i64, f64)> = sqlx::query_as("SELECT candle_time,mid_close FROM seasonality_provider_daily_candles WHERE provider='dukascopy' AND provider_symbol=? ORDER BY candle_time")
-            .bind(&instrument.provider_symbol).fetch_all(&state.db).await.map_err(AppError::from)?;
-        let candles: Vec<Candle> = prices.iter().map(|(time, close)| Candle { time: *time / 1000, open: *close, high: *close, low: *close, close: *close, volume: None, volume_kind: "dukascopy-mid".into() }).collect();
-        let market = MarketSymbol { symbol: instrument.provider_symbol.clone(), description: instrument.description.clone(), path: None, category: instrument.category.clone(), visible: true, digits: None, base_currency: instrument.base_currency.clone(), quote_currency: instrument.quote_currency.clone() };
+        let mut bars = eodhd_prices::history(client, api_key, &provider_instrument).await?;
+        bars.sort_by_key(|bar| bar.time);
+        bars.dedup_by_key(|bar| bar.time);
+        fetched = bars.len();
+        requested_years = bars
+            .iter()
+            .filter_map(|bar| Utc.timestamp_millis_opt(bar.time).single().map(|value| value.year()))
+            .collect::<std::collections::BTreeSet<_>>()
+            .len();
+        let prices = bars
+            .iter()
+            .map(|bar| (bar.time, bar.close))
+            .collect::<Vec<_>>();
+        let candles = bars
+            .iter()
+            .map(|bar| Candle {
+                time: bar.time / 1000,
+                close: bar.close,
+            })
+            .collect::<Vec<_>>();
+        let market = MarketSymbol { symbol: instrument.display_symbol.clone(), description: instrument.description.clone(), category: instrument.category.clone(), base_currency: instrument.base_currency.clone(), quote_currency: instrument.quote_currency.clone() };
         let mut detail = calculate_profile(&market, &candles, &now);
-        detail.data_source = "Dukascopy Historical Data".into();
-        detail.data_source_url = Some("https://www.dukascopy.com/swiss/english/marketwatch/historical/".into());
+        detail.data_source = EODHD_SOURCE_NAME.into();
+        detail.data_source_url = Some(EODHD_SOURCE_URL.into());
         detail.native_timezone = instrument.native_timezone.clone();
         detail.missing_days = count_data_gaps(&prices);
-        detail.quality_reason = if detail.complete_years >= MIN_COMPLETE_YEARS { "Mindestens zehn vollständige Jahre aus nativer Dukascopy-D1-Historie (Bid/Ask-Mittelpreis).".into() } else { "Dukascopy liefert für dieses Asset weniger als zehn vollständige D1-Jahre; die Analyse bleibt explorativ bzw. nutzt transparent BlackBull als Fallback.".into() };
-        sqlx::query("INSERT INTO seasonality_provider_profiles(provider,provider_symbol,calculated_at,history_start,history_end,complete_years,quality_status,missing_days,profile_json) VALUES('dukascopy',?,?,?,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET calculated_at=excluded.calculated_at,history_start=excluded.history_start,history_end=excluded.history_end,complete_years=excluded.complete_years,quality_status=excluded.quality_status,missing_days=excluded.missing_days,profile_json=excluded.profile_json")
+        detail.quality_reason = if detail.complete_years >= MIN_COMPLETE_YEARS { "Mindestens zehn vollständige Jahre aus EODHD-D1-Historie. Adjusted Close wird verwendet, wenn EODHD ihn bereitstellt.".into() } else { "EODHD liefert für dieses Asset weniger als zehn vollständige D1-Jahre; die Analyse bleibt explorativ.".into() };
+        let mut tx = state.db.begin().await.map_err(AppError::from)?;
+        sqlx::query("DELETE FROM seasonality_provider_daily_candles WHERE provider='eodhd' AND provider_symbol=?")
+            .bind(&instrument.provider_symbol).execute(&mut *tx).await.map_err(AppError::from)?;
+        for bar in &bars {
+            sqlx::query("INSERT INTO seasonality_provider_daily_candles(provider,provider_symbol,candle_time,bid_open,bid_high,bid_low,bid_close,ask_open,ask_high,ask_low,ask_close,mid_close,volume,fetched_at) VALUES('eodhd',?,?,?,?,?,?,?,?,?,?,?,?,?)")
+                .bind(&instrument.provider_symbol).bind(bar.time).bind(bar.open).bind(bar.high).bind(bar.low).bind(bar.close).bind(bar.open).bind(bar.high).bind(bar.low).bind(bar.close).bind(bar.close).bind(bar.volume).bind(&now)
+                .execute(&mut *tx).await.map_err(AppError::from)?;
+        }
+        sqlx::query("INSERT INTO seasonality_provider_profiles(provider,provider_symbol,calculated_at,history_start,history_end,complete_years,quality_status,missing_days,profile_json) VALUES('eodhd',?,?,?,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET calculated_at=excluded.calculated_at,history_start=excluded.history_start,history_end=excluded.history_end,complete_years=excluded.complete_years,quality_status=excluded.quality_status,missing_days=excluded.missing_days,profile_json=excluded.profile_json")
             .bind(&instrument.provider_symbol).bind(&detail.calculated_at).bind(&detail.history_start).bind(&detail.history_end).bind(detail.complete_years as i64).bind(&detail.quality_status).bind(detail.missing_days as i64).bind(serde_json::to_string(&detail).unwrap_or_else(|_| "{}".into()))
-            .execute(&state.db).await.map_err(AppError::from)?;
+            .execute(&mut *tx).await.map_err(AppError::from)?;
+        if let Some(first) = bars.first() {
+            sqlx::query("UPDATE seasonality_provider_instruments SET earliest_daily_at=? WHERE provider='eodhd' AND provider_symbol=?")
+                .bind(first.time).bind(&instrument.provider_symbol).execute(&mut *tx).await.map_err(AppError::from)?;
+        }
+        tx.commit().await.map_err(AppError::from)?;
         Ok(())
     }.await;
     let (status, error) = match result {
         Ok(()) => ("complete", None),
         Err(error) => ("failed", Some(error.message)),
     };
-    sqlx::query("UPDATE seasonality_provider_sync_runs SET completed_at=?,status=?,requested_years=?,fetched_candles=?,error_message=? WHERE id=?")
-        .bind(Utc::now().to_rfc3339()).bind(status).bind(requested as i64).bind(fetched as i64).bind(error.as_deref().map(|value| value.chars().take(500).collect::<String>())).bind(&run_id)
-        .execute(&state.db).await.map_err(AppError::from)?;
+    finish_eodhd_run(
+        state,
+        &run_id,
+        status,
+        requested_years,
+        fetched,
+        error.as_deref(),
+    )
+    .await?;
     if status == "failed" {
-        record_dukascopy_retry(
+        record_eodhd_retry(
             state,
             &instrument.provider_symbol,
             error
                 .as_deref()
-                .unwrap_or("Dukascopy-Synchronisierung fehlgeschlagen."),
+                .unwrap_or("EODHD-Seasonality-Synchronisierung fehlgeschlagen."),
         )
         .await
         .map_err(CommandError::from)?;
         return Err(CommandError::validation(error.unwrap_or_else(|| {
-            "Dukascopy-Synchronisierung fehlgeschlagen.".into()
+            "EODHD-Seasonality-Synchronisierung fehlgeschlagen.".into()
         })));
     }
-    clear_dukascopy_retry(state, &instrument.provider_symbol)
+    clear_eodhd_retry(state, &instrument.provider_symbol)
         .await
         .map_err(CommandError::from)?;
     Ok(())
 }
 
-fn completed_year_bounds(current_year: i32, earliest_year: Option<i32>) -> Option<(i32, i32)> {
-    let last_year = current_year.checked_sub(1)?;
-    let first_year = earliest_year.unwrap_or(last_year).max(last_year - 14);
-    (first_year <= last_year).then_some((first_year, last_year))
+async fn finish_eodhd_run(
+    state: &AppState,
+    run_id: &str,
+    status: &str,
+    requested_years: usize,
+    fetched_candles: usize,
+    error: Option<&str>,
+) -> CommandResult<()> {
+    sqlx::query("UPDATE seasonality_provider_sync_runs SET completed_at=?,status=?,requested_years=?,fetched_candles=?,error_message=? WHERE id=?")
+        .bind(Utc::now().to_rfc3339())
+        .bind(status)
+        .bind(requested_years as i64)
+        .bind(fetched_candles as i64)
+        .bind(error.map(|value| value.chars().take(500).collect::<String>()))
+        .bind(run_id)
+        .execute(&state.db)
+        .await
+        .map_err(AppError::from)?;
+    Ok(())
 }
 
-fn dukascopy_retry_delay_minutes(consecutive_failures: i64) -> i64 {
+fn eodhd_retry_delay_minutes(consecutive_failures: i64) -> i64 {
     let exponent = consecutive_failures.saturating_sub(1).clamp(0, 6) as u32;
     (30_i64.saturating_mul(2_i64.pow(exponent))).min(1_440)
 }
 
-fn dukascopy_error_code(message: &str) -> &'static str {
+fn eodhd_error_code(message: &str) -> &'static str {
     let normalized = message.to_ascii_lowercase();
     if normalized.contains("timeout") || normalized.contains("timed out") {
         "network_timeout"
     } else if normalized.contains("429") || normalized.contains("rate limit") {
         "rate_limited"
-    } else if normalized.contains("historie nicht liefern")
-        || normalized.contains("requested history")
-    {
+    } else if normalized.contains("keine nutzbare") || normalized.contains("historie") {
         "history_unavailable"
     } else {
         "provider_error"
     }
 }
 
-async fn record_dukascopy_retry(
+async fn record_eodhd_retry(
     state: &AppState,
     provider_symbol: &str,
     message: &str,
 ) -> Result<(), AppError> {
     let previous: Option<i64> = sqlx::query_scalar(
-        "SELECT consecutive_failures FROM seasonality_provider_retry_state WHERE provider='dukascopy' AND provider_symbol=?",
+        "SELECT consecutive_failures FROM seasonality_provider_retry_state WHERE provider='eodhd' AND provider_symbol=?",
     )
     .bind(provider_symbol)
     .fetch_optional(&state.db)
     .await?;
     let failures = previous.unwrap_or(0).saturating_add(1);
     let now = Utc::now();
-    let next_retry = now + chrono::Duration::minutes(dukascopy_retry_delay_minutes(failures));
+    let next_retry = now + chrono::Duration::minutes(eodhd_retry_delay_minutes(failures));
     sqlx::query(
-        "INSERT INTO seasonality_provider_retry_state(provider,provider_symbol,consecutive_failures,next_retry_at,last_error_code,last_error_message,updated_at) VALUES('dukascopy',?,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET consecutive_failures=excluded.consecutive_failures,next_retry_at=excluded.next_retry_at,last_error_code=excluded.last_error_code,last_error_message=excluded.last_error_message,updated_at=excluded.updated_at",
+        "INSERT INTO seasonality_provider_retry_state(provider,provider_symbol,consecutive_failures,next_retry_at,last_error_code,last_error_message,updated_at) VALUES('eodhd',?,?,?,?,?,?) ON CONFLICT(provider,provider_symbol) DO UPDATE SET consecutive_failures=excluded.consecutive_failures,next_retry_at=excluded.next_retry_at,last_error_code=excluded.last_error_code,last_error_message=excluded.last_error_message,updated_at=excluded.updated_at",
     )
     .bind(provider_symbol)
     .bind(failures)
     .bind(next_retry.to_rfc3339())
-    .bind(dukascopy_error_code(message))
+    .bind(eodhd_error_code(message))
     .bind(message.chars().take(500).collect::<String>())
     .bind(now.to_rfc3339())
     .execute(&state.db)
@@ -788,9 +948,9 @@ async fn record_dukascopy_retry(
     Ok(())
 }
 
-async fn clear_dukascopy_retry(state: &AppState, provider_symbol: &str) -> Result<(), AppError> {
+async fn clear_eodhd_retry(state: &AppState, provider_symbol: &str) -> Result<(), AppError> {
     sqlx::query(
-        "DELETE FROM seasonality_provider_retry_state WHERE provider='dukascopy' AND provider_symbol=?",
+        "DELETE FROM seasonality_provider_retry_state WHERE provider='eodhd' AND provider_symbol=?",
     )
     .bind(provider_symbol)
     .execute(&state.db)
@@ -825,7 +985,7 @@ fn analysis_from_candles(
     prices.dedup_by_key(|(date, _)| *date);
     if prices.is_empty() {
         return Err(CommandError::validation(
-            "FÃ¼r dieses Asset ist keine nutzbare lokale D1-Historie vorhanden.",
+            "Für dieses Asset ist keine nutzbare lokale D1-Historie vorhanden.",
         ));
     }
     let history_start = prices.first().map(|(date, _)| date.to_string());
@@ -837,7 +997,7 @@ fn analysis_from_candles(
     }
     let complete: BTreeMap<_, _> = all_years
         .into_iter()
-        .filter(|(_, values)| values.len() >= 180)
+        .filter(|(year, values)| is_complete_calendar_year(*year, values))
         .collect();
     let selected_years = filtered_years(&complete, &input.year_filter);
     let selected: BTreeMap<_, _> = selected_years
@@ -859,12 +1019,12 @@ fn analysis_from_candles(
     };
     let quality_reason = if selected_years.len() >= MIN_RANKED_SAMPLES {
         format!(
-            "{} vollstÃ¤ndige Jahre erfÃ¼llen die aktiven Filter.",
+            "{} vollständige Jahre erfüllen die aktiven Filter.",
             selected_years.len()
         )
     } else {
         format!(
-            "Nur {} vollstÃ¤ndige Jahre erfÃ¼llen die aktiven Filter; Rankings bleiben explorativ.",
+            "Nur {} vollständige Jahre erfüllen die aktiven Filter; Rankings bleiben explorativ.",
             selected_years.len()
         )
     };
@@ -1025,7 +1185,7 @@ fn parse_reference_date(value: &str) -> CommandResult<(u32, u32)> {
             Ok((month, day))
         }
         _ => Err(CommandError::validation(
-            "Bitte wÃ¤hle einen gÃ¼ltigen Kalendertag auÃŸer dem 29. Februar.",
+            "Bitte wähle einen gültigen Kalendertag außer dem 29. Februar.",
         )),
     }
 }
@@ -1132,6 +1292,22 @@ fn seasonal_day(date: NaiveDate) -> u16 {
 
 fn is_leap_year(year: i32) -> bool {
     year % 4 == 0 && (year % 100 != 0 || year % 400 == 0)
+}
+
+fn is_complete_calendar_year(year: i32, values: &[(NaiveDate, f64)]) -> bool {
+    if values.len() < 180 {
+        return false;
+    }
+    let Some((first_date, _)) = values.first() else {
+        return false;
+    };
+    let Some((last_date, _)) = values.last() else {
+        return false;
+    };
+    first_date.year() == year
+        && last_date.year() == year
+        && first_date.ordinal() <= 15
+        && last_date.ordinal() >= 350
 }
 
 fn seasonal_start_indices(prices: &[(NaiveDate, f64)]) -> BTreeMap<(i32, u16), usize> {
@@ -1314,7 +1490,7 @@ fn calculate_profile(
     }
     let complete: BTreeMap<_, _> = by_year
         .into_iter()
-        .filter(|(_, values)| values.len() >= 180)
+        .filter(|(year, values)| is_complete_calendar_year(*year, values))
         .collect();
     let complete_years = complete.len();
     let quality_status = if rows.is_empty() {
@@ -1324,7 +1500,7 @@ fn calculate_profile(
     } else {
         "available"
     };
-    let quality_reason = match quality_status { "available" => "Mindestens zehn vollständige Kalenderjahre aus BlackBull-MT5-D1-Historie.", "insufficient_history" => "Für eine bewertbare Seasonality werden mindestens zehn vollständige Kalenderjahre benötigt.", _ => "BlackBull liefert für dieses Asset keine nutzbare D1-Historie." }.into();
+    let quality_reason = match quality_status { "available" => "Mindestens zehn vollständige Kalenderjahre aus lokal gespeicherter D1-Historie.", "insufficient_history" => "Für eine bewertbare Seasonality werden mindestens zehn vollständige Kalenderjahre benötigt.", _ => "Für dieses Asset ist keine nutzbare lokale D1-Historie vorhanden." }.into();
     let annual_curve = annual_curve(&complete);
     let months = period_metrics(&complete, false);
     let quarters = period_metrics(&complete, true);
@@ -1369,8 +1545,8 @@ fn calculate_profile(
         forward_returns,
         similar_years,
         heatmap_signal,
-        data_source: "BlackBull MT5".into(),
-        data_source_url: Some("https://www.blackbull.com".into()),
+        data_source: EODHD_SOURCE_NAME.into(),
+        data_source_url: Some(EODHD_SOURCE_URL.into()),
         native_timezone: None,
         missing_days: 0,
     }
@@ -1553,20 +1729,6 @@ fn correlation(left: &[f64], right: &[f64]) -> Option<f64> {
     .sqrt();
     (den > 0.0).then_some(num / den)
 }
-fn legacy_item(row: SeasonalityRow) -> SeasonalityItem {
-    SeasonalityItem {
-        asset: row.asset,
-        symbol: row.symbol,
-        horizon: row.horizon,
-        sample_start: row.sample_start,
-        sample_end: row.sample_end,
-        average_return: row.average_return,
-        positive_ratio: row.positive_ratio,
-        samples: row.samples,
-        signal: row.signal.map(|v| v.clamp(-1, 1) as i8),
-        curve: serde_json::from_str(&row.curve_json).unwrap_or_default(),
-    }
-}
 fn profile_detail(row: ProfileRow) -> Option<SeasonalityAssetDetail> {
     let mut detail: SeasonalityAssetDetail = serde_json::from_str(&row.profile_json).ok()?;
     detail.symbol = row.symbol;
@@ -1606,34 +1768,6 @@ fn profile_summary(row: ProfileRow) -> Option<SeasonalityAssetSummary> {
     })
 }
 
-#[tauri::command]
-pub async fn import_seasonality(
-    state: State<'_, AppState>,
-    input: SeasonalityImport,
-) -> CommandResult<SeasonalityDashboard> {
-    if input.source_name.trim().is_empty() {
-        return Err(CommandError::validation("Datenquelle fehlt."));
-    }
-    if input.items.is_empty() {
-        return Err(CommandError::validation(
-            "Keine Seasonality-Daten vorhanden.",
-        ));
-    }
-    let snapshot_id = Uuid::new_v4().to_string();
-    let now = Utc::now().to_rfc3339();
-    let snapshot_at = input.snapshot_at.clone().unwrap_or_else(|| now.clone());
-    let mut tx = state.db.begin().await.map_err(AppError::from)?;
-    sqlx::query("INSERT INTO macro_snapshots (id,snapshot_at,imported_at,source_name,source_url,calculation_version,status) VALUES (?,?,?,?,?,'seasonality-v1','complete')").bind(&snapshot_id).bind(&snapshot_at).bind(&now).bind(input.source_name.trim()).bind(&input.source_url).execute(&mut *tx).await.map_err(AppError::from)?;
-    for item in &input.items {
-        if item.symbol.trim().is_empty() {
-            continue;
-        }
-        sqlx::query("INSERT INTO seasonality_snapshots (id,macro_snapshot_id,asset,symbol,horizon,sample_start,sample_end,average_return,positive_ratio,samples,signal,curve_json) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)").bind(Uuid::new_v4().to_string()).bind(&snapshot_id).bind(item.asset.trim()).bind(item.symbol.trim().to_uppercase()).bind(&item.horizon).bind(&item.sample_start).bind(&item.sample_end).bind(&item.average_return).bind(&item.positive_ratio).bind(item.samples).bind(item.signal.map(i64::from)).bind(serde_json::to_string(&item.curve).unwrap_or_else(|_|"[]".into())).execute(&mut *tx).await.map_err(AppError::from)?;
-    }
-    tx.commit().await.map_err(AppError::from)?;
-    get_seasonality(state).await
-}
-
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -1649,18 +1783,11 @@ mod tests {
     }
 
     #[test]
-    fn dukascopy_backfill_uses_fifteen_completed_years_only() {
-        assert_eq!(completed_year_bounds(2026, Some(2000)), Some((2011, 2025)));
-        assert_eq!(completed_year_bounds(2026, Some(2020)), Some((2020, 2025)));
-        assert_eq!(completed_year_bounds(2026, Some(2026)), None);
-    }
-
-    #[test]
-    fn dukascopy_retry_backoff_is_bounded_and_exponential() {
-        assert_eq!(dukascopy_retry_delay_minutes(1), 30);
-        assert_eq!(dukascopy_retry_delay_minutes(2), 60);
-        assert_eq!(dukascopy_retry_delay_minutes(6), 960);
-        assert_eq!(dukascopy_retry_delay_minutes(20), 1_440);
+    fn eodhd_retry_backoff_is_bounded_and_exponential() {
+        assert_eq!(eodhd_retry_delay_minutes(1), 30);
+        assert_eq!(eodhd_retry_delay_minutes(2), 60);
+        assert_eq!(eodhd_retry_delay_minutes(6), 960);
+        assert_eq!(eodhd_retry_delay_minutes(20), 1_440);
     }
 
     #[test]
@@ -1681,6 +1808,43 @@ mod tests {
     }
 
     #[test]
+    fn year_filter_accepts_multiple_ending_digits() {
+        let years = (2018..=2025)
+            .map(|year| (year, Vec::new()))
+            .collect::<BTreeMap<_, _>>();
+        let filter = SeasonalityYearFilter {
+            ending_digits: vec![0, 2],
+            ..Default::default()
+        };
+        assert_eq!(filtered_years(&years, &filter), vec![2020, 2022]);
+    }
+
+    #[test]
+    fn incomplete_calendar_years_are_excluded_even_with_many_rows() {
+        let rows = (0..180)
+            .map(|index| {
+                let ordinal = 20 + index * 340 / 179;
+                (
+                    NaiveDate::from_yo_opt(2024, ordinal as u32).unwrap(),
+                    100.0 + index as f64,
+                )
+            })
+            .collect::<Vec<_>>();
+        assert!(!is_complete_calendar_year(2024, &rows));
+
+        let complete = (0..180)
+            .map(|index| {
+                let ordinal = 2 + index * 357 / 179;
+                (
+                    NaiveDate::from_yo_opt(2024, ordinal as u32).unwrap(),
+                    100.0 + index as f64,
+                )
+            })
+            .collect::<Vec<_>>();
+        assert!(is_complete_calendar_year(2024, &complete));
+    }
+
+    #[test]
     fn window_uses_next_trading_days_across_year_boundary() {
         let rows = vec![
             (NaiveDate::from_ymd_opt(2020, 12, 30).unwrap(), 100.0),
@@ -1698,6 +1862,53 @@ mod tests {
     fn wilson_penalizes_small_perfect_samples() {
         assert!(wilson_lower_bound(5, 5) > 0.5);
         assert!(wilson_lower_bound(5, 5) < wilson_lower_bound(20, 20));
+    }
+
+    #[test]
+    fn fewer_than_five_years_stay_exploratory() {
+        let mut rows = Vec::new();
+        for year in 2020..=2023 {
+            for day in 1..=30 {
+                rows.push((
+                    NaiveDate::from_ymd_opt(year, 1, day).unwrap(),
+                    100.0 + f64::from(year - 2020) + f64::from(day),
+                ));
+            }
+        }
+        let years = vec![2020, 2021, 2022, 2023];
+        let metric = window_metric(&rows, &seasonal_start_indices(&rows), &years, 1, 2, 5);
+        assert_eq!(metric.samples, 4);
+        assert_eq!(metric.quality_status, "exploratory");
+        assert_eq!(metric.wilson_lower_bound, None);
+    }
+
+    #[test]
+    fn screener_uses_rankable_complete_years_on_the_coarse_grid() {
+        let mut candles = Vec::new();
+        for year in 2018..=2023 {
+            for index in 0..180 {
+                let ordinal = 2 + index * 357 / 179;
+                let date = NaiveDate::from_yo_opt(year, ordinal as u32).unwrap();
+                candles.push((
+                    date.and_hms_opt(0, 0, 0).unwrap().and_utc().timestamp(),
+                    100.0 + f64::from(year - 2018) * 400.0 + f64::from(ordinal),
+                ));
+            }
+        }
+        let (bullish, bearish) = screener_windows(&candles).unwrap();
+        let bullish = bullish.expect("rising histories should rank bullish");
+        assert_eq!(bullish.samples, 6);
+        assert!([5, 10, 20, 30, 40, 60, 90].contains(&bullish.trading_days));
+        assert!(bearish.is_none());
+    }
+
+    #[test]
+    fn missing_window_evidence_is_not_reported_as_neutral() {
+        let metric = window_metric(&[], &BTreeMap::new(), &[2024], 6, 1, 20);
+        assert_eq!(metric.samples, 0);
+        assert_eq!(metric.direction, None);
+        assert_eq!(metric.average_return, None);
+        assert_eq!(metric.positive_ratio, None);
     }
 
     #[test]

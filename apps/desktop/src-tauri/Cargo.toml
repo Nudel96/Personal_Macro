@@ -33,16 +33,22 @@ sha2 = "0.11.0"
 zip = { version = "8.6.0", default-features = false, features = ["deflate"] }
 tracing = "0.1.44"
 tracing-subscriber = "0.3.23"
-tokio = { version = "1.53.0", features = ["rt-multi-thread", "macros", "sync"] }
+tokio = { version = "1.53.0", features = ["rt-multi-thread", "macros", "sync", "time"] }
 csv = "1.4.0"
 mime_guess = "2.0.5"
 walkdir = "2.5.0"
 tauri-plugin-dialog = "2.7.1"
 tauri-plugin-store = "2.4.3"
 tauri-plugin-fs = "2.5.1"
-reqwest = { version = "0.13.4", default-features = false, features = ["json", "rustls"] }
+reqwest = { version = "0.13.4", default-features = false, features = ["json", "query", "rustls"] }
 dotenvy = "0.15.7"
 pdf-extract = "0.12.0"
+calamine = "0.36.1"
+futures-util = "0.3.32"
+keyring = "4.1.6"
+tokio-tungstenite = { version = "0.30.0", default-features = false, features = ["connect", "rustls-tls-webpki-roots"] }
+url = "2.5.7"
+scraper = "0.24.0"
 
 [target.'cfg(windows)'.dependencies]
 windows-sys = { version = "0.61.2", features = ["Win32_Storage_FileSystem"] }

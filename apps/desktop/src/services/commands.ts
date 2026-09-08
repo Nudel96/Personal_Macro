@@ -19,22 +19,36 @@ import type {
   Account,
   AccountInput,
   AccountCashflow,
+  BrokerConnection,
+  ConnectedAccountResult,
+  CTraderAuthorization,
+  CTraderCandidateResponse,
+  Mt5AccountSnapshot,
   CommandError,
   DashboardResponse,
   DeletedTrade,
   EodhdFeedStatus,
+  EodhdIndicatorHistory,
+  EodhdIndicatorHistoryInput,
+  AudChinaCpiRegimeInput,
+  AudChinaCpiRegimeResponse,
+  EconomicCalendarInput,
+  EconomicCalendarResponse,
   EodhdMappingCandidate,
   EodhdSyncResult,
   MacroFundamentalsDashboard,
+  PairTechnicalDashboard,
   CotDashboard,
   CotAssetDetail,
   CotDetailInput,
   CotBrokerLinkInput,
   CotSyncResult,
   PolicyRateDashboard,
+  CentralBankReportDashboard,
+  CentralBankReportDetail,
+  CentralBankSyncResult,
   SeasonalityDashboard,
   SeasonalityAssetDetail,
-  SeasonalityImport,
   SeasonalityForexPair,
   SeasonalityAnalysis,
   SeasonalityAnalysisInput,
@@ -48,6 +62,7 @@ import type {
   MediaRecord,
   MediaAnnotationRecord,
   BackupRecord,
+  CalendarDay,
   ExportResult,
   RestorePreview,
   RestoreStageResult,
@@ -65,15 +80,17 @@ import type {
   SavedViewInput,
   CustomField,
   CustomFieldInput,
-  Candle,
-  MarketQuote,
-  MarketStatus,
-  MarketSymbol,
-  MarketTimeframe,
-  Mt5Account,
-  Mt5AccountsResponse,
-  Mt5SyncResult,
+  JournalResetResult,
+  CTraderStatementCommitInput,
+  CTraderStatementCommitResult,
+  CTraderStatementPreview,
+  CTraderStatementPreviewInput,
+  MetaTraderHtmlCommitInput,
+  MetaTraderHtmlCommitResult,
+  MetaTraderHtmlPreview,
+  MetaTraderHtmlPreviewInput,
   PutCallDashboard,
+  PutCallBatchImportResult,
   PutCallSyncResult,
 } from "../types/domain";
 
@@ -102,58 +119,10 @@ async function call<T>(
 }
 
 export const api = {
-  marketStatus: (): Promise<MarketStatus> =>
-    isTauri()
-      ? call("get_market_status")
-      : Promise.resolve({
-          connected: false,
-          provider: "BlackBull MT5",
-          lastUpdate: new Date().toISOString(),
-          code: "DESKTOP_REQUIRED",
-          message:
-            "Der BlackBull-Livechart ist nur in der Desktop-App verfügbar.",
-        }),
-  marketSymbols: (): Promise<MarketSymbol[]> =>
-    isTauri()
-      ? call("list_market_symbols")
-      : Promise.reject({ message: "MT5-Symbole benötigen die Desktop-App." }),
-  marketCandles: (
-    symbol: string,
-    timeframe: MarketTimeframe,
-    limit = 1500,
-  ): Promise<Candle[]> =>
-    isTauri()
-      ? call("get_market_candles", { input: { symbol, timeframe, limit } })
-      : Promise.reject({ message: "MT5-Kerzen benötigen die Desktop-App." }),
-  marketQuote: (symbol: string): Promise<MarketQuote> =>
-    isTauri()
-      ? call("get_market_quote", { symbol })
-      : Promise.reject({ message: "MT5-Kurse benötigen die Desktop-App." }),
-  mt5Accounts: (): Promise<Mt5AccountsResponse> =>
-    isTauri()
-      ? call("get_mt5_accounts")
-      : Promise.resolve({ accounts: [], automationIntervalSeconds: 10 }),
-  linkMt5Account: (
-    mt5AccountId: string,
-    localAccountId: string,
-  ): Promise<Mt5Account> =>
-    isTauri()
-      ? call("link_mt5_account", {
-          input: { mt5AccountId, localAccountId },
-        })
-      : Promise.reject({ message: "MT5-Konten benötigen die Desktop-App." }),
-  unlinkMt5Account: (mt5AccountId: string): Promise<void> =>
-    isTauri()
-      ? call("unlink_mt5_account", { mt5AccountId })
-      : Promise.reject({ message: "MT5-Konten benötigen die Desktop-App." }),
-  syncMt5Now: (): Promise<Mt5SyncResult> =>
-    isTauri()
-      ? call("sync_mt5_now")
-      : Promise.reject({
-          message: "MT5-Synchronisierung benötigt die Desktop-App.",
-        }),
   bootstrap: (): Promise<BootstrapData> =>
-    isTauri() ? call("get_bootstrap_data") : Promise.resolve(browserBootstrap),
+    isTauri()
+      ? call("get_bootstrap_data")
+      : Promise.resolve(structuredClone(browserBootstrap)),
   saveAccount: (input: AccountInput): Promise<Account> =>
     isTauri()
       ? call("save_account", { input })
@@ -181,6 +150,66 @@ export const api = {
           );
           if (account) account.isArchived = true;
         }),
+  brokerConnections: (): Promise<BrokerConnection[]> =>
+    isTauri() ? call("list_broker_connections") : Promise.resolve([]),
+  detectMt5Account: (terminalPath?: string): Promise<Mt5AccountSnapshot> =>
+    isTauri()
+      ? call("detect_mt5_account", { input: { terminalPath } })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Die lokale MT5-Verbindung benötigt die Desktop-App.",
+        } satisfies CommandError),
+  createAccountFromMt5: (input: {
+    terminalPath?: string;
+    name?: string;
+    defaultRiskPercent: number;
+  }): Promise<ConnectedAccountResult> =>
+    isTauri()
+      ? call("create_account_from_mt5", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Die lokale MT5-Verbindung benötigt die Desktop-App.",
+        } satisfies CommandError),
+  cTraderAuthorization: (): Promise<CTraderAuthorization> =>
+    isTauri()
+      ? call("get_ctrader_authorization")
+      : Promise.resolve({
+          configured: false,
+          message: "Die cTrader-Verbindung benötigt die Desktop-App.",
+        }),
+  exchangeCTraderCode: (
+    codeOrRedirectUrl: string,
+  ): Promise<CTraderCandidateResponse> =>
+    isTauri()
+      ? call("exchange_ctrader_code", { input: { codeOrRedirectUrl } })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Die cTrader-Verbindung benötigt die Desktop-App.",
+        } satisfies CommandError),
+  createAccountFromCTrader: (input: {
+    sessionId: string;
+    externalAccountId: string;
+    name?: string;
+    defaultRiskPercent: number;
+  }): Promise<ConnectedAccountResult> =>
+    isTauri()
+      ? call("create_account_from_ctrader", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Die cTrader-Verbindung benötigt die Desktop-App.",
+        } satisfies CommandError),
+  refreshBrokerConnection: (connectionId: string): Promise<BrokerConnection> =>
+    isTauri()
+      ? call("refresh_broker_connection", { connectionId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Broker-Verbindungen werden nur in der Desktop-App aktualisiert.",
+        } satisfies CommandError),
+  disconnectBrokerConnection: (connectionId: string): Promise<void> =>
+    isTauri()
+      ? call("disconnect_broker_connection", { connectionId })
+      : Promise.resolve(),
   accountCashflows: (accountId: string): Promise<AccountCashflow[]> =>
     isTauri()
       ? call("list_account_cashflows", { accountId })
@@ -214,37 +243,55 @@ export const api = {
           );
           return row;
         }),
-  listTrades: (filter: TradeFilter = {}): Promise<PagedTrades> =>
-    isTauri() ? call("list_trades", { filter }) : browserListTrades(filter),
-  getTrade: (id: string): Promise<TradeDetail> =>
-    isTauri() ? call("get_trade", { id }) : browserGetTrade(id),
+  listTrades: (
+    accountId: string,
+    filter: Omit<TradeFilter, "accountIds"> = {},
+  ): Promise<PagedTrades> =>
+    isTauri()
+      ? call("list_trades", { accountId, filter })
+      : browserListTrades({ ...filter, accountIds: [accountId] }),
+  getTrade: (accountId: string, id: string): Promise<TradeDetail> =>
+    isTauri()
+      ? call("get_trade", { accountId, id })
+      : browserGetTrade(accountId, id),
   createTrade: (input: TradeInput): Promise<TradeDetail> =>
     isTauri() ? call("create_trade", { input }) : browserCreateTrade(input),
-  updateTrade: (id: string, input: TradeInput): Promise<TradeDetail> =>
+  updateTrade: (
+    accountId: string,
+    id: string,
+    input: TradeInput,
+  ): Promise<TradeDetail> =>
     isTauri()
-      ? call("update_trade", { id, input })
-      : browserUpdateTrade(id, input),
-  trashTrade: (id: string): Promise<void> =>
-    isTauri() ? call("trash_trade", { id }) : browserTrashTrade(id),
-  deletedTrades: (): Promise<DeletedTrade[]> =>
-    isTauri() ? call("list_deleted_trades") : browserListDeletedTrades(),
-  restoreTrade: (id: string): Promise<TradeDetail> =>
-    isTauri() ? call("restore_trade", { id }) : browserRestoreTrade(id),
-  duplicateTrade: (id: string): Promise<TradeDetail> =>
+      ? call("update_trade", { id, input: { ...input, accountId } })
+      : browserUpdateTrade(accountId, id, input),
+  trashTrade: (accountId: string, id: string): Promise<void> =>
     isTauri()
-      ? call("duplicate_trade", { id })
+      ? call("trash_trade", { accountId, id })
+      : browserTrashTrade(accountId, id),
+  deletedTrades: (accountId: string): Promise<DeletedTrade[]> =>
+    isTauri()
+      ? call("list_deleted_trades", { accountId })
+      : browserListDeletedTrades(accountId),
+  restoreTrade: (accountId: string, id: string): Promise<TradeDetail> =>
+    isTauri()
+      ? call("restore_trade", { accountId, id })
+      : browserRestoreTrade(accountId, id),
+  duplicateTrade: (accountId: string, id: string): Promise<TradeDetail> =>
+    isTauri()
+      ? call("duplicate_trade", { accountId, id })
       : (async () => {
-          const trade = await browserGetTrade(id);
+          const trade = await browserGetTrade(accountId, id);
           const duplicated = await browserCreateTrade({
             ...trade,
+            accountId,
             id: undefined,
             status: "draft",
             openedAt: null,
             closedAt: null,
           });
           const workspace = await import("./workspace-browser");
-          const context = await workspace.getBrowserTradeContext(id);
-          await workspace.saveBrowserTradeContext({
+          const context = await workspace.getBrowserTradeContext(accountId, id);
+          await workspace.saveBrowserTradeContext(accountId, {
             tradeId: duplicated.id,
             tagIds: context.tags.map((tag) => tag.id),
             legs: [],
@@ -258,17 +305,20 @@ export const api = {
           });
           return duplicated;
         })(),
-  tradeContext: (tradeId: string): Promise<TradeContext> =>
+  tradeContext: (accountId: string, tradeId: string): Promise<TradeContext> =>
     isTauri()
-      ? call("get_trade_context", { tradeId })
+      ? call("get_trade_context", { accountId, tradeId })
       : import("./workspace-browser").then((module) =>
-          module.getBrowserTradeContext(tradeId),
+          module.getBrowserTradeContext(accountId, tradeId),
         ),
-  saveTradeContext: (input: TradeContextInput): Promise<TradeContext> =>
+  saveTradeContext: (
+    accountId: string,
+    input: TradeContextInput,
+  ): Promise<TradeContext> =>
     isTauri()
-      ? call("save_trade_context", { input })
+      ? call("save_trade_context", { accountId, input })
       : import("./workspace-browser").then((module) =>
-          module.saveBrowserTradeContext(input),
+          module.saveBrowserTradeContext(accountId, input),
         ),
   savedViews: (scope: string): Promise<SavedView[]> =>
     isTauri()
@@ -306,16 +356,97 @@ export const api = {
       : import("./workspace-browser").then((module) =>
           module.deleteBrowserCustomField(id),
         ),
-  dashboard: (filter: TradeFilter = {}): Promise<DashboardResponse> =>
+  dashboard: (
+    accountId: string,
+    filter: Omit<TradeFilter, "accountIds"> = {},
+  ): Promise<DashboardResponse> =>
     isTauri()
-      ? call("calculate_dashboard", { filter })
-      : browserDashboard(filter),
+      ? call("calculate_dashboard", { accountId, filter })
+      : browserDashboard({ ...filter, accountIds: [accountId] }),
+  calendar: (
+    accountId: string,
+    filter: Omit<TradeFilter, "accountIds"> = {},
+  ): Promise<CalendarDay[]> =>
+    isTauri()
+      ? call("calculate_calendar", { accountId, filter })
+      : browserDashboard({ ...filter, accountIds: [accountId] }).then(
+          (dashboard) => dashboard.calendar,
+        ),
   macroFundamentalsDashboard: (): Promise<MacroFundamentalsDashboard> =>
     isTauri()
       ? call("get_eodhd_fundamentals_dashboard")
       : Promise.reject({
           message: "Der EODHD-Datenfeed benötigt die Desktop-App.",
         }),
+  pairTechnicalSignals: (): Promise<PairTechnicalDashboard> =>
+    isTauri()
+      ? call("get_pair_technical_signals")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "4H-/Daily- und Seasonality-Signale benötigen die lokale Desktop-Datenbank.",
+        } satisfies CommandError),
+  refreshPairTechnicalSignals: (): Promise<PairTechnicalDashboard> =>
+    isTauri()
+      ? call("refresh_pair_technical_signals")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "EODHD-Intraday-Daten können nur in der Desktop-App aktualisiert werden.",
+        } satisfies CommandError),
+  audChinaCpiRegime: (
+    input: AudChinaCpiRegimeInput,
+  ): Promise<AudChinaCpiRegimeResponse> =>
+    isTauri()
+      ? call("get_aud_china_cpi_regime", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die China-CPI-/AUD-Regimeanalyse benötigt die lokale Desktop-Datenbank.",
+        } satisfies CommandError),
+  refreshAudChinaCpiRegime: (
+    input: AudChinaCpiRegimeInput,
+  ): Promise<AudChinaCpiRegimeResponse> =>
+    isTauri()
+      ? call("refresh_aud_china_cpi_regime", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "China-CPI und AUDUSD können nur in der Desktop-App über EODHD aktualisiert werden.",
+        } satisfies CommandError),
+  eodhdIndicatorHistory: (
+    input: EodhdIndicatorHistoryInput,
+  ): Promise<EodhdIndicatorHistory> =>
+    isTauri()
+      ? call("get_eodhd_indicator_history", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Historische EODHD-Wirtschaftsdaten benötigen die Desktop-App.",
+        } satisfies CommandError),
+  economicCalendar: (
+    input: EconomicCalendarInput,
+  ): Promise<EconomicCalendarResponse> =>
+    isTauri()
+      ? call("get_economic_calendar", { input })
+      : Promise.resolve({
+          asOf: new Date().toISOString(),
+          from: new Date().toISOString(),
+          to: new Date().toISOString(),
+          sourceName: "EODHD Economic Events API",
+          sourceUrl: "https://eodhd.com/api/economic-events",
+          events: [],
+        }),
+  syncEodhdIndicatorHistory: (
+    input: EodhdIndicatorHistoryInput,
+  ): Promise<EodhdIndicatorHistory> =>
+    isTauri()
+      ? call("sync_eodhd_indicator_history", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Historische EODHD-Wirtschaftsdaten können nur in der Desktop-App aktualisiert werden.",
+        } satisfies CommandError),
   eodhdFeedStatus: (): Promise<EodhdFeedStatus> =>
     isTauri()
       ? call("get_eodhd_feed_status")
@@ -382,6 +513,19 @@ export const api = {
       : browserPutCallDashboard(assetSymbol),
   syncPutCall: (): Promise<PutCallSyncResult> =>
     isTauri() ? call("sync_put_call_data") : browserSyncPutCall(),
+  importPutCallPdf: (path: string): Promise<PutCallSyncResult> =>
+    isTauri()
+      ? call("import_put_call_pdf", { path })
+      : Promise.reject({
+          message: "CME-PDFs können nur in der Desktop-App importiert werden.",
+        }),
+  importPutCallXlsx: (paths: string[]): Promise<PutCallBatchImportResult> =>
+    isTauri()
+      ? call("import_put_call_xlsx", { paths })
+      : Promise.reject({
+          message:
+            "CME-XLSX-Dateien können nur in der Desktop-App importiert werden.",
+        }),
   policyRates: (): Promise<PolicyRateDashboard> =>
     isTauri()
       ? call("get_policy_rates")
@@ -398,6 +542,45 @@ export const api = {
           message:
             "Die automatische Leitzins-Aktualisierung benötigt die Desktop-App.",
         }),
+  centralBankReports: (): Promise<CentralBankReportDashboard> =>
+    isTauri()
+      ? call("get_central_bank_reports")
+      : Promise.resolve({
+          reports: [],
+          sources: [],
+          automation: {
+            enabled: false,
+            refreshIntervalMinutes: 15,
+            openaiConfigured: false,
+            summaryModel: "gpt-5-mini",
+          },
+        }),
+  centralBankReport: (id: string): Promise<CentralBankReportDetail> =>
+    isTauri()
+      ? call("get_central_bank_report", { id })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Zentralbankberichte können nur in der Desktop-App gelesen werden.",
+        } satisfies CommandError),
+  openCentralBankReportFile: (id: string): Promise<void> =>
+    isTauri()
+      ? call("open_central_bank_report_file", { id })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Lokale Zentralbankberichte benötigen die Desktop-App.",
+        } satisfies CommandError),
+  syncCentralBankReports: (): Promise<CentralBankSyncResult> =>
+    isTauri()
+      ? call("sync_central_bank_reports")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der automatische Berichtsabruf benötigt die Desktop-App.",
+        } satisfies CommandError),
+  markCentralBankReportRead: (id: string): Promise<void> =>
+    isTauri()
+      ? call("mark_central_bank_report_read", { id })
+      : Promise.resolve(),
   seasonality: (): Promise<SeasonalityDashboard> =>
     isTauri()
       ? call("get_seasonality")
@@ -406,12 +589,20 @@ export const api = {
             localStorage.getItem("personal-macro:browser-seasonality:v1") ??
               '{"items":[],"assets":[],"collectionStatus":null,"collectionError":null,"dataVersion":"browser"}',
           ),
-        ),
+        ).then((output: Partial<SeasonalityDashboard>) => ({
+          ...output,
+          items: output.items ?? [],
+          assets: output.assets ?? [],
+          collectionCompleted: output.collectionCompleted ?? 0,
+          collectionTotal: output.collectionTotal ?? 0,
+          lastSyncedAt: output.lastSyncedAt,
+          dataVersion: output.dataVersion ?? "browser",
+        })),
   seasonalityAssetDetail: (symbol: string): Promise<SeasonalityAssetDetail> =>
     isTauri()
       ? call("get_seasonality_asset_detail", { symbol })
       : Promise.reject({
-          message: "BlackBull-Seasonality benÃ¶tigt die Desktop-App.",
+          message: "EODHD-Seasonality benötigt die Desktop-App.",
         }),
   analyzeSeasonality: (
     input: SeasonalityAnalysisInput,
@@ -428,32 +619,20 @@ export const api = {
       : Promise.reject({
           message: "Der Seasonality-Screener benÃ¶tigt die Desktop-App.",
         }),
+  refreshSeasonality: (): Promise<SeasonalityDashboard> =>
+    isTauri()
+      ? call("refresh_seasonality_data")
+      : Promise.reject({
+          message:
+            "Die EODHD-Seasonality-Aktualisierung benötigt die Desktop-App.",
+        }),
   seasonalityForexPairs: (): Promise<SeasonalityForexPair[]> =>
     isTauri() ? call("get_seasonality_forex_pairs") : Promise.resolve([]),
-  importSeasonality: (
-    input: SeasonalityImport,
-  ): Promise<SeasonalityDashboard> =>
+  reviews: (accountId: string): Promise<ReviewRecord[]> =>
     isTauri()
-      ? call("import_seasonality", { input })
-      : Promise.resolve({
-          snapshotAt: input.snapshotAt ?? new Date().toISOString(),
-          sourceName: input.sourceName,
-          sourceUrl: input.sourceUrl,
-          items: input.items,
-          assets: [],
-          dataVersion: "browser-import",
-        }).then((output) => {
-          localStorage.setItem(
-            "personal-macro:browser-seasonality:v1",
-            JSON.stringify(output),
-          );
-          return output;
-        }),
-  reviews: (): Promise<ReviewRecord[]> =>
-    isTauri()
-      ? call("list_reviews")
+      ? call("list_reviews", { accountId })
       : import("./workspace-browser").then((module) =>
-          module.listBrowserReviews(),
+          module.listBrowserReviews(accountId),
         ),
   saveReview: (input: ReviewInput): Promise<ReviewRecord> =>
     isTauri()
@@ -483,11 +662,11 @@ export const api = {
       : import("./workspace-browser").then((module) =>
           module.recordBrowserGoalProgress(goalId, value),
         ),
-  playbook: (): Promise<PlaybookSetup[]> =>
+  playbook: (accountId?: string): Promise<PlaybookSetup[]> =>
     isTauri()
-      ? call("list_playbook")
+      ? call("list_playbook", { accountId })
       : import("./workspace-browser").then((module) =>
-          module.listBrowserPlaybook(),
+          module.listBrowserPlaybook(accountId),
         ),
   createSetupVersion: (input: {
     setupId: string;
@@ -527,29 +706,35 @@ export const api = {
           browserBootstrap.tags.push(tag);
           return tag;
         }),
-  mistakeAnalytics: (): Promise<MistakeAnalytics[]> =>
+  mistakeAnalytics: (accountId: string): Promise<MistakeAnalytics[]> =>
     isTauri()
-      ? call("get_mistake_analytics")
+      ? call("get_mistake_analytics", { accountId })
       : import("./workspace-browser").then((module) =>
-          module.browserMistakes(),
+          module.browserMistakes(accountId),
         ),
-  tradeMistakes: (tradeId: string): Promise<TradeMistakeRecord[]> =>
+  tradeMistakes: (
+    accountId: string,
+    tradeId: string,
+  ): Promise<TradeMistakeRecord[]> =>
     isTauri()
-      ? call("list_trade_mistakes", { tradeId })
+      ? call("list_trade_mistakes", { accountId, tradeId })
       : import("./workspace-browser").then((module) =>
-          module.listBrowserTradeMistakes(tradeId),
+          module.listBrowserTradeMistakes(accountId, tradeId),
         ),
-  assignTradeMistake: (input: {
-    tradeId: string;
-    mistakeId: string;
-    severity: number;
-    estimatedCostMinor?: number;
-    note?: string;
-  }): Promise<void> =>
+  assignTradeMistake: (
+    accountId: string,
+    input: {
+      tradeId: string;
+      mistakeId: string;
+      severity: number;
+      estimatedCostMinor?: number;
+      note?: string;
+    },
+  ): Promise<void> =>
     isTauri()
-      ? call("assign_trade_mistake", { input })
+      ? call("assign_trade_mistake", { accountId, input })
       : import("./workspace-browser").then((module) =>
-          module.assignBrowserTradeMistake(input),
+          module.assignBrowserTradeMistake(accountId, input),
         ),
   media: (): Promise<MediaRecord[]> =>
     isTauri()
@@ -559,8 +744,12 @@ export const api = {
             localStorage.getItem("personal-macro:browser-media:v1") ?? "[]",
           ),
         ),
-  tradeMedia: async (tradeId: string): Promise<MediaRecord[]> => {
-    if (isTauri()) return call("list_trade_media", { tradeId });
+  tradeMedia: async (
+    accountId: string,
+    tradeId: string,
+  ): Promise<MediaRecord[]> => {
+    if (isTauri()) return call("list_trade_media", { accountId, tradeId });
+    await browserGetTrade(accountId, tradeId);
     const ids = JSON.parse(
       localStorage.getItem(`personal-macro:browser-trade-media:${tradeId}`) ??
         "[]",
@@ -571,23 +760,34 @@ export const api = {
     return rows.filter((row) => ids.includes(row.id));
   },
   attachTradeMedia: (
+    accountId: string,
     tradeId: string,
     mediaId: string,
     slot = "other",
     caption?: string,
   ): Promise<void> =>
     isTauri()
-      ? call("attach_trade_media", { tradeId, mediaId, slot, caption })
-      : Promise.resolve().then(() => {
+      ? call("attach_trade_media", {
+          accountId,
+          tradeId,
+          mediaId,
+          slot,
+          caption,
+        })
+      : browserGetTrade(accountId, tradeId).then(() => {
           const key = `personal-macro:browser-trade-media:${tradeId}`;
           const ids = JSON.parse(localStorage.getItem(key) ?? "[]") as string[];
           if (!ids.includes(mediaId)) ids.push(mediaId);
           localStorage.setItem(key, JSON.stringify(ids));
         }),
-  detachTradeMedia: (tradeId: string, mediaId: string): Promise<void> =>
+  detachTradeMedia: (
+    accountId: string,
+    tradeId: string,
+    mediaId: string,
+  ): Promise<void> =>
     isTauri()
-      ? call("detach_trade_media", { tradeId, mediaId })
-      : Promise.resolve().then(() => {
+      ? call("detach_trade_media", { accountId, tradeId, mediaId })
+      : browserGetTrade(accountId, tradeId).then(() => {
           const key = `personal-macro:browser-trade-media:${tradeId}`;
           const ids = JSON.parse(localStorage.getItem(key) ?? "[]") as string[];
           localStorage.setItem(
@@ -595,8 +795,15 @@ export const api = {
             JSON.stringify(ids.filter((id) => id !== mediaId)),
           );
         }),
-  importMediaPath: (sourcePath: string): Promise<MediaRecord> =>
-    call("import_media_file", { input: { sourcePath } }),
+  importMediaPath: (
+    sourcePath: string,
+    accountId?: string,
+    tradeId?: string,
+  ): Promise<MediaRecord> =>
+    call("import_media_file", {
+      accountId,
+      input: { sourcePath, tradeId },
+    }),
   mediaAnnotation: (mediaId: string): Promise<MediaAnnotationRecord | null> =>
     isTauri()
       ? call("get_media_annotation", { mediaId })
@@ -649,9 +856,15 @@ export const api = {
             JSON.stringify(settings),
           );
         }),
-  exportTrades: async (format: "csv" | "json"): Promise<ExportResult> => {
-    if (isTauri()) return call("export_trades", { format });
-    const trades = await browserListTrades({ pageSize: 250 });
+  exportTrades: async (
+    accountId: string,
+    format: "csv" | "json",
+  ): Promise<ExportResult> => {
+    if (isTauri()) return call("export_trades", { accountId, format });
+    const trades = await browserListTrades({
+      accountIds: [accountId],
+      pageSize: 250,
+    });
     const contents =
       format === "json"
         ? JSON.stringify(trades.items, null, 2)
@@ -693,6 +906,49 @@ export const api = {
       : Promise.reject({
           message: "Backups werden in der installierten Desktop-App erstellt.",
         }),
+  resetJournal: (confirmation: string): Promise<JournalResetResult> =>
+    isTauri()
+      ? call("reset_journal", { confirmation })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der Journal-Reset benötigt die Desktop-App.",
+        } satisfies CommandError),
+  previewMetaTraderHtml: (
+    input: MetaTraderHtmlPreviewInput,
+  ): Promise<MetaTraderHtmlPreview> =>
+    isTauri()
+      ? call("preview_metatrader_html", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der MetaTrader-HTML-Import benötigt die Desktop-App.",
+        } satisfies CommandError),
+  commitMetaTraderHtml: (
+    input: MetaTraderHtmlCommitInput,
+  ): Promise<MetaTraderHtmlCommitResult> =>
+    isTauri()
+      ? call("commit_metatrader_html", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der MetaTrader-HTML-Import benötigt die Desktop-App.",
+        } satisfies CommandError),
+  previewCTraderStatement: (
+    input: CTraderStatementPreviewInput,
+  ): Promise<CTraderStatementPreview> =>
+    isTauri()
+      ? call("preview_ctrader_statement", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der cTrader-Statement-Import benötigt die Desktop-App.",
+        } satisfies CommandError),
+  commitCTraderStatement: (
+    input: CTraderStatementCommitInput,
+  ): Promise<CTraderStatementCommitResult> =>
+    isTauri()
+      ? call("commit_ctrader_statement", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der cTrader-Statement-Import benötigt die Desktop-App.",
+        } satisfies CommandError),
   previewBackup: (path: string): Promise<RestorePreview> =>
     call("preview_backup", { path }),
   stageBackupRestore: (path: string): Promise<RestoreStageResult> =>

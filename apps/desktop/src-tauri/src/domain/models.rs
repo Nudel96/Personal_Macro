@@ -11,11 +11,6 @@ pub struct Account {
     pub base_currency: String,
     pub initial_balance_minor: i64,
     pub current_balance_minor: i64,
-    pub broker_balance_minor: Option<i64>,
-    pub broker_equity_minor: Option<i64>,
-    pub broker_synced_at: Option<String>,
-    pub broker_login: Option<String>,
-    pub broker_server: Option<String>,
     pub default_risk_percent: f64,
     pub is_archived: bool,
 }
@@ -166,7 +161,7 @@ pub struct TradeDetail {
 #[serde(rename_all = "camelCase")]
 pub struct TradeInput {
     pub id: Option<String>,
-    pub account_id: Option<String>,
+    pub account_id: String,
     pub strategy_id: Option<String>,
     pub setup_id: Option<String>,
     pub status: Option<String>,

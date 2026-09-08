@@ -30,31 +30,38 @@ import type {
 } from "../../types/domain";
 
 export function TradeDetailDialog({
+  accountId,
   tradeId,
   onOpenChange,
 }: {
+  accountId?: string;
   tradeId?: string;
   onOpenChange: (open: boolean) => void;
 }) {
   const queryClient = useQueryClient();
   const query = useQuery({
-    queryKey: ["trade", tradeId],
-    queryFn: () => api.getTrade(tradeId!),
-    enabled: Boolean(tradeId),
+    queryKey: ["trade", accountId, tradeId],
+    queryFn: () => api.getTrade(accountId!, tradeId!),
+    enabled: Boolean(accountId && tradeId),
   });
+  const queriedTrade = query.data;
+  const validatedTrade =
+    queriedTrade?.id === tradeId && queriedTrade?.accountId === accountId
+      ? queriedTrade
+      : undefined;
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
   });
   const mistakeQuery = useQuery({
-    queryKey: ["trade-mistakes", tradeId],
-    queryFn: () => api.tradeMistakes(tradeId!),
-    enabled: Boolean(tradeId),
+    queryKey: ["trade-mistakes", accountId, tradeId],
+    queryFn: () => api.tradeMistakes(accountId!, tradeId!),
+    enabled: Boolean(validatedTrade),
   });
   const contextQuery = useQuery({
-    queryKey: ["trade-context", tradeId],
-    queryFn: () => api.tradeContext(tradeId!),
-    enabled: Boolean(tradeId),
+    queryKey: ["trade-context", accountId, tradeId],
+    queryFn: () => api.tradeContext(accountId!, tradeId!),
+    enabled: Boolean(validatedTrade),
   });
   const customFieldQuery = useQuery({
     queryKey: ["custom-fields", "trade"],
@@ -62,10 +69,11 @@ export function TradeDetailDialog({
   });
   const allMediaQuery = useQuery({ queryKey: ["media"], queryFn: api.media });
   const tradeMediaQuery = useQuery({
-    queryKey: ["trade-media", tradeId],
-    queryFn: () => api.tradeMedia(tradeId!),
-    enabled: Boolean(tradeId),
+    queryKey: ["trade-media", accountId, tradeId],
+    queryFn: () => api.tradeMedia(accountId!, tradeId!),
+    enabled: Boolean(validatedTrade),
   });
+  const detailKey = `${accountId ?? ""}:${tradeId ?? ""}`;
   const [draft, setDraft] = useState<TradeDetail | null>(null);
   const [context, setContext] = useState<TradeContext | null>(null);
   const [mistakeId, setMistakeId] = useState("");
@@ -74,11 +82,17 @@ export function TradeDetailDialog({
   const [mistakeNote, setMistakeNote] = useState("");
   const [mediaId, setMediaId] = useState("");
   useEffect(() => {
-    if (query.data) setDraft(query.data);
-  }, [query.data]);
+    setDraft(null);
+    setContext(null);
+    setMistakeId("");
+    setMediaId("");
+  }, [detailKey]);
   useEffect(() => {
-    if (contextQuery.data) setContext(contextQuery.data);
-  }, [contextQuery.data]);
+    if (validatedTrade) setDraft(validatedTrade);
+  }, [detailKey, validatedTrade]);
+  useEffect(() => {
+    if (validatedTrade && contextQuery.data) setContext(contextQuery.data);
+  }, [contextQuery.data, validatedTrade]);
   useEffect(() => {
     if (!mistakeId && bootstrap.data?.mistakes[0])
       setMistakeId(bootstrap.data.mistakes[0].id);
@@ -91,9 +105,12 @@ export function TradeDetailDialog({
   };
   const save = useMutation({
     mutationFn: async () => {
-      const trade = await api.updateTrade(tradeId!, toInput(draft!));
+      const trade = await api.updateTrade(accountId!, tradeId!, {
+        ...toInput(draft!),
+        accountId: accountId!,
+      });
       if (context) {
-        await api.saveTradeContext({
+        await api.saveTradeContext(accountId!, {
           tradeId: tradeId!,
           tagIds: context.tags.map((tag) => tag.id),
           legs: context.legs.map((leg) => ({
@@ -113,7 +130,9 @@ export function TradeDetailDialog({
     },
     onSuccess: (trade) => {
       setDraft(trade);
-      queryClient.invalidateQueries({ queryKey: ["trade-context", tradeId] });
+      queryClient.invalidateQueries({
+        queryKey: ["trade-context", accountId, tradeId],
+      });
       invalidate();
       toast.success("Änderungen gespeichert.");
     },
@@ -123,14 +142,14 @@ export function TradeDetailDialog({
       ),
   });
   const duplicate = useMutation({
-    mutationFn: () => api.duplicateTrade(tradeId!),
+    mutationFn: () => api.duplicateTrade(accountId!, tradeId!),
     onSuccess: () => {
       invalidate();
       toast.success("Trade als Entwurf dupliziert.");
     },
   });
   const trash = useMutation({
-    mutationFn: () => api.trashTrade(tradeId!),
+    mutationFn: () => api.trashTrade(accountId!, tradeId!),
     onSuccess: () => {
       invalidate();
       toast.success("Trade in den Papierkorb verschoben.");
@@ -139,7 +158,7 @@ export function TradeDetailDialog({
   });
   const assignMistake = useMutation({
     mutationFn: () =>
-      api.assignTradeMistake({
+      api.assignTradeMistake(accountId!, {
         tradeId: tradeId!,
         mistakeId,
         severity: mistakeSeverity,
@@ -151,9 +170,11 @@ export function TradeDetailDialog({
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({
-          queryKey: ["trade-mistakes", tradeId],
+          queryKey: ["trade-mistakes", accountId, tradeId],
         }),
-        queryClient.invalidateQueries({ queryKey: ["mistake-analytics"] }),
+        queryClient.invalidateQueries({
+          queryKey: ["mistakes", accountId],
+        }),
       ]);
       setMistakeCost("");
       setMistakeNote("");
@@ -163,10 +184,12 @@ export function TradeDetailDialog({
       toast.error(error.message ?? "Fehler konnte nicht zugeordnet werden."),
   });
   const attachMedia = useMutation({
-    mutationFn: () => api.attachTradeMedia(tradeId!, mediaId),
+    mutationFn: () => api.attachTradeMedia(accountId!, tradeId!, mediaId),
     onSuccess: async () => {
       await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["trade-media", tradeId] }),
+        queryClient.invalidateQueries({
+          queryKey: ["trade-media", accountId, tradeId],
+        }),
         queryClient.invalidateQueries({ queryKey: ["media"] }),
       ]);
       setMediaId("");
@@ -176,10 +199,13 @@ export function TradeDetailDialog({
       toast.error(error.message ?? "Screenshot konnte nicht verknüpft werden."),
   });
   const detachMedia = useMutation({
-    mutationFn: (removeId: string) => api.detachTradeMedia(tradeId!, removeId),
+    mutationFn: (removeId: string) =>
+      api.detachTradeMedia(accountId!, tradeId!, removeId),
     onSuccess: async () => {
       await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["trade-media", tradeId] }),
+        queryClient.invalidateQueries({
+          queryKey: ["trade-media", accountId, tradeId],
+        }),
         queryClient.invalidateQueries({ queryKey: ["media"] }),
       ]);
     },
@@ -214,7 +240,7 @@ export function TradeDetailDialog({
               )}
             </div>
             <Dialog.Close asChild>
-              <Button variant="ghost" size="icon">
+              <Button variant="ghost" size="icon" aria-label="Dialog schließen">
                 <X size={17} />
               </Button>
             </Dialog.Close>
@@ -1009,9 +1035,9 @@ function EditField({
   children: React.ReactNode;
 }) {
   return (
-    <div className="field">
-      <label>{label}</label>
+    <label className="field">
+      <span>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }

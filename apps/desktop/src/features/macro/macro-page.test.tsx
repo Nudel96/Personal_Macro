@@ -11,6 +11,8 @@ import type {
   FundamentalPairCellView,
   FundamentalPairView,
   MacroFundamentalsDashboard,
+  PairTechnicalDashboard,
+  TechnicalSignalStatus,
 } from "../../types/domain";
 import { MacroPage } from "./macro-page";
 
@@ -31,6 +33,8 @@ vi.mock("../../services/commands", () => ({
     reviewEodhdMappingCandidate: vi.fn(),
     cotDashboard: vi.fn(),
     syncCot: vi.fn(),
+    pairTechnicalSignals: vi.fn(),
+    refreshPairTechnicalSignals: vi.fn(),
   },
   isTauri: () => true,
 }));
@@ -53,6 +57,8 @@ const fields = [
   ["services_pmi", "sPMI", "growth"],
   ["retail_sales", "Retail Sales", "growth"],
   ["consumer_confidence", "Consumer Confidence", "growth"],
+  ["industrial_production", "Industrial Production", "growth"],
+  ["trade_balance", "Trade Balance", "growth"],
   ["cpi_yoy", "CPI YoY", "inflation"],
   ["ppi_yoy", "PPI YoY", "inflation"],
   ["pce_yoy", "PCE YoY", "inflation"],
@@ -61,7 +67,8 @@ const fields = [
   ["unemployment_rate", "Unemployment Rate", "labor"],
   ["unemployment_claims", "Unemployment Claims", "labor"],
   ["adp", "ADP", "labor"],
-  ["jolts", "JOLTS", "labor"],
+  ["jolts", "Labor Demand", "labor"],
+  ["wage_growth", "Wage Growth", "labor"],
 ] as const;
 
 function indicator(
@@ -76,7 +83,12 @@ function indicator(
     direction:
       key === "unemployment_rate" || key === "unemployment_claims" ? -1 : 1,
     sourceIndicatorKey: key,
-    sourceLabel: currency === "CAD" && key === "gdp" ? "Real GDP m/m" : label,
+    sourceLabel:
+      currency === "CAD" && key === "gdp"
+        ? "Real GDP m/m"
+        : currency === "USD" && key === "unemployment_claims"
+          ? "Initial Jobless Claims"
+          : label,
     actualText: currency === "CAD" && key === "gdp" ? "1.2" : "0",
     forecastText: currency === "CAD" && key === "gdp" ? "1.0" : "0",
     previousText: null,
@@ -231,6 +243,61 @@ function cotDashboard(): CotDashboard {
   };
 }
 
+function technicalDashboard(): PairTechnicalDashboard {
+  const status = (signal: -1 | 0 | 1): TechnicalSignalStatus =>
+    signal === 1 ? "bullish" : signal === -1 ? "bearish" : "neutral";
+  return {
+    asOf: "2026-08-26T12:00:00Z",
+    methodVersion: "ohlc4-ema-dmi-v1",
+    pairs: currencies.flatMap((base, baseIndex) =>
+      currencies.slice(baseIndex + 1).map((quote) => {
+        const chartSignal = base === "USD" && quote === "CAD" ? 1 : 0;
+        const seasonalitySignal = base === "USD" && quote === "CAD" ? -1 : 0;
+        const frame = (signal: -1 | 0 | 1) => ({
+          signal,
+          status: status(signal),
+          reasonCodes:
+            signal === 0 ? ["mixed_or_weak_trend"] : ["trend_confirmed"],
+          bars: 120,
+          latestCandleAt: "2026-08-26T08:00:00Z",
+          ohlc4: 1.2345,
+          ema20: 1.23,
+          ema50: 1.22,
+          normalizedSlope: signal * 0.2,
+          adx14: 28,
+          plusDi14: signal >= 0 ? 30 : 14,
+          minusDi14: signal < 0 ? 30 : 14,
+        });
+        return {
+          base,
+          quote,
+          sourceSymbol: `${base}${quote}`,
+          inverted: false,
+          chartTrend: {
+            signal: chartSignal,
+            status: status(chartSignal),
+            reasonCodes: ["timeframes_confirmed"],
+            fourHour: frame(chartSignal),
+            daily: frame(chartSignal),
+          },
+          seasonalityTrend: {
+            signal: seasonalitySignal,
+            status: status(seasonalitySignal),
+            reasonCodes: ["seasonality_20d_confirmed"],
+            tradingDays: 20,
+            averageReturn: -0.012,
+            medianReturn: -0.009,
+            positiveRatio: 0.3,
+            samples: 12,
+            completeYears: 12,
+            calculatedAt: "2026-08-26T10:00:00Z",
+          },
+        };
+      }),
+    ),
+  };
+}
+
 function renderPage() {
   const client = new QueryClient({
     defaultOptions: { queries: { retry: false } },
@@ -253,10 +320,110 @@ beforeEach(() => {
     imported: 18,
     lastSyncedAt: "2026-08-08T18:00:00Z",
   });
+  vi.mocked(api.pairTechnicalSignals).mockResolvedValue(technicalDashboard());
+  vi.mocked(api.refreshPairTechnicalSignals).mockResolvedValue(
+    technicalDashboard(),
+  );
 });
 
 describe("MacroPage", () => {
-  it("renders fundamentals and separate institutional activity columns", async () => {
+  it("surfaces snapshot health, feed state and a readable signal legend", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+
+    renderPage();
+
+    const snapshot = await screen.findByLabelText("Snapshot-Übersicht");
+    expect(within(snapshot).getByText("Datenabdeckung")).toBeTruthy();
+    expect(within(snapshot).getByText("Währungsuniversum")).toBeTruthy();
+    expect(within(snapshot).getByText("Paarmatrix")).toBeTruthy();
+    expect(within(snapshot).getByText("Snapshot-Zeitpunkt")).toBeTruthy();
+
+    const feed = screen.getByLabelText("Economic Feed Status");
+    expect(within(feed).getByText("Mapping vollständig")).toBeTruthy();
+
+    const legend = screen.getByLabelText("Signallegende");
+    for (const label of [
+      "Bullish",
+      "Bearish",
+      "Neutral",
+      "Nicht verfügbar",
+      "Teilweise abgeleitet",
+    ]) {
+      expect(within(legend).getByText(label)).toBeTruthy();
+    }
+  });
+
+  it("shows the global surprise regime with transparent dimensions", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+
+    renderPage();
+
+    const regime = await screen.findByLabelText("Globales Überraschungsregime");
+    expect(within(regime).getByText("Gemischtes Regime")).toBeTruthy();
+    expect(within(regime).getByText("Aktivitätsimpuls")).toBeTruthy();
+    expect(within(regime).getByText("Inflationsimpuls")).toBeTruthy();
+    expect(within(regime).getByText("Zinsüberraschung")).toBeTruthy();
+    expect(
+      within(regime).getByText(/weder ein Risk-on\/Risk-off-/),
+    ).toBeTruthy();
+  });
+
+  it("shows the currency score on a fixed diverging gauge with coverage", async () => {
+    const data = dashboard();
+    const usd = data.currencies.find((currency) => currency.currency === "USD");
+    if (!usd) throw new Error("USD fixture missing");
+    usd.economicGrowthScore = -5;
+    usd.inflationScore = -1;
+    usd.ratesScore = 0;
+    usd.jobsMarketScore = -4;
+    usd.fundamentalsScore = -10;
+    usd.economicGrowthBias = "Bearish";
+    usd.inflationBias = "Bearish";
+    usd.jobsMarketBias = "Bearish";
+    usd.fundamentalsBias = "Bearish";
+    usd.indicators[0] = {
+      ...usd.indicators[0],
+      score: 0,
+      status: "missingForecast",
+      forecastText: null,
+      reasonCodes: ["no_same_release_forecast"],
+    };
+    const cad = data.currencies.find((currency) => currency.currency === "CAD");
+    if (!cad) throw new Error("CAD fixture missing");
+    cad.indicators = cad.indicators.map((indicator) => ({
+      ...indicator,
+      score: 0,
+      status: "missingForecast",
+      forecastText: null,
+      reasonCodes: ["no_same_release_forecast"],
+    }));
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(data);
+
+    renderPage();
+
+    const gauge = await screen.findByRole("meter", {
+      name: "Fundamentals Score USD",
+    });
+    expect(gauge.getAttribute("aria-valuemin")).toBe("-17");
+    expect(gauge.getAttribute("aria-valuemax")).toBe("17");
+    expect(gauge.getAttribute("aria-valuenow")).toBe("-10");
+    expect(gauge.getAttribute("aria-valuetext")).toContain(
+      "16 von 17 Indikatoren bewertet",
+    );
+    expect(
+      screen
+        .getByRole("meter", { name: "Wachstum Score" })
+        .getAttribute("aria-valuetext"),
+    ).toContain("6 Signale bewertet");
+    expect(screen.getByText("Separater COT-Faktor · 2/2")).toBeTruthy();
+    expect(
+      screen.getByRole("button", {
+        name: "CAD, Fundamentals nicht verfügbar",
+      }),
+    ).toBeTruthy();
+  });
+
+  it("renders fundamentals, institutional activity and separate technical confirmations", async () => {
     vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
 
     renderPage();
@@ -272,12 +439,15 @@ describe("MacroPage", () => {
       "Latest Buys/Sells",
       "COT Pipeline",
       "Institutional Score",
+      "Technicals",
+      "4H / Daily Chart Trend",
+      "Seasonality Trend",
     ]) {
       expect(screen.getByRole("columnheader", { name: header })).toBeTruthy();
     }
     expect(
-      screen.queryByRole("columnheader", { name: "Technical" }),
-    ).toBeNull();
+      screen.getByRole("columnheader", { name: "Technicals" }),
+    ).toBeTruthy();
     expect(
       screen.queryByRole("columnheader", { name: "Sentiment" }),
     ).toBeNull();
@@ -285,7 +455,10 @@ describe("MacroPage", () => {
     expect(
       screen
         .getAllByTestId("forex-pair-row")
-        .every((row) => within(row).getAllByRole("cell").length === 19),
+        .every(
+          (row) =>
+            within(row).getAllByRole("cell").length === fields.length + 7,
+        ),
     ).toBe(true);
     expect(
       within(screen.getAllByTestId("forex-pair-row")[0]).getByRole("rowheader")
@@ -305,6 +478,30 @@ describe("MacroPage", () => {
     expect(
       within(usdInstitutional).getByText("cot-v4-legacy-noncommercial"),
     ).toBeTruthy();
+    expect(screen.getAllByText("Unemployment Claims").length).toBeGreaterThan(
+      0,
+    );
+    expect(screen.queryByText("Initial Jobless Claims")).toBeNull();
+  }, 15_000);
+
+  it("shows aligned 4H/Daily and raw 20-day seasonality without changing fundamentals", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+
+    renderPage();
+    const rows = await screen.findAllByTestId("forex-pair-row");
+    const usdCad = rows.find((row) =>
+      within(row).queryByRole("rowheader", { name: "USDCAD" }),
+    );
+    expect(usdCad).toBeTruthy();
+    expect(within(usdCad!).getByTitle(/4H \/ Daily: Bullish/).textContent).toBe(
+      "Bullish",
+    );
+    expect(within(usdCad!).getByTitle(/Seasonality: Bearish/).textContent).toBe(
+      "Bearish",
+    );
+    expect(within(usdCad!).getByTitle("Fundamentals +2").textContent).toBe(
+      "+2",
+    );
   });
 
   it("selects a currency and shows its actual, forecast and surprise", async () => {

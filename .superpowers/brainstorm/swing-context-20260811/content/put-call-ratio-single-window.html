@@ -1,0 +1,362 @@
+<style>
+  :root {
+    --pcr-bg: #07101f;
+    --pcr-panel: #0c1728;
+    --pcr-panel-2: #101d31;
+    --pcr-border: #243651;
+    --pcr-text: #f5f7fb;
+    --pcr-muted: #8fa3bf;
+    --pcr-grid: #263852;
+    --pcr-positive: #36d399;
+    --pcr-negative: #fb7185;
+    --pcr-line: #f8fafc;
+    --pcr-accent: #7c83ff;
+  }
+
+  .pcr-board {
+    color: var(--pcr-text);
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  .pcr-board h2 {
+    margin: 0 0 5px;
+    font-size: 20px;
+  }
+
+  .pcr-board > p {
+    margin: 0 0 18px;
+    color: var(--pcr-muted);
+    font-size: 13px;
+  }
+
+  .pcr-window {
+    overflow: hidden;
+    border: 1px solid var(--pcr-border);
+    border-radius: 15px;
+    background: linear-gradient(145deg, #0c1728, #08111f);
+    box-shadow: 0 18px 60px rgba(0, 0, 0, .28);
+  }
+
+  .pcr-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--pcr-border);
+    background: rgba(15, 27, 46, .88);
+  }
+
+  .pcr-title {
+    min-width: 0;
+  }
+
+  .pcr-title strong {
+    display: block;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+
+  .pcr-title span {
+    display: block;
+    margin-top: 3px;
+    color: var(--pcr-muted);
+    font-size: 11px;
+  }
+
+  .pcr-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .pcr-current {
+    min-width: 120px;
+    padding: 7px 10px;
+    border: 1px solid #344865;
+    border-radius: 8px;
+    background: #0a1424;
+    text-align: right;
+  }
+
+  .pcr-current small {
+    display: block;
+    color: var(--pcr-muted);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+
+  .pcr-current b {
+    font-size: 13px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .pcr-select-wrap {
+    position: relative;
+  }
+
+  .pcr-select-wrap label {
+    position: absolute;
+    top: 5px;
+    left: 11px;
+    z-index: 1;
+    color: var(--pcr-muted);
+    font-size: 8px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .pcr-select {
+    min-width: 160px;
+    height: 48px;
+    padding: 17px 38px 4px 10px;
+    border: 1px solid rgba(124, 131, 255, .65);
+    border-radius: 8px;
+    color: var(--pcr-text);
+    background: #101b2e;
+    font: 700 13px inherit;
+    outline: none;
+  }
+
+  .pcr-chart {
+    position: relative;
+    height: 515px;
+    margin: 18px;
+    overflow: hidden;
+    border: 1px solid #263954;
+    border-radius: 10px;
+    background: #091321;
+  }
+
+  .pcr-chart svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  .zone-label,
+  .threshold-label {
+    position: absolute;
+    z-index: 2;
+    padding: 4px 7px;
+    border-radius: 5px;
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .055em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
+
+  .zone-label.bearish {
+    top: 11px;
+    right: 12px;
+    color: #ffdce2;
+    background: rgba(136, 37, 58, .72);
+  }
+
+  .zone-label.neutral {
+    top: 50%;
+    right: 12px;
+    color: #b4c0d2;
+    background: rgba(42, 57, 79, .72);
+  }
+
+  .zone-label.bullish {
+    right: 12px;
+    bottom: 14px;
+    color: #c9f8e8;
+    background: rgba(20, 103, 78, .7);
+  }
+
+  .threshold-label {
+    left: 58px;
+    transform: translateY(-105%);
+    font-size: 9px;
+  }
+
+  .threshold-label.upper {
+    top: 28.4%;
+    color: #ffafbc;
+    background: rgba(65, 23, 34, .88);
+  }
+
+  .threshold-label.lower {
+    top: 70.2%;
+    color: #82e6c3;
+    background: rgba(13, 57, 47, .9);
+  }
+
+  .pcr-footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 19px 17px;
+    color: var(--pcr-muted);
+    font-size: 10px;
+  }
+
+  .pcr-footer b {
+    color: #cbd5e1;
+  }
+
+  .pcr-method {
+    margin-top: 14px;
+    padding: 12px 14px;
+    border-left: 3px solid var(--pcr-accent);
+    border-radius: 7px;
+    color: #c7d2e3;
+    background: rgba(124, 131, 255, .08);
+    font-size: 12px;
+    line-height: 1.5;
+  }
+
+  .pcr-method strong { color: #fff; }
+
+  @media (max-width: 800px) {
+    .pcr-header { align-items: flex-start; flex-direction: column; }
+    .pcr-controls { width: 100%; }
+    .pcr-current, .pcr-select-wrap, .pcr-select { flex: 1; width: 100%; }
+    .pcr-chart { height: 420px; }
+    .pcr-footer { flex-direction: column; }
+  }
+</style>
+
+<div class="pcr-board">
+  <h2>Put/Call-Ratio · Einzelansicht</h2>
+  <p>Visueller Entwurf mit Beispieldaten – ausschließlich ein Asset, eine PCR-Linie und zwei Sentiment-Schwellen.</p>
+
+  <section class="pcr-window" aria-label="Put/Call-Ratio Entwurf">
+    <header class="pcr-header">
+      <div class="pcr-title">
+        <strong>Put/Call-Ratio · 5-Tage-Durchschnitt</strong>
+        <span>Daily Options Volume · letzte 90 Handelstage</span>
+      </div>
+      <div class="pcr-controls">
+        <div class="pcr-current">
+          <small>Aktuell</small>
+          <b id="pcr-current">0,94 · Neutral</b>
+        </div>
+        <div class="pcr-select-wrap">
+          <label for="pcr-asset">Asset</label>
+          <select id="pcr-asset" class="pcr-select" onchange="setPcrAsset(this.value)">
+            <option value="eurusd">EUR/USD</option>
+            <option value="gbpusd">GBP/USD</option>
+            <option value="audusd">AUD/USD</option>
+            <option value="usdjpy">USD/JPY</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <div class="pcr-chart">
+      <span class="zone-label bearish">Put-dominant · Bearish</span>
+      <span class="zone-label neutral">Neutral</span>
+      <span class="zone-label bullish">Call-dominant · Bullish</span>
+      <span id="pcr-upper-label" class="threshold-label upper">Bearish ab 1,36 · P80</span>
+      <span id="pcr-lower-label" class="threshold-label lower">Bullish bis 0,72 · P20</span>
+
+      <svg viewBox="0 0 1040 515" preserveAspectRatio="none" role="img" aria-label="Put/Call-Ratio Zeitreihe">
+        <defs>
+          <linearGradient id="bearishZone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c63d57" stop-opacity=".34"/>
+            <stop offset="1" stop-color="#c63d57" stop-opacity=".08"/>
+          </linearGradient>
+          <linearGradient id="bullishZone" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#1d9d75" stop-opacity=".08"/>
+            <stop offset="1" stop-color="#1d9d75" stop-opacity=".30"/>
+          </linearGradient>
+          <filter id="lineGlow" x="-10%" y="-20%" width="120%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur"/>
+            <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+          </filter>
+        </defs>
+
+        <rect x="52" y="28" width="952" height="126" fill="url(#bearishZone)"/>
+        <rect x="52" y="154" width="952" height="214" fill="#101a2b" fill-opacity=".56"/>
+        <rect x="52" y="368" width="952" height="104" fill="url(#bullishZone)"/>
+
+        <g stroke="#263852" stroke-width="1">
+          <line x1="52" y1="28" x2="1004" y2="28"/>
+          <line x1="52" y1="105" x2="1004" y2="105"/>
+          <line x1="52" y1="182" x2="1004" y2="182"/>
+          <line x1="52" y1="259" x2="1004" y2="259"/>
+          <line x1="52" y1="336" x2="1004" y2="336"/>
+          <line x1="52" y1="413" x2="1004" y2="413"/>
+          <line x1="52" y1="472" x2="1004" y2="472"/>
+        </g>
+
+        <g fill="#7589a7" font-size="11" font-family="ui-monospace, SFMono-Regular, Consolas, monospace">
+          <text x="12" y="32">2,0</text>
+          <text x="12" y="109">1,7</text>
+          <text x="12" y="186">1,4</text>
+          <text x="12" y="263">1,1</text>
+          <text x="12" y="340">0,8</text>
+          <text x="12" y="417">0,5</text>
+          <text x="12" y="476">0,3</text>
+          <text x="52" y="500">13. Mai</text>
+          <text x="276" y="500">3. Jun</text>
+          <text x="507" y="500">24. Jun</text>
+          <text x="738" y="500">15. Jul</text>
+          <text x="956" y="500">11. Aug</text>
+        </g>
+
+        <line id="pcr-upper-line" x1="52" y1="154" x2="1004" y2="154" stroke="#fb7185" stroke-width="2" stroke-dasharray="7 5"/>
+        <line id="pcr-lower-line" x1="52" y1="368" x2="1004" y2="368" stroke="#36d399" stroke-width="2" stroke-dasharray="7 5"/>
+
+        <polyline id="pcr-path-glow" fill="none" stroke="#f8fafc" stroke-opacity=".24" stroke-width="6" stroke-linejoin="round" stroke-linecap="round" filter="url(#lineGlow)"/>
+        <polyline id="pcr-path" fill="none" stroke="#f8fafc" stroke-width="2.8" stroke-linejoin="round" stroke-linecap="round"/>
+        <circle id="pcr-end-dot" r="5" fill="#f8fafc" stroke="#091321" stroke-width="3"/>
+      </svg>
+    </div>
+
+    <footer class="pcr-footer">
+      <span><b>Schwellen:</b> asset-spezifisches P20/P80 der letzten 252 gültigen 5-Tage-Werte</span>
+      <span><b>Quelle:</b> CME FX Options · Tagesvolumen · Datenstand T+1</span>
+    </footer>
+  </section>
+
+  <div class="pcr-method">
+    <strong>Warum diese Darstellung:</strong> Eine Zeitreihe beantwortet die entscheidende Frage „Wie entwickelt sich das Sentiment?“. Zwei robuste Quantil-Linien bleiben visuell ruhig und passen sich dem Asset an; fixe Universalwerte wären zwischen unterschiedlich liquiden Optionsmärkten nicht sauber vergleichbar.
+  </div>
+</div>
+
+<script>
+  const pcrAssets = {
+    eurusd: {
+      current: '0,94 · Neutral', upper: '1,36', lower: '0,72',
+      points: [301,292,306,286,272,280,267,252,237,230,242,226,214,221,202,188,196,175,166,184,203,218,225,210,193,204,218,229,242,223,207,190,199,208,218,196,178,164,181,213,236,214,193,168,140,162,189,205,218,200,182,171,187,212,235,227,245,238,221,203,214,226,219,232,245,253,242,229,237,250,262,256,245,238,251,267,278,269,262,251,244,257,271,279,268,259,248,239,246,252]
+    },
+    gbpusd: {
+      current: '1,43 · Bearish', upper: '1,31', lower: '0,69',
+      points: [278,265,271,254,247,236,250,262,245,227,218,231,245,238,222,207,199,214,226,218,231,246,255,239,224,208,194,183,176,192,207,216,228,239,251,244,230,215,201,187,173,159,144,131,118,101,89,112,139,158,149,128,106,91,116,143,165,181,194,207,216,203,188,177,166,154,144,132,119,103,91,80,97,114,128,139,126,111,99,86,75,67,82,96,108,116,124,131,137,144]
+    },
+    audusd: {
+      current: '0,61 · Bullish', upper: '1,48', lower: '0,67',
+      points: [222,214,229,237,248,259,247,232,218,226,239,251,264,257,243,232,218,207,198,211,226,237,228,214,205,192,181,173,188,204,221,235,247,258,270,262,249,236,221,207,194,203,216,229,241,255,268,279,291,303,315,326,314,299,287,276,288,301,315,327,338,349,361,374,387,399,411,423,414,402,391,379,368,356,344,353,364,376,388,401,413,425,438,447,456,448,439,431,423,416]
+    },
+    usdjpy: {
+      current: '0,78 · Neutral', upper: '1,25', lower: '0,63',
+      points: [245,252,238,226,214,202,191,184,176,189,203,217,229,241,253,265,277,269,258,247,236,224,213,201,190,179,168,157,145,133,121,109,97,86,102,119,137,154,169,183,198,214,231,247,262,278,293,305,314,298,281,266,252,238,225,212,199,187,176,165,153,142,132,123,114,105,96,108,121,135,148,161,174,187,201,214,226,238,249,260,271,281,292,303,314,325,337,349,361,372]
+    }
+  };
+
+  function setPcrAsset(key) {
+    const asset = pcrAssets[key];
+    const left = 52;
+    const right = 1004;
+    const step = (right - left) / (asset.points.length - 1);
+    const points = asset.points.map((y, index) => `${(left + index * step).toFixed(1)},${y}`).join(' ');
+    document.getElementById('pcr-path').setAttribute('points', points);
+    document.getElementById('pcr-path-glow').setAttribute('points', points);
+    document.getElementById('pcr-current').textContent = asset.current;
+    document.getElementById('pcr-upper-label').textContent = `Bearish ab ${asset.upper} · P80`;
+    document.getElementById('pcr-lower-label').textContent = `Bullish bis ${asset.lower} · P20`;
+    document.getElementById('pcr-end-dot').setAttribute('cx', right);
+    document.getElementById('pcr-end-dot').setAttribute('cy', asset.points[asset.points.length - 1]);
+  }
+
+  setPcrAsset('eurusd');
+</script>

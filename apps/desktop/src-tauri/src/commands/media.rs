@@ -7,11 +7,12 @@ use std::{
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
-use sqlx::FromRow;
+use sqlx::{FromRow, SqlitePool};
 use tauri::State;
 use uuid::Uuid;
 
 use crate::{
+    commands::journal_scope::require_trade_in_account,
     database::AppState,
     errors::{AppError, CommandResult},
 };
@@ -83,20 +84,26 @@ pub async fn list_media(state: State<'_, AppState>) -> CommandResult<Vec<MediaRe
 #[tauri::command]
 pub async fn list_trade_media(
     state: State<'_, AppState>,
+    account_id: String,
     trade_id: String,
 ) -> CommandResult<Vec<MediaRecord>> {
+    list_trade_media_for_pool(&state.db, &state.paths.root, &account_id, &trade_id).await
+}
+
+pub(crate) async fn list_trade_media_for_pool(
+    db: &SqlitePool,
+    root: &Path,
+    account_id: &str,
+    trade_id: &str,
+) -> CommandResult<Vec<MediaRecord>> {
+    require_trade_in_account(db, account_id, trade_id).await?;
     let mut rows = sqlx::query_as::<_, MediaRecord>(r#"SELECT mf.id, mf.relative_path, mf.thumbnail_relative_path, mf.original_filename, mf.mime_type, mf.size_bytes,
         mf.sha256, mf.width, mf.height, mf.captured_at, mf.created_at,
         (SELECT COUNT(*) FROM trade_media linked WHERE linked.media_id = mf.id) AS trade_count, '' AS absolute_path
         FROM media_files mf JOIN trade_media tm ON tm.media_id = mf.id WHERE tm.trade_id = ? ORDER BY tm.sort_order"#)
-        .bind(trade_id).fetch_all(&state.db).await.map_err(AppError::from)?;
+        .bind(trade_id.trim()).fetch_all(db).await.map_err(AppError::from)?;
     for row in &mut rows {
-        row.absolute_path = state
-            .paths
-            .root
-            .join(&row.relative_path)
-            .to_string_lossy()
-            .into_owned();
+        row.absolute_path = root.join(&row.relative_path).to_string_lossy().into_owned();
     }
     Ok(rows)
 }
@@ -104,26 +111,57 @@ pub async fn list_trade_media(
 #[tauri::command]
 pub async fn attach_trade_media(
     state: State<'_, AppState>,
+    account_id: String,
     trade_id: String,
     media_id: String,
     slot: Option<String>,
     caption: Option<String>,
 ) -> CommandResult<()> {
-    sqlx::query("INSERT OR REPLACE INTO trade_media (trade_id, media_id, slot, caption, sort_order) VALUES (?, ?, ?, ?, COALESCE((SELECT MAX(sort_order) + 1 FROM trade_media WHERE trade_id = ?), 0))")
-        .bind(&trade_id).bind(&media_id).bind(slot.unwrap_or_else(|| "other".into())).bind(caption).bind(&trade_id).execute(&state.db).await.map_err(AppError::from)?;
+    attach_trade_media_for_pool(&state.db, &account_id, &trade_id, &media_id, slot, caption).await
+}
+
+pub(crate) async fn attach_trade_media_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
+    trade_id: &str,
+    media_id: &str,
+    slot: Option<String>,
+    caption: Option<String>,
+) -> CommandResult<()> {
+    require_trade_in_account(db, account_id, trade_id).await?;
+    let trade_id = trade_id.trim();
+    let result = sqlx::query("INSERT INTO trade_media (trade_id, media_id, slot, caption, sort_order) SELECT ?, ?, ?, ?, COALESCE((SELECT MAX(sort_order) + 1 FROM trade_media WHERE trade_id = ?), 0) FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0 ON CONFLICT(trade_id, media_id) DO UPDATE SET slot=excluded.slot, caption=excluded.caption")
+        .bind(trade_id).bind(media_id).bind(slot.unwrap_or_else(|| "other".into())).bind(caption).bind(trade_id)
+        .bind(trade_id).bind(account_id.trim()).execute(db).await.map_err(AppError::from)?;
+    if result.rows_affected() == 0 {
+        return Err(AppError::NotFound("Trade".into()).into());
+    }
     Ok(())
 }
 
 #[tauri::command]
 pub async fn detach_trade_media(
     state: State<'_, AppState>,
+    account_id: String,
     trade_id: String,
     media_id: String,
 ) -> CommandResult<()> {
-    sqlx::query("DELETE FROM trade_media WHERE trade_id = ? AND media_id = ?")
-        .bind(trade_id)
+    detach_trade_media_for_pool(&state.db, &account_id, &trade_id, &media_id).await
+}
+
+pub(crate) async fn detach_trade_media_for_pool(
+    db: &SqlitePool,
+    account_id: &str,
+    trade_id: &str,
+    media_id: &str,
+) -> CommandResult<()> {
+    require_trade_in_account(db, account_id, trade_id).await?;
+    sqlx::query("DELETE FROM trade_media WHERE trade_id = ? AND media_id = ? AND EXISTS (SELECT 1 FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0)")
+        .bind(trade_id.trim())
         .bind(media_id)
-        .execute(&state.db)
+        .bind(trade_id.trim())
+        .bind(account_id.trim())
+        .execute(db)
         .await
         .map_err(AppError::from)?;
     Ok(())
@@ -132,8 +170,21 @@ pub async fn detach_trade_media(
 #[tauri::command]
 pub async fn import_media_file(
     state: State<'_, AppState>,
+    account_id: Option<String>,
     input: MediaImportInput,
 ) -> CommandResult<MediaRecord> {
+    import_media_file_for_pool(&state.db, &state.paths.root, account_id.as_deref(), input).await
+}
+
+pub(crate) async fn import_media_file_for_pool(
+    db: &SqlitePool,
+    root: &Path,
+    account_id: Option<&str>,
+    input: MediaImportInput,
+) -> CommandResult<MediaRecord> {
+    if let Some(trade_id) = input.trade_id.as_deref() {
+        require_trade_in_account(db, account_id.unwrap_or_default(), trade_id).await?;
+    }
     let source = PathBuf::from(&input.source_path);
     let canonical = source
         .canonicalize()
@@ -173,14 +224,14 @@ pub async fn import_media_file(
     let relative = Path::new("media")
         .join("trades")
         .join(format!("{sha256}.{extension}"));
-    let destination = state.paths.root.join(&relative);
+    let destination = root.join(&relative);
     if !destination.exists() {
         std::fs::copy(&canonical, &destination).map_err(AppError::from)?;
     }
     let existing: Option<String> =
         sqlx::query_scalar("SELECT id FROM media_files WHERE sha256 = ? LIMIT 1")
             .bind(&sha256)
-            .fetch_optional(&state.db)
+            .fetch_optional(db)
             .await
             .map_err(AppError::from)?;
     let id = existing.unwrap_or_else(|| Uuid::new_v4().to_string());
@@ -195,15 +246,21 @@ pub async fn import_media_file(
         .to_string();
     sqlx::query("INSERT OR IGNORE INTO media_files (id, relative_path, original_filename, mime_type, size_bytes, sha256, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
         .bind(&id).bind(relative.to_string_lossy().replace('\\', "/")).bind(&original_filename).bind(&mime)
-        .bind(metadata.len() as i64).bind(&sha256).bind(&now).execute(&state.db).await.map_err(AppError::from)?;
+        .bind(metadata.len() as i64).bind(&sha256).bind(&now).execute(db).await.map_err(AppError::from)?;
     if let Some(trade_id) = &input.trade_id {
-        sqlx::query("INSERT OR REPLACE INTO trade_media (trade_id, media_id, slot, caption, sort_order) VALUES (?, ?, ?, ?, COALESCE((SELECT MAX(sort_order)+1 FROM trade_media WHERE trade_id = ?), 0))")
-            .bind(trade_id).bind(&id).bind(input.slot.as_deref().unwrap_or("other")).bind(&input.caption).bind(trade_id)
-            .execute(&state.db).await.map_err(AppError::from)?;
+        attach_trade_media_for_pool(
+            db,
+            account_id.unwrap_or_default(),
+            trade_id,
+            &id,
+            input.slot,
+            input.caption,
+        )
+        .await?;
     }
     let mut record = sqlx::query_as::<_, MediaRecord>(r#"SELECT mf.id, mf.relative_path, mf.thumbnail_relative_path, mf.original_filename, mf.mime_type, mf.size_bytes,
         mf.sha256, mf.width, mf.height, mf.captured_at, mf.created_at, (SELECT COUNT(*) FROM trade_media tm WHERE tm.media_id = mf.id) AS trade_count, '' AS absolute_path
-        FROM media_files mf WHERE mf.id = ?"#).bind(id).fetch_one(&state.db).await.map_err(AppError::from)?;
+        FROM media_files mf WHERE mf.id = ?"#).bind(id).fetch_one(db).await.map_err(AppError::from)?;
     record.absolute_path = destination.to_string_lossy().into_owned();
     Ok(record)
 }
@@ -242,4 +299,194 @@ pub async fn save_media_annotation(
         .execute(&state.db).await.map_err(AppError::from)?;
     sqlx::query_as::<_, MediaAnnotationRecord>("SELECT id, media_id, annotation_json, created_at, updated_at FROM media_annotations WHERE id = ?")
         .bind(id).fetch_one(&state.db).await.map_err(AppError::from).map_err(Into::into)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use sqlx::sqlite::{SqliteConnectOptions, SqlitePoolOptions};
+    use std::str::FromStr;
+
+    async fn trade_media_database() -> SqlitePool {
+        let pool = SqlitePoolOptions::new()
+            .max_connections(1)
+            .connect_with(
+                SqliteConnectOptions::from_str("sqlite::memory:")
+                    .unwrap()
+                    .foreign_keys(true),
+            )
+            .await
+            .unwrap();
+        sqlx::migrate!("./migrations").run(&pool).await.unwrap();
+        let now = "2026-08-01T00:00:00Z";
+        for id in ["account-a", "account-b"] {
+            sqlx::query(
+                "INSERT INTO accounts (id, name, created_at, updated_at) VALUES (?, ?, ?, ?)",
+            )
+            .bind(id)
+            .bind(id)
+            .bind(now)
+            .bind(now)
+            .execute(&pool)
+            .await
+            .unwrap();
+        }
+        for (trade_id, account_id) in [("trade-a", "account-a"), ("trade-b", "account-b")] {
+            sqlx::query("INSERT INTO trades (id, account_id, status, instrument, asset_class, direction, display_timezone, created_at, updated_at) VALUES (?, ?, 'closed', 'EURUSD', 'forex', 'long', 'Europe/Berlin', ?, ?)")
+                .bind(trade_id)
+                .bind(account_id)
+                .bind(now)
+                .bind(now)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        for (id, path, sha) in [
+            ("media-b", "media/trades/b.png", "sha-b"),
+            ("media-other", "media/trades/other.png", "sha-other"),
+        ] {
+            sqlx::query("INSERT INTO media_files (id, relative_path, original_filename, mime_type, size_bytes, sha256, created_at) VALUES (?, ?, ?, 'image/png', 3, ?, ?)")
+                .bind(id)
+                .bind(path)
+                .bind(format!("{id}.png"))
+                .bind(sha)
+                .bind(now)
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        sqlx::query("INSERT INTO trade_media (trade_id, media_id, slot, caption, sort_order) VALUES ('trade-b', 'media-b', 'entry', 'original', 0)")
+            .execute(&pool)
+            .await
+            .unwrap();
+        pool
+    }
+
+    async fn media_snapshot(pool: &SqlitePool) -> (i64, i64, Option<String>) {
+        sqlx::query_as(
+            r#"SELECT
+                (SELECT COUNT(*) FROM media_files),
+                (SELECT COUNT(*) FROM trade_media),
+                (SELECT caption FROM trade_media WHERE trade_id = 'trade-b' AND media_id = 'media-b')"#,
+        )
+        .fetch_one(pool)
+        .await
+        .unwrap()
+    }
+
+    #[tokio::test]
+    async fn trade_child_account_scope_blocks_foreign_media_links_and_import_preflight() {
+        let pool = trade_media_database().await;
+        let temp = tempfile::tempdir().unwrap();
+        let media_directory = temp.path().join("media").join("trades");
+        std::fs::create_dir_all(&media_directory).unwrap();
+        let source = temp.path().join("source.png");
+        std::fs::write(&source, b"new media content").unwrap();
+        let before = media_snapshot(&pool).await;
+
+        let list_error = list_trade_media_for_pool(&pool, temp.path(), "account-a", "trade-b")
+            .await
+            .unwrap_err();
+        assert_eq!(list_error.code, "NOT_FOUND");
+
+        let attach_error = attach_trade_media_for_pool(
+            &pool,
+            "account-a",
+            "trade-b",
+            "media-other",
+            Some("exit".into()),
+            Some("foreign".into()),
+        )
+        .await
+        .unwrap_err();
+        assert_eq!(attach_error.code, "NOT_FOUND");
+
+        let detach_error = detach_trade_media_for_pool(&pool, "account-a", "trade-b", "media-b")
+            .await
+            .unwrap_err();
+        assert_eq!(detach_error.code, "NOT_FOUND");
+
+        let import_error = import_media_file_for_pool(
+            &pool,
+            temp.path(),
+            Some("account-a"),
+            MediaImportInput {
+                source_path: source.to_string_lossy().into_owned(),
+                trade_id: Some("trade-b".into()),
+                slot: Some("entry".into()),
+                caption: Some("foreign import".into()),
+            },
+        )
+        .await
+        .unwrap_err();
+        assert_eq!(import_error.code, "NOT_FOUND");
+        assert_eq!(media_snapshot(&pool).await, before);
+        assert_eq!(std::fs::read_dir(&media_directory).unwrap().count(), 0);
+
+        let global = import_media_file_for_pool(
+            &pool,
+            temp.path(),
+            None,
+            MediaImportInput {
+                source_path: source.to_string_lossy().into_owned(),
+                trade_id: None,
+                slot: None,
+                caption: None,
+            },
+        )
+        .await
+        .unwrap();
+        assert_eq!(global.trade_count, 0);
+        assert_eq!(media_snapshot(&pool).await.0, before.0 + 1);
+
+        let owned = list_trade_media_for_pool(&pool, temp.path(), "account-b", "trade-b")
+            .await
+            .unwrap();
+        assert_eq!(owned.len(), 1);
+        assert_eq!(owned[0].id, "media-b");
+
+        attach_trade_media_for_pool(
+            &pool,
+            "account-b",
+            "trade-b",
+            "media-other",
+            Some("exit".into()),
+            Some("owned".into()),
+        )
+        .await
+        .unwrap();
+        assert_eq!(
+            list_trade_media_for_pool(&pool, temp.path(), "account-b", "trade-b")
+                .await
+                .unwrap()
+                .len(),
+            2
+        );
+        detach_trade_media_for_pool(&pool, "account-b", "trade-b", "media-other")
+            .await
+            .unwrap();
+        assert_eq!(
+            list_trade_media_for_pool(&pool, temp.path(), "account-b", "trade-b")
+                .await
+                .unwrap()
+                .len(),
+            1
+        );
+
+        let associated = import_media_file_for_pool(
+            &pool,
+            temp.path(),
+            Some("account-b"),
+            MediaImportInput {
+                source_path: source.to_string_lossy().into_owned(),
+                trade_id: Some("trade-b".into()),
+                slot: Some("entry".into()),
+                caption: Some("owned import".into()),
+            },
+        )
+        .await
+        .unwrap();
+        assert_eq!(associated.id, global.id);
+        assert_eq!(associated.trade_count, 1);
+    }
 }

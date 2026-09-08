@@ -18,7 +18,7 @@ export function EmptyState({
 }) {
   return (
     <div className={`empty-state${compact ? " compact" : ""}`}>
-      <div className="empty-icon">
+      <div className="empty-icon" aria-hidden="true">
         <Icon size={21} />
       </div>
       <div className="empty-title">{title}</div>

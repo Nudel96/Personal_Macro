@@ -14,6 +14,7 @@ use walkdir::WalkDir;
 use zip::{CompressionMethod, ZipArchive, ZipWriter, write::SimpleFileOptions};
 
 use crate::{
+    commands::journal_scope::require_active_account,
     database::AppState,
     errors::{AppError, CommandResult},
 };
@@ -51,11 +52,15 @@ struct ExportTrade {
 #[tauri::command]
 pub async fn export_trades(
     state: State<'_, AppState>,
+    account_id: String,
     format: String,
 ) -> CommandResult<ExportResult> {
+    let account_id = account_id.trim().to_owned();
+    require_active_account(&state.db, &account_id).await?;
     let trades = sqlx::query_as::<_, ExportTrade>(r#"SELECT id, status, instrument, asset_class, direction, opened_at, closed_at, actual_entry,
         initial_stop_loss, actual_exit, quantity, net_pnl_minor, calculated_r, process_score, followed_plan, thesis_html, review_notes_html
-        FROM trades WHERE is_deleted = 0 ORDER BY COALESCE(closed_at, opened_at, created_at)"#)
+        FROM trades WHERE account_id = ? AND is_deleted = 0 ORDER BY COALESCE(closed_at, opened_at, created_at)"#)
+        .bind(account_id)
         .fetch_all(&state.db).await.map_err(AppError::from)?;
     let stamp = Utc::now().format("%Y%m%d-%H%M%S");
     let (path, normalized_format) = match format.as_str() {
@@ -137,7 +142,7 @@ pub async fn create_backup_for_state(state: &AppState) -> Result<BackupRecord, A
     let path = state
         .paths
         .backups
-        .join(format!("personal-macro-{stamp}.zip"));
+        .join(format!("personal-macro-{stamp}-{}.zip", Uuid::new_v4()));
     let mut files = vec![state.paths.database.clone()];
     if state.paths.media.exists() {
         files.extend(

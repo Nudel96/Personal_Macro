@@ -17,11 +17,6 @@ export interface Account {
   baseCurrency: string;
   initialBalanceMinor: number;
   currentBalanceMinor: number;
-  brokerBalanceMinor?: number | null;
-  brokerEquityMinor?: number | null;
-  brokerSyncedAt?: string | null;
-  brokerLogin?: string | null;
-  brokerServer?: string | null;
   defaultRiskPercent: number;
   isArchived: boolean;
 }
@@ -44,6 +39,65 @@ export interface AccountCashflow {
   kind: "deposit" | "withdrawal" | "adjustment";
   note?: string | null;
   createdAt: string;
+}
+
+export type BrokerPlatform = "mt5" | "ctrader";
+export type BrokerConnectionStatus =
+  "connected" | "disconnected" | "action_required";
+
+export interface BrokerConnection {
+  id: string;
+  localAccountId: string;
+  localAccountName: string;
+  platform: BrokerPlatform;
+  externalAccountId: string;
+  accountLogin?: string | null;
+  brokerName?: string | null;
+  serverName?: string | null;
+  environment: "live" | "demo" | "local";
+  status: BrokerConnectionStatus;
+  baseCurrency?: string | null;
+  balanceMinor?: number | null;
+  equityMinor?: number | null;
+  statusMessage?: string | null;
+  lastSyncAt?: string | null;
+}
+
+export interface Mt5AccountSnapshot {
+  login: string;
+  server: string;
+  name?: string | null;
+  company?: string | null;
+  currency: string;
+  balance?: number | null;
+  equity?: number | null;
+  leverage?: number | null;
+  tradeMode?: number | null;
+  observedAt: string;
+}
+
+export interface ConnectedAccountResult {
+  accountId: string;
+  connection: BrokerConnection;
+}
+
+export interface CTraderAuthorization {
+  configured: boolean;
+  authorizationUrl?: string | null;
+  redirectUri?: string | null;
+  message: string;
+}
+
+export interface CTraderAccountCandidate {
+  externalAccountId: string;
+  accountLogin?: string | null;
+  brokerName?: string | null;
+  environment: "live" | "demo";
+}
+
+export interface CTraderCandidateResponse {
+  sessionId: string;
+  accounts: CTraderAccountCandidate[];
 }
 
 export interface TaxonomyItem {
@@ -170,8 +224,8 @@ export interface TradeDetail {
 
 export type TradeInput = Omit<
   TradeDetail,
-  "id" | "calculatedR" | "createdAt" | "updatedAt"
-> & { id?: string };
+  "id" | "accountId" | "calculatedR" | "createdAt" | "updatedAt"
+> & { id?: string; accountId: string };
 
 export interface PagedTrades {
   items: TradeSummary[];
@@ -388,6 +442,9 @@ export type FundamentalEvaluationStatus =
   | "transformationMismatch"
   | "futureRelease"
   | "yieldSmaUnavailable"
+  | "review_required"
+  | "missing_actual"
+  | "missing_forecast"
   | "unmapped";
 
 export interface FundamentalIndicatorView {
@@ -459,6 +516,311 @@ export interface MacroFundamentalsDashboard {
   pairs: FundamentalPairView[];
 }
 
+export type TechnicalSignalStatus =
+  "bullish" | "bearish" | "neutral" | "unavailable";
+
+export interface TimeframeTrendView {
+  signal?: -1 | 0 | 1 | null;
+  status: TechnicalSignalStatus;
+  reasonCodes: string[];
+  bars: number;
+  latestCandleAt?: string | null;
+  ohlc4?: number | null;
+  ema20?: number | null;
+  ema50?: number | null;
+  normalizedSlope?: number | null;
+  adx14?: number | null;
+  plusDi14?: number | null;
+  minusDi14?: number | null;
+}
+
+export interface ChartTrendView {
+  signal?: -1 | 0 | 1 | null;
+  status: TechnicalSignalStatus;
+  reasonCodes: string[];
+  fourHour: TimeframeTrendView;
+  daily: TimeframeTrendView;
+}
+
+export interface SeasonalityTrendView {
+  signal?: -1 | 0 | 1 | null;
+  status: TechnicalSignalStatus;
+  reasonCodes: string[];
+  tradingDays: number;
+  averageReturn?: number | null;
+  medianReturn?: number | null;
+  positiveRatio?: number | null;
+  samples: number;
+  completeYears: number;
+  calculatedAt?: string | null;
+}
+
+export interface PairTechnicalSignalView {
+  base: string;
+  quote: string;
+  sourceSymbol?: string | null;
+  inverted: boolean;
+  chartTrend: ChartTrendView;
+  seasonalityTrend: SeasonalityTrendView;
+}
+
+export interface PairTechnicalDashboard {
+  asOf: string;
+  methodVersion: string;
+  pairs: PairTechnicalSignalView[];
+}
+
+export interface EodhdIndicatorHistoryInput {
+  currency: string;
+  canonicalKey: string;
+  months: 12 | 24 | 36 | 60 | 120 | 240;
+}
+
+export interface EodhdIndicatorHistoryPoint {
+  id: string;
+  country: string;
+  providerType: string;
+  comparison?: string | null;
+  period?: string | null;
+  releasedAt: string;
+  actualText?: string | null;
+  forecastText?: string | null;
+  previousText?: string | null;
+  frequency: string;
+  unit: EconomicValueUnit;
+  revisionCount: number;
+  sourceUrl: string;
+}
+
+export type EconomicValueUnit =
+  | "percent"
+  | "index"
+  | "thousands"
+  | "millions"
+  | "billions"
+  | "ratio"
+  | "value";
+
+export interface EodhdIndicatorHistory {
+  currency: string;
+  country?: string | null;
+  canonicalKey: string;
+  label: string;
+  factor: "growth" | "inflation" | "rates" | "labor";
+  direction: -1 | 1;
+  comparison?: string | null;
+  frequency?: string | null;
+  unit?: EconomicValueUnit | null;
+  freshnessDays: number;
+  months: number;
+  from: string;
+  to: string;
+  nextReleaseAt?: string | null;
+  points: EodhdIndicatorHistoryPoint[];
+}
+
+export type AudChinaCpiRegimeTimeframe = "D1" | "W1";
+export type AudChinaCpiRegimeState =
+  "rising" | "falling" | "transition" | "unavailable";
+export type AudChinaCpiBias = "bullish" | "bearish" | "mixed" | "unavailable";
+export type AudChinaCpiConfidence = "high" | "medium" | "low" | "unavailable";
+
+export interface AudChinaCpiRegimeInput {
+  timeframe: AudChinaCpiRegimeTimeframe;
+}
+
+export interface AudChinaCpiRegimeMethodology {
+  regimeBasis: string;
+  effectiveTiming: string;
+  validationBasis: string;
+  momentumThresholdPp: number;
+  slopeThresholdPp: number;
+  minimumDirectionalSamples: number;
+}
+
+export interface AudChinaCpiRegimeCandle {
+  time: number;
+  open: number;
+  high: number;
+  low: number;
+  close: number;
+  volume?: number | null;
+}
+
+export interface AudChinaCpiRegimeMacroPoint {
+  id: string;
+  providerType: string;
+  period?: string | null;
+  releasedAt: string;
+  effectiveAt?: number | null;
+  actual: number;
+  forecast?: number | null;
+  previous?: number | null;
+  forecastSurprise?: number | null;
+  change1m?: number | null;
+  momentum3m?: number | null;
+  slope6m?: number | null;
+  acceleration?: number | null;
+  state: AudChinaCpiRegimeState;
+  revisionCount: number;
+}
+
+export interface AudChinaCpiRegimeInterval {
+  state: AudChinaCpiRegimeState;
+  startAt: number;
+  endAt: number;
+  startReleaseAt: string;
+  latestReleaseAt: string;
+  startCpi: number;
+  latestCpi: number;
+  observations: number;
+  completed: boolean;
+}
+
+export interface AudChinaCpiRegimeEpisode {
+  state: AudChinaCpiRegimeState;
+  startReleaseAt: string;
+  effectiveStartAt: number;
+  effectiveEndAt: number;
+  completed: boolean;
+  observations: number;
+  startCpi: number;
+  endCpi: number;
+  cpiChangePp: number;
+  startPrice: number;
+  endPrice: number;
+  returnPct: number;
+  maxFavorableExcursionPct: number;
+  maxAdverseExcursionPct: number;
+}
+
+export interface AudChinaCpiRegimeForwardMetric {
+  horizonWeeks: number;
+  tradingDays: number;
+  samples: number;
+  averageReturnPct?: number | null;
+  medianReturnPct?: number | null;
+  positiveRatio?: number | null;
+  p25ReturnPct?: number | null;
+  p75ReturnPct?: number | null;
+  averageMfePct?: number | null;
+  averageMaePct?: number | null;
+}
+
+export interface AudChinaCpiRegimeStateStatistics {
+  state: AudChinaCpiRegimeState;
+  label: string;
+  episodes: number;
+  audBias: AudChinaCpiBias;
+  confidence: AudChinaCpiConfidence;
+  horizons: AudChinaCpiRegimeForwardMetric[];
+}
+
+export interface AudChinaCpiCurrentRegime {
+  state: AudChinaCpiRegimeState;
+  label: string;
+  description: string;
+  lastReleaseAt?: string | null;
+  effectiveAt?: number | null;
+  actual?: number | null;
+  change1m?: number | null;
+  momentum3m?: number | null;
+  slope6m?: number | null;
+  durationReleases: number;
+  audBias: AudChinaCpiBias;
+  confidence: AudChinaCpiConfidence;
+  referenceHorizonWeeks: number;
+  historicalSamples: number;
+  medianForwardReturnPct?: number | null;
+  positiveRatio?: number | null;
+  averageMfePct?: number | null;
+  averageMaePct?: number | null;
+}
+
+export interface AudChinaCpiRegimeDataQuality {
+  status: "available" | "exploratory" | "unavailable";
+  reason: string;
+  cpiObservations: number;
+  priceCandles: number;
+  directionalEpisodes: number;
+  historyStart?: string | null;
+  historyEnd?: string | null;
+  overlapStart?: string | null;
+  overlapEnd?: string | null;
+  latestCpiReleaseAt?: string | null;
+  latestPriceAt?: string | null;
+  revisedReleases: number;
+  warnings: string[];
+}
+
+export interface AudChinaCpiRegimeResponse {
+  asOf: string;
+  modelVersion: string;
+  timeframe: AudChinaCpiRegimeTimeframe;
+  targetCurrency: "AUD";
+  marketSymbol: string;
+  marketProxyLabel: string;
+  marketSourceName: string;
+  marketSourceUrl: string;
+  macroSourceName: string;
+  macroSourceUrl: string;
+  pointInTimeVintages: boolean;
+  methodology: AudChinaCpiRegimeMethodology;
+  current: AudChinaCpiCurrentRegime;
+  quality: AudChinaCpiRegimeDataQuality;
+  candles: AudChinaCpiRegimeCandle[];
+  macroPoints: AudChinaCpiRegimeMacroPoint[];
+  intervals: AudChinaCpiRegimeInterval[];
+  episodes: AudChinaCpiRegimeEpisode[];
+  stateStatistics: AudChinaCpiRegimeStateStatistics[];
+}
+
+export type EconomicCalendarCategory =
+  | "growth"
+  | "inflation"
+  | "labor"
+  | "rates"
+  | "trade"
+  | "housing"
+  | "energy"
+  | "confidence"
+  | "fiscal"
+  | "other";
+
+export interface EconomicCalendarInput {
+  range: "future7" | "future30" | "future90" | "today" | "week" | "month";
+  timezoneOffsetMinutes: number;
+}
+
+export interface EconomicCalendarEvent {
+  id: string;
+  country: string;
+  currency: string;
+  title: string;
+  category: EconomicCalendarCategory;
+  canonicalKey?: string | null;
+  comparison?: string | null;
+  period?: string | null;
+  scheduledAt: string;
+  actualText?: string | null;
+  forecastText?: string | null;
+  previousText?: string | null;
+  frequency: string;
+  affectedAssets: string[];
+  mappingStatus:
+    "automatic" | "approved" | "review" | "unavailable" | "ignored";
+  sourceUrl: string;
+}
+
+export interface EconomicCalendarResponse {
+  asOf: string;
+  from: string;
+  to: string;
+  sourceName: string;
+  sourceUrl: string;
+  events: EconomicCalendarEvent[];
+}
+
 export interface EodhdSyncRun {
   id: string;
   triggerKind: "startup" | "scheduled" | "manual";
@@ -506,6 +868,12 @@ export type PutCallSentiment =
   "bullish" | "neutral" | "bearish" | "unavailable";
 
 export type PutCallSourceOrientation = "direct" | "inverse";
+export type PutCallValueUnit =
+  "usd_notional" | "contracts" | "weighted_contracts";
+export type PutCallCalculationMethod =
+  | "official_notional_pdf"
+  | "reconstructed_weighted_pcr"
+  | "contract_volume_pcr";
 
 export interface PutCallAsset {
   symbol: string;
@@ -517,9 +885,14 @@ export interface PutCallAsset {
 export interface PutCallPoint {
   tradeDate: string;
   rawRatio: number;
-  ma5: number;
-  callNotionalUsd: number;
-  putNotionalUsd: number;
+  ma5?: number | null;
+  callValue: number;
+  putValue: number;
+  valueUnit: PutCallValueUnit;
+  calculationMethod: PutCallCalculationMethod;
+  methodLabel: string;
+  sourceFile?: string | null;
+  isPreliminary: boolean;
 }
 
 export interface PutCallThresholds {
@@ -533,6 +906,7 @@ export interface PutCallDashboard {
   selectedAsset: PutCallAsset;
   points: PutCallPoint[];
   thresholds?: PutCallThresholds | null;
+  latestRawRatio?: number | null;
   latestValue?: number | null;
   sentiment: PutCallSentiment;
   calibrationSampleSize: number;
@@ -547,6 +921,16 @@ export interface PutCallSyncResult {
   tradeDate: string;
   storedAssets: number;
   lastSyncedAt: string;
+}
+
+export interface PutCallBatchImportResult {
+  selectedFiles: number;
+  validTradingDays: number;
+  storedObservations: number;
+  skippedLowerPriority: number;
+  earliestTradeDate?: string | null;
+  latestTradeDate?: string | null;
+  importedAt: string;
 }
 
 export interface CotSignalComponent {
@@ -775,6 +1159,100 @@ export interface PolicyRateAutomationStatus {
   nextRefreshAt?: string | null;
 }
 
+export type CentralBankReportType =
+  "decision" | "monetary_policy_report" | "projections" | "special_notice";
+
+export interface CentralBankSummaryPoint {
+  text: string;
+  sourceRefs: string[];
+}
+
+export interface CentralBankSummarySection {
+  key:
+    | "decision"
+    | "inflation"
+    | "growth"
+    | "labor"
+    | "guidance"
+    | "risks"
+    | "tools"
+    | "projections"
+    | "changes";
+  title: string;
+  points: CentralBankSummaryPoint[];
+}
+
+export interface CentralBankReportSummary {
+  overview: string;
+  stance: "hawkish" | "dovish" | "neutral" | "unclear";
+  sections: CentralBankSummarySection[];
+}
+
+export interface CentralBankReportListItem {
+  id: string;
+  bankCode:
+    "FED" | "ECB" | "BOE" | "BOJ" | "RBA" | "RBNZ" | "BOC" | "SNB" | "PBOC";
+  currency:
+    "USD" | "EUR" | "GBP" | "JPY" | "AUD" | "NZD" | "CAD" | "CHF" | "CNY";
+  reportType: CentralBankReportType;
+  title: string;
+  sourceUrl: string;
+  publishedAt?: string | null;
+  discoveredAt: string;
+  language: string;
+  mimeType?: string | null;
+  localPath?: string | null;
+  extractionStatus: "pending" | "complete" | "partial" | "failed";
+  summaryStatus: "pending" | "complete" | "local_fallback" | "failed";
+  summaryProvider?: string | null;
+  summaryModel?: string | null;
+  summarizedAt?: string | null;
+  readAt?: string | null;
+}
+
+export interface CentralBankReportDetail extends CentralBankReportListItem {
+  extractedText?: string | null;
+  summary?: CentralBankReportSummary | null;
+}
+
+export interface CentralBankSourceStatus {
+  id: string;
+  bankCode: string;
+  bankName: string;
+  currency: string;
+  sourceUrl: string;
+  lastCheckedAt?: string | null;
+  lastSuccessAt?: string | null;
+  lastStatus?: string | null;
+  errorMessage?: string | null;
+}
+
+export interface CentralBankReportAutomation {
+  enabled: boolean;
+  refreshIntervalMinutes: number;
+  lastAttemptAt?: string | null;
+  lastSuccessAt?: string | null;
+  lastStatus?: string | null;
+  errorMessage?: string | null;
+  nextRefreshAt?: string | null;
+  openaiConfigured: boolean;
+  summaryModel: string;
+}
+
+export interface CentralBankReportDashboard {
+  reports: CentralBankReportListItem[];
+  sources: CentralBankSourceStatus[];
+  automation: CentralBankReportAutomation;
+}
+
+export interface CentralBankSyncResult {
+  sourcesChecked: number;
+  reportsDiscovered: number;
+  reportsDownloaded: number;
+  reportsSummarized: number;
+  completedAt: string;
+}
+
 export interface SeasonalityItem {
   asset: string;
   symbol: string;
@@ -796,6 +1274,9 @@ export interface SeasonalityDashboard {
   assets: SeasonalityAssetSummary[];
   collectionStatus?: "running" | "complete" | "partial" | "failed" | null;
   collectionError?: string | null;
+  collectionCompleted: number;
+  collectionTotal: number;
+  lastSyncedAt?: string | null;
   dataVersion: string;
 }
 
@@ -959,15 +1440,9 @@ export interface SeasonalityScreenerRow {
   missingDays: number;
 }
 
-export interface SeasonalityImport {
-  sourceName: string;
-  sourceUrl?: string;
-  snapshotAt?: string;
-  items: SeasonalityItem[];
-}
-
 export interface ReviewRecord {
   id: string;
+  accountId: string;
   reviewType: "daily" | "weekly" | "monthly";
   periodStart: string;
   periodEnd: string;
@@ -985,6 +1460,7 @@ export interface ReviewRecord {
 
 export interface ReviewInput {
   id?: string;
+  accountId: string;
   reviewType: ReviewRecord["reviewType"];
   periodStart: string;
   periodEnd: string;
@@ -1028,7 +1504,7 @@ export interface PlaybookSetup {
   checklistJson?: string | null;
   examplesJson?: string | null;
   notesHtml?: string | null;
-  tradeCount: number;
+  tradeCount: number | null;
 }
 
 export interface MistakeAnalytics {
@@ -1090,6 +1566,112 @@ export interface BackupRecord {
   createdAt: string;
 }
 
+export interface JournalResetPreservedTable {
+  rowCount: number;
+  fingerprint: string;
+}
+
+export interface JournalResetResult {
+  backupPath: string;
+  deletedRowCounts: Record<string, number>;
+  preservedTableCounts: Record<string, JournalResetPreservedTable>;
+  completedAt: string;
+}
+
+export interface MetaTraderHtmlPreviewInput {
+  path: string;
+  accountId: string;
+  sourceTimezone: string;
+}
+
+export interface MetaTraderHtmlCommitInput {
+  runId: string;
+  accountId: string;
+}
+
+export interface MetaTraderHtmlRowPreview {
+  rowNumber: number;
+  status: "valid" | "invalid" | "duplicate" | "conflict";
+  sourcePositionId?: string | null;
+  symbol?: string | null;
+  direction?: "long" | "short" | null;
+  openedAt?: string | null;
+  closedAt?: string | null;
+  netPnlMinor?: number | null;
+  errors: string[];
+}
+
+export interface MetaTraderHtmlPreview {
+  runId: string;
+  maskedSourceAccount: string;
+  baseCurrency: string;
+  sourceTimezone: string;
+  valid: number;
+  invalid: number;
+  ignored: number;
+  duplicate: number;
+  conflict: number;
+  openPositions: number;
+  orders: number;
+  deals: number;
+  canCommit: boolean;
+  rows: MetaTraderHtmlRowPreview[];
+}
+
+export interface MetaTraderHtmlCommitResult {
+  runId: string;
+  inserted: number;
+  duplicate: number;
+}
+
+export interface CTraderStatementPreviewInput {
+  path: string;
+  accountId: string;
+  sourceTimezone: string;
+}
+
+export interface CTraderStatementCommitInput {
+  runId: string;
+  accountId: string;
+}
+
+export interface CTraderStatementRowPreview {
+  rowNumber: number;
+  status: "valid" | "invalid" | "duplicate" | "conflict";
+  sourceTradeId?: string | null;
+  symbol?: string | null;
+  direction?: "long" | "short" | null;
+  openedAt?: string | null;
+  closedAt?: string | null;
+  netPnlMinor?: number | null;
+  errors: string[];
+}
+
+export interface CTraderStatementPreview {
+  runId: string;
+  format: "html" | "xlsx";
+  maskedSourceAccount: string;
+  baseCurrency: string;
+  targetAccountCurrency: string;
+  currencyMismatch: boolean;
+  sourceTimezone: string;
+  valid: number;
+  invalid: number;
+  duplicate: number;
+  conflict: number;
+  openPositions: number;
+  orders: number;
+  transactions: number;
+  canCommit: boolean;
+  rows: CTraderStatementRowPreview[];
+}
+
+export interface CTraderStatementCommitResult {
+  runId: string;
+  inserted: number;
+  duplicate: number;
+}
+
 export interface RestorePreview {
   valid: boolean;
   createdAt?: string | null;
@@ -1116,85 +1698,4 @@ export interface LegacyPreview {
 export interface LegacyImportResult {
   imported: number;
   skipped: number;
-}
-
-export type MarketTimeframe =
-  "M1" | "M5" | "M15" | "M30" | "H1" | "H4" | "D1" | "W1";
-
-export interface MarketStatus {
-  connected: boolean;
-  provider: string;
-  accountLogin?: string | null;
-  accountServer?: string | null;
-  accountName?: string | null;
-  accountCompany?: string | null;
-  accountCurrency?: string | null;
-  balance?: number | null;
-  equity?: number | null;
-  lastUpdate: string;
-  code?: string | null;
-  message?: string | null;
-}
-
-export interface Mt5Account {
-  id: string;
-  provider: string;
-  server: string;
-  login: string;
-  accountName?: string | null;
-  company?: string | null;
-  currency?: string | null;
-  leverage?: number | null;
-  localAccountId?: string | null;
-  localAccountName?: string | null;
-  lastSeenAt: string;
-  lastSyncAt?: string | null;
-  isConnected: boolean;
-  balanceMinor?: number | null;
-  equityMinor?: number | null;
-  marginMinor?: number | null;
-  freeMarginMinor?: number | null;
-  snapshotAt?: string | null;
-}
-
-export interface Mt5AccountsResponse {
-  accounts: Mt5Account[];
-  automationIntervalSeconds: number;
-}
-
-export interface Mt5SyncResult {
-  status: "complete" | "unmapped" | "disconnected";
-  accountId?: string | null;
-  dealsSeen: number;
-  dealsInserted: number;
-  tradesUpdated: number;
-  message: string;
-}
-
-export interface MarketSymbol {
-  symbol: string;
-  description?: string | null;
-  path?: string | null;
-  category: string;
-  visible: boolean;
-  digits?: number | null;
-  baseCurrency?: string | null;
-  quoteCurrency?: string | null;
-}
-
-export interface Candle {
-  time: number;
-  open: number;
-  high: number;
-  low: number;
-  close: number;
-  volume?: number | null;
-  volumeKind: "tick" | "real" | "unavailable";
-}
-
-export interface MarketQuote {
-  symbol: string;
-  bid?: number | null;
-  ask?: number | null;
-  time?: string | null;
 }

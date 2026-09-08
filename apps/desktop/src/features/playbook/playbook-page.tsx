@@ -1,3 +1,4 @@
+import { BookOpenCheck as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -14,46 +15,97 @@ import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
 import { api } from "../../services/commands";
 import type { PlaybookSetup } from "../../types/domain";
+import { useJournalAccount } from "../accounts/journal-account-context";
+import { CollectionToolbar } from "../../components/ui/collection-toolbar";
+import { WorkspaceSummary } from "../../components/ui/workspace-summary";
+import { useDialogFocus } from "../../components/ui/use-dialog-focus";
 
 export function PlaybookPage() {
-  const query = useQuery({ queryKey: ["playbook"], queryFn: api.playbook });
+  const { selectedAccountId, status } = useJournalAccount();
+  const accountId = status === "ready" ? selectedAccountId : null;
+  const query = useQuery({
+    queryKey: ["playbook", accountId],
+    queryFn: () => api.playbook(accountId ?? undefined),
+  });
   const [selected, setSelected] = useState<PlaybookSetup>();
+  const { rememberFocus, restoreFocus } = useDialogFocus();
   const [createOpen, setCreateOpen] = useState(false);
-  if (query.isLoading)
-    return (
-      <div className="page">
-        <PageLoading />
-      </div>
-    );
-  if (query.isError)
-    return (
-      <div className="page">
-        <ErrorState message="Playbook konnte nicht geladen werden." />
-      </div>
-    );
+  const [search, setSearch] = useState("");
+  const setups = query.data ?? [];
+  const visibleSetups = setups.filter((setup) =>
+    `${setup.name} ${setup.description ?? ""} ${setup.strategyName ?? ""}`
+      .toLocaleLowerCase("de")
+      .includes(search.trim().toLocaleLowerCase("de")),
+  );
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page playbook-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Prozess"
         title="Setup Playbook"
         description="Versionierte Regeln, Checklisten und Beispiele für wiederholbare Trading-Setups."
         actions={
-          <Button variant="primary" onClick={() => setCreateOpen(true)}>
+          <Button
+            variant="primary"
+            onClick={() => {
+              rememberFocus();
+              setCreateOpen(true);
+            }}
+          >
             <Plus size={15} /> Setup anlegen
           </Button>
         }
       />
-      {query.data?.length ? (
+      {query.isSuccess && setups.length > 0 && (
+        <>
+          <WorkspaceSummary
+            items={[
+              {
+                label: "Setups im Playbook",
+                value: setups.length,
+                detail: "Deine wiederholbaren Handelsansätze",
+              },
+              {
+                label: "Mit Checkliste",
+                value: setups.filter(
+                  (setup) => safeArray(setup.checklistJson).length > 0,
+                ).length,
+                detail: "Klare Regeln vor dem Einstieg",
+              },
+              {
+                label: "Mit Regelversion",
+                value: setups.filter((setup) => (setup.version ?? 0) > 0)
+                  .length,
+                detail: "Historische Regeln bleiben erhalten",
+              },
+            ]}
+          />
+          <CollectionToolbar
+            label="Setups durchsuchen"
+            value={search}
+            onChange={setSearch}
+            count={visibleSetups.length}
+          />
+        </>
+      )}
+      {query.isLoading ? (
+        <PageLoading />
+      ) : query.isError ? (
+        <ErrorState message="Playbook konnte nicht geladen werden." />
+      ) : visibleSetups.length ? (
         <div className="grid responsive-card-grid">
-          {query.data.map((setup) => (
+          {visibleSetups.map((setup) => (
             <SetupCard
               setup={setup}
               key={setup.id}
-              onClick={() => setSelected(setup)}
+              onClick={() => {
+                rememberFocus();
+                setSelected(setup);
+              }}
             />
           ))}
         </div>
@@ -61,8 +113,12 @@ export function PlaybookPage() {
         <Card>
           <EmptyState
             icon={BookOpenCheck}
-            title="Noch keine Setups"
-            description="Lege Setups an und versioniere deren Regeln. Bereits verknüpfte Trades behalten ihren historischen Setup-Stand."
+            title={search ? "Keine passenden Setups" : "Noch keine Setups"}
+            description={
+              search
+                ? "Passe deinen Suchbegriff an oder setze die Suche zurück."
+                : "Lege Setups an und versioniere deren Regeln. Bereits verknüpfte Trades behalten ihren historischen Setup-Stand."
+            }
             action={
               <Button variant="primary" onClick={() => setCreateOpen(true)}>
                 <Plus size={14} /> Erstes Setup anlegen
@@ -71,8 +127,13 @@ export function PlaybookPage() {
           />
         </Card>
       )}
-      <CreateSetupDialog open={createOpen} onOpenChange={setCreateOpen} />
+      <CreateSetupDialog
+        open={createOpen}
+        onOpenChange={setCreateOpen}
+        onCloseAutoFocus={restoreFocus}
+      />
       <SetupDialog
+        onCloseAutoFocus={restoreFocus}
         setup={selected}
         onOpenChange={(open) => !open && setSelected(undefined)}
       />
@@ -89,34 +150,29 @@ function SetupCard({
 }) {
   const checklist = safeArray(setup.checklistJson);
   return (
-    <Card onClick={onClick} style={{ cursor: "pointer", overflow: "hidden" }}>
+    <Card className="collection-card">
       <div style={{ height: 3, background: setup.color }} />
       <CardHeader
         title={setup.name}
+        onOpen={onClick}
         subtitle={setup.strategyName ?? "Eigenständiges Setup"}
         action={<Badge className="primary">v{setup.version ?? 0}</Badge>}
       />
       <CardContent>
-        <div
-          className="muted"
-          style={{ minHeight: 35, fontSize: 10, lineHeight: 1.55 }}
-        >
+        <div className="collection-card-copy">
           {setup.description ?? setup.notesHtml ?? "Noch keine Beschreibung."}
         </div>
-        <div
-          className="grid"
-          style={{ gridTemplateColumns: "1fr 1fr", margin: "15px 0" }}
-        >
+        <div className="collection-metrics">
           <div>
-            <div className="muted" style={{ fontSize: 9 }}>
+            <div className="muted" style={{ fontSize: 11 }}>
               Trades
             </div>
             <strong style={{ display: "block", marginTop: 5, fontSize: 18 }}>
-              {setup.tradeCount}
+              {setup.tradeCount === null ? "–" : setup.tradeCount}
             </strong>
           </div>
           <div>
-            <div className="muted" style={{ fontSize: 9 }}>
+            <div className="muted" style={{ fontSize: 11 }}>
               Checkliste
             </div>
             <strong style={{ display: "block", marginTop: 5, fontSize: 18 }}>
@@ -125,20 +181,16 @@ function SetupCard({
           </div>
         </div>
         {checklist.slice(0, 3).map((item) => (
-          <div
-            key={String(item)}
-            style={{
-              display: "flex",
-              gap: 7,
-              alignItems: "center",
-              fontSize: 10,
-              color: "var(--text-2)",
-              marginTop: 7,
-            }}
-          >
+          <div key={String(item)} className="collection-card-note">
             <CheckCircle2 size={12} className="positive-text" /> {String(item)}
           </div>
         ))}
+        <div className="collection-card-footer">
+          <span>Regeln & Beispiele</span>
+          <Button size="sm" onClick={onClick}>
+            Setup öffnen
+          </Button>
+        </div>
       </CardContent>
     </Card>
   );
@@ -147,9 +199,11 @@ function SetupCard({
 function CreateSetupDialog({
   open,
   onOpenChange,
+  onCloseAutoFocus,
 }: {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const queryClient = useQueryClient();
   const [name, setName] = useState("");
@@ -179,7 +233,11 @@ function CreateSetupDialog({
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content className="dialog-content" aria-describedby={undefined}>
+        <Dialog.Content
+          className="dialog-content"
+          aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
+        >
           <header className="dialog-header">
             <Dialog.Title className="dialog-title">Neues Setup</Dialog.Title>
             <Dialog.Close asChild>
@@ -240,9 +298,11 @@ function CreateSetupDialog({
 function SetupDialog({
   setup,
   onOpenChange,
+  onCloseAutoFocus,
 }: {
   setup?: PlaybookSetup;
   onOpenChange: (open: boolean) => void;
+  onCloseAutoFocus: (event: Event) => void;
 }) {
   const [rules, setRules] = useState("");
   const [checklist, setChecklist] = useState("");
@@ -286,6 +346,7 @@ function SetupDialog({
         <Dialog.Content
           className="dialog-content wide"
           aria-describedby={undefined}
+          onCloseAutoFocus={onCloseAutoFocus}
         >
           <header className="dialog-header">
             <div>
@@ -369,9 +430,9 @@ function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="field" style={{ marginBottom: 14 }}>
-      <label>{label}</label>
+    <label className="field" style={{ marginBottom: 14 }}>
+      <span>{label}</span>
       {children}
-    </div>
+    </label>
   );
 }

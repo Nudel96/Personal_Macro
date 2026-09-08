@@ -1,3 +1,4 @@
+import { ChartNoAxesCombined as PageIcon } from "lucide-react";
 import * as Tabs from "@radix-ui/react-tabs";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart3, Brain, ShieldAlert, Timer, TrendingUp } from "lucide-react";
@@ -13,9 +14,11 @@ import { Badge } from "../../components/ui/badge";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { formatMoneyMinor, formatR, number, percent } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import { useJournalAccount } from "../accounts/journal-account-context";
 import type {
   Account,
   DashboardResponse,
@@ -23,38 +26,52 @@ import type {
 } from "../../types/domain";
 
 export function AnalyticsPage() {
+  const { status, selectedAccountId, selectedAccount } = useJournalAccount();
+  const ready = status === "ready" && selectedAccountId !== null;
   const query = useQuery({
-    queryKey: ["dashboard", "analytics"],
-    queryFn: () => api.dashboard({}),
+    queryKey: ["dashboard", selectedAccountId, "analytics"],
+    queryFn: () => api.dashboard(selectedAccountId!, {}),
+    enabled: ready,
   });
-  const bootstrap = useQuery({
-    queryKey: ["bootstrap"],
-    queryFn: api.bootstrap,
-  });
+  const header = (
+    <JournalPageHeader
+      icon={PageIcon}
+      eyebrow="Tradingjournal"
+      title="Analytics"
+      description="Robuste Auswertung von Performance, Setups, Zeit, Risiko und Prozess."
+      actions={
+        <Badge className="primary">Performance · Risiko · Prozess</Badge>
+      }
+    />
+  );
+  if (!ready)
+    return (
+      <div className="page analytics-page">
+        {header}
+        <JournalAccountGate>
+          <div />
+        </JournalAccountGate>
+      </div>
+    );
   if (query.isLoading)
     return (
-      <div className="page">
+      <div className="page analytics-page">
+        {header}
         <PageLoading />
       </div>
     );
   if (query.isError || !query.data)
     return (
-      <div className="page">
+      <div className="page analytics-page">
+        {header}
         <ErrorState message="Analytics konnten nicht geladen werden." />
       </div>
     );
   return (
-    <div className="page">
-      <PageHeader
-        eyebrow="Tradingjournal"
-        title="Analytics"
-        description="Robuste Auswertung von Performance, Setups, Zeit, Risiko und Prozess."
-        actions={<Badge className="primary">Berechnung v1</Badge>}
-      />
+    <div className="page analytics-page">
+      {header}
       <AccountCapitalOverview
-        accounts={bootstrap.data?.accounts ?? []}
-        isLoading={bootstrap.isLoading}
-        isError={bootstrap.isError}
+        accounts={selectedAccount ? [selectedAccount] : []}
       />
       <Tabs.Root defaultValue="performance">
         <Tabs.List
@@ -96,7 +113,6 @@ export function AnalyticsPage() {
               ["Instrumente", query.data.instrumentPerformance],
               ["Assetklassen", query.data.assetClassPerformance],
               ["Richtung", query.data.directionPerformance],
-              ["Konten", query.data.accountPerformance],
             ]}
           />
         </Tabs.Content>
@@ -194,10 +210,7 @@ function PerformanceTab({ data }: { data: DashboardResponse }) {
   const hasTradeData = metrics.totalTrades > 0;
   return (
     <>
-      <div
-        className="grid"
-        style={{ gridTemplateColumns: "repeat(4, 1fr)", marginBottom: 14 }}
-      >
+      <div className="grid summary-grid" style={{ marginBottom: 16 }}>
         <AnalyticKpi
           label="Netto-P&L"
           value={hasTradeData ? formatMoneyMinor(metrics.netPnlMinor) : "—"}
@@ -642,6 +655,7 @@ function performanceOption(data: DashboardResponse): EChartsOption {
           (point) => point.cumulativePnlMinor / 100,
         ),
         lineStyle: { color: "#5d6dff", width: 2 },
+        itemStyle: { color: "#5d6dff" },
         areaStyle: { color: "rgba(82,93,255,.18)" },
       },
       {
@@ -652,6 +666,7 @@ function performanceOption(data: DashboardResponse): EChartsOption {
         showSymbol: false,
         data: metrics.drawdownCurve.map((point) => -point.drawdownMinor / 100),
         lineStyle: { color: "#ff5e6c", width: 1.5 },
+        itemStyle: { color: "#ff5e6c" },
         areaStyle: { color: "rgba(255,94,108,.11)" },
       },
     ],

@@ -22,6 +22,7 @@ pub struct AppPaths {
     pub backups: PathBuf,
     pub logs: PathBuf,
     pub settings: PathBuf,
+    pub central_bank_reports: PathBuf,
 }
 
 #[derive(Clone)]
@@ -42,6 +43,7 @@ impl AppPaths {
         let backups = root.join("backups");
         let logs = root.join("logs");
         let settings = root.join("settings");
+        let central_bank_reports = root.join("central-bank-reports");
 
         for path in [
             &database_dir,
@@ -53,6 +55,7 @@ impl AppPaths {
             &backups,
             &logs,
             &settings,
+            &central_bank_reports,
         ] {
             std::fs::create_dir_all(path)?;
         }
@@ -65,6 +68,7 @@ impl AppPaths {
             backups,
             logs,
             settings,
+            central_bank_reports,
         })
     }
 
@@ -78,7 +82,16 @@ impl AppPaths {
         let backups = root.join("backups");
         let logs = root.join("logs");
         let settings = root.join("settings");
-        for path in [&database_dir, &media, &exports, &backups, &logs, &settings] {
+        let central_bank_reports = root.join("central-bank-reports");
+        for path in [
+            &database_dir,
+            &media,
+            &exports,
+            &backups,
+            &logs,
+            &settings,
+            &central_bank_reports,
+        ] {
             std::fs::create_dir_all(path)?;
         }
         Ok(Self {
@@ -89,6 +102,7 @@ impl AppPaths {
             backups,
             logs,
             settings,
+            central_bank_reports,
         })
     }
 }
@@ -253,23 +267,6 @@ fn apply_pending_restore(paths: &AppPaths) -> Result<(), AppError> {
 
 async fn seed_defaults(db: &SqlitePool) -> Result<(), AppError> {
     let now = Utc::now().to_rfc3339();
-    let account_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM accounts")
-        .fetch_one(db)
-        .await?;
-    if account_count == 0 {
-        sqlx::query(
-            "INSERT INTO accounts (id, name, base_currency, initial_balance_minor, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?)",
-        )
-        .bind(Uuid::new_v4().to_string())
-        .bind("Hauptkonto")
-        .bind("EUR")
-        .bind(0_i64)
-        .bind(&now)
-        .bind(&now)
-        .execute(db)
-        .await?;
-    }
-
     let defaults = [
         ("Breakout", "#22c55e"),
         ("Trend Continuation", "#3b82f6"),
@@ -337,6 +334,39 @@ mod retirement_tests {
     use super::*;
 
     #[tokio::test]
+    async fn fresh_and_reopened_journals_do_not_seed_an_account() {
+        let state = initialize_headless().await.unwrap();
+        let account_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM accounts")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+        let setup_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM setups")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+        let emotion_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM emotions")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+        let mistake_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM mistakes")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+
+        assert_eq!(account_count, 0);
+        assert!(setup_count > 0);
+        assert!(emotion_count > 0);
+        assert!(mistake_count > 0);
+
+        seed_defaults(&state.db).await.unwrap();
+        let account_count_after_restart: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM accounts")
+            .fetch_one(&state.db)
+            .await
+            .unwrap();
+        assert_eq!(account_count_after_restart, 0);
+    }
+
+    #[tokio::test]
     async fn legacy_macro_systems_are_absent_after_migration() {
         let state = initialize_headless().await.unwrap();
         for table in [
@@ -375,6 +405,8 @@ mod retirement_tests {
             "eodhd_release_jobs",
             "eodhd_fundamental_snapshots",
             "eodhd_fundamental_evaluations",
+            "eodhd_intraday_candles",
+            "eodhd_technical_sync_state",
             "cot_observations",
             "seasonality_snapshots",
             "policy_rate_snapshots",

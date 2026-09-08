@@ -30,7 +30,10 @@ Benutzer. Die Anwendung verbindet:
 - Leitzinsen inklusive relativer USD-Wirkung,
 - Seasonality,
 - automatische Positionsgrößenberechnung,
-- lokale Read-only-Synchronisierung angemeldeter MetaTrader-5-Konten,
+- optionale read-only Kontoerstellung und Kontostandsaktualisierung über ein
+  lokal angemeldetes MetaTrader-5-Terminal oder cTrader Open API OAuth,
+- manueller, kontogebundener Import klassischer MetaTrader-HTML-Historien sowie
+  cTrader-Account-Statements als HTML oder XLSX,
 - direkter Forecast-/Actual-/Previous-Import aus EODHD Economic Events,
 - lokale Importe, Exporte, Backups und Restore.
 
@@ -46,8 +49,8 @@ Nicht-Ziele, solange der Benutzer sie nicht ausdrücklich neu beauftragt:
 
 Die Anwendung ist **local-first**. Journal- und Kontodaten bleiben standardmäßig
 in einer lokalen SQLite-Datenbank. Netzwerkzugriffe sind auf ausdrücklich
-konfigurierte Datenanbieter und releasegebundene EODHD-Aktualisierungen
-begrenzt.
+konfigurierte Datenanbieter, releasegebundene EODHD-Aktualisierungen und vom
+Benutzer autorisierte read-only-cTrader-Kontoverbindungen begrenzt.
 
 ## 2. Source of Truth und Repository-Aufbau
 
@@ -195,6 +198,8 @@ apps/desktop/src
 - `/media` – Medien und Annotationen
 - `/goals` – Ziele und Fortschritt
 - `/macro` – Macro- und Pair-Heatmap
+- `/regime-insights` – langfristige, empirisch validierte Regime-Treiber;
+  aktuell China CPI YoY im Vergleich mit AUDUSD-D1-/W1-OHLC
 - `/seasonality` – saisonale Daten
 - `/rates` – Leitzinsen
 - `/import-export` – Exporte, Backup, Restore, Legacy-Import
@@ -271,10 +276,13 @@ apps/desktop/src-tauri/src
 │  ├─ workspace.rs                  # Reviews, Ziele, Playbook, Fehler
 │  ├─ eodhd.rs                      # EODHD Economic Events Client
 │  ├─ eodhd_fundamentals.rs         # Fundamentals-Snapshots und Heatmap
+│  ├─ eodhd_prices.rs               # EODHD EOD-/Commodity-Historien für Seasonality
 │  ├─ cot.rs                        # eigenständige COT-Daten und Bewertung
 │  ├─ policy_rates.rs               # Zins-Snapshots und USD-Relativwirkung
-│  ├─ seasonality.rs                # Seasonality-Import und Abruf
-│  ├─ mt5_sync.rs                    # kontosichere MT5-Snapshots, Deals und Trades
+│  ├─ seasonality.rs                # EODHD-Seasonality, Analyse und Abruf
+│  ├─ metatrader_html.rs             # Vorschau und atomarer HTML-Historienimport
+│  ├─ ctrader_statement.rs           # sicherer cTrader-HTML-/XLSX-Import
+│  ├─ journal_reset.rs               # verifizierter Backup-/Journal-Reset
 │  ├─ media.rs                      # lokale Medien und Annotationen
 │  ├─ data_transfer.rs              # Export, Backup und Restore
 │  └─ legacy.rs                     # kontrollierter Alt-Datenbankimport
@@ -320,8 +328,8 @@ Wichtige Tabellengruppen:
 - Macro: `macro_snapshots`, `macro_indicators`, `cot_snapshots`,
   `seasonality_snapshots`, `policy_rate_snapshots`, Currency- und Pair-Scores
 - Provider: `economic_provider_events`, `provider_sync_runs`
-- MT5: `mt5_accounts`, Snapshots, Deals, offene Positionen, Trade-Links und
-  Sync-Läufe
+- Legacy-MT5: alte Snapshot-, Deal-, Positions- und Sync-Tabellen bleiben nur
+  als Upgrade-Historie bestehen und werden nicht mehr zur Laufzeit befüllt
 - EODHD: Events, Mappingkandidaten, Release-Jobs und Fundamentals-Snapshots
 
 ### Migrationsregeln
@@ -515,7 +523,17 @@ Seasonality-Snapshots speichern Asset, Symbol, Horizont, Stichprobenzeitraum,
 durchschnittliche Rendite, positive Trefferquote, Stichprobengröße, Signal und
 Kurvenpunkte. Das Signal ist `-1`, `0`, `+1` oder nicht verfügbar.
 
+Die aktive Preisquelle ist ausschließlich EODHD. Forex, Indizes,
+Kryptowährungen und Edelmetall-Spots werden aus dem EOD-Historical-Endpoint
+geladen; täglich verfügbare Energie-Rohstoffe aus dem EODHD-Commodities-Endpoint.
+Frühere Dukascopy-Kerzen und -Profile bleiben nur als nicht gelesene
+Upgrade-Historie erhalten und dürfen nicht als Laufzeit-Fallback verwendet
+werden. Der alte Instrumentkatalog darf einmalig nur zur expliziten
+Symbolzuordnung in den validierten EODHD-Katalog gelesen werden.
+
 - Keine belastbare Seasonality ohne Herkunft, Zeitraum und Stichprobengröße.
+- Nur Kalenderjahre mit Abdeckung am Jahresanfang und Jahresende zählen als
+  vollständige Stichprobe; unter fünf Jahren bleiben Rankings explorativ.
 - Fehlende oder zu kleine Stichproben nicht als neutrale Evidenz behandeln.
 - Das Paar-Scoring verwendet den saisonalen Currency-/Asset-Faktor in derselben
   Base-minus-Quote-Richtung.
@@ -553,12 +571,21 @@ beeinflussen Dashboard-/Trade-Auswertungen.
 Ein Account-Wechsel ist Filterung, kein Benutzerwechsel. Die App bleibt
 Single-User.
 
-MetaTrader-Konten werden ausschließlich über `Provider + Server + MT5-Login`
-identifiziert und explizit einem lokalen Konto zugeordnet. Unbekannte Logins
-dürfen keine Trades importieren. Der Connector bleibt read-only, speichert
-keine Broker-Zugangsdaten und prüft die erwartete Identität bei jedem Sync
-erneut. Broker-Balance und Equity bleiben getrennte Snapshots und ersetzen
-nicht stillschweigend den lokal berechneten Journal-Kontostand.
+Konten können optional read-only über ein lokal angemeldetes MT5-Terminal oder
+über cTrader Open API OAuth mit dem Scope `accounts` erstellt und hinsichtlich
+der Broker-Balance aktualisiert werden. Die Verbindung enthält keine
+Orderfunktionen. MT5-Passwörter werden nicht abgefragt oder gespeichert;
+cTrader-Tokens liegen nicht in SQLite, sondern geschützt im
+Windows-Anmeldedatenspeicher. Historische Trades werden weiterhin ausschließlich
+über die zweiphasige Vorschau und den atomaren Commit eines klassischen
+MetaTrader-HTML-Reports oder eines cTrader-Statements als HTML/XLSX in ein
+ausdrücklich ausgewähltes aktives Journal-Konto übernommen.
+Beim cTrader-Import ist dieses Konto ausschließlich das Importziel;
+Berichtskonto und Berichtswährung dürfen abweichen. Abweichende Netto-P&L-Werte
+werden ohne erfundene FX-Umrechnung numerisch unverändert übernommen und mit der
+Quellwährung gekennzeichnet.
+Grafische Aggregate-Reports und leere XLSX-Dateien werden abgelehnt; HTML wird
+niemals in der Oberfläche ausgeführt.
 
 ### Trades
 
@@ -757,6 +784,7 @@ Nützliche Vertiefungen:
 - `docs/planning/scoring-model-v1.md` – fachliche Score-Vorgaben
 - `docs/planning/policy-rate-model-v1.md` – Zins- und USD-Relativmodell
 - `docs/planning/journal-metrics-and-heatmap-v1.md` – Kennzahlen und Heatmaps
+- `docs/planning/aud-china-cpi-regime-v1.md` – China-CPI-/AUD-Regimemodell
 - `docs/planning/forecast-acquisition-policy.md` – Forecast-Beschaffung
 - `docs/planning/free-data-strategy.md` – kostenlose Datenquellenstrategie
 - `docs/audit/calculation-audit.md` – Audit früherer Formeln

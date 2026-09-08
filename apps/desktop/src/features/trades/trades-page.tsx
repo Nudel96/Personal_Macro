@@ -1,3 +1,4 @@
+import { TableProperties as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
 import {
   createColumnHelper,
@@ -16,7 +17,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Columns3,
-  Download,
   Filter,
   ListFilter,
   Plus,
@@ -26,7 +26,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { toast } from "sonner";
 import { Badge } from "../../components/ui/badge";
@@ -34,18 +34,56 @@ import { Button } from "../../components/ui/button";
 import { Card } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
-import { PageHeader } from "../../components/ui/page-header";
+import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { dateTime, formatMoneyMinor, formatR } from "../../lib/utils";
 import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import type { TradeStatus, TradeSummary } from "../../types/domain";
+import { JournalAccountGate } from "../accounts/journal-account-gate";
+import {
+  useJournalAccount,
+  type JournalAccountStatus,
+} from "../accounts/journal-account-context";
 import { TradeDetailDialog } from "./trade-detail-dialog";
 import { TrashDialog } from "./trash-dialog";
 
 const column = createColumnHelper<TradeSummary>();
 
+interface JournalAccountTransitionTracker {
+  lastReadyAccountId: string | null;
+  hasReadyAccount: boolean;
+}
+
+export function transitionJournalAccount(
+  tracker: JournalAccountTransitionTracker,
+  status: JournalAccountStatus,
+  selectedAccountId: string | null,
+) {
+  if (status === "ready" && selectedAccountId) {
+    return {
+      tracker: {
+        lastReadyAccountId: selectedAccountId,
+        hasReadyAccount: true,
+      },
+      resetTradeState:
+        tracker.hasReadyAccount &&
+        tracker.lastReadyAccountId !== selectedAccountId,
+    };
+  }
+  if (selectedAccountId === null && tracker.hasReadyAccount) {
+    return {
+      tracker: { lastReadyAccountId: null, hasReadyAccount: false },
+      resetTradeState: true,
+    };
+  }
+  return { tracker, resetTradeState: false };
+}
+
 export function TradesPage() {
   const { setQuickTradeOpen, setGuidedTradeOpen } = useUiStore();
+  const { status: journalAccountStatus, selectedAccountId } =
+    useJournalAccount();
+  const ready = journalAccountStatus === "ready" && selectedAccountId !== null;
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
   const [search, setSearch] = useState("");
@@ -58,7 +96,6 @@ export function TradesPage() {
     if (target) setSelectedTrade(target);
   }, [searchParams]);
   const [trashOpen, setTrashOpen] = useState(false);
-  const [exporting, setExporting] = useState(false);
   const [sorting, setSorting] = useState<SortingState>([
     { id: "closedAt", desc: true },
   ]);
@@ -69,6 +106,31 @@ export function TradesPage() {
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
   const [viewDialogOpen, setViewDialogOpen] = useState(false);
+  const accountTransition = useRef<JournalAccountTransitionTracker>({
+    lastReadyAccountId: ready ? selectedAccountId : null,
+    hasReadyAccount: ready,
+  });
+  useEffect(() => {
+    const transition = transitionJournalAccount(
+      accountTransition.current,
+      journalAccountStatus,
+      selectedAccountId,
+    );
+    accountTransition.current = transition.tracker;
+    if (!transition.resetTradeState) return;
+    setPage(1);
+    setSelectedTrade(undefined);
+    setTrashOpen(false);
+    setRowSelection({});
+    setSearchParams(
+      (current) => {
+        const next = new URLSearchParams(current);
+        next.delete("open");
+        return next;
+      },
+      { replace: true },
+    );
+  }, [journalAccountStatus, selectedAccountId, setSearchParams]);
   const filter = useMemo(
     () => ({
       search,
@@ -82,8 +144,9 @@ export function TradesPage() {
     [search, status, direction, page, sorting],
   );
   const query = useQuery({
-    queryKey: ["trades", filter],
-    queryFn: () => api.listTrades(filter),
+    queryKey: ["trades", selectedAccountId, filter],
+    queryFn: () => api.listTrades(selectedAccountId!, filter),
+    enabled: ready,
   });
   const views = useQuery({
     queryKey: ["saved-views", "trades"],
@@ -126,7 +189,17 @@ export function TradesPage() {
           <div className="asset-cell">
             <span className="asset-icon">{info.getValue().slice(0, 2)}</span>
             <div>
-              <strong>{info.getValue()}</strong>
+              <button
+                type="button"
+                className="table-link"
+                aria-label={`${info.getValue()} öffnen`}
+                onClick={(event) => {
+                  event.stopPropagation();
+                  setSelectedTrade(info.row.original.id);
+                }}
+              >
+                {info.getValue()}
+              </button>
               <div className="muted" style={{ fontSize: 9 }}>
                 {info.row.original.assetClass}
               </div>
@@ -228,13 +301,17 @@ export function TradesPage() {
   const bulk = useMutation({
     mutationFn: async (action: "archive" | "trash" | "tag") => {
       for (const id of selectedIds) {
-        if (action === "trash") await api.trashTrade(id);
+        if (action === "trash") await api.trashTrade(selectedAccountId!, id);
         else if (action === "archive") {
-          const trade = await api.getTrade(id);
-          await api.updateTrade(id, { ...trade, status: "archived" });
+          const trade = await api.getTrade(selectedAccountId!, id);
+          await api.updateTrade(selectedAccountId!, id, {
+            ...trade,
+            accountId: selectedAccountId!,
+            status: "archived",
+          });
         } else if (bulkTagId) {
-          const context = await api.tradeContext(id);
-          await api.saveTradeContext({
+          const context = await api.tradeContext(selectedAccountId!, id);
+          await api.saveTradeContext(selectedAccountId!, {
             tradeId: id,
             tagIds: [
               ...new Set([...context.tags.map((tag) => tag.id), bulkTagId]),
@@ -277,9 +354,25 @@ export function TradesPage() {
     if (index !== target) setColumnOrder(moveItem(current, index, target));
   };
 
+  if (!ready)
+    return (
+      <div className="page trades-page">
+        <JournalPageHeader
+          icon={PageIcon}
+          eyebrow="Tradingjournal"
+          title="Trades"
+          description="Wähle ein Tradingkonto aus, um Journal-Einträge zu sehen."
+        />
+        <JournalAccountGate>
+          <div />
+        </JournalAccountGate>
+      </div>
+    );
+
   return (
-    <div className="page">
-      <PageHeader
+    <div className="page trades-page">
+      <JournalPageHeader
+        icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Trades"
         description="Durchsuche, filtere und bearbeite alle Journal-Einträge."
@@ -291,21 +384,9 @@ export function TradesPage() {
                 <Button size="sm" onClick={() => setTrashOpen(true)}>
                   <Trash2 size={14} /> Papierkorb
                 </Button>
-                <Button
-                  size="sm"
-                  disabled={exporting}
-                  onClick={async () => {
-                    setExporting(true);
-                    try {
-                      await api.exportTrades("csv");
-                    } finally {
-                      setExporting(false);
-                    }
-                  }}
-                >
-                  <Download size={14} />{" "}
-                  {exporting ? "Exportiere …" : "Exportieren"}
-                </Button>
+                <span className="muted">
+                  CSV/JSON-Export folgt mit kontosicherem Export.
+                </span>
               </div>
             </details>
             <Button variant="primary" onClick={() => setGuidedTradeOpen(true)}>
@@ -610,6 +691,7 @@ export function TradesPage() {
               <div className="page-actions">
                 <Button
                   size="icon"
+                  aria-label="Vorherige Seite"
                   disabled={page <= 1}
                   onClick={() => setPage((value) => value - 1)}
                 >
@@ -617,6 +699,7 @@ export function TradesPage() {
                 </Button>
                 <Button
                   size="icon"
+                  aria-label="Nächste Seite"
                   disabled={page >= query.data.totalPages}
                   onClick={() => setPage((value) => value + 1)}
                 >
@@ -628,6 +711,8 @@ export function TradesPage() {
         )}
       </Card>
       <TradeDetailDialog
+        key={`${selectedAccountId ?? "none"}:${selectedTrade ?? "none"}`}
+        accountId={selectedAccountId ?? undefined}
         tradeId={selectedTrade}
         onOpenChange={(open) => {
           if (!open) {
@@ -640,7 +725,11 @@ export function TradesPage() {
           }
         }}
       />
-      <TrashDialog open={trashOpen} onOpenChange={setTrashOpen} />
+      <TrashDialog
+        accountId={selectedAccountId ?? undefined}
+        open={trashOpen}
+        onOpenChange={setTrashOpen}
+      />
       <SaveViewDialog
         open={viewDialogOpen}
         onOpenChange={setViewDialogOpen}

@@ -5,30 +5,29 @@ import {
   ChartNoAxesCombined,
   ChevronLeft,
   ChevronRight,
-  CirclePercent,
   FileUp,
   Goal,
-  Grid3X3,
   Image,
-  CandlestickChart,
   Keyboard,
   Menu,
   NotebookPen,
   Plus,
   Search,
   Settings,
-  Sparkles,
   TableProperties,
   Target,
 } from "lucide-react";
-import { useEffect, useRef } from "react";
+import { Suspense, useEffect, useRef } from "react";
 import { NavLink, Outlet, useLocation } from "react-router-dom";
-import { isTauri } from "../../services/commands";
+import { useQuery } from "@tanstack/react-query";
+import { api, isTauri } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import { Button } from "../ui/button";
 import { CommandPalette } from "./command-palette";
+import { MarketContextNavigation } from "./market-context-navigation";
 import { QuickTradeDialog } from "../../features/trades/quick-trade-dialog";
 import { GuidedTradeDialog } from "../../features/trades/guided-trade-dialog";
+import { PageLoading } from "../ui/loading";
 
 const journalNav = [
   { label: "Übersicht", path: "/", icon: BarChart3 },
@@ -40,14 +39,6 @@ const journalNav = [
   { label: "Fehleranalyse", path: "/mistakes", icon: Target },
   { label: "Medien", path: "/media", icon: Image },
   { label: "Ziele", path: "/goals", icon: Goal },
-];
-
-const macroNav = [
-  { label: "Live Chart", path: "/market", icon: CandlestickChart },
-  { label: "Macro Heatmap", path: "/macro", icon: Grid3X3 },
-  { label: "COT Analyse", path: "/cot", icon: ChartNoAxesCombined },
-  { label: "Seasonality", path: "/seasonality", icon: Sparkles },
-  { label: "Leitzinsen", path: "/rates", icon: CirclePercent },
 ];
 
 const dataNav = [
@@ -71,7 +62,7 @@ function NavGroup({
   items: typeof journalNav;
 }) {
   return (
-    <div className="nav-group">
+    <nav className="nav-group" aria-label={label}>
       <div className="nav-label">{label}</div>
       {items.map(({ label: itemLabel, path, icon: Icon }) => (
         <NavLink
@@ -85,7 +76,7 @@ function NavGroup({
           <span>{itemLabel}</span>
         </NavLink>
       ))}
-    </div>
+    </nav>
   );
 }
 
@@ -104,10 +95,13 @@ const titles: Record<string, string> = {
   "/media": "Medien",
   "/goals": "Ziele",
   "/macro": "Macro Heatmap",
-  "/market": "Live Chart",
+  "/regime-insights": "Regime Insights",
+  "/economic-data": "Wirtschaftsdaten",
+  "/economic-calendar": "Wirtschaftskalender",
   "/cot": "COT Analyse",
   "/seasonality": "Seasonality",
   "/rates": "Leitzinsen",
+  "/central-bank-reports": "Zentralbank-Briefings",
   "/put-call-ratio": "Put/Call Ratio",
   "/import-export": "Import & Export",
   "/settings": "Einstellungen",
@@ -115,6 +109,9 @@ const titles: Record<string, string> = {
 
 export function AppShell() {
   const location = useLocation();
+  const settings = useQuery({ queryKey: ["settings"], queryFn: api.settings });
+  const appearance = settings.data?.settings.appearance as
+    { density?: string } | undefined;
   const sidebarScrollRef = useRef<HTMLDivElement>(null);
   const { sidebarCollapsed, toggleSidebar, setCommandOpen, setQuickTradeOpen } =
     useUiStore();
@@ -136,6 +133,7 @@ export function AppShell() {
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    document.title = `${titles[location.pathname] ?? "Workspace"} · Personal Macro`;
     const activeItem =
       sidebarScrollRef.current?.querySelector(".nav-item.active");
     activeItem?.scrollIntoView({ block: "nearest", behavior: "smooth" });
@@ -143,7 +141,16 @@ export function AppShell() {
 
   const title = titles[location.pathname] ?? "Personal Macro";
   return (
-    <div className="app-shell">
+    <div
+      className="app-shell"
+      data-page={location.pathname.slice(1) || "dashboard"}
+      data-density={
+        appearance?.density === "comfortable" ? "comfortable" : "compact"
+      }
+    >
+      <a className="skip-link" href="#workspace-content">
+        Zum Seiteninhalt
+      </a>
       <aside className={`sidebar${sidebarCollapsed ? " is-collapsed" : ""}`}>
         <div className="brand">
           <img
@@ -169,9 +176,13 @@ export function AppShell() {
             <ChevronLeft size={13} />
           )}
         </button>
-        <div className="sidebar-scroll" ref={sidebarScrollRef}>
+        <div
+          className="sidebar-scroll"
+          id="workspace-navigation"
+          ref={sidebarScrollRef}
+        >
           <NavGroup label="Tradingjournal" items={journalNav} />
-          <NavGroup label="Marktkontext" items={macroNav} />
+          <MarketContextNavigation />
           <ResearchNavigation />
           <NavGroup label="Daten & System" items={dataNav} />
         </div>
@@ -180,11 +191,13 @@ export function AppShell() {
             className="storage-card"
             title={isTauri() ? "SQLite verbunden" : "Browser-Vorschaumodus"}
           >
-            <span className="storage-dot" />
+            <span className={`storage-dot${isTauri() ? "" : " preview"}`} />
             <div className="storage-copy">
               {isTauri() ? "Lokal verbunden" : "Browser-Vorschau"}
               <small>
-                {isTauri() ? "SQLite · Offline" : "localStorage · Testmodus"}
+                {isTauri()
+                  ? "Daten auf diesem Gerät"
+                  : "Im Browser gespeichert"}
               </small>
             </div>
           </div>
@@ -198,6 +211,8 @@ export function AppShell() {
               variant="ghost"
               onClick={toggleSidebar}
               aria-label="Menü"
+              aria-expanded={!sidebarCollapsed}
+              aria-controls="workspace-navigation"
             >
               <Menu size={17} />
             </Button>
@@ -216,12 +231,13 @@ export function AppShell() {
               onClick={() => setCommandOpen(true)}
               aria-label="Suchen oder Aktion starten, Ctrl K"
             >
-              <Search size={15} /> Suchen oder Aktion starten <kbd>Ctrl K</kbd>
+              <Search size={15} /> Suchen oder Aktion starten <kbd>Strg K</kbd>
             </button>
             <Button
               size="icon"
               variant="ghost"
               title="Tastaturbefehle"
+              aria-label="Tastaturbefehle"
               onClick={() => setCommandOpen(true)}
             >
               <Keyboard size={16} />
@@ -231,7 +247,17 @@ export function AppShell() {
             </Button>
           </div>
         </header>
-        <Outlet />
+        <div id="workspace-content" tabIndex={-1}>
+          <Suspense
+            fallback={
+              <div className="page">
+                <PageLoading />
+              </div>
+            }
+          >
+            <Outlet />
+          </Suspense>
+        </div>
       </main>
       <CommandPalette />
       <QuickTradeDialog />
