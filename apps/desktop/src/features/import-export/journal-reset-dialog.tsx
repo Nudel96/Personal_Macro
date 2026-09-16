@@ -102,7 +102,7 @@ export function JournalResetDialog() {
                 <div className="notice form-error">
                   <AlertTriangle size={15} /> Journal-Konten und alle davon
                   abhängigen Einträge werden gelöscht. Macro-, COT-, EODHD-,
-                  Zins-, Seasonality-, Markt- und Put/Call-Daten sowie
+                  Zins-, Seasonality- und historische Marktdaten sowie
                   Definitionen und Medienoriginale bleiben erhalten.
                 </div>
                 <label className="field" style={{ marginTop: 14 }}>

@@ -44,6 +44,7 @@ pub async fn fetch_events_for_currencies(
     to: DateTime<Utc>,
 ) -> Result<Vec<EconomicEvent>, AppError> {
     let client = Client::builder()
+        .tls_backend_rustls()
         .timeout(Duration::from_secs(30))
         .user_agent("PersonalMacro/1 eodhd-economic-events")
         .build()

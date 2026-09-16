@@ -1,0 +1,1827 @@
+{
+  "checkedAt": "2026-09-09T05:55:53.422961+00:00",
+  "source": {
+    "retrievedAt": "2026-09-09T05:46:48.283349800+00:00",
+    "fileModifiedAt": "Wed, 02 Sep 2026 07:35:59 GMT",
+    "url": "https://data.bis.org/static/bulk/WS_SPP_csv_flat.zip",
+    "sha256": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c",
+    "sourceRowCount": 35652,
+    "numericCellCount": 35652,
+    "areaCount": 61,
+    "recipe": "bis-spp-published-2010-index-yoy-v1"
+  },
+  "zipBytes": 304293,
+  "csvBytes": 6641237,
+  "cacheVersion": 9,
+  "verifiedNumericCells": 35652,
+  "verifiedMissingCells": 856,
+  "profileQuarterPoints": 9127,
+  "maximumNumericDifference": "0",
+  "geographyCount": 61,
+  "coverage": {
+    "bis:emerging_economies": {
+      "providerCode": "4T",
+      "providerLabel": "Emerging market economies (aggregate)",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:196": {
+      "providerCode": "CY",
+      "providerLabel": "Cyprus",
+      "metrics": {
+        "realChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:348": {
+      "providerCode": "HU",
+      "providerLabel": "Hungary",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 141,
+          "first": "1991-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 137,
+          "first": "1992-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 133,
+          "first": "1993-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 145,
+          "first": "1990-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:428": {
+      "providerCode": "LV",
+      "providerLabel": "Latvia",
+      "metrics": {
+        "realChange": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:703": {
+      "providerCode": "SK",
+      "providerLabel": "Slovakia",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:578": {
+      "providerCode": "NO",
+      "providerLabel": "Norway",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 133,
+          "first": "1993-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 133,
+          "first": "1993-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:826": {
+      "providerCode": "GB",
+      "providerLabel": "United Kingdom",
+      "metrics": {
+        "realChange": {
+          "quarters": 228,
+          "first": "1969-Q2",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 232,
+          "first": "1968-Q2",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 228,
+          "first": "1969-Q2",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 232,
+          "first": "1968-Q2",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:554": {
+      "providerCode": "NZ",
+      "providerLabel": "New Zealand",
+      "metrics": {
+        "realChange": {
+          "quarters": 252,
+          "first": "1963-Q2",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 256,
+          "first": "1962-Q2",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 252,
+          "first": "1963-Q2",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 256,
+          "first": "1962-Q2",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:356": {
+      "providerCode": "IN",
+      "providerLabel": "India",
+      "metrics": {
+        "real": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:643": {
+      "providerCode": "RU",
+      "providerLabel": "Russia",
+      "metrics": {
+        "real": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:208": {
+      "providerCode": "DK",
+      "providerLabel": "Denmark",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:470": {
+      "providerCode": "MT",
+      "providerLabel": "Malta",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:170": {
+      "providerCode": "CO",
+      "providerLabel": "Colombia",
+      "metrics": {
+        "real": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:191": {
+      "providerCode": "HR",
+      "providerLabel": "Croatia",
+      "metrics": {
+        "nominal": {
+          "quarters": 117,
+          "first": "1997-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 117,
+          "first": "1997-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:608": {
+      "providerCode": "PH",
+      "providerLabel": "Philippines",
+      "metrics": {
+        "nominal": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:056": {
+      "providerCode": "BE",
+      "providerLabel": "Belgium",
+      "metrics": {
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:616": {
+      "providerCode": "PL",
+      "providerLabel": "Poland",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 61,
+          "first": "2011-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 61,
+          "first": "2011-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:040": {
+      "providerCode": "AT",
+      "providerLabel": "Austria",
+      "metrics": {
+        "nominal": {
+          "quarters": 159,
+          "first": "1986-Q3",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 155,
+          "first": "1987-Q3",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 159,
+          "first": "1986-Q3",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 155,
+          "first": "1987-Q3",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:250": {
+      "providerCode": "FR",
+      "providerLabel": "France",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:705": {
+      "providerCode": "SI",
+      "providerLabel": "Slovenia",
+      "metrics": {
+        "nominal": {
+          "quarters": 76,
+          "first": "2007-Q1",
+          "last": "2025-Q4"
+        },
+        "nominalChange": {
+          "quarters": 72,
+          "first": "2008-Q1",
+          "last": "2025-Q4"
+        },
+        "real": {
+          "quarters": 76,
+          "first": "2007-Q1",
+          "last": "2025-Q4"
+        },
+        "realChange": {
+          "quarters": 72,
+          "first": "2008-Q1",
+          "last": "2025-Q4"
+        }
+      }
+    },
+    "m49:442": {
+      "providerCode": "LU",
+      "providerLabel": "Luxembourg",
+      "metrics": {
+        "real": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:203": {
+      "providerCode": "CZ",
+      "providerLabel": "Czechia",
+      "metrics": {
+        "nominal": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:076": {
+      "providerCode": "BR",
+      "providerLabel": "Brazil",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:504": {
+      "providerCode": "MA",
+      "providerLabel": "Morocco",
+      "metrics": {
+        "nominal": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:036": {
+      "providerCode": "AU",
+      "providerLabel": "Australia",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:300": {
+      "providerCode": "GR",
+      "providerLabel": "Greece",
+      "metrics": {
+        "realChange": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 117,
+          "first": "1997-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 117,
+          "first": "1997-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:752": {
+      "providerCode": "SE",
+      "providerLabel": "Sweden",
+      "metrics": {
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "bis:euro_area": {
+      "providerCode": "XM",
+      "providerLabel": "Euro area",
+      "metrics": {
+        "real": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 201,
+          "first": "1976-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 201,
+          "first": "1976-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:352": {
+      "providerCode": "IS",
+      "providerLabel": "Iceland",
+      "metrics": {
+        "realChange": {
+          "quarters": 177,
+          "first": "1982-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 181,
+          "first": "1981-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 177,
+          "first": "1982-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 181,
+          "first": "1981-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "bis:property_world": {
+      "providerCode": "XW",
+      "providerLabel": "World",
+      "metrics": {
+        "realChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:100": {
+      "providerCode": "BG",
+      "providerLabel": "Bulgaria",
+      "metrics": {
+        "nominal": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:528": {
+      "providerCode": "NL",
+      "providerLabel": "Netherlands",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:710": {
+      "providerCode": "ZA",
+      "providerLabel": "South Africa",
+      "metrics": {
+        "nominal": {
+          "quarters": 241,
+          "first": "1966-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 237,
+          "first": "1967-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 241,
+          "first": "1966-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 237,
+          "first": "1967-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:688": {
+      "providerCode": "RS",
+      "providerLabel": "Serbia",
+      "metrics": {
+        "real": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:376": {
+      "providerCode": "IL",
+      "providerLabel": "Israel",
+      "metrics": {
+        "real": {
+          "quarters": 129,
+          "first": "1994-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 125,
+          "first": "1995-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 129,
+          "first": "1994-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 125,
+          "first": "1995-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:807": {
+      "providerCode": "MK",
+      "providerLabel": "North Macedonia",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 101,
+          "first": "2001-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:276": {
+      "providerCode": "DE",
+      "providerLabel": "Germany",
+      "metrics": {
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:604": {
+      "providerCode": "PE",
+      "providerLabel": "Peru",
+      "metrics": {
+        "nominal": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:156": {
+      "providerCode": "CN",
+      "providerLabel": "China",
+      "metrics": {
+        "real": {
+          "quarters": 84,
+          "first": "2005-Q2",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 80,
+          "first": "2006-Q2",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 84,
+          "first": "2005-Q2",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 80,
+          "first": "2006-Q2",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:344": {
+      "providerCode": "HK",
+      "providerLabel": "Hong Kong SAR",
+      "metrics": {
+        "nominal": {
+          "quarters": 186,
+          "first": "1979-Q4",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 182,
+          "first": "1980-Q4",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 186,
+          "first": "1979-Q4",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 182,
+          "first": "1980-Q4",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:440": {
+      "providerCode": "LT",
+      "providerLabel": "Lithuania",
+      "metrics": {
+        "real": {
+          "quarters": 110,
+          "first": "1998-Q4",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 106,
+          "first": "1999-Q4",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 110,
+          "first": "1998-Q4",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 106,
+          "first": "1999-Q4",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "bis:advanced_economies": {
+      "providerCode": "5R",
+      "providerLabel": "Advanced economies",
+      "metrics": {
+        "nominal": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 74,
+          "first": "2007-Q4",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 70,
+          "first": "2008-Q4",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:702": {
+      "providerCode": "SG",
+      "providerLabel": "Singapore",
+      "metrics": {
+        "nominal": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 113,
+          "first": "1998-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:246": {
+      "providerCode": "FI",
+      "providerLabel": "Finland",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:380": {
+      "providerCode": "IT",
+      "providerLabel": "Italy",
+      "metrics": {
+        "nominal": {
+          "quarters": 397,
+          "first": "1927-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 393,
+          "first": "1928-Q1",
+          "last": "2026-Q1"
+        },
+        "real": {
+          "quarters": 317,
+          "first": "1947-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 313,
+          "first": "1948-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:840": {
+      "providerCode": "US",
+      "providerLabel": "United States",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:642": {
+      "providerCode": "RO",
+      "providerLabel": "Romania",
+      "metrics": {
+        "real": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:792": {
+      "providerCode": "TR",
+      "providerLabel": "Türkiye",
+      "metrics": {
+        "real": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 61,
+          "first": "2011-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 65,
+          "first": "2010-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 61,
+          "first": "2011-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:372": {
+      "providerCode": "IE",
+      "providerLabel": "Ireland",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:410": {
+      "providerCode": "KR",
+      "providerLabel": "Korea",
+      "metrics": {
+        "real": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 201,
+          "first": "1976-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 201,
+          "first": "1976-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:152": {
+      "providerCode": "CL",
+      "providerLabel": "Chile",
+      "metrics": {
+        "real": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:458": {
+      "providerCode": "MY",
+      "providerLabel": "Malaysia",
+      "metrics": {
+        "real": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:724": {
+      "providerCode": "ES",
+      "providerLabel": "Spain",
+      "metrics": {
+        "real": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 217,
+          "first": "1972-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 217,
+          "first": "1972-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:620": {
+      "providerCode": "PT",
+      "providerLabel": "Portugal",
+      "metrics": {
+        "real": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 149,
+          "first": "1989-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:360": {
+      "providerCode": "ID",
+      "providerLabel": "Indonesia",
+      "metrics": {
+        "real": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 97,
+          "first": "2002-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 93,
+          "first": "2003-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:764": {
+      "providerCode": "TH",
+      "providerLabel": "Thailand",
+      "metrics": {
+        "real": {
+          "quarters": 141,
+          "first": "1991-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 137,
+          "first": "1992-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 141,
+          "first": "1991-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 137,
+          "first": "1992-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:756": {
+      "providerCode": "CH",
+      "providerLabel": "Switzerland",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:392": {
+      "providerCode": "JP",
+      "providerLabel": "Japan",
+      "metrics": {
+        "real": {
+          "quarters": 284,
+          "first": "1955-Q1",
+          "last": "2025-Q4"
+        },
+        "realChange": {
+          "quarters": 280,
+          "first": "1956-Q1",
+          "last": "2025-Q4"
+        },
+        "nominal": {
+          "quarters": 284,
+          "first": "1955-Q1",
+          "last": "2025-Q4"
+        },
+        "nominalChange": {
+          "quarters": 280,
+          "first": "1956-Q1",
+          "last": "2025-Q4"
+        }
+      }
+    },
+    "m49:233": {
+      "providerCode": "EE",
+      "providerLabel": "Estonia",
+      "metrics": {
+        "real": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:484": {
+      "providerCode": "MX",
+      "providerLabel": "Mexico",
+      "metrics": {
+        "real": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    },
+    "m49:124": {
+      "providerCode": "CA",
+      "providerLabel": "Canada",
+      "metrics": {
+        "real": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "realChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "nominal": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "nominalChange": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      }
+    }
+  },
+  "native": {
+    "areas": [
+      {
+        "id": "bis:property_world",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:advanced_economies",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:emerging_economies",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:euro_area",
+        "quarters": 205,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 225,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 225,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:356",
+        "quarters": 69,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:156",
+        "quarters": 84,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 241,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:380",
+        "quarters": 397,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: inflationsbereinigte Wohnimmobilienpreise; Index · 2010 = 100. Lücken bleiben offen. Keine faire Bewertung.",
+    "identifier": "com.personal-macro.atlas-property-validation",
+    "ok": true,
+    "restart": true,
+    "runAt": "2026-09-09T05:55:19.581Z",
+    "source": {
+      "areaCount": 61,
+      "fileModifiedAt": "Wed, 02 Sep 2026 07:35:59 GMT",
+      "numericCellCount": 35652,
+      "recipe": "bis-spp-published-2010-index-yoy-v1",
+      "retrievedAt": "2026-09-09T05:46:48.283349800+00:00",
+      "sha256": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c",
+      "sourceRowCount": 35652,
+      "url": "https://data.bis.org/static/bulk/WS_SPP_csv_flat.zip"
+    }
+  },
+  "initialNative": {
+    "areas": [
+      {
+        "id": "bis:property_world",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:advanced_economies",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:emerging_economies",
+        "quarters": 74,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "bis:euro_area",
+        "quarters": 205,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 225,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 225,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:356",
+        "quarters": 69,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:156",
+        "quarters": 84,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 241,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      },
+      {
+        "id": "m49:380",
+        "quarters": 397,
+        "source": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: Wohnimmobilienpreise; Index · 2010 = 100. Lücken bleiben offen.",
+    "identifier": "com.personal-macro.atlas-property-validation",
+    "job": {
+      "finishedAt": "2026-09-09T05:46:48.699999200+00:00",
+      "id": "5942b33e-224f-4359-a3c4-8e780752e9fb",
+      "message": "Die BIS-Immobilienbilder sind lokal verfügbar.",
+      "observations": 35652,
+      "page": 2,
+      "pages": 2,
+      "seriesId": "bis-residential-property",
+      "startedAt": "2026-09-09T05:46:46.603063100+00:00",
+      "status": "complete"
+    },
+    "jobId": "5942b33e-224f-4359-a3c4-8e780752e9fb",
+    "ok": true,
+    "restart": false,
+    "runAt": "2026-09-09T05:46:46.451Z",
+    "source": {
+      "areaCount": 61,
+      "fileModifiedAt": "Wed, 02 Sep 2026 07:35:59 GMT",
+      "numericCellCount": 35652,
+      "recipe": "bis-spp-published-2010-index-yoy-v1",
+      "retrievedAt": "2026-09-09T05:46:48.283349800+00:00",
+      "sha256": "abb772d3424448666243c80f48ec043eb3c34d417c6b6bdd4535ea05c3ea380c",
+      "sourceRowCount": 35652,
+      "url": "https://data.bis.org/static/bulk/WS_SPP_csv_flat.zip"
+    }
+  },
+  "validation": {
+    "checkedAt": "2026-09-09T05:56:52.457008+00:00",
+    "typecheck": "passed",
+    "frontend": {
+      "scope": "all world-atlas tests",
+      "passed": 120,
+      "files": 20
+    },
+    "rustLibrary": {
+      "passed": 215,
+      "ignoredExternalOrManual": 17
+    },
+    "propertyDeterministicRustTests": {
+      "passed": 4
+    },
+    "propertyLiveHttpTest": "explicitly executed and passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "rustfmtCheck": "passed",
+    "eslintChangedAtlasScope": "passed",
+    "prettierChangedAtlasScope": "passed",
+    "productionBuild": "passed; existing large shared/chart/export chunks remain",
+    "nativeStartup": "passed in the explicitly isolated property-validation profile",
+    "nativeRestart": {
+      "passed": true,
+      "runAt": "2026-09-09T05:55:19.581Z",
+      "reusedCachedProvenance": true,
+      "repeatPropertyDownload": false,
+      "verifiedReturnedProfiles": 10
+    },
+    "independentSourceAudit": "all 35,652 numeric and 856 missing cells verified; maximum numeric difference zero",
+    "picture": {
+      "origin": "real Tauri WebView after process restart",
+      "width": 960,
+      "height": 758,
+      "priceBasisExplicit": true
+    },
+    "browserReview": {
+      "source": "actual public native responses; no simulated download",
+      "geographies": [
+        "Germany/United States",
+        "India/China",
+        "Italy",
+        "South Africa",
+        "BIS property world aggregate"
+      ],
+      "checks": [
+        "real and nominal indices",
+        "published year-on-year changes",
+        "linear/logarithmic index selection",
+        "different historical starting quarters",
+        "optional numbers and source table",
+        "missing comparison preserves main chart",
+        "coverage card opens the chosen area",
+        "BIS aggregate coverage caveat"
+      ],
+      "minimumUsableWidth": 1024,
+      "wideWindowWidth": 1440,
+      "horizontalOverflow": false,
+      "consoleWarningsOrErrors": [],
+      "harnessAdjustment": "Retain seeded public snapshots with gcTime Infinity during extended browser QA; no product code change."
+    },
+    "knownBackgroundWarnings": [
+      "EODHD_SEASONALITY_PROVIDER_ERROR: pre-existing automatic Technicals intraday entitlement failure",
+      "Pre-existing central-bank report update already-running conflict on restart"
+    ],
+    "newAtlasInitializationWarnings": [],
+    "remaining": "Complete native click regression and remaining overall Atlas requirements are not claimed complete."
+  }
+}

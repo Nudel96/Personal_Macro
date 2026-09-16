@@ -1,6 +1,7 @@
 use std::{collections::HashMap, str::FromStr};
 
-use chrono::{DateTime, Datelike, Duration, Months, Utc};
+use chrono::{DateTime, Datelike, Duration, FixedOffset, Months, NaiveDate, TimeZone, Utc};
+use chrono_tz::Tz;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -444,6 +445,7 @@ pub struct EodhdIndicatorHistoryPoint {
 pub struct EconomicCalendarInput {
     pub range: String,
     pub timezone_offset_minutes: i32,
+    pub timezone: Option<String>,
 }
 
 #[derive(Debug, Clone, Serialize)]
@@ -866,21 +868,61 @@ async fn recover_stale_sync_runs(state: &AppState, now: DateTime<Utc>) -> Result
     Ok(result.rows_affected())
 }
 
-async fn load_economic_calendar_at(
-    state: &AppState,
-    input: EconomicCalendarInput,
+fn economic_calendar_bounds(
+    input: &EconomicCalendarInput,
     now: DateTime<Utc>,
-) -> Result<EconomicCalendarResponse, AppError> {
+) -> Result<(DateTime<Utc>, DateTime<Utc>), AppError> {
     if !(-840..=840).contains(&input.timezone_offset_minutes) {
         return Err(AppError::Validation(
             "Die lokale Zeitzone des Wirtschaftskalenders ist ungültig.".into(),
         ));
     }
-    let local_now = now - Duration::minutes(i64::from(input.timezone_offset_minutes));
-    let local_date = local_now.date_naive();
+    let offset = FixedOffset::west_opt(input.timezone_offset_minutes * 60)
+        .expect("der Zeitzonenoffset wurde geprüft");
+    let timezone: Option<Tz> = input
+        .timezone
+        .as_deref()
+        .map(str::parse)
+        .transpose()
+        .map_err(|_| {
+            AppError::Validation(
+                "Die lokale Zeitzone des Wirtschaftskalenders ist ungültig.".into(),
+            )
+        })?;
+    let local_date = timezone.map_or_else(
+        || now.with_timezone(&offset).date_naive(),
+        |timezone| now.with_timezone(&timezone).date_naive(),
+    );
+    let midnight = |date: NaiveDate| -> Result<DateTime<Utc>, AppError> {
+        let local = date
+            .and_hms_opt(0, 0, 0)
+            .expect("Mitternacht ist immer gültig");
+        // Resolve each boundary separately: a week containing a clock change
+        // can have 167 or 169 hours in the user's local timezone.
+        timezone
+            .map_or_else(
+                || {
+                    offset
+                        .from_local_datetime(&local)
+                        .earliest()
+                        .map(|date| date.with_timezone(&Utc))
+                },
+                |timezone| {
+                    timezone
+                        .from_local_datetime(&local)
+                        .earliest()
+                        .map(|date| date.with_timezone(&Utc))
+                },
+            )
+            .ok_or_else(|| {
+                AppError::Validation(
+                    "Der Tagesbeginn ist in der lokalen Zeitzone nicht verfügbar.".into(),
+                )
+            })
+    };
     let local_start = match input.range.as_str() {
         "today" => local_date,
-        "week" => {
+        "currentWeek" | "week" => {
             local_date - Duration::days(i64::from(local_date.weekday().num_days_from_monday()))
         }
         "month" => local_date
@@ -893,38 +935,49 @@ async fn load_economic_calendar_at(
             ));
         }
     };
-    let history = matches!(input.range.as_str(), "today" | "week" | "month");
-    let from = if history {
-        DateTime::<Utc>::from_naive_utc_and_offset(
-            local_start
-                .and_hms_opt(0, 0, 0)
-                .expect("Mitternacht ist immer gültig")
-                + Duration::minutes(i64::from(input.timezone_offset_minutes)),
-            Utc,
-        )
-    } else {
+    let from = if input.range.starts_with("future") {
         now
+    } else {
+        midnight(local_start)?
     };
     let to = match input.range.as_str() {
+        "currentWeek" => midnight(local_start + Duration::days(7))?,
         "future7" => now + Duration::days(7),
         "future30" => now + Duration::days(30),
         "future90" => now + Duration::days(90),
         _ => now,
     };
-    let rows: Vec<EconomicCalendarRow> = sqlx::query_as(
+    Ok((from, to))
+}
+
+async fn load_economic_calendar_at(
+    state: &AppState,
+    input: EconomicCalendarInput,
+    now: DateTime<Utc>,
+) -> Result<EconomicCalendarResponse, AppError> {
+    let (from, to) = economic_calendar_bounds(&input, now)?;
+    // The next Monday belongs to the next week. History still includes releases
+    // exactly at 'now', and the existing forward ranges retain their end date.
+    let end_operator = if input.range == "currentWeek" {
+        "<"
+    } else {
+        "<="
+    };
+    let query = format!(
         "SELECT e.id,e.country,e.currency,e.provider_type,e.canonical_key,e.comparison,e.period,
                 e.released_at,e.actual_value,e.forecast_value,e.previous_value,e.frequency,e.mapping_status,
                 e.source_url,p.factor
          FROM eodhd_events e
          LEFT JOIN eodhd_indicator_profiles p
            ON p.currency=e.currency AND p.canonical_key=e.canonical_key
-         WHERE e.released_at>=? AND e.released_at<=?
+         WHERE e.released_at>=? AND e.released_at{end_operator}?
          ORDER BY e.released_at,e.currency,e.provider_type",
-    )
-    .bind(from.to_rfc3339())
-    .bind(to.to_rfc3339())
-    .fetch_all(&state.db)
-    .await?;
+    );
+    let rows: Vec<EconomicCalendarRow> = sqlx::query_as(&query)
+        .bind(from.to_rfc3339())
+        .bind(to.to_rfc3339())
+        .fetch_all(&state.db)
+        .await?;
 
     let events = rows
         .into_iter()
@@ -2759,6 +2812,7 @@ mod tests {
             EconomicCalendarInput {
                 range: "future30".into(),
                 timezone_offset_minutes: 0,
+                timezone: None,
             },
             DateTime::parse_from_rfc3339("2026-08-16T00:00:00Z")
                 .unwrap()
@@ -2811,6 +2865,7 @@ mod tests {
             EconomicCalendarInput {
                 range: "month".into(),
                 timezone_offset_minutes: 0,
+                timezone: None,
             },
             DateTime::parse_from_rfc3339("2026-08-16T00:00:00Z")
                 .unwrap()
@@ -2824,6 +2879,166 @@ mod tests {
         assert_eq!(calendar.events[0].actual_text.as_deref(), Some("0.4"));
         assert_eq!(calendar.from, "2026-08-01T00:00:00+00:00");
         assert_eq!(calendar.to, "2026-08-16T00:00:00+00:00");
+    }
+
+    #[tokio::test]
+    async fn economic_calendar_current_week_includes_elapsed_and_upcoming_releases_only() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        let events: Vec<_> = [
+            ("2026-09-06 21:59:59", Some(0.1)), // Previous Sunday in Berlin.
+            ("2026-09-06 22:00:00", Some(0.4)), // Monday, exactly midnight.
+            ("2026-09-09 12:30:00", None),      // Elapsed, but no Actual yet.
+            ("2026-09-10 10:00:00", Some(0.5)), // Exactly now.
+            ("2026-09-11 12:30:00", None),
+            ("2026-09-13 21:59:59", None), // Last second of this Sunday.
+            ("2026-09-13 22:00:00", None), // Next Monday: excluded.
+        ]
+        .into_iter()
+        .map(|(date, actual)| eodhd::EconomicEvent {
+            event_type: "Retail Sales".into(),
+            comparison: Some("MoM".into()),
+            period: Some("Aug 2026".into()),
+            country: Some("US".into()),
+            date: date.into(),
+            actual: actual.map(|value| serde_json::json!(value)),
+            previous: Some(serde_json::json!(0.2)),
+            estimate: Some(serde_json::json!(0.3)),
+        })
+        .collect();
+        ingest_events(&state, &events).await.unwrap();
+
+        let now = DateTime::parse_from_rfc3339("2026-09-10T10:00:00Z")
+            .unwrap()
+            .with_timezone(&Utc);
+        let mut input = EconomicCalendarInput {
+            range: "currentWeek".into(),
+            timezone_offset_minutes: -120,
+            timezone: Some("Europe/Berlin".into()),
+        };
+        let calendar = load_economic_calendar_at(&state, input.clone(), now)
+            .await
+            .unwrap();
+        assert_eq!(calendar.from, "2026-09-06T22:00:00+00:00");
+        assert_eq!(calendar.to, "2026-09-13T22:00:00+00:00");
+        assert_eq!(calendar.events.len(), 5);
+        assert_eq!(calendar.events[0].scheduled_at, calendar.from);
+        assert_eq!(calendar.events[0].actual_text.as_deref(), Some("0.4"));
+        assert_eq!(calendar.events[0].forecast_text.as_deref(), Some("0.3"));
+        assert_eq!(calendar.events[0].previous_text.as_deref(), Some("0.2"));
+        assert!(calendar.events[1].actual_text.is_none());
+        assert_eq!(calendar.events[2].scheduled_at, now.to_rfc3339());
+        assert_eq!(calendar.events[4].scheduled_at, "2026-09-13T21:59:59+00:00");
+
+        input.range = "week".into();
+        let history = load_economic_calendar_at(&state, input, now).await.unwrap();
+        assert_eq!(history.events.len(), 3);
+        assert_eq!(history.from, calendar.from);
+        assert_eq!(history.to, now.to_rfc3339());
+    }
+
+    #[test]
+    fn economic_calendar_week_bounds_follow_local_mondays_and_clock_changes() {
+        for (timezone, now, from, to, hours) in [
+            (
+                "Europe/Berlin",
+                "2026-09-10T10:00:00Z",
+                "2026-09-06T22:00:00Z",
+                "2026-09-13T22:00:00Z",
+                168,
+            ),
+            (
+                "Europe/Berlin",
+                "2026-09-13T21:59:59Z",
+                "2026-09-06T22:00:00Z",
+                "2026-09-13T22:00:00Z",
+                168,
+            ),
+            (
+                "Europe/Berlin",
+                "2026-09-13T22:00:00Z",
+                "2026-09-13T22:00:00Z",
+                "2026-09-20T22:00:00Z",
+                168,
+            ),
+            (
+                "America/New_York",
+                "2026-09-07T02:00:00Z",
+                "2026-08-31T04:00:00Z",
+                "2026-09-07T04:00:00Z",
+                168,
+            ),
+            (
+                "Pacific/Kiritimati",
+                "2026-09-06T12:00:00Z",
+                "2026-09-06T10:00:00Z",
+                "2026-09-13T10:00:00Z",
+                168,
+            ),
+            (
+                "Europe/Berlin",
+                "2027-01-01T12:00:00Z",
+                "2026-12-27T23:00:00Z",
+                "2027-01-03T23:00:00Z",
+                168,
+            ),
+            (
+                "Europe/Berlin",
+                "2026-03-29T12:00:00Z",
+                "2026-03-22T23:00:00Z",
+                "2026-03-29T22:00:00Z",
+                167,
+            ),
+            (
+                "Europe/Berlin",
+                "2026-10-25T12:00:00Z",
+                "2026-10-18T22:00:00Z",
+                "2026-10-25T23:00:00Z",
+                169,
+            ),
+        ] {
+            let input = EconomicCalendarInput {
+                range: "currentWeek".into(),
+                timezone_offset_minutes: 0,
+                timezone: Some(timezone.into()),
+            };
+            let (actual_from, actual_to) = economic_calendar_bounds(
+                &input,
+                DateTime::parse_from_rfc3339(now)
+                    .unwrap()
+                    .with_timezone(&Utc),
+            )
+            .unwrap();
+            assert_eq!(
+                actual_from,
+                DateTime::parse_from_rfc3339(from).unwrap(),
+                "{timezone}: {now}"
+            );
+            assert_eq!(
+                actual_to,
+                DateTime::parse_from_rfc3339(to).unwrap(),
+                "{timezone}: {now}"
+            );
+            assert_eq!((actual_to - actual_from).num_hours(), hours);
+        }
+    }
+
+    #[test]
+    fn economic_calendar_supports_offset_only_clients_and_validates_timezones() {
+        let now = DateTime::parse_from_rfc3339("2026-09-10T10:00:00Z")
+            .unwrap()
+            .with_timezone(&Utc);
+        let mut input: EconomicCalendarInput = serde_json::from_value(serde_json::json!({
+            "range": "currentWeek", "timezoneOffsetMinutes": -330
+        }))
+        .unwrap();
+        let (from, to) = economic_calendar_bounds(&input, now).unwrap();
+        assert_eq!(from.to_rfc3339(), "2026-09-06T18:30:00+00:00");
+        assert_eq!(to.to_rfc3339(), "2026-09-13T18:30:00+00:00");
+        input.timezone = Some("Invalid/Timezone".into());
+        assert!(economic_calendar_bounds(&input, now).is_err());
+        input.timezone = None;
+        input.timezone_offset_minutes = 841;
+        assert!(economic_calendar_bounds(&input, now).is_err());
     }
 
     #[tokio::test]
@@ -2884,6 +3099,7 @@ mod tests {
             EconomicCalendarInput {
                 range: "year".into(),
                 timezone_offset_minutes: 0,
+                timezone: None,
             },
             Utc::now(),
         )

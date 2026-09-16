@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-economic-contexts-20260909",
+  "firstRun": "2026-09-09T10:44:17.719Z",
+  "restartRun": "2026-09-09T10:47:01.080Z",
+  "nativeStatistics": 14,
+  "nativeRepliesPerRun": 126,
+  "commandCellsCompared": 16578,
+  "downloadedNumericObservations": 80438,
+  "noRestartDownload": true,
+  "pngBytes": 96115,
+  "pngSha256": "6313acd72d83290971c2529853df510b0cc314b2094c9f3e05bcee06129d7f1b",
+  "limits": [
+    "An isolated Tauri harness exercised the real command facade and original React views.",
+    "Two processes were used; this script verifies their persisted results, not OS process history.",
+    "Browser CUA checking supplements this evidence; native-window interaction remains unverified.",
+    "Existing Technicals and central-bank background warnings occurred outside the Atlas."
+  ]
+}

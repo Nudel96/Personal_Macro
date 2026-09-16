@@ -1,0 +1,1092 @@
+[
+  {
+    "sourceId": "eurostat-business-services",
+    "file": "eurostat-business-services.json",
+    "dataset": "sbs_ovw_act",
+    "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sbs_ovw_act?lang=en&nace_r2=M&nace_r2=S96&indic_sbs=EMP_NR&indic_sbs=ENT_NR",
+    "label": "Enterprises by detailed NACE Rev. 2 activity and special aggregates",
+    "updated": "2026-09-01T23:00:00+0200",
+    "dimensions": {
+      "freq": {
+        "label": "Time frequency",
+        "category": {
+          "index": {
+            "A": 0
+          },
+          "label": {
+            "A": "Annual"
+          }
+        }
+      },
+      "nace_r2": {
+        "label": "Statistical classification of economic activities in the European Community (NACE Rev. 2)",
+        "category": {
+          "index": {
+            "M": 0,
+            "S96": 1
+          },
+          "label": {
+            "M": "Professional, scientific and technical activities",
+            "S96": "Other personal service activities"
+          }
+        }
+      },
+      "indic_sbs": {
+        "label": "Economic indicator for structural business statistics",
+        "category": {
+          "index": {
+            "ENT_NR": 0,
+            "EMP_NR": 1
+          },
+          "label": {
+            "ENT_NR": "Enterprises - number",
+            "EMP_NR": "Persons employed - number"
+          }
+        }
+      },
+      "geo": {
+        "label": "Geopolitical entity (reporting)",
+        "category": {
+          "index": {
+            "EU27_2020": 0,
+            "BE": 1,
+            "BG": 2,
+            "CZ": 3,
+            "DK": 4,
+            "DE": 5,
+            "EE": 6,
+            "IE": 7,
+            "EL": 8,
+            "ES": 9,
+            "FR": 10,
+            "HR": 11,
+            "IT": 12,
+            "CY": 13,
+            "LV": 14,
+            "LT": 15,
+            "LU": 16,
+            "HU": 17,
+            "MT": 18,
+            "NL": 19,
+            "AT": 20,
+            "PL": 21,
+            "PT": 22,
+            "RO": 23,
+            "SI": 24,
+            "SK": 25,
+            "FI": 26,
+            "SE": 27,
+            "IS": 28,
+            "NO": 29,
+            "CH": 30,
+            "BA": 31,
+            "ME": 32,
+            "MK": 33,
+            "AL": 34,
+            "RS": 35
+          },
+          "label": {
+            "EU27_2020": "European Union - 27 countries (from 2020)",
+            "BE": "Belgium",
+            "BG": "Bulgaria",
+            "CZ": "Czechia",
+            "DK": "Denmark",
+            "DE": "Germany",
+            "EE": "Estonia",
+            "IE": "Ireland",
+            "EL": "Greece",
+            "ES": "Spain",
+            "FR": "France",
+            "HR": "Croatia",
+            "IT": "Italy",
+            "CY": "Cyprus",
+            "LV": "Latvia",
+            "LT": "Lithuania",
+            "LU": "Luxembourg",
+            "HU": "Hungary",
+            "MT": "Malta",
+            "NL": "Netherlands",
+            "AT": "Austria",
+            "PL": "Poland",
+            "PT": "Portugal",
+            "RO": "Romania",
+            "SI": "Slovenia",
+            "SK": "Slovakia",
+            "FI": "Finland",
+            "SE": "Sweden",
+            "IS": "Iceland",
+            "NO": "Norway",
+            "CH": "Switzerland",
+            "BA": "Bosnia and Herzegovina",
+            "ME": "Montenegro",
+            "MK": "North Macedonia",
+            "AL": "Albania",
+            "RS": "Serbia"
+          }
+        }
+      },
+      "time": {
+        "label": "Time",
+        "category": {
+          "index": {
+            "2021": 0,
+            "2022": 1,
+            "2023": 2,
+            "2024": 3
+          },
+          "label": {
+            "2021": "2021",
+            "2022": "2022",
+            "2023": "2023",
+            "2024": "2024"
+          }
+        }
+      }
+    },
+    "ids": ["freq", "nace_r2", "indic_sbs", "geo", "time"],
+    "sizes": [1, 2, 2, 36, 4],
+    "flagLabels": {
+      "p": "provisional",
+      "e": "estimated",
+      "b": "break in time series",
+      "|C": "|confidential"
+    },
+    "excludedAreas": [],
+    "indicatorDimension": "indic_sbs",
+    "firstYear": 2021,
+    "lastYear": 2024,
+    "areas": [
+      {
+        "code": "AL",
+        "label": "Albania",
+        "geographyId": "m49:008",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "AT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "BA",
+        "label": "Bosnia and Herzegovina",
+        "geographyId": "m49:070",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "BE",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "BG",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "CH",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "CY",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "CZ",
+        "label": "Czechia",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "DE",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "DK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "EE",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "EL",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "ES",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "EU27_2020",
+        "label": "European Union - 27 countries (from 2020)",
+        "geographyId": "eurostat:eu27_2020",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "FI",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "FR",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "HR",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "HU",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "IE",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "IS",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "IT",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "LT",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "LU",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "LV",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "ME",
+        "label": "Montenegro",
+        "geographyId": "m49:499",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "MK",
+        "label": "North Macedonia",
+        "geographyId": "m49:807",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "MT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "NL",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "NO",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "PL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "PT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "RO",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "RS",
+        "label": "Serbia",
+        "geographyId": "m49:688",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "SE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "SI",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      },
+      {
+        "code": "SK",
+        "label": "Slovakia",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "M/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Persons employed - number",
+          "M/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Professional, scientific and technical activities | Enterprises - number",
+          "S96/EMP_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Persons employed - number",
+          "S96/ENT_NR": "Enterprises by detailed NACE Rev. 2 activity and special aggregates | Other personal service activities | Enterprises - number"
+        }
+      }
+    ],
+    "metricIds": [
+      "eurostat-business-services:M_ENT_NR",
+      "eurostat-business-services:M_EMP_NR",
+      "eurostat-business-services:S96_ENT_NR",
+      "eurostat-business-services:S96_EMP_NR"
+    ],
+    "expectedProfiles": 142
+  },
+  {
+    "sourceId": "eurostat-professional-history",
+    "file": "eurostat-professional-history.json",
+    "dataset": "sbs_na_1a_se_r2",
+    "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sbs_na_1a_se_r2?lang=en&nace_r2=M&indic_sb=V11110&indic_sb=V16110",
+    "label": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020)",
+    "updated": "2024-03-01T23:00:00+0100",
+    "dimensions": {
+      "freq": {
+        "label": "Time frequency",
+        "category": {
+          "index": {
+            "A": 0
+          },
+          "label": {
+            "A": "Annual"
+          }
+        }
+      },
+      "nace_r2": {
+        "label": "Statistical classification of economic activities in the European Community (NACE Rev. 2)",
+        "category": {
+          "index": {
+            "M": 0
+          },
+          "label": {
+            "M": "Professional, scientific and technical activities"
+          }
+        }
+      },
+      "indic_sb": {
+        "label": "Economical indicator for structural business statistics",
+        "category": {
+          "index": {
+            "V11110": 0,
+            "V16110": 1
+          },
+          "label": {
+            "V11110": "Enterprises - number",
+            "V16110": "Persons employed - number"
+          }
+        }
+      },
+      "geo": {
+        "label": "Geopolitical entity (reporting)",
+        "category": {
+          "index": {
+            "EU27_2020": 0,
+            "EU28": 1,
+            "EU27_2007": 2,
+            "BE": 3,
+            "BG": 4,
+            "CZ": 5,
+            "DK": 6,
+            "DE": 7,
+            "EE": 8,
+            "IE": 9,
+            "EL": 10,
+            "ES": 11,
+            "FR": 12,
+            "HR": 13,
+            "IT": 14,
+            "CY": 15,
+            "LV": 16,
+            "LT": 17,
+            "LU": 18,
+            "HU": 19,
+            "MT": 20,
+            "NL": 21,
+            "AT": 22,
+            "PL": 23,
+            "PT": 24,
+            "RO": 25,
+            "SI": 26,
+            "SK": 27,
+            "FI": 28,
+            "SE": 29,
+            "IS": 30,
+            "NO": 31,
+            "CH": 32,
+            "UK": 33,
+            "BA": 34,
+            "MK": 35,
+            "AL": 36,
+            "RS": 37,
+            "TR": 38
+          },
+          "label": {
+            "EU27_2020": "European Union - 27 countries (from 2020)",
+            "EU28": "European Union - 28 countries (2013-2020)",
+            "EU27_2007": "European Union - 27 countries (2007-2013)",
+            "BE": "Belgium",
+            "BG": "Bulgaria",
+            "CZ": "Czechia",
+            "DK": "Denmark",
+            "DE": "Germany",
+            "EE": "Estonia",
+            "IE": "Ireland",
+            "EL": "Greece",
+            "ES": "Spain",
+            "FR": "France",
+            "HR": "Croatia",
+            "IT": "Italy",
+            "CY": "Cyprus",
+            "LV": "Latvia",
+            "LT": "Lithuania",
+            "LU": "Luxembourg",
+            "HU": "Hungary",
+            "MT": "Malta",
+            "NL": "Netherlands",
+            "AT": "Austria",
+            "PL": "Poland",
+            "PT": "Portugal",
+            "RO": "Romania",
+            "SI": "Slovenia",
+            "SK": "Slovakia",
+            "FI": "Finland",
+            "SE": "Sweden",
+            "IS": "Iceland",
+            "NO": "Norway",
+            "CH": "Switzerland",
+            "UK": "United Kingdom",
+            "BA": "Bosnia and Herzegovina",
+            "MK": "North Macedonia",
+            "AL": "Albania",
+            "RS": "Serbia",
+            "TR": "Türkiye"
+          }
+        }
+      },
+      "time": {
+        "label": "Time",
+        "category": {
+          "index": {
+            "2005": 0,
+            "2006": 1,
+            "2007": 2,
+            "2008": 3,
+            "2009": 4,
+            "2010": 5,
+            "2011": 6,
+            "2012": 7,
+            "2013": 8,
+            "2014": 9,
+            "2015": 10,
+            "2016": 11,
+            "2017": 12,
+            "2018": 13,
+            "2019": 14,
+            "2020": 15
+          },
+          "label": {
+            "2005": "2005",
+            "2006": "2006",
+            "2007": "2007",
+            "2008": "2008",
+            "2009": "2009",
+            "2010": "2010",
+            "2011": "2011",
+            "2012": "2012",
+            "2013": "2013",
+            "2014": "2014",
+            "2015": "2015",
+            "2016": "2016",
+            "2017": "2017",
+            "2018": "2018",
+            "2019": "2019",
+            "2020": "2020"
+          }
+        }
+      }
+    },
+    "ids": ["freq", "nace_r2", "indic_sb", "geo", "time"],
+    "sizes": [1, 1, 2, 39, 16],
+    "flagLabels": {
+      "d": "definition differs (see metadata)",
+      "b": "break in time series",
+      "p": "provisional",
+      "|C": "|confidential",
+      "e": "estimated",
+      "bd": "break in time series, definition differs (see metadata)",
+      "de": "definition differs (see metadata), estimated",
+      "u": "low reliability",
+      "be": "break in time series, estimated"
+    },
+    "excludedAreas": ["EU27_2007", "EU28"],
+    "indicatorDimension": "indic_sb",
+    "firstYear": 2005,
+    "lastYear": 2020,
+    "areas": [
+      {
+        "code": "AL",
+        "label": "Albania",
+        "geographyId": "m49:008",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "AT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "BA",
+        "label": "Bosnia and Herzegovina",
+        "geographyId": "m49:070",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "BE",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "BG",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "CH",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "CY",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "CZ",
+        "label": "Czechia",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "DE",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "DK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "EE",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "EL",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "ES",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "EU27_2020",
+        "label": "European Union - 27 countries (from 2020)",
+        "geographyId": "eurostat:eu27_2020",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "FI",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "FR",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "HR",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "HU",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "IE",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "IS",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "IT",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "LT",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "LU",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "LV",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "MK",
+        "label": "North Macedonia",
+        "geographyId": "m49:807",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "MT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "NL",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "NO",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "PL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "PT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "RO",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "RS",
+        "label": "Serbia",
+        "geographyId": "m49:688",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "SE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "SI",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "SK",
+        "label": "Slovakia",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "TR",
+        "label": "Türkiye",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      },
+      {
+        "code": "UK",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "M/V11110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Enterprises - number",
+          "M/V16110": "Annual detailed enterprise statistics for services (NACE Rev. 2 H-N and S95) (2005-2020) | Professional, scientific and technical activities | Persons employed - number"
+        }
+      }
+    ],
+    "metricIds": [
+      "eurostat-professional-history:M_V11110",
+      "eurostat-professional-history:M_V16110"
+    ],
+    "expectedProfiles": 74
+  }
+]

@@ -1,0 +1,135 @@
+{
+  "reviewedOn": "2026-09-09",
+  "linkVersion": "2026-09-09.2",
+  "linkSha256": "19e6c7bd9ae0d12f18cfcff67e4b9a90b44a3bf8490b695e1d7fd1fb9b2cf8ec",
+  "classificationSource": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/databreakdown.html",
+  "industrySource": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/pbvdata.html",
+  "classification": "Editorial navigation over separate NYU industries; no aggregate valuation or GICS classification.",
+  "topicCount": 47,
+  "distinctIndustryCount": 90,
+  "topicIndustryLinks": 169,
+  "sourceIdentityChecks": [
+    {
+      "datasetId": "pe-us",
+      "fileName": "pedata.xls",
+      "publicationYear": 2026,
+      "sha256": "e9b839c046a8ff2786d81faedc603cd91d7c6d8b2bad9f895d821e2d6bd1e04f",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-europe",
+      "fileName": "peEurope.xls",
+      "publicationYear": 2026,
+      "sha256": "547de2d52bf3606734bca8bce34e3d26380461699c80173efca6904a650f955e",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-japan",
+      "fileName": "peJapan.xls",
+      "publicationYear": 2026,
+      "sha256": "3e284d1188ecf4a01c0997396506d1e7948ebb8eadceabf4969660cde5f8342b",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-emerging",
+      "fileName": "peemerg.xls",
+      "publicationYear": 2026,
+      "sha256": "6e6e9b505272ca1896550ccde9e1a5321c0272bc3c19c3766ce2c6dd5a32238e",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-china",
+      "fileName": "peChina.xls",
+      "publicationYear": 2025,
+      "sha256": "01ab0fe2c5c466d125e0a8ab22b10e4181f399520ef6fcd7c11aa7fe7ec4cdcd",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-india",
+      "fileName": "peIndia.xls",
+      "publicationYear": 2026,
+      "sha256": "e363c3fefb9bc3d225239d5823c18b09586bd91264151c3442d380bbcbbc21f4",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pe-global",
+      "fileName": "peGlobal.xls",
+      "publicationYear": 2026,
+      "sha256": "762439484f797df8571cce9f5d529a6ab60e40d873cd91801aecdca0bd8276b3",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-us",
+      "fileName": "pbvdata.xls",
+      "publicationYear": 2026,
+      "sha256": "e46e0a6e7fb77c7e9df2cce2a887a032ee6a2977b690fd54365b6068a2eaf4a9",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-europe",
+      "fileName": "pbvEurope.xls",
+      "publicationYear": 2026,
+      "sha256": "dfecae929a6a96e187837ff95b9d1c334933cd339e4267d17fbe304bcf6add05",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-japan",
+      "fileName": "pbvJapan.xls",
+      "publicationYear": 2026,
+      "sha256": "479ef9a21c7b6b2a9e4d8458fb9cede6cdb810cbdd0210f3ba1b84eb3037e06f",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-rest",
+      "fileName": "pbvRest.xls",
+      "publicationYear": 2026,
+      "sha256": "cc8e371c59f71125afbb848f0b7aca16f8f50e5628c5ff82a25f38b8aa1e4d45",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-emerging",
+      "fileName": "pbvemerg.xls",
+      "publicationYear": 2026,
+      "sha256": "ed638bc5f2dd16749fda9021f16c0086fcf21c84a27fc1c16c7c2a7126a5750c",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-china",
+      "fileName": "pbvChina.xls",
+      "publicationYear": 2026,
+      "sha256": "f6b8eae69eb2f0d7447c0c25b864e1cd7c705c8ff1e31f70b4aa46bacebc5890",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-india",
+      "fileName": "pbvIndia.xls",
+      "publicationYear": 2026,
+      "sha256": "1944f8604552632a2e2470ba36f109e7e3d2ecc7e6d9da2aaf5793c7b004d615",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    },
+    {
+      "datasetId": "pbv-global",
+      "fileName": "pbvGlobal.xls",
+      "publicationYear": 2026,
+      "sha256": "1997ab5e96556f1c974289e5809babd6fe17bab108cf1a6da4083079f110774d",
+      "matchedIndustryNames": 90,
+      "unmatched": []
+    }
+  ],
+  "nativeNumericData": "Reuses previously independently audited NYU observations; this audit adds no data and makes no new numerical accuracy claim.",
+  "scopeLimits": "Own country industry scopes only USA, Japan, India and China. Other countries explicitly open the global sample. No hydrogen, nuclear, Africa-solar, lithium or cybersecurity valuation is inferred."
+}

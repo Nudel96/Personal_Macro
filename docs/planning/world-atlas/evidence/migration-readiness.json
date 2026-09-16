@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-migration-20260909",
+  "firstRun": "2026-09-09T11:30:22.486Z",
+  "restartRun": "2026-09-09T11:31:09.367Z",
+  "nativeStatistics": 3,
+  "nativeRepliesPerRun": 27,
+  "commandCellsCompared": 3492,
+  "downloadedNumericObservations": 17336,
+  "noRestartDownload": true,
+  "pngBytes": 96809,
+  "pngSha256": "9c04be0eaaa98adb14ed508f2cbc9d0f364de4caf733d88c87ed7b6b2e08b47c",
+  "limits": [
+    "An isolated Tauri harness exercised the real command facade and original React views.",
+    "Two processes were used; this script verifies their persisted results, not OS process history.",
+    "Browser CUA checking supplements this evidence; native-window interaction remains unverified.",
+    "Existing Technicals and central-bank background warnings occurred outside the Atlas.",
+    "The first startup logged slow successful SQL writes for Atlas preferences, proof settings and a COT job; no failed migration download or persistence was observed."
+  ]
+}

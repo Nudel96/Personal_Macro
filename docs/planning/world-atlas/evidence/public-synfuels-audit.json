@@ -1,0 +1,420 @@
+{
+  "reviewedAt": "2026-09-11",
+  "source": {
+    "id": "sasol-synthetic-fuels",
+    "label": "Sasol · fossile Synthesekraftstoffe · Anlagenberichte",
+    "adapter": "sasol_synfuels",
+    "url": "https://www.sasol.com/sites/default/files/2026-07/Business%20Performance%20Metrics%20for%20the%20year%20ended%2030%20June%202026_excel.xlsx",
+    "documentationUrl": "https://www.sasol.com/investor-centre/financial-results",
+    "licenseUrl": "https://www.sasol.com/legal-notices",
+    "publishedAt": "2026-07",
+    "reviewedAt": "2026-09-11",
+    "recipe": "sasol-six-original-reports-fy2014to2026-v1",
+    "observationKind": "operator_report",
+    "expectedSha256": "25ac6d46ed1a36880ff2c47f85935aadd69d2157fcc61e8adb526f369efa0ca7",
+    "expectedRows": 48,
+    "expectedNumeric": 36,
+    "firstPeriod": "2014",
+    "lastPeriod": "2026",
+    "areas": [
+      {
+        "code": "ZA",
+        "label": "Secunda Operations, South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "secunda_total": "Secunda Operations total refined product",
+          "secunda_white": "Synfuels refined product (white product)"
+        }
+      },
+      {
+        "code": "QA",
+        "label": "ORYX GTL, Ras Laffan, Qatar — Sasol reporting",
+        "geographyId": "m49:634",
+        "seriesTitles": {
+          "oryx_production": "ORYX GTL production — as reported by Sasol",
+          "oryx_utilisation": "ORYX GTL utilisation rate of nameplate capacity"
+        }
+      }
+    ]
+  },
+  "files": [
+    {
+      "file": "sasol-analysts-2016.pdf",
+      "url": "https://www.sasol.com/sites/default/files/2023-11/Analyst%20Book%20FY16_0.pdf",
+      "bytes": 4252202,
+      "sha256": "76513d7a7413480e3a0cee073a59ecc0543b4c1f3dbc0adc1fcabc5e6a79ff1d",
+      "format": "pdf",
+      "page": 20,
+      "pages": 23,
+      "years": [
+        2016,
+        2015,
+        2014
+      ],
+      "rows": [
+        {
+          "code": "secunda_white",
+          "pattern": "Synfuels refined product \\(white product\\)\\s*[³⁴34]?\\s+mm bbl\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)",
+          "afterOryx": false,
+          "values": [
+            "33.2",
+            "32.9",
+            "32.4"
+          ]
+        },
+        {
+          "code": "oryx_production",
+          "pattern": "Production\\s+mm bbl\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)",
+          "afterOryx": true,
+          "values": [
+            "4.72",
+            "5.21",
+            "5.62"
+          ]
+        },
+        {
+          "code": "oryx_utilisation",
+          "pattern": "Utilisation rate of nameplate capacity(?:\\s+[–-]\\s+ORYX GTL\\s*[⁴4]?)?\\s+%\\s+([0-9]+)\\s+([0-9]+)\\s+([0-9]+)",
+          "afterOryx": true,
+          "values": [
+            "81",
+            "90",
+            "97"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sasol-analysts-2019.pdf",
+      "url": "https://sasol.com/sites/default/files/2023-11/Additional%20Analyst%20information%20for%2030%20June%202019.pdf",
+      "bytes": 3574701,
+      "sha256": "1d9b8d99902b285860ee20b359360350e24d143e00ee97d117e4762c5a0407be",
+      "format": "pdf",
+      "page": 41,
+      "pages": 47,
+      "years": [
+        2019,
+        2018,
+        2017
+      ],
+      "rows": [
+        {
+          "code": "secunda_white",
+          "pattern": "Synfuels refined product \\(white product\\)\\s*[³⁴34]?\\s+mm bbl\\s+(?:[–−-]|\\(?[0-9]+\\)?)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)",
+          "afterOryx": false,
+          "values": [
+            "31.4",
+            "31.5",
+            "32.5"
+          ]
+        },
+        {
+          "code": "oryx_production",
+          "pattern": "Production\\s+mm bbl\\s+(?:[–−-]|\\(?[0-9]+\\)?)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)\\s+([0-9]+,[0-9]+)",
+          "afterOryx": true,
+          "values": [
+            "4.67",
+            "5.53",
+            "5.49"
+          ]
+        },
+        {
+          "code": "oryx_utilisation",
+          "pattern": "Utilisation rate of nameplate capacity(?:\\s+[–-]\\s+ORYX GTL\\s*[⁴4]?)?\\s+%\\s+([0-9]+)\\s+([0-9]+)\\s+([0-9]+)",
+          "afterOryx": true,
+          "values": [
+            "81",
+            "95",
+            "95"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sasol-production-2022.xlsx",
+      "url": "https://www.sasol.com/sites/default/files/2023-11/Production%20and%20sales%20metrics%20for%20the%20year%20ended%2030%20June%202022_Excel%20data_0.xlsx",
+      "bytes": 49408,
+      "sha256": "8d1a929086d5bcc4e2624ed33d81edb40c4533d9fd9c5e0e2efd647ed5361b76",
+      "format": "xlsx",
+      "sheet": "Fuels",
+      "sheetNames": [
+        "Mining",
+        "Gas",
+        "Fuels",
+        "Tot Chem",
+        "Chem Africa",
+        "Chem America",
+        "Chem Eurasia",
+        "Chem_Supplementary",
+        "QRT Vol - Energy",
+        "QRT Vol - Chemicals",
+        "Hedging"
+      ],
+      "dimensions": [
+        29,
+        8
+      ],
+      "dataXml": "xl/worksheets/sheet3.xml",
+      "zipEntries": 30,
+      "uncompressedBytes": 255367,
+      "columns": [
+        6,
+        7,
+        8
+      ],
+      "years": [
+        2022,
+        2021,
+        2020
+      ],
+      "unitColumn": 4,
+      "rows": [
+        {
+          "row": 13,
+          "code": "secunda_total",
+          "labelColumn": 2,
+          "label": "Synfuels total refined product",
+          "unit": "mm bbl",
+          "values": [
+            "29.2",
+            "32.1",
+            "31.2"
+          ]
+        },
+        {
+          "row": 20,
+          "code": "oryx_production",
+          "labelColumn": 3,
+          "label": "Production",
+          "unit": "mm bbl",
+          "values": [
+            "5.16",
+            "4.67",
+            "3.31"
+          ]
+        },
+        {
+          "row": 21,
+          "code": "oryx_utilisation",
+          "labelColumn": 3,
+          "label": "Utilisation rate of nameplate capacity",
+          "unit": "%",
+          "values": [
+            "89",
+            "81",
+            "57"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sasol-production-2023.xlsx",
+      "url": "https://www.sasol.com/sites/default/files/2023-11/Production%20and%20sales%20metrics%20for%20the%20year%20ended%2030%20June%202023%20-%20Excel%20Data.xlsx",
+      "bytes": 47266,
+      "sha256": "3b3752e0917bd5c50d7e5651c84880c33db5fd7452864481c2fb03e43ca3dc65",
+      "format": "xlsx",
+      "sheet": "Fuels",
+      "sheetNames": [
+        "Mining",
+        "Gas",
+        "Fuels",
+        "Total Chemicals",
+        "Chemicals Africa",
+        "Chemicals America",
+        "Chemicals Eurasia",
+        "Chem Supplementary",
+        "QRT - Energy",
+        "QRT - Chemicals",
+        "Hedging"
+      ],
+      "dimensions": [
+        25,
+        7
+      ],
+      "dataXml": "xl/worksheets/sheet3.xml",
+      "zipEntries": 30,
+      "uncompressedBytes": 253855,
+      "columns": [
+        5,
+        6,
+        7
+      ],
+      "years": [
+        2023,
+        2022,
+        2021
+      ],
+      "unitColumn": 3,
+      "rows": [
+        {
+          "row": 11,
+          "code": "secunda_total",
+          "labelColumn": 1,
+          "label": "Secunda Operations total refined product",
+          "unit": "mm bbl",
+          "values": [
+            "29.9",
+            "29.2",
+            "32.1"
+          ]
+        },
+        {
+          "row": 18,
+          "code": "oryx_production",
+          "labelColumn": 2,
+          "label": "Production",
+          "unit": "mm bbl",
+          "values": [
+            "4.0999999999999996",
+            "5.16",
+            "4.67"
+          ]
+        },
+        {
+          "row": 19,
+          "code": "oryx_utilisation",
+          "labelColumn": 2,
+          "label": "Utilisation rate of nameplate capacity",
+          "unit": "%",
+          "values": [
+            "70",
+            "89",
+            "81"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sasol-production-2025.xlsx",
+      "url": "https://www.sasol.com/sites/default/files/2025-07/Production%20and%20sales%20metrics%20for%20the%20year%20ended%2030%20June%202025_excel.xlsx",
+      "bytes": 38055,
+      "sha256": "73b0e786a9e6cc57c8e5f8bfcb0dfb7e6e699d5195d0d4e91f0dd40ceca37c85",
+      "format": "xlsx",
+      "sheet": "Fuels",
+      "sheetNames": [
+        "Mining",
+        "Gas",
+        "Fuels",
+        "Chemicals Africa",
+        "Chemicals America",
+        "Chemicals Eurasia",
+        "Chemicals _ Additional Info",
+        "Hedging Activities"
+      ],
+      "dimensions": [
+        19,
+        10
+      ],
+      "dataXml": "xl/worksheets/sheet3.xml",
+      "zipEntries": 27,
+      "uncompressedBytes": 202387,
+      "columns": [
+        8,
+        9,
+        10
+      ],
+      "years": [
+        2025,
+        2024,
+        2023
+      ],
+      "unitColumn": 3,
+      "rows": [
+        {
+          "row": 9,
+          "code": "secunda_total",
+          "labelColumn": 1,
+          "label": "Secunda Operations total refined",
+          "unit": "mm bbl",
+          "values": [
+            "27.6",
+            "29.1",
+            "29.9"
+          ]
+        },
+        {
+          "row": 11,
+          "code": "oryx_production",
+          "labelColumn": 1,
+          "label": "ORYX GTL production",
+          "unit": "mm bbl",
+          "values": [
+            "5",
+            "2.9",
+            "4.0999999999999996"
+          ]
+        }
+      ]
+    },
+    {
+      "file": "sasol-production-2026.xlsx",
+      "url": "https://www.sasol.com/sites/default/files/2026-07/Business%20Performance%20Metrics%20for%20the%20year%20ended%2030%20June%202026_excel.xlsx",
+      "bytes": 40120,
+      "sha256": "71f9dbfc04eb0e80147041b9083ba61c6b6bd1f86cc7b5cd5d316a01e4a4d4ab",
+      "format": "xlsx",
+      "sheet": "Fuels",
+      "sheetNames": [
+        "Mining",
+        "Gas",
+        "Fuels",
+        "Chemicals Africa",
+        "Chemicals America",
+        "Chemicals Eurasia",
+        "Chemicals _ Additional Info",
+        "Hedging Activities"
+      ],
+      "dimensions": [
+        21,
+        10
+      ],
+      "dataXml": "xl/worksheets/sheet3.xml",
+      "zipEntries": 27,
+      "uncompressedBytes": 200493,
+      "columns": [
+        8,
+        9,
+        10
+      ],
+      "years": [
+        2026,
+        2025,
+        2024
+      ],
+      "unitColumn": 3,
+      "rows": [
+        {
+          "row": 9,
+          "code": "secunda_total",
+          "labelColumn": 1,
+          "label": "Secunda Operations total refined",
+          "unit": "mm bbl",
+          "values": [
+            "30.6",
+            "27.6",
+            "29.1"
+          ]
+        },
+        {
+          "row": 11,
+          "code": "oryx_production",
+          "labelColumn": 1,
+          "label": "ORYX GTL production",
+          "unit": "mm bbl",
+          "values": [
+            "3",
+            "5",
+            "2.9"
+          ]
+        }
+      ]
+    }
+  ],
+  "profiles": 4,
+  "values": 36,
+  "overlapChecks": 12,
+  "visualReview": [
+    "output/sasol-analysts-2016.pdf-page-20.png",
+    "output/sasol-analysts-2019.pdf-page-41.png"
+  ],
+  "scope": "Sasol, originale Betriebskennzahlen, Geschäftsjahre zum 30. Juni. Ein Jahr bezeichnet den Zeitraum Juli des Vorjahres bis Juni des genannten Jahres. Secunda in Südafrika nutzt Kohle und Erdgas zur Fischer-Tropsch-Synthese; ORYX GTL in Katar wandelt Erdgas in flüssige Produkte um. Dies sind fossile Synthesewege, keine erneuerbaren E-Fuels. Die Bilder zeigen einzelne Anlagen beziehungsweise die Beteiligungsberichterstattung eines Betreibers, keine nationale oder weltweite Gesamtproduktion. Sasols Beteiligung an ORYX beträgt 49 Prozent; berichtete Mengen bleiben unverändert, ohne Hochrechnung auf die gesamte Anlage. White Product 2014–2019 bleibt von Total Refined ab 2020 getrennt. Chemikalien enthaltene Gesamterzeugung, Rohölraffinerie Natref, Verkäufe, Quartale und Prognosen werden nicht verwendet. Jeder Punkt nennt seinen Originalbericht; überlappende Angaben sind geprüft. Lücken bleiben offen, unterschiedliche Kennzahlen werden nicht addiert. Öffentliche Betreiberberichte, eigene Quellenprüfung am 11.09.2026; keine offene Gesamtlizenz behauptet."
+}

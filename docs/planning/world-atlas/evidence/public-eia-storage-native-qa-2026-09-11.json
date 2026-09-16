@@ -1,0 +1,143 @@
+{
+  "checkedAt": "2026-09-11T05:01:24.158Z",
+  "status": "passed",
+  "nativeApplication": "Owned Tauri QA com.personal-macro.atlas-public-20260911; compiled native importer and real public cache, WebView2 CDP",
+  "checks": [
+    {
+      "label": "USA Leistung gesamte Geschichte",
+      "metric": "eia-battery-storage:power_stock",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 21,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    },
+    {
+      "label": "USA energy_stock",
+      "metric": "eia-battery-storage:energy_stock",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 21,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    },
+    {
+      "label": "USA power_additions",
+      "metric": "eia-battery-storage:power_additions",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 9,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    },
+    {
+      "label": "USA energy_additions",
+      "metric": "eia-battery-storage:energy_additions",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 9,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    },
+    {
+      "label": "USA cohort_duration",
+      "metric": "eia-battery-storage:cohort_duration",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 9,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    },
+    {
+      "label": "Entladedauer ohne Zahlen",
+      "metric": "eia-battery-storage:cohort_duration",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": false,
+      "points": 9,
+      "originalPeriods": true,
+      "originalFormattedValues": false,
+      "noPlannedValues": true
+    },
+    {
+      "label": "Neue Anlagen Dauer seit 2020",
+      "metric": "eia-battery-storage:cohort_duration",
+      "geo": "m49:840",
+      "since": 2020,
+      "numbers": false,
+      "points": 4,
+      "originalPeriods": true,
+      "originalFormattedValues": false,
+      "noPlannedValues": true
+    },
+    {
+      "label": "Deutschland ohne Ersatzwert",
+      "passed": true
+    },
+    {
+      "label": "Indien ohne Ersatzwert",
+      "passed": true
+    },
+    {
+      "label": "Welt ohne US-Ersatz",
+      "passed": true
+    },
+    {
+      "label": "Expliziter Wechsel zum US-Quellengebiet",
+      "metric": "eia-battery-storage:cohort_duration",
+      "geo": "m49:840",
+      "since": 2020,
+      "numbers": false,
+      "points": 4,
+      "originalPeriods": true,
+      "originalFormattedValues": false,
+      "noPlannedValues": true
+    },
+    {
+      "label": "Gespeicherte Originalquelle mit Rezept und Datenstand",
+      "passed": true
+    },
+    {
+      "label": "Merkkontext wiederhergestellt",
+      "metric": "eia-battery-storage:cohort_duration",
+      "geo": "m49:840",
+      "since": 2020,
+      "numbers": false,
+      "points": 4,
+      "originalPeriods": true,
+      "originalFormattedValues": false,
+      "noPlannedValues": true
+    },
+    {
+      "label": "Mindestbreite 1024: Diagramm, Text und Bedienfelder lesbar",
+      "passed": true
+    },
+    {
+      "label": "Abschluss Leistung mit Originalzahlen",
+      "metric": "eia-battery-storage:power_stock",
+      "geo": "m49:840",
+      "since": 0,
+      "numbers": true,
+      "points": 21,
+      "originalPeriods": true,
+      "originalFormattedValues": true,
+      "noPlannedValues": true
+    }
+  ],
+  "screenshots": [
+    "output/atlas-eia-cohort.png",
+    "output/atlas-eia-minwidth.png",
+    "output/atlas-eia-stock.png"
+  ],
+  "visuallyReviewed": true
+}

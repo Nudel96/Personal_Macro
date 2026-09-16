@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T07:06:21.313612+00:00",
+  "status": "passed",
+  "sourceId": "eu-advanced-materials",
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "profiles": 36,
+  "values": 36,
+  "allOriginalProfilesExact": true,
+  "period": "2010/2024",
+  "provenance": {
+    "sourceId": "eu-advanced-materials",
+    "retrievedAt": "2026-09-11T07:05:55.881952900+00:00",
+    "publishedAt": "2026-09-01",
+    "url": "https://op.europa.eu/o/opportal-service/download-handler?identifier=18eaba28-a5ac-11f1-b25c-01aa75ed71a1&format=pdf&language=en&productionSystem=cellar&part=",
+    "documentationUrl": "https://op.europa.eu/en/publication-detail/-/publication/18eaba28-a5ac-11f1-b25c-01aa75ed71a1/language-en",
+    "sha256": "6f49dcb308e07e5abeb0e01bd3f9ce7d8d2e474896b74b6b34b2e6e4aca1d057",
+    "recipe": "eu-am-2026-table1-companies-priority-period2010to2024-v1",
+    "sourceRows": 6,
+    "numericValues": 36,
+    "areaCount": 3
+  }
+}

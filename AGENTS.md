@@ -198,10 +198,15 @@ apps/desktop/src
 - `/media` – Medien und Annotationen
 - `/goals` – Ziele und Fortschritt
 - `/macro` – Macro- und Pair-Heatmap
+- `/world-atlas` – weltweites Länder-/Themenverzeichnis, öffentliche WDI-
+  Jahresreihen, langfristige Marktwellen und UN-Altersprofile mit getrennten
+  Szenarien; weitere Sektor-, Bewertungs- und Jahrhundertansichten sind im Ausbau
 - `/regime-insights` – langfristige, empirisch validierte Regime-Treiber;
   aktuell China CPI YoY im Vergleich mit AUDUSD-D1-/W1-OHLC
 - `/seasonality` – saisonale Daten
 - `/rates` – Leitzinsen
+- `/government-bonds` – weltweites Länder-/Laufzeitverzeichnis für Staatsanleihe-
+  Renditen, Historien, Zinskurven und datierte Länderabstände
 - `/import-export` – Exporte, Backup, Restore, Legacy-Import
 - `/settings` – Konten, Taxonomien, Felder und Systemeinstellungen
 
@@ -312,7 +317,7 @@ apps/desktop/src-tauri/src
 
 Die tatsächliche Datenbank wird ausschließlich durch die SQL-Dateien unter
 `apps/desktop/src-tauri/migrations` definiert. Aktuell existieren Migrationen
-`0001` bis `0027`.
+`0001` bis `0048`.
 
 Wichtige Tabellengruppen:
 
@@ -517,6 +522,26 @@ Wenn die Welt gleichzeitig ähnlich stark anhebt, kann eine US-Anhebung relativ
 neutral werden. Verwechsele diese Relativwirkung nicht mit dem absoluten
 Fed-Signal.
 
+## 11a. Eigenständige Staatsanleihe-Renditen
+
+`/government-bonds` verwendet ausschließlich den geprüften EODHD-GBOND-Katalog.
+Der gemeinsame Katalog unter `src/features/government-bonds/data/catalog.json`
+enthält 250 Länder/Gebiete und 266 Renditereihen für 60 davon (Prüfung 10.09.2026).
+`USDSB3L1Y` ist ein ausgeschlossener Swap. Providerpräfix `CH` bedeutet Chile,
+`SW` Schweiz; Länder und Metadaten niemals allein aus ISO-Präfixen erraten.
+`government_bonds` speichert öffentliche Reihen separat in
+`PersonalMacro/government-bonds/cache.sqlite`, mit eigenen `bond-migrations`.
+Keine Änderungen an Leitzins-/Fundamentals-/Seasonality- oder Regime-Scores.
+GBOND `close` ist Rendite in Prozent pro Jahr, kein Anleihekurs oder Kupon.
+Dezimalstrings, negative Renditen, echte Null und fehlende Werte bleiben erhalten.
+Basispunkte = Differenz in Prozentpunkten × 100. Kurven und Länderabstände
+benötigen gleiche Beobachtungstage; Länderabstände außerdem gleiche Laufzeiten.
+Unbekannte Quellwährungen und Kroatiens historische HRK-Metadaten bleiben sichtbar.
+Abrufe laufen explizit, pro erfolgreicher Reihe höchstens alle 24 Stunden,
+atomar je Reihe und abbrechbar nach der laufenden Reihe. Teilerfolge bleiben
+erhalten. Der Browser zeigt das Verzeichnis ohne erfundene Renditen.
+Details und Prüfungen: `docs/planning/government-bonds.md`.
+
 ## 12. Seasonality
 
 Seasonality-Snapshots speichern Asset, Symbol, Horizont, Stichprobenzeitraum,
@@ -538,6 +563,31 @@ Symbolzuordnung in den validierten EODHD-Katalog gelesen werden.
 - Das Paar-Scoring verwendet den saisonalen Currency-/Asset-Faktor in derselben
   Base-minus-Quote-Richtung.
 
+### Ergänzung zur saisonalen Fenstersuche
+
+`get_seasonality_opportunities` ergänzt die bestehende Seasonality um eine
+Top-1-bis-Top-10-Suche mit lokalem aktuellem Monat und optionaler Jahresübersicht.
+Die neue Suche zählt ausdrücklich Kalendertage, verwendet gemeinsame historische
+Ein-/Ausstiegstage für Divergenzen und verändert keine Macro-Scores. Die reine
+Berechnung steht in `metrics/seasonality_opportunities.rs`. FX-Futures bleiben
+ohne angebundene Futures-Historie ausdrücklich nicht verfügbar; die EODHD-
+Katalogprüfung vom 15.09.2026 ergab nur Forex-Spotpaare. Spotdaten werden nur nach
+ausdrücklicher UI-Auswahl verwendet und nie als Futures ausgegeben. Details,
+Methodik und offene Datenanbindung: `docs/planning/seasonality-opportunities.md`.
+
+## 12a. Put/Call-Bereich vorerst entfernt
+
+Der Put/Call-Ratio-Bereich wurde am 15.09.2026 auf Benutzerwunsch entfernt.
+Seite, Navigation, Command-Palette, Browser-Adapter, native Commands und
+CME-Hintergrundjob sind nicht mehr Bestandteil der Anwendung. Alte Links auf
+`/put-call-ratio` fallen auf die vorhandene Weiterleitung zur Übersicht zurück.
+
+Die unveränderlichen Migrationen `0032`, `0033` und `0048` sowie vorhandene
+`put_call_*`-Daten bleiben erhalten. Der Journal-Reset schützt diese historischen
+Daten weiterhin; es gibt keine neue Löschmigration. Eine erneute Anbindung
+benötigt einen neuen Benutzerauftrag und einen nutzbaren Datenzugang.
+Die frühere Umsetzung ist unter `docs/planning/put-call-automation.md` archiviert.
+
 ## 13. Fundamentaldatenquelle
 
 Die aktive Fundamentals-Pipeline liegt ausschließlich in `commands/eodhd.rs`
@@ -547,6 +597,671 @@ provider-nativen Tabellen `eodhd_events`, `eodhd_fundamental_snapshots` und
 Economics und BIS dürfen nicht als Fundamentals- oder Rates-Fallback
 wiedereingebaut werden. Die alten nummerierten Migrationen bleiben
 unveränderliche Upgrade-Historie; Migration `0030` entfernt ihre Laufzeittabellen.
+
+## 13a. Eigenständiger Weltatlas
+
+Der Atlas unter `src/features/world-atlas` und `src-tauri/src/world_atlas`
+verwendet für seine statistischen Jahresreihen die öffentliche World-Bank-WDI-
+API. Diese Daten werden ausschließlich im Atlas genutzt. Sie sind kein Fallback
+für die bestehende EODHD-Fundamentals-/Rates-Pipeline.
+
+Die statistische Grundlage umfasst 142 WDI-Reihen; 38 zusätzliche UN-SDG-Perspektiven erweitern den gemeinsamen Statistikkatalog auf 180 Reihen. Der ergänzende Produktionskatalog
+`data/statistics-catalog.json` enthält 83 geprüfte Zuordnungen mit deutschen
+Bedeutungs- und Geltungstexten. Ähnliche Größen bleiben über `series` in der URL
+bewusst auswählbar. `worldbank.rs` prüft Quellenidentität und freigegebene
+Providerbezeichnung einschließlich Preisbasis vor der Übernahme. Bildung mit
+Bruttozugang zur Abschlussklasse ist keine direkt gemessene Abschlussquote;
+Mobilfunkverträge sind keine eindeutigen Menschen, Kreditquoten keine jährlichen
+Wachstumsraten. Bruttoquoten über hundert, negative Werte, Lücken und einzelne
+Erhebungsjahre bleiben erhalten. Zahlen einschließlich Tooltips sind optional.
+Einzelheiten und tatsächliche Quellenabdeckung: `docs/planning/world-atlas/STATISTICS.md`.
+
+Die Afrika-Erweiterung `data/africa-development-catalog.json` ergänzt 49 WDI-
+Reihen zu Grundversorgung, Ernährung, Gesundheit, Landwirtschaft, Außenwirtschaft,
+Auslandsschulden, Beschäftigung und Armut. Neue Reihen enden fest spätestens 2024;
+Erhebungen und Mehrjahresfenster bleiben einzelne Punkte. Armut verwendet 2021-PPP;
+Unterernährung mit Quellenwert 2,5 kann unter 2,5 Prozent bedeuten. BNE, BIP,
+Stadt-/Land-/Risiko- und Altersnenner bleiben getrennt. Auslandsschulden sind keine
+reinen Staatsschulden. Drei Originalaggregate `worldbank:SSF`, `worldbank:AFE` und
+`worldbank:AFW` haben keine ISO-Codes; `worldbank.rs` prüft Codes, Namen und
+Aggregatstatus und speichert ausschließlich veröffentlichte Regionalwerte.
+UN-/ILO-/FAO-/Ember-Regionen werden nicht ersetzt. Der gemeinsame Katalog umfasst
+457 Gebiete und 260 Themen. Explizite WDI-Reihen dürfen nicht von einer anderen
+Quellenansicht oder einem Kontext-Einstieg verdeckt werden. Details und
+unabhängiger Zahlenabgleich: `docs/planning/world-atlas/AFRICA.md`.
+
+Die drei ILO-Beschäftigungsanteile sind Modellschätzungen mit festem
+`throughYear: 2024`; Import und Cache-Lesen beachten diese Grenze auch in
+späteren Kalenderjahren. Neuere Modelljahre benötigen eine Quellenprüfung vor
+der Erweiterung. Die fünf UNIDO-Industrieanteile verwenden die Wertschöpfung
+des verarbeitenden Gewerbes als Nenner, nicht das BIP. Breite Branchen und der
+veröffentlichte Restbereich bleiben ausdrücklich abgegrenzt. Keine selbst
+berechneten Weltanteile oder auf hundert normierten Ersatzwerte.
+Details: `docs/planning/world-atlas/SECTOR-STRUCTURE.md`.
+
+Vierzehn weitere WDI-Kontextreihen ergänzen Energie, Brennstoffe, Rohstoffe,
+Gründungen, Handel, Logistik und Erwerbsbeteiligung nach Bildungsstufe.
+Ressourcenrenten sind Modellschätzungen relativ zum BIP, keine Firmengewinne.
+Energie-Nettoimporte bleiben negativ bei Nettoexporteuren. Der historische
+Logistikindex ist auf WDI-Quellenjahre bis 2022 begrenzt und bleibt von LPI 2.0
+getrennt. Energieintensität verwendet Kaufkraftbasis 2021. Einkommen/Konsum
+und staatliche Abgrenzungen benötigen vor weiteren Reihen eigene Metadaten;
+keine scheinbar gleichartigen Länderbilder daraus erzeugen. Details:
+`docs/planning/world-atlas/ECONOMIC-CONTEXTS.md`.
+
+Drei Migrationsbilder trennen jährlichen Wanderungssaldo, internationalen
+Migrantenbestand und veröffentlichten Bevölkerungsanteil. WPP-Salden sind
+historisch auf 2023 begrenzt; Bestandsmodelle aus International Migrant Stock
+reichen bis 2024. Zwischen den acht Bestandsjahren keine Linien interpolieren.
+UN-Nenner nicht durch WDI-Gesamtbevölkerung ersetzen; ein gerundeter Nullanteil
+kann trotz positivem Bestand vorliegen. Grenzänderungen, Staatsangehörigkeits-
+Ersatz und abweichende Weltaggregate bleiben erläutert. Modellschätzungen sind
+im Einzelbild und in der Übersicht unmittelbar gekennzeichnet. Details:
+`docs/planning/world-atlas/MIGRATION.md`.
+
+Die Länderübersicht (`view=statistics`) ordnet diese Reihen nach Themenfeld,
+Gruppe und Katalogthema. `statDomain`, `statGroup` und `statHorizon` erhalten die
+Auswahl beim Wechsel zum Einzelbild. SVG-Karten teilen den Kalender, verwenden
+aber je Statistik einen eigenen Maßstab; Länder derselben Karte haben dieselbe
+Einheit, Skala und denselben Quellenstand. Sichtbare gemeinsame Zeiträume,
+Lücken und einzelne Erhebungen bleiben erhalten. Optionale Zahlen vergleichen
+nur dasselbe tatsächlich verfügbare Jahr. `statistics_batch.rs` lädt explizit
+gewählte Reihen nacheinander weltweit, teilt die globale Atlas-Abrufsperre und
+überspringt erfolgreiche Abrufe der letzten 24 Stunden. Ein Abbruch beendet die
+laufende Statistik atomar und stoppt vor der nächsten. Der gemeinsame Job zählt
+gespeicherte Statistiken statt Providerseiten. Teilerfolge bleiben bei Fehlern
+und Neustart erhalten; die UI invalidiert bereits bei Fortschritt sowie bei
+Abschluss, Fehler und Unterbrechung. Keine zusätzliche Cachemigration.
+
+`view=coverage` zeigt die Quellen- und Themenabdeckung über die vorhandenen
+lesenden Atlas-Commands. `atlas-coverage.ts` unterscheidet lokale Bilder,
+fehlende/noch nicht geladene Werte, zu kurze Marktwellen, andere Quellengebiete
+und Katalogthemen ohne Anbindung. Quellenkandidaten allein zählen nicht als
+implementierte Daten. Suche nach einer Messgröße darf deren fehlende Werte
+nicht mit einer anderen verfügbaren Perspektive überdecken. Gebietswechsel
+sind ausdrücklich; globale Fonds sind keine Länderwerte. Der separate
+`data/coverage-catalog.json` wird durch `evidence/audit_geographies.py` aus
+öffentlichen Quellen- und nativen Gebietsnachweisen erzeugt. Er ist eine
+datierte Zuordnungsprüfung, kein Ersatz für lokale Werte. Bei Katalogänderungen
+erneut prüfen; insbesondere WDI `CHI` nicht Jersey oder Guernsey zuschlagen.
+Details: `docs/planning/world-atlas/COVERAGE.md`.
+
+Stromwirtschaft verwendet ausschließlich die feste öffentliche Ember-Datei
+`yearly_full_release_long_format.csv`. `energy_source.rs` prüft neun
+Erzeugungsarten, Einheiten, Jahresgrenzen, Gebietsidentitäten und Duplikate.
+Anteile, Erzeugung und installierte Leistung bleiben getrennte Größen;
+Nettoimporte dürfen negativ sein. Vollständige Strommixe benötigen alle neun
+verfügbaren Anteile. Fehlende Zellen und Zeilen werden nicht auf null gesetzt
+oder umgewichtet. Alle Werte heißen Quellenstatistik mit Schätzungen, weil die
+Datei keinen Mess-/Schätzstatus je Zelle enthält. Eigene `ember:*`-Aggregate
+bleiben von UN-/Maddison-Regionen getrennt. Atlasmigration 0005 speichert einen
+vollständigen Stand atomar; eine globale Abrufsperre und 24 Stunden Abstand
+verhindern gleichzeitige beziehungsweise wiederholte Downloads. Details:
+`docs/planning/world-atlas/ENERGY.md`.
+
+`capacity_*` ergänzt installierte elektrische Leistung aus den festen öffentlichen
+IRENASTAT-Capacity-2026-H1-Tabellen. Atlasmigration 0007 speichert 224 Länder-
+und zehn Regionsprofile getrennt von Ember. MW sind keine erzeugten MWh oder
+Bewertungen. Netzarten, Solar/PV/Solarthermie und übergeordnete Technologiesummen
+bleiben getrennt; der Quellenmarker `"-"` bleibt ohne erfundenen Zahlenwert.
+Länder-Regionalzeilen REA/OCA werden ausgelassen, eigene `irena:*`-Gebiete
+verwenden unverändert die Regionstabelle. Es gelten gemeinsame Abrufsperre,
+atomarer Austausch und 24 Stunden Mindestabstand. Details: `docs/planning/world-atlas/CAPACITY.md`.
+
+`credit_*` ergänzt im Atlas den festen öffentlichen BIS-Download
+`WS_CREDIT_GAP_csv_flat.zip`. Atlasmigration 0008 speichert 43 Länder und den
+separaten `bis:euro_area`-Euroraum. Quartalsquote, veröffentlichter einseitiger
+HP-Modelltrend und Trendabstand bleiben getrennt. Weder Mittellinie noch
+negative Abweichung bedeuten faire/günstige Bewertung. Keine Zyklen erfinden,
+keine Welt-/Afrikawerte mitteln und keine private Quote als Staatsverschuldung
+ausgeben. Quellenrundung, Modellvorgeschichte, andere Quellenstände und Lücken
+sind geprüft. Gemeinsame Abrufsperre, atomarer Austausch und 24 Stunden
+Mindestabstand gelten. `creditMode`/`creditSince` und BIS-Quellenmetadaten gehören
+zum Merkkontext. Details: `docs/planning/world-atlas/CREDIT.md`.
+
+`debt_*` ergänzt getrennte Haushalts- und Unternehmensschulden aus dem festen
+öffentlichen BIS-Download `WS_TC_csv_flat.zip`. Atlasmigration `0016` speichert
+48 Profile (43 Länder/Wirtschaftsgebiete, Euroraum, vier explizite
+`bis:debt_*`-Aggregate). Es gibt kein vollständiges Welt-/Afrikaprofil.
+Schuldenquote und Differenz zum Vorjahresquartal bleiben von fairer Bewertung
+und dem BIS-Kreditgap getrennt. Brüche, fehlende Zwischenquartale und heutige
+Quellenrevisionen werden erhalten; keine App-Interpolation. H/N-Sektoren,
+Originaltitel, Dezimaldefinitionen (Kolumbien drei, sonst eine Stelle),
+Quellenhash und Abrufzeit werden geprüft. Deutschland vor 1991 und Indien
+besitzen sichtbare historische Schätzungshinweise. Gemeinsamer atomarer Cache,
+globale Abrufsperre und 24-Stunden-Abstand gelten. `debtMode`/`debtSince` und
+BIS-Herkunft gehören zu letzter Ansicht und Merkkontext. Details:
+`docs/planning/world-atlas/DEBT.md`.
+
+`property_*` ergänzt den festen öffentlichen BIS-Download
+`WS_SPP_csv_flat.zip`. Atlasmigration 0009 speichert 57 Länder/Wirtschaftsgebiete
+und vier eigene BIS-Aggregate. Nominaler und realer Index (2010 = 100) sowie
+Vorjahresänderungen bleiben getrennte veröffentlichte Reihen; Preisentwicklung
+ist keine Bezahlbarkeit oder faire Bewertung. Sehr kleine historische Indizes
+benötigen Rundungsintervalle für den Abgleich mit veröffentlichten Änderungen.
+`bis:property_world`, `bis:advanced_economies` und `bis:emerging_economies` sind
+keine vollständigen Welt-/Kontinenterhebungen. Historische Quellenwechsel und
+mögliche Interpolation durch den Anbieter bleiben als Grenzen sichtbar;
+die CSV liefert keine datierten Bruchmarkierungen. Nationale Ausgangsquellen
+sind katalogisiert. Vier `property*`-Darstellungsparameter und BIS-Herkunft
+gehören zum Merkkontext; Preisbasis und Maßstab stehen auch im festen Bild.
+Gemeinsame Abrufsperre, atomare Übernahme und 24 Stunden Mindestabstand gelten.
+Details: `docs/planning/world-atlas/PROPERTY.md`.
+
+`ratio_*` ergänzt die kostenlosen OECD Analytical house prices indicators
+für 42 Länder und drei eigene `oecd:housing_*`-Aggregate. Atlasmigration 0010
+speichert vier veröffentlichte Quartalsreihen: Kaufpreise zu Einkommen/Mieten,
+jeweils als Index mit Bezugsjahr 2015 und, soweit vorhanden, Prozent des
+langfristigen OECD-Durchschnitts. Die Hoch-/Tiefansicht zieht nur 100 ab;
+keinen eigenen Durchschnitt, Trend, fairen Preis oder fehlende Referenz erfinden.
+Indien, China und Welt haben in dieser Quelle kein Profil. Historische
+Skalierungswechsel zwischen Index und standardisierter Reihe sind geprüft und
+segmentieren beide Bilder; ungeprüfte neue Wechsel verhindern die Übernahme.
+Die Quelle nennt keinen einheitlichen Referenzzeitraum. Preis-, Einkommens- und
+Mietindexdefinitionen bleiben von BIS-Preisen getrennt. Gleicher Quellenstand,
+gemeinsame Quartale und identische Skala sind Voraussetzung für Ländervergleiche.
+Die drei `ratio*`-Parameter und `oecd`-Herkunft gehören zum Merkkontext.
+Gemeinsame Sperre, atomarer Austausch und 24 Stunden Mindestabstand gelten.
+Details: `docs/planning/world-atlas/HOUSING-RATIOS.md`.
+
+`education_*` ergänzt 40 UIS-Bildungsreihen aus dem festen kostenlosen
+SDG-Gesamtdownload Februar 2026. Atlasmigration 0011 speichert 245 tatsächliche
+Profile (223 Länder/Gebiete, 22 eigene `uis:*`-SDG-Regionen). 15 weitere
+zugeordnete Quellengebiete bleiben in diesen Reihen ohne Werte. Umfragepunkte,
+Lernstandstests, administrative Statistiken und veröffentlichte Abschlussmodelle
+bleiben unterscheidbar; Modelle ersetzen keine fehlenden Erhebungen. `NA` ist
+trotz rohem Nullwert fehlend, `NIL` ist null. Alle Quellenkennzeichen und
+unterschiedlichen Fußnoten bleiben erhalten. Nicht gleichgesetzte Testprogramme
+werden nicht überlagert. Zahlen sind optional; gemeinsame Datenstände und
+Erhebungsjahre begrenzen Vergleiche. Der separate Gesamtkatalog enthält nun
+353 Gebiete einschließlich der FAO-Regionen und getrennten BIS-Schuldengruppen.
+`educationMetric`/`educationSince` und UIS-Herkunft gehören zum
+Merkkontext. Bestehende explizite WDI-Links bleiben gültig. Gemeinsame Sperre,
+atomarer Cachewechsel und 24 Stunden Mindestabstand gelten. Details:
+`docs/planning/world-atlas/EDUCATION.md`.
+
+`agriculture_*` ergänzt FAOSTAT Production Indices (QI), kostenlos und ohne
+Schlüssel. Atlasmigration 0012 speichert 234 tatsächliche Profile: 199
+Länder/Gebiete und 35 ausdrücklich gewählte `fao:*`-Aggregate. 196 Erzeugnisse
+und Produktgruppen sind in zwölf Gruppen geordnet. Die Elemente 432 und 434
+sind veröffentlichte Brutto-Produktionsindizes insgesamt/je Einwohner, jeweils
+Basis 2014–2016 = 100. Keine absoluten Marktgrößen, Preise, Flächenerträge,
+Ernährungssicherheit oder Anlagebewertungen daraus ableiten. Die Methodennotiz
+spricht teilweise von Nettoabzügen, die Datei ausdrücklich von Gross; keine
+eigenen Nettoindizes berechnen. Alle Werte sind FAO-Schätzungen (`E`). Fehlende
+Reihen und echte Nullwerte unterscheiden; Deutschlands Weizen endet im
+geprüften Stand 2017, die Gesamtlandwirtschaft 2024. Chinas Festland (`41`) und
+FAO-China (`351`) bleiben getrennt. Keine historischen Staaten auf Nachfolger
+oder Quellenregionen auf fremde Aggregate abbilden. Sechs `agri*`-
+Parameter und `fao`-Herkunft gehören zum Merkkontext. Katalog, Originalelemente,
+Quellenstand vor/nach Download und Zeilenzahl werden streng geprüft; atomarer
+Gesamtwechsel, globale Sperre und 24 Stunden Mindestabstand gelten. Details:
+`docs/planning/world-atlas/AGRICULTURE.md`.
+
+Alle gewöhnlichen Reqwest-Clients wählen ausdrücklich `.tls_backend_rustls()`.
+Der IRENA-Endpunkt benötigt unter Windows `.tls_backend_native()` über Schannel
+für seine ältere TLS-Konfiguration; mindestens TLS 1.2, Zertifikats- und
+Hostnameprüfung bleiben aktiv. Das zusätzliche Reqwest-Feature darf nicht
+unbeabsichtigt den TLS-Standard anderer Provider ändern.
+
+UN-Demografie verwendet ausschließlich drei feste WPP-2024-Dateien einschließlich
+der Togo-Zwischenkorrektur vom 19.01.2026. `demography_source.rs` liest alle
+Gzip-Mitglieder, validiert vollständige Fünfjahres-Altersgruppen und rechnet die
+Quelleinheit Tausend Menschen einmalig in Menschen um. 1950–2023 bleiben
+Schätzungen, 2024–2100 Projektionen, auch wenn Projektionsjahre inzwischen
+vergangen sind. Welt-/Regionsaggregate werden unverändert von der UN übernommen;
+sie enthalten laut Anbieter die Togo-Korrektur noch nicht. Fehlende Alterswerte
+und Nenner null ergeben keine erfundenen Anteile oder Quotienten. Details:
+`docs/planning/world-atlas/DEMOGRAPHY.md`.
+
+Haushaltsbilder verwenden separat die feste UN-DESA-Arbeitsmappe 2026.
+`households_source.rs` prüft Hash, Metadaten, alle 1.129 Erhebungen, 39 Maße
+und 200 ISO3-/UN-Location-Zuordnungen vor der atomaren Speicherung in
+Atlasmigration `0015`. Originalzeile, Quellengruppe und Katalog-ID bleiben
+erhalten, auch bei mehreren Quellen im selben Land/Jahr. Fehlwerte `..`
+bleiben leer; zwischen Erhebungen wird weder gemittelt noch interpoliert.
+Welt-/Kontinentmittel werden nicht berechnet. Acht ungewichtete MICS-Erhebungen
+werden gesondert markiert. Überlappende Alters-/Generationengruppen und
+unterschiedliche Nenner bleiben ausdrücklich beschriftet. Bei den beiden
+irreführenden Excel-Definitionen zu durchschnittlicher Größe und weiblicher
+Bezugsperson gilt der offizielle Methodenbericht für alle Haushalte.
+Länder teilen Zeit- und Wertskala. Explizite Erhebungen stehen in `hhRecord`
+und `hhCompareRecord`; automatisch gewählte Erhebungen werden erst im
+Merkkontext konkretisiert und erzeugen keine URL-Nebenwirkungen in Kindkomponenten.
+Quelle, Erhebungsjahr und ausgewählte Balken bleiben im gespeicherten PNG
+nachvollziehbar. Details: `docs/planning/world-atlas/HOUSEHOLDS.md`.
+
+Findex-Bilder verwenden die feste öffentliche Global-Findex-2025-Länderdatei.
+Atlasmigration `0021` speichert 42 Perspektiven in sieben Gruppen für 174
+Profile: 162 Länder/Gebiete, Welt und elf eigene `findex:*`-Aggregate. Fünf
+veröffentlichte Erwachsenengruppen bleiben getrennt; keine Gesamtwerte als
+Ersatz für fehlende Frauen-/Männer-/Einkommensgruppen. Alle 59.471 Quellanteile
+zwischen null und eins bleiben unveränderte Dezimalstrings, einschließlich
+zehn wissenschaftlicher Schreibweisen. 98.701 Fehlwerte sind keine Null;
+273 veröffentlichte Nullwerte bleiben echt. Die Anzeige rechnet nur in Prozent
+um und verwendet für sämtliche Karten die feste Spanne null bis hundert.
+Erhebungen 2011/2014/2017/2021/2022/2024 bleiben einzelne Punkte; die 16 verspäteten
+2022-Länder werden nicht auf 2021 zurückdatiert. Keine Interpolation, statistischen
+Signifikanzbehauptungen, eigenen Regionsmittel oder Marktbewertungen.
+Hash, Datei-/Spaltenumfang, alle Quellengebiete und demografischen Zeilen sind
+geprüft; atomarer Cachewechsel, globale Sperre und 24 Stunden Abstand gelten.
+`findexGroup`, `findexMetric`, `findexPopulation`, `findexSince` und beide
+Quellen-/Glossarhashes gehören zum Merkkontext. Die Quellenübersicht prüft je
+Messgröße ausschließlich die tatsächlichen Werte aller Erwachsenen und führt
+zur genauen Messgröße. Der gemeinsame Katalog umfasst jetzt 378 Gebiete.
+Details: `docs/planning/world-atlas/FINANCIAL-INCLUSION.md`.
+
+Rohstoffbilder verwenden separat die feste öffentliche World-Bank-Pink-Sheet-
+Arbeitsmappe September 2026. Atlasmigration `0020` speichert 85 internationale
+Preis-/Indexreihen in beiden Preisbasen, 1960–2025, ohne Länderprofile zu erfinden.
+10.310 Zahlen werden als exakte Integer-Hundertstel gespeichert; 910 Fehlwerte
+bleiben leer. Die reale Quelle verwendet MUV statt nationalem CPI. Darstellung
+relativ zum eigenen Wert von 2010 bedeutet keine faire Bewertung. Sichtbare
+Karten teilen Skala und Kalender. Quellenwechsel, die Realindex-Abweichung bei
+Ölen/Schroten 2014 und ungeklärte Eisenerz-Einheiten vor 2009 bleiben abgegrenzt.
+Hash, Dateigröße, Blattmetadaten, Kalender und Umfang sind fest geprüft;
+atomarer Cachewechsel, globale Abrufsperre und 24 Stunden Abstand gelten.
+Sieben `commodity*`-Parameter sowie World-Bank-Herkunft gehören zum Merkkontext.
+Der globale Query-Key benötigt keine Länder-ID. Details:
+`docs/planning/world-atlas/COMMODITIES.md`.
+
+ILO-Beschäftigungsbilder verwenden den kostenlosen dokumentierten CSV-Endpunkt
+`rplumber.ilo.org/data/indicator`, `EMP_2EMP_SEX_ECO_NB_A`, Modellstand November
+2025, `SEX_T`, 14 ILO-/ISIC4-Bereiche plus Total, 1991–2024. `labor_source.rs`
+prüft Hash, Schema, Metadaten, Gebiets-/Quellencodes, Felder, Jahre und Flags.
+Tausend Personen mit maximal drei Dezimalstellen werden exakt in Integer-Personen
+umgerechnet; die Anzeige berechnet nur den Anteil am selben Länderjahres-Total.
+190 Profile enthalten 96.765 Zahlen und 135 offene Kalenderzellen. A bedeutet
+angepasst, leer ist kein Messnachweis. Keine App-Glättung, Projektion, Umgewichtung
+oder Bewertungsformel. 188 Länder/Gebiete, Weltmodell X01 und eigene
+`ilo:africa`-Modellregion X06 bleiben von fremden Regionen getrennt; Kanalinseln
+und 85 weitere Quellengruppen bleiben ausgeschlossen. D/E, H/J, L/M/N, R/S/T/U
+sind Sammelbereiche, keine einzelnen Energie-/Technologiesektoren. Atlasmigration
+`0019`, gemeinsame Abrufsperre und 24 Stunden Mindestabstand gelten.
+`laborGroup`, `laborMetric`, `laborSince`, Familie `ilo`, Ausgabe und Hash gehören
+zum Merkkontext. Details: `docs/planning/world-atlas/LABOR.md`.
+
+WIPO-Technologiebilder verwenden den kostenlosen öffentlichen CSV-Export,
+Indikator `17` (4a), Bericht `13` (Total nach Herkunft), Quellenjahre 1980–2024,
+Ausgabe Mai 2026. `innovation_source.rs` sendet den erforderlichen öffentlichen
+Sprachheader `Accept-Language: en`, prüft den Quellenstand vor und nach dem
+Download, Hash, Schema, sämtliche Ursprungscodes und Feldnamen. 35 Technikfelder
+und „Unknown“ ergeben sieben UI-Gruppen, keine erfundenen Wirtschaftssektoren.
+199 heutige Profile enthalten 108.696 exakt geprüfte Integer und 213.684
+Fehlwerte. Die sechs historischen Codes AN/CS/DD/SU/YU/ZR werden keinem
+Nachfolgestaat zugeordnet; NU/TL fehlen im geprüften Export. Keine Weltmittel,
+Nullersatzwerte oder Patentanzahl-zu-Bewertung-Formel. Linien verbinden nur
+benachbarte vorhandene Jahre bis 2023; 2024 ist optional und unverbunden als
+redaktionelles Randjahr gekennzeichnet, nicht als erfundener Providerstatus.
+Die ältere ZIP-Ausgabe bis 2022 darf nicht als Fallback dienen. Atlasmigration
+`0018`, gemeinsame Sperre und 24 Stunden Mindestabstand gelten. `innovationGroup`,
+`innovationMetric`, `innovationSince`, `innovationThrough`, `wipo`, Ausgabe und
+Hash gehören zum Merkkontext. Rohdaten werden nicht ins Repository kopiert.
+Details: `docs/planning/world-atlas/INNOVATION.md`.
+
+WHO-Gesundheitsbilder verwenden zwei feste öffentliche GHED-Arbeitsmappen,
+einschließlich der Korrektur vom 1. April 2026 und der Länderhinweise Dezember
+2025. `health_source.rs` prüft beide Hashes, sämtliche 195 Landesidentitäten,
+Codebook, Metadaten und 4.612 Länderjahre. Der vorhandene Calamine-Zellleser
+streamt das breite Blatt, ohne 19 Millionen Zellen vollständig zu materialisieren.
+38 Ausgabenmaße in sieben Gruppen bleiben direkte Quellwerte; laufende Dollar,
+verschiedene Nenner und überlappende Klassifikationen werden ausdrücklich
+benannt. Keine Anlagebewertung, Glättung oder erfundene Weltmittelwerte.
+Die Jahrespunkte verbinden keine Methodenbrüche; 2024 ist vorläufig und hohl
+markiert. Originale Methoden- und Länderhinweise bleiben vollständig erhalten,
+ohne daraus einen Mess-/Schätzstatus je Einzelwert zu erfinden. Die 81.762
+Zahlen des Caches sind exakt gegen die Quelle geprüft; der vorhandene
+JSON-Commandleser kann beim erneuten Lesen um eine binäre Rundungseinheit
+abweichen. Atlasmigration `0017`, gemeinsame Abrufsperre und 24 Stunden
+Mindestabstand gelten. `healthGroup`/`healthMetric`/`healthSince`, `who` und beide
+Dateihashes gehören zum Merkkontext. Details:
+`docs/planning/world-atlas/HEALTH-FINANCE.md`.
+
+Marktwellen verwenden explizite ETF-Stellvertreter aus `data/market-proxies.json`
+und den vorhandenen EODHD-Schlüssel. Der eigene begrenzte Atlas-Preisadapter
+benötigt `adjusted_close`, berücksichtigt abgeschlossene Monate und führt keine
+Rohkurse als Ersatz ein. `market_wave.rs` berechnet rückblickend einen
+60-Monats-Logtrend, zwölf Monate Glättung und eine optionale historische
+Einordnung. Datenlücken und katalogisierte Strukturbrüche starten die Vorlaufzeit
+neu. Alternative lange Fenster prüfen die Empfindlichkeit. Marktlage ist keine
+fundamentale Bewertung; globale Themenfonds werden nicht als Länderfonds
+ausgegeben. Pro Fonds höchstens ein expliziter erfolgreicher Abruf je 24 Stunden.
+Methodik und Grenzen stehen unter `docs/planning/world-atlas/MARKET-WAVES.md`.
+
+`market_context:relative_strength` verwendet dieselben gespeicherten bereinigten
+Monatskurse für 25 relative Fondsvergleiche. Elf US-Sektoren verwenden SPY als
+Referenz, Länder und globale Themen ACWI. Die Berechnung teilt die seit einem
+gemeinsamen Monat indexierten Kurse; Wellenwerte werden nicht verrechnet.
+Zwei Vergleichslinien brauchen dieselbe Referenz und denselben Basiszeitpunkt.
+Nach katalogisierten Strukturbrüchen beginnt die Geschichte im Folgemonat.
+Fehlende Monate bleiben leer, die Mittellinie ist keine faire Bewertung.
+Der alte Monatscache enthält keine einzelnen Handelstagsdaten; identische
+Handelstage werden nicht behauptet. Quellenstände, Fonds, Referenz und
+`relativeHorizon` werden gemerkt. Keine zusätzliche API oder Cachemigration.
+Details: `docs/planning/world-atlas/RELATIVE-STRENGTH.md`.
+
+Die Marktübersicht verwendet dieselben nativen Wellen mit gemeinsamem Zeitraum
+und symmetrischem Maßstab für alle sichtbaren Karten. Lücken und Einzelpunkte
+bleiben erhalten; fremde Währungen oder Berechnungsrezepte werden nicht still
+verglichen. `market_batch.rs` lädt nur explizite Katalogauswahlen nacheinander,
+überspringt erfolgreiche Abrufe der letzten 24 Stunden und teilt die globale
+Atlas-Abrufsperre. Ein Abbruch beendet den laufenden Fonds vollständig und stoppt
+vor dem nächsten. Frühere Teilerfolge bleiben auch bei einem späteren Fehler
+gespeichert; der UI-Cache wird bereits bei Fortschritt aktualisiert.
+
+Öffentliche Atlasdaten liegen separat unter `PersonalMacro/atlas/cache.sqlite`,
+mit eigenen Migrationen unter `src-tauri/atlas-migrations`. Der Cache enthält
+keine persönlichen Notizen oder Journalwerte und gehört nicht zum Journal-
+Backup. Ein vollständiger globaler Statistikabruf wird atomar übernommen;
+Fehler lassen den bisherigen Datenstand bestehen. Ein fehlerhafter Atlas-Cache
+darf den Journalstart nicht blockieren und wird nicht automatisch gelöscht.
+
+Jahrhundertperspektiven verwenden den ausdrücklich benannten
+Maddison-2023-Veröffentlichungsstand von Our World in Data. Der begrenzte
+`history_source.rs` lädt zwei feste CSV-Reihen samt vorher/nachher geprüften
+Metadaten. Preisbasis, Kennungen, Quellenstand und geprüfter Umfang sind fest.
+Eigene Maddison-Regionen bleiben von UN-Regionen getrennt; frühere Staaten werden
+keinen heutigen Nachfolgestaaten zugeschlagen. Weltanteile benötigen einen
+veröffentlichten Weltnenner desselben Jahres. Frühe Einzelpunkte und Lücken
+werden nicht verbunden; logarithmische Darstellung ist keine Zyklusberechnung.
+Atlasmigration 0004 speichert den gemeinsamen Stand atomar im öffentlichen Cache.
+Details: `docs/planning/world-atlas/HISTORY.md`.
+
+Sechs Zyklusthesen verwenden ausschließlich redaktionelle Erklärungen und
+frei gezeichnete SVG-Modelle aus `atlas-cycle-hypotheses.ts` und
+`atlas-cycle-panel.tsx`. Sie starten geschlossen, besitzen keine Mess-/Zeitachse
+und bestimmen keine heutige Länderphase. Ein Lernschritt ist keine Beobachtung;
+Länderwechsel dürfen das Modellbild nicht verändern. Kontextlinks öffnen
+vorhandene Datenperspektiven mit erhaltenem Gebiet/Vergleich; der Rückweg
+erhält den Schritt. Quellenbefund, Gegenargument und Geltungsbereich bleiben
+sichtbar unterscheidbar. In der Quellenabdeckung bleibt die numerische
+Zyklusreihe unangebunden, auch wenn das Theorie-Modell geöffnet werden kann.
+JST R6 ergänzt inzwischen eine eigene numerische Finanzgeschichte; die Theorie
+erhält dadurch keine automatische Länderphase oder Zyklusuhr. Details:
+`docs/planning/world-atlas/CYCLES.md`.
+
+`macrohistory_*` verwendet die feste kostenlose JST-R6-Arbeitsmappe für 18
+Länder und 1870–2020. Atlasmigration 0013 speichert alle Profile atomar. Der
+offizielle Download und seine einzige geprüfte Weiterleitung sind erreichbar;
+SHA-256, Blatt/Spalten, ISO-/IFS-Identitäten und sämtliche Kalenderjahre werden
+validiert. 20 Perspektiven in sechs Gruppen verwenden direkte Quellwerte,
+ausdrückliche Quoten oder mit dem CPI derselben Quelle bereinigte Renditen.
+Die echte Vorjahres-CPI-Beobachtung ist Pflicht; historische Extremwerte und
+kleine positive Nenner bleiben erhalten. Lücken, Quelleninterpolation,
+wechselnde Gebietsstände und Schätzungen werden erläutert. `crisisJST` benennt
+optionale Krisenanfänge, keine Dauer oder prognostizierten Wendepunkte. Indien,
+China und Welt haben kein JST-Profil. Zahlen sind optional; gleiche Kalender-
+und Quellenstände sind Voraussetzung für Vergleiche. Fünf `jst*`-Parameter,
+`jst`-Herkunft und Länderlegende gehören zu gemerkten Ansichten. Gemeinsame
+Abrufsperre, 24 Stunden Mindestabstand und getrennter öffentlicher Cache gelten.
+Details: `docs/planning/world-atlas/MACROHISTORY.md`.
+
+`fiscal_*` ergänzt historische IMF-Staatsfinanzen, Ausgabe Dezember 2025,
+für 151 Länder/Gebiete bis spätestens 2024. Die feste unveränderte Arbeitsmappe
+kommt ohne Schlüssel aus dem öffentlichen OWID-Archiv; direkte IMF-Abrufe
+waren bei der Prüfung gesperrt. SHA-256, Datei-/Tabellenumfang, ISO-/IFS-IDs,
+Namensvarianten und Kalender werden geprüft. Atlasmigration 0014 speichert
+alle Profile atomar. Acht veröffentlichte Messgrößen bleiben unverändert;
+negative Salden/Zinsen/Wachstumsraten, hohe BIP-Quoten, Null und fehlend bleiben
+unterscheidbar. `GG_budg` und `GG_debt` bezeichnen getrennt Zentralregierung
+oder Gesamtstaat; nur gleiche staatliche Ebenen werden im selben Jahr
+verglichen. Lücken, Abgrenzungswechsel und dokumentierte Definitionsbrüche
+trennen Linien ohne Verlust vorhandener Endpunkte. Keine Weltaggregate,
+erfundene Jahrhundertwellen oder Anlagebewertungen. Drei Gruppen halten die
+Bildauswahl klein; Zahlen sind optional. `fiscalGroup`, `fiscalMetric`,
+`fiscalSince` und Quellenfamilie `imf` gehören zum Merkkontext. Gemeinsame
+Abrufsperre, 24 Stunden Mindestabstand und getrennter Cache gelten.
+Details: `docs/planning/world-atlas/FISCAL.md`.
+
+Der gemeinsame Katalog liegt in
+`src/features/world-atlas/data/catalog.json`; der Rust-Code bindet dieselbe
+Datei ein. `scripts/build-atlas-catalog.mjs` erzeugt ihn aus der dokumentierten
+Planungsgrundlage. Katalogisierte Themen ohne Datenzuordnung sind noch keine
+fertige Länderanalyse. Aktueller Umfang und verbleibende Arbeit stehen unter
+`docs/planning/world-atlas/IMPLEMENTATION-STATUS.md`.
+
+Vierzehn Themen verwenden `atlas-context-guides.ts` als geordneten Einstieg
+über 29 Verknüpfungen zu vorhandenen Datenperspektiven. Neben langen Entwicklungen
+sind Gesamtproduktivität, Ungleichheit, Technologieverbreitung und finanzielle
+Anspannung erschlossen. Arbeitsproduktivität ist dabei ausdrücklich nur ein
+ergänzendes Bild zur noch nicht angebundenen Gesamtproduktivität. Eine Kontextseite
+ist keine zusätzliche Messreihe oder automatisch erkannte Phase. Länder und
+Vergleich bleiben erhalten; `fromGuide` bewahrt den Rückweg in URL, Notiz und
+letzter Ansicht. Der Link ist nur für bekannte, zum aktuellen Thema passende
+Ziele sichtbar. Gebietshinweise verwenden die bestehende Quellenprüfung, ohne
+Profilzuordnung mit verfügbaren Werten gleichzusetzen. In **Daten & Quellen**
+werden diese Einstiege erklärt, aber nicht als numerische Anbindung gezählt.
+UN-Ziele starten ohne Projektion, Stromziele mit Erzeugungsanteilen ab 2000.
+Details: `docs/planning/world-atlas/CONTEXT-GUIDES.md`.
+
+10 weitere Themen verwenden `atlas-topic-research.ts` für datierte Quellenbefunde
+mit konkreten Definitions-, Zugriffs- und Umsetzungslücken. Die verbleibenden
+Einstiege verweisen auf neun Primärquellen. Der aktuelle Stand prüft
+`scripts/audit-atlas-topic-routes.mjs` 225 numerische Perspektivzuordnungen,
+14 ergänzende Kontext-Einstiege, 10 Quellen-Einstiege und sechs Theorieansichten.
+Es gibt 31 Kontextverknüpfungen. Das bestätigt keine vollständige Länderabdeckung.
+Die alte Quellen-Einstiegsroute wird bei neuer Anbindung entfernt, damit sie das
+Datenbild nicht verdeckt. Historischer Recherchebericht: `docs/planning/world-atlas/TOPIC-RESEARCH.md`.
+
+`sdg_source.rs` bindet die öffentliche UN Global SDG Database mit dem festen
+Release `2026.Q2.G.02` an: 38 Perspektiven für 19 Themen, 249 explizite M49-
+Zuordnungen einschließlich Welt. 80.641 endliche Zahlen und 278 `NaN`-Marker
+wurden geprüft; fehlende Marker bleiben ohne Zahlenwert. Exakte Dimensionen,
+primärer Indikator, Providerdefinition, Originaleinheit, vollständige Paginierung,
+Gebietsidentität und historische Grenze 2025 sind verbindlich. Erhebungen werden
+als Einzelpunkte dargestellt. Nationale Armutsgrenzen und die vier Zufriedenheitsbefragungen zu öffentlichen
+Diensten sind nur für das Erstland sichtbar. Nahverkehr übernimmt nur explizite
+Gesamtzeilen ohne einzelne Stadt. Fünf neue Dienstereihen laden wegen
+Providerfehlern vollständige Seiten ohne Server-Dimensionsfilter und prüfen
+die unverändert exakte Auswahl lokal. Originalquelle, Datenart, Fußnoten und Unsicherheitsgrenzen bleiben
+je Punkt erhalten. Gemerkte Ansichten kennzeichnen SDG als UN-Quelle. Generische
+Atlas-Cachetabellen, keine neue Migration. Details: `docs/planning/world-atlas/SDG.md`.
+
+`public_*` ergänzt 342 Perspektiven für Schuldendienst (BIS), Reallöhne und
+Arbeitszeit (OECD), institutionelle Indikatoren (WGI), private US-Bauausgaben
+für Rechenzentren und Lagergebäude (Census) sowie Elektro-Pkw und öffentliche
+Ladepunkte (IEA). Eurostat ergänzt KI, Robotik, IT-Sicherheit, Onlinehandel,
+Cloudnutzung und Mietindizes; BGS ergänzt Zement, Lithium und Seltene Erden.
+OECD HM1.1.A1 ergänzt den Wohnungsbestand mit tatsächlichen Bezugsjahren und
+einem eigenen England-Gebiet. Eurostat ergänzt Bioenergie-Primärerzeugung,
+Wärmepumpen-Wärmeleistung ab 2004 und die Fernwärme-Haushaltsbefragung 2023.
+Das jährliche Energie-Meldesystem trennt echte Null, sehr kleine Mengen und
+fehlende/vertrauliche Angaben nicht sicher; solche Quellen-Nullen bleiben als
+Hinweise erhalten und im Diagramm offen. Keine erfundene lange Fernwärmereihe.
+Details: `docs/planning/world-atlas/ENERGY-EXTENSIONS.md`. Eurostat SBS ergänzt sechs Ansichten zu Unternehmens- und persönlichen
+Dienstleistungen. Archive 2005–2020 bleiben von EBS ab 2021 getrennt;
+Brüche, vertrauliche Zellen und die Klassifikationsgrenze 2008 bleiben sichtbar.
+Details: `docs/planning/world-atlas/BUSINESS-SERVICES.md`.
+OECD TiVA ergänzt 83 Perspektiven für Handelspartner und Wertschöpfung in
+Exporten: 80 Länder, 1995–2022, Ausgabe 2025 mit Revision Januar 2026.
+Modellschätzungen, Waren und Dienstleistungen, feste Prozentbasis 0–100.
+Partnerübersichten vergleichen nur dasselbe Jahr. Eigenland-Diagonalen und
+überlappende Regionen werden nicht als Auslandspartner ausgegeben; WXD bleibt
+als eigener Rest der Welt erhalten. Details: `docs/planning/world-atlas/TRADE-NETWORKS.md`.
+WITS ergänzt den ausdrücklich gespiegelten Produktkonzentrationsindex aus
+35 Originalarchiven (Stand 11.03.2023, 1988–2022). 238 Länder/Gebiete und der
+Quellen-Weltindex behalten Skala 0–1 und Lücken; der unvollständige Rand 2022
+steht als gekennzeichneter Einzelpunkt. WITS SDN ist ehemaliger Sudan 736,
+SUD heutiger Sudan 729. Historische Sammelgebiete werden nicht neu zugeordnet.
+Details: `docs/planning/world-atlas/EXPORT-CONCENTRATION.md`.
+ND-GAIN 2026 ergänzt zehn Klimaperspektiven für 192 Länder. Neun Modellreihen
+1995–2024 bleiben von der zeitlich konstanten Klimaexposition getrennt.
+Exposition wird als einzelner Projektionsmarker ohne Jahresachse angezeigt;
+die intern erhaltene Archivspalte 2024 ist kein beobachtetes Klimajahr.
+Unterschiedliche Zukunftshorizonte, Quelleninterpolation und fehlende Teilmodelle
+bleiben sichtbar. Höherer Kapazitätsbeitrag bedeutet geringere Kapazität.
+Feste Skala 0–1, keine eigene Weltbildung. Details: `docs/planning/world-atlas/CLIMATE.md`.
+BIS-Gewerbeimmobilien ergänzt 65 nationale und städtische Originalpreisreihen
+für 24 Länder und den festen Euroraum mit 20 Ländern (Stand 2023). Unterschiedliche
+Gebäudearten, Preisbasen und Einheiten bleiben getrennt; Halbjahre und echte
+Quartalslücken bleiben erhalten. Das Vergleichsland hat eine eigene Reihenauswahl,
+die als `publicCompareMetric` im Merkkontext bleibt. Vorläufige Werte sind hohl
+markiert. Details: `docs/planning/world-atlas/COMMERCIAL-PROPERTY.md`.
+EIA ergänzt fünf Perspektiven für stationäre US-Großbatterien: Bestand ab 2003,
+Zubau und Dauer neuer Anlagen ab 2015, jeweils endgültiger Quellenstand 2023.
+MW, MWh und Stunden bleiben getrennt; Planwerte 2024/2025 werden ausgelassen.
+Details: `docs/planning/world-atlas/BATTERY-STORAGE.md`.
+EPA-Archivstudien ergänzen sieben Patentperspektiven: Quantensensorik 2000–2017
+und Raumfahrt 1990–2017. Weltweite Familien, Prioritätszuständigkeit, Anmelderherkunft
+und Schutz in EPO38+ bleiben getrennt. Quellenjahre 2018/2019 werden wegen
+abweichender Endfassung beziehungsweise Veröffentlichungsverzug ausgeschlossen;
+414 leere Raumfahrt-Jahreszellen bleiben Lücken. Keine heutige Branchenbewertung.
+Originaldiagramm-Caches und eingebettete Arbeitsmappen werden unabhängig geprüft.
+Details: `docs/planning/world-atlas/EPO-PATENTS.md`.
+GFDD ergänzt zwei Börsenkonzentrationsbilder für 60 Länder/Gebiete, 1998–2020,
+Archiv September 2022. Marktwert und Handel außerhalb der jeweiligen Top 10
+bleiben Originalanteile; niedriger bedeutet stärkere Konzentration. Keine
+historischen Fondsgewichte, Weltaggregate oder Fortführung fehlender Jahre.
+China, Hongkong und Taiwan bleiben getrennt. Details: `docs/planning/world-atlas/MARKET-CONCENTRATION.md`.
+ACI ergänzt drei getrennte Trilemma-Forschungsdimensionen für 183 Länder: 532 Profile,
+24.641 Originalwerte und 7.803 Lücken. Ausgabe 2021, MI/ERS bis 2020, KAOPEN bis
+2019. Skala 0–1 ohne Gesamtnote; MI enthält bereits Vor-/Folgejahresglättung.
+Historische Gebietsgrenzen sind ausdrücklich, USA und Welt bleiben ohne Ersatz.
+Details: `docs/planning/world-atlas/TRILEMMA.md`.
+JST ergänzt zwei historische Wechselkursklassifikationen für 18 Länder,
+1870–2020. Die Originalfelder peg/peg_strict werden als benannte Jahresbänder
+statt Zahlenwellen gezeigt; Modellrolle und Bezugsbasis bleiben im Tooltip.
+NA ist eine Quellenkategorie, Irlands 50 leere frühe Jahre bleiben leer.
+Kein erfundener Gold-/Fiatstandard. Details: `docs/planning/world-atlas/MONETARY-SYSTEMS.md`.
+Die EU-Werkstoffstudie 2026 ergänzt zwölf Patentperspektiven für drei Prioritätsgebiete.
+Ein festes Fenster 2010–2024 bleibt ein Zeitraum-Balken, keine Jahresreihe.
+EU27-Patentämter plus EPA verwenden das eigene Gebiet `eu:am_priority`;
+Priorität ist kein Unternehmenssitz. Sektorüberschneidungen werden nicht addiert.
+Details: `docs/planning/world-atlas/ADVANCED-MATERIALS.md`.
+Sasol ergänzt vier Anlagenperspektiven zu fossilen Synthesekraftstoffen,
+2014–2026. Secunda White Product bleibt von Total Refined getrennt; ORYX
+behält die berichtete Beteiligungsmenge und die separate Auslastung. Keine
+Landesproduktion, erneuerbaren E-Fuels oder Hochrechnung auf die Gesamtanlage.
+Geschäftsjahre enden am 30. Juni; sechs Originalberichte, 36 Fakten.
+Details: `docs/planning/world-atlas/SYNTHETIC-FUELS.md`.
+Atlasmigration 0022 speichert 59 atomare Quellenpakete
+getrennt von den jährlichen WDI-Reihen. Census verwendet monatliche nominale
+Bauausgaben ohne Saisonbereinigung. IEA übernimmt ausschließlich historische
+Pkw- und Ladepunktdaten bis 2025; originale Welt- und neun IEA-Regionen bleiben
+von anderen Gebietssystemen getrennt. Nicht ausgewählte Vans enthalten fünf
+auffällige Quellenanteile über hundert und werden nicht importiert. Zwei neue
+WDI-Preisniveauindizes verwenden USA = 100 und die seit April 2026 geltenden
+Reihen PA.NUS.GDP.PLI / PA.NUS.PRVT.PLI; keine archivierte USA=1-Reihe.
+Quartale und Monate bleiben Originalperioden. Die OECD-Lohnbasis ist 2025;
+Arbeitsstunden unterscheiden Erwerbstätige und Arbeitnehmer. WGI ist eine
+revidierte Wahrnehmungsschätzung auf absoluter 0–100-Skala mit 90%-Intervallen.
+Keine Antillen-Nachfolgestaaten oder OECD-als-Welt-Zuordnung. Quellenhashes,
+Gebiete und Dimensionen sind vor jedem Import geprüft, der feste Stand benötigt
+bei neuer Veröffentlichung eine Quellenprüfung. Zahlen bleiben optional;
+`publicSource`, `publicMetric`, `publicSince` und Herkunft gehören zum Merkkontext.
+Details und Fortschritt: `docs/planning/world-atlas/PUBLIC-SOURCES.md` und
+`docs/planning/world-atlas/evidence/remaining-40-ledger.json`.
+
+Die Erweiterung vom 15.09.2026 ergänzt 25 Pakete mit 77 Perspektiven und 482.615 geprüften Zahlen: sechs IWF-GDD-Schuldendefinitionen (bis 2024), ILO-Reallohnveränderung (bis 2023), ILO-Wochenstunden (bis 2024), vier ICP-Wohn-/Versorgungsbenchmarks (2017/2021), 36 WTO-Warenhandelsbilder und 24 IWF-IMTS-Partnerbilder (1960–2025) sowie fünf IEA-Batteriezubau-Perspektiven. Nominaler Handel, TiVA-Wertschöpfung, Bestände, Zubau, Lohnveränderung und Lohnniveau bleiben getrennt. WTO-Fingerabdruck prüft alle CSV-Felder als reihenfolgeunabhängige Zeilenmenge einschließlich Duplikaten; IEA prüft das identifizierte Hauptdiagramm samt CSV und Metadaten. GDD-Originaldateien sind bei blockiertem Neuabruf nur ausdrücklich über `import_reviewed_public_atlas.rs` importierbar; derselbe Quellenprüfer, Abrufsperre und 24-Stunden-Grenze gelten. Kein stiller Fallback. 33 zusätzliche EODHD-Länderfonds erweitern den Bestand auf 59 Fonds für 43 Länder, Welt, US-Sektoren und globale Themen. GREK: Definitionsbruch 2016-03; VNM: 2023-03, aktuelle Welle noch zu kurz. EGPT ist eingestellt. WIPO-Feld 22 ergänzt fortschrittliche Materialien ausdrücklich nur als Patent-Teilperspektive. Details, Originalnachweise und aktuelle Restgrenzen: `docs/planning/world-atlas/GAP-EXPANSION.md`.
+
+`library_jobs.rs` ergänzt über `sync_atlas_library` die fehlenden öffentlichen
+Quellenpakete für alle jeweils verfügbaren Gebiete. 18 eigenständige Grundlagen,
+16 Bewertungspakete, alle 180 Katalogstatistiken und optional 59 bestehende
+EODHD-Marktreihen verwenden ihre geprüften Originaladapter. Vorhandene Pakete
+werden übersprungen; Aktualisierungen bleiben in den jeweiligen Einzelansichten.
+Gemeinsame Abrufsperre, atomare Speicherung je Paket, Fortsetzung nach einem
+Providerfehler und Stopp nach dem laufenden Paket. Fortschritt zählt Pakete,
+nicht Providerseiten. Der Browser verspricht keine Speicherung. Das Beispiel
+`src-tauri/examples/fill_atlas.rs` kann ausdrücklich einen absoluten öffentlichen
+Atlas-Cache füllen, ohne die Journal-Datenbank zu öffnen.
+
+Für `demography:age_structure` ergänzt `perspective=un-age65` den Anteil ab 65
+Jahren aus den vollständigen UN-Altersbändern. Fehlen im gewählten Gebiet WDI-
+Werte, verweist ein vorhandenes UN-Profil auf diesen ausdrücklich benannten
+Quellenwechsel. Das Gebiet bleibt erhalten; Projektionen werden zunächst
+abgeschaltet. Die WDI-Reihe wird nicht mit UN-Werten vermischt.
+
+### Atlas-Karte und Gebietsverzeichnis
+
+`atlas-location-explorer.tsx` ergänzt die Länderauswahl optional und lazy geladen.
+Die Karte ist reine Navigation, keine Choroplethenbewertung. `map`, `mapSearch`
+und `mapRegion` stehen in der URL; Land-/Vergleichswahl erhält Thema und Ansicht.
+Alle Kataloggebiete bleiben per Liste erreichbar. `data/map-geometry.json`
+enthält projizierte Natural-Earth-Map-Units 5.1.1; kein Kartendienst zur Laufzeit.
+Der Generator und `evidence/map-geography-audit.json` dokumentieren Quellenhashes
+und Zuordnung. Frankreich/Französisch-Guayana und Providergebiete bleiben getrennt.
+Unzugeordnete Quellenumrisse dürfen keine fremde Länderreihe öffnen. Die Karte
+hat einen Tastatureinstieg, Pfeilnavigation und Enter/Leertaste; die Liste bleibt
+gleichwertig. Details: `docs/planning/world-atlas/MAP.md`.
+
+### Öffentliche Atlas-Bewertungen
+
+`world_atlas/valuation_*` verwendet ausschließlich explizit katalogisierte,
+öffentliche NYU-/Damodaran-XLS-Veröffentlichungen für den eigenständigen Atlas.
+Dies ist kein Excel-Fallback für Macro, Fundamentals oder Rates. Atlasmigration
+0006 speichert ein vollständiges Länder-/Branchenpaket atomar im öffentlichen
+Cache. Alte Werte bleiben bei Fehler oder Abbruch erhalten; es gelten die
+gemeinsame Abrufsperre und 24 Stunden Mindestabstand nach Erfolg.
+
+Länder-Mittelwerte bis 2020 und Mediane ab 2021 bleiben getrennte Kennzahlen.
+Branchenabschnitte vor/ab 2014 werden nicht zu einer historischen Einordnung
+verbunden. Fehlende, fehlerhafte oder nicht positive Bewertungsverhältnisse
+sind keine günstige Bewertung. Die historischen Ranglagen benötigen zehn
+frühere sinnvolle Stände derselben Definition und mindestens zwanzig Firmen
+je Quellenstand; diese Firmenzahl ist kein exakter Kennzahlnenner. Aktuelle
+Punkte gehören nicht in ihre eigene Referenz. Prognose-KGV, Eigenkapitalrendite
+und Verlustfirmenanteil bekommen keine historische Bewertungslage.
+
+Quellenjahr, regionale Abgrenzung und ältere Stände bleiben sichtbar.
+Gewinnbewertungen besitzen nun US-Archive 1999–2026 und Europa-/Japan-/
+Schwellenländer-/Global-Archive 2012–2026. Indien/China bleiben Einzelstände.
+Frühe unpräzise Aggregatspalten erhalten eigene Archivkennungen ohne Ranglage;
+Verlustfirmenanteile beginnen erst 2023. Alle Archivdateien werden gegen ihre
+geprüften SHA-256-Werte validiert. Der falsch verlinkte Japan-Stand 2025 wird
+über die separat geprüfte Japan-Originaldatei übernommen, niemals aus Europa.
+Der Katalog `2026-09-09.3` enthält 195 Originaldateien in 16 Paketen. Ältere
+Cachepakete bleiben als vorheriger Quellenstand lesbar, ohne Schemaänderung.
+Simbabwes doppelte abweichende Zeilen im Länderstand 2023 werden ausdrücklich
+ausgelassen; neue unbekannte Konflikte stoppen die Übernahme. Branchen werden
+nicht unscharf umbenannt oder zu fehlenden Länder-Sektoren umgedeutet. Details:
+`docs/planning/world-atlas/VALUATION.md`.
+
+`data/valuation-topic-links.json` ordnet 47 Atlas-Themen ausdrücklich 90
+vorhandenen NYU-Branchen zu. Die 169 Links sind redaktionelle Navigation, keine
+numerische Aggregation oder GICS-Klassifikation. `valTopic` begrenzt Galerie,
+Suche und gültige Detailauswahl; die Liste bleibt beim Rückweg erhalten und wird
+in Frontend sowie nativer Notiz-Parameterliste gespeichert. Einstieg über ein
+Thema setzt Suche und Seite zurück. Fehlende Themenbranchen bleiben sichtbar.
+Quellenregionen werden nicht zu Ländern umbenannt; auch die Beschriftung
+gemerkter Branchenansichten verwendet die tatsächliche Quellenregion.
+
+`atlas-valuation-regions.ts` ergänzt den Vergleich derselben Quellenbranche
+zwischen zwei expliziten NYU-Regionen derselben Bewertungsgrundlage. Die aktive
+Branchen-ID, Quellenbezeichnung, Kennzahl, Katalogversion und Punktprovenienz
+müssen übereinstimmen beziehungsweise zu ihrem eigenen Paket passen. Nur mit
+mindestens einem gemeinsamen sinnvollen Jahr desselben Methodenabschnitts
+wird die zweite Reihe auf gemeinsamer Skala eingeblendet. Eigene Vorgeschichten
+und Lücken bleiben erhalten; Indien PE 2026 und China PE 2025 werden nicht
+überlagert. `valCompareScope` und `valCompare` wählen alternativ Region oder
+andere Branche. Schnelle Grundlagen-/Regionswechsel werden gegen die aktuelle
+URL-Transaktion validiert. Beide Regionsnamen, Originalquellen und Hashes bleiben
+im Merkkontext. Dafür sind keine neue Datenquelle oder Migration nötig.
+
+### Persönliche Atlasansichten
+
+Hauptmigration 0047 speichert Ansichten, Favoriten, Klartextnotizen, letzte
+Auswahl und feste PNG-Diagrammstände in der gesicherten Journal-Datenbank.
+`world_atlas/notebook.rs` verwendet `AppState`, nicht den öffentlichen Cache.
+Bearbeiten ändert nur Name, Notiz und Favoritenmarkierung; Kontext, Aufnahmezeit,
+Quellenreferenzen und Bild bleiben fest. Revisionsnummern schützen vor
+zwischenzeitlichen Änderungen. Ausschließlich Soft Delete mit Restore.
+
+`atlas-display-state.ts` hält Diagrammjahr, Projektion, Maßstab, Zeitraum und
+Bewertungssuche in der URL. `use-atlas-last-view.ts` respektiert ausdrückliche
+Links und schreibt geordnet; Lesefehler dürfen den letzten Stand nicht ersetzen.
+Nur der idempotente Upsert der letzten Ansicht meldet vorübergehendes SQLite
+BUSY als `ATLAS_PREFERENCES_BUSY`. Die Schreibkette wiederholt höchstens dreimal
+mit 250/750/1500 ms Pause, überspringt überholte Auswahlen und liest bei schneller
+Wiederkehr erst nach der vorherigen Schreibkette. Andere Datenbankfehler und
+Notizmutationen nicht blind wiederholen. Dauerhafte Sperren bleiben sichtbar.
+Die COT-Hintergrundtransaktion und globalen SQLite-Zeitlimits bleiben unverändert.
+Details: `docs/planning/world-atlas/PREFERENCES-RECOVERY.md`.
+`atlas-picture-capture.ts` zeichnet ausschließlich Atlas-SVG-/Canvas-Flächen als
+begrenztes PNG. Notizen gehen niemals an Datenanbieter. Der Browser bietet
+keine vorgetäuschte persönliche Speicherung. Die eigentlichen Journal-Backups
+und Pre-Restore-Sicherheitskopien verwenden konsistente SQLite-Kopien per
+`VACUUM INTO`; Archivmanifest und Staging-Reihenfolge bleiben erhalten.
+Details: `docs/planning/world-atlas/NOTEBOOK.md`.
 
 ## 14. EODHD-Release-Workflow
 
@@ -559,6 +1274,15 @@ einem vollständigen Nachfolger aktiv. Unsichere Mappings benötigen eine
 manuelle Freigabe. Unterschiedliche Frequenzen und Release-Daten sind im
 Paarvergleich zulässig; die Metadaten bleiben im Tooltip sichtbar.
 
+Der Wirtschaftskalender öffnet standardmäßig `currentWeek`: alle lokal geladenen
+Termine ab Montag 00:00 Uhr bis zum nächsten Montag (exklusive). Vergangene
+und kommende Termine stehen gemeinsam mit unveränderten Actual-/Forecast-/
+Previous-Werten in der Liste. `week` bleibt der separate Verlauf seit Montag
+bis einschließlich jetzt. Die optionale IANA-`timezone` berücksichtigt beide
+Wochengrenzen einschließlich Zeitumstellung; ältere Aufrufe ohne sie verwenden
+weiterhin `timezoneOffsetMinutes`. Die Oberfläche liest den lokalen Kalender
+einmal pro Minute neu; dabei wird kein zusätzlicher Providerabruf ausgelöst.
+
 ## 15. Tradingjournal-Domain
 
 ### Konten
@@ -570,6 +1294,26 @@ beeinflussen Dashboard-/Trade-Auswertungen.
 
 Ein Account-Wechsel ist Filterung, kein Benutzerwechsel. Die App bleibt
 Single-User.
+
+`get_account_journal` liefert die ungefilterte Historie eines
+ausdrücklich gewählten aktiven Kontos: Startkapital + Kapitalbuchungen + bekannte
+Netto-Ergebnisse geschlossener, nicht gelöschter Trades = Journal-Kontostand.
+Konto-P&L summiert ausschließlich diese Trade-Ergebnisse; Ein-/Auszahlungen,
+offene Positionen und unbekannte Ergebnisse zählen nicht dazu. Fehlende
+Ergebnisse werden zusätzlich gezählt. Eine verbundene Broker-Balance wird
+separat geliefert und ersetzt die Journal-Rechnung nicht. Die Kapitalkurve hat
+auch ohne Trades einen expliziten Startpunkt ohne erfundenes Kalenderdatum.
+Die feste Kontoleiste im Journal bleibt unabhängig von Zeitraum-/Trade-Filtern.
+`useAccountJournal` hängt unter dem Query-Key-Präfix `bootstrap`, damit bestehende
+Import-, Trade- und Kontomutationen auch diese Summen aktualisieren.
+
+Kontoeinstellungen verlangen ausdrücklich eingegebenes Startkapital (auch 0
+ist möglich), erlauben dessen nachträgliche Korrektur und bewahren die Währung
+bestehender Konten. Einzahlungen sind positiv, Auszahlungen negativ,
+Korrekturen vorzeichenbehaftet und jeweils ungleich 0; Buchungszeiten sind UTC.
+`accounts-browser.ts` verwendet dieselbe Rechnung und persistiert Testkonten
+und Kapitalbuchungen in localStorage. Benutzer-SQLite-Daten werden dafür nicht
+direkt bearbeitet; eine Schemamigration ist nicht nötig.
 
 Konten können optional read-only über ein lokal angemeldetes MT5-Terminal oder
 über cTrader Open API OAuth mit dem Scope `accounts` erstellt und hinsichtlich
@@ -591,6 +1335,18 @@ niemals in der Oberfläche ausgeführt.
 
 Der Kern unterstützt Draft, Planned, Open, Closed, Cancelled, Archived und
 Trashed/Soft-Delete.
+
+Primärer Einstieg ist die kompakte Erfassung mit Abgeschlossen / Läuft noch /
+Geplant, direktem Netto-Ergebnis und optional aufklappbaren Screenshots,
+Ausführungsdaten sowie Notizen. Brutto-Ergebnisse ziehen separat erfasste Kosten
+ab; Netto-Eingaben ziehen sie nicht erneut ab. Der Positionsrechner wird in der
+kompakten Erfassung ausdrücklich aktiviert. Formularentwürfe bleiben pro Konto
+lokal erhalten. Ein gespeicherter Entwurf behält eingegebene Abschlusswerte,
+trägt aber erst mit Status Closed zum Konto-P&L bei. Die ausführliche Erfassung
+bleibt über Weitere Aktionen erreichbar. Beide Erfassungen verzichten auf
+MAE/MFE und psychologische Eingaben; historische Felder bleiben kompatibel.
+Der Trade-Dialog bietet einen direkten Abschluss mit Zeit, Netto-Ergebnis und
+optionalem Exit-Preis für dieselbe bestehende Position.
 Trade-Daten umfassen unter anderem Instrument, Assetklasse, Richtung, Zeitpunkte,
 Entry, Stop, Target/Exit, Quantity, Kosten, P&L, R, Setup, Strategie, Session,
 Timeframe, Prozess- und Qualitätsbewertungen, Regelbefolgung und Reviewtexte.
@@ -608,6 +1364,32 @@ Ergänzende Entitäten:
 
 Löschen ist standardmäßig Soft Delete mit Papierkorb und Restore. Füge keine
 Hard-Delete-Oberfläche ohne explizite Anforderung und Schutzdialog hinzu.
+
+Die schnelle und geführte Erfassung unterstützen lokale PNG-/JPEG-Screenshots
+per Datei, Drag-and-drop und Zwischenablage. `commands/trade_screenshot.rs`
+verwendet Windows OCR; es gibt keinen Cloud-Upload oder Browser-Mock.
+`trade-screenshot-parser.ts` ordnet explizite Beschriftungen, einzelne
+Positionstabellen und überprüfbare TradingView-Preislabels zu. Open/Closed P&L
+einer Zeichnung ist kein Broker-Status; Stop-/Target-Abstände und Amount-
+Kontostände dürfen nicht direkt als Stop-Preis oder Risikobetrag übernommen
+werden. Unklare Mengen benötigen eine bestätigte Einheit, Geldbeträge die
+Kontowährung. Übernommene Werte werden vor der bestehenden automatischen
+Positionsberechnung geschützt. `create_trade_with_screenshot` speichert Trade,
+Medieneintrag und Verknüpfung gemeinsam in einer Transaktion; das Originalbild
+bleibt lokal und unverändert. Ein geführter Formularentwurf persistiert keine
+Bildbytes; ein noch nicht gespeichertes Bild muss nach dem Schließen erneut
+hinzugefügt werden.
+
+`trade-screenshot-colors.ts` liest lokal die Farben der OCR-Wörter und lässt
+die rechte Preisskala in vergrößerten, überlappenden Ausschnitten erneut per
+Windows OCR lesen. `tradingview-chart-parser.ts` erkennt ausgeschriebene deutsche
+und englische Paarnamen sowie Positions-/Bracket-Anzeigen. Die Preiszuordnung
+benötigt passende Farben, gleiche Mengen/Währungen, plausible Long-/Short-Preise
+und ein mit der Anzeigerundung vereinbares Verhältnis der Stop-/Zielbeträge.
+Verschobene Achsenlabels sind zulässig; reine Nähe oder Rot/Grün allein genügen
+nicht. Bid/Ask und Indikatoren dürfen nicht zum Entry werden. Nur eine eindeutig
+zugeordnete offene Positionsanzeige darf „Offen“ vorbelegen. Temporäre Ausschnitte
+werden nicht gespeichert; das Originalbild bleibt maßgeblich.
 
 ### Journal-Metriken
 
@@ -725,6 +1507,17 @@ Windows-Build:
 ```powershell
 pnpm tauri build
 ```
+
+Wenn die bisherige Release-Datei noch geöffnet ist, kann ein separater regulärer
+Windows-Build ohne Installationspaket verwendet werden:
+
+```powershell
+pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle
+```
+
+`START-MACROTOOL.cmd` wählt die neuere vorhandene Datei aus `target/release`
+und `target/x86_64-pc-windows-msvc/release`. Neuere Quelldateien lösen weiterhin
+einen normalen Build aus; anschließend wird dessen Standard-Release gestartet.
 
 Der Browser-Modus reicht nicht als Abnahme für Datenbank, Backup, EODHD-Sync,
 Medien oder Restore. Nach Änderungen an diesen Bereichen muss die

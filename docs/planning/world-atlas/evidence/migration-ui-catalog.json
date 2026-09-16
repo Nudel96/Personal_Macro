@@ -1,0 +1,40 @@
+{
+  "checkedAt": "2026-09-09",
+  "catalogVersion": "2026-09-09.13",
+  "previousSeriesPreserved": 88,
+  "seriesCount": 91,
+  "curatedSeriesCount": 81,
+  "geographiesUnchanged": 349,
+  "topicsUnchanged": 253,
+  "indicatorCatalog": {
+    "url": "https://api.worldbank.org/v2/indicator?source=2&format=json&per_page=20000",
+    "sha256": "7367bbeef554110f3098017151a7c93bea7e2e641c399675eb4ef458c5c6f132",
+    "indicators": 1498
+  },
+  "uiChecks": {
+    "tool": "CUA browser using previously verified native public snapshots",
+    "defaultNumbersHidden": true,
+    "countries": [
+      "DEU",
+      "USA",
+      "IND",
+      "CHN",
+      "WLD"
+    ],
+    "sparseStockYears": 8,
+    "china1990PublishedShare": 0,
+    "keyboardFocus": "solid outline on meaning disclosure, Enter toggles it",
+    "viewport1440": {
+      "clientWidth": 1440,
+      "scrollWidth": 1440
+    },
+    "viewport1024": {
+      "clientWidth": 1015,
+      "scrollWidth": 1024,
+      "note": "Existing 1024px minimum document width with a 9px vertical scrollbar."
+    },
+    "browserWarnings": 0,
+    "browserErrors": 0,
+    "nativeWindowInteraction": false
+  }
+}

@@ -1,0 +1,713 @@
+{
+  "checkedAt": "2026-09-09T08:26:37.054050+00:00",
+  "status": "source_probe_passed",
+  "catalogVersion": "2026-09-09.9",
+  "seriesCount": 8,
+  "counts": {
+    "numeric": 47292,
+    "missing": 66633,
+    "zero": 123,
+    "flags": 113925,
+    "exactDecimal": 0
+  },
+  "maximumAbsoluteRepresentationDifference": "0",
+  "coverage": {
+    "SL.AGR.EMPL.ZS": {
+      "areasWithValues": 187,
+      "first": 1991,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "USA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "IND": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "CHN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "NGA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "ZAF": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "BRA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "JPN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "WLD": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        }
+      }
+    },
+    "SL.IND.EMPL.ZS": {
+      "areasWithValues": 187,
+      "first": 1991,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "USA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "IND": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "CHN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "NGA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "ZAF": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "BRA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "JPN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "WLD": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        }
+      }
+    },
+    "SL.SRV.EMPL.ZS": {
+      "areasWithValues": 187,
+      "first": 1991,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "USA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "IND": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "CHN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "NGA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "ZAF": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "BRA": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "JPN": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        },
+        "WLD": {
+          "n": 34,
+          "first": 1991,
+          "last": 2024
+        }
+      }
+    },
+    "NV.MNF.CHEM.ZS.UN": {
+      "areasWithValues": 161,
+      "first": 1963,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 26,
+          "first": 1998,
+          "last": 2023
+        },
+        "USA": {
+          "n": 62,
+          "first": 1963,
+          "last": 2024
+        },
+        "IND": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "CHN": {
+          "n": 40,
+          "first": 1980,
+          "last": 2019
+        },
+        "NGA": {
+          "n": 28,
+          "first": 1963,
+          "last": 1996
+        },
+        "ZAF": {
+          "n": 57,
+          "first": 1963,
+          "last": 2019
+        },
+        "BRA": {
+          "n": 33,
+          "first": 1990,
+          "last": 2023
+        },
+        "JPN": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "WLD": {
+          "n": 0,
+          "first": null,
+          "last": null
+        }
+      }
+    },
+    "NV.MNF.FBTO.ZS.UN": {
+      "areasWithValues": 164,
+      "first": 1963,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 26,
+          "first": 1998,
+          "last": 2023
+        },
+        "USA": {
+          "n": 62,
+          "first": 1963,
+          "last": 2024
+        },
+        "IND": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "CHN": {
+          "n": 40,
+          "first": 1980,
+          "last": 2019
+        },
+        "NGA": {
+          "n": 28,
+          "first": 1963,
+          "last": 1996
+        },
+        "ZAF": {
+          "n": 56,
+          "first": 1963,
+          "last": 2019
+        },
+        "BRA": {
+          "n": 33,
+          "first": 1990,
+          "last": 2023
+        },
+        "JPN": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "WLD": {
+          "n": 0,
+          "first": null,
+          "last": null
+        }
+      }
+    },
+    "NV.MNF.MTRN.ZS.UN": {
+      "areasWithValues": 156,
+      "first": 1963,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 26,
+          "first": 1998,
+          "last": 2023
+        },
+        "USA": {
+          "n": 62,
+          "first": 1963,
+          "last": 2024
+        },
+        "IND": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "CHN": {
+          "n": 40,
+          "first": 1980,
+          "last": 2019
+        },
+        "NGA": {
+          "n": 28,
+          "first": 1963,
+          "last": 1996
+        },
+        "ZAF": {
+          "n": 57,
+          "first": 1963,
+          "last": 2019
+        },
+        "BRA": {
+          "n": 33,
+          "first": 1990,
+          "last": 2023
+        },
+        "JPN": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "WLD": {
+          "n": 0,
+          "first": null,
+          "last": null
+        }
+      }
+    },
+    "NV.MNF.TXTL.ZS.UN": {
+      "areasWithValues": 161,
+      "first": 1963,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 26,
+          "first": 1998,
+          "last": 2023
+        },
+        "USA": {
+          "n": 62,
+          "first": 1963,
+          "last": 2024
+        },
+        "IND": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "CHN": {
+          "n": 40,
+          "first": 1980,
+          "last": 2019
+        },
+        "NGA": {
+          "n": 28,
+          "first": 1963,
+          "last": 1996
+        },
+        "ZAF": {
+          "n": 57,
+          "first": 1963,
+          "last": 2019
+        },
+        "BRA": {
+          "n": 33,
+          "first": 1990,
+          "last": 2023
+        },
+        "JPN": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "WLD": {
+          "n": 0,
+          "first": null,
+          "last": null
+        }
+      }
+    },
+    "NV.MNF.OTHR.ZS.UN": {
+      "areasWithValues": 164,
+      "first": 1963,
+      "last": 2024,
+      "selected": {
+        "DEU": {
+          "n": 26,
+          "first": 1998,
+          "last": 2023
+        },
+        "USA": {
+          "n": 62,
+          "first": 1963,
+          "last": 2024
+        },
+        "IND": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "CHN": {
+          "n": 40,
+          "first": 1980,
+          "last": 2019
+        },
+        "NGA": {
+          "n": 28,
+          "first": 1963,
+          "last": 1996
+        },
+        "ZAF": {
+          "n": 57,
+          "first": 1963,
+          "last": 2019
+        },
+        "BRA": {
+          "n": 33,
+          "first": 1990,
+          "last": 2023
+        },
+        "JPN": {
+          "n": 61,
+          "first": 1963,
+          "last": 2023
+        },
+        "WLD": {
+          "n": 0,
+          "first": null,
+          "last": null
+        }
+      }
+    }
+  },
+  "sources": {
+    "checkedAt": "2026-09-09T08:26:36.007365+00:00",
+    "countryFile": {
+      "url": "https://api.worldbank.org/v2/country?format=json&per_page=500",
+      "file": "countries.json",
+      "sha256": "4bca8777553d4e674df745b0628cbb8bf5efe838ef8f5cb606ad3b15d48b3302"
+    },
+    "series": [
+      {
+        "code": "SL.AGR.EMPL.ZS",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/SL.AGR.EMPL.ZS?source=2&format=json",
+            "file": "SL.AGR.EMPL.ZS.metadata.json",
+            "sha256": "c57a5d67bf62cb9f83bf1a34ef6f0acc9c20edc0ca810e3da24c5cdc9b69c6d1"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.AGR.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=1",
+            "file": "SL.AGR.EMPL.ZS.1.json",
+            "sha256": "a6c1e379d9d22fdf15e622c2d23cce84365f3050d3b934b9370ea7f238d3fee9"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.AGR.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=2",
+            "file": "SL.AGR.EMPL.ZS.2.json",
+            "sha256": "34ef3d7c38f44986ad46cbd67649bcae3e79833f76a1f2ececa79cc6a6975118"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.AGR.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=3",
+            "file": "SL.AGR.EMPL.ZS.3.json",
+            "sha256": "6fbdd8ad96470081217ddb111f6ef7faa748763738c4a08e9e262a1fe53a482f"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.AGR.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=4",
+            "file": "SL.AGR.EMPL.ZS.4.json",
+            "sha256": "6a5c091769eff04187a9f4485be1a2d754527144bf15b8db674faeb9442e4546"
+          }
+        ],
+        "throughYear": 2024,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17225
+      },
+      {
+        "code": "SL.IND.EMPL.ZS",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/SL.IND.EMPL.ZS?source=2&format=json",
+            "file": "SL.IND.EMPL.ZS.metadata.json",
+            "sha256": "76c939faf692ce2682be0d87f0abd30aca6709ef974b84459730e3af090f7585"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.IND.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=1",
+            "file": "SL.IND.EMPL.ZS.1.json",
+            "sha256": "050786e5fa54cb1b72bc17fb9829a0f280cf3e2f754bcdd7835863b3c762b4ee"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.IND.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=2",
+            "file": "SL.IND.EMPL.ZS.2.json",
+            "sha256": "04d803875874b76d29f2874693b920062a81e6d4a96109907ebfe71f3b5026b8"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.IND.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=3",
+            "file": "SL.IND.EMPL.ZS.3.json",
+            "sha256": "1b898f7b3fa09234e6ae13940feacc332e0d96402cca755b2341e6a1d0656481"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.IND.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=4",
+            "file": "SL.IND.EMPL.ZS.4.json",
+            "sha256": "14630d9dfb7a82d64f2aca32c3c83f5cc93b138e6e44d5bf507d2d71eeee067c"
+          }
+        ],
+        "throughYear": 2024,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17225
+      },
+      {
+        "code": "SL.SRV.EMPL.ZS",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/SL.SRV.EMPL.ZS?source=2&format=json",
+            "file": "SL.SRV.EMPL.ZS.metadata.json",
+            "sha256": "ab6a368a1a423e212210adbe97e341513942e3c3bf1c589fee59cb988dc4c86a"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.SRV.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=1",
+            "file": "SL.SRV.EMPL.ZS.1.json",
+            "sha256": "83b5955a6e9faa6332e403c4b2e9ddee78f82fee1ae96283c291a359b1c00cd8"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.SRV.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=2",
+            "file": "SL.SRV.EMPL.ZS.2.json",
+            "sha256": "62458ac0b2f6c0490098a82da61f21ceea26d3bc59cb4708eb62f6e9110475ae"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.SRV.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=3",
+            "file": "SL.SRV.EMPL.ZS.3.json",
+            "sha256": "30f93632b191f939093f8c3eb5003fd88c0b35fddc33bbf7b2db7f321551a297"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/SL.SRV.EMPL.ZS?source=2&format=json&date=1960:2024&per_page=5000&page=4",
+            "file": "SL.SRV.EMPL.ZS.4.json",
+            "sha256": "db6a6c1ab5a2dfd8845b250b890bbef324d47bf5b5bb2c2e17edbd78dfe6424c"
+          }
+        ],
+        "throughYear": 2024,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17225
+      },
+      {
+        "code": "NV.MNF.CHEM.ZS.UN",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/NV.MNF.CHEM.ZS.UN?source=2&format=json",
+            "file": "NV.MNF.CHEM.ZS.UN.metadata.json",
+            "sha256": "d2effa8246c4d231edeb36531323c5b6e3bf7c4808c3bd963a1926720dcaa4a1"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.CHEM.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=1",
+            "file": "NV.MNF.CHEM.ZS.UN.1.json",
+            "sha256": "3aa887225b76722414944c4ce39940a188699468c30a66701090a8c9203d8ed3"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.CHEM.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=2",
+            "file": "NV.MNF.CHEM.ZS.UN.2.json",
+            "sha256": "49e79fb8a3ba511113aa0fcac6300878f2e642a1eef8755a46824a6e989e50f2"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.CHEM.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=3",
+            "file": "NV.MNF.CHEM.ZS.UN.3.json",
+            "sha256": "c73d3d1d96b143fc6f8dea12e6e5215ae72f59f7d4a4140ce8786e40b3319341"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.CHEM.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=4",
+            "file": "NV.MNF.CHEM.ZS.UN.4.json",
+            "sha256": "f45ae0c4e2a47d163423eeb416bce5b79cd5c11adf53e741eae075e11ae4adac"
+          }
+        ],
+        "throughYear": 2026,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17490
+      },
+      {
+        "code": "NV.MNF.FBTO.ZS.UN",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/NV.MNF.FBTO.ZS.UN?source=2&format=json",
+            "file": "NV.MNF.FBTO.ZS.UN.metadata.json",
+            "sha256": "e8b497b8b3f2f1f0ecfffae0f56ac7f21dd0b63fdb10ec6c70a3ead3f033f3d2"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.FBTO.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=1",
+            "file": "NV.MNF.FBTO.ZS.UN.1.json",
+            "sha256": "f7ab172387f8d5f72ef1937b517c206bc11a809961d53339a766c3e3a91370fa"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.FBTO.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=2",
+            "file": "NV.MNF.FBTO.ZS.UN.2.json",
+            "sha256": "1b46a84d5a0f1a0e81cdac405f6a8e0c040a3379b4be490ff67b1afbebff130e"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.FBTO.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=3",
+            "file": "NV.MNF.FBTO.ZS.UN.3.json",
+            "sha256": "1b8a4aae96285286c98fdebab26b9e6bdc864acc50d041eac00eca5753677e81"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.FBTO.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=4",
+            "file": "NV.MNF.FBTO.ZS.UN.4.json",
+            "sha256": "2ea4d61d2ce52dca4eedcff1eed3135d45fe2c3922a047cf52d165a5c7c76c36"
+          }
+        ],
+        "throughYear": 2026,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17490
+      },
+      {
+        "code": "NV.MNF.MTRN.ZS.UN",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/NV.MNF.MTRN.ZS.UN?source=2&format=json",
+            "file": "NV.MNF.MTRN.ZS.UN.metadata.json",
+            "sha256": "e4fa7cc52e37fed0040c4ce44bb8cc723ca965c59719513f434a286598bf318a"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.MTRN.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=1",
+            "file": "NV.MNF.MTRN.ZS.UN.1.json",
+            "sha256": "979b4459787f5ecc7f1314dd067b7ccb1f5ea43444e1e6b4826c30322a4aedf5"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.MTRN.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=2",
+            "file": "NV.MNF.MTRN.ZS.UN.2.json",
+            "sha256": "c7f293c949c62d255a9d30d3198526769f4476ab190998b6bb359ccd556ee5c5"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.MTRN.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=3",
+            "file": "NV.MNF.MTRN.ZS.UN.3.json",
+            "sha256": "b48b833b994b0b58e9153dc58ee71a6687a139b4032d2df7065ad155ab78fae4"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.MTRN.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=4",
+            "file": "NV.MNF.MTRN.ZS.UN.4.json",
+            "sha256": "093c048439ecf9bd779a604d04c14af4d9017a1ab4834bde017dde8d67f2a042"
+          }
+        ],
+        "throughYear": 2026,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17490
+      },
+      {
+        "code": "NV.MNF.TXTL.ZS.UN",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/NV.MNF.TXTL.ZS.UN?source=2&format=json",
+            "file": "NV.MNF.TXTL.ZS.UN.metadata.json",
+            "sha256": "660ac73a864ccd99a181e5becb725166964f9bf8ef726188bb2bd49ef32bd5ca"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.TXTL.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=1",
+            "file": "NV.MNF.TXTL.ZS.UN.1.json",
+            "sha256": "80bbe80b9b6abdc13df4e63ffccc61f3401c6dd5b7f9a914b79156c254541715"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.TXTL.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=2",
+            "file": "NV.MNF.TXTL.ZS.UN.2.json",
+            "sha256": "7f59be6b3ee63c0f5cb3c3aab93e42d6ec97edd82cbb8a6c8784688b539c2a27"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.TXTL.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=3",
+            "file": "NV.MNF.TXTL.ZS.UN.3.json",
+            "sha256": "63d8854d68c76b6aa7d8add4e628467d6b56ff19a715267ff1e53904cdc4b189"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.TXTL.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=4",
+            "file": "NV.MNF.TXTL.ZS.UN.4.json",
+            "sha256": "0766409fa8809aea443fdc40d3ae46d94c456e393afbb3e51ee761ac3c65e7c7"
+          }
+        ],
+        "throughYear": 2026,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17490
+      },
+      {
+        "code": "NV.MNF.OTHR.ZS.UN",
+        "pages": [
+          {
+            "url": "https://api.worldbank.org/v2/indicator/NV.MNF.OTHR.ZS.UN?source=2&format=json",
+            "file": "NV.MNF.OTHR.ZS.UN.metadata.json",
+            "sha256": "d1d244de6aa8f609b39458bf52e51eddad4d0e8b4ee9bd6d405a407270d33a8e"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.OTHR.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=1",
+            "file": "NV.MNF.OTHR.ZS.UN.1.json",
+            "sha256": "f8053301fbb8a8a8f9f6cba1051a5f8742991c893779e193e7f7e828753214ad"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.OTHR.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=2",
+            "file": "NV.MNF.OTHR.ZS.UN.2.json",
+            "sha256": "57b9e88fb99c2408128765063955c592d0a27303adea409116aee9734a265ff1"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.OTHR.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=3",
+            "file": "NV.MNF.OTHR.ZS.UN.3.json",
+            "sha256": "cddcc7cc1b2c202c0a85bb85fdf449c5bb0086bedaa8604a6ed62d4c74b85036"
+          },
+          {
+            "url": "https://api.worldbank.org/v2/country/all/indicator/NV.MNF.OTHR.ZS.UN?source=2&format=json&date=1960:2026&per_page=5000&page=4",
+            "file": "NV.MNF.OTHR.ZS.UN.4.json",
+            "sha256": "efa83bfdadca54eba0df38c73317a4a6702f7051795f98e1cff7912323e82601"
+          }
+        ],
+        "throughYear": 2026,
+        "sourceUpdatedAt": "2026-07-13",
+        "providerRows": 17490
+      }
+    ]
+  },
+  "limits": [
+    "Employment shares are ILO model estimates; the curated historical window ends in 2024.",
+    "UNIDO manufacturing shares have a narrower denominator than GDP and country-specific coverage.",
+    "Other manufacturing is a published residual including unallocated or unavailable categories.",
+    "Country mapping uses published WDI identities; unassigned CHI and non-world aggregates are excluded.",
+    "Values describe economic structure, not financial valuation or a measured natural cycle."
+  ]
+}

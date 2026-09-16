@@ -1,0 +1,76 @@
+{
+  "checkedAt": "2026-09-11T01:28:49.340Z",
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "housing": [
+    {
+      "metric": "oecd-housing-stock:total",
+      "area": "m49:276",
+      "chart": "Wohnungsbestand · insgesamt, 2011 bis 2021. Wohnungen. Lücken und Brüche bleiben offen.",
+      "points": 3,
+      "connections": 0,
+      "last": "2021 · 43.084.122 Wohnungen · OECD HM1.1.A1 · tatsächliches Bezugsjahr 2021. · Originaltabellen und nationale Erhebungen bzw. Schätzungen; einzelne Quellenjahre"
+    },
+    {
+      "metric": "oecd-housing-stock:per_1000",
+      "area": "m49:276",
+      "chart": "Wohnungsbestand je 1.000 Einwohner, 2011 bis 2021. Wohnungen je 1.000 Einwohner. Lücken und Brüche bleiben offen.",
+      "points": 3,
+      "connections": 0,
+      "last": "2021 · 517,86 Wohnungen je 1.000 Einwohner · OECD HM1.1.A1 · tatsächliches Bezugsjahr 2021. · Originaltabellen und nationale Erhebungen bzw. Schätzungen; einzel"
+    }
+  ],
+  "services": [
+    {
+      "series": "unsdg:SP_PSR_OSATIS_GOV",
+      "country": "Australien",
+      "table": "JAHR\tAUSTRALIEN\n2021\t53,3\n2022\tNicht verfügbar\n2023\t67,8"
+    },
+    {
+      "series": "unsdg:SP_PSR_OSATIS_HLTH",
+      "country": "Australien",
+      "table": "JAHR\tAUSTRALIEN\n2021\t61,3\n2022\tNicht verfügbar\n2023\t63,8"
+    },
+    {
+      "series": "unsdg:SP_PSR_OSATIS_SEC",
+      "country": "Australien",
+      "table": "JAHR\tAUSTRALIEN\n2021\t63,2\n2022\tNicht verfügbar\n2023\t70,6"
+    },
+    {
+      "series": "unsdg:SP_PSR_OSATIS_PRM",
+      "country": "Armenien",
+      "table": "JAHR\tARMENIEN\n2021\t89\n2022\t95,1\n2023\t93,4"
+    },
+    {
+      "series": "unsdg:SP_TRN_PUBL",
+      "country": "Schweiz",
+      "table": "JAHR\tSCHWEIZ\n2018\t85,9\n2019\tNicht verfügbar\n2020\tNicht verfügbar\n2021\t99,5"
+    }
+  ],
+  "transitWorld": "JAHR\tWELT\n2020\t60,9",
+  "transitComparison": "JAHR\tSCHWEIZ\tDEUTSCHLAND\n2018\t85,9\t79,9\n2019\tNicht verfügbar\tNicht verfügbar\n2020\tNicht verfügbar\t79,9",
+  "checks": [
+    "All seven new perspectives opened through actual atlas controls",
+    "Housing Germany actual 2021 last year, sparse points without lines",
+    "Germany/France housing comparison shares calendar and scale with different actual endpoints",
+    "UK stays unavailable; explicit source selector opens separate England",
+    "England since 2020 retains only actual 2021; numbers off; fresh public download disabled",
+    "Saved England view restores area, metric, period and OECD source hash/recipe",
+    "Satisfaction comparison stays first-country only with explicit national-definition notice",
+    "Australian 2022 missing survey year remains unavailable",
+    "Armenian primary-school source note explicitly retains entire education system substitution",
+    "Switzerland/Germany public-transport comparison uses common actual years; gaps are retained",
+    "UN World 2020 observation 60.9 is source-published, no own aggregate",
+    "Saved UN World public-transport view restores original UN release and geography with numbers off",
+    "1024-pixel native viewport has no horizontal overflow",
+    "Eurostat Bosnia and Herzegovina AI TML: source u flag shown for missing 2021 value even with numbers off"
+  ],
+  "screenshots": [
+    "output/atlas-housing-stock-england-minwidth.png",
+    "output/atlas-public-services-armenia.png",
+    "output/atlas-public-transport-comparison.png",
+    "output/atlas-public-transport-world-minwidth.png"
+  ],
+  "screenshotsVisuallyInspected": true
+}

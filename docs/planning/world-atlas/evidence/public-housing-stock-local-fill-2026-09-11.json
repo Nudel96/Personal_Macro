@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-09-11T01:19:28.963251+00:00",
+  "publicCacheOnly": true,
+  "provenance": {
+    "sourceId": "oecd-housing-stock",
+    "retrievedAt": "2026-09-11T01:18:02.629686+00:00",
+    "publishedAt": "2024-04-15",
+    "url": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.xlsx",
+    "documentationUrl": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.pdf",
+    "sha256": "9db04f14bb735721aa8e0ea4212f982e04622773042879eebeadddb3b909809d",
+    "recipe": "oecd-hm11-a1-original-years-20240415-v1",
+    "sourceRows": 43,
+    "numericValues": 248,
+    "areaCount": 43
+  },
+  "profiles": 86,
+  "numeric": 248
+}

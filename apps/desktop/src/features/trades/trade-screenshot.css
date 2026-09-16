@@ -1,0 +1,105 @@
+.screenshot-import {
+  margin-bottom: 20px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.screenshot-import:focus-visible {
+  outline: 2px solid var(--accent, #667aff);
+  outline-offset: 3px;
+}
+.screenshot-import-heading,
+.screenshot-import-preview,
+.screenshot-import-footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.screenshot-import-original > div {
+  overflow: auto;
+  max-height: 420px;
+  margin-top: 10px;
+}
+.screenshot-import-original img {
+  max-width: none;
+}
+.screenshot-import-heading {
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.screenshot-import strong,
+.screenshot-import-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.screenshot-import p {
+  margin: 7px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+.screenshot-import-preview {
+  margin: 14px 0;
+}
+.screenshot-import-preview img {
+  width: 180px;
+  height: 108px;
+  object-fit: contain;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface-2);
+}
+.screenshot-import-preview > div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.screenshot-import-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin: 14px 0;
+}
+.screenshot-import-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+.screenshot-import-field > label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+.screenshot-import-field > .muted {
+  min-height: 34px;
+  padding: 8px 0;
+  font-size: 12px;
+}
+.screenshot-import-field small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 10px;
+  color: var(--text-2);
+}
+.screenshot-import-warning {
+  color: var(--warning, #e4b05b);
+}
+.screenshot-import-notes {
+  font-size: 12px;
+  color: var(--text-2);
+  margin: 16px 0;
+  line-height: 1.5;
+}
+.screenshot-import-notes summary {
+  cursor: pointer;
+}
+.screenshot-import-footer {
+  flex-wrap: wrap;
+  margin-top: 14px;
+  font-size: 12px;
+}

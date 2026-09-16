@@ -1,0 +1,105 @@
+{
+  "checkedAt": "2026-09-11T01:01:05.313Z",
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "perspectives": [
+    {
+      "metric": "bgs-cement:2004",
+      "area": "m49:276",
+      "chart": "Fertigzement · Produktion, 1998 bis 2024. Tonnen Fertigzement. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 26.809.000 Tonnen Fertigzement"
+    },
+    {
+      "metric": "bgs-cement:2003",
+      "area": "m49:276",
+      "chart": "Zementklinker · Produktion, 1999 bis 2024. Tonnen Zementklinker. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 17.729.182 Tonnen Zementklinker"
+    },
+    {
+      "metric": "bgs-lithium:896",
+      "country": "Australien",
+      "chart": "Spodumen · Mineralmenge, 1980 bis 2024. Tonnen Spodumen. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 3.902.057 Tonnen Spodumen"
+    },
+    {
+      "metric": "bgs-lithium:707",
+      "country": "Chile",
+      "chart": "Lithiumcarbonat · Produktmenge, 1998 bis 2024. Tonnen Lithiumcarbonat. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 250.605 Tonnen Lithiumcarbonat"
+    },
+    {
+      "metric": "bgs-lithium:20278",
+      "country": "Chile",
+      "chart": "Lithiumhydroxid · Produktmenge, 1998 bis 2024. Tonnen Lithiumhydroxid. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 21.364 Tonnen Lithiumhydroxid"
+    },
+    {
+      "metric": "bgs-lithium:1998",
+      "country": "Chile",
+      "chart": "Lithiumchlorid · Produktmenge, 1998 bis 2024. Tonnen Lithiumchlorid. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 0 Tonnen Lithiumchlorid · Keine Produktion laut Quelle (—)"
+    },
+    {
+      "metric": "bgs-lithium:894",
+      "country": "Portugal",
+      "chart": "Lepidolith · Mineralmenge, 1974 bis 2024. Tonnen Lepidolith. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 25.000 Tonnen Lepidolith · Quellenschätzung (*)"
+    },
+    {
+      "metric": "bgs-lithium:895",
+      "country": "Brasilien",
+      "chart": "Petalit · Mineralmenge, 1974 bis 2001. Tonnen Petalit. Lücken und Brüche bleiben offen.",
+      "last": "2001 · 187 Tonnen Petalit · BGS-Tabellenhinweise: In addition to the countries listed, Russia also produces lithium minerals"
+    },
+    {
+      "metric": "bgs-lithium:20311",
+      "country": "Australien",
+      "chart": "Spodumen · Lithiumgehalt, 2012 bis 2024. Tonnen enthaltenes Lithium in Spodumen. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 108.633 Tonnen enthaltenes Lithium in Spodumen"
+    },
+    {
+      "metric": "bgs-lithium:20309",
+      "country": "Chile",
+      "chart": "Lithiumcarbonat · Lithiumgehalt, 2012 bis 2024. Tonnen enthaltenes Lithium in Carbonat. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 47.114 Tonnen enthaltenes Lithium in Carbonat"
+    },
+    {
+      "metric": "bgs-lithium:20310",
+      "country": "Chile",
+      "chart": "Lithiumchlorid · Lithiumgehalt, 2012 bis 2024. Tonnen enthaltenes Lithium in Chlorid. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 0 Tonnen enthaltenes Lithium in Chlorid · Keine Produktion laut Quelle (—)"
+    },
+    {
+      "metric": "bgs-lithium:20312",
+      "country": "Mosambik",
+      "chart": "Lepidolith · Lithiumgehalt, 2020 bis 2024. Tonnen enthaltenes Lithium in Lepidolith. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 52 Tonnen enthaltenes Lithium in Lepidolith"
+    },
+    {
+      "metric": "bgs-rare-earths:20238",
+      "country": "Vereinigte Staaten",
+      "chart": "Seltene Erden · Oxidäquivalent, 1992 bis 2024. Tonnen Seltenerdoxid-Äquivalent. Lücken und Brüche bleiben offen.",
+      "last": "2024 · 27.000 Tonnen Seltenerdoxid-Äquivalent · Quellenschätzung (*)"
+    }
+  ],
+  "checks": [
+    "All 13 BGS perspectives opened with original local values",
+    "Cement Germany/France comparison uses common calendar and scale",
+    "Finished cement and clinker remain separate",
+    "Lithium products and their source-published contained lithium remain separate; no invented country total",
+    "Australia lithium carbonate and Canada rare earths remain unavailable; no substitution",
+    "Estonia cement and Burundi rare earths preserve source-confirmed nil as zero",
+    "Portuguese lepidolite and US rare-earth estimates remain labelled",
+    "Numbers opt-in; source quality remains visible when numbers are off",
+    "Fresh source downloads disabled",
+    "Saved USA rare-earth view since 2000 restores source, metric, geography and source provenance",
+    "1024-pixel native viewport has no horizontal overflow"
+  ],
+  "screenshots": [
+    "output/atlas-bgs-cement.png",
+    "output/atlas-bgs-lithium.png",
+    "output/atlas-bgs-rare-earths-minwidth.png"
+  ],
+  "screenshotsVisuallyInspected": true
+}

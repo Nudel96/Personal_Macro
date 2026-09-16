@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-09-11T07:46:47.532Z",
+  "status": "passed",
+  "sourceId": "sasol-synthetic-fuels",
+  "native": true,
+  "checks": [
+    {
+      "check": "all_original_points",
+      "metric": "sasol-synthetic-fuels:oryx_production",
+      "area": "m49:634",
+      "values": 13
+    },
+    {
+      "check": "all_original_points",
+      "metric": "sasol-synthetic-fuels:oryx_utilisation",
+      "area": "m49:634",
+      "values": 10
+    },
+    {
+      "check": "all_original_points",
+      "metric": "sasol-synthetic-fuels:secunda_total",
+      "area": "m49:710",
+      "values": 7
+    },
+    {
+      "check": "all_original_points",
+      "metric": "sasol-synthetic-fuels:secunda_white",
+      "area": "m49:710",
+      "values": 6
+    },
+    {
+      "check": "optional_numbers_hidden",
+      "passed": true
+    },
+    {
+      "check": "archive_empty_since2020",
+      "passed": true
+    },
+    {
+      "check": "explicit_wrong_plant_perspective_stays_missing",
+      "passed": true
+    },
+    {
+      "check": "india_not_replaced_by_plant",
+      "passed": true
+    },
+    {
+      "check": "saved_source_recipe_and_fiscal_perspective",
+      "passed": true
+    },
+    {
+      "check": "minimum_width",
+      "width": 1024,
+      "documentWidth": 1015
+    }
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "output/atlas-synfuels-secunda.png",
+    "output/atlas-synfuels-oryx.png",
+    "output/atlas-synfuels-minwidth.png"
+  ],
+  "visualReview": "Three screenshots inspected; fiscal scopes readable at 1440 and 1024 pixels, no horizontal overflow"
+}

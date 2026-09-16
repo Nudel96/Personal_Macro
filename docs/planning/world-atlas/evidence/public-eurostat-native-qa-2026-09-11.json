@@ -1,0 +1,102 @@
+{
+  "checkedAt": "2026-09-11T00:35:07.875Z",
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "perspectives": [
+    {
+      "value": "eurostat-ai:E_AI_TANY",
+      "chart": "Unternehmen mit KI-Nutzung, 2021 bis 2025. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 4
+    },
+    {
+      "value": "eurostat-ai:E_AI_TTM",
+      "chart": "KI · Textanalyse in Unternehmen, 2021 bis 2025. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 4
+    },
+    {
+      "value": "eurostat-ai:E_AI_TML",
+      "chart": "KI · maschinelles Lernen für Datenanalyse, 2021 bis 2025. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 4
+    },
+    {
+      "value": "eurostat-robotics:E_RBT",
+      "chart": "Unternehmen mit Industrie- oder Servicerobotern, 2018 bis 2022. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 3
+    },
+    {
+      "value": "eurostat-robotics:E_RBTI",
+      "chart": "Unternehmen mit Industrierobotern, 2018 bis 2022. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 3
+    },
+    {
+      "value": "eurostat-robotics:E_RBTS",
+      "chart": "Unternehmen mit Servicerobotern, 2018 bis 2022. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 3
+    },
+    {
+      "value": "eurostat-cybersecurity:E_SECMGE1",
+      "chart": "Unternehmen mit IT-Sicherheitsmaßnahmen, 2022 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 2
+    },
+    {
+      "value": "eurostat-cybersecurity:E_SECMGE5",
+      "chart": "Unternehmen mit mindestens fünf IT-Sicherheitsmaßnahmen, 2022 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 2
+    },
+    {
+      "value": "eurostat-cybersecurity:E_SECMOSBU",
+      "chart": "IT-Sicherheit · getrennte Datensicherung, 2019 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 3
+    },
+    {
+      "value": "eurostat-cybersecurity:E_SECMTST",
+      "chart": "IT-Sicherheit · Sicherheitstests, 2019 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 3
+    },
+    {
+      "value": "eurostat-ecommerce:E_AESELL",
+      "chart": "Unternehmen mit elektronischen Verkäufen, 2009 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 16
+    },
+    {
+      "value": "eurostat-ecommerce:E_AWSELL",
+      "chart": "Unternehmen mit Web-Verkäufen, 2010 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 15
+    },
+    {
+      "value": "eurostat-ecommerce:E_AWS_CMP",
+      "chart": "Unternehmen mit Verkäufen über Online-Marktplätze, 2016 bis 2024. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 9
+    },
+    {
+      "value": "eurostat-rents:CP041",
+      "chart": "Wohnungsmieten · Preisentwicklung, 1996 bis 2025. Mietpreisindex · Jahresdurchschnitt 2025 = 100. Lücken und Brüche bleiben offen.",
+      "points": 30
+    },
+    {
+      "value": "eurostat-cloud:E_CC",
+      "chart": "Unternehmen mit bezahlten Cloud-Diensten, 2014 bis 2025. Anteil der erfassten Unternehmen (%). Lücken und Brüche bleiben offen.",
+      "points": 7
+    }
+  ],
+  "checks": [
+    "All 15 perspectives opened through actual native controls; all six newly filled topics opened via coverage",
+    "AI, robotics, cyber, ecommerce, marketplace and cloud show observed survey points without interpolated lines; robotics has exactly 2018/2020/2022",
+    "Germany/France comparison retains common unit and scale; both rent endpoints are 100 in 2025",
+    "Optional numbers show source values and notes; off retains date-only rent point tooltips",
+    "Ecommerce 2024 explicitly references source survey year 2025",
+    "Georgia rental index is one 2025 observation; USA rents remain unavailable",
+    "Census USA construction and Eurostat surveyed cloud usage switch separately; USA has no Eurostat cloud replacement",
+    "Netherlands AI 2025 break visible; North Macedonia absent total and one 2021 text-analysis observation remain missing/sparse",
+    "EU27 Eurostat own source area, 2020 horizon, source ID, retrieval, recipe and hashes saved/restored in own QA profile",
+    "Fresh source download button disabled",
+    "Visual screenshots inspected at regular native size and 1024 x 850; no horizontal overflow"
+  ],
+  "screenshots": [
+    "output/atlas-eurostat-robotics.png",
+    "output/atlas-eurostat-marketplaces.png",
+    "output/atlas-eurostat-rents.png",
+    "output/atlas-eurostat-cloud-minwidth.png"
+  ]
+}

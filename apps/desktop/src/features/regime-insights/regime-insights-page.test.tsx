@@ -9,8 +9,6 @@ import {
   RegimeInsightsPage,
 } from "./regime-insights-page";
 
-vi.mock("@tauri-apps/plugin-opener", () => ({ openUrl: vi.fn() }));
-
 vi.mock("../../services/commands", () => ({
   api: {
     audChinaCpiRegime: vi.fn(),
@@ -245,11 +243,6 @@ describe("RegimeInsightsPage", () => {
     expect(await screen.findByText("Aktuelles China-CPI-Regime")).toBeTruthy();
     expect(screen.getAllByText("Fallende Inflation").length).toBeGreaterThan(0);
     expect(screen.getAllByText("Historisch bearish").length).toBeGreaterThan(0);
-    expect(
-      screen.getByText(
-        /fallender China CPI ist daher nicht automatisch bearish/,
-      ),
-    ).toBeTruthy();
     expect(screen.getByTestId("regime-chart")).toBeTruthy();
   });
 

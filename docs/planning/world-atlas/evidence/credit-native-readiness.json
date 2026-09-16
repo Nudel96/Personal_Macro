@@ -1,0 +1,524 @@
+{
+  "verifiedAt": "2026-09-09T05:31:15.151922+00:00",
+  "sourceUrl": "https://data.bis.org/static/bulk/WS_CREDIT_GAP_csv_flat.zip",
+  "sourceSha256": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa",
+  "sourceBytes": 252401,
+  "sourceRows": 24488,
+  "profiles": 44,
+  "matchedNumericCells": 24488,
+  "matchedNullCellsIncludingWarmup": 3520,
+  "maximumPublishedRoundingResidual": "0.00009916418",
+  "cacheSchema": 8,
+  "coverage": [
+    {
+      "id": "bis:euro_area",
+      "providerCode": "XM",
+      "quarters": 108,
+      "firstRatio": "1999-Q1",
+      "firstGap": "2009-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:032",
+      "providerCode": "AR",
+      "quarters": 165,
+      "firstRatio": "1984-Q4",
+      "firstGap": "1994-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:036",
+      "providerCode": "AU",
+      "quarters": 263,
+      "firstRatio": "1960-Q2",
+      "firstGap": "1970-Q2",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:040",
+      "providerCode": "AT",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:056",
+      "providerCode": "BE",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:076",
+      "providerCode": "BR",
+      "quarters": 120,
+      "firstRatio": "1996-Q1",
+      "firstGap": "2006-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:124",
+      "providerCode": "CA",
+      "quarters": 281,
+      "firstRatio": "1955-Q4",
+      "firstGap": "1965-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:152",
+      "providerCode": "CL",
+      "quarters": 172,
+      "firstRatio": "1983-Q1",
+      "firstGap": "1993-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:156",
+      "providerCode": "CN",
+      "quarters": 161,
+      "firstRatio": "1985-Q4",
+      "firstGap": "1995-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:170",
+      "providerCode": "CO",
+      "quarters": 117,
+      "firstRatio": "1996-Q4",
+      "firstGap": "2006-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:203",
+      "providerCode": "CZ",
+      "quarters": 132,
+      "firstRatio": "1993-Q1",
+      "firstGap": "2003-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:208",
+      "providerCode": "DK",
+      "quarters": 237,
+      "firstRatio": "1966-Q4",
+      "firstGap": "1976-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:246",
+      "providerCode": "FI",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:250",
+      "providerCode": "FR",
+      "quarters": 225,
+      "firstRatio": "1969-Q4",
+      "firstGap": "1979-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:276",
+      "providerCode": "DE",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:300",
+      "providerCode": "GR",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:344",
+      "providerCode": "HK",
+      "quarters": 189,
+      "firstRatio": "1978-Q4",
+      "firstGap": "1988-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:348",
+      "providerCode": "HU",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:356",
+      "providerCode": "IN",
+      "quarters": 299,
+      "firstRatio": "1951-Q2",
+      "firstGap": "1961-Q2",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:360",
+      "providerCode": "ID",
+      "quarters": 200,
+      "firstRatio": "1976-Q1",
+      "firstGap": "1986-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:372",
+      "providerCode": "IE",
+      "quarters": 219,
+      "firstRatio": "1971-Q2",
+      "firstGap": "1981-Q2",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:376",
+      "providerCode": "IL",
+      "quarters": 141,
+      "firstRatio": "1990-Q4",
+      "firstGap": "2000-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:380",
+      "providerCode": "IT",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:392",
+      "providerCode": "JP",
+      "quarters": 245,
+      "firstRatio": "1964-Q4",
+      "firstGap": "1974-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:410",
+      "providerCode": "KR",
+      "quarters": 253,
+      "firstRatio": "1962-Q4",
+      "firstGap": "1972-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:442",
+      "providerCode": "LU",
+      "quarters": 124,
+      "firstRatio": "1995-Q1",
+      "firstGap": "2005-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:458",
+      "providerCode": "MY",
+      "quarters": 247,
+      "firstRatio": "1964-Q2",
+      "firstGap": "1974-Q2",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:484",
+      "providerCode": "MX",
+      "quarters": 181,
+      "firstRatio": "1980-Q4",
+      "firstGap": "1990-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:528",
+      "providerCode": "NL",
+      "quarters": 260,
+      "firstRatio": "1961-Q1",
+      "firstGap": "1971-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:554",
+      "providerCode": "NZ",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:578",
+      "providerCode": "NO",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:616",
+      "providerCode": "PL",
+      "quarters": 136,
+      "firstRatio": "1992-Q1",
+      "firstGap": "2002-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:620",
+      "providerCode": "PT",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:643",
+      "providerCode": "RU",
+      "quarters": 123,
+      "firstRatio": "1995-Q2",
+      "firstGap": "2005-Q2",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:682",
+      "providerCode": "SA",
+      "quarters": 132,
+      "firstRatio": "1993-Q1",
+      "firstGap": "2003-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:702",
+      "providerCode": "SG",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:710",
+      "providerCode": "ZA",
+      "quarters": 244,
+      "firstRatio": "1965-Q1",
+      "firstGap": "1975-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:724",
+      "providerCode": "ES",
+      "quarters": 224,
+      "firstRatio": "1970-Q1",
+      "firstGap": "1980-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:752",
+      "providerCode": "SE",
+      "quarters": 260,
+      "firstRatio": "1961-Q1",
+      "firstGap": "1971-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:756",
+      "providerCode": "CH",
+      "quarters": 261,
+      "firstRatio": "1960-Q4",
+      "firstGap": "1970-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:764",
+      "providerCode": "TH",
+      "quarters": 221,
+      "firstRatio": "1970-Q4",
+      "firstGap": "1980-Q4",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:792",
+      "providerCode": "TR",
+      "quarters": 160,
+      "firstRatio": "1986-Q1",
+      "firstGap": "1996-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:826",
+      "providerCode": "GB",
+      "quarters": 252,
+      "firstRatio": "1963-Q1",
+      "firstGap": "1973-Q1",
+      "lastPeriod": "2025-Q4"
+    },
+    {
+      "id": "m49:840",
+      "providerCode": "US",
+      "quarters": 313,
+      "firstRatio": "1947-Q4",
+      "firstGap": "1957-Q4",
+      "lastPeriod": "2025-Q4"
+    }
+  ],
+  "native": {
+    "areas": [
+      {
+        "id": "bis:euro_area",
+        "quarters": 108,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 261,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 313,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:356",
+        "quarters": 299,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:156",
+        "quarters": 161,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 244,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: Abweichung vom Kredittrend; Prozentpunkte. Lücken bleiben offen.",
+    "identifier": "com.personal-macro.atlas-credit-validation",
+    "ok": true,
+    "restart": true,
+    "runAt": "2026-09-09T05:29:49.525Z",
+    "source": {
+      "areaCount": 44,
+      "fileModifiedAt": "Wed, 02 Sep 2026 07:35:00 GMT",
+      "numericCellCount": 24488,
+      "recipe": "bis-published-one-sided-hp400000-gap-v1",
+      "retrievedAt": "2026-09-09T05:22:28.150465800+00:00",
+      "sha256": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa",
+      "sourceRowCount": 24488,
+      "url": "https://data.bis.org/static/bulk/WS_CREDIT_GAP_csv_flat.zip"
+    },
+    "picture": {
+      "width": 960,
+      "height": 758,
+      "bytes": 114918,
+      "sha256": "2195683628965741f3a44490c545a0ed836756db84d6b59397d1b593e1a9a79a"
+    }
+  },
+  "initialNative": {
+    "areas": [
+      {
+        "id": "bis:euro_area",
+        "quarters": 108,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 261,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 313,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:356",
+        "quarters": 299,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:156",
+        "quarters": 161,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 244,
+        "source": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: Abweichung vom Kredittrend; Prozentpunkte. Lücken bleiben offen.",
+    "identifier": "com.personal-macro.atlas-credit-validation",
+    "job": {
+      "finishedAt": "2026-09-09T05:22:28.462564100+00:00",
+      "id": "488d736e-b14a-47fa-96a1-14ed2cfbb016",
+      "message": "Die BIS-Kredit-Kreditbilder sind lokal verfügbar.",
+      "observations": 24488,
+      "page": 2,
+      "pages": 2,
+      "seriesId": "bis-credit-gap",
+      "startedAt": "2026-09-09T05:22:26.907545700+00:00",
+      "status": "complete"
+    },
+    "jobId": "488d736e-b14a-47fa-96a1-14ed2cfbb016",
+    "ok": true,
+    "restart": false,
+    "runAt": "2026-09-09T05:22:26.732Z",
+    "source": {
+      "areaCount": 44,
+      "fileModifiedAt": "Wed, 02 Sep 2026 07:35:00 GMT",
+      "numericCellCount": 24488,
+      "recipe": "bis-published-one-sided-hp400000-gap-v1",
+      "retrievedAt": "2026-09-09T05:22:28.150465800+00:00",
+      "sha256": "b91338d00db834c170f863d20a09385d6b356b47fcc770a243ae2831aaac90fa",
+      "sourceRowCount": 24488,
+      "url": "https://data.bis.org/static/bulk/WS_CREDIT_GAP_csv_flat.zip"
+    },
+    "picture": {
+      "width": 960,
+      "height": 758,
+      "bytes": 114730,
+      "sha256": "5476a8405ac4df7207a24ca82de5dc0379292ccd57dd08132bfe745b332bc3cc"
+    }
+  },
+  "validation": {
+    "frontendTests": 112,
+    "frontendFiles": 19,
+    "rustLibraryPassed": 211,
+    "rustLibraryIgnored": 16,
+    "explicitBisHttpTest": "passed",
+    "typecheck": "passed",
+    "eslint": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "frontendBuild": "passed",
+    "buildLimit": "Existing >500kB shared chart/document chunks",
+    "nativeAtlasInitialization": "INFO Lokaler Atlas-Speicher initialisiert",
+    "existingUnrelatedRuntimeWarnings": [
+      "EODHD intraday request rejected for Technicals",
+      "Central bank report sync already running"
+    ],
+    "browserReview": {
+      "data": "Original native public BIS snapshots",
+      "views": [
+        "Germany vs USA",
+        "India vs China",
+        "gap",
+        "ratio and trend",
+        "since 2000",
+        "missing world comparison",
+        "optional quarterly table"
+      ],
+      "widths": [
+        1024,
+        1440
+      ],
+      "widthMeaning": "1024 CSS pixels of usable content (1033px window with classic scrollbar); 1440px window. An exactly 1024px window has the existing 9px body-min-width overflow. Resize settles through the existing BaseChart ResizeObserver.",
+      "consoleWarningsOrErrors": 0
+    },
+    "nativeFullClickQA": "not completed"
+  }
+}

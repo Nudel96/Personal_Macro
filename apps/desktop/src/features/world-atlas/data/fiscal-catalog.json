@@ -1,0 +1,1493 @@
+{
+  "version": "2026-09-09.1",
+  "datasetId": "imf-fiscal-dec2025",
+  "release": "IMF Dezember 2025 · historisch bis 2024",
+  "url": "https://snapshots.owid.io/9a/89466f7445e0893ab49ddf530da3b1",
+  "originalUrl": "https://www.imf.org/external/datamapper/FPP/Public%20Finances%20in%20Modern%20History%20Dec%202025.xlsx",
+  "sourcePage": "https://www.imf.org/external/datamapper/datasets/FPP",
+  "archivePage": "https://github.com/owid/etl/blob/master/snapshots/imf/2026-06-12/public_finances_modern_history.xlsx.dvc",
+  "documentationUrl": "https://www.imf.org/external/datamapper/FPP/Appendix%20of%20Data%20Sources.pdf",
+  "licenseUrl": "https://www.imf.org/external/terms.htm",
+  "sha256": "de8ae724dbf4aca064aef3bc49554c4d00221f6eef3762b29412450cb1c65e54",
+  "md5": "9a89466f7445e0893ab49ddf530da3b1",
+  "fileSize": 2254440,
+  "recipe": "imf-dec2025-original-values-scopes-v1",
+  "sheet": "data",
+  "firstYear": 1800,
+  "lastYear": 2024,
+  "rowCount": 33846,
+  "headers": [
+    "country",
+    "isocode",
+    "ifscode",
+    "year",
+    "GG_budg",
+    "GG_debt",
+    "rev",
+    "exp",
+    "ie",
+    "prim_exp",
+    "pb",
+    "d",
+    "rltir",
+    "rgc"
+  ],
+  "topicIds": ["institutions:public_finances", "finance:public_debt"],
+  "groups": [
+    {
+      "id": "budget",
+      "label": "Haushalt & Staat"
+    },
+    {
+      "id": "debt",
+      "label": "Schulden & Zinsen"
+    },
+    {
+      "id": "economy",
+      "label": "Wirtschaftlicher Kontext"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "revenue",
+      "field": "rev",
+      "label": "Staatseinnahmen",
+      "group": "budget",
+      "scopeField": "GG_budg",
+      "unit": "% des BIP",
+      "explanation": "Steuern und andere Einnahmen des erfassten Staates. Der Anteil zeigt seine finanzielle Größe, keine Qualität der Politik."
+    },
+    {
+      "id": "expenditure",
+      "field": "exp",
+      "label": "Staatsausgaben",
+      "group": "budget",
+      "scopeField": "GG_budg",
+      "unit": "% des BIP",
+      "explanation": "Ausgaben einschließlich Zinszahlungen. Hohe Anteile können auch durch ein kleines oder eingebrochenes BIP entstehen."
+    },
+    {
+      "id": "primaryExpenditure",
+      "field": "prim_exp",
+      "label": "Ausgaben ohne Zinsen",
+      "group": "budget",
+      "scopeField": "GG_budg",
+      "unit": "% des BIP",
+      "explanation": "Veröffentlichte Primärausgaben: die Ausgaben des erfassten Staates ohne seine Zinszahlungen."
+    },
+    {
+      "id": "primaryBalance",
+      "field": "pb",
+      "label": "Primärer Haushaltssaldo",
+      "group": "budget",
+      "scopeField": "GG_budg",
+      "unit": "% des BIP",
+      "explanation": "Einnahmen abzüglich Ausgaben ohne Zinsen. Oberhalb null liegt ein Primärüberschuss, darunter ein Primärdefizit. Zinseinnahmen sind hier anders als in manchen IMF-Reihen behandelt."
+    },
+    {
+      "id": "grossDebt",
+      "field": "d",
+      "label": "Öffentliche Bruttoschulden",
+      "group": "debt",
+      "scopeField": "GG_debt",
+      "unit": "% des BIP",
+      "explanation": "Bruttoschulden des erfassten Staates im Verhältnis zur Wirtschaftsleistung. Staatliche Vermögenswerte sind nicht abgezogen; dies ist keine Tragfähigkeits- oder Anlagebewertung."
+    },
+    {
+      "id": "interestExpense",
+      "field": "ie",
+      "label": "Zinsausgaben des Staates",
+      "group": "debt",
+      "scopeField": "GG_budg",
+      "unit": "% des BIP",
+      "explanation": "Gezahlte Zinsen im Verhältnis zum BIP. Tilgungen sind nicht enthalten; dies ist weder der vollständige Schuldendienst noch ein Marktzins."
+    },
+    {
+      "id": "realLongRate",
+      "field": "rltir",
+      "label": "Langfristiger Realzins",
+      "group": "economy",
+      "scopeField": "",
+      "unit": "%",
+      "explanation": "Von der Quelle veröffentlichter langfristiger Zins nach Inflationsbereinigung. Historische Schätzungen und wechselnde Ausgangsquellen bleiben Teil der Reihe."
+    },
+    {
+      "id": "realGrowth",
+      "field": "rgc",
+      "label": "Reales Wirtschaftswachstum",
+      "group": "economy",
+      "scopeField": "",
+      "unit": "% pro Jahr",
+      "explanation": "Veröffentlichte Veränderung der inflationsbereinigten Wirtschaftsleistung. Diese historische Rekonstruktion liefert Kontext und keine Prognose."
+    }
+  ],
+  "breaks": [
+    {
+      "code": "FRA",
+      "year": 1978,
+      "fields": ["rev", "exp", "ie", "prim_exp"],
+      "reason": "Änderung der Reihendefinition laut OWID-Quellenmetadaten."
+    }
+  ],
+  "areas": [
+    {
+      "code": "ABW",
+      "geographyId": "m49:533",
+      "providerLabels": ["Aruba"],
+      "ifs": 314,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "AGO",
+      "geographyId": "m49:024",
+      "providerLabels": ["Angola"],
+      "ifs": 614,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ALB",
+      "geographyId": "m49:008",
+      "providerLabels": ["Albania"],
+      "ifs": 914,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ARE",
+      "geographyId": "m49:784",
+      "providerLabels": ["United Arab Emirates"],
+      "ifs": 466,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ARG",
+      "geographyId": "m49:032",
+      "providerLabels": ["Argentina"],
+      "ifs": 213,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ATG",
+      "geographyId": "m49:028",
+      "providerLabels": ["Antigua and Barbuda"],
+      "ifs": 311,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "AUS",
+      "geographyId": "m49:036",
+      "providerLabels": ["Australia"],
+      "ifs": 193,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "AUT",
+      "geographyId": "m49:040",
+      "providerLabels": ["Austria"],
+      "ifs": 122,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "AZE",
+      "geographyId": "m49:031",
+      "providerLabels": ["Azerbaijan"],
+      "ifs": 912,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BDI",
+      "geographyId": "m49:108",
+      "providerLabels": ["Burundi"],
+      "ifs": 618,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BEL",
+      "geographyId": "m49:056",
+      "providerLabels": ["Belgium"],
+      "ifs": 124,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BEN",
+      "geographyId": "m49:204",
+      "providerLabels": ["Benin"],
+      "ifs": 638,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BFA",
+      "geographyId": "m49:854",
+      "providerLabels": ["Burkina Faso"],
+      "ifs": 748,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BGD",
+      "geographyId": "m49:050",
+      "providerLabels": ["Bangladesh"],
+      "ifs": 513,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BGR",
+      "geographyId": "m49:100",
+      "providerLabels": ["Bulgaria"],
+      "ifs": 918,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BHR",
+      "geographyId": "m49:048",
+      "providerLabels": ["Bahrain"],
+      "ifs": 419,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BHS",
+      "geographyId": "m49:044",
+      "providerLabels": ["Bahamas, The", "The Bahamas"],
+      "ifs": 313,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BIH",
+      "geographyId": "m49:070",
+      "providerLabels": ["Bosnia and Herzegovina"],
+      "ifs": 963,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BLZ",
+      "geographyId": "m49:084",
+      "providerLabels": ["Belize"],
+      "ifs": 339,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BOL",
+      "geographyId": "m49:068",
+      "providerLabels": ["Bolivia"],
+      "ifs": 218,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BRA",
+      "geographyId": "m49:076",
+      "providerLabels": ["Brazil"],
+      "ifs": 223,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BRB",
+      "geographyId": "m49:052",
+      "providerLabels": ["Barbados"],
+      "ifs": 316,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "BTN",
+      "geographyId": "m49:064",
+      "providerLabels": ["Bhutan"],
+      "ifs": 514,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CAF",
+      "geographyId": "m49:140",
+      "providerLabels": ["Central African Republic"],
+      "ifs": 626,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CAN",
+      "geographyId": "m49:124",
+      "providerLabels": ["Canada"],
+      "ifs": 156,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CHE",
+      "geographyId": "m49:756",
+      "providerLabels": ["Switzerland"],
+      "ifs": 146,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CHL",
+      "geographyId": "m49:152",
+      "providerLabels": ["Chile"],
+      "ifs": 228,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CHN",
+      "geographyId": "m49:156",
+      "providerLabels": ["China"],
+      "ifs": 924,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CIV",
+      "geographyId": "m49:384",
+      "providerLabels": ["Côte d'Ivoire"],
+      "ifs": 662,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "COD",
+      "geographyId": "m49:180",
+      "providerLabels": ["Congo, Democratic Republic of the"],
+      "ifs": 636,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "COG",
+      "geographyId": "m49:178",
+      "providerLabels": ["Congo, Republic of", "Republic of Congo"],
+      "ifs": 634,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "COL",
+      "geographyId": "m49:170",
+      "providerLabels": ["Colombia"],
+      "ifs": 233,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "COM",
+      "geographyId": "m49:174",
+      "providerLabels": ["Comoros"],
+      "ifs": 632,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CPV",
+      "geographyId": "m49:132",
+      "providerLabels": ["Cabo Verde"],
+      "ifs": 624,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CRI",
+      "geographyId": "m49:188",
+      "providerLabels": ["Costa Rica"],
+      "ifs": 238,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CYP",
+      "geographyId": "m49:196",
+      "providerLabels": ["Cyprus"],
+      "ifs": 423,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "CZE",
+      "geographyId": "m49:203",
+      "providerLabels": ["Czech Republic"],
+      "ifs": 935,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DEU",
+      "geographyId": "m49:276",
+      "providerLabels": ["Germany"],
+      "ifs": 134,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DJI",
+      "geographyId": "m49:262",
+      "providerLabels": ["Djibouti"],
+      "ifs": 611,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DMA",
+      "geographyId": "m49:212",
+      "providerLabels": ["Dominica"],
+      "ifs": 321,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DNK",
+      "geographyId": "m49:208",
+      "providerLabels": ["Denmark"],
+      "ifs": 128,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DOM",
+      "geographyId": "m49:214",
+      "providerLabels": ["Dominican Republic"],
+      "ifs": 243,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "DZA",
+      "geographyId": "m49:012",
+      "providerLabels": ["Algeria"],
+      "ifs": 612,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ECU",
+      "geographyId": "m49:218",
+      "providerLabels": ["Ecuador"],
+      "ifs": 248,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ESP",
+      "geographyId": "m49:724",
+      "providerLabels": ["Spain"],
+      "ifs": 184,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "EST",
+      "geographyId": "m49:233",
+      "providerLabels": ["Estonia"],
+      "ifs": 939,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ETH",
+      "geographyId": "m49:231",
+      "providerLabels": ["Ethiopia"],
+      "ifs": 644,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "FIN",
+      "geographyId": "m49:246",
+      "providerLabels": ["Finland"],
+      "ifs": 172,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "FJI",
+      "geographyId": "m49:242",
+      "providerLabels": ["Fiji"],
+      "ifs": 819,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "FRA",
+      "geographyId": "m49:250",
+      "providerLabels": ["France"],
+      "ifs": 132,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "FSM",
+      "geographyId": "m49:583",
+      "providerLabels": ["Micronesia"],
+      "ifs": 868,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GAB",
+      "geographyId": "m49:266",
+      "providerLabels": ["Gabon"],
+      "ifs": 646,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GBR",
+      "geographyId": "m49:826",
+      "providerLabels": ["United Kingdom"],
+      "ifs": 112,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GEO",
+      "geographyId": "m49:268",
+      "providerLabels": ["Georgia"],
+      "ifs": 915,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GHA",
+      "geographyId": "m49:288",
+      "providerLabels": ["Ghana"],
+      "ifs": 652,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GIN",
+      "geographyId": "m49:324",
+      "providerLabels": ["Guinea"],
+      "ifs": 656,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GNB",
+      "geographyId": "m49:624",
+      "providerLabels": ["Guinea-Bissau"],
+      "ifs": 654,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GNQ",
+      "geographyId": "m49:226",
+      "providerLabels": ["Equatorial Guinea"],
+      "ifs": 642,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GRC",
+      "geographyId": "m49:300",
+      "providerLabels": ["Greece"],
+      "ifs": 174,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GRD",
+      "geographyId": "m49:308",
+      "providerLabels": ["Grenada"],
+      "ifs": 328,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GTM",
+      "geographyId": "m49:320",
+      "providerLabels": ["Guatemala"],
+      "ifs": 258,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "GUY",
+      "geographyId": "m49:328",
+      "providerLabels": ["Guyana"],
+      "ifs": 336,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "HKG",
+      "geographyId": "m49:344",
+      "providerLabels": ["Hong Kong SAR"],
+      "ifs": 532,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "HND",
+      "geographyId": "m49:340",
+      "providerLabels": ["Honduras"],
+      "ifs": 268,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "HRV",
+      "geographyId": "m49:191",
+      "providerLabels": ["Croatia"],
+      "ifs": 960,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "HTI",
+      "geographyId": "m49:332",
+      "providerLabels": ["Haiti"],
+      "ifs": 263,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "HUN",
+      "geographyId": "m49:348",
+      "providerLabels": ["Hungary"],
+      "ifs": 944,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "IDN",
+      "geographyId": "m49:360",
+      "providerLabels": ["Indonesia"],
+      "ifs": 536,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "IND",
+      "geographyId": "m49:356",
+      "providerLabels": ["India"],
+      "ifs": 534,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "IRL",
+      "geographyId": "m49:372",
+      "providerLabels": ["Ireland"],
+      "ifs": 178,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "IRN",
+      "geographyId": "m49:364",
+      "providerLabels": ["Iran"],
+      "ifs": 429,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ISL",
+      "geographyId": "m49:352",
+      "providerLabels": ["Iceland"],
+      "ifs": 176,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ISR",
+      "geographyId": "m49:376",
+      "providerLabels": ["Israel"],
+      "ifs": 436,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ITA",
+      "geographyId": "m49:380",
+      "providerLabels": ["Italy"],
+      "ifs": 136,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "JAM",
+      "geographyId": "m49:388",
+      "providerLabels": ["Jamaica"],
+      "ifs": 343,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "JOR",
+      "geographyId": "m49:400",
+      "providerLabels": ["Jordan"],
+      "ifs": 439,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "JPN",
+      "geographyId": "m49:392",
+      "providerLabels": ["Japan"],
+      "ifs": 158,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KEN",
+      "geographyId": "m49:404",
+      "providerLabels": ["Kenya"],
+      "ifs": 664,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KGZ",
+      "geographyId": "m49:417",
+      "providerLabels": ["Kyrgyz Republic"],
+      "ifs": 917,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KHM",
+      "geographyId": "m49:116",
+      "providerLabels": ["Cambodia"],
+      "ifs": 522,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KIR",
+      "geographyId": "m49:296",
+      "providerLabels": ["Kiribati"],
+      "ifs": 826,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KNA",
+      "geographyId": "m49:659",
+      "providerLabels": ["St. Kitts and Nevis"],
+      "ifs": 361,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KOR",
+      "geographyId": "m49:410",
+      "providerLabels": ["Korea"],
+      "ifs": 542,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "KWT",
+      "geographyId": "m49:414",
+      "providerLabels": ["Kuwait"],
+      "ifs": 443,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LBN",
+      "geographyId": "m49:422",
+      "providerLabels": ["Lebanon"],
+      "ifs": 446,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LCA",
+      "geographyId": "m49:662",
+      "providerLabels": ["St. Lucia"],
+      "ifs": 362,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LKA",
+      "geographyId": "m49:144",
+      "providerLabels": ["Sri Lanka"],
+      "ifs": 524,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LSO",
+      "geographyId": "m49:426",
+      "providerLabels": ["Lesotho"],
+      "ifs": 666,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LUX",
+      "geographyId": "m49:442",
+      "providerLabels": ["Luxembourg"],
+      "ifs": 137,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "LVA",
+      "geographyId": "m49:428",
+      "providerLabels": ["Latvia"],
+      "ifs": 941,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MAR",
+      "geographyId": "m49:504",
+      "providerLabels": ["Morocco"],
+      "ifs": 686,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MDA",
+      "geographyId": "m49:498",
+      "providerLabels": ["Moldova"],
+      "ifs": 921,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MDG",
+      "geographyId": "m49:450",
+      "providerLabels": ["Madagascar"],
+      "ifs": 674,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MDV",
+      "geographyId": "m49:462",
+      "providerLabels": ["Maldives"],
+      "ifs": 556,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MEX",
+      "geographyId": "m49:484",
+      "providerLabels": ["Mexico"],
+      "ifs": 273,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MHL",
+      "geographyId": "m49:584",
+      "providerLabels": ["Marshall Islands"],
+      "ifs": 867,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MKD",
+      "geographyId": "m49:807",
+      "providerLabels": ["North Macedonia"],
+      "ifs": 962,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MMR",
+      "geographyId": "m49:104",
+      "providerLabels": ["Myanmar"],
+      "ifs": 518,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MNG",
+      "geographyId": "m49:496",
+      "providerLabels": ["Mongolia"],
+      "ifs": 948,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MOZ",
+      "geographyId": "m49:508",
+      "providerLabels": ["Mozambique"],
+      "ifs": 688,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "MYS",
+      "geographyId": "m49:458",
+      "providerLabels": ["Malaysia"],
+      "ifs": 548,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NAM",
+      "geographyId": "m49:516",
+      "providerLabels": ["Namibia"],
+      "ifs": 728,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NER",
+      "geographyId": "m49:562",
+      "providerLabels": ["Niger"],
+      "ifs": 692,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NGA",
+      "geographyId": "m49:566",
+      "providerLabels": ["Nigeria"],
+      "ifs": 694,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NIC",
+      "geographyId": "m49:558",
+      "providerLabels": ["Nicaragua"],
+      "ifs": 278,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NLD",
+      "geographyId": "m49:528",
+      "providerLabels": ["Netherlands"],
+      "ifs": 138,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NOR",
+      "geographyId": "m49:578",
+      "providerLabels": ["Norway"],
+      "ifs": 142,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "NZL",
+      "geographyId": "m49:554",
+      "providerLabels": ["New Zealand"],
+      "ifs": 196,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "OMN",
+      "geographyId": "m49:512",
+      "providerLabels": ["Oman"],
+      "ifs": 449,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PAK",
+      "geographyId": "m49:586",
+      "providerLabels": ["Pakistan"],
+      "ifs": 564,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PAN",
+      "geographyId": "m49:591",
+      "providerLabels": ["Panama"],
+      "ifs": 283,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PER",
+      "geographyId": "m49:604",
+      "providerLabels": ["Peru"],
+      "ifs": 293,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PHL",
+      "geographyId": "m49:608",
+      "providerLabels": ["Philippines"],
+      "ifs": 566,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PNG",
+      "geographyId": "m49:598",
+      "providerLabels": ["Papua New Guinea"],
+      "ifs": 853,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "POL",
+      "geographyId": "m49:616",
+      "providerLabels": ["Poland"],
+      "ifs": 964,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PRT",
+      "geographyId": "m49:620",
+      "providerLabels": ["Portugal"],
+      "ifs": 182,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "PRY",
+      "geographyId": "m49:600",
+      "providerLabels": ["Paraguay"],
+      "ifs": 288,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "QAT",
+      "geographyId": "m49:634",
+      "providerLabels": ["Qatar"],
+      "ifs": 453,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ROU",
+      "geographyId": "m49:642",
+      "providerLabels": ["Romania"],
+      "ifs": 968,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "RUS",
+      "geographyId": "m49:643",
+      "providerLabels": ["Russia"],
+      "ifs": 922,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "RWA",
+      "geographyId": "m49:646",
+      "providerLabels": ["Rwanda"],
+      "ifs": 714,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SAU",
+      "geographyId": "m49:682",
+      "providerLabels": ["Saudi Arabia"],
+      "ifs": 456,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SDN",
+      "geographyId": "m49:729",
+      "providerLabels": ["Sudan"],
+      "ifs": 732,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SEN",
+      "geographyId": "m49:686",
+      "providerLabels": ["Senegal"],
+      "ifs": 722,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SLB",
+      "geographyId": "m49:090",
+      "providerLabels": ["Solomon Islands"],
+      "ifs": 813,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SLV",
+      "geographyId": "m49:222",
+      "providerLabels": ["El Salvador"],
+      "ifs": 253,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SUR",
+      "geographyId": "m49:740",
+      "providerLabels": ["Suriname"],
+      "ifs": 366,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SVK",
+      "geographyId": "m49:703",
+      "providerLabels": ["Slovak Republic"],
+      "ifs": 936,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SVN",
+      "geographyId": "m49:705",
+      "providerLabels": ["Slovenia"],
+      "ifs": 961,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SWE",
+      "geographyId": "m49:752",
+      "providerLabels": ["Sweden"],
+      "ifs": 144,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SWZ",
+      "geographyId": "m49:748",
+      "providerLabels": ["Eswatini"],
+      "ifs": 734,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "SYC",
+      "geographyId": "m49:690",
+      "providerLabels": ["Seychelles"],
+      "ifs": 718,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TCD",
+      "geographyId": "m49:148",
+      "providerLabels": ["Chad"],
+      "ifs": 628,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TGO",
+      "geographyId": "m49:768",
+      "providerLabels": ["Togo"],
+      "ifs": 742,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "THA",
+      "geographyId": "m49:764",
+      "providerLabels": ["Thailand"],
+      "ifs": 578,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TJK",
+      "geographyId": "m49:762",
+      "providerLabels": ["Tajikistan"],
+      "ifs": 923,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TTO",
+      "geographyId": "m49:780",
+      "providerLabels": ["Trinidad and Tobago"],
+      "ifs": 369,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TUN",
+      "geographyId": "m49:788",
+      "providerLabels": ["Tunisia"],
+      "ifs": 744,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TUR",
+      "geographyId": "m49:792",
+      "providerLabels": ["Türkiye"],
+      "ifs": 186,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "TZA",
+      "geographyId": "m49:834",
+      "providerLabels": ["Tanzania"],
+      "ifs": 738,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "UGA",
+      "geographyId": "m49:800",
+      "providerLabels": ["Uganda"],
+      "ifs": 746,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "UKR",
+      "geographyId": "m49:804",
+      "providerLabels": ["Ukraine"],
+      "ifs": 926,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "URY",
+      "geographyId": "m49:858",
+      "providerLabels": ["Uruguay"],
+      "ifs": 298,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "USA",
+      "geographyId": "m49:840",
+      "providerLabels": ["United States"],
+      "ifs": 111,
+      "firstRowYear": 1929,
+      "lastRowYear": 2024,
+      "rowCount": 96
+    },
+    {
+      "code": "UZB",
+      "geographyId": "m49:860",
+      "providerLabels": ["Uzbekistan"],
+      "ifs": 927,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "VCT",
+      "geographyId": "m49:670",
+      "providerLabels": ["St. Vincent and the Grenadines"],
+      "ifs": 364,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "VEN",
+      "geographyId": "m49:862",
+      "providerLabels": ["Venezuela"],
+      "ifs": 299,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "VNM",
+      "geographyId": "m49:704",
+      "providerLabels": ["Vietnam"],
+      "ifs": 582,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "VUT",
+      "geographyId": "m49:548",
+      "providerLabels": ["Vanuatu"],
+      "ifs": 846,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "YEM",
+      "geographyId": "m49:887",
+      "providerLabels": ["Yemen"],
+      "ifs": 474,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    },
+    {
+      "code": "ZAF",
+      "geographyId": "m49:710",
+      "providerLabels": ["South Africa"],
+      "ifs": 199,
+      "firstRowYear": 1800,
+      "lastRowYear": 2024,
+      "rowCount": 225
+    }
+  ]
+}

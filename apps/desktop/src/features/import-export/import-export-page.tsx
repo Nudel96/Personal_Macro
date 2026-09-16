@@ -716,8 +716,8 @@ export function ImportExportPage() {
         />
         <CardContent>
           <div className="notice form-error">
-            Macro-, COT-, EODHD-, Leitzins-, Seasonality-, Markt- und
-            Put/Call-Daten bleiben erhalten. Der Reset startet das Journal ohne
+            Macro-, COT-, EODHD-, Leitzins-, Seasonality- und historische
+            Marktdaten bleiben erhalten. Der Reset startet das Journal ohne
             Konto neu und kann nur mit der exakten Bestätigungsphrase ausgeführt
             werden.
           </div>

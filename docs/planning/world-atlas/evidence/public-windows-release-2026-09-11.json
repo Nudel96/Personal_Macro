@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "path": "apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "bytes": 49486336,
+  "sha256": "40838df35a31ad97592fcc5dceb984eb1fe05cf6cfb0cf487030419d85f8a0b4",
+  "builtAt": "2026-09-10T23:19:35.188370+00:00",
+  "elapsed": "5m 39s",
+  "warnings": [
+    "Existing frontend chunk size warnings",
+    "MSVC informational import-library output emitted as linker_messages"
+  ]
+}

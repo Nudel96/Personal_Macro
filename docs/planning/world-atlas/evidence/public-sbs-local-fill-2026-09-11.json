@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-09-11T02:28:37.042359+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sources": [
+    {
+      "sourceId": "eurostat-business-services",
+      "provenance": {
+        "sourceId": "eurostat-business-services",
+        "retrievedAt": "2026-09-11T02:26:07.718085700+00:00",
+        "publishedAt": "2026-09-01",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sbs_ovw_act?lang=en&nace_r2=M&nace_r2=S96&indic_sbs=EMP_NR&indic_sbs=ENT_NR",
+        "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/sbs_esms.htm",
+        "sha256": "c222c221d379ce03c9e532b5000bfa0bfa1594d9ae531748486e96430fd49249",
+        "recipe": "eurostat-business-services-original-jsonstat-20260911-v1",
+        "sourceRows": 558,
+        "numericValues": 558,
+        "areaCount": 36
+      },
+      "profiles": 142,
+      "numeric": 558,
+      "fullOriginalAuditEquality": true
+    },
+    {
+      "sourceId": "eurostat-professional-history",
+      "provenance": {
+        "sourceId": "eurostat-professional-history",
+        "retrievedAt": "2026-09-11T02:26:08.719579100+00:00",
+        "publishedAt": "2024-03-01",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/sbs_na_1a_se_r2?lang=en&nace_r2=M&indic_sb=V11110&indic_sb=V16110",
+        "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/sbs_h_esms.htm",
+        "sha256": "1412bc2fdb73037f35f940da31da65a308c75bb661d986a3bccc5c4a54db5c23",
+        "recipe": "eurostat-professional-history-original-jsonstat-20260911-v1",
+        "sourceRows": 946,
+        "numericValues": 924,
+        "areaCount": 37
+      },
+      "profiles": 74,
+      "numeric": 924,
+      "fullOriginalAuditEquality": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "domains": 8,
+  "groups": 24,
+  "topics": 233,
+  "sourceRecords": 20,
+  "statisticalAreas": 248,
+  "sampledIndicatorFamilies": 10,
+  "sampledCountrySeries": 120,
+  "sourceChecksPassed": 12,
+  "sourceChecksFailed": 0,
+  "catalogValidation": "passed",
+  "applicationImplementation": "not_started"
+}

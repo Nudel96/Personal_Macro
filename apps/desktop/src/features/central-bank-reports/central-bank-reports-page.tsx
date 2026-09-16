@@ -8,6 +8,7 @@ import {
   ExternalLink,
   FileDown,
   FileText,
+  Languages,
   RefreshCw,
   Search,
 } from "lucide-react";
@@ -42,14 +43,14 @@ const bankNames: Record<string, string> = {
 
 const reportLabels: Record<CentralBankReportType, string> = {
   decision: "Zinsentscheidung",
-  monetary_policy_report: "Monetary Policy Report",
-  projections: "Projektionen / Outlook",
+  monetary_policy_report: "Geldpolitischer Bericht",
+  projections: "Projektionen und Ausblick",
   special_notice: "Geldpolitische Sondermitteilung",
 };
 
 const stanceLabels = {
-  hawkish: "Hawkish",
-  dovish: "Dovish",
+  hawkish: "Restriktive Geldpolitik",
+  dovish: "Lockere Geldpolitik",
   neutral: "Neutral",
   unclear: "Nicht eindeutig",
 };
@@ -72,13 +73,38 @@ export function CentralBankReportsPage() {
   const [search, setSearch] = useState("");
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
+  const summarize = useMutation({
+    mutationFn: (id?: string) => api.summarizeCentralBankReports(id),
+    onSuccess: (result) => {
+      void queryClient.invalidateQueries({
+        queryKey: ["central-bank-reports"],
+      });
+      void queryClient.invalidateQueries({ queryKey: ["central-bank-report"] });
+      if (result.errorMessage) {
+        toast.warning(
+          `${result.reportsSummarized} Briefings auf Deutsch erstellt. ${result.errorMessage}`,
+        );
+      } else {
+        toast.success(
+          `${result.reportsSummarized} Briefings auf Deutsch erstellt.${result.reportsPending ? ` ${result.reportsPending} weitere sind noch ausstehend.` : ""}`,
+        );
+      }
+    },
+    onError: (error) => toast.error(message(error)),
+  });
+
   const dashboard = useQuery({
     queryKey: ["central-bank-reports"],
     queryFn: api.centralBankReports,
-    refetchInterval: 60_000,
+    refetchInterval: summarize.isPending ? 3_000 : 60_000,
   });
   const detail = useQuery({
-    queryKey: ["central-bank-report", selectedId],
+    queryKey: [
+      "central-bank-report",
+      selectedId,
+      dashboard.data?.reports.find((report) => report.id === selectedId)
+        ?.summarizedAt,
+    ],
     queryFn: () => api.centralBankReport(selectedId!),
     enabled: Boolean(selectedId),
   });
@@ -88,6 +114,7 @@ export function CentralBankReportsPage() {
       void queryClient.invalidateQueries({
         queryKey: ["central-bank-reports"],
       });
+      void queryClient.invalidateQueries({ queryKey: ["central-bank-report"] });
       toast.success(
         `${result.reportsDiscovered} neue Berichte gefunden, ${result.reportsSummarized} zusammengefasst.`,
       );
@@ -176,7 +203,7 @@ export function CentralBankReportsPage() {
         icon={PageIcon}
         eyebrow="Marktkontext"
         title="Zentralbank-Briefings"
-        description="Offizielle Entscheidungen, Monetary Policy Reports und Projektionen – automatisch geladen, lokal archiviert und quellengebunden zusammengefasst."
+        description="Offizielle Entscheidungen, geldpolitische Berichte und Projektionen – automatisch geladen, lokal archiviert und auf Deutsch zusammengefasst."
         actions={
           <>
             <Badge className={data.automation.enabled ? "positive" : "warning"}>
@@ -186,9 +213,23 @@ export function CentralBankReportsPage() {
                 : "Desktop erforderlich"}
             </Badge>
             <Button
+              onClick={() => summarize.mutate(undefined)}
+              disabled={
+                summarize.isPending ||
+                sync.isPending ||
+                !isTauri() ||
+                !data.automation.openaiConfigured
+              }
+            >
+              <Languages size={14} />
+              {summarize.isPending
+                ? "Briefings werden übersetzt …"
+                : "Briefings auf Deutsch"}
+            </Button>
+            <Button
               variant="primary"
               onClick={() => sync.mutate()}
-              disabled={sync.isPending || !isTauri()}
+              disabled={sync.isPending || summarize.isPending || !isTauri()}
             >
               <RefreshCw
                 size={14}
@@ -216,7 +257,7 @@ export function CentralBankReportsPage() {
           >
             {data.automation.openaiConfigured
               ? `Deutsche KI-Zusammenfassung · ${data.automation.summaryModel}`
-              : "Lokale Extrakt-Zusammenfassung"}
+              : "Deutsche Zusammenfassung benötigt die Modellanbindung"}
           </Badge>
         }
       />
@@ -372,7 +413,7 @@ export function CentralBankReportsPage() {
                         {report.summaryStatus === "complete"
                           ? "Deutsch zusammengefasst"
                           : report.summaryStatus === "local_fallback"
-                            ? "Lokaler Extrakt"
+                            ? "Deutsch ausstehend"
                             : "Zusammenfassung ausstehend"}
                       </Badge>
                       {!report.readAt ? (
@@ -400,6 +441,16 @@ export function CentralBankReportsPage() {
           loading={detail.isLoading}
           error={detail.isError}
           onOpen={openReport}
+          onSummarize={(id) => summarize.mutate(id)}
+          summarizing={summarize.isPending}
+          canSummarize={
+            isTauri() && data.automation.openaiConfigured && !sync.isPending
+          }
+          summaryError={
+            summarize.error
+              ? message(summarize.error)
+              : summarize.data?.errorMessage
+          }
         />
       </div>
     </div>
@@ -411,11 +462,19 @@ function ReportDetailPanel({
   loading,
   error,
   onOpen,
+  onSummarize,
+  summarizing,
+  canSummarize,
+  summaryError,
 }: {
   report?: CentralBankReportDetail;
   loading: boolean;
   error: boolean;
   onOpen: (report: CentralBankReportListItem) => Promise<void>;
+  onSummarize: (id: string) => void;
+  summarizing: boolean;
+  canSummarize: boolean;
+  summaryError?: string | null;
 }) {
   if (loading)
     return (
@@ -447,7 +506,7 @@ function ReportDetailPanel({
       </Card>
     );
   }
-  const summary = report.summary;
+  const summary = report.summaryStatus === "complete" ? report.summary : null;
   return (
     <Card className="central-bank-detail-card">
       <CardHeader
@@ -489,17 +548,9 @@ function ReportDetailPanel({
             <div className="central-bank-summary-heading">
               <div>
                 <span className="eyebrow">Briefing</span>
-                <h3>Zusammenfassung</h3>
+                <h3>Zusammenfassung auf Deutsch</h3>
               </div>
-              <Badge
-                className={
-                  report.summaryStatus === "complete" ? "positive" : "warning"
-                }
-              >
-                {report.summaryStatus === "complete"
-                  ? "Deutsche KI-Zusammenfassung"
-                  : "Lokale Extrakt-Zusammenfassung"}
-              </Badge>
+              <Badge className="positive">Deutsch</Badge>
             </div>
             <div className="notice central-bank-overview">
               {summary.overview}
@@ -523,13 +574,33 @@ function ReportDetailPanel({
         ) : (
           <EmptyState
             icon={FileText}
-            title="Zusammenfassung nicht verfügbar"
-            description="Das Original kann weiterhin direkt geöffnet und geprüft werden."
+            title={
+              summarizing
+                ? "Deutsches Briefing wird erstellt"
+                : "Deutsche Zusammenfassung ausstehend"
+            }
+            description={
+              summaryError ??
+              (canSummarize
+                ? "Erstelle die deutsche Zusammenfassung aus dem gespeicherten Originalbericht."
+                : "Für deutsche Briefings muss die Modellanbindung verfügbar sein. Das Original kannst du weiterhin öffnen.")
+            }
+            action={
+              canSummarize && report.extractedText ? (
+                <Button
+                  onClick={() => onSummarize(report.id)}
+                  disabled={summarizing}
+                >
+                  <Languages size={14} />{" "}
+                  {summarizing ? "Wird übersetzt …" : "Deutsch zusammenfassen"}
+                </Button>
+              ) : undefined
+            }
           />
         )}
         {report.extractedText ? (
           <details className="central-bank-source-text">
-            <summary>Sicher extrahierten Originaltext anzeigen</summary>
+            <summary>Originaltext in Quellsprache anzeigen</summary>
             <pre>{report.extractedText}</pre>
           </details>
         ) : null}

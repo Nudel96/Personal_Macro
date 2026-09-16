@@ -1,0 +1,14 @@
+{
+  "checkedAt": "2026-09-11T00:14:54.216763+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/personal-macro-desktop.exe",
+  "bytes": 49728512,
+  "sha256": "c69e9678f7c711c516268d0d3ee3521dfd6e622b6c289a005f4b9f4d5e6fcb44",
+  "modifiedUtc": "2026-09-11T00:13:27.342008+00:00",
+  "catalogVersion": "2026-09-11.5",
+  "publicSources": 6,
+  "publicMetrics": 29,
+  "includes": "First nine topics and coverage date formatter correction",
+  "log": "apps/desktop/.tmp/atlas-remaining-40/second-final-windows-release.log"
+}

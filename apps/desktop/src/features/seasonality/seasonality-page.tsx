@@ -36,6 +36,7 @@ import { PageHeader } from "../../components/ui/page-header";
 import { DataStatusStrip } from "../../components/ui/data-status-strip";
 import { number, percent } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { SeasonalityOpportunities } from "./seasonality-opportunities";
 import type {
   SeasonalityAnalysis,
   SeasonalityYearFilter,
@@ -213,6 +214,7 @@ export function SeasonalityPage() {
           {dashboard.data.collectionError}
         </div>
       )}
+      <SeasonalityOpportunities dataVersion={dashboard.data.dataVersion} />
       <div className="seasonality-workspace">
         <Card className="seasonality-market-panel">
           <CardHeader

@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-09-11T06:24:45.241798+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "sha256": "36a2021c3170c01d60931107a0ebb105d81e8cc3eb146dfd75060b950c4f8dcc",
+  "bytes": 54205952,
+  "log": "apps\\desktop\\.tmp\\atlas-remaining-40\\trilemma-windows-final.log",
+  "verification": {
+    "typecheck": "passed",
+    "frontend": "26 public/coverage tests and scoped ESLint passed",
+    "native": "2 ACI original/mutation tests; all 532 profiles exact; temporary SQLite reopen passed",
+    "clippy": "all targets -D warnings passed",
+    "nativeUi": "16 checks and three visually reviewed screenshots passed",
+    "nativeStderr": "empty",
+    "catalogVersionInFinalBundle": "2026-09-11.19"
+  }
+}

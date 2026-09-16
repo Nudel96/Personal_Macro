@@ -1,0 +1,235 @@
+{
+  "datasetId": "irena-capacity-2026-h1",
+  "sourceUrl": "https://pxweb.irena.org/pxweb/en/IRENASTAT/IRENASTAT__Power%20Capacity%20and%20Generation/",
+  "attribution": "IRENA (2026), Renewable Capacity Statistics 2026 · © IRENA 2026",
+  "technologies": [
+    {
+      "id": "renewables",
+      "sourceLabel": "Total renewable energy",
+      "label": "Erneuerbare insgesamt",
+      "topicId": "electricity:generation_mix"
+    },
+    {
+      "id": "solar",
+      "sourceLabel": "Solar energy",
+      "label": "Solarenergie insgesamt",
+      "topicId": "electricity:solar"
+    },
+    {
+      "id": "solar_pv",
+      "sourceLabel": "Solar photovoltaic",
+      "label": "Photovoltaik",
+      "topicId": "electricity:solar"
+    },
+    {
+      "id": "solar_thermal",
+      "sourceLabel": "Solar thermal energy",
+      "label": "Solarthermische Stromerzeugung",
+      "topicId": "electricity:solar"
+    },
+    {
+      "id": "wind",
+      "sourceLabel": "Wind energy",
+      "label": "Windenergie insgesamt",
+      "topicId": "electricity:wind_total"
+    },
+    {
+      "id": "wind_onshore",
+      "sourceLabel": "Onshore wind energy",
+      "label": "Windenergie an Land",
+      "topicId": "electricity:wind_onshore"
+    },
+    {
+      "id": "wind_offshore",
+      "sourceLabel": "Offshore wind energy",
+      "label": "Windenergie auf See",
+      "topicId": "electricity:wind_offshore"
+    },
+    {
+      "id": "hydro",
+      "sourceLabel": "Renewable hydropower",
+      "label": "Erneuerbare Wasserkraft",
+      "topicId": "electricity:hydropower"
+    },
+    {
+      "id": "mixed_hydro",
+      "sourceLabel": "Mixed hydropower",
+      "label": "Gemischte Wasserkraftanlagen",
+      "topicId": "electricity:hydropower"
+    },
+    {
+      "id": "marine",
+      "sourceLabel": "Marine energy",
+      "label": "Meeresenergie",
+      "topicId": "electricity:other_renewables"
+    },
+    {
+      "id": "bioenergy",
+      "sourceLabel": "Bioenergy",
+      "label": "Bioenergie insgesamt",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "solid_biofuels",
+      "sourceLabel": "Solid biofuels",
+      "label": "Feste Biobrennstoffe",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "liquid_biofuels",
+      "sourceLabel": "Liquid biofuels",
+      "label": "Flüssige Biobrennstoffe",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "biogas",
+      "sourceLabel": "Gas biofuels",
+      "label": "Biogase",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "renewable_waste",
+      "sourceLabel": "Renewable waste",
+      "label": "Erneuerbare Abfallanteile",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "geothermal",
+      "sourceLabel": "Geothermal energy",
+      "label": "Geothermische Stromerzeugung",
+      "topicId": "electricity:geothermal"
+    },
+    {
+      "id": "nonrenewables",
+      "sourceLabel": "Total non-renewable energy",
+      "label": "Nicht erneuerbare Quellen insgesamt",
+      "topicId": "electricity:generation_mix"
+    },
+    {
+      "id": "fossil",
+      "sourceLabel": "Fossil fuels",
+      "label": "Fossile Brennstoffe insgesamt",
+      "topicId": "electricity:generation_mix"
+    },
+    {
+      "id": "coal",
+      "sourceLabel": "Coal",
+      "label": "Kohle",
+      "topicId": "electricity:coal_power"
+    },
+    {
+      "id": "oil",
+      "sourceLabel": "Oil",
+      "label": "Ölbasierte Stromerzeugung",
+      "topicId": "electricity:other_fossil"
+    },
+    {
+      "id": "gas",
+      "sourceLabel": "Natural gas",
+      "label": "Erdgas",
+      "topicId": "electricity:gas_power"
+    },
+    {
+      "id": "nuclear",
+      "sourceLabel": "Nuclear energy",
+      "label": "Kernenergie",
+      "topicId": "electricity:nuclear"
+    },
+    {
+      "id": "nonrenewable_waste",
+      "sourceLabel": "Non-renewable waste",
+      "label": "Nicht erneuerbare Abfallanteile",
+      "topicId": "electricity:other_fossil"
+    },
+    {
+      "id": "other_nonrenewable",
+      "sourceLabel": "Other non-renewable energy",
+      "label": "Andere nicht erneuerbare Quellen",
+      "topicId": "electricity:other_fossil"
+    },
+    {
+      "id": "other_nes",
+      "sourceLabel": "Other non-renewable energy n.e.s.",
+      "label": "Weitere nicht näher zugeordnete Quellen",
+      "topicId": "electricity:other_fossil"
+    },
+    {
+      "id": "pumped_hydro",
+      "sourceLabel": "Pumped hydro",
+      "label": "Pumpspeicherleistung",
+      "topicId": "energy_systems:long_duration_storage"
+    }
+  ],
+  "regions": [
+    {
+      "code": "GLO",
+      "id": "world",
+      "sourceLabel": "World",
+      "label": "Welt",
+      "regionId": "world"
+    },
+    {
+      "code": "RAF",
+      "id": "irena:africa",
+      "sourceLabel": "Africa",
+      "label": "Afrika · IRENA-Region",
+      "regionId": "Africa"
+    },
+    {
+      "code": "RAS",
+      "id": "irena:asia",
+      "sourceLabel": "Asia",
+      "label": "Asien · IRENA-Region",
+      "regionId": "Asia"
+    },
+    {
+      "code": "RCC",
+      "id": "irena:central_america_caribbean",
+      "sourceLabel": "Central America and the Caribbean",
+      "label": "Zentralamerika und Karibik · IRENA-Region",
+      "regionId": "Americas"
+    },
+    {
+      "code": "REA",
+      "id": "irena:eurasia",
+      "sourceLabel": "Eurasia",
+      "label": "Eurasien · IRENA-Region",
+      "regionId": "world"
+    },
+    {
+      "code": "RER",
+      "id": "irena:europe",
+      "sourceLabel": "Europe",
+      "label": "Europa · IRENA-Region",
+      "regionId": "Europe"
+    },
+    {
+      "code": "RME",
+      "id": "irena:middle_east",
+      "sourceLabel": "Middle East",
+      "label": "Naher Osten · IRENA-Region",
+      "regionId": "Asia"
+    },
+    {
+      "code": "RNA",
+      "id": "irena:north_america",
+      "sourceLabel": "North America",
+      "label": "Nordamerika · IRENA-Region",
+      "regionId": "Americas"
+    },
+    {
+      "code": "ROC",
+      "id": "irena:oceania",
+      "sourceLabel": "Oceania",
+      "label": "Ozeanien · IRENA-Region",
+      "regionId": "Oceania"
+    },
+    {
+      "code": "RSA",
+      "id": "irena:south_america",
+      "sourceLabel": "South America",
+      "label": "Südamerika · IRENA-Region",
+      "regionId": "Americas"
+    }
+  ]
+}

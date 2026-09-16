@@ -1,0 +1,2095 @@
+{
+  "version": "2026-09-09.1",
+  "datasetId": "un-households-2026",
+  "release": "UN DESA · August 2026 · verarbeitet bis 30. Juni 2026",
+  "url": "https://population.un.org/household/assets/UNDESA_PD_2026_hh-size-composition.xlsx",
+  "sourcePage": "https://population.un.org/household/",
+  "documentationUrl": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2026_methodology-report_hh-size-composition.pdf",
+  "documentationSha256": "a0235739117d56a37aa0daf57ed206b89590d4db3c854038044a168577e993d2",
+  "licenseUrl": "https://creativecommons.org/licenses/by/3.0/igo/",
+  "sha256": "fde0eedd2d3e7f32ad5d8bd8f9ba694dae7f4046190e9adb12175adcce0fb63c",
+  "fileSize": 399250,
+  "recipe": "un-households-2026-original-observations-v1",
+  "sheet": "HH size and composition 2026",
+  "sheets": [
+    "Important Note",
+    "Definitions",
+    "Data Sources",
+    "HH size and composition 2026",
+    "Footnote"
+  ],
+  "firstYear": 1959,
+  "lastYear": 2025,
+  "rowCount": 1129,
+  "numericCellCount": 36142,
+  "headers": [
+    "Country and area",
+    "Location ID",
+    "ISO3 Code",
+    "ISO2 Code",
+    "SDG region ID",
+    "SDG region name",
+    "Data source category",
+    "Data source catalog ID",
+    "Reference year",
+    "Data source detailed name",
+    "Average household size (number of members)",
+    "1 member",
+    "2-3 members",
+    "4-5 members",
+    "6 or more members",
+    "Female head of household (percentage of households)",
+    "Under 20 years (aged 0-19)",
+    "Aged 20-64 years",
+    "Aged 60 years or over",
+    "Aged 65 years or over",
+    "Under 15 years (aged 0-14)",
+    "Under 18 years (aged 0-17)",
+    "Under 20 years (aged 0-19)",
+    "Aged 60 years or over",
+    "Aged 65 years or over",
+    "Under 15 years AND 60 years or over",
+    "Under 15 years AND 65 years or over",
+    "Under 18 years AND 60 years or over",
+    "Under 18 years AND 65 years or over",
+    "Under 20 years AND 60 years or over",
+    "Under 20 years AND 65 years or over",
+    "Under age 15 years among all households",
+    "Under age 15 years among households with at least one member under age 15 years",
+    "Under age 20 years among all households",
+    "Under age 20 years among households with at least one member under age 20 years",
+    "Ages 20-64 years among all households",
+    "One-person",
+    "Couple only",
+    "Couple with children",
+    "Single parent with children",
+    "Single mother with children",
+    "Single father with children",
+    "Extended family",
+    "Non-relatives",
+    "Unknown",
+    "Nuclear",
+    "Multi-generation",
+    "Three generation",
+    "Skip generation"
+  ],
+  "topicId": "demography:households",
+  "groups": [
+    {
+      "id": "size",
+      "label": "Haushaltsgröße"
+    },
+    {
+      "id": "types",
+      "label": "Formen des Zusammenlebens"
+    },
+    {
+      "id": "generations",
+      "label": "Generationen unter einem Dach"
+    },
+    {
+      "id": "members",
+      "label": "Altersgruppen im Haushalt"
+    },
+    {
+      "id": "sharedAges",
+      "label": "Jüngere und Ältere zusammen"
+    },
+    {
+      "id": "ageCounts",
+      "label": "Menschen nach Altersgruppen"
+    },
+    {
+      "id": "head",
+      "label": "Haushaltsbezugsperson"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "averageSize",
+      "group": "size",
+      "label": "Menschen pro Haushalt",
+      "unit": "persons",
+      "column": 11,
+      "explanation": "Durchschnitt der üblichen Bewohner je Haushalt. Besucher zählen nicht mit."
+    },
+    {
+      "id": "size1",
+      "group": "size",
+      "label": "Eine Person",
+      "unit": "percent",
+      "column": 12,
+      "explanation": "Anteil der Haushalte mit genau einer Person."
+    },
+    {
+      "id": "size2to3",
+      "group": "size",
+      "label": "Zwei bis drei Personen",
+      "unit": "percent",
+      "column": 13,
+      "explanation": "Anteil der Haushalte mit zwei oder drei Personen."
+    },
+    {
+      "id": "size4to5",
+      "group": "size",
+      "label": "Vier bis fünf Personen",
+      "unit": "percent",
+      "column": 14,
+      "explanation": "Anteil der Haushalte mit vier oder fünf Personen."
+    },
+    {
+      "id": "size6plus",
+      "group": "size",
+      "label": "Sechs oder mehr Personen",
+      "unit": "percent",
+      "column": 15,
+      "explanation": "Anteil der Haushalte mit mindestens sechs Personen."
+    },
+    {
+      "id": "femaleHead",
+      "group": "head",
+      "label": "Weibliche Bezugsperson",
+      "unit": "percent",
+      "column": 16,
+      "explanation": "Haushalte mit einer als weiblich erfassten Haushaltsbezugsperson. Die Erhebungsrolle sagt nichts über Entscheidungsmacht aus."
+    },
+    {
+      "id": "headUnder20",
+      "group": "head",
+      "label": "Bezugsperson unter 20",
+      "unit": "percent",
+      "column": 17,
+      "explanation": "Haushalte mit einer Bezugsperson im Alter von 0 bis 19 Jahren."
+    },
+    {
+      "id": "head20to64",
+      "group": "head",
+      "label": "Bezugsperson von 20 bis 64",
+      "unit": "percent",
+      "column": 18,
+      "explanation": "Haushalte mit einer Bezugsperson im Alter von 20 bis 64 Jahren."
+    },
+    {
+      "id": "head60plus",
+      "group": "head",
+      "label": "Bezugsperson ab 60",
+      "unit": "percent",
+      "column": 19,
+      "explanation": "Haushalte mit einer Bezugsperson ab 60 Jahren; die Gruppe ab 65 ist darin enthalten."
+    },
+    {
+      "id": "head65plus",
+      "group": "head",
+      "label": "Bezugsperson ab 65",
+      "unit": "percent",
+      "column": 20,
+      "explanation": "Haushalte mit einer Bezugsperson ab 65 Jahren."
+    },
+    {
+      "id": "memberUnder15",
+      "group": "members",
+      "label": "Mit Menschen unter 15",
+      "unit": "percent",
+      "column": 21,
+      "explanation": "Haushalte mit mindestens einer Person im Alter von 0 bis 14 Jahren."
+    },
+    {
+      "id": "memberUnder18",
+      "group": "members",
+      "label": "Mit Menschen unter 18",
+      "unit": "percent",
+      "column": 22,
+      "explanation": "Haushalte mit mindestens einer Person im Alter von 0 bis 17 Jahren."
+    },
+    {
+      "id": "memberUnder20",
+      "group": "members",
+      "label": "Mit Menschen unter 20",
+      "unit": "percent",
+      "column": 23,
+      "explanation": "Haushalte mit mindestens einer Person im Alter von 0 bis 19 Jahren."
+    },
+    {
+      "id": "member60plus",
+      "group": "members",
+      "label": "Mit Menschen ab 60",
+      "unit": "percent",
+      "column": 24,
+      "explanation": "Haushalte mit mindestens einer Person ab 60 Jahren."
+    },
+    {
+      "id": "member65plus",
+      "group": "members",
+      "label": "Mit Menschen ab 65",
+      "unit": "percent",
+      "column": 25,
+      "explanation": "Haushalte mit mindestens einer Person ab 65 Jahren."
+    },
+    {
+      "id": "under15and60",
+      "group": "sharedAges",
+      "label": "Unter 15 und ab 60",
+      "unit": "percent",
+      "column": 26,
+      "explanation": "Haushalte mit mindestens einer Person unter 15 und einer ab 60. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "under15and65",
+      "group": "sharedAges",
+      "label": "Unter 15 und ab 65",
+      "unit": "percent",
+      "column": 27,
+      "explanation": "Haushalte mit mindestens einer Person unter 15 und einer ab 65. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "under18and60",
+      "group": "sharedAges",
+      "label": "Unter 18 und ab 60",
+      "unit": "percent",
+      "column": 28,
+      "explanation": "Haushalte mit mindestens einer Person unter 18 und einer ab 60. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "under18and65",
+      "group": "sharedAges",
+      "label": "Unter 18 und ab 65",
+      "unit": "percent",
+      "column": 29,
+      "explanation": "Haushalte mit mindestens einer Person unter 18 und einer ab 65. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "under20and60",
+      "group": "sharedAges",
+      "label": "Unter 20 und ab 60",
+      "unit": "percent",
+      "column": 30,
+      "explanation": "Haushalte mit mindestens einer Person unter 20 und einer ab 60. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "under20and65",
+      "group": "sharedAges",
+      "label": "Unter 20 und ab 65",
+      "unit": "percent",
+      "column": 31,
+      "explanation": "Haushalte mit mindestens einer Person unter 20 und einer ab 65. Verwandtschaft ist nicht vorausgesetzt."
+    },
+    {
+      "id": "meanUnder15All",
+      "group": "ageCounts",
+      "label": "Unter 15 · alle Haushalte",
+      "unit": "persons",
+      "column": 32,
+      "explanation": "Durchschnittliche Zahl der Menschen unter 15, bezogen auf alle Haushalte, auch ohne Kinder."
+    },
+    {
+      "id": "meanUnder15Present",
+      "group": "ageCounts",
+      "label": "Unter 15 · nur Haushalte mit dieser Altersgruppe",
+      "unit": "persons",
+      "column": 33,
+      "explanation": "Durchschnittliche Zahl der Menschen unter 15, nur in Haushalten mit mindestens einer Person unter 15."
+    },
+    {
+      "id": "meanUnder20All",
+      "group": "ageCounts",
+      "label": "Unter 20 · alle Haushalte",
+      "unit": "persons",
+      "column": 34,
+      "explanation": "Durchschnittliche Zahl der Menschen unter 20, bezogen auf alle Haushalte."
+    },
+    {
+      "id": "meanUnder20Present",
+      "group": "ageCounts",
+      "label": "Unter 20 · nur Haushalte mit dieser Altersgruppe",
+      "unit": "persons",
+      "column": 35,
+      "explanation": "Durchschnittliche Zahl der Menschen unter 20, nur in Haushalten mit mindestens einer Person unter 20."
+    },
+    {
+      "id": "mean20to64All",
+      "group": "ageCounts",
+      "label": "20 bis 64 · alle Haushalte",
+      "unit": "persons",
+      "column": 36,
+      "explanation": "Durchschnittliche Zahl der Menschen von 20 bis 64, bezogen auf alle Haushalte. Das ist keine Erwerbstätigenzahl."
+    },
+    {
+      "id": "onePerson",
+      "group": "types",
+      "label": "Allein wohnend",
+      "unit": "percent",
+      "column": 37,
+      "explanation": "Haushalte mit genau einer Person. Gleicher Begriff wie die Größenklasse, aber eine eigene veröffentlichte Spalte mit eigener Verfügbarkeit."
+    },
+    {
+      "id": "coupleOnly",
+      "group": "types",
+      "label": "Paar ohne weitere Personen",
+      "unit": "percent",
+      "column": 38,
+      "explanation": "Verheiratetes oder in Partnerschaft lebendes Paar, ohne weitere Haushaltsmitglieder."
+    },
+    {
+      "id": "coupleChildren",
+      "group": "types",
+      "label": "Paar mit Kindern",
+      "unit": "percent",
+      "column": 39,
+      "explanation": "Paar und seine Kinder, ohne weitere Personen. Kinder können erwachsen sein; leibliche, Stief-, Adoptiv- und Pflegekinder sind eingeschlossen."
+    },
+    {
+      "id": "singleParent",
+      "group": "types",
+      "label": "Ein Elternteil mit Kindern",
+      "unit": "percent",
+      "column": 40,
+      "explanation": "Ein Elternteil und seine Kinder, ohne weitere Personen. Die Kinder können erwachsen sein."
+    },
+    {
+      "id": "singleMother",
+      "group": "types",
+      "label": "Mutter mit Kindern",
+      "unit": "percent",
+      "column": 41,
+      "explanation": "Teilgruppe der Haushalte mit einem Elternteil: Mutter und ihre Kinder, ohne weitere Personen. Kinder jeder Altersstufe."
+    },
+    {
+      "id": "singleFather",
+      "group": "types",
+      "label": "Vater mit Kindern",
+      "unit": "percent",
+      "column": 42,
+      "explanation": "Teilgruppe der Haushalte mit einem Elternteil: Vater und seine Kinder, ohne weitere Personen. Kinder jeder Altersstufe."
+    },
+    {
+      "id": "extendedFamily",
+      "group": "types",
+      "label": "Erweiterte Familie",
+      "unit": "percent",
+      "column": 43,
+      "explanation": "Verwandte außerhalb der Kernfamilie leben zusammen; alle Mitglieder sind miteinander verwandt."
+    },
+    {
+      "id": "nonRelatives",
+      "group": "types",
+      "label": "Auch nicht verwandte Personen",
+      "unit": "percent",
+      "column": 44,
+      "explanation": "Mindestens zwei Haushaltsmitglieder sind nicht miteinander verwandt; weitere Mitglieder können verwandt sein."
+    },
+    {
+      "id": "unknownType",
+      "group": "types",
+      "label": "Verwandtschaft unklar",
+      "unit": "percent",
+      "column": 45,
+      "explanation": "Mindestens eine Beziehung zur Haushaltsbezugsperson ist unbekannt oder nicht angegeben. Ein veröffentlichter Anteil, kein Ersatz für fehlende Daten."
+    },
+    {
+      "id": "nuclear",
+      "group": "generations",
+      "label": "Kernfamilienhaushalte",
+      "unit": "percent",
+      "column": 46,
+      "explanation": "Veröffentlichte Summe aus Paaren ohne weitere Personen, Paaren mit Kindern und einem Elternteil mit Kindern. Keine Aussage über eine einzige Generation."
+    },
+    {
+      "id": "multiGeneration",
+      "group": "generations",
+      "label": "Mehrere erwachsene Generationen",
+      "unit": "percent",
+      "column": 47,
+      "explanation": "Mindestens zwei Generationen verwandter Menschen ab 20 Jahren leben zusammen."
+    },
+    {
+      "id": "threeGeneration",
+      "group": "generations",
+      "label": "Drei oder mehr Generationen",
+      "unit": "percent",
+      "column": 48,
+      "explanation": "Mindestens drei verwandte Generationen leben zusammen, unabhängig vom Alter."
+    },
+    {
+      "id": "skipGeneration",
+      "group": "generations",
+      "label": "Großeltern und Enkel ohne Eltern",
+      "unit": "percent",
+      "column": 49,
+      "explanation": "Großeltern leben mit Enkeln zusammen, ohne einen Elternteil dieser Enkel im Haushalt."
+    }
+  ],
+  "sourceCategories": [
+    "Census of Population and Housing: Selected Social and Housing Characteristics, Australia, 2001",
+    "DHS",
+    "DYB",
+    "DYB & China Population Census Yearbook 2010",
+    "DYB & China Population Census Yearbook 2020",
+    "Egypt - General Census for Population, Housing and Establishments 2017",
+    "IPUMS",
+    "IPUMS & Russian Federation 2021 Census",
+    "LFS",
+    "MICS",
+    "Papua New Guinea 2011 Census",
+    "Recensement Général de la Population et de l’Habitat 2024",
+    "Türkiye Population and Housing Census 2011"
+  ],
+  "unweightedMicsCatalogIds": [
+    "1905",
+    "1912",
+    "1917",
+    "1920",
+    "1924",
+    "1938",
+    "2894",
+    "5243"
+  ],
+  "areas": [
+    {
+      "code": "ABW",
+      "locationId": 533,
+      "geographyId": "m49:533",
+      "providerLabels": ["Aruba"],
+      "years": [2010],
+      "rowCount": 1
+    },
+    {
+      "code": "AFG",
+      "locationId": 4,
+      "geographyId": "m49:004",
+      "providerLabels": ["Afghanistan"],
+      "years": [2011, 2015, 2023],
+      "rowCount": 3
+    },
+    {
+      "code": "AGO",
+      "locationId": 24,
+      "geographyId": "m49:024",
+      "providerLabels": ["Angola"],
+      "years": [2001, 2007, 2011, 2016, 2023],
+      "rowCount": 5
+    },
+    {
+      "code": "ALB",
+      "locationId": 8,
+      "geographyId": "m49:008",
+      "providerLabels": ["Albania"],
+      "years": [2000, 2005, 2009, 2011, 2017, 2023],
+      "rowCount": 6
+    },
+    {
+      "code": "ARG",
+      "locationId": 32,
+      "geographyId": "m49:032",
+      "providerLabels": ["Argentina"],
+      "years": [1970, 1980, 2001, 2010, 2011, 2020, 2022],
+      "rowCount": 8
+    },
+    {
+      "code": "ARM",
+      "locationId": 51,
+      "geographyId": "m49:051",
+      "providerLabels": ["Armenia"],
+      "years": [2000, 2001, 2005, 2010, 2011, 2016],
+      "rowCount": 8
+    },
+    {
+      "code": "AUS",
+      "locationId": 36,
+      "geographyId": "m49:036",
+      "providerLabels": ["Australia"],
+      "years": [2001, 2006, 2011, 2016],
+      "rowCount": 4
+    },
+    {
+      "code": "AUT",
+      "locationId": 40,
+      "geographyId": "m49:040",
+      "providerLabels": ["Austria"],
+      "years": [1971, 1981, 1991, 2001, 2011, 2021],
+      "rowCount": 10
+    },
+    {
+      "code": "AZE",
+      "locationId": 31,
+      "geographyId": "m49:031",
+      "providerLabels": ["Azerbaijan"],
+      "years": [1999, 2000, 2006, 2009, 2019, 2023],
+      "rowCount": 6
+    },
+    {
+      "code": "BDI",
+      "locationId": 108,
+      "geographyId": "m49:108",
+      "providerLabels": ["Burundi"],
+      "years": [2000, 2005, 2008, 2010, 2012, 2016],
+      "rowCount": 6
+    },
+    {
+      "code": "BEL",
+      "locationId": 56,
+      "geographyId": "m49:056",
+      "providerLabels": ["Belgium"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "BEN",
+      "locationId": 204,
+      "geographyId": "m49:204",
+      "providerLabels": ["Benin"],
+      "years": [
+        1979, 1992, 1996, 2001, 2002, 2006, 2012, 2013, 2014, 2018, 2021
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "BFA",
+      "locationId": 854,
+      "geographyId": "m49:854",
+      "providerLabels": ["Burkina Faso"],
+      "years": [1985, 1993, 1996, 1999, 2003, 2006, 2010, 2014],
+      "rowCount": 9
+    },
+    {
+      "code": "BGD",
+      "locationId": 50,
+      "geographyId": "m49:050",
+      "providerLabels": ["Bangladesh"],
+      "years": [
+        1991, 1994, 1997, 2000, 2001, 2004, 2006, 2007, 2011, 2013, 2014, 2018,
+        2019, 2022
+      ],
+      "rowCount": 17
+    },
+    {
+      "code": "BGR",
+      "locationId": 100,
+      "geographyId": "m49:100",
+      "providerLabels": ["Bulgaria"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "BHS",
+      "locationId": 44,
+      "geographyId": "m49:044",
+      "providerLabels": ["Bahamas"],
+      "years": [2010],
+      "rowCount": 1
+    },
+    {
+      "code": "BIH",
+      "locationId": 70,
+      "geographyId": "m49:070",
+      "providerLabels": ["Bosnia and Herzegovina"],
+      "years": [1971, 1981, 1991, 2000, 2006, 2012],
+      "rowCount": 6
+    },
+    {
+      "code": "BLM",
+      "locationId": 652,
+      "geographyId": "m49:652",
+      "providerLabels": ["Saint Barthélemy"],
+      "years": [2015, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "BLR",
+      "locationId": 112,
+      "geographyId": "m49:112",
+      "providerLabels": ["Belarus"],
+      "years": [1999, 2005, 2009, 2012, 2019],
+      "rowCount": 8
+    },
+    {
+      "code": "BLZ",
+      "locationId": 84,
+      "geographyId": "m49:084",
+      "providerLabels": ["Belize"],
+      "years": [2006, 2011, 2015, 2022],
+      "rowCount": 4
+    },
+    {
+      "code": "BMU",
+      "locationId": 60,
+      "geographyId": "m49:060",
+      "providerLabels": ["Bermuda"],
+      "years": [2000, 2010, 2016],
+      "rowCount": 3
+    },
+    {
+      "code": "BOL",
+      "locationId": 68,
+      "geographyId": "m49:068",
+      "providerLabels": ["Bolivia (Plurinational State of)"],
+      "years": [1976, 1992, 1994, 1998, 2000, 2001, 2003, 2008, 2012],
+      "rowCount": 11
+    },
+    {
+      "code": "BRA",
+      "locationId": 76,
+      "geographyId": "m49:076",
+      "providerLabels": ["Brazil"],
+      "years": [1960, 1970, 1980, 1991, 1996, 2000, 2010, 2022],
+      "rowCount": 8
+    },
+    {
+      "code": "BRB",
+      "locationId": 52,
+      "geographyId": "m49:052",
+      "providerLabels": ["Barbados"],
+      "years": [2012],
+      "rowCount": 1
+    },
+    {
+      "code": "BRN",
+      "locationId": 96,
+      "geographyId": "m49:096",
+      "providerLabels": ["Brunei Darussalam"],
+      "years": [2011, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "BTN",
+      "locationId": 64,
+      "geographyId": "m49:064",
+      "providerLabels": ["Bhutan"],
+      "years": [2005, 2010],
+      "rowCount": 2
+    },
+    {
+      "code": "BWA",
+      "locationId": 72,
+      "geographyId": "m49:072",
+      "providerLabels": ["Botswana"],
+      "years": [1981, 1991, 2000, 2001, 2011],
+      "rowCount": 7
+    },
+    {
+      "code": "CAF",
+      "locationId": 140,
+      "geographyId": "m49:140",
+      "providerLabels": ["Central African Republic"],
+      "years": [1994, 2006, 2010, 2019],
+      "rowCount": 4
+    },
+    {
+      "code": "CAN",
+      "locationId": 124,
+      "geographyId": "m49:124",
+      "providerLabels": ["Canada"],
+      "years": [2001, 2006, 2011, 2016, 2021],
+      "rowCount": 6
+    },
+    {
+      "code": "CHE",
+      "locationId": 756,
+      "geographyId": "m49:756",
+      "providerLabels": ["Switzerland"],
+      "years": [1970, 1980, 1990, 2000],
+      "rowCount": 5
+    },
+    {
+      "code": "CHL",
+      "locationId": 152,
+      "geographyId": "m49:152",
+      "providerLabels": ["Chile"],
+      "years": [1970, 1982, 1992, 2002, 2017, 2024],
+      "rowCount": 6
+    },
+    {
+      "code": "CHN",
+      "locationId": 156,
+      "geographyId": "m49:156",
+      "providerLabels": ["China"],
+      "years": [1982, 1990, 2000, 2010, 2020],
+      "rowCount": 5
+    },
+    {
+      "code": "CIV",
+      "locationId": 384,
+      "geographyId": "m49:384",
+      "providerLabels": ["Côte d'Ivoire"],
+      "years": [1988, 1994, 1998, 2005, 2012, 2016, 2021],
+      "rowCount": 9
+    },
+    {
+      "code": "CMR",
+      "locationId": 120,
+      "geographyId": "m49:120",
+      "providerLabels": ["Cameroon"],
+      "years": [
+        1976, 1987, 1991, 1998, 2000, 2004, 2005, 2006, 2011, 2014, 2018, 2022
+      ],
+      "rowCount": 12
+    },
+    {
+      "code": "COD",
+      "locationId": 180,
+      "geographyId": "m49:180",
+      "providerLabels": ["Democratic Republic of the Congo"],
+      "years": [2001, 2007, 2010, 2013, 2018, 2023],
+      "rowCount": 6
+    },
+    {
+      "code": "COG",
+      "locationId": 178,
+      "geographyId": "m49:178",
+      "providerLabels": ["Congo"],
+      "years": [2005, 2009, 2011, 2015],
+      "rowCount": 4
+    },
+    {
+      "code": "COK",
+      "locationId": 184,
+      "geographyId": "m49:184",
+      "providerLabels": ["Cook Islands"],
+      "years": [1996, 2006, 2011],
+      "rowCount": 3
+    },
+    {
+      "code": "COL",
+      "locationId": 170,
+      "geographyId": "m49:170",
+      "providerLabels": ["Colombia"],
+      "years": [1973, 1985, 1990, 1993, 1995, 2000, 2005, 2010, 2015],
+      "rowCount": 10
+    },
+    {
+      "code": "COM",
+      "locationId": 174,
+      "geographyId": "m49:174",
+      "providerLabels": ["Comoros"],
+      "years": [1996, 2012, 2022],
+      "rowCount": 3
+    },
+    {
+      "code": "CRI",
+      "locationId": 188,
+      "geographyId": "m49:188",
+      "providerLabels": ["Costa Rica"],
+      "years": [1973, 1984, 2000, 2011, 2018],
+      "rowCount": 6
+    },
+    {
+      "code": "CUB",
+      "locationId": 192,
+      "geographyId": "m49:192",
+      "providerLabels": ["Cuba"],
+      "years": [2002, 2006, 2011, 2012, 2014, 2019],
+      "rowCount": 6
+    },
+    {
+      "code": "CYM",
+      "locationId": 136,
+      "geographyId": "m49:136",
+      "providerLabels": ["Cayman Islands"],
+      "years": [2010, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "CYP",
+      "locationId": 196,
+      "geographyId": "m49:196",
+      "providerLabels": ["Cyprus"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "CZE",
+      "locationId": 203,
+      "geographyId": "m49:203",
+      "providerLabels": ["Czechia"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "DEU",
+      "locationId": 276,
+      "geographyId": "m49:276",
+      "providerLabels": ["Germany"],
+      "years": [2005, 2011, 2022],
+      "rowCount": 4
+    },
+    {
+      "code": "DJI",
+      "locationId": 262,
+      "geographyId": "m49:262",
+      "providerLabels": ["Djibouti"],
+      "years": [2006],
+      "rowCount": 1
+    },
+    {
+      "code": "DOM",
+      "locationId": 214,
+      "geographyId": "m49:214",
+      "providerLabels": ["Dominican Republic"],
+      "years": [
+        1981, 1991, 1996, 1999, 2000, 2002, 2007, 2010, 2013, 2014, 2019, 2022
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "DZA",
+      "locationId": 12,
+      "geographyId": "m49:012",
+      "providerLabels": ["Algeria"],
+      "years": [2012, 2019],
+      "rowCount": 2
+    },
+    {
+      "code": "ECU",
+      "locationId": 218,
+      "geographyId": "m49:218",
+      "providerLabels": ["Ecuador"],
+      "years": [1974, 1982, 1990, 2001, 2010, 2022],
+      "rowCount": 6
+    },
+    {
+      "code": "EGY",
+      "locationId": 818,
+      "geographyId": "m49:818",
+      "providerLabels": ["Egypt"],
+      "years": [
+        1986, 1993, 1995, 1996, 2000, 2003, 2005, 2006, 2008, 2014, 2017
+      ],
+      "rowCount": 11
+    },
+    {
+      "code": "ESP",
+      "locationId": 724,
+      "geographyId": "m49:724",
+      "providerLabels": ["Spain"],
+      "years": [1991, 2001, 2011, 2021],
+      "rowCount": 6
+    },
+    {
+      "code": "EST",
+      "locationId": 233,
+      "geographyId": "m49:233",
+      "providerLabels": ["Estonia"],
+      "years": [2000, 2001, 2011],
+      "rowCount": 3
+    },
+    {
+      "code": "ETH",
+      "locationId": 231,
+      "geographyId": "m49:231",
+      "providerLabels": ["Ethiopia"],
+      "years": [1984, 1994, 2000, 2005, 2007, 2011, 2016, 2019],
+      "rowCount": 9
+    },
+    {
+      "code": "FIN",
+      "locationId": 246,
+      "geographyId": "m49:246",
+      "providerLabels": ["Finland"],
+      "years": [2011, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "FJI",
+      "locationId": 242,
+      "geographyId": "m49:242",
+      "providerLabels": ["Fiji"],
+      "years": [1966, 1976, 1986, 1996, 2007, 2017, 2021],
+      "rowCount": 7
+    },
+    {
+      "code": "FRA",
+      "locationId": 250,
+      "geographyId": "m49:250",
+      "providerLabels": ["France"],
+      "years": [
+        1962, 1968, 1975, 1982, 1990, 1999, 2001, 2006, 2009, 2011, 2013, 2020
+      ],
+      "rowCount": 12
+    },
+    {
+      "code": "GAB",
+      "locationId": 266,
+      "geographyId": "m49:266",
+      "providerLabels": ["Gabon"],
+      "years": [2000, 2012, 2020],
+      "rowCount": 3
+    },
+    {
+      "code": "GBR",
+      "locationId": 826,
+      "geographyId": "m49:826",
+      "providerLabels": ["United Kingdom"],
+      "years": [1961, 1971, 1991, 2001, 2011],
+      "rowCount": 5
+    },
+    {
+      "code": "GEO",
+      "locationId": 268,
+      "geographyId": "m49:268",
+      "providerLabels": ["Georgia"],
+      "years": [2002, 2005, 2014, 2018],
+      "rowCount": 4
+    },
+    {
+      "code": "GGY",
+      "locationId": 831,
+      "geographyId": "m49:831",
+      "providerLabels": ["Guernsey"],
+      "years": [2018],
+      "rowCount": 1
+    },
+    {
+      "code": "GHA",
+      "locationId": 288,
+      "geographyId": "m49:288",
+      "providerLabels": ["Ghana"],
+      "years": [
+        1984, 1993, 1999, 2000, 2003, 2006, 2008, 2010, 2011, 2014, 2017, 2019,
+        2022
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "GIN",
+      "locationId": 324,
+      "geographyId": "m49:324",
+      "providerLabels": ["Guinea"],
+      "years": [1983, 1996, 1999, 2005, 2012, 2014, 2016, 2021],
+      "rowCount": 8
+    },
+    {
+      "code": "GLP",
+      "locationId": 312,
+      "geographyId": "m49:312",
+      "providerLabels": ["Guadeloupe"],
+      "years": [2015, 2020],
+      "rowCount": 2
+    },
+    {
+      "code": "GMB",
+      "locationId": 270,
+      "geographyId": "m49:270",
+      "providerLabels": ["Gambia"],
+      "years": [2000, 2006, 2010, 2013, 2018, 2020],
+      "rowCount": 6
+    },
+    {
+      "code": "GNB",
+      "locationId": 624,
+      "geographyId": "m49:624",
+      "providerLabels": ["Guinea-Bissau"],
+      "years": [2000, 2006, 2014, 2019],
+      "rowCount": 4
+    },
+    {
+      "code": "GNQ",
+      "locationId": 226,
+      "geographyId": "m49:226",
+      "providerLabels": ["Equatorial Guinea"],
+      "years": [2000],
+      "rowCount": 1
+    },
+    {
+      "code": "GRC",
+      "locationId": 300,
+      "geographyId": "m49:300",
+      "providerLabels": ["Greece"],
+      "years": [1971, 1981, 1991, 2001, 2011],
+      "rowCount": 5
+    },
+    {
+      "code": "GTM",
+      "locationId": 320,
+      "geographyId": "m49:320",
+      "providerLabels": ["Guatemala"],
+      "years": [1964, 1973, 1981, 1994, 1995, 1999, 2002, 2015],
+      "rowCount": 8
+    },
+    {
+      "code": "GUF",
+      "locationId": 254,
+      "geographyId": "m49:254",
+      "providerLabels": ["French Guiana"],
+      "years": [2015, 2020],
+      "rowCount": 2
+    },
+    {
+      "code": "GUM",
+      "locationId": 316,
+      "geographyId": "m49:316",
+      "providerLabels": ["Guam"],
+      "years": [2010],
+      "rowCount": 1
+    },
+    {
+      "code": "GUY",
+      "locationId": 328,
+      "geographyId": "m49:328",
+      "providerLabels": ["Guyana"],
+      "years": [2000, 2005, 2006, 2009, 2014, 2019],
+      "rowCount": 6
+    },
+    {
+      "code": "HKG",
+      "locationId": 344,
+      "geographyId": "m49:344",
+      "providerLabels": ["China, Hong Kong SAR"],
+      "years": [2006, 2011, 2016, 2021],
+      "rowCount": 4
+    },
+    {
+      "code": "HND",
+      "locationId": 340,
+      "geographyId": "m49:340",
+      "providerLabels": ["Honduras"],
+      "years": [1974, 1988, 2001, 2006, 2012, 2013, 2019],
+      "rowCount": 7
+    },
+    {
+      "code": "HRV",
+      "locationId": 191,
+      "geographyId": "m49:191",
+      "providerLabels": ["Croatia"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 3
+    },
+    {
+      "code": "HTI",
+      "locationId": 332,
+      "geographyId": "m49:332",
+      "providerLabels": ["Haiti"],
+      "years": [1971, 1982, 1994, 2000, 2003, 2006, 2012, 2017],
+      "rowCount": 8
+    },
+    {
+      "code": "HUN",
+      "locationId": 348,
+      "geographyId": "m49:348",
+      "providerLabels": ["Hungary"],
+      "years": [1970, 1980, 1990, 2001, 2011, 2022],
+      "rowCount": 10
+    },
+    {
+      "code": "IDN",
+      "locationId": 360,
+      "geographyId": "m49:360",
+      "providerLabels": ["Indonesia"],
+      "years": [
+        1971, 1976, 1980, 1985, 1990, 1991, 1994, 1995, 1997, 2000, 2003, 2005,
+        2007, 2010, 2012, 2017
+      ],
+      "rowCount": 17
+    },
+    {
+      "code": "IMN",
+      "locationId": 833,
+      "geographyId": "m49:833",
+      "providerLabels": ["Isle of Man"],
+      "years": [2016],
+      "rowCount": 1
+    },
+    {
+      "code": "IND",
+      "locationId": 356,
+      "geographyId": "m49:356",
+      "providerLabels": ["India"],
+      "years": [1983, 1987, 1993, 1999, 2001, 2004, 2006, 2009, 2015, 2020],
+      "rowCount": 12
+    },
+    {
+      "code": "IRL",
+      "locationId": 372,
+      "geographyId": "m49:372",
+      "providerLabels": ["Ireland"],
+      "years": [
+        1971, 1979, 1981, 1986, 1991, 1996, 2002, 2006, 2011, 2016, 2022
+      ],
+      "rowCount": 11
+    },
+    {
+      "code": "IRN",
+      "locationId": 364,
+      "geographyId": "m49:364",
+      "providerLabels": ["Iran (Islamic Republic of)"],
+      "years": [1996, 2006, 2011, 2016],
+      "rowCount": 4
+    },
+    {
+      "code": "IRQ",
+      "locationId": 368,
+      "geographyId": "m49:368",
+      "providerLabels": ["Iraq"],
+      "years": [1997, 2000, 2006, 2011, 2018],
+      "rowCount": 5
+    },
+    {
+      "code": "ISL",
+      "locationId": 352,
+      "geographyId": "m49:352",
+      "providerLabels": ["Iceland"],
+      "years": [2021],
+      "rowCount": 1
+    },
+    {
+      "code": "ISR",
+      "locationId": 376,
+      "geographyId": "m49:376",
+      "providerLabels": ["Israel"],
+      "years": [1972, 1983, 1995, 2009, 2022],
+      "rowCount": 6
+    },
+    {
+      "code": "ITA",
+      "locationId": 380,
+      "geographyId": "m49:380",
+      "providerLabels": ["Italy"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "JAM",
+      "locationId": 388,
+      "geographyId": "m49:388",
+      "providerLabels": ["Jamaica"],
+      "years": [1982, 1991, 2001, 2005, 2011, 2022],
+      "rowCount": 7
+    },
+    {
+      "code": "JOR",
+      "locationId": 400,
+      "geographyId": "m49:400",
+      "providerLabels": ["Jordan"],
+      "years": [1997, 2002, 2004, 2007, 2009, 2012, 2015, 2017, 2023],
+      "rowCount": 9
+    },
+    {
+      "code": "JPN",
+      "locationId": 392,
+      "geographyId": "m49:392",
+      "providerLabels": ["Japan"],
+      "years": [2000, 2005, 2010, 2015, 2020],
+      "rowCount": 5
+    },
+    {
+      "code": "KAZ",
+      "locationId": 398,
+      "geographyId": "m49:398",
+      "providerLabels": ["Kazakhstan"],
+      "years": [1995, 1999, 2006, 2009, 2010, 2015, 2021, 2024],
+      "rowCount": 8
+    },
+    {
+      "code": "KEN",
+      "locationId": 404,
+      "geographyId": "m49:404",
+      "providerLabels": ["Kenya"],
+      "years": [
+        1969, 1989, 1993, 1998, 1999, 2003, 2009, 2014, 2015, 2019, 2020, 2022
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "KGZ",
+      "locationId": 417,
+      "geographyId": "m49:417",
+      "providerLabels": ["Kyrgyzstan"],
+      "years": [1997, 1999, 2009, 2012, 2014, 2018, 2023],
+      "rowCount": 7
+    },
+    {
+      "code": "KHM",
+      "locationId": 116,
+      "geographyId": "m49:116",
+      "providerLabels": ["Cambodia"],
+      "years": [1998, 2000, 2004, 2005, 2008, 2010, 2013, 2014, 2019, 2021],
+      "rowCount": 11
+    },
+    {
+      "code": "KIR",
+      "locationId": 296,
+      "geographyId": "m49:296",
+      "providerLabels": ["Kiribati"],
+      "years": [2018],
+      "rowCount": 1
+    },
+    {
+      "code": "KNA",
+      "locationId": 659,
+      "geographyId": "m49:659",
+      "providerLabels": ["Saint Kitts and Nevis"],
+      "years": [2011],
+      "rowCount": 1
+    },
+    {
+      "code": "KOR",
+      "locationId": 410,
+      "geographyId": "m49:410",
+      "providerLabels": ["Republic of Korea"],
+      "years": [2005, 2010, 2015, 2020],
+      "rowCount": 4
+    },
+    {
+      "code": "LAO",
+      "locationId": 418,
+      "geographyId": "m49:418",
+      "providerLabels": ["Lao People's Democratic Republic"],
+      "years": [1995, 2000, 2005, 2006, 2011, 2015, 2017, 2023],
+      "rowCount": 8
+    },
+    {
+      "code": "LBR",
+      "locationId": 430,
+      "geographyId": "m49:430",
+      "providerLabels": ["Liberia"],
+      "years": [2007, 2008, 2009, 2011, 2013, 2019, 2022],
+      "rowCount": 7
+    },
+    {
+      "code": "LCA",
+      "locationId": 662,
+      "geographyId": "m49:662",
+      "providerLabels": ["Saint Lucia"],
+      "years": [2012],
+      "rowCount": 1
+    },
+    {
+      "code": "LIE",
+      "locationId": 438,
+      "geographyId": "m49:438",
+      "providerLabels": ["Liechtenstein"],
+      "years": [2011, 2016, 2021],
+      "rowCount": 3
+    },
+    {
+      "code": "LSO",
+      "locationId": 426,
+      "geographyId": "m49:426",
+      "providerLabels": ["Lesotho"],
+      "years": [1996, 2000, 2004, 2006, 2009, 2014, 2018, 2023],
+      "rowCount": 9
+    },
+    {
+      "code": "LTU",
+      "locationId": 440,
+      "geographyId": "m49:440",
+      "providerLabels": ["Lithuania"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 3
+    },
+    {
+      "code": "LUX",
+      "locationId": 442,
+      "geographyId": "m49:442",
+      "providerLabels": ["Luxembourg"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 4
+    },
+    {
+      "code": "LVA",
+      "locationId": 428,
+      "geographyId": "m49:428",
+      "providerLabels": ["Latvia"],
+      "years": [2000, 2001, 2011, 2021],
+      "rowCount": 4
+    },
+    {
+      "code": "MAC",
+      "locationId": 446,
+      "geographyId": "m49:446",
+      "providerLabels": ["China, Macao SAR"],
+      "years": [2011, 2016],
+      "rowCount": 2
+    },
+    {
+      "code": "MAF",
+      "locationId": 663,
+      "geographyId": "m49:663",
+      "providerLabels": ["Saint Martin (French part)"],
+      "years": [2015, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "MAR",
+      "locationId": 504,
+      "geographyId": "m49:504",
+      "providerLabels": ["Morocco"],
+      "years": [1982, 1992, 1994, 2003, 2004, 2014, 2024],
+      "rowCount": 7
+    },
+    {
+      "code": "MCO",
+      "locationId": 492,
+      "geographyId": "m49:492",
+      "providerLabels": ["Monaco"],
+      "years": [2016],
+      "rowCount": 1
+    },
+    {
+      "code": "MDA",
+      "locationId": 498,
+      "geographyId": "m49:498",
+      "providerLabels": ["Republic of Moldova"],
+      "years": [2000, 2004, 2005, 2012, 2014],
+      "rowCount": 5
+    },
+    {
+      "code": "MDG",
+      "locationId": 450,
+      "geographyId": "m49:450",
+      "providerLabels": ["Madagascar"],
+      "years": [1992, 1997, 2000, 2004, 2009, 2011, 2018, 2021],
+      "rowCount": 8
+    },
+    {
+      "code": "MDV",
+      "locationId": 462,
+      "geographyId": "m49:462",
+      "providerLabels": ["Maldives"],
+      "years": [2009, 2014, 2017],
+      "rowCount": 3
+    },
+    {
+      "code": "MEX",
+      "locationId": 484,
+      "geographyId": "m49:484",
+      "providerLabels": ["Mexico"],
+      "years": [1970, 1990, 1995, 2000, 2010, 2015, 2020],
+      "rowCount": 8
+    },
+    {
+      "code": "MKD",
+      "locationId": 807,
+      "geographyId": "m49:807",
+      "providerLabels": ["North Macedonia"],
+      "years": [2005, 2011, 2019],
+      "rowCount": 3
+    },
+    {
+      "code": "MLI",
+      "locationId": 466,
+      "geographyId": "m49:466",
+      "providerLabels": ["Mali"],
+      "years": [
+        1987, 1996, 1998, 2001, 2006, 2009, 2010, 2012, 2015, 2018, 2021, 2024
+      ],
+      "rowCount": 12
+    },
+    {
+      "code": "MLT",
+      "locationId": 470,
+      "geographyId": "m49:470",
+      "providerLabels": ["Malta"],
+      "years": [1995, 2005, 2011, 2021],
+      "rowCount": 4
+    },
+    {
+      "code": "MMR",
+      "locationId": 104,
+      "geographyId": "m49:104",
+      "providerLabels": ["Myanmar"],
+      "years": [2000, 2014, 2016],
+      "rowCount": 3
+    },
+    {
+      "code": "MNE",
+      "locationId": 499,
+      "geographyId": "m49:499",
+      "providerLabels": ["Montenegro"],
+      "years": [2005, 2011, 2013, 2018],
+      "rowCount": 4
+    },
+    {
+      "code": "MNG",
+      "locationId": 496,
+      "geographyId": "m49:496",
+      "providerLabels": ["Mongolia"],
+      "years": [1989, 2000, 2010, 2013, 2018, 2020],
+      "rowCount": 7
+    },
+    {
+      "code": "MOZ",
+      "locationId": 508,
+      "geographyId": "m49:508",
+      "providerLabels": ["Mozambique"],
+      "years": [1997, 2003, 2007, 2008, 2009, 2011, 2017, 2018, 2022],
+      "rowCount": 10
+    },
+    {
+      "code": "MRT",
+      "locationId": 478,
+      "geographyId": "m49:478",
+      "providerLabels": ["Mauritania"],
+      "years": [2007, 2011, 2015],
+      "rowCount": 3
+    },
+    {
+      "code": "MTQ",
+      "locationId": 474,
+      "geographyId": "m49:474",
+      "providerLabels": ["Martinique"],
+      "years": [2015, 2020],
+      "rowCount": 2
+    },
+    {
+      "code": "MUS",
+      "locationId": 480,
+      "geographyId": "m49:480",
+      "providerLabels": ["Mauritius"],
+      "years": [1990, 2000, 2011, 2022],
+      "rowCount": 4
+    },
+    {
+      "code": "MWI",
+      "locationId": 454,
+      "geographyId": "m49:454",
+      "providerLabels": ["Malawi"],
+      "years": [
+        1987, 1992, 1998, 2000, 2004, 2006, 2008, 2010, 2014, 2015, 2018, 2020,
+        2024
+      ],
+      "rowCount": 14
+    },
+    {
+      "code": "MYS",
+      "locationId": 458,
+      "geographyId": "m49:458",
+      "providerLabels": ["Malaysia"],
+      "years": [1970, 1980, 1991, 2000],
+      "rowCount": 4
+    },
+    {
+      "code": "MYT",
+      "locationId": 175,
+      "geographyId": "m49:175",
+      "providerLabels": ["Mayotte"],
+      "years": [2012, 2017],
+      "rowCount": 2
+    },
+    {
+      "code": "NAM",
+      "locationId": 516,
+      "geographyId": "m49:516",
+      "providerLabels": ["Namibia"],
+      "years": [1992, 2000, 2007, 2013],
+      "rowCount": 4
+    },
+    {
+      "code": "NCL",
+      "locationId": 540,
+      "geographyId": "m49:540",
+      "providerLabels": ["New Caledonia"],
+      "years": [2004],
+      "rowCount": 1
+    },
+    {
+      "code": "NER",
+      "locationId": 562,
+      "geographyId": "m49:562",
+      "providerLabels": ["Niger"],
+      "years": [1992, 1998, 2000, 2006, 2012, 2021],
+      "rowCount": 6
+    },
+    {
+      "code": "NGA",
+      "locationId": 566,
+      "geographyId": "m49:566",
+      "providerLabels": ["Nigeria"],
+      "years": [
+        1990, 1999, 2003, 2006, 2007, 2008, 2009, 2010, 2011, 2013, 2015, 2016,
+        2018, 2021, 2024
+      ],
+      "rowCount": 19
+    },
+    {
+      "code": "NIC",
+      "locationId": 558,
+      "geographyId": "m49:558",
+      "providerLabels": ["Nicaragua"],
+      "years": [1971, 1995, 1998, 2001, 2005],
+      "rowCount": 5
+    },
+    {
+      "code": "NLD",
+      "locationId": 528,
+      "geographyId": "m49:528",
+      "providerLabels": ["Netherlands"],
+      "years": [2001, 2011],
+      "rowCount": 2
+    },
+    {
+      "code": "NOR",
+      "locationId": 578,
+      "geographyId": "m49:578",
+      "providerLabels": ["Norway"],
+      "years": [2001, 2011],
+      "rowCount": 2
+    },
+    {
+      "code": "NPL",
+      "locationId": 524,
+      "geographyId": "m49:524",
+      "providerLabels": ["Nepal"],
+      "years": [1996, 2001, 2006, 2011, 2014, 2016, 2019, 2021, 2022, 2025],
+      "rowCount": 12
+    },
+    {
+      "code": "NRU",
+      "locationId": 520,
+      "geographyId": "m49:520",
+      "providerLabels": ["Nauru"],
+      "years": [2023],
+      "rowCount": 1
+    },
+    {
+      "code": "NZL",
+      "locationId": 554,
+      "geographyId": "m49:554",
+      "providerLabels": ["New Zealand"],
+      "years": [2001, 2006, 2013, 2018],
+      "rowCount": 4
+    },
+    {
+      "code": "OMN",
+      "locationId": 512,
+      "geographyId": "m49:512",
+      "providerLabels": ["Oman"],
+      "years": [2003],
+      "rowCount": 1
+    },
+    {
+      "code": "PAK",
+      "locationId": 586,
+      "geographyId": "m49:586",
+      "providerLabels": ["Pakistan"],
+      "years": [1981, 1991, 1998, 2006, 2013, 2017],
+      "rowCount": 6
+    },
+    {
+      "code": "PAN",
+      "locationId": 591,
+      "geographyId": "m49:591",
+      "providerLabels": ["Panama"],
+      "years": [1960, 1970, 1980, 1990, 2000, 2010, 2013, 2023],
+      "rowCount": 8
+    },
+    {
+      "code": "PER",
+      "locationId": 604,
+      "geographyId": "m49:604",
+      "providerLabels": ["Peru"],
+      "years": [1993, 1996, 2000, 2006, 2007, 2009, 2010, 2011, 2012, 2017],
+      "rowCount": 10
+    },
+    {
+      "code": "PHL",
+      "locationId": 608,
+      "geographyId": "m49:608",
+      "providerLabels": ["Philippines"],
+      "years": [
+        1990, 1993, 1995, 1998, 1999, 2000, 2003, 2007, 2008, 2010, 2013, 2015,
+        2017, 2020, 2022
+      ],
+      "rowCount": 15
+    },
+    {
+      "code": "PLW",
+      "locationId": 585,
+      "geographyId": "m49:585",
+      "providerLabels": ["Palau"],
+      "years": [2005],
+      "rowCount": 1
+    },
+    {
+      "code": "PNG",
+      "locationId": 598,
+      "geographyId": "m49:598",
+      "providerLabels": ["Papua New Guinea"],
+      "years": [1980, 1990, 2000, 2011],
+      "rowCount": 4
+    },
+    {
+      "code": "POL",
+      "locationId": 616,
+      "geographyId": "m49:616",
+      "providerLabels": ["Poland"],
+      "years": [1978, 1988, 2001, 2002, 2011, 2021],
+      "rowCount": 8
+    },
+    {
+      "code": "PRI",
+      "locationId": 630,
+      "geographyId": "m49:630",
+      "providerLabels": ["Puerto Rico"],
+      "years": [1970, 1980, 1990, 2000, 2005, 2010, 2015, 2020],
+      "rowCount": 8
+    },
+    {
+      "code": "PRK",
+      "locationId": 408,
+      "geographyId": "m49:408",
+      "providerLabels": ["Dem. People's Republic of Korea"],
+      "years": [2008],
+      "rowCount": 1
+    },
+    {
+      "code": "PRT",
+      "locationId": 620,
+      "geographyId": "m49:620",
+      "providerLabels": ["Portugal"],
+      "years": [1981, 1991, 2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "PRY",
+      "locationId": 600,
+      "geographyId": "m49:600",
+      "providerLabels": ["Paraguay"],
+      "years": [1962, 1972, 1982, 1990, 1992, 2002, 2016],
+      "rowCount": 7
+    },
+    {
+      "code": "PSE",
+      "locationId": 275,
+      "geographyId": "m49:275",
+      "providerLabels": ["State of Palestine"],
+      "years": [1997, 2007, 2010, 2014, 2017, 2020],
+      "rowCount": 6
+    },
+    {
+      "code": "PYF",
+      "locationId": 258,
+      "geographyId": "m49:258",
+      "providerLabels": ["French Polynesia"],
+      "years": [2007, 2022],
+      "rowCount": 2
+    },
+    {
+      "code": "QAT",
+      "locationId": 634,
+      "geographyId": "m49:634",
+      "providerLabels": ["Qatar"],
+      "years": [2012, 2023],
+      "rowCount": 2
+    },
+    {
+      "code": "REU",
+      "locationId": 638,
+      "geographyId": "m49:638",
+      "providerLabels": ["Réunion"],
+      "years": [2015, 2020],
+      "rowCount": 2
+    },
+    {
+      "code": "ROU",
+      "locationId": 642,
+      "geographyId": "m49:642",
+      "providerLabels": ["Romania"],
+      "years": [1977, 1992, 2002, 2011],
+      "rowCount": 4
+    },
+    {
+      "code": "RUS",
+      "locationId": 643,
+      "geographyId": "m49:643",
+      "providerLabels": ["Russian Federation"],
+      "years": [2002, 2010, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "RWA",
+      "locationId": 646,
+      "geographyId": "m49:646",
+      "providerLabels": ["Rwanda"],
+      "years": [
+        1991, 1992, 2000, 2002, 2005, 2008, 2010, 2012, 2013, 2015, 2020, 2023
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "SAU",
+      "locationId": 682,
+      "geographyId": "m49:682",
+      "providerLabels": ["Saudi Arabia"],
+      "years": [2022],
+      "rowCount": 1
+    },
+    {
+      "code": "SDN",
+      "locationId": 729,
+      "geographyId": "m49:729",
+      "providerLabels": ["Sudan"],
+      "years": [2000, 2008, 2010, 2014],
+      "rowCount": 4
+    },
+    {
+      "code": "SEN",
+      "locationId": 686,
+      "geographyId": "m49:686",
+      "providerLabels": ["Senegal"],
+      "years": [
+        1988, 1993, 1997, 2002, 2005, 2006, 2009, 2011, 2013, 2014, 2015, 2016,
+        2017, 2023
+      ],
+      "rowCount": 17
+    },
+    {
+      "code": "SGP",
+      "locationId": 702,
+      "geographyId": "m49:702",
+      "providerLabels": ["Singapore"],
+      "years": [2000, 2010, 2020],
+      "rowCount": 3
+    },
+    {
+      "code": "SHN",
+      "locationId": 654,
+      "geographyId": "m49:654",
+      "providerLabels": ["Saint Helena"],
+      "years": [2008, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "SLE",
+      "locationId": 694,
+      "geographyId": "m49:694",
+      "providerLabels": ["Sierra Leone"],
+      "years": [2000, 2004, 2005, 2008, 2010, 2013, 2015, 2017, 2019],
+      "rowCount": 9
+    },
+    {
+      "code": "SLV",
+      "locationId": 222,
+      "geographyId": "m49:222",
+      "providerLabels": ["El Salvador"],
+      "years": [1992, 2007, 2014],
+      "rowCount": 3
+    },
+    {
+      "code": "SOM",
+      "locationId": 706,
+      "geographyId": "m49:706",
+      "providerLabels": ["Somalia"],
+      "years": [2006, 2011],
+      "rowCount": 3
+    },
+    {
+      "code": "SPM",
+      "locationId": 666,
+      "geographyId": "m49:666",
+      "providerLabels": ["Saint Pierre and Miquelon"],
+      "years": [2015, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "SRB",
+      "locationId": 688,
+      "geographyId": "m49:688",
+      "providerLabels": ["Serbia"],
+      "years": [2002, 2005, 2010, 2011, 2014, 2019, 2022],
+      "rowCount": 7
+    },
+    {
+      "code": "SSD",
+      "locationId": 728,
+      "geographyId": "m49:728",
+      "providerLabels": ["South Sudan"],
+      "years": [1999, 2008, 2010],
+      "rowCount": 3
+    },
+    {
+      "code": "STP",
+      "locationId": 678,
+      "geographyId": "m49:678",
+      "providerLabels": ["Sao Tome and Principe"],
+      "years": [2000, 2001, 2008, 2012, 2014, 2019],
+      "rowCount": 6
+    },
+    {
+      "code": "SUR",
+      "locationId": 740,
+      "geographyId": "m49:740",
+      "providerLabels": ["Suriname"],
+      "years": [2000, 2004, 2006, 2010, 2012, 2018],
+      "rowCount": 6
+    },
+    {
+      "code": "SVK",
+      "locationId": 703,
+      "geographyId": "m49:703",
+      "providerLabels": ["Slovakia"],
+      "years": [2001, 2011, 2021],
+      "rowCount": 5
+    },
+    {
+      "code": "SVN",
+      "locationId": 705,
+      "geographyId": "m49:705",
+      "providerLabels": ["Slovenia"],
+      "years": [2002, 2015, 2021],
+      "rowCount": 3
+    },
+    {
+      "code": "SWZ",
+      "locationId": 748,
+      "geographyId": "m49:748",
+      "providerLabels": ["Eswatini"],
+      "years": [1997, 2000, 2006, 2007, 2010, 2014, 2021],
+      "rowCount": 7
+    },
+    {
+      "code": "SXM",
+      "locationId": 534,
+      "geographyId": "m49:534",
+      "providerLabels": ["Sint Maarten (Dutch part)"],
+      "years": [2011],
+      "rowCount": 1
+    },
+    {
+      "code": "SYC",
+      "locationId": 690,
+      "geographyId": "m49:690",
+      "providerLabels": ["Seychelles"],
+      "years": [2002, 2010],
+      "rowCount": 2
+    },
+    {
+      "code": "SYR",
+      "locationId": 760,
+      "geographyId": "m49:760",
+      "providerLabels": ["Syrian Arab Republic"],
+      "years": [2006],
+      "rowCount": 1
+    },
+    {
+      "code": "TCA",
+      "locationId": 796,
+      "geographyId": "m49:796",
+      "providerLabels": ["Turks and Caicos Islands"],
+      "years": [2020],
+      "rowCount": 1
+    },
+    {
+      "code": "TCD",
+      "locationId": 148,
+      "geographyId": "m49:148",
+      "providerLabels": ["Chad"],
+      "years": [1997, 2000, 2004, 2010, 2015, 2019],
+      "rowCount": 6
+    },
+    {
+      "code": "TGO",
+      "locationId": 768,
+      "geographyId": "m49:768",
+      "providerLabels": ["Togo"],
+      "years": [1959, 1970, 1998, 2000, 2006, 2010, 2014, 2017, 2022],
+      "rowCount": 10
+    },
+    {
+      "code": "THA",
+      "locationId": 764,
+      "geographyId": "m49:764",
+      "providerLabels": ["Thailand"],
+      "years": [1970, 1980, 1990, 2000, 2006, 2010, 2012, 2016, 2019, 2022],
+      "rowCount": 10
+    },
+    {
+      "code": "TJK",
+      "locationId": 762,
+      "geographyId": "m49:762",
+      "providerLabels": ["Tajikistan"],
+      "years": [2000, 2005, 2012, 2017, 2023],
+      "rowCount": 5
+    },
+    {
+      "code": "TKL",
+      "locationId": 772,
+      "geographyId": "m49:772",
+      "providerLabels": ["Tokelau"],
+      "years": [2011],
+      "rowCount": 1
+    },
+    {
+      "code": "TKM",
+      "locationId": 795,
+      "geographyId": "m49:795",
+      "providerLabels": ["Turkmenistan"],
+      "years": [2006, 2015, 2019, 2024],
+      "rowCount": 4
+    },
+    {
+      "code": "TLS",
+      "locationId": 626,
+      "geographyId": "m49:626",
+      "providerLabels": ["Timor-Leste"],
+      "years": [2004, 2009, 2016, 2022],
+      "rowCount": 4
+    },
+    {
+      "code": "TON",
+      "locationId": 776,
+      "geographyId": "m49:776",
+      "providerLabels": ["Tonga"],
+      "years": [2019, 2021],
+      "rowCount": 2
+    },
+    {
+      "code": "TTO",
+      "locationId": 780,
+      "geographyId": "m49:780",
+      "providerLabels": ["Trinidad and Tobago"],
+      "years": [1970, 1980, 1990, 2000, 2006, 2011, 2022],
+      "rowCount": 9
+    },
+    {
+      "code": "TUN",
+      "locationId": 788,
+      "geographyId": "m49:788",
+      "providerLabels": ["Tunisia"],
+      "years": [2012, 2018, 2023],
+      "rowCount": 3
+    },
+    {
+      "code": "TUR",
+      "locationId": 792,
+      "geographyId": "m49:792",
+      "providerLabels": ["Türkiye"],
+      "years": [1985, 1990, 1993, 1998, 2000, 2004, 2011, 2018],
+      "rowCount": 9
+    },
+    {
+      "code": "TUV",
+      "locationId": 798,
+      "geographyId": "m49:798",
+      "providerLabels": ["Tuvalu"],
+      "years": [2020],
+      "rowCount": 1
+    },
+    {
+      "code": "TZA",
+      "locationId": 834,
+      "geographyId": "m49:834",
+      "providerLabels": ["United Republic of Tanzania"],
+      "years": [
+        1988, 1992, 1996, 1999, 2002, 2004, 2007, 2010, 2012, 2015, 2022
+      ],
+      "rowCount": 13
+    },
+    {
+      "code": "UGA",
+      "locationId": 800,
+      "geographyId": "m49:800",
+      "providerLabels": ["Uganda"],
+      "years": [
+        1991, 1995, 2000, 2002, 2006, 2009, 2011, 2014, 2015, 2016, 2019, 2024
+      ],
+      "rowCount": 12
+    },
+    {
+      "code": "UKR",
+      "locationId": 804,
+      "geographyId": "m49:804",
+      "providerLabels": ["Ukraine"],
+      "years": [2001, 2005, 2007, 2012],
+      "rowCount": 4
+    },
+    {
+      "code": "URY",
+      "locationId": 858,
+      "geographyId": "m49:858",
+      "providerLabels": ["Uruguay"],
+      "years": [1963, 1975, 1985, 1996, 2006, 2011, 2013],
+      "rowCount": 7
+    },
+    {
+      "code": "USA",
+      "locationId": 840,
+      "geographyId": "m49:840",
+      "providerLabels": ["United States of America"],
+      "years": [1960, 1970, 1980, 1990, 2000, 2005, 2010, 2015, 2020],
+      "rowCount": 9
+    },
+    {
+      "code": "UZB",
+      "locationId": 860,
+      "geographyId": "m49:860",
+      "providerLabels": ["Uzbekistan"],
+      "years": [1996, 2000, 2006, 2021],
+      "rowCount": 4
+    },
+    {
+      "code": "VEN",
+      "locationId": 862,
+      "geographyId": "m49:862",
+      "providerLabels": ["Venezuela (Bolivarian Republic of)"],
+      "years": [1971, 1981, 1990, 2000, 2001],
+      "rowCount": 5
+    },
+    {
+      "code": "VNM",
+      "locationId": 704,
+      "geographyId": "m49:704",
+      "providerLabels": ["Viet Nam"],
+      "years": [
+        1989, 1997, 1999, 2000, 2002, 2005, 2006, 2009, 2010, 2014, 2019, 2020
+      ],
+      "rowCount": 12
+    },
+    {
+      "code": "VUT",
+      "locationId": 548,
+      "geographyId": "m49:548",
+      "providerLabels": ["Vanuatu"],
+      "years": [2007, 2023],
+      "rowCount": 2
+    },
+    {
+      "code": "WSM",
+      "locationId": 882,
+      "geographyId": "m49:882",
+      "providerLabels": ["Samoa"],
+      "years": [2016, 2019],
+      "rowCount": 2
+    },
+    {
+      "code": "XKX",
+      "locationId": 412,
+      "geographyId": "provider:XKX",
+      "providerLabels": ["Kosovo (under UNSC res. 1244)"],
+      "years": [2014, 2020],
+      "rowCount": 2
+    },
+    {
+      "code": "YEM",
+      "locationId": 887,
+      "geographyId": "m49:887",
+      "providerLabels": ["Yemen"],
+      "years": [1991, 2006, 2013, 2023],
+      "rowCount": 4
+    },
+    {
+      "code": "ZAF",
+      "locationId": 710,
+      "geographyId": "m49:710",
+      "providerLabels": ["South Africa"],
+      "years": [1996, 1998, 2001, 2007, 2011, 2016, 2022],
+      "rowCount": 9
+    },
+    {
+      "code": "ZMB",
+      "locationId": 894,
+      "geographyId": "m49:894",
+      "providerLabels": ["Zambia"],
+      "years": [
+        1990, 1992, 1996, 1999, 2000, 2002, 2007, 2010, 2013, 2018, 2024
+      ],
+      "rowCount": 11
+    },
+    {
+      "code": "ZWE",
+      "locationId": 716,
+      "geographyId": "m49:716",
+      "providerLabels": ["Zimbabwe"],
+      "years": [1994, 1999, 2005, 2009, 2010, 2012, 2014, 2015, 2019],
+      "rowCount": 9
+    }
+  ]
+}

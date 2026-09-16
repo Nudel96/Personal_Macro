@@ -1,0 +1,18 @@
+{
+  "source": "UN DESA Population Division, World Population Prospects 2024; Togo interim update 2026-01-19",
+  "license": "CC BY 3.0 IGO",
+  "retrievedAt": "2026-09-08T20:34:17.737557100+00:00",
+  "checkedProfiles": 14,
+  "checkedValues": 133182,
+  "maxAbsoluteDifferencePeople": "6E-8",
+  "sourceRowCounts": {
+    "wpp-age.csv.gz": 1759905,
+    "wpp-update.zip": 3171
+  },
+  "sourceHashes": {
+    "wpp-age.csv.gz": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
+    "wpp-update.zip": "eb7846bf5d937ee15060198e1130e770b885e58c24035b314966681ed929ca9f",
+    "wpp-notes.csv": "afaf6c08ff4336fe7dd4fded31b197fddb8526fd14746e17d487f39fe131b6d9"
+  },
+  "status": "passed"
+}

@@ -1,0 +1,49 @@
+{
+  "checkedAt": "2026-09-10T23:12:52.041023+00:00",
+  "scope": [
+    "finance:debt_service",
+    "labor:wages",
+    "labor:working_hours",
+    "institutions:institutional_indicators"
+  ],
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "asLaunchedCss": {
+    "width": 1442,
+    "height": 1008
+  },
+  "minimumCss": {
+    "width": 1024,
+    "height": 850,
+    "scrollWidth": 1015,
+    "chartViewBox": "0 0 476 320"
+  },
+  "checks": [
+    "All four topics opened through native UI using actual copied public cache",
+    "All 3 BIS borrower perspectives; missing Indian household series stays selected and empty",
+    "Geography picker crosses Africa to Germany and updates region",
+    "OECD wages 1990–2025 with explicit prices/PPP basis 2025",
+    "Both actual hours worker groups, Colombia 2025 remains missing",
+    "All 6 WGI perspectives update the actual chart title, Andorra ADO maps correctly",
+    "WGI 0–100 axis and published 90% bounds, gaps before 2002 visible",
+    "Comparison: same calendar, source-appropriate same or own y-scale",
+    "Numbers toggled on and off; value tooltips disappear",
+    "Horizon switches and full return to source history",
+    "24-hour reload button disabled for freshly loaded sources",
+    "Source methodology details open and close with official href",
+    "Saved WGI source metadata and SVG snapshot; restoring after metric/horizon changes preserves GE and year 2000",
+    "Coverage finds locally available wages and opens the actual view",
+    "Responsive chart remains readable at 1024 CSS pixels"
+  ],
+  "screenshots": [
+    "output/atlas-public-2026-09-11-initial.png",
+    "output/atlas-public-2026-09-11-dsr.png",
+    "output/atlas-public-2026-09-11-india-missing.png",
+    "output/atlas-public-2026-09-11-wages.png",
+    "output/atlas-public-2026-09-11-hours.png",
+    "output/atlas-public-2026-09-11-wgi.png",
+    "output/atlas-public-2026-09-11-minwidth.png"
+  ],
+  "qaLaunchFix": "Standalone Cargo example requires explicit Common Controls v6 manifest; normal product entry point unchanged."
+}

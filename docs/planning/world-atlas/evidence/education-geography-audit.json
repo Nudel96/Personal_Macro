@@ -1,0 +1,1594 @@
+{
+  "catalogVersion": "2026-09-09.7",
+  "sourceSha256": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+  "mappedAreas": 260,
+  "areasWithValues": 245,
+  "countryProfilesWithValues": 223,
+  "regionProfilesWithValues": 22,
+  "excludedHistoricalOrCombinedAreas": [
+    {
+      "COUNTRY_ID": "ANT",
+      "COUNTRY_NAME_EN": "Netherlands Antilles"
+    },
+    {
+      "COUNTRY_ID": "XDN",
+      "COUNTRY_NAME_EN": "Sudan (pre-secession)"
+    },
+    {
+      "COUNTRY_ID": "ZZA",
+      "COUNTRY_NAME_EN": "Channel Islands"
+    }
+  ],
+  "geographies": [
+    {
+      "id": "uis:australia_and_new_zealand",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:central_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:central_and_southern_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:eastern_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:eastern_and_south_eastern_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:europe",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:europe_and_northern_america",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:europe_northern_america_australia_and_new_zealand",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:landlocked_developing_countries",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:latin_america_and_the_caribbean",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:least_developed_countries",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:northern_africa",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:northern_africa_and_western_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:northern_america",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:oceania",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:oceania_excluding_australia_and_new_zealand",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:small_island_developing_states",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:south_eastern_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:southern_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:sub_saharan_africa",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:western_asia",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "uis:world",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "oecd:housing_members",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "oecd:housing_euro_area",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "oecd:housing_euro_area_17",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "bis:property_world",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "bis:advanced_economies",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "bis:emerging_economies",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "bis:euro_area",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:africa",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:asia",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:central_america_caribbean",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:eurasia",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:europe",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:middle_east",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:north_america",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:oceania",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "irena:south_america",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:africa",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:asia",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:europe",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:latin_america_caribbean",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:middle_east",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:north_america",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:oceania",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:asean",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:eu",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:g20",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:g7",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "ember:oecd",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "world",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "un-wpp:903",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "un-wpp:935",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "un-wpp:908",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "un-wpp:5505",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "un-wpp:909",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:east_asia",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:eastern_europe",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:latin_america",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:mena",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:south_southeast_asia",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:sub_saharan_africa",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:western_europe",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "maddison:western_offshoots",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:012",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:818",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:434",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:504",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:729",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:788",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:732",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:086",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:108",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:174",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:262",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:232",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:231",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:260",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:404",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:450",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:454",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:480",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:175",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:508",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:638",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:646",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:690",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:706",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:728",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:800",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:834",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:894",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:716",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:024",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:120",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:140",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:148",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:178",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:180",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:226",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:266",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:678",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:072",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:748",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:426",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:516",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:710",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:204",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:854",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:132",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:384",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:270",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:288",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:324",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:624",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:430",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:466",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:478",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:562",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:566",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:654",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:686",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:694",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:768",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:660",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:028",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:533",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:044",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:052",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:535",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:092",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:136",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:192",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:531",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:212",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:214",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:308",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:312",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:332",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:388",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:474",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:500",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:630",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:652",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:659",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:662",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:663",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:670",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:534",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:780",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:796",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:850",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:084",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:188",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:222",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:320",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:340",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:484",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:558",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:591",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:032",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:068",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:074",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:076",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:152",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:170",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:218",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:238",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:254",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:328",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:600",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:604",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:239",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:740",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:858",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:862",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:060",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:124",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:304",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:666",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:840",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:010",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:398",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:417",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:762",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:795",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:860",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:156",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:344",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:446",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:408",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:392",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:496",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:410",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:096",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:116",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:360",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:418",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:458",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:104",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:608",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:702",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:764",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:626",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:704",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:004",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:050",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:064",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:356",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:364",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:462",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:524",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:586",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:144",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:051",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:031",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:048",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:196",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:268",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:368",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:376",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:400",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:414",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:422",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:512",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:634",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:682",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:275",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:760",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:792",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:784",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:887",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:112",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:100",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:203",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:348",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:616",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:498",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:642",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:643",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:703",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:804",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:248",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:208",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:233",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:234",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:246",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:831",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:352",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:372",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:833",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:832",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:428",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:440",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:578",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:744",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:752",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:826",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:008",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:020",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:070",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:191",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:292",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:300",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:336",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:380",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:470",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:499",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:807",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:620",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:674",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:688",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:705",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:724",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:040",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:056",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:250",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:276",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:438",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:442",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:492",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:528",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:756",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:036",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:162",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:166",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:334",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:554",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:574",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:242",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:540",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:598",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:090",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:548",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:316",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:296",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:584",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:583",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:520",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:580",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:585",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:581",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "m49:016",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:184",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:258",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:570",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:612",
+      "mapped": true,
+      "hasValues": false
+    },
+    {
+      "id": "m49:882",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:772",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:776",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:798",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "m49:876",
+      "mapped": true,
+      "hasValues": true
+    },
+    {
+      "id": "provider:TWN",
+      "mapped": false,
+      "hasValues": false
+    },
+    {
+      "id": "provider:XKX",
+      "mapped": false,
+      "hasValues": false
+    }
+  ]
+}

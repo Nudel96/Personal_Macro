@@ -1,0 +1,1246 @@
+[
+  {
+    "source": {
+      "id": "eurostat-bioenergy",
+      "label": "Eurostat · Bioenergie-Erzeugung",
+      "adapter": "eurostat_energy",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_rw?lang=en&nrg_bal=IPRD&unit=TJ&siec=R5110-5150_W6000RI&siec=R5300",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/nrg_cb_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-08-27",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-bioenergy-original-jsonstat-20260911-v1",
+      "observationKind": "source_estimates",
+      "expectedSha256": "dbc18cef2ced71904f9fa78dd8b371f3964ea73c972fed0a8f13278a6607408a",
+      "expectedRows": 2904,
+      "expectedNumeric": 2307,
+      "firstPeriod": "1990",
+      "lastPeriod": "2025",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "GE",
+          "label": "Georgia",
+          "geographyId": "m49:268",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "IS",
+          "label": "Iceland",
+          "geographyId": "m49:352",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "LI",
+          "label": "Liechtenstein",
+          "geographyId": "m49:438",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "MD",
+          "label": "Moldova",
+          "geographyId": "m49:498",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "UA",
+          "label": "Ukraine",
+          "geographyId": "m49:804",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        },
+        {
+          "code": "XK",
+          "label": "Kosovo*",
+          "geographyId": "provider:XKX",
+          "seriesTitles": {
+            "R5110-5150_W6000RI": "Supply, transformation and consumption of renewables and wastes | Primary solid biofuels | Terajoule",
+            "R5300": "Supply, transformation and consumption of renewables and wastes | Biogases | Terajoule"
+          }
+        }
+      ]
+    },
+    "profileCount": 84,
+    "excludedEuroAreaValues": {
+      "EA21": 72,
+      "EA20": 70
+    },
+    "excludedEarlyCells": {},
+    "missingCells": 717,
+    "statusCounts": {
+      "Vorläufig laut Quelle (p)": 83,
+      "Quellenschätzung (e)": 5,
+      "Vorläufig laut Quelle (p) · Quellen-Null · Bedeutung nicht eindeutig": 7,
+      "Quellen-Null · Bedeutung nicht eindeutig": 448
+    },
+    "scope": "Inländische Primärerzeugung, nicht Verbrauch, Stromerzeugung oder Export. Terajoule sind ein Energieinhalt, keine Tonnage oder Marktpreise. Die beiden Brennstoffgruppen sind getrennte Ausschnitte der Bioenergie; flüssige Biokraftstoffe sind hier nicht enthalten. Schätzungen und vorläufiges Randjahr bleiben gekennzeichnet. Die Quelle kann echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben als Null melden; solche Nullen bleiben als Quellenhinweis erhalten und im Diagramm offen. Keine Aussage über Klimaneutralität, Nachhaltigkeit oder Anlagebewertung.",
+    "metrics": [
+      {
+        "id": "eurostat-bioenergy:R5110-5150_W6000RI",
+        "sourceId": "eurostat-bioenergy",
+        "topicId": "fuels:bioenergy",
+        "providerCode": "R5110-5150_W6000RI",
+        "label": "Feste Biobrennstoffe · Primärerzeugung",
+        "unit": "Energieinhalt (TJ)",
+        "frequency": "annual",
+        "kind": "source_estimates",
+        "comparison": "same_definition",
+        "connectAdjacent": true,
+        "explanation": "Wie viel Energie die im Land erzeugten primären festen Biobrennstoffe enthalten.",
+        "scopeNote": "Inländische Primärerzeugung, nicht Verbrauch, Stromerzeugung oder Export. Terajoule sind ein Energieinhalt, keine Tonnage oder Marktpreise. Die beiden Brennstoffgruppen sind getrennte Ausschnitte der Bioenergie; flüssige Biokraftstoffe sind hier nicht enthalten. Schätzungen und vorläufiges Randjahr bleiben gekennzeichnet. Die Quelle kann echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben als Null melden; solche Nullen bleiben als Quellenhinweis erhalten und im Diagramm offen. Keine Aussage über Klimaneutralität, Nachhaltigkeit oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      },
+      {
+        "id": "eurostat-bioenergy:R5300",
+        "sourceId": "eurostat-bioenergy",
+        "topicId": "fuels:bioenergy",
+        "providerCode": "R5300",
+        "label": "Biogas · Primärerzeugung",
+        "unit": "Energieinhalt (TJ)",
+        "frequency": "annual",
+        "kind": "source_estimates",
+        "comparison": "same_definition",
+        "connectAdjacent": true,
+        "explanation": "Wie viel Energie das im Land erzeugte Biogas enthält.",
+        "scopeNote": "Inländische Primärerzeugung, nicht Verbrauch, Stromerzeugung oder Export. Terajoule sind ein Energieinhalt, keine Tonnage oder Marktpreise. Die beiden Brennstoffgruppen sind getrennte Ausschnitte der Bioenergie; flüssige Biokraftstoffe sind hier nicht enthalten. Schätzungen und vorläufiges Randjahr bleiben gekennzeichnet. Die Quelle kann echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben als Null melden; solche Nullen bleiben als Quellenhinweis erhalten und im Diagramm offen. Keine Aussage über Klimaneutralität, Nachhaltigkeit oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-heat-pumps",
+      "label": "Eurostat · Wärmepumpenleistung",
+      "adapter": "eurostat_energy",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_inf_hptc?lang=en&plant_tec=CAP_HEAT&unit=MW&hp_tech=ATH&hp_tech=GTH&hp_tech=HTH",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_hptc_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-07-09",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-heat-pumps-original-jsonstat-20260911-v1",
+      "observationKind": "source_estimates",
+      "expectedSha256": "2375ae23ad5c93be57ace189d52299e842d28740c6d1f563df1b3e2433a2c397",
+      "expectedRows": 4245,
+      "expectedNumeric": 803,
+      "firstPeriod": "2004",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "GE",
+          "label": "Georgia",
+          "geographyId": "m49:268",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "IS",
+          "label": "Iceland",
+          "geographyId": "m49:352",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "LI",
+          "label": "Liechtenstein",
+          "geographyId": "m49:438",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "MD",
+          "label": "Moldova",
+          "geographyId": "m49:498",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "UA",
+          "label": "Ukraine",
+          "geographyId": "m49:804",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        },
+        {
+          "code": "XK",
+          "label": "Kosovo*",
+          "geographyId": "provider:XKX",
+          "seriesTitles": {
+            "ATH": "Heat pumps - technical characteristics by technologies | Aerothermal | Megawatt",
+            "GTH": "Heat pumps - technical characteristics by technologies | Geothermal | Megawatt",
+            "HTH": "Heat pumps - technical characteristics by technologies | Hydrothermal | Megawatt"
+          }
+        }
+      ]
+    },
+    "profileCount": 126,
+    "excludedEuroAreaValues": {
+      "EA21": 105,
+      "EA20": 105
+    },
+    "excludedEarlyCells": {
+      "numeric": 1524,
+      "nonzero": 93,
+      "missing": 240
+    },
+    "missingCells": 1843,
+    "statusCounts": {
+      "Quellen-Null · Bedeutung nicht eindeutig": 1708
+    },
+    "scope": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand.",
+    "metrics": [
+      {
+        "id": "eurostat-heat-pumps:ATH",
+        "sourceId": "eurostat-heat-pumps",
+        "topicId": "energy_systems:heat_pumps",
+        "providerCode": "ATH",
+        "label": "Wärmepumpen · Luftwärme",
+        "unit": "Thermische Leistung (MW)",
+        "frequency": "annual",
+        "kind": "source_estimates",
+        "comparison": "same_definition",
+        "connectAdjacent": true,
+        "explanation": "Wie sich die installierte thermische Leistung von Wärmepumpen mit Luft als Wärmequelle entwickelt.",
+        "scopeNote": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      },
+      {
+        "id": "eurostat-heat-pumps:GTH",
+        "sourceId": "eurostat-heat-pumps",
+        "topicId": "energy_systems:heat_pumps",
+        "providerCode": "GTH",
+        "label": "Wärmepumpen · Erdwärme",
+        "unit": "Thermische Leistung (MW)",
+        "frequency": "annual",
+        "kind": "source_estimates",
+        "comparison": "same_definition",
+        "connectAdjacent": true,
+        "explanation": "Wie sich die installierte thermische Leistung von Wärmepumpen mit Erdwärme als Wärmequelle entwickelt.",
+        "scopeNote": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      },
+      {
+        "id": "eurostat-heat-pumps:HTH",
+        "sourceId": "eurostat-heat-pumps",
+        "topicId": "energy_systems:heat_pumps",
+        "providerCode": "HTH",
+        "label": "Wärmepumpen · Wasserwärme",
+        "unit": "Thermische Leistung (MW)",
+        "frequency": "annual",
+        "kind": "source_estimates",
+        "comparison": "same_definition",
+        "connectAdjacent": true,
+        "explanation": "Wie sich die installierte thermische Leistung von Wärmepumpen mit Wasser als Wärmequelle entwickelt.",
+        "scopeNote": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-district-heating",
+      "label": "Eurostat · Fernwärme in Privathaushalten",
+      "adapter": "eurostat_energy",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_lvhe02?lang=en&amenity=DHEAT&deg_urb=TOTAL&hhcomp=TOTAL&unit=PC",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/ilc_sieusilc.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-01-23",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-district-heating-original-jsonstat-20260911-v1",
+      "observationKind": "household_survey",
+      "expectedSha256": "6e3759ed3a6f7cdfdcc020933ba65c7ba5d36a531192b50e26e934cc73935d1e",
+      "expectedRows": 33,
+      "expectedNumeric": 32,
+      "firstPeriod": "2023",
+      "lastPeriod": "2023",
+      "areas": [
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "CH",
+          "label": "Switzerland",
+          "geographyId": "m49:756",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "DHEAT": "Persons living in private households by heating system used in the dwelling, household composition and degree of urbanisation | District heating network/teleheating | Percentage"
+          }
+        }
+      ]
+    },
+    "profileCount": 32,
+    "excludedEuroAreaValues": {
+      "EA20": 1
+    },
+    "excludedEarlyCells": {},
+    "missingCells": 0,
+    "statusCounts": {},
+    "scope": "Anteil der Personen in Privathaushalten, deren Wohnung über ein Fernwärmenetz beheizt wird. Alle Haushaltszusammensetzungen und alle Siedlungsarten, EU-SILC 2023. Personengewichtet, keine Quote aller Gebäude, kein Anteil an der erzeugten Wärme, keine Netzlänge oder Zahl der Anschlüsse. Ein einzelnes Erhebungsjahr ohne Verlaufslinie. Gemeinschaftsunterkünfte und Einrichtungen sind grundsätzlich ausgenommen. Frankreich ohne Mayotte, einschließlich vier weiterer Überseedepartements; Zypern nur regierungskontrolliertes Gebiet, Niederlande ohne Überseegebiete und Norwegen ohne Spitzbergen. Nationale Erhebungsunterschiede und Stichprobenunsicherheit bleiben Grenzen des Vergleichs.",
+    "metrics": [
+      {
+        "id": "eurostat-district-heating:DHEAT",
+        "sourceId": "eurostat-district-heating",
+        "topicId": "energy_systems:district_heating",
+        "providerCode": "DHEAT",
+        "label": "Fernwärme · Bevölkerung mit Netzheizung",
+        "unit": "Personen in Privathaushalten (%)",
+        "frequency": "annual",
+        "kind": "household_survey",
+        "comparison": "same_definition",
+        "connectAdjacent": false,
+        "explanation": "Wie verbreitet Fernwärme in den Wohnungen der Bevölkerung ist.",
+        "scopeNote": "Anteil der Personen in Privathaushalten, deren Wohnung über ein Fernwärmenetz beheizt wird. Alle Haushaltszusammensetzungen und alle Siedlungsarten, EU-SILC 2023. Personengewichtet, keine Quote aller Gebäude, kein Anteil an der erzeugten Wärme, keine Netzlänge oder Zahl der Anschlüsse. Ein einzelnes Erhebungsjahr ohne Verlaufslinie. Gemeinschaftsunterkünfte und Einrichtungen sind grundsätzlich ausgenommen. Frankreich ohne Mayotte, einschließlich vier weiterer Überseedepartements; Zypern nur regierungskontrolliertes Gebiet, Niederlande ohne Überseegebiete und Norwegen ohne Spitzbergen. Nationale Erhebungsunterschiede und Stichprobenunsicherheit bleiben Grenzen des Vergleichs. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+      }
+    ]
+  }
+]

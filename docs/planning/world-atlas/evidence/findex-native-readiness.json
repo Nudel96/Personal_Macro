@@ -1,0 +1,46 @@
+{
+  "originalFileRoundtrip": {
+    "profiles": 174,
+    "numericCells": 59471,
+    "missingCells": 98701,
+    "rawValuesExactlyEqual": true
+  },
+  "first": {
+    "profiles": 174,
+    "numericCells": 59471,
+    "missingCells": 98701,
+    "rawValuesExactlyEqual": true,
+    "jobs": [
+      {
+        "finishedAt": "2026-09-09T17:18:19.957284500+00:00",
+        "id": "d07fb9fe-633f-4900-be91-d2698098513d",
+        "message": "Die Findex-Bilder sind lokal verfÃ¼gbar.",
+        "observations": 59471,
+        "page": 2,
+        "pages": 2,
+        "seriesId": "worldbank-findex-2025",
+        "startedAt": "2026-09-09T17:18:14.353856900+00:00",
+        "status": "complete"
+      }
+    ],
+    "runAt": "2026-09-09T17:18:14.299Z"
+  },
+  "restart": {
+    "profiles": 174,
+    "numericCells": 59471,
+    "missingCells": 98701,
+    "rawValuesExactlyEqual": true,
+    "jobs": [],
+    "runAt": "2026-09-09T17:27:17.714Z"
+  },
+  "identifier": "com.personal-macro.atlas-findex-20260909",
+  "restartProcess": {
+    "identifier": "com.personal-macro.atlas-findex-20260909",
+    "pid": 30892,
+    "previousPid": 20256,
+    "createdAt": "2026-09-09T17:27:07.2618750Z",
+    "executablePath": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\debug\\personal-macro-desktop.exe"
+  },
+  "notebookAndOriginalPictureUnchanged": true,
+  "nativeUiClickAcceptance": false
+}

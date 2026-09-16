@@ -1,5 +1,6 @@
 import type {
   BootstrapData,
+  Account,
   CalendarDay,
   DashboardMetrics,
   DashboardResponse,
@@ -23,8 +24,18 @@ const setups = [
   { id: "setup-range", name: "Range", color: "#f59e0b" },
 ];
 
+function storedAccounts(): Account[] {
+  try {
+    return JSON.parse(
+      localStorage.getItem("personal-macro:browser-accounts:v1") ?? "[]",
+    );
+  } catch {
+    return [];
+  }
+}
+
 export const browserBootstrap: BootstrapData = {
-  accounts: [],
+  accounts: storedAccounts(),
   strategies: [],
   setups,
   tags: [],

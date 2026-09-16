@@ -1,0 +1,170 @@
+{
+  "reviewedAt": "2026-09-11",
+  "source": {
+    "id": "eia-battery-storage",
+    "label": "EIA · stationäre US-Großspeicher",
+    "adapter": "eia_battery",
+    "url": "https://www.eia.gov/analysis/studies/electricity/batterystorage/xls/2024%20Battery%20Storage%20Figures.xlsx",
+    "documentationUrl": "https://www.eia.gov/analysis/studies/electricity/batterystorage/",
+    "licenseUrl": "https://www.eia.gov/about/copyrights_reuse.php",
+    "publishedAt": "2026-03-17",
+    "reviewedAt": "2026-09-11",
+    "recipe": "eia-battery-original-2023-final-20260317-v1",
+    "observationKind": "source_estimates",
+    "expectedSha256": "4d280371504ce00f5e9477c49848c23106e6baebdf9a44da31bc3ac45f960f91",
+    "expectedRows": 30,
+    "expectedNumeric": 69,
+    "firstPeriod": "2003",
+    "lastPeriod": "2023",
+    "areas": [
+      {
+        "code": "US",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "cohort_duration": "Figure 3. Large-scale battery storage average duration by installation year (2015–2023) | average duration (hours)",
+          "energy_additions": "Figure 3. Large-scale battery storage average duration by installation year (2015–2023) | energy capacity additions (MWh)",
+          "energy_stock": "Figure 1b. Large-scale battery storage net capacity (2010–2023) | U.S. total net cumulative energy capacity (MWh)",
+          "power_additions": "Figure 3. Large-scale battery storage average duration by installation year (2015–2023) | power capacity additions (MW)",
+          "power_stock": "Figure 1b. Large-scale battery storage net capacity (2010–2023) | U.S. total net cumulative power capacity (MW)"
+        }
+      }
+    ]
+  },
+  "workbookBytes": 324025,
+  "zipEntries": 206,
+  "uncompressedBytes": 1650114,
+  "selectedSheets": [
+    {
+      "name": "Figure 1b",
+      "xml": "xl/worksheets/sheet3.xml",
+      "headers": [
+        {
+          "coordinate": "A1",
+          "text": "Figure 1b. Large-scale battery storage net capacity (2010–2023) "
+        },
+        {
+          "coordinate": "A2",
+          "text": "Battery Energy Storage Report Figure Data"
+        },
+        {
+          "coordinate": "A3",
+          "text": "2023 Final Data"
+        },
+        {
+          "coordinate": "A28",
+          "text": "Figure 1b. Large-scale battery storage net capacity (2010–2023) "
+        },
+        {
+          "coordinate": "A30",
+          "text": "annual additions"
+        },
+        {
+          "coordinate": "A31",
+          "text": "power and energy capacity"
+        },
+        {
+          "coordinate": "A32",
+          "text": "megawatts (MW) and megawatthours (MWh)"
+        }
+      ]
+    },
+    {
+      "name": "Figure 3",
+      "xml": "xl/worksheets/sheet5.xml",
+      "headers": [
+        {
+          "coordinate": "A1",
+          "text": "Figure 3. Large-scale battery storage average duration by installation year (2015–2023)"
+        },
+        {
+          "coordinate": "A2",
+          "text": "Battery Energy Storage Report Figure Data"
+        },
+        {
+          "coordinate": "A3",
+          "text": "2023 Final Data"
+        },
+        {
+          "coordinate": "A27",
+          "text": "Figure 3. Large-scale battery storage average duration by installation year (2015–2023)"
+        }
+      ]
+    }
+  ],
+  "columns": [
+    {
+      "code": "power_stock",
+      "sheet": "Figure 1b",
+      "column": "B",
+      "firstRow": 34,
+      "lastRow": 54,
+      "firstYear": 2003,
+      "header": "U.S. total net cumulative power capacity (MW)",
+      "note": "Veröffentlichte kumulierte Nettoreihe, keine jährliche Stromerzeugung und keine aktuelle Betriebszusage für jede historische Anlage."
+    },
+    {
+      "code": "energy_stock",
+      "sheet": "Figure 1b",
+      "column": "C",
+      "firstRow": 34,
+      "lastRow": 54,
+      "firstYear": 2003,
+      "header": "U.S. total net cumulative energy capacity (MWh)",
+      "note": "Speicherbare Energiemenge des veröffentlichten Bestands; kein jährlicher Stromverbrauch, Durchsatz oder tatsächlich jederzeit abrufbarer Ladestand."
+    },
+    {
+      "code": "power_additions",
+      "sheet": "Figure 3",
+      "column": "C",
+      "firstRow": 31,
+      "lastRow": 39,
+      "firstYear": 2015,
+      "header": "power capacity additions (MW)",
+      "note": "Jährliche Installationskohorte aus Figure 3. Zubau ist kein Gesamtbestand und kein Nettozuwachs nach Stilllegungen."
+    },
+    {
+      "code": "energy_additions",
+      "sheet": "Figure 3",
+      "column": "D",
+      "firstRow": 31,
+      "lastRow": 39,
+      "firstYear": 2015,
+      "header": "energy capacity additions (MWh)",
+      "note": "Jährliche Installationskohorte aus Figure 3. Kapazitätszubau ist keine jährlich abgegebene Strommenge."
+    },
+    {
+      "code": "cohort_duration",
+      "sheet": "Figure 3",
+      "column": "B",
+      "firstRow": 31,
+      "lastRow": 39,
+      "firstYear": 2015,
+      "header": "average duration (hours)",
+      "note": "Durchschnitt der neuen Installationskohorte, nicht die mittlere Dauer aller vorhandenen Batterien. Veröffentlichter EIA-Wert, keine eigene Quotientenbildung."
+    }
+  ],
+  "profileCount": 5,
+  "originalDecimalStringsPreserved": true,
+  "selectedNumericValues": 69,
+  "excludedFigure6ChartLabels": [
+    "operating",
+    " capacity",
+    "annual capacity additions",
+    "               history",
+    "     planned ",
+    "other ",
+    "states"
+  ],
+  "excluded": "Figure 6 contains prospective 2024/2025 additions and is not used. Small-scale energy storage, prices and regional subdivisions are not substituted for country-level grid battery histories.",
+  "otherCandidates": [
+    {
+      "url": "https://ses.jrc.ec.europa.eu/storage-inventory",
+      "finding": "Current European project map, partially estimated MWh. Published deployment tracking begins in 2026; linked export returned 404 during review. No unsupported historical country totals constructed."
+    },
+    {
+      "url": "https://www.iea.org/data-and-statistics/charts/global-battery-storage-capacity-additions-2020-2025",
+      "finding": "Chart explicitly has no data download; not used as a numeric source."
+    }
+  ]
+}

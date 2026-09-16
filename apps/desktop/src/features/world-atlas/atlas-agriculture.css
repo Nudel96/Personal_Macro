@@ -1,0 +1,126 @@
+.atlas-agriculture-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  margin: 18px 0;
+}
+.atlas-agriculture-controls label {
+  display: grid;
+  gap: 6px;
+  flex: 1;
+  min-width: 180px;
+  color: var(--text-2);
+}
+.atlas-agriculture-controls select,
+.atlas-agriculture-controls input,
+.atlas-agriculture details select {
+  width: 100%;
+  min-height: 36px;
+  padding: 6px 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+}
+.atlas-agriculture-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 16px 0;
+}
+.atlas-agriculture-grid.is-single {
+  grid-template-columns: 1fr;
+}
+.atlas-agriculture-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.atlas-agriculture-card h3 {
+  margin: 0 0 12px;
+  font-size: 14px;
+}
+.atlas-agriculture-chart {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.atlas-agriculture-axis {
+  fill: var(--text-2);
+  font-size: 12px;
+}
+.atlas-agriculture-reference {
+  stroke: var(--text-3);
+  stroke-dasharray: 5 5;
+  opacity: 0.6;
+}
+.atlas-agriculture-line-0 {
+  stroke: var(--primary-bright);
+  fill: var(--primary-bright);
+}
+.atlas-agriculture-line-1 {
+  stroke: var(--violet);
+  fill: var(--violet);
+}
+.atlas-agriculture-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 24px;
+  margin-top: 16px;
+  font-size: 13px;
+}
+.atlas-agriculture-legend span:first-child {
+  color: var(--primary-bright);
+}
+.atlas-agriculture-legend span:nth-child(2) {
+  color: var(--violet);
+}
+.atlas-agriculture-empty {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--text-2);
+}
+.atlas-agriculture-open {
+  background: none;
+  border: 0;
+  padding: 8px 0;
+  color: var(--primary-bright);
+  cursor: pointer;
+  text-align: left;
+}
+.atlas-agriculture button:focus-visible,
+.atlas-agriculture input:focus-visible,
+.atlas-agriculture select:focus-visible {
+  outline: 2px solid var(--primary-bright);
+  outline-offset: 3px;
+}
+.atlas-agriculture-table {
+  overflow: auto;
+  max-height: 340px;
+}
+.atlas-agriculture-table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+.atlas-agriculture-table th,
+.atlas-agriculture-table td {
+  text-align: right;
+  padding: 6px 10px;
+  border-bottom: 1px solid var(--border);
+}
+.atlas-agriculture-table th:first-child,
+.atlas-agriculture-table td:first-child {
+  text-align: left;
+}
+@media (min-width: 1350px) {
+  .atlas-agriculture-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

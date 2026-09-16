@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-09-11T02:35:07.339626+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "bytes": 50372096,
+  "sha256": "fd04ba4cfd347d9954bed3a3efbb1a232fc4b9a0cf58eb03ec5d9cac252d5b87",
+  "log": "apps/desktop/.tmp/atlas-remaining-40/sbs-windows-release.log",
+  "scope": "Original 24 verified topics plus professional and personal services; six distinct SBS perspectives.",
+  "tests": "16 scoped frontend tests, TypeScript, scoped ESLint, Clippy and two native tests passed. Full 216-profile original comparison and temporary SQLite reopen; 11 native UI checks and local public-cache verification passed."
+}

@@ -1,0 +1,3027 @@
+{
+  "version": "2026-09-09.1",
+  "datasetId": "fao-production-indices",
+  "url": "https://bulks-faostat.fao.org/production/Production_Indices_E_All_Data_(Normalized).zip",
+  "metadataUrl": "https://files-faostat.fao.org/production/QI/QI_e.pdf",
+  "release": "2026-05-11T00:00:00",
+  "topicIds": [
+    "food_water:crop_production",
+    "food_water:livestock",
+    "food_water:food_security"
+  ],
+  "groups": [
+    {
+      "id": "overview",
+      "title": "Überblick"
+    },
+    {
+      "id": "011",
+      "title": "Getreide"
+    },
+    {
+      "id": "012",
+      "title": "Gemüse"
+    },
+    {
+      "id": "013",
+      "title": "Obst und Nüsse"
+    },
+    {
+      "id": "014",
+      "title": "Ölpflanzen"
+    },
+    {
+      "id": "015",
+      "title": "Wurzeln und Knollen"
+    },
+    {
+      "id": "016",
+      "title": "Genussmittel und Gewürze"
+    },
+    {
+      "id": "017",
+      "title": "Hülsenfrüchte"
+    },
+    {
+      "id": "018",
+      "title": "Zuckerpflanzen"
+    },
+    {
+      "id": "019",
+      "title": "Fasern und weitere Pflanzen"
+    },
+    {
+      "id": "02",
+      "title": "Tierische Erzeugnisse"
+    },
+    {
+      "id": "211",
+      "title": "Fleisch"
+    }
+  ],
+  "items": [
+    {
+      "code": "221",
+      "cpc": "'01371",
+      "providerLabel": "Almonds, in shell",
+      "title": "Mandeln mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "711",
+      "cpc": "'01654",
+      "providerLabel": "Anise, badian, coriander, cumin, caraway, fennel and juniper berries, raw",
+      "title": "Anis, Sternanis, Koriander, Kreuzkümmel, Kümmel, Fenchel und Wacholder",
+      "group": "016"
+    },
+    {
+      "code": "515",
+      "cpc": "'01341",
+      "providerLabel": "Apples",
+      "title": "Äpfel",
+      "group": "013"
+    },
+    {
+      "code": "526",
+      "cpc": "'01343",
+      "providerLabel": "Apricots",
+      "title": "Aprikosen",
+      "group": "013"
+    },
+    {
+      "code": "44",
+      "cpc": "'0115",
+      "providerLabel": "Barley",
+      "title": "Gerste",
+      "group": "011"
+    },
+    {
+      "code": "568",
+      "cpc": "'01229",
+      "providerLabel": "Cantaloupes and other melons",
+      "title": "Zucker- und sonstige Melonen",
+      "group": "012"
+    },
+    {
+      "code": "569",
+      "cpc": "'01315",
+      "providerLabel": "Figs",
+      "title": "Feigen",
+      "group": "013"
+    },
+    {
+      "code": "1163",
+      "cpc": "'21170.02",
+      "providerLabel": "Game meat, fresh, chilled or frozen",
+      "title": "Wildfleisch",
+      "group": "211"
+    },
+    {
+      "code": "560",
+      "cpc": "'01330",
+      "providerLabel": "Grapes",
+      "title": "Trauben",
+      "group": "013"
+    },
+    {
+      "code": "1062",
+      "cpc": "'0231",
+      "providerLabel": "Hen eggs in shell, fresh",
+      "title": "Hühnereier mit Schale",
+      "group": "02"
+    },
+    {
+      "code": "333",
+      "cpc": "'01441",
+      "providerLabel": "Linseed",
+      "title": "Leinsamen",
+      "group": "014"
+    },
+    {
+      "code": "56",
+      "cpc": "'0112",
+      "providerLabel": "Maize (corn)",
+      "title": "Mais",
+      "group": "011"
+    },
+    {
+      "code": "1137",
+      "cpc": "'21117.01i",
+      "providerLabel": "Meat of camels, fresh or chilled (indigenous)",
+      "title": "Kamelfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "944",
+      "cpc": "'21111.01i",
+      "providerLabel": "Meat of cattle with the bone, fresh or chilled (indigenous)",
+      "title": "Rindfleisch mit Knochen · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1094",
+      "cpc": "'21121i",
+      "providerLabel": "Meat of chickens, fresh or chilled (indigenous)",
+      "title": "Hühnerfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1032",
+      "cpc": "'21116i",
+      "providerLabel": "Meat of goat, fresh or chilled (indigenous)",
+      "title": "Ziegenfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1012",
+      "cpc": "'21115i",
+      "providerLabel": "Meat of sheep, fresh or chilled (indigenous)",
+      "title": "Schaffleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "79",
+      "cpc": "'0118",
+      "providerLabel": "Millet",
+      "title": "Hirse",
+      "group": "011"
+    },
+    {
+      "code": "292",
+      "cpc": "'01442",
+      "providerLabel": "Mustard seed",
+      "title": "Senfsaat",
+      "group": "014"
+    },
+    {
+      "code": "1182",
+      "cpc": "'02910",
+      "providerLabel": "Natural honey",
+      "title": "Naturhonig",
+      "group": "02"
+    },
+    {
+      "code": "260",
+      "cpc": "'01450",
+      "providerLabel": "Olives",
+      "title": "Oliven",
+      "group": "014"
+    },
+    {
+      "code": "403",
+      "cpc": "'01253.02",
+      "providerLabel": "Onions and shallots, dry (excluding dehydrated)",
+      "title": "Trockene Zwiebeln und Schalotten",
+      "group": "012"
+    },
+    {
+      "code": "490",
+      "cpc": "'01323",
+      "providerLabel": "Oranges",
+      "title": "Orangen",
+      "group": "013"
+    },
+    {
+      "code": "558",
+      "cpc": "'01355.90",
+      "providerLabel": "Other berries and fruits of the genus vaccinium n.e.c.",
+      "title": "Sonstige Beeren und Heidelbeerfrüchte",
+      "group": "013"
+    },
+    {
+      "code": "512",
+      "cpc": "'01329",
+      "providerLabel": "Other citrus fruit, n.e.c.",
+      "title": "Sonstige Zitrusfrüchte",
+      "group": "013"
+    },
+    {
+      "code": "619",
+      "cpc": "'01359.90",
+      "providerLabel": "Other fruits, n.e.c.",
+      "title": "Sonstiges Obst",
+      "group": "013"
+    },
+    {
+      "code": "234",
+      "cpc": "'01379.90",
+      "providerLabel": "Other nuts (excluding wild edible nuts and groundnuts), in shell, n.e.c.",
+      "title": "Sonstige Nüsse mit Schale · ohne Wildnüsse und Erdnüsse",
+      "group": "013"
+    },
+    {
+      "code": "211",
+      "cpc": "'01709.90",
+      "providerLabel": "Other pulses n.e.c.",
+      "title": "Sonstige Hülsenfrüchte",
+      "group": "017"
+    },
+    {
+      "code": "723",
+      "cpc": "'01699",
+      "providerLabel": "Other stimulant, spice and aromatic crops, n.e.c.",
+      "title": "Sonstige Genuss-, Gewürz- und Aromapflanzen",
+      "group": "016"
+    },
+    {
+      "code": "541",
+      "cpc": "'01349.20",
+      "providerLabel": "Other stone fruits",
+      "title": "Sonstiges Steinobst",
+      "group": "013"
+    },
+    {
+      "code": "463",
+      "cpc": "'01290.90",
+      "providerLabel": "Other vegetables, fresh n.e.c.",
+      "title": "Sonstiges frisches Gemüse",
+      "group": "012"
+    },
+    {
+      "code": "534",
+      "cpc": "'01345",
+      "providerLabel": "Peaches and nectarines",
+      "title": "Pfirsiche und Nektarinen",
+      "group": "013"
+    },
+    {
+      "code": "521",
+      "cpc": "'01342.01",
+      "providerLabel": "Pears",
+      "title": "Birnen",
+      "group": "013"
+    },
+    {
+      "code": "223",
+      "cpc": "'01375",
+      "providerLabel": "Pistachios, in shell",
+      "title": "Pistazien mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "536",
+      "cpc": "'01346",
+      "providerLabel": "Plums and sloes",
+      "title": "Pflaumen und Schlehen",
+      "group": "013"
+    },
+    {
+      "code": "116",
+      "cpc": "'01510",
+      "providerLabel": "Potatoes",
+      "title": "Kartoffeln",
+      "group": "015"
+    },
+    {
+      "code": "1130",
+      "cpc": "'02293",
+      "providerLabel": "Raw milk of camel",
+      "title": "Rohe Kamelmilch",
+      "group": "02"
+    },
+    {
+      "code": "882",
+      "cpc": "'02211",
+      "providerLabel": "Raw milk of cattle",
+      "title": "Rohe Kuhmilch",
+      "group": "02"
+    },
+    {
+      "code": "1020",
+      "cpc": "'02292",
+      "providerLabel": "Raw milk of goats",
+      "title": "Rohe Ziegenmilch",
+      "group": "02"
+    },
+    {
+      "code": "982",
+      "cpc": "'02291",
+      "providerLabel": "Raw milk of sheep",
+      "title": "Rohe Schafmilch",
+      "group": "02"
+    },
+    {
+      "code": "27",
+      "cpc": "'0113",
+      "providerLabel": "Rice",
+      "title": "Reis",
+      "group": "011"
+    },
+    {
+      "code": "328",
+      "cpc": "'01921.01",
+      "providerLabel": "Seed cotton, unginned",
+      "title": "Saatbaumwolle · nicht entkörnt",
+      "group": "019"
+    },
+    {
+      "code": "289",
+      "cpc": "'01444",
+      "providerLabel": "Sesame seed",
+      "title": "Sesamsaat",
+      "group": "014"
+    },
+    {
+      "code": "987",
+      "cpc": "'02941",
+      "providerLabel": "Shorn wool, greasy, including fleece-washed shorn wool",
+      "title": "Schurwolle · ungewaschen oder am Vlies gewaschen",
+      "group": "02"
+    },
+    {
+      "code": "1185",
+      "cpc": "'02944",
+      "providerLabel": "Silk-worm cocoons suitable for reeling",
+      "title": "Seidenraupenkokons zum Abhaspeln",
+      "group": "02"
+    },
+    {
+      "code": "157",
+      "cpc": "'01801",
+      "providerLabel": "Sugar beet",
+      "title": "Zuckerrüben",
+      "group": "018"
+    },
+    {
+      "code": "156",
+      "cpc": "'01802",
+      "providerLabel": "Sugar cane",
+      "title": "Zuckerrohr",
+      "group": "018"
+    },
+    {
+      "code": "267",
+      "cpc": "'01445",
+      "providerLabel": "Sunflower seed",
+      "title": "Sonnenblumenkerne",
+      "group": "014"
+    },
+    {
+      "code": "222",
+      "cpc": "'01376",
+      "providerLabel": "Walnuts, in shell",
+      "title": "Walnüsse mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "567",
+      "cpc": "'01221",
+      "providerLabel": "Watermelons",
+      "title": "Wassermelonen",
+      "group": "012"
+    },
+    {
+      "code": "15",
+      "cpc": "'0111",
+      "providerLabel": "Wheat",
+      "title": "Weizen",
+      "group": "011"
+    },
+    {
+      "code": "2051",
+      "cpc": "'F2051",
+      "providerLabel": "Agriculture",
+      "title": "Landwirtschaft insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "1717",
+      "cpc": "'F1717",
+      "providerLabel": "Cereals, primary",
+      "title": "Getreide insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "2041",
+      "cpc": "'F2041",
+      "providerLabel": "Crops",
+      "title": "Pflanzenbau insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "2054",
+      "cpc": "'F2054",
+      "providerLabel": "Food",
+      "title": "Nahrungsmittel · FAO-Gruppe",
+      "group": "overview"
+    },
+    {
+      "code": "2044",
+      "cpc": "'F2044",
+      "providerLabel": "Livestock",
+      "title": "Tierproduktion insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "1770",
+      "cpc": "'F1770",
+      "providerLabel": "Meat indigenous, total",
+      "title": "Fleisch aus heimischen Tieren insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "1780",
+      "cpc": "'F1780",
+      "providerLabel": "Milk, Total",
+      "title": "Milch insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "2057",
+      "cpc": "'F2057",
+      "providerLabel": "Non Food",
+      "title": "Nichtnahrungsmittel · FAO-Gruppe",
+      "group": "overview"
+    },
+    {
+      "code": "1720",
+      "cpc": "'F1720",
+      "providerLabel": "Roots and Tubers, Total",
+      "title": "Wurzeln und Knollen insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "1723",
+      "cpc": "'F1723",
+      "providerLabel": "Sugar Crops Primary",
+      "title": "Zuckerpflanzen insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "1739",
+      "cpc": "'F1739",
+      "providerLabel": "Vegetables and Fruit Primary",
+      "title": "Obst und Gemüse insgesamt",
+      "group": "overview"
+    },
+    {
+      "code": "176",
+      "cpc": "'01701",
+      "providerLabel": "Beans, dry",
+      "title": "Trockene Bohnen",
+      "group": "017"
+    },
+    {
+      "code": "181",
+      "cpc": "'01702",
+      "providerLabel": "Broad beans and horse beans, dry",
+      "title": "Trockene Ackerbohnen",
+      "group": "017"
+    },
+    {
+      "code": "420",
+      "cpc": "'01243",
+      "providerLabel": "Broad beans and horse beans, green",
+      "title": "Grüne Ackerbohnen",
+      "group": "012"
+    },
+    {
+      "code": "358",
+      "cpc": "'01212",
+      "providerLabel": "Cabbages",
+      "title": "Kohl",
+      "group": "012"
+    },
+    {
+      "code": "426",
+      "cpc": "'01251",
+      "providerLabel": "Carrots and turnips",
+      "title": "Karotten und Speiserüben",
+      "group": "012"
+    },
+    {
+      "code": "393",
+      "cpc": "'01213",
+      "providerLabel": "Cauliflowers and broccoli",
+      "title": "Blumenkohl und Brokkoli",
+      "group": "012"
+    },
+    {
+      "code": "531",
+      "cpc": "'01344.02",
+      "providerLabel": "Cherries",
+      "title": "Kirschen",
+      "group": "013"
+    },
+    {
+      "code": "220",
+      "cpc": "'01373",
+      "providerLabel": "Chestnuts, in shell",
+      "title": "Kastanien mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "401",
+      "cpc": "'01231",
+      "providerLabel": "Chillies and peppers, green (Capsicum spp. and Pimenta spp.)",
+      "title": "Grüne Chilis und Paprika",
+      "group": "012"
+    },
+    {
+      "code": "397",
+      "cpc": "'01232",
+      "providerLabel": "Cucumbers and gherkins",
+      "title": "Gurken und Gewürzgurken",
+      "group": "012"
+    },
+    {
+      "code": "577",
+      "cpc": "'01314",
+      "providerLabel": "Dates",
+      "title": "Datteln",
+      "group": "013"
+    },
+    {
+      "code": "399",
+      "cpc": "'01233",
+      "providerLabel": "Eggplants (aubergines)",
+      "title": "Auberginen",
+      "group": "012"
+    },
+    {
+      "code": "1091",
+      "cpc": "'0232",
+      "providerLabel": "Eggs from other birds in shell, fresh, n.e.c.",
+      "title": "Sonstige Vogeleier mit Schale",
+      "group": "02"
+    },
+    {
+      "code": "406",
+      "cpc": "'01252",
+      "providerLabel": "Green garlic",
+      "title": "Grüner Knoblauch",
+      "group": "012"
+    },
+    {
+      "code": "677",
+      "cpc": "'01659",
+      "providerLabel": "Hop cones",
+      "title": "Hopfenzapfen",
+      "group": "016"
+    },
+    {
+      "code": "407",
+      "cpc": "'01254",
+      "providerLabel": "Leeks and other alliaceous vegetables",
+      "title": "Lauch und sonstiges Zwiebelgemüse",
+      "group": "012"
+    },
+    {
+      "code": "497",
+      "cpc": "'01322",
+      "providerLabel": "Lemons and limes",
+      "title": "Zitronen und Limetten",
+      "group": "013"
+    },
+    {
+      "code": "372",
+      "cpc": "'01214",
+      "providerLabel": "Lettuce and chicory",
+      "title": "Salat und Chicorée",
+      "group": "012"
+    },
+    {
+      "code": "1055",
+      "cpc": "'21113.01i",
+      "providerLabel": "Meat of pig with the bone, fresh or chilled (indigenous)",
+      "title": "Schweinefleisch mit Knochen · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1087",
+      "cpc": "'21124i",
+      "providerLabel": "Meat of turkeys, fresh or chilled (indigenous)",
+      "title": "Putenfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "449",
+      "cpc": "'01270",
+      "providerLabel": "Mushrooms and truffles",
+      "title": "Pilze und Trüffel",
+      "group": "012"
+    },
+    {
+      "code": "75",
+      "cpc": "'0117",
+      "providerLabel": "Oats",
+      "title": "Hafer",
+      "group": "011"
+    },
+    {
+      "code": "430",
+      "cpc": "'01239.01",
+      "providerLabel": "Okra",
+      "title": "Okra",
+      "group": "012"
+    },
+    {
+      "code": "402",
+      "cpc": "'01253.01",
+      "providerLabel": "Onions and shallots, green",
+      "title": "Grüne Zwiebeln und Schalotten",
+      "group": "012"
+    },
+    {
+      "code": "414",
+      "cpc": "'01241.90",
+      "providerLabel": "Other beans, green",
+      "title": "Sonstige grüne Bohnen",
+      "group": "012"
+    },
+    {
+      "code": "1166",
+      "cpc": "'21119.90",
+      "providerLabel": "Other meat of mammals, fresh or chilled",
+      "title": "Sonstiges Säugetierfleisch",
+      "group": "211"
+    },
+    {
+      "code": "417",
+      "cpc": "'01242",
+      "providerLabel": "Peas, green",
+      "title": "Grüne Erbsen",
+      "group": "012"
+    },
+    {
+      "code": "394",
+      "cpc": "'01235",
+      "providerLabel": "Pumpkins, squash and gourds",
+      "title": "Kürbisse und Zucchini",
+      "group": "012"
+    },
+    {
+      "code": "523",
+      "cpc": "'01342.02",
+      "providerLabel": "Quinces",
+      "title": "Quitten",
+      "group": "013"
+    },
+    {
+      "code": "951",
+      "cpc": "'02212",
+      "providerLabel": "Raw milk of buffalo",
+      "title": "Rohe Büffelmilch",
+      "group": "02"
+    },
+    {
+      "code": "71",
+      "cpc": "'0116",
+      "providerLabel": "Rye",
+      "title": "Roggen",
+      "group": "011"
+    },
+    {
+      "code": "530",
+      "cpc": "'01344.01",
+      "providerLabel": "Sour cherries",
+      "title": "Sauerkirschen",
+      "group": "013"
+    },
+    {
+      "code": "236",
+      "cpc": "'0141",
+      "providerLabel": "Soya beans",
+      "title": "Sojabohnen",
+      "group": "014"
+    },
+    {
+      "code": "373",
+      "cpc": "'01215",
+      "providerLabel": "Spinach",
+      "title": "Spinat",
+      "group": "012"
+    },
+    {
+      "code": "495",
+      "cpc": "'01324",
+      "providerLabel": "Tangerines, mandarins, clementines",
+      "title": "Mandarinen, Tangerinen und Clementinen",
+      "group": "013"
+    },
+    {
+      "code": "388",
+      "cpc": "'01234",
+      "providerLabel": "Tomatoes",
+      "title": "Tomaten",
+      "group": "012"
+    },
+    {
+      "code": "826",
+      "cpc": "'01970",
+      "providerLabel": "Unmanufactured tobacco",
+      "title": "Rohtabak",
+      "group": "019"
+    },
+    {
+      "code": "205",
+      "cpc": "'01709.01",
+      "providerLabel": "Vetches",
+      "title": "Wicken",
+      "group": "017"
+    },
+    {
+      "code": "366",
+      "cpc": "'01216",
+      "providerLabel": "Artichokes",
+      "title": "Artischocken",
+      "group": "012"
+    },
+    {
+      "code": "486",
+      "cpc": "'01312",
+      "providerLabel": "Bananas",
+      "title": "Bananen",
+      "group": "013"
+    },
+    {
+      "code": "191",
+      "cpc": "'01703",
+      "providerLabel": "Chick peas, dry",
+      "title": "Trockene Kichererbsen",
+      "group": "017"
+    },
+    {
+      "code": "689",
+      "cpc": "'01652",
+      "providerLabel": "Chillies and peppers, dry (Capsicum spp., Pimenta spp.), raw",
+      "title": "Trockene Chilis und Paprika",
+      "group": "016"
+    },
+    {
+      "code": "242",
+      "cpc": "'0142",
+      "providerLabel": "Groundnuts, excluding shelled",
+      "title": "Erdnüsse mit Schale",
+      "group": "014"
+    },
+    {
+      "code": "1120",
+      "cpc": "'21118.01i",
+      "providerLabel": "Horse meat, fresh or chilled (indigenous)",
+      "title": "Pferdefleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "201",
+      "cpc": "'01704",
+      "providerLabel": "Lentils, dry",
+      "title": "Trockene Linsen",
+      "group": "017"
+    },
+    {
+      "code": "461",
+      "cpc": "'01356",
+      "providerLabel": "Locust beans (carobs)",
+      "title": "Johannisbrot",
+      "group": "013"
+    },
+    {
+      "code": "1144",
+      "cpc": "'21114i",
+      "providerLabel": "Meat of rabbits and hares, fresh or chilled (indigenous)",
+      "title": "Kaninchen- und Hasenfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "187",
+      "cpc": "'01705",
+      "providerLabel": "Peas, dry",
+      "title": "Trockene Erbsen",
+      "group": "017"
+    },
+    {
+      "code": "507",
+      "cpc": "'01321",
+      "providerLabel": "Pomelos and grapefruits",
+      "title": "Pomelos und Grapefruits",
+      "group": "013"
+    },
+    {
+      "code": "270",
+      "cpc": "'01443",
+      "providerLabel": "Rape or colza seed",
+      "title": "Raps- und Rübsensaat",
+      "group": "014"
+    },
+    {
+      "code": "83",
+      "cpc": "'0114",
+      "providerLabel": "Sorghum",
+      "title": "Sorghum",
+      "group": "011"
+    },
+    {
+      "code": "97",
+      "cpc": "'01191",
+      "providerLabel": "Triticale",
+      "title": "Triticale",
+      "group": "011"
+    },
+    {
+      "code": "572",
+      "cpc": "'01311",
+      "providerLabel": "Avocados",
+      "title": "Avocados",
+      "group": "013"
+    },
+    {
+      "code": "1183",
+      "cpc": "'02960.01",
+      "providerLabel": "Beeswax",
+      "title": "Bienenwachs",
+      "group": "02"
+    },
+    {
+      "code": "217",
+      "cpc": "'01372",
+      "providerLabel": "Cashew nuts, in shell",
+      "title": "Cashewnüsse mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "125",
+      "cpc": "'01520.01",
+      "providerLabel": "Cassava, fresh",
+      "title": "Frischer Maniok",
+      "group": "015"
+    },
+    {
+      "code": "265",
+      "cpc": "'01447",
+      "providerLabel": "Castor oil seeds",
+      "title": "Rizinussaat",
+      "group": "014"
+    },
+    {
+      "code": "661",
+      "cpc": "'01640",
+      "providerLabel": "Cocoa beans",
+      "title": "Kakaobohnen",
+      "group": "016"
+    },
+    {
+      "code": "656",
+      "cpc": "'01610",
+      "providerLabel": "Coffee, green",
+      "title": "Rohkaffee",
+      "group": "016"
+    },
+    {
+      "code": "782",
+      "cpc": "'01922.02",
+      "providerLabel": "Kenaf, and other textile bast fibres, raw or retted",
+      "title": "Kenaf und sonstige textile Bastfasern",
+      "group": "019"
+    },
+    {
+      "code": "571",
+      "cpc": "'01316",
+      "providerLabel": "Mangoes, guavas and mangosteens",
+      "title": "Mangos, Guaven und Mangostanen",
+      "group": "013"
+    },
+    {
+      "code": "254",
+      "cpc": "'01491.01",
+      "providerLabel": "Oil palm fruit",
+      "title": "Ölpalmfrüchte",
+      "group": "014"
+    },
+    {
+      "code": "574",
+      "cpc": "'01318",
+      "providerLabel": "Pineapples",
+      "title": "Ananas",
+      "group": "013"
+    },
+    {
+      "code": "789",
+      "cpc": "'01929.05",
+      "providerLabel": "Sisal, raw",
+      "title": "Sisal",
+      "group": "019"
+    },
+    {
+      "code": "122",
+      "cpc": "'01530",
+      "providerLabel": "Sweet potatoes",
+      "title": "Süßkartoffeln",
+      "group": "015"
+    },
+    {
+      "code": "603",
+      "cpc": "'01319",
+      "providerLabel": "Other tropical fruits, n.e.c.",
+      "title": "Sonstige tropische Früchte",
+      "group": "013"
+    },
+    {
+      "code": "136",
+      "cpc": "'01550",
+      "providerLabel": "Taro",
+      "title": "Taro",
+      "group": "015"
+    },
+    {
+      "code": "137",
+      "cpc": "'01540",
+      "providerLabel": "Yams",
+      "title": "Yams",
+      "group": "015"
+    },
+    {
+      "code": "367",
+      "cpc": "'01211",
+      "providerLabel": "Asparagus",
+      "title": "Spargel",
+      "group": "012"
+    },
+    {
+      "code": "101",
+      "cpc": "'01195",
+      "providerLabel": "Canary seed",
+      "title": "Kanariensaat",
+      "group": "011"
+    },
+    {
+      "code": "108",
+      "cpc": "'01199.90",
+      "providerLabel": "Cereals n.e.c.",
+      "title": "Sonstiges Getreide",
+      "group": "011"
+    },
+    {
+      "code": "210",
+      "cpc": "'01709.02",
+      "providerLabel": "Lupins",
+      "title": "Lupinen",
+      "group": "017"
+    },
+    {
+      "code": "671",
+      "cpc": "'01630",
+      "providerLabel": "Maté leaves",
+      "title": "Mateblätter",
+      "group": "016"
+    },
+    {
+      "code": "1070",
+      "cpc": "'21122i",
+      "providerLabel": "Meat of ducks, fresh or chilled (indigenous)",
+      "title": "Entenfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1077",
+      "cpc": "'21123i",
+      "providerLabel": "Meat of geese, fresh or chilled (indigenous)",
+      "title": "Gänsefleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "821",
+      "cpc": "'01929.90",
+      "providerLabel": "Other fibre crops, raw, n.e.c.",
+      "title": "Sonstige Faserpflanzen",
+      "group": "019"
+    },
+    {
+      "code": "600",
+      "cpc": "'01317",
+      "providerLabel": "Papayas",
+      "title": "Papayas",
+      "group": "013"
+    },
+    {
+      "code": "748",
+      "cpc": "'01930.01",
+      "providerLabel": "Peppermint, spearmint",
+      "title": "Pfefferminze und Krauseminze",
+      "group": "019"
+    },
+    {
+      "code": "280",
+      "cpc": "'01446",
+      "providerLabel": "Safflower seed",
+      "title": "Färberdistelsaat",
+      "group": "014"
+    },
+    {
+      "code": "544",
+      "cpc": "'01354",
+      "providerLabel": "Strawberries",
+      "title": "Erdbeeren",
+      "group": "013"
+    },
+    {
+      "code": "423",
+      "cpc": "'01241.01",
+      "providerLabel": "String beans",
+      "title": "Grüne Gartenbohnen",
+      "group": "012"
+    },
+    {
+      "code": "667",
+      "cpc": "'01620",
+      "providerLabel": "Tea leaves",
+      "title": "Teeblätter",
+      "group": "016"
+    },
+    {
+      "code": "275",
+      "cpc": "'01499.02",
+      "providerLabel": "Tung nuts",
+      "title": "Tungnüsse",
+      "group": "014"
+    },
+    {
+      "code": "225",
+      "cpc": "'01374",
+      "providerLabel": "Hazelnuts, in shell",
+      "title": "Haselnüsse mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "552",
+      "cpc": "'01355.01",
+      "providerLabel": "Blueberries",
+      "title": "Heidelbeeren",
+      "group": "013"
+    },
+    {
+      "code": "550",
+      "cpc": "'01351.01",
+      "providerLabel": "Currants",
+      "title": "Johannisbeeren",
+      "group": "013"
+    },
+    {
+      "code": "446",
+      "cpc": "'01290.01",
+      "providerLabel": "Green corn (maize)",
+      "title": "Grüner Mais",
+      "group": "012"
+    },
+    {
+      "code": "592",
+      "cpc": "'01352",
+      "providerLabel": "Kiwi fruit",
+      "title": "Kiwis",
+      "group": "013"
+    },
+    {
+      "code": "587",
+      "cpc": "'01359.01",
+      "providerLabel": "Persimmons",
+      "title": "Kakis",
+      "group": "013"
+    },
+    {
+      "code": "547",
+      "cpc": "'01353.01",
+      "providerLabel": "Raspberries",
+      "title": "Himbeeren",
+      "group": "013"
+    },
+    {
+      "code": "549",
+      "cpc": "'01351.02",
+      "providerLabel": "Gooseberries",
+      "title": "Stachelbeeren",
+      "group": "013"
+    },
+    {
+      "code": "103",
+      "cpc": "'01199.02",
+      "providerLabel": "Mixed grain",
+      "title": "Menggetreide",
+      "group": "011"
+    },
+    {
+      "code": "339",
+      "cpc": "'01449.90",
+      "providerLabel": "Other oil seeds, n.e.c.",
+      "title": "Sonstige Ölsaaten",
+      "group": "014"
+    },
+    {
+      "code": "296",
+      "cpc": "'01448",
+      "providerLabel": "Poppy seed",
+      "title": "Mohnsaat",
+      "group": "014"
+    },
+    {
+      "code": "777",
+      "cpc": "'01929.02",
+      "providerLabel": "True hemp, raw or retted",
+      "title": "Hanf zur Fasergewinnung",
+      "group": "019"
+    },
+    {
+      "code": "554",
+      "cpc": "'01355.02",
+      "providerLabel": "Cranberries",
+      "title": "Cranberrys",
+      "group": "013"
+    },
+    {
+      "code": "249",
+      "cpc": "'01460",
+      "providerLabel": "Coconuts, in shell",
+      "title": "Kokosnüsse mit Schale",
+      "group": "014"
+    },
+    {
+      "code": "197",
+      "cpc": "'01707",
+      "providerLabel": "Pigeon peas, dry",
+      "title": "Trockene Straucherbsen",
+      "group": "017"
+    },
+    {
+      "code": "489",
+      "cpc": "'01313",
+      "providerLabel": "Plantains and cooking bananas",
+      "title": "Kochbananen",
+      "group": "013"
+    },
+    {
+      "code": "226",
+      "cpc": "'01379.01",
+      "providerLabel": "Areca nuts",
+      "title": "Arekanüsse",
+      "group": "013"
+    },
+    {
+      "code": "720",
+      "cpc": "'01657",
+      "providerLabel": "Ginger, raw",
+      "title": "Roher Ingwer",
+      "group": "016"
+    },
+    {
+      "code": "780",
+      "cpc": "'01922.01",
+      "providerLabel": "Jute, raw or retted",
+      "title": "Jutefasern",
+      "group": "019"
+    },
+    {
+      "code": "972",
+      "cpc": "'21112i",
+      "providerLabel": "Meat of buffalo, fresh or chilled (indigenous)",
+      "title": "Büffelfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "836",
+      "cpc": "'01950.01",
+      "providerLabel": "Natural rubber in primary forms",
+      "title": "Naturkautschuk in Primärformen",
+      "group": "019"
+    },
+    {
+      "code": "161",
+      "cpc": "'01809",
+      "providerLabel": "Other sugar crops n.e.c.",
+      "title": "Sonstige Zuckerpflanzen",
+      "group": "018"
+    },
+    {
+      "code": "89",
+      "cpc": "'01192",
+      "providerLabel": "Buckwheat",
+      "title": "Buchweizen",
+      "group": "011"
+    },
+    {
+      "code": "459",
+      "cpc": "'01691",
+      "providerLabel": "Chicory roots",
+      "title": "Zichorienwurzeln",
+      "group": "016"
+    },
+    {
+      "code": "149",
+      "cpc": "'01599.10",
+      "providerLabel": "Edible roots and tubers with high starch or inulin content, n.e.c., fresh",
+      "title": "Sonstige frische stärke- oder inulinreiche Wurzeln und Knollen",
+      "group": "015"
+    },
+    {
+      "code": "135",
+      "cpc": "'01591",
+      "providerLabel": "Yautia",
+      "title": "Yautia",
+      "group": "015"
+    },
+    {
+      "code": "203",
+      "cpc": "'01708",
+      "providerLabel": "Bambara beans, dry",
+      "title": "Trockene Bambara-Erdnüsse",
+      "group": "017"
+    },
+    {
+      "code": "195",
+      "cpc": "'01706",
+      "providerLabel": "Cow peas, dry",
+      "title": "Trockene Kuhbohnen",
+      "group": "017"
+    },
+    {
+      "code": "94",
+      "cpc": "'01193",
+      "providerLabel": "Fonio",
+      "title": "Fonio",
+      "group": "011"
+    },
+    {
+      "code": "263",
+      "cpc": "'01499.01",
+      "providerLabel": "Karite nuts (sheanuts)",
+      "title": "Kariténüsse",
+      "group": "014"
+    },
+    {
+      "code": "224",
+      "cpc": "'01379.02",
+      "providerLabel": "Kola nuts",
+      "title": "Kolanüsse",
+      "group": "013"
+    },
+    {
+      "code": "687",
+      "cpc": "'01651",
+      "providerLabel": "Pepper (Piper spp.), raw",
+      "title": "Roher Pfeffer",
+      "group": "016"
+    },
+    {
+      "code": "702",
+      "cpc": "'01653",
+      "providerLabel": "Nutmeg, mace, cardamoms, raw",
+      "title": "Muskatnüsse, Muskatblüte und Kardamom",
+      "group": "016"
+    },
+    {
+      "code": "216",
+      "cpc": "'01377",
+      "providerLabel": "Brazil nuts, in shell",
+      "title": "Paranüsse mit Schale",
+      "group": "013"
+    },
+    {
+      "code": "1161",
+      "cpc": "'21117.02i",
+      "providerLabel": "Meat of other domestic camelids, fresh or chilled (indigenous)",
+      "title": "Fleisch sonstiger heimischer Kamelarten",
+      "group": "211"
+    },
+    {
+      "code": "92",
+      "cpc": "'01194",
+      "providerLabel": "Quinoa",
+      "title": "Quinoa",
+      "group": "011"
+    },
+    {
+      "code": "591",
+      "cpc": "'01359.02",
+      "providerLabel": "Cashewapple",
+      "title": "Cashewäpfel",
+      "group": "013"
+    },
+    {
+      "code": "788",
+      "cpc": "'01929.04",
+      "providerLabel": "Ramie, raw or retted",
+      "title": "Ramiefasern",
+      "group": "019"
+    },
+    {
+      "code": "1084",
+      "cpc": "'21170.01i",
+      "providerLabel": "Meat of pigeons and other birds n.e.c., fresh, chilled or frozen (indigenous)",
+      "title": "Taubenfleisch und sonstiges Vogelfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "1122",
+      "cpc": "'21118.02i",
+      "providerLabel": "Meat of asses, fresh or chilled (indigenous)",
+      "title": "Eselfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "299",
+      "cpc": "'01449.01",
+      "providerLabel": "Melonseed",
+      "title": "Melonenkerne",
+      "group": "014"
+    },
+    {
+      "code": "336",
+      "cpc": "'01449.02",
+      "providerLabel": "Hempseed",
+      "title": "Hanfsamen",
+      "group": "014"
+    },
+    {
+      "code": "693",
+      "cpc": "'01655",
+      "providerLabel": "Cinnamon and cinnamon-tree flowers, raw",
+      "title": "Zimt und Zimtblüten",
+      "group": "016"
+    },
+    {
+      "code": "698",
+      "cpc": "'01656",
+      "providerLabel": "Cloves (whole stems), raw",
+      "title": "Gewürznelken",
+      "group": "016"
+    },
+    {
+      "code": "1124",
+      "cpc": "'21118.03i",
+      "providerLabel": "Meat of mules, fresh or chilled (indigenous)",
+      "title": "Maultierfleisch · heimische Tiere",
+      "group": "211"
+    },
+    {
+      "code": "692",
+      "cpc": "'01658",
+      "providerLabel": "Vanilla, raw",
+      "title": "Rohe Vanille",
+      "group": "016"
+    },
+    {
+      "code": "800",
+      "cpc": "'01929.06",
+      "providerLabel": "Agave fibres, raw, n.e.c.",
+      "title": "Sonstige rohe Agavenfasern",
+      "group": "019"
+    },
+    {
+      "code": "809",
+      "cpc": "'01929.07",
+      "providerLabel": "Abaca, manila hemp, raw",
+      "title": "Abacá und Manilahanf",
+      "group": "019"
+    },
+    {
+      "code": "754",
+      "cpc": "'01930.02",
+      "providerLabel": "Pyrethrum, dried flowers",
+      "title": "Getrocknete Pyrethrumblüten",
+      "group": "019"
+    },
+    {
+      "code": "310",
+      "cpc": "'01499.05",
+      "providerLabel": "Kapok fruit",
+      "title": "Kapokfrüchte",
+      "group": "014"
+    },
+    {
+      "code": "542",
+      "cpc": "'01349.10",
+      "providerLabel": "Other pome fruits",
+      "title": "Sonstiges Kernobst",
+      "group": "013"
+    }
+  ],
+  "areas": [
+    {
+      "code": "2",
+      "m49": "'004",
+      "providerLabel": "Afghanistan",
+      "geographyId": "m49:004"
+    },
+    {
+      "code": "3",
+      "m49": "'008",
+      "providerLabel": "Albania",
+      "geographyId": "m49:008"
+    },
+    {
+      "code": "4",
+      "m49": "'012",
+      "providerLabel": "Algeria",
+      "geographyId": "m49:012"
+    },
+    {
+      "code": "7",
+      "m49": "'024",
+      "providerLabel": "Angola",
+      "geographyId": "m49:024"
+    },
+    {
+      "code": "8",
+      "m49": "'028",
+      "providerLabel": "Antigua and Barbuda",
+      "geographyId": "m49:028"
+    },
+    {
+      "code": "9",
+      "m49": "'032",
+      "providerLabel": "Argentina",
+      "geographyId": "m49:032"
+    },
+    {
+      "code": "1",
+      "m49": "'051",
+      "providerLabel": "Armenia",
+      "geographyId": "m49:051"
+    },
+    {
+      "code": "10",
+      "m49": "'036",
+      "providerLabel": "Australia",
+      "geographyId": "m49:036"
+    },
+    {
+      "code": "11",
+      "m49": "'040",
+      "providerLabel": "Austria",
+      "geographyId": "m49:040"
+    },
+    {
+      "code": "52",
+      "m49": "'031",
+      "providerLabel": "Azerbaijan",
+      "geographyId": "m49:031"
+    },
+    {
+      "code": "12",
+      "m49": "'044",
+      "providerLabel": "Bahamas",
+      "geographyId": "m49:044"
+    },
+    {
+      "code": "13",
+      "m49": "'048",
+      "providerLabel": "Bahrain",
+      "geographyId": "m49:048"
+    },
+    {
+      "code": "16",
+      "m49": "'050",
+      "providerLabel": "Bangladesh",
+      "geographyId": "m49:050"
+    },
+    {
+      "code": "14",
+      "m49": "'052",
+      "providerLabel": "Barbados",
+      "geographyId": "m49:052"
+    },
+    {
+      "code": "57",
+      "m49": "'112",
+      "providerLabel": "Belarus",
+      "geographyId": "m49:112"
+    },
+    {
+      "code": "255",
+      "m49": "'056",
+      "providerLabel": "Belgium",
+      "geographyId": "m49:056"
+    },
+    {
+      "code": "23",
+      "m49": "'084",
+      "providerLabel": "Belize",
+      "geographyId": "m49:084"
+    },
+    {
+      "code": "53",
+      "m49": "'204",
+      "providerLabel": "Benin",
+      "geographyId": "m49:204"
+    },
+    {
+      "code": "18",
+      "m49": "'064",
+      "providerLabel": "Bhutan",
+      "geographyId": "m49:064"
+    },
+    {
+      "code": "19",
+      "m49": "'068",
+      "providerLabel": "Bolivia (Plurinational State of)",
+      "geographyId": "m49:068"
+    },
+    {
+      "code": "80",
+      "m49": "'070",
+      "providerLabel": "Bosnia and Herzegovina",
+      "geographyId": "m49:070"
+    },
+    {
+      "code": "20",
+      "m49": "'072",
+      "providerLabel": "Botswana",
+      "geographyId": "m49:072"
+    },
+    {
+      "code": "21",
+      "m49": "'076",
+      "providerLabel": "Brazil",
+      "geographyId": "m49:076"
+    },
+    {
+      "code": "26",
+      "m49": "'096",
+      "providerLabel": "Brunei Darussalam",
+      "geographyId": "m49:096"
+    },
+    {
+      "code": "27",
+      "m49": "'100",
+      "providerLabel": "Bulgaria",
+      "geographyId": "m49:100"
+    },
+    {
+      "code": "233",
+      "m49": "'854",
+      "providerLabel": "Burkina Faso",
+      "geographyId": "m49:854"
+    },
+    {
+      "code": "29",
+      "m49": "'108",
+      "providerLabel": "Burundi",
+      "geographyId": "m49:108"
+    },
+    {
+      "code": "35",
+      "m49": "'132",
+      "providerLabel": "Cabo Verde",
+      "geographyId": "m49:132"
+    },
+    {
+      "code": "115",
+      "m49": "'116",
+      "providerLabel": "Cambodia",
+      "geographyId": "m49:116"
+    },
+    {
+      "code": "32",
+      "m49": "'120",
+      "providerLabel": "Cameroon",
+      "geographyId": "m49:120"
+    },
+    {
+      "code": "33",
+      "m49": "'124",
+      "providerLabel": "Canada",
+      "geographyId": "m49:124"
+    },
+    {
+      "code": "37",
+      "m49": "'140",
+      "providerLabel": "Central African Republic",
+      "geographyId": "m49:140"
+    },
+    {
+      "code": "39",
+      "m49": "'148",
+      "providerLabel": "Chad",
+      "geographyId": "m49:148"
+    },
+    {
+      "code": "40",
+      "m49": "'152",
+      "providerLabel": "Chile",
+      "geographyId": "m49:152"
+    },
+    {
+      "code": "351",
+      "m49": "'159",
+      "providerLabel": "China",
+      "geographyId": "fao:351"
+    },
+    {
+      "code": "96",
+      "m49": "'344",
+      "providerLabel": "China, Hong Kong SAR",
+      "geographyId": "m49:344"
+    },
+    {
+      "code": "128",
+      "m49": "'446",
+      "providerLabel": "China, Macao SAR",
+      "geographyId": "m49:446"
+    },
+    {
+      "code": "41",
+      "m49": "'156",
+      "providerLabel": "China, mainland",
+      "geographyId": "m49:156"
+    },
+    {
+      "code": "214",
+      "m49": "'158",
+      "providerLabel": "China, Taiwan Province of",
+      "geographyId": "provider:TWN"
+    },
+    {
+      "code": "44",
+      "m49": "'170",
+      "providerLabel": "Colombia",
+      "geographyId": "m49:170"
+    },
+    {
+      "code": "45",
+      "m49": "'174",
+      "providerLabel": "Comoros",
+      "geographyId": "m49:174"
+    },
+    {
+      "code": "46",
+      "m49": "'178",
+      "providerLabel": "Congo",
+      "geographyId": "m49:178"
+    },
+    {
+      "code": "47",
+      "m49": "'184",
+      "providerLabel": "Cook Islands",
+      "geographyId": "m49:184"
+    },
+    {
+      "code": "48",
+      "m49": "'188",
+      "providerLabel": "Costa Rica",
+      "geographyId": "m49:188"
+    },
+    {
+      "code": "107",
+      "m49": "'384",
+      "providerLabel": "Côte d'Ivoire",
+      "geographyId": "m49:384"
+    },
+    {
+      "code": "98",
+      "m49": "'191",
+      "providerLabel": "Croatia",
+      "geographyId": "m49:191"
+    },
+    {
+      "code": "49",
+      "m49": "'192",
+      "providerLabel": "Cuba",
+      "geographyId": "m49:192"
+    },
+    {
+      "code": "50",
+      "m49": "'196",
+      "providerLabel": "Cyprus",
+      "geographyId": "m49:196"
+    },
+    {
+      "code": "167",
+      "m49": "'203",
+      "providerLabel": "Czechia",
+      "geographyId": "m49:203"
+    },
+    {
+      "code": "116",
+      "m49": "'408",
+      "providerLabel": "Democratic People's Republic of Korea",
+      "geographyId": "m49:408"
+    },
+    {
+      "code": "250",
+      "m49": "'180",
+      "providerLabel": "Democratic Republic of the Congo",
+      "geographyId": "m49:180"
+    },
+    {
+      "code": "54",
+      "m49": "'208",
+      "providerLabel": "Denmark",
+      "geographyId": "m49:208"
+    },
+    {
+      "code": "72",
+      "m49": "'262",
+      "providerLabel": "Djibouti",
+      "geographyId": "m49:262"
+    },
+    {
+      "code": "55",
+      "m49": "'212",
+      "providerLabel": "Dominica",
+      "geographyId": "m49:212"
+    },
+    {
+      "code": "56",
+      "m49": "'214",
+      "providerLabel": "Dominican Republic",
+      "geographyId": "m49:214"
+    },
+    {
+      "code": "58",
+      "m49": "'218",
+      "providerLabel": "Ecuador",
+      "geographyId": "m49:218"
+    },
+    {
+      "code": "59",
+      "m49": "'818",
+      "providerLabel": "Egypt",
+      "geographyId": "m49:818"
+    },
+    {
+      "code": "60",
+      "m49": "'222",
+      "providerLabel": "El Salvador",
+      "geographyId": "m49:222"
+    },
+    {
+      "code": "61",
+      "m49": "'226",
+      "providerLabel": "Equatorial Guinea",
+      "geographyId": "m49:226"
+    },
+    {
+      "code": "178",
+      "m49": "'232",
+      "providerLabel": "Eritrea",
+      "geographyId": "m49:232"
+    },
+    {
+      "code": "63",
+      "m49": "'233",
+      "providerLabel": "Estonia",
+      "geographyId": "m49:233"
+    },
+    {
+      "code": "209",
+      "m49": "'748",
+      "providerLabel": "Eswatini",
+      "geographyId": "m49:748"
+    },
+    {
+      "code": "238",
+      "m49": "'231",
+      "providerLabel": "Ethiopia",
+      "geographyId": "m49:231"
+    },
+    {
+      "code": "64",
+      "m49": "'234",
+      "providerLabel": "Faroe Islands",
+      "geographyId": "m49:234"
+    },
+    {
+      "code": "66",
+      "m49": "'242",
+      "providerLabel": "Fiji",
+      "geographyId": "m49:242"
+    },
+    {
+      "code": "67",
+      "m49": "'246",
+      "providerLabel": "Finland",
+      "geographyId": "m49:246"
+    },
+    {
+      "code": "68",
+      "m49": "'250",
+      "providerLabel": "France",
+      "geographyId": "m49:250"
+    },
+    {
+      "code": "70",
+      "m49": "'258",
+      "providerLabel": "French Polynesia",
+      "geographyId": "m49:258"
+    },
+    {
+      "code": "74",
+      "m49": "'266",
+      "providerLabel": "Gabon",
+      "geographyId": "m49:266"
+    },
+    {
+      "code": "75",
+      "m49": "'270",
+      "providerLabel": "Gambia",
+      "geographyId": "m49:270"
+    },
+    {
+      "code": "73",
+      "m49": "'268",
+      "providerLabel": "Georgia",
+      "geographyId": "m49:268"
+    },
+    {
+      "code": "79",
+      "m49": "'276",
+      "providerLabel": "Germany",
+      "geographyId": "m49:276"
+    },
+    {
+      "code": "81",
+      "m49": "'288",
+      "providerLabel": "Ghana",
+      "geographyId": "m49:288"
+    },
+    {
+      "code": "84",
+      "m49": "'300",
+      "providerLabel": "Greece",
+      "geographyId": "m49:300"
+    },
+    {
+      "code": "86",
+      "m49": "'308",
+      "providerLabel": "Grenada",
+      "geographyId": "m49:308"
+    },
+    {
+      "code": "89",
+      "m49": "'320",
+      "providerLabel": "Guatemala",
+      "geographyId": "m49:320"
+    },
+    {
+      "code": "90",
+      "m49": "'324",
+      "providerLabel": "Guinea",
+      "geographyId": "m49:324"
+    },
+    {
+      "code": "175",
+      "m49": "'624",
+      "providerLabel": "Guinea-Bissau",
+      "geographyId": "m49:624"
+    },
+    {
+      "code": "91",
+      "m49": "'328",
+      "providerLabel": "Guyana",
+      "geographyId": "m49:328"
+    },
+    {
+      "code": "93",
+      "m49": "'332",
+      "providerLabel": "Haiti",
+      "geographyId": "m49:332"
+    },
+    {
+      "code": "95",
+      "m49": "'340",
+      "providerLabel": "Honduras",
+      "geographyId": "m49:340"
+    },
+    {
+      "code": "97",
+      "m49": "'348",
+      "providerLabel": "Hungary",
+      "geographyId": "m49:348"
+    },
+    {
+      "code": "99",
+      "m49": "'352",
+      "providerLabel": "Iceland",
+      "geographyId": "m49:352"
+    },
+    {
+      "code": "100",
+      "m49": "'356",
+      "providerLabel": "India",
+      "geographyId": "m49:356"
+    },
+    {
+      "code": "101",
+      "m49": "'360",
+      "providerLabel": "Indonesia",
+      "geographyId": "m49:360"
+    },
+    {
+      "code": "102",
+      "m49": "'364",
+      "providerLabel": "Iran (Islamic Republic of)",
+      "geographyId": "m49:364"
+    },
+    {
+      "code": "103",
+      "m49": "'368",
+      "providerLabel": "Iraq",
+      "geographyId": "m49:368"
+    },
+    {
+      "code": "104",
+      "m49": "'372",
+      "providerLabel": "Ireland",
+      "geographyId": "m49:372"
+    },
+    {
+      "code": "105",
+      "m49": "'376",
+      "providerLabel": "Israel",
+      "geographyId": "m49:376"
+    },
+    {
+      "code": "106",
+      "m49": "'380",
+      "providerLabel": "Italy",
+      "geographyId": "m49:380"
+    },
+    {
+      "code": "109",
+      "m49": "'388",
+      "providerLabel": "Jamaica",
+      "geographyId": "m49:388"
+    },
+    {
+      "code": "110",
+      "m49": "'392",
+      "providerLabel": "Japan",
+      "geographyId": "m49:392"
+    },
+    {
+      "code": "112",
+      "m49": "'400",
+      "providerLabel": "Jordan",
+      "geographyId": "m49:400"
+    },
+    {
+      "code": "108",
+      "m49": "'398",
+      "providerLabel": "Kazakhstan",
+      "geographyId": "m49:398"
+    },
+    {
+      "code": "114",
+      "m49": "'404",
+      "providerLabel": "Kenya",
+      "geographyId": "m49:404"
+    },
+    {
+      "code": "83",
+      "m49": "'296",
+      "providerLabel": "Kiribati",
+      "geographyId": "m49:296"
+    },
+    {
+      "code": "118",
+      "m49": "'414",
+      "providerLabel": "Kuwait",
+      "geographyId": "m49:414"
+    },
+    {
+      "code": "113",
+      "m49": "'417",
+      "providerLabel": "Kyrgyzstan",
+      "geographyId": "m49:417"
+    },
+    {
+      "code": "120",
+      "m49": "'418",
+      "providerLabel": "Lao People's Democratic Republic",
+      "geographyId": "m49:418"
+    },
+    {
+      "code": "119",
+      "m49": "'428",
+      "providerLabel": "Latvia",
+      "geographyId": "m49:428"
+    },
+    {
+      "code": "121",
+      "m49": "'422",
+      "providerLabel": "Lebanon",
+      "geographyId": "m49:422"
+    },
+    {
+      "code": "122",
+      "m49": "'426",
+      "providerLabel": "Lesotho",
+      "geographyId": "m49:426"
+    },
+    {
+      "code": "123",
+      "m49": "'430",
+      "providerLabel": "Liberia",
+      "geographyId": "m49:430"
+    },
+    {
+      "code": "124",
+      "m49": "'434",
+      "providerLabel": "Libya",
+      "geographyId": "m49:434"
+    },
+    {
+      "code": "126",
+      "m49": "'440",
+      "providerLabel": "Lithuania",
+      "geographyId": "m49:440"
+    },
+    {
+      "code": "256",
+      "m49": "'442",
+      "providerLabel": "Luxembourg",
+      "geographyId": "m49:442"
+    },
+    {
+      "code": "129",
+      "m49": "'450",
+      "providerLabel": "Madagascar",
+      "geographyId": "m49:450"
+    },
+    {
+      "code": "130",
+      "m49": "'454",
+      "providerLabel": "Malawi",
+      "geographyId": "m49:454"
+    },
+    {
+      "code": "131",
+      "m49": "'458",
+      "providerLabel": "Malaysia",
+      "geographyId": "m49:458"
+    },
+    {
+      "code": "132",
+      "m49": "'462",
+      "providerLabel": "Maldives",
+      "geographyId": "m49:462"
+    },
+    {
+      "code": "133",
+      "m49": "'466",
+      "providerLabel": "Mali",
+      "geographyId": "m49:466"
+    },
+    {
+      "code": "134",
+      "m49": "'470",
+      "providerLabel": "Malta",
+      "geographyId": "m49:470"
+    },
+    {
+      "code": "127",
+      "m49": "'584",
+      "providerLabel": "Marshall Islands",
+      "geographyId": "m49:584"
+    },
+    {
+      "code": "136",
+      "m49": "'478",
+      "providerLabel": "Mauritania",
+      "geographyId": "m49:478"
+    },
+    {
+      "code": "137",
+      "m49": "'480",
+      "providerLabel": "Mauritius",
+      "geographyId": "m49:480"
+    },
+    {
+      "code": "138",
+      "m49": "'484",
+      "providerLabel": "Mexico",
+      "geographyId": "m49:484"
+    },
+    {
+      "code": "145",
+      "m49": "'583",
+      "providerLabel": "Micronesia (Federated States of)",
+      "geographyId": "m49:583"
+    },
+    {
+      "code": "141",
+      "m49": "'496",
+      "providerLabel": "Mongolia",
+      "geographyId": "m49:496"
+    },
+    {
+      "code": "273",
+      "m49": "'499",
+      "providerLabel": "Montenegro",
+      "geographyId": "m49:499"
+    },
+    {
+      "code": "143",
+      "m49": "'504",
+      "providerLabel": "Morocco",
+      "geographyId": "m49:504"
+    },
+    {
+      "code": "144",
+      "m49": "'508",
+      "providerLabel": "Mozambique",
+      "geographyId": "m49:508"
+    },
+    {
+      "code": "28",
+      "m49": "'104",
+      "providerLabel": "Myanmar",
+      "geographyId": "m49:104"
+    },
+    {
+      "code": "147",
+      "m49": "'516",
+      "providerLabel": "Namibia",
+      "geographyId": "m49:516"
+    },
+    {
+      "code": "148",
+      "m49": "'520",
+      "providerLabel": "Nauru",
+      "geographyId": "m49:520"
+    },
+    {
+      "code": "149",
+      "m49": "'524",
+      "providerLabel": "Nepal",
+      "geographyId": "m49:524"
+    },
+    {
+      "code": "150",
+      "m49": "'528",
+      "providerLabel": "Netherlands (Kingdom of the)",
+      "geographyId": "m49:528"
+    },
+    {
+      "code": "153",
+      "m49": "'540",
+      "providerLabel": "New Caledonia",
+      "geographyId": "m49:540"
+    },
+    {
+      "code": "156",
+      "m49": "'554",
+      "providerLabel": "New Zealand",
+      "geographyId": "m49:554"
+    },
+    {
+      "code": "157",
+      "m49": "'558",
+      "providerLabel": "Nicaragua",
+      "geographyId": "m49:558"
+    },
+    {
+      "code": "158",
+      "m49": "'562",
+      "providerLabel": "Niger",
+      "geographyId": "m49:562"
+    },
+    {
+      "code": "159",
+      "m49": "'566",
+      "providerLabel": "Nigeria",
+      "geographyId": "m49:566"
+    },
+    {
+      "code": "160",
+      "m49": "'570",
+      "providerLabel": "Niue",
+      "geographyId": "m49:570"
+    },
+    {
+      "code": "154",
+      "m49": "'807",
+      "providerLabel": "North Macedonia",
+      "geographyId": "m49:807"
+    },
+    {
+      "code": "162",
+      "m49": "'578",
+      "providerLabel": "Norway",
+      "geographyId": "m49:578"
+    },
+    {
+      "code": "221",
+      "m49": "'512",
+      "providerLabel": "Oman",
+      "geographyId": "m49:512"
+    },
+    {
+      "code": "165",
+      "m49": "'586",
+      "providerLabel": "Pakistan",
+      "geographyId": "m49:586"
+    },
+    {
+      "code": "299",
+      "m49": "'275",
+      "providerLabel": "Palestine",
+      "geographyId": "m49:275"
+    },
+    {
+      "code": "166",
+      "m49": "'591",
+      "providerLabel": "Panama",
+      "geographyId": "m49:591"
+    },
+    {
+      "code": "168",
+      "m49": "'598",
+      "providerLabel": "Papua New Guinea",
+      "geographyId": "m49:598"
+    },
+    {
+      "code": "169",
+      "m49": "'600",
+      "providerLabel": "Paraguay",
+      "geographyId": "m49:600"
+    },
+    {
+      "code": "170",
+      "m49": "'604",
+      "providerLabel": "Peru",
+      "geographyId": "m49:604"
+    },
+    {
+      "code": "171",
+      "m49": "'608",
+      "providerLabel": "Philippines",
+      "geographyId": "m49:608"
+    },
+    {
+      "code": "173",
+      "m49": "'616",
+      "providerLabel": "Poland",
+      "geographyId": "m49:616"
+    },
+    {
+      "code": "174",
+      "m49": "'620",
+      "providerLabel": "Portugal",
+      "geographyId": "m49:620"
+    },
+    {
+      "code": "177",
+      "m49": "'630",
+      "providerLabel": "Puerto Rico",
+      "geographyId": "m49:630"
+    },
+    {
+      "code": "179",
+      "m49": "'634",
+      "providerLabel": "Qatar",
+      "geographyId": "m49:634"
+    },
+    {
+      "code": "117",
+      "m49": "'410",
+      "providerLabel": "Republic of Korea",
+      "geographyId": "m49:410"
+    },
+    {
+      "code": "146",
+      "m49": "'498",
+      "providerLabel": "Republic of Moldova",
+      "geographyId": "m49:498"
+    },
+    {
+      "code": "183",
+      "m49": "'642",
+      "providerLabel": "Romania",
+      "geographyId": "m49:642"
+    },
+    {
+      "code": "185",
+      "m49": "'643",
+      "providerLabel": "Russian Federation",
+      "geographyId": "m49:643"
+    },
+    {
+      "code": "184",
+      "m49": "'646",
+      "providerLabel": "Rwanda",
+      "geographyId": "m49:646"
+    },
+    {
+      "code": "188",
+      "m49": "'659",
+      "providerLabel": "Saint Kitts and Nevis",
+      "geographyId": "m49:659"
+    },
+    {
+      "code": "189",
+      "m49": "'662",
+      "providerLabel": "Saint Lucia",
+      "geographyId": "m49:662"
+    },
+    {
+      "code": "191",
+      "m49": "'670",
+      "providerLabel": "Saint Vincent and the Grenadines",
+      "geographyId": "m49:670"
+    },
+    {
+      "code": "244",
+      "m49": "'882",
+      "providerLabel": "Samoa",
+      "geographyId": "m49:882"
+    },
+    {
+      "code": "193",
+      "m49": "'678",
+      "providerLabel": "Sao Tome and Principe",
+      "geographyId": "m49:678"
+    },
+    {
+      "code": "194",
+      "m49": "'682",
+      "providerLabel": "Saudi Arabia",
+      "geographyId": "m49:682"
+    },
+    {
+      "code": "195",
+      "m49": "'686",
+      "providerLabel": "Senegal",
+      "geographyId": "m49:686"
+    },
+    {
+      "code": "272",
+      "m49": "'688",
+      "providerLabel": "Serbia",
+      "geographyId": "m49:688"
+    },
+    {
+      "code": "196",
+      "m49": "'690",
+      "providerLabel": "Seychelles",
+      "geographyId": "m49:690"
+    },
+    {
+      "code": "197",
+      "m49": "'694",
+      "providerLabel": "Sierra Leone",
+      "geographyId": "m49:694"
+    },
+    {
+      "code": "200",
+      "m49": "'702",
+      "providerLabel": "Singapore",
+      "geographyId": "m49:702"
+    },
+    {
+      "code": "199",
+      "m49": "'703",
+      "providerLabel": "Slovakia",
+      "geographyId": "m49:703"
+    },
+    {
+      "code": "198",
+      "m49": "'705",
+      "providerLabel": "Slovenia",
+      "geographyId": "m49:705"
+    },
+    {
+      "code": "25",
+      "m49": "'090",
+      "providerLabel": "Solomon Islands",
+      "geographyId": "m49:090"
+    },
+    {
+      "code": "201",
+      "m49": "'706",
+      "providerLabel": "Somalia",
+      "geographyId": "m49:706"
+    },
+    {
+      "code": "202",
+      "m49": "'710",
+      "providerLabel": "South Africa",
+      "geographyId": "m49:710"
+    },
+    {
+      "code": "277",
+      "m49": "'728",
+      "providerLabel": "South Sudan",
+      "geographyId": "m49:728"
+    },
+    {
+      "code": "203",
+      "m49": "'724",
+      "providerLabel": "Spain",
+      "geographyId": "m49:724"
+    },
+    {
+      "code": "38",
+      "m49": "'144",
+      "providerLabel": "Sri Lanka",
+      "geographyId": "m49:144"
+    },
+    {
+      "code": "276",
+      "m49": "'729",
+      "providerLabel": "Sudan",
+      "geographyId": "m49:729"
+    },
+    {
+      "code": "207",
+      "m49": "'740",
+      "providerLabel": "Suriname",
+      "geographyId": "m49:740"
+    },
+    {
+      "code": "210",
+      "m49": "'752",
+      "providerLabel": "Sweden",
+      "geographyId": "m49:752"
+    },
+    {
+      "code": "211",
+      "m49": "'756",
+      "providerLabel": "Switzerland",
+      "geographyId": "m49:756"
+    },
+    {
+      "code": "212",
+      "m49": "'760",
+      "providerLabel": "Syrian Arab Republic",
+      "geographyId": "m49:760"
+    },
+    {
+      "code": "208",
+      "m49": "'762",
+      "providerLabel": "Tajikistan",
+      "geographyId": "m49:762"
+    },
+    {
+      "code": "216",
+      "m49": "'764",
+      "providerLabel": "Thailand",
+      "geographyId": "m49:764"
+    },
+    {
+      "code": "176",
+      "m49": "'626",
+      "providerLabel": "Timor-Leste",
+      "geographyId": "m49:626"
+    },
+    {
+      "code": "217",
+      "m49": "'768",
+      "providerLabel": "Togo",
+      "geographyId": "m49:768"
+    },
+    {
+      "code": "218",
+      "m49": "'772",
+      "providerLabel": "Tokelau",
+      "geographyId": "m49:772"
+    },
+    {
+      "code": "219",
+      "m49": "'776",
+      "providerLabel": "Tonga",
+      "geographyId": "m49:776"
+    },
+    {
+      "code": "220",
+      "m49": "'780",
+      "providerLabel": "Trinidad and Tobago",
+      "geographyId": "m49:780"
+    },
+    {
+      "code": "222",
+      "m49": "'788",
+      "providerLabel": "Tunisia",
+      "geographyId": "m49:788"
+    },
+    {
+      "code": "223",
+      "m49": "'792",
+      "providerLabel": "Türkiye",
+      "geographyId": "m49:792"
+    },
+    {
+      "code": "213",
+      "m49": "'795",
+      "providerLabel": "Turkmenistan",
+      "geographyId": "m49:795"
+    },
+    {
+      "code": "227",
+      "m49": "'798",
+      "providerLabel": "Tuvalu",
+      "geographyId": "m49:798"
+    },
+    {
+      "code": "226",
+      "m49": "'800",
+      "providerLabel": "Uganda",
+      "geographyId": "m49:800"
+    },
+    {
+      "code": "230",
+      "m49": "'804",
+      "providerLabel": "Ukraine",
+      "geographyId": "m49:804"
+    },
+    {
+      "code": "225",
+      "m49": "'784",
+      "providerLabel": "United Arab Emirates",
+      "geographyId": "m49:784"
+    },
+    {
+      "code": "229",
+      "m49": "'826",
+      "providerLabel": "United Kingdom of Great Britain and Northern Ireland",
+      "geographyId": "m49:826"
+    },
+    {
+      "code": "215",
+      "m49": "'834",
+      "providerLabel": "United Republic of Tanzania",
+      "geographyId": "m49:834"
+    },
+    {
+      "code": "231",
+      "m49": "'840",
+      "providerLabel": "United States of America",
+      "geographyId": "m49:840"
+    },
+    {
+      "code": "234",
+      "m49": "'858",
+      "providerLabel": "Uruguay",
+      "geographyId": "m49:858"
+    },
+    {
+      "code": "235",
+      "m49": "'860",
+      "providerLabel": "Uzbekistan",
+      "geographyId": "m49:860"
+    },
+    {
+      "code": "155",
+      "m49": "'548",
+      "providerLabel": "Vanuatu",
+      "geographyId": "m49:548"
+    },
+    {
+      "code": "236",
+      "m49": "'862",
+      "providerLabel": "Venezuela (Bolivarian Republic of)",
+      "geographyId": "m49:862"
+    },
+    {
+      "code": "237",
+      "m49": "'704",
+      "providerLabel": "Viet Nam",
+      "geographyId": "m49:704"
+    },
+    {
+      "code": "249",
+      "m49": "'887",
+      "providerLabel": "Yemen",
+      "geographyId": "m49:887"
+    },
+    {
+      "code": "251",
+      "m49": "'894",
+      "providerLabel": "Zambia",
+      "geographyId": "m49:894"
+    },
+    {
+      "code": "181",
+      "m49": "'716",
+      "providerLabel": "Zimbabwe",
+      "geographyId": "m49:716"
+    },
+    {
+      "code": "5000",
+      "m49": "'001",
+      "providerLabel": "World",
+      "geographyId": "fao:5000"
+    },
+    {
+      "code": "5100",
+      "m49": "'002",
+      "providerLabel": "Africa",
+      "geographyId": "fao:5100"
+    },
+    {
+      "code": "5101",
+      "m49": "'014",
+      "providerLabel": "Eastern Africa",
+      "geographyId": "fao:5101"
+    },
+    {
+      "code": "5102",
+      "m49": "'017",
+      "providerLabel": "Middle Africa",
+      "geographyId": "fao:5102"
+    },
+    {
+      "code": "5103",
+      "m49": "'015",
+      "providerLabel": "Northern Africa",
+      "geographyId": "fao:5103"
+    },
+    {
+      "code": "5104",
+      "m49": "'018",
+      "providerLabel": "Southern Africa",
+      "geographyId": "fao:5104"
+    },
+    {
+      "code": "5105",
+      "m49": "'011",
+      "providerLabel": "Western Africa",
+      "geographyId": "fao:5105"
+    },
+    {
+      "code": "5200",
+      "m49": "'019",
+      "providerLabel": "Americas",
+      "geographyId": "fao:5200"
+    },
+    {
+      "code": "5203",
+      "m49": "'021",
+      "providerLabel": "Northern America",
+      "geographyId": "fao:5203"
+    },
+    {
+      "code": "5204",
+      "m49": "'013",
+      "providerLabel": "Central America",
+      "geographyId": "fao:5204"
+    },
+    {
+      "code": "5206",
+      "m49": "'029",
+      "providerLabel": "Caribbean",
+      "geographyId": "fao:5206"
+    },
+    {
+      "code": "5207",
+      "m49": "'005",
+      "providerLabel": "South America",
+      "geographyId": "fao:5207"
+    },
+    {
+      "code": "5300",
+      "m49": "'142",
+      "providerLabel": "Asia",
+      "geographyId": "fao:5300"
+    },
+    {
+      "code": "5301",
+      "m49": "'143",
+      "providerLabel": "Central Asia",
+      "geographyId": "fao:5301"
+    },
+    {
+      "code": "5302",
+      "m49": "'030",
+      "providerLabel": "Eastern Asia",
+      "geographyId": "fao:5302"
+    },
+    {
+      "code": "5303",
+      "m49": "'034",
+      "providerLabel": "Southern Asia",
+      "geographyId": "fao:5303"
+    },
+    {
+      "code": "5304",
+      "m49": "'035",
+      "providerLabel": "South-eastern Asia",
+      "geographyId": "fao:5304"
+    },
+    {
+      "code": "5305",
+      "m49": "'145",
+      "providerLabel": "Western Asia",
+      "geographyId": "fao:5305"
+    },
+    {
+      "code": "5400",
+      "m49": "'150",
+      "providerLabel": "Europe",
+      "geographyId": "fao:5400"
+    },
+    {
+      "code": "5401",
+      "m49": "'151",
+      "providerLabel": "Eastern Europe",
+      "geographyId": "fao:5401"
+    },
+    {
+      "code": "5402",
+      "m49": "'154",
+      "providerLabel": "Northern Europe",
+      "geographyId": "fao:5402"
+    },
+    {
+      "code": "5403",
+      "m49": "'039",
+      "providerLabel": "Southern Europe",
+      "geographyId": "fao:5403"
+    },
+    {
+      "code": "5404",
+      "m49": "'155",
+      "providerLabel": "Western Europe",
+      "geographyId": "fao:5404"
+    },
+    {
+      "code": "5500",
+      "m49": "'009",
+      "providerLabel": "Oceania",
+      "geographyId": "fao:5500"
+    },
+    {
+      "code": "5501",
+      "m49": "'053",
+      "providerLabel": "Australia and New Zealand",
+      "geographyId": "fao:5501"
+    },
+    {
+      "code": "5502",
+      "m49": "'054",
+      "providerLabel": "Melanesia",
+      "geographyId": "fao:5502"
+    },
+    {
+      "code": "5503",
+      "m49": "'057",
+      "providerLabel": "Micronesia",
+      "geographyId": "fao:5503"
+    },
+    {
+      "code": "5504",
+      "m49": "'061",
+      "providerLabel": "Polynesia",
+      "geographyId": "fao:5504"
+    },
+    {
+      "code": "5707",
+      "m49": "'097",
+      "providerLabel": "European Union (27)",
+      "geographyId": "fao:5707"
+    },
+    {
+      "code": "5801",
+      "m49": "'199",
+      "providerLabel": "Least Developed Countries (LDCs)",
+      "geographyId": "fao:5801"
+    },
+    {
+      "code": "5802",
+      "m49": "'432",
+      "providerLabel": "Land Locked Developing Countries (LLDCs)",
+      "geographyId": "fao:5802"
+    },
+    {
+      "code": "5803",
+      "m49": "'722",
+      "providerLabel": "Small Island Developing States (SIDS)",
+      "geographyId": "fao:5803"
+    },
+    {
+      "code": "5815",
+      "m49": "'901",
+      "providerLabel": "Low Income Food Deficit Countries (LIFDCs)",
+      "geographyId": "fao:5815"
+    },
+    {
+      "code": "5817",
+      "m49": "'902",
+      "providerLabel": "Net Food Importing Developing Countries (NFIDCs)",
+      "geographyId": "fao:5817"
+    }
+  ],
+  "regions": [
+    {
+      "geographyId": "fao:351",
+      "title": "China · gesamtes FAO-Quellengebiet · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5000",
+      "title": "Welt · FAO",
+      "regionId": "world"
+    },
+    {
+      "geographyId": "fao:5100",
+      "title": "Afrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5101",
+      "title": "Ostafrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5102",
+      "title": "Zentralafrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5103",
+      "title": "Nordafrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5104",
+      "title": "Südliches Afrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5105",
+      "title": "Westafrika · FAO",
+      "regionId": "Africa"
+    },
+    {
+      "geographyId": "fao:5200",
+      "title": "Amerika · FAO",
+      "regionId": "Americas"
+    },
+    {
+      "geographyId": "fao:5203",
+      "title": "Nordamerika · FAO",
+      "regionId": "Americas"
+    },
+    {
+      "geographyId": "fao:5204",
+      "title": "Zentralamerika · FAO",
+      "regionId": "Americas"
+    },
+    {
+      "geographyId": "fao:5206",
+      "title": "Karibik · FAO",
+      "regionId": "Americas"
+    },
+    {
+      "geographyId": "fao:5207",
+      "title": "Südamerika · FAO",
+      "regionId": "Americas"
+    },
+    {
+      "geographyId": "fao:5300",
+      "title": "Asien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5301",
+      "title": "Zentralasien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5302",
+      "title": "Ostasien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5303",
+      "title": "Südasien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5304",
+      "title": "Südostasien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5305",
+      "title": "Westasien · FAO",
+      "regionId": "Asia"
+    },
+    {
+      "geographyId": "fao:5400",
+      "title": "Europa · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5401",
+      "title": "Osteuropa · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5402",
+      "title": "Nordeuropa · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5403",
+      "title": "Südeuropa · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5404",
+      "title": "Westeuropa · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5500",
+      "title": "Ozeanien · FAO",
+      "regionId": "Oceania"
+    },
+    {
+      "geographyId": "fao:5501",
+      "title": "Australien und Neuseeland · FAO",
+      "regionId": "Oceania"
+    },
+    {
+      "geographyId": "fao:5502",
+      "title": "Melanesien · FAO",
+      "regionId": "Oceania"
+    },
+    {
+      "geographyId": "fao:5503",
+      "title": "Mikronesien · FAO",
+      "regionId": "Oceania"
+    },
+    {
+      "geographyId": "fao:5504",
+      "title": "Polynesien · FAO",
+      "regionId": "Oceania"
+    },
+    {
+      "geographyId": "fao:5707",
+      "title": "Europäische Union · 27 Länder · FAO",
+      "regionId": "Europe"
+    },
+    {
+      "geographyId": "fao:5801",
+      "title": "Am wenigsten entwickelte Länder · FAO",
+      "regionId": "world"
+    },
+    {
+      "geographyId": "fao:5802",
+      "title": "Binnenentwicklungsländer · FAO",
+      "regionId": "world"
+    },
+    {
+      "geographyId": "fao:5803",
+      "title": "Kleine Inselentwicklungsländer · FAO",
+      "regionId": "world"
+    },
+    {
+      "geographyId": "fao:5815",
+      "title": "Einkommensarme Länder mit Nahrungsmitteldefizit · FAO",
+      "regionId": "world"
+    },
+    {
+      "geographyId": "fao:5817",
+      "title": "Entwicklungsländer mit Netto-Nahrungsmittelimporten · FAO",
+      "regionId": "world"
+    }
+  ],
+  "elements": {
+    "432": "Gross Production Index Number (2014-2016 = 100)",
+    "434": "Gross per capita Production Index Number (2014-2016 = 100)"
+  },
+  "sourceFlags": {
+    "E": "FAO-Schätzwert"
+  },
+  "recipe": "fao-qi-gross-2014-2016-v1"
+}

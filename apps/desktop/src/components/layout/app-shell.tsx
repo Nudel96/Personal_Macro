@@ -27,6 +27,7 @@ import { CommandPalette } from "./command-palette";
 import { MarketContextNavigation } from "./market-context-navigation";
 import { QuickTradeDialog } from "../../features/trades/quick-trade-dialog";
 import { GuidedTradeDialog } from "../../features/trades/guided-trade-dialog";
+import { JournalAccountBar } from "../../features/accounts/journal-account-bar";
 import { PageLoading } from "../ui/loading";
 
 const journalNav = [
@@ -44,14 +45,6 @@ const journalNav = [
 const dataNav = [
   { label: "Import & Export", path: "/import-export", icon: FileUp },
   { label: "Einstellungen", path: "/settings", icon: Settings },
-];
-
-const researchNav = [
-  {
-    label: "Put/Call Ratio",
-    path: "/put-call-ratio",
-    icon: ChartNoAxesCombined,
-  },
 ];
 
 function NavGroup({
@@ -80,10 +73,6 @@ function NavGroup({
   );
 }
 
-export function ResearchNavigation() {
-  return <NavGroup label="Research" items={researchNav} />;
-}
-
 const titles: Record<string, string> = {
   "/": "Übersicht",
   "/trades": "Trades",
@@ -95,14 +84,15 @@ const titles: Record<string, string> = {
   "/media": "Medien",
   "/goals": "Ziele",
   "/macro": "Macro Heatmap",
+  "/world-atlas": "Weltatlas",
   "/regime-insights": "Regime Insights",
   "/economic-data": "Wirtschaftsdaten",
   "/economic-calendar": "Wirtschaftskalender",
   "/cot": "COT Analyse",
   "/seasonality": "Seasonality",
   "/rates": "Leitzinsen",
+  "/government-bonds": "Staatsanleihen & Yields",
   "/central-bank-reports": "Zentralbank-Briefings",
-  "/put-call-ratio": "Put/Call Ratio",
   "/import-export": "Import & Export",
   "/settings": "Einstellungen",
 };
@@ -140,10 +130,15 @@ export function AppShell() {
   }, [location.pathname]);
 
   const title = titles[location.pathname] ?? "Personal Macro";
+  const journalPage =
+    journalNav.some((item) => item.path === location.pathname) ||
+    location.pathname === "/settings" ||
+    location.pathname === "/import-export";
   return (
     <div
       className="app-shell"
       data-page={location.pathname.slice(1) || "dashboard"}
+      data-journal={journalPage}
       data-density={
         appearance?.density === "comfortable" ? "comfortable" : "compact"
       }
@@ -183,7 +178,6 @@ export function AppShell() {
         >
           <NavGroup label="Tradingjournal" items={journalNav} />
           <MarketContextNavigation />
-          <ResearchNavigation />
           <NavGroup label="Daten & System" items={dataNav} />
         </div>
         <div className="sidebar-footer">
@@ -247,6 +241,7 @@ export function AppShell() {
             </Button>
           </div>
         </header>
+        {journalPage && <JournalAccountBar />}
         <div id="workspace-content" tabIndex={-1}>
           <Suspense
             fallback={

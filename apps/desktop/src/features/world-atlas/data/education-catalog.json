@@ -1,0 +1,2652 @@
+{
+  "version": "2026-02",
+  "url": "https://download.uis.unesco.org/bdds/202602/SDG.zip",
+  "release": "Februar 2026",
+  "license": "CC BY-SA 3.0 IGO",
+  "licenseUrl": "https://creativecommons.org/licenses/by-sa/3.0/igo/",
+  "metadataUrl": "https://www.uis.unesco.org/en/methods-and-tools/sdg4-indicators",
+  "metrics": [
+    {
+      "code": "NER.02.CP",
+      "topicId": "education:early_learning",
+      "label": "Vorschule im vorgesehenen Alter",
+      "providerLabel": "Net enrolment rate, pre-primary, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Kinder im offiziellen Vorschulalter, die eine Vorschule besuchen. Die Quote beschreibt Zugang, keine Lernergebnisse.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "NERA.AGM1.CP",
+      "topicId": "education:early_learning",
+      "label": "Bildungszugang vor der Grundschule",
+      "providerLabel": "Adjusted net enrolment rate, one year before the official primary entry age, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Kinder ein Jahr vor dem offiziellen Grundschuleintritt, die eine Bildungseinrichtung besuchen; die besuchte Bildungsstufe kann abweichen.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.1",
+      "topicId": "education:primary_school",
+      "label": "Grundschule abgeschlossen",
+      "providerLabel": "Completion rate, primary education, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Anteil der jungen Menschen drei bis fünf Jahre über dem vorgesehenen Abschlussalter, die die letzte Grundschulklasse abgeschlossen haben. Haushaltsbefragungen und Volkszählungen; einzelne Erhebungen bleiben einzelne Punkte.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "ROFST.1.CP",
+      "topicId": "education:primary_school",
+      "label": "Kinder ohne Schulbesuch",
+      "providerLabel": "Out-of-school rate for children of primary school age, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Kinder im offiziellen Grundschulalter, die keine Grundschule oder weiterführende Schule besuchen. Höher bedeutet mehr ausgeschlossene Kinder.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "EA.1T8.AG25T99",
+      "topicId": "education:primary_school",
+      "label": "Erwachsene mit Grundschulabschluss",
+      "providerLabel": "Educational attainment rate, completed primary education or higher, population 25+ years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Anteil der Bevölkerung ab 25 Jahren mit abgeschlossener Grundbildung oder einem höheren Abschluss. Diese Erwachsenenperspektive ist von aktuellen Kinderkohorten getrennt.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.2",
+      "topicId": "education:secondary_school",
+      "label": "Untere Sekundarstufe abgeschlossen",
+      "providerLabel": "Completion rate, lower secondary education, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Anteil der jungen Menschen drei bis fünf Jahre über dem vorgesehenen Abschlussalter, die die letzte Klasse der unteren Sekundarstufe abgeschlossen haben.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.3",
+      "topicId": "education:secondary_school",
+      "label": "Obere Sekundarstufe abgeschlossen",
+      "providerLabel": "Completion rate, upper secondary education, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Anteil der jungen Menschen drei bis fünf Jahre über dem vorgesehenen Abschlussalter, die die letzte Klasse der oberen Sekundarstufe abgeschlossen haben.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "ROFST.2.CP",
+      "topicId": "education:secondary_school",
+      "label": "Ohne Schulbesuch · untere Sekundarstufe",
+      "providerLabel": "Out-of-school rate for adolescents of lower secondary school age, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Jugendliche im offiziellen Alter der unteren Sekundarstufe ohne Besuch einer Grundschule oder weiterführenden Schule. Höher bedeutet mehr Jugendliche außerhalb des Schulsystems.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "ROFST.3.CP",
+      "topicId": "education:secondary_school",
+      "label": "Ohne Schulbesuch · obere Sekundarstufe",
+      "providerLabel": "Out-of-school rate for youth of upper secondary school age, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Jugendliche im offiziellen Alter der oberen Sekundarstufe ohne Schulbesuch nach der UIS-Abgrenzung. Höher bedeutet mehr Jugendliche außerhalb des Schulsystems.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "EA.3T8.AG25T99",
+      "topicId": "education:secondary_school",
+      "label": "Erwachsene mit höherem Schulabschluss",
+      "providerLabel": "Educational attainment rate, completed upper secondary education or higher, population 25+ years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Bevölkerung ab 25 Jahren mit abgeschlossener oberer Sekundarstufe oder höherem Abschluss; keine aktuelle Abschlussquote eines Schuljahrgangs.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "GER.5T8",
+      "topicId": "education:higher_education",
+      "label": "Hochschulbeteiligung · Bruttoquote",
+      "providerLabel": "Gross enrolment ratio for tertiary education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Alle Studierenden unabhängig vom Alter im Verhältnis zur Bevölkerung im vorgesehenen Hochschulalter. Werte über hundert sind möglich; die Quote ist kein Anteil aller Menschen mit Hochschulabschluss.",
+      "boundedPercentage": false
+    },
+    {
+      "code": "EA.6T8.AG25T99",
+      "topicId": "education:higher_education",
+      "label": "Erwachsene mit Bachelor oder höher",
+      "providerLabel": "Educational attainment rate, completed Bachelor's or equivalent education or higher, population 25+ years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Anteil der Bevölkerung ab 25 Jahren mit Bachelorabschluss oder höherem Abschluss. Nationale Bildungsabschlüsse werden den internationalen Bildungsstufen zugeordnet.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "EV1524P.2T5.V",
+      "topicId": "education:vocational_training",
+      "label": "Junge Menschen in beruflicher Bildung",
+      "providerLabel": "Proportion of 15- to 24-year-olds enrolled in vocational education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Anteil der 15- bis 24-Jährigen in beruflichen Bildungsprogrammen der internationalen Stufen ISCED 2 bis 5. Dies umfasst nicht jede informelle Ausbildung oder betriebliche Weiterbildung.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "PRYA.12MO.AG15T24",
+      "topicId": "education:adult_learning",
+      "label": "Lernbeteiligung junger Menschen",
+      "providerLabel": "Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, 15-24 years old, both sexes (%)",
+      "kind": "survey",
+      "explanation": "15- bis 24-Jährige mit formaler oder nicht formaler Bildung und Weiterbildung in den letzten zwölf Monaten. Teilnahme sagt nichts über Dauer, Qualität oder Abschluss aus.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "PRYA.12MO.AG15T64",
+      "topicId": "education:adult_learning",
+      "label": "Lernbeteiligung im Erwerbsalter",
+      "providerLabel": "Participation rate of youth and adults in formal and non-formal education and training in the previous 12 months, 15-64 years old, both sexes (%)",
+      "kind": "survey",
+      "explanation": "15- bis 64-Jährige mit formaler oder nicht formaler Bildung und Weiterbildung in den letzten zwölf Monaten. Altersgruppe und Zeitraum bleiben beim Vergleich gleich.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "LR.AG15T24",
+      "topicId": "education:literacy",
+      "label": "Lesen und Schreiben · junge Menschen",
+      "providerLabel": "Youth literacy rate, population 15-24 years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "15- bis 24-Jährige, die eine kurze einfache Aussage über den Alltag lesen und schreiben können. Nationale Definitionen und Erhebungsverfahren können abweichen.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "LR.AG15T99",
+      "topicId": "education:literacy",
+      "label": "Lesen und Schreiben · Erwachsene",
+      "providerLabel": "Adult literacy rate, population 15+ years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Bevölkerung ab 15 Jahren mit grundlegender Lese- und Schreibfähigkeit. Dies ist keine umfassende Prüfung funktionaler Lesekompetenz; teilweise beruhen die Angaben auf Selbstauskunft.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "LR.AG25T64",
+      "topicId": "education:literacy",
+      "label": "Lesen und Schreiben · mittlere Altersgruppe",
+      "providerLabel": "Literacy rate, population 25-64 years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Bevölkerung von 25 bis 64 Jahren mit grundlegender Lese- und Schreibfähigkeit. Die Altersgruppe bleibt von Jugend- und Gesamtquoten getrennt.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "LR.AG65T99",
+      "topicId": "education:literacy",
+      "label": "Lesen und Schreiben · ältere Menschen",
+      "providerLabel": "Elderly literacy rate, population 65+ years, both sexes (%)",
+      "kind": "survey",
+      "explanation": "Bevölkerung ab 65 Jahren mit grundlegender Lese- und Schreibfähigkeit. Die Perspektive zeigt ältere Bildungskohorten.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "READ.PRIMARY",
+      "topicId": "education:learning_outcomes",
+      "label": "Lesekompetenz am Grundschulende",
+      "providerLabel": "Proportion of students at the end of primary education achieving at least a minimum proficiency level in reading, both sexes (%)",
+      "kind": "assessment",
+      "explanation": "Anteil der Schüler am Ende der Grundbildung mit mindestens der festgelegten Mindestkompetenz im Lesen. Unterschiedliche Testprogramme sind nicht automatisch vergleichbar.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "READ.LOWERSEC",
+      "topicId": "education:learning_outcomes",
+      "label": "Lesekompetenz am Ende der unteren Sekundarstufe",
+      "providerLabel": "Proportion of students at the end of lower secondary education achieving at least a minimum proficiency level in reading, both sexes (%)",
+      "kind": "assessment",
+      "explanation": "Anteil der Schüler am Ende der unteren Sekundarstufe mit Mindestkompetenz im Lesen. Die Originalquelle des jeweiligen Tests steht bei der Erhebung.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "MATH.PRIMARY",
+      "topicId": "education:learning_outcomes",
+      "label": "Mathematik am Grundschulende",
+      "providerLabel": "Proportion of students at the end of primary education achieving at least a minimum proficiency level in mathematics, both sexes (%)",
+      "kind": "assessment",
+      "explanation": "Anteil der Schüler am Ende der Grundbildung mit mindestens der festgelegten Mindestkompetenz in Mathematik. Unterschiedliche Tests bleiben einzelne Erhebungsbilder.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "MATH.LOWERSEC",
+      "topicId": "education:learning_outcomes",
+      "label": "Mathematik am Ende der unteren Sekundarstufe",
+      "providerLabel": "Proportion of students at the end of lower secondary education achieving at least a minimum proficiency level in mathematics, both sexes (%)",
+      "kind": "assessment",
+      "explanation": "Anteil der Schüler am Ende der unteren Sekundarstufe mit Mindestkompetenz in Mathematik. Gleiche Prozentangaben garantieren keine gleichen Tests.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "XGDP.FSGOV",
+      "topicId": "education:education_spending",
+      "label": "Staatliche Bildungsausgaben",
+      "providerLabel": "Government expenditure on education as a percentage of GDP (%)",
+      "kind": "administrative",
+      "explanation": "Öffentliche laufende Ausgaben und Investitionen in Bildung als Anteil am BIP. Teilweise erfassen Länder nur das Bildungsministerium; mehr Ausgaben sind kein Beleg für bessere Ergebnisse.",
+      "boundedPercentage": false
+    },
+    {
+      "code": "TRTP.02",
+      "topicId": "education:teachers",
+      "label": "Qualifikation der Vorschullehrkräfte",
+      "providerLabel": "Proportion of teachers with the minimum required qualifications in pre-primary education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Lehrkräfte mit der im jeweiligen Land vorgeschriebenen Mindestqualifikation für die Vorschule. Die nationalen Mindestanforderungen sind unterschiedlich.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "TRTP.1",
+      "topicId": "education:teachers",
+      "label": "Qualifikation der Grundschullehrkräfte",
+      "providerLabel": "Proportion of teachers with the minimum required qualifications in primary education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Grundschullehrkräfte mit der national vorgeschriebenen Mindestqualifikation. Ein gleich hoher Anteil bedeutet keine gleichwertige Ausbildung zwischen Ländern.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "TRTP.2",
+      "topicId": "education:teachers",
+      "label": "Qualifikation · untere Sekundarstufe",
+      "providerLabel": "Proportion of teachers with the minimum required qualifications in lower secondary education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Lehrkräfte der unteren Sekundarstufe mit der national vorgeschriebenen Mindestqualifikation.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "TRTP.3",
+      "topicId": "education:teachers",
+      "label": "Qualifikation · obere Sekundarstufe",
+      "providerLabel": "Proportion of teachers with the minimum required qualifications in upper secondary education, both sexes (%)",
+      "kind": "administrative",
+      "explanation": "Lehrkräfte der oberen Sekundarstufe mit der national vorgeschriebenen Mindestqualifikation.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WINTERN",
+      "topicId": "education:education_technology",
+      "label": "Internet in Grundschulen",
+      "providerLabel": "Proportion of primary schools with access to Internet for pedagogical purposes (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit Internetzugang für pädagogische Zwecke. Vorhandener Zugang misst weder Unterrichtsqualität noch tatsächliche Nutzung.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.2.WINTERN",
+      "topicId": "education:education_technology",
+      "label": "Internet · untere Sekundarstufe",
+      "providerLabel": "Proportion of lower secondary schools with access to Internet for pedagogical purposes (%)",
+      "kind": "administrative",
+      "explanation": "Schulen der unteren Sekundarstufe mit Internetzugang für pädagogische Zwecke.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.3.WINTERN",
+      "topicId": "education:education_technology",
+      "label": "Internet · obere Sekundarstufe",
+      "providerLabel": "Proportion of upper secondary schools with access to Internet for pedagogical purposes (%)",
+      "kind": "administrative",
+      "explanation": "Schulen der oberen Sekundarstufe mit Internetzugang für pädagogische Zwecke.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WCOMPUT",
+      "topicId": "education:education_technology",
+      "label": "Computer in Grundschulen",
+      "providerLabel": "Proportion of primary schools with access to computers for pedagogical purposes (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit Computern für pädagogische Zwecke. Die Statistik misst Ausstattung, keine Lernergebnisse oder Umsätze der Bildungswirtschaft.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WELEC",
+      "topicId": "education:primary_school",
+      "label": "Grundschulen mit Strom",
+      "providerLabel": "Proportion of primary schools with access to electricity (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit einer verlässlichen, verfügbaren Stromversorgung für den Bildungsbetrieb.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WWATA",
+      "topicId": "education:primary_school",
+      "label": "Grundschulen mit Trinkwasser",
+      "providerLabel": "Proportion of primary schools with access to basic drinking water (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit einer grundlegenden Trinkwasserversorgung nach der UIS-Abgrenzung.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WWASH",
+      "topicId": "education:primary_school",
+      "label": "Grundschulen mit Handwaschmöglichkeiten",
+      "providerLabel": "Proportion of primary schools with basic handwashing facilities (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit grundlegenden Handwascheinrichtungen nach der UIS-Abgrenzung.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WTOILA",
+      "topicId": "education:primary_school",
+      "label": "Grundschulen mit Sanitärversorgung",
+      "providerLabel": "Proportion of primary schools with single-sex basic sanitation facilities (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit grundlegenden, nach Geschlechtern getrennten Sanitäreinrichtungen.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "SCHBSP.1.WINFSTUDIS",
+      "topicId": "education:primary_school",
+      "label": "Grundschulen mit barrierearmer Ausstattung",
+      "providerLabel": "Proportion of primary schools with access to adapted infrastructure and materials for students with disabilities (%)",
+      "kind": "administrative",
+      "explanation": "Grundschulen mit angepasster Infrastruktur und Materialien für Schüler mit Behinderungen. Der Anteil ist keine umfassende Messung der Inklusion.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.MOD.1",
+      "topicId": "education:primary_school",
+      "label": "Grundschulabschluss · UIS-Modell",
+      "providerLabel": "Completion rate, primary education, both sexes (modelled data) (%)",
+      "kind": "modelled",
+      "explanation": "Von UIS veröffentlichte modellierte Abschlussquote. Die jährlichen Modellwerte sind von einzelnen Haushaltserhebungen getrennt; keine eigene Sinuskurve und keine Zukunftsprognose.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.MOD.2",
+      "topicId": "education:secondary_school",
+      "label": "Untere Sekundarstufe · UIS-Modell",
+      "providerLabel": "Completion rate, lower secondary education, both sexes (modelled data) (%)",
+      "kind": "modelled",
+      "explanation": "Von UIS veröffentlichte modellierte Abschlussquote für die untere Sekundarstufe. Die Linie zeigt ein statistisches Modell und bleibt von Erhebungswerten getrennt.",
+      "boundedPercentage": true
+    },
+    {
+      "code": "CR.MOD.3",
+      "topicId": "education:secondary_school",
+      "label": "Obere Sekundarstufe · UIS-Modell",
+      "providerLabel": "Completion rate, upper secondary education, both sexes (modelled data) (%)",
+      "kind": "modelled",
+      "explanation": "Von UIS veröffentlichte modellierte Abschlussquote für die obere Sekundarstufe. Die Linie zeigt ein statistisches Modell und bleibt von Erhebungswerten getrennt.",
+      "boundedPercentage": true
+    }
+  ],
+  "regions": [
+    {
+      "code": "SDG: Australia and New Zealand",
+      "label": "Australia and New Zealand",
+      "geographyId": "uis:australia_and_new_zealand",
+      "title": "Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "members": ["AUS", "NFK", "NZL"]
+    },
+    {
+      "code": "SDG: Central Asia",
+      "label": "Central Asia",
+      "geographyId": "uis:central_asia",
+      "title": "Zentralasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": ["KAZ", "KGZ", "TJK", "TKM", "UZB"]
+    },
+    {
+      "code": "SDG: Central and Southern Asia",
+      "label": "Central and Southern Asia",
+      "geographyId": "uis:central_and_southern_asia",
+      "title": "Zentral- und Südasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": [
+        "AFG",
+        "BGD",
+        "BTN",
+        "IND",
+        "IRN",
+        "KAZ",
+        "KGZ",
+        "LKA",
+        "MDV",
+        "NPL",
+        "PAK",
+        "TJK",
+        "TKM",
+        "UZB"
+      ]
+    },
+    {
+      "code": "SDG: Eastern Asia",
+      "label": "Eastern Asia",
+      "geographyId": "uis:eastern_asia",
+      "title": "Ostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": ["CHN", "HKG", "JPN", "KOR", "MAC", "MNG", "PRK"]
+    },
+    {
+      "code": "SDG: Eastern and South-Eastern Asia",
+      "label": "Eastern and South-Eastern Asia",
+      "geographyId": "uis:eastern_and_south_eastern_asia",
+      "title": "Ost- und Südostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": [
+        "BRN",
+        "CHN",
+        "HKG",
+        "IDN",
+        "JPN",
+        "KHM",
+        "KOR",
+        "LAO",
+        "MAC",
+        "MMR",
+        "MNG",
+        "MYS",
+        "PHL",
+        "PRK",
+        "SGP",
+        "THA",
+        "TLS",
+        "VNM"
+      ]
+    },
+    {
+      "code": "SDG: Europe",
+      "label": "Europe",
+      "geographyId": "uis:europe",
+      "title": "Europa · UIS-SDG-Region",
+      "regionId": "Europe",
+      "members": [
+        "ALA",
+        "ALB",
+        "AND",
+        "AUT",
+        "BEL",
+        "BGR",
+        "BIH",
+        "BLR",
+        "CHE",
+        "CZE",
+        "DEU",
+        "DNK",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "FRO",
+        "GBR",
+        "GGY",
+        "GIB",
+        "GRC",
+        "HRV",
+        "HUN",
+        "IMN",
+        "IRL",
+        "ISL",
+        "ITA",
+        "JEY",
+        "LIE",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MCO",
+        "MDA",
+        "MKD",
+        "MLT",
+        "MNE",
+        "NLD",
+        "NOR",
+        "POL",
+        "PRT",
+        "ROU",
+        "RUS",
+        "SJM",
+        "SMR",
+        "SRB",
+        "SVK",
+        "SVN",
+        "SWE",
+        "UKR",
+        "VAT",
+        "ZZA"
+      ]
+    },
+    {
+      "code": "SDG: Europe and Northern America",
+      "label": "Europe and Northern America",
+      "geographyId": "uis:europe_and_northern_america",
+      "title": "Europa und Nordamerika · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "ALA",
+        "ALB",
+        "AND",
+        "AUT",
+        "BEL",
+        "BGR",
+        "BIH",
+        "BLR",
+        "BMU",
+        "CAN",
+        "CHE",
+        "CZE",
+        "DEU",
+        "DNK",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "FRO",
+        "GBR",
+        "GGY",
+        "GIB",
+        "GRC",
+        "GRL",
+        "HRV",
+        "HUN",
+        "IMN",
+        "IRL",
+        "ISL",
+        "ITA",
+        "JEY",
+        "LIE",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MCO",
+        "MDA",
+        "MKD",
+        "MLT",
+        "MNE",
+        "NLD",
+        "NOR",
+        "POL",
+        "PRT",
+        "ROU",
+        "RUS",
+        "SJM",
+        "SMR",
+        "SPM",
+        "SRB",
+        "SVK",
+        "SVN",
+        "SWE",
+        "UKR",
+        "USA",
+        "VAT",
+        "ZZA"
+      ]
+    },
+    {
+      "code": "SDG: Europe, Northern America, Australia and New Zealand",
+      "label": "Europe, Northern America, Australia and New Zealand",
+      "geographyId": "uis:europe_northern_america_australia_and_new_zealand",
+      "title": "Europa, Nordamerika, Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "ALA",
+        "ALB",
+        "AND",
+        "AUS",
+        "AUT",
+        "BEL",
+        "BGR",
+        "BIH",
+        "BLR",
+        "BMU",
+        "CAN",
+        "CHE",
+        "CZE",
+        "DEU",
+        "DNK",
+        "ESP",
+        "EST",
+        "FIN",
+        "FRA",
+        "FRO",
+        "GBR",
+        "GGY",
+        "GIB",
+        "GRC",
+        "GRL",
+        "HRV",
+        "HUN",
+        "IMN",
+        "IRL",
+        "ISL",
+        "ITA",
+        "JEY",
+        "LIE",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MCO",
+        "MDA",
+        "MKD",
+        "MLT",
+        "MNE",
+        "NLD",
+        "NOR",
+        "NZL",
+        "POL",
+        "PRT",
+        "ROU",
+        "RUS",
+        "SJM",
+        "SMR",
+        "SPM",
+        "SRB",
+        "SVK",
+        "SVN",
+        "SWE",
+        "UKR",
+        "USA",
+        "VAT",
+        "ZZA"
+      ]
+    },
+    {
+      "code": "SDG: Landlocked Developing Countries",
+      "label": "Landlocked Developing Countries",
+      "geographyId": "uis:landlocked_developing_countries",
+      "title": "Binnenentwicklungsländer · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "AFG",
+        "ARM",
+        "AZE",
+        "BDI",
+        "BFA",
+        "BOL",
+        "BTN",
+        "BWA",
+        "CAF",
+        "ETH",
+        "KAZ",
+        "KGZ",
+        "LAO",
+        "LSO",
+        "MDA",
+        "MKD",
+        "MLI",
+        "MNG",
+        "MWI",
+        "NER",
+        "NPL",
+        "PRY",
+        "RWA",
+        "SSD",
+        "SWZ",
+        "TCD",
+        "TJK",
+        "TKM",
+        "UGA",
+        "UZB",
+        "ZMB",
+        "ZWE"
+      ]
+    },
+    {
+      "code": "SDG: Latin America and the Caribbean",
+      "label": "Latin America and the Caribbean",
+      "geographyId": "uis:latin_america_and_the_caribbean",
+      "title": "Lateinamerika und Karibik · UIS-SDG-Region",
+      "regionId": "Americas",
+      "members": [
+        "ABW",
+        "AIA",
+        "ARG",
+        "ATG",
+        "BHS",
+        "BLM",
+        "BLZ",
+        "BOL",
+        "BRA",
+        "BRB",
+        "CHL",
+        "COL",
+        "CRI",
+        "CUB",
+        "CUW",
+        "CYM",
+        "DMA",
+        "DOM",
+        "ECU",
+        "FLK",
+        "GLP",
+        "GRD",
+        "GTM",
+        "GUF",
+        "GUY",
+        "HND",
+        "HTI",
+        "JAM",
+        "KNA",
+        "LCA",
+        "MAF",
+        "MEX",
+        "MSR",
+        "MTQ",
+        "NIC",
+        "PAN",
+        "PER",
+        "PRI",
+        "PRY",
+        "SLV",
+        "SUR",
+        "SXM",
+        "TCA",
+        "TTO",
+        "URY",
+        "VCT",
+        "VEN",
+        "VGB",
+        "VIR"
+      ]
+    },
+    {
+      "code": "SDG: Least Developed Countries",
+      "label": "Least Developed Countries",
+      "geographyId": "uis:least_developed_countries",
+      "title": "Am wenigsten entwickelte Länder · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "AFG",
+        "AGO",
+        "BDI",
+        "BEN",
+        "BFA",
+        "BGD",
+        "CAF",
+        "COD",
+        "COM",
+        "DJI",
+        "ERI",
+        "ETH",
+        "GIN",
+        "GMB",
+        "GNB",
+        "HTI",
+        "KHM",
+        "KIR",
+        "LAO",
+        "LBR",
+        "LSO",
+        "MDG",
+        "MLI",
+        "MMR",
+        "MOZ",
+        "MRT",
+        "MWI",
+        "NER",
+        "NPL",
+        "RWA",
+        "SDN",
+        "SEN",
+        "SLB",
+        "SLE",
+        "SOM",
+        "SSD",
+        "STP",
+        "TCD",
+        "TGO",
+        "TLS",
+        "TUV",
+        "TZA",
+        "UGA",
+        "YEM",
+        "ZMB"
+      ]
+    },
+    {
+      "code": "SDG: Northern Africa",
+      "label": "Northern Africa",
+      "geographyId": "uis:northern_africa",
+      "title": "Nordafrika · UIS-SDG-Region",
+      "regionId": "Africa",
+      "members": ["DZA", "EGY", "ESH", "LBY", "MAR", "SDN", "TUN", "XDN"]
+    },
+    {
+      "code": "SDG: Northern Africa and Western Asia",
+      "label": "Northern Africa and Western Asia",
+      "geographyId": "uis:northern_africa_and_western_asia",
+      "title": "Nordafrika und Westasien · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "ARE",
+        "ARM",
+        "AZE",
+        "BHR",
+        "CYP",
+        "DZA",
+        "EGY",
+        "ESH",
+        "GEO",
+        "IRQ",
+        "ISR",
+        "JOR",
+        "KWT",
+        "LBN",
+        "LBY",
+        "MAR",
+        "OMN",
+        "PSE",
+        "QAT",
+        "SAU",
+        "SDN",
+        "SYR",
+        "TUN",
+        "TUR",
+        "XDN",
+        "YEM"
+      ]
+    },
+    {
+      "code": "SDG: Northern America",
+      "label": "Northern America",
+      "geographyId": "uis:northern_america",
+      "title": "Nordamerika · UIS-SDG-Region",
+      "regionId": "Americas",
+      "members": ["BMU", "CAN", "GRL", "SPM", "USA"]
+    },
+    {
+      "code": "SDG: Oceania",
+      "label": "Oceania",
+      "geographyId": "uis:oceania",
+      "title": "Ozeanien · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "members": [
+        "ASM",
+        "AUS",
+        "COK",
+        "FJI",
+        "FSM",
+        "GUM",
+        "KIR",
+        "MHL",
+        "MNP",
+        "NCL",
+        "NFK",
+        "NIU",
+        "NRU",
+        "NZL",
+        "PCN",
+        "PLW",
+        "PNG",
+        "PYF",
+        "SLB",
+        "TKL",
+        "TON",
+        "TUV",
+        "VUT",
+        "WLF",
+        "WSM"
+      ]
+    },
+    {
+      "code": "SDG: Oceania (excluding Australia and New Zealand)",
+      "label": "Oceania (excluding Australia and New Zealand)",
+      "geographyId": "uis:oceania_excluding_australia_and_new_zealand",
+      "title": "Ozeanien ohne Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "members": [
+        "ASM",
+        "COK",
+        "FJI",
+        "FSM",
+        "GUM",
+        "KIR",
+        "MHL",
+        "MNP",
+        "NCL",
+        "NIU",
+        "NRU",
+        "PCN",
+        "PLW",
+        "PNG",
+        "PYF",
+        "SLB",
+        "TKL",
+        "TON",
+        "TUV",
+        "VUT",
+        "WLF",
+        "WSM"
+      ]
+    },
+    {
+      "code": "SDG: Small Island Developing States",
+      "label": "Small Island Developing States",
+      "geographyId": "uis:small_island_developing_states",
+      "title": "Kleine Inselentwicklungsländer · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "ABW",
+        "AIA",
+        "ANT",
+        "ASM",
+        "ATG",
+        "BHS",
+        "BLZ",
+        "BRB",
+        "COK",
+        "COM",
+        "CPV",
+        "CUB",
+        "CUW",
+        "DMA",
+        "DOM",
+        "FJI",
+        "FSM",
+        "GNB",
+        "GRD",
+        "GUM",
+        "GUY",
+        "HTI",
+        "JAM",
+        "KIR",
+        "KNA",
+        "LCA",
+        "MDV",
+        "MHL",
+        "MNP",
+        "MSR",
+        "MUS",
+        "NCL",
+        "NIU",
+        "NRU",
+        "PLW",
+        "PNG",
+        "PRI",
+        "PYF",
+        "SGP",
+        "SLB",
+        "STP",
+        "SUR",
+        "SXM",
+        "SYC",
+        "TLS",
+        "TON",
+        "TTO",
+        "TUV",
+        "VCT",
+        "VGB",
+        "VIR",
+        "VUT",
+        "WSM"
+      ]
+    },
+    {
+      "code": "SDG: South-Eastern Asia",
+      "label": "South-Eastern Asia",
+      "geographyId": "uis:south_eastern_asia",
+      "title": "Südostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": [
+        "BRN",
+        "IDN",
+        "KHM",
+        "LAO",
+        "MMR",
+        "MYS",
+        "PHL",
+        "SGP",
+        "THA",
+        "TLS",
+        "VNM"
+      ]
+    },
+    {
+      "code": "SDG: Southern Asia",
+      "label": "Southern Asia",
+      "geographyId": "uis:southern_asia",
+      "title": "Südasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": ["AFG", "BGD", "BTN", "IND", "IRN", "LKA", "MDV", "NPL", "PAK"]
+    },
+    {
+      "code": "SDG: Sub-Saharan Africa",
+      "label": "Sub-Saharan Africa",
+      "geographyId": "uis:sub_saharan_africa",
+      "title": "Afrika südlich der Sahara · UIS-SDG-Region",
+      "regionId": "Africa",
+      "members": [
+        "AGO",
+        "BDI",
+        "BEN",
+        "BFA",
+        "BWA",
+        "CAF",
+        "CIV",
+        "CMR",
+        "COD",
+        "COG",
+        "COM",
+        "CPV",
+        "DJI",
+        "ERI",
+        "ETH",
+        "GAB",
+        "GHA",
+        "GIN",
+        "GMB",
+        "GNB",
+        "GNQ",
+        "KEN",
+        "LBR",
+        "LSO",
+        "MDG",
+        "MLI",
+        "MOZ",
+        "MRT",
+        "MUS",
+        "MWI",
+        "MYT",
+        "NAM",
+        "NER",
+        "NGA",
+        "REU",
+        "RWA",
+        "SEN",
+        "SHN",
+        "SLE",
+        "SOM",
+        "SSD",
+        "STP",
+        "SWZ",
+        "SYC",
+        "TCD",
+        "TGO",
+        "TZA",
+        "UGA",
+        "ZAF",
+        "ZMB",
+        "ZWE"
+      ]
+    },
+    {
+      "code": "SDG: Western Asia",
+      "label": "Western Asia",
+      "geographyId": "uis:western_asia",
+      "title": "Westasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "members": [
+        "ARE",
+        "ARM",
+        "AZE",
+        "BHR",
+        "CYP",
+        "GEO",
+        "IRQ",
+        "ISR",
+        "JOR",
+        "KWT",
+        "LBN",
+        "OMN",
+        "PSE",
+        "QAT",
+        "SAU",
+        "SYR",
+        "TUR",
+        "YEM"
+      ]
+    },
+    {
+      "code": "SDG: World",
+      "label": "World",
+      "geographyId": "uis:world",
+      "title": "Welt · UIS-SDG-Region",
+      "regionId": "world",
+      "members": [
+        "ABW",
+        "AFG",
+        "AGO",
+        "AIA",
+        "ALA",
+        "ALB",
+        "AND",
+        "ARE",
+        "ARG",
+        "ARM",
+        "ASM",
+        "ATG",
+        "AUS",
+        "AUT",
+        "AZE",
+        "BDI",
+        "BEL",
+        "BEN",
+        "BFA",
+        "BGD",
+        "BGR",
+        "BHR",
+        "BHS",
+        "BIH",
+        "BLM",
+        "BLR",
+        "BLZ",
+        "BMU",
+        "BOL",
+        "BRA",
+        "BRB",
+        "BRN",
+        "BTN",
+        "BWA",
+        "CAF",
+        "CAN",
+        "CHE",
+        "CHL",
+        "CHN",
+        "CIV",
+        "CMR",
+        "COD",
+        "COG",
+        "COK",
+        "COL",
+        "COM",
+        "CPV",
+        "CRI",
+        "CUB",
+        "CUW",
+        "CYM",
+        "CYP",
+        "CZE",
+        "DEU",
+        "DJI",
+        "DMA",
+        "DNK",
+        "DOM",
+        "DZA",
+        "ECU",
+        "EGY",
+        "ERI",
+        "ESH",
+        "ESP",
+        "EST",
+        "ETH",
+        "FIN",
+        "FJI",
+        "FLK",
+        "FRA",
+        "FRO",
+        "FSM",
+        "GAB",
+        "GBR",
+        "GEO",
+        "GGY",
+        "GHA",
+        "GIB",
+        "GIN",
+        "GLP",
+        "GMB",
+        "GNB",
+        "GNQ",
+        "GRC",
+        "GRD",
+        "GRL",
+        "GTM",
+        "GUF",
+        "GUM",
+        "GUY",
+        "HKG",
+        "HND",
+        "HRV",
+        "HTI",
+        "HUN",
+        "IDN",
+        "IMN",
+        "IND",
+        "IRL",
+        "IRN",
+        "IRQ",
+        "ISL",
+        "ISR",
+        "ITA",
+        "JAM",
+        "JEY",
+        "JOR",
+        "JPN",
+        "KAZ",
+        "KEN",
+        "KGZ",
+        "KHM",
+        "KIR",
+        "KNA",
+        "KOR",
+        "KWT",
+        "LAO",
+        "LBN",
+        "LBR",
+        "LBY",
+        "LCA",
+        "LIE",
+        "LKA",
+        "LSO",
+        "LTU",
+        "LUX",
+        "LVA",
+        "MAC",
+        "MAF",
+        "MAR",
+        "MCO",
+        "MDA",
+        "MDG",
+        "MDV",
+        "MEX",
+        "MHL",
+        "MKD",
+        "MLI",
+        "MLT",
+        "MMR",
+        "MNE",
+        "MNG",
+        "MNP",
+        "MOZ",
+        "MRT",
+        "MSR",
+        "MTQ",
+        "MUS",
+        "MWI",
+        "MYS",
+        "MYT",
+        "NAM",
+        "NCL",
+        "NER",
+        "NFK",
+        "NGA",
+        "NIC",
+        "NIU",
+        "NLD",
+        "NOR",
+        "NPL",
+        "NRU",
+        "NZL",
+        "OMN",
+        "PAK",
+        "PAN",
+        "PCN",
+        "PER",
+        "PHL",
+        "PLW",
+        "PNG",
+        "POL",
+        "PRI",
+        "PRK",
+        "PRT",
+        "PRY",
+        "PSE",
+        "PYF",
+        "QAT",
+        "REU",
+        "ROU",
+        "RUS",
+        "RWA",
+        "SAU",
+        "SDN",
+        "SEN",
+        "SGP",
+        "SHN",
+        "SJM",
+        "SLB",
+        "SLE",
+        "SLV",
+        "SMR",
+        "SOM",
+        "SPM",
+        "SRB",
+        "SSD",
+        "STP",
+        "SUR",
+        "SVK",
+        "SVN",
+        "SWE",
+        "SWZ",
+        "SXM",
+        "SYC",
+        "SYR",
+        "TCA",
+        "TCD",
+        "TGO",
+        "THA",
+        "TJK",
+        "TKL",
+        "TKM",
+        "TLS",
+        "TON",
+        "TTO",
+        "TUN",
+        "TUR",
+        "TUV",
+        "TZA",
+        "UGA",
+        "UKR",
+        "URY",
+        "USA",
+        "UZB",
+        "VAT",
+        "VCT",
+        "VEN",
+        "VGB",
+        "VIR",
+        "VNM",
+        "VUT",
+        "WLF",
+        "WSM",
+        "XDN",
+        "YEM",
+        "ZAF",
+        "ZMB",
+        "ZWE",
+        "ZZA"
+      ]
+    }
+  ],
+  "areas": [
+    {
+      "code": "AFG",
+      "label": "Afghanistan",
+      "geographyId": "m49:004"
+    },
+    {
+      "code": "ALB",
+      "label": "Albania",
+      "geographyId": "m49:008"
+    },
+    {
+      "code": "DZA",
+      "label": "Algeria",
+      "geographyId": "m49:012"
+    },
+    {
+      "code": "ASM",
+      "label": "American Samoa",
+      "geographyId": "m49:016"
+    },
+    {
+      "code": "AND",
+      "label": "Andorra",
+      "geographyId": "m49:020"
+    },
+    {
+      "code": "AGO",
+      "label": "Angola",
+      "geographyId": "m49:024"
+    },
+    {
+      "code": "AIA",
+      "label": "Anguilla",
+      "geographyId": "m49:660"
+    },
+    {
+      "code": "ATG",
+      "label": "Antigua and Barbuda",
+      "geographyId": "m49:028"
+    },
+    {
+      "code": "ARG",
+      "label": "Argentina",
+      "geographyId": "m49:032"
+    },
+    {
+      "code": "ARM",
+      "label": "Armenia",
+      "geographyId": "m49:051"
+    },
+    {
+      "code": "ABW",
+      "label": "Aruba",
+      "geographyId": "m49:533"
+    },
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "geographyId": "m49:036"
+    },
+    {
+      "code": "AZE",
+      "label": "Azerbaijan",
+      "geographyId": "m49:031"
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "geographyId": "m49:040"
+    },
+    {
+      "code": "BHS",
+      "label": "Bahamas",
+      "geographyId": "m49:044"
+    },
+    {
+      "code": "BHR",
+      "label": "Bahrain",
+      "geographyId": "m49:048"
+    },
+    {
+      "code": "BGD",
+      "label": "Bangladesh",
+      "geographyId": "m49:050"
+    },
+    {
+      "code": "BRB",
+      "label": "Barbados",
+      "geographyId": "m49:052"
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "geographyId": "m49:056"
+    },
+    {
+      "code": "BIH",
+      "label": "Bosnia and Herzegovina",
+      "geographyId": "m49:070"
+    },
+    {
+      "code": "BLZ",
+      "label": "Belize",
+      "geographyId": "m49:084"
+    },
+    {
+      "code": "BMU",
+      "label": "Bermuda",
+      "geographyId": "m49:060"
+    },
+    {
+      "code": "BTN",
+      "label": "Bhutan",
+      "geographyId": "m49:064"
+    },
+    {
+      "code": "BOL",
+      "label": "Bolivia (Plurinational State of)",
+      "geographyId": "m49:068"
+    },
+    {
+      "code": "BWA",
+      "label": "Botswana",
+      "geographyId": "m49:072"
+    },
+    {
+      "code": "BRA",
+      "label": "Brazil",
+      "geographyId": "m49:076"
+    },
+    {
+      "code": "SLB",
+      "label": "Solomon Islands",
+      "geographyId": "m49:090"
+    },
+    {
+      "code": "PLW",
+      "label": "Palau",
+      "geographyId": "m49:585"
+    },
+    {
+      "code": "BRN",
+      "label": "Brunei Darussalam",
+      "geographyId": "m49:096"
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "geographyId": "m49:100"
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "geographyId": "m49:191"
+    },
+    {
+      "code": "MMR",
+      "label": "Myanmar",
+      "geographyId": "m49:104"
+    },
+    {
+      "code": "BDI",
+      "label": "Burundi",
+      "geographyId": "m49:108"
+    },
+    {
+      "code": "CMR",
+      "label": "Cameroon",
+      "geographyId": "m49:120"
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "geographyId": "m49:124"
+    },
+    {
+      "code": "CPV",
+      "label": "Cabo Verde",
+      "geographyId": "m49:132"
+    },
+    {
+      "code": "CYM",
+      "label": "Cayman Islands",
+      "geographyId": "m49:136"
+    },
+    {
+      "code": "CAF",
+      "label": "Central African Republic",
+      "geographyId": "m49:140"
+    },
+    {
+      "code": "TCD",
+      "label": "Chad",
+      "geographyId": "m49:148"
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "geographyId": "m49:152"
+    },
+    {
+      "code": "CHN",
+      "label": "China",
+      "geographyId": "m49:156"
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "geographyId": "m49:170"
+    },
+    {
+      "code": "COM",
+      "label": "Comoros",
+      "geographyId": "m49:174"
+    },
+    {
+      "code": "MYT",
+      "label": "Mayotte",
+      "geographyId": "m49:175"
+    },
+    {
+      "code": "COG",
+      "label": "Congo",
+      "geographyId": "m49:178"
+    },
+    {
+      "code": "COK",
+      "label": "Cook Islands",
+      "geographyId": "m49:184"
+    },
+    {
+      "code": "CRI",
+      "label": "Costa Rica",
+      "geographyId": "m49:188"
+    },
+    {
+      "code": "CUB",
+      "label": "Cuba",
+      "geographyId": "m49:192"
+    },
+    {
+      "code": "CYP",
+      "label": "Cyprus",
+      "geographyId": "m49:196"
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "geographyId": "m49:203"
+    },
+    {
+      "code": "BEN",
+      "label": "Benin",
+      "geographyId": "m49:204"
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "geographyId": "m49:208"
+    },
+    {
+      "code": "DMA",
+      "label": "Dominica",
+      "geographyId": "m49:212"
+    },
+    {
+      "code": "DOM",
+      "label": "Dominican Republic",
+      "geographyId": "m49:214"
+    },
+    {
+      "code": "ECU",
+      "label": "Ecuador",
+      "geographyId": "m49:218"
+    },
+    {
+      "code": "EGY",
+      "label": "Egypt",
+      "geographyId": "m49:818"
+    },
+    {
+      "code": "SLV",
+      "label": "El Salvador",
+      "geographyId": "m49:222"
+    },
+    {
+      "code": "GNQ",
+      "label": "Equatorial Guinea",
+      "geographyId": "m49:226"
+    },
+    {
+      "code": "ERI",
+      "label": "Eritrea",
+      "geographyId": "m49:232"
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "geographyId": "m49:233"
+    },
+    {
+      "code": "ETH",
+      "label": "Ethiopia",
+      "geographyId": "m49:231"
+    },
+    {
+      "code": "FRO",
+      "label": "Faeroe Islands",
+      "geographyId": "m49:234"
+    },
+    {
+      "code": "FLK",
+      "label": "Falkland Islands (Malvinas)",
+      "geographyId": "m49:238"
+    },
+    {
+      "code": "FJI",
+      "label": "Fiji",
+      "geographyId": "m49:242"
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "geographyId": "m49:246"
+    },
+    {
+      "code": "ALA",
+      "label": "Åland Islands",
+      "geographyId": "m49:248"
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "geographyId": "m49:250"
+    },
+    {
+      "code": "GUF",
+      "label": "French Guiana",
+      "geographyId": "m49:254"
+    },
+    {
+      "code": "PYF",
+      "label": "French Polynesia",
+      "geographyId": "m49:258"
+    },
+    {
+      "code": "DJI",
+      "label": "Djibouti",
+      "geographyId": "m49:262"
+    },
+    {
+      "code": "GAB",
+      "label": "Gabon",
+      "geographyId": "m49:266"
+    },
+    {
+      "code": "GMB",
+      "label": "Gambia",
+      "geographyId": "m49:270"
+    },
+    {
+      "code": "GEO",
+      "label": "Georgia",
+      "geographyId": "m49:268"
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "geographyId": "m49:276"
+    },
+    {
+      "code": "GHA",
+      "label": "Ghana",
+      "geographyId": "m49:288"
+    },
+    {
+      "code": "GIB",
+      "label": "Gibraltar",
+      "geographyId": "m49:292"
+    },
+    {
+      "code": "KIR",
+      "label": "Kiribati",
+      "geographyId": "m49:296"
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "geographyId": "m49:300"
+    },
+    {
+      "code": "GRL",
+      "label": "Greenland",
+      "geographyId": "m49:304"
+    },
+    {
+      "code": "GRD",
+      "label": "Grenada",
+      "geographyId": "m49:308"
+    },
+    {
+      "code": "GLP",
+      "label": "Guadeloupe",
+      "geographyId": "m49:312"
+    },
+    {
+      "code": "GUM",
+      "label": "Guam",
+      "geographyId": "m49:316"
+    },
+    {
+      "code": "GTM",
+      "label": "Guatemala",
+      "geographyId": "m49:320"
+    },
+    {
+      "code": "GIN",
+      "label": "Guinea",
+      "geographyId": "m49:324"
+    },
+    {
+      "code": "GUY",
+      "label": "Guyana",
+      "geographyId": "m49:328"
+    },
+    {
+      "code": "HTI",
+      "label": "Haiti",
+      "geographyId": "m49:332"
+    },
+    {
+      "code": "VAT",
+      "label": "Holy See",
+      "geographyId": "m49:336"
+    },
+    {
+      "code": "HND",
+      "label": "Honduras",
+      "geographyId": "m49:340"
+    },
+    {
+      "code": "HKG",
+      "label": "China, Hong Kong Special Administrative Region",
+      "geographyId": "m49:344"
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "geographyId": "m49:348"
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "geographyId": "m49:352"
+    },
+    {
+      "code": "IND",
+      "label": "India",
+      "geographyId": "m49:356"
+    },
+    {
+      "code": "IDN",
+      "label": "Indonesia",
+      "geographyId": "m49:360"
+    },
+    {
+      "code": "IRN",
+      "label": "Iran (Islamic Republic of)",
+      "geographyId": "m49:364"
+    },
+    {
+      "code": "IRQ",
+      "label": "Iraq",
+      "geographyId": "m49:368"
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "geographyId": "m49:372"
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "geographyId": "m49:376"
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "geographyId": "m49:380"
+    },
+    {
+      "code": "CIV",
+      "label": "Côte d'Ivoire",
+      "geographyId": "m49:384"
+    },
+    {
+      "code": "JAM",
+      "label": "Jamaica",
+      "geographyId": "m49:388"
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "geographyId": "m49:392"
+    },
+    {
+      "code": "JOR",
+      "label": "Jordan",
+      "geographyId": "m49:400"
+    },
+    {
+      "code": "KAZ",
+      "label": "Kazakhstan",
+      "geographyId": "m49:398"
+    },
+    {
+      "code": "KEN",
+      "label": "Kenya",
+      "geographyId": "m49:404"
+    },
+    {
+      "code": "KHM",
+      "label": "Cambodia",
+      "geographyId": "m49:116"
+    },
+    {
+      "code": "KOR",
+      "label": "Republic of Korea",
+      "geographyId": "m49:410"
+    },
+    {
+      "code": "PRK",
+      "label": "Democratic People's Republic of Korea",
+      "geographyId": "m49:408"
+    },
+    {
+      "code": "KWT",
+      "label": "Kuwait",
+      "geographyId": "m49:414"
+    },
+    {
+      "code": "KGZ",
+      "label": "Kyrgyzstan",
+      "geographyId": "m49:417"
+    },
+    {
+      "code": "LAO",
+      "label": "Lao People's Democratic Republic",
+      "geographyId": "m49:418"
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "geographyId": "m49:428"
+    },
+    {
+      "code": "LBN",
+      "label": "Lebanon",
+      "geographyId": "m49:422"
+    },
+    {
+      "code": "LSO",
+      "label": "Lesotho",
+      "geographyId": "m49:426"
+    },
+    {
+      "code": "LBR",
+      "label": "Liberia",
+      "geographyId": "m49:430"
+    },
+    {
+      "code": "LBY",
+      "label": "Libya",
+      "geographyId": "m49:434"
+    },
+    {
+      "code": "LIE",
+      "label": "Liechtenstein",
+      "geographyId": "m49:438"
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "geographyId": "m49:440"
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "geographyId": "m49:442"
+    },
+    {
+      "code": "MAC",
+      "label": "China, Macao Special Administrative Region",
+      "geographyId": "m49:446"
+    },
+    {
+      "code": "MKD",
+      "label": "North Macedonia",
+      "geographyId": "m49:807"
+    },
+    {
+      "code": "MDG",
+      "label": "Madagascar",
+      "geographyId": "m49:450"
+    },
+    {
+      "code": "MWI",
+      "label": "Malawi",
+      "geographyId": "m49:454"
+    },
+    {
+      "code": "MYS",
+      "label": "Malaysia",
+      "geographyId": "m49:458"
+    },
+    {
+      "code": "MDV",
+      "label": "Maldives",
+      "geographyId": "m49:462"
+    },
+    {
+      "code": "MLI",
+      "label": "Mali",
+      "geographyId": "m49:466"
+    },
+    {
+      "code": "MLT",
+      "label": "Malta",
+      "geographyId": "m49:470"
+    },
+    {
+      "code": "MTQ",
+      "label": "Martinique",
+      "geographyId": "m49:474"
+    },
+    {
+      "code": "MRT",
+      "label": "Mauritania",
+      "geographyId": "m49:478"
+    },
+    {
+      "code": "MUS",
+      "label": "Mauritius",
+      "geographyId": "m49:480"
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "geographyId": "m49:484"
+    },
+    {
+      "code": "FSM",
+      "label": "Micronesia (Federated States of)",
+      "geographyId": "m49:583"
+    },
+    {
+      "code": "MCO",
+      "label": "Monaco",
+      "geographyId": "m49:492"
+    },
+    {
+      "code": "MNG",
+      "label": "Mongolia",
+      "geographyId": "m49:496"
+    },
+    {
+      "code": "MNE",
+      "label": "Montenegro",
+      "geographyId": "m49:499"
+    },
+    {
+      "code": "MSR",
+      "label": "Montserrat",
+      "geographyId": "m49:500"
+    },
+    {
+      "code": "MAR",
+      "label": "Morocco",
+      "geographyId": "m49:504"
+    },
+    {
+      "code": "MOZ",
+      "label": "Mozambique",
+      "geographyId": "m49:508"
+    },
+    {
+      "code": "MNP",
+      "label": "Northern Mariana Islands",
+      "geographyId": "m49:580"
+    },
+    {
+      "code": "NAM",
+      "label": "Namibia",
+      "geographyId": "m49:516"
+    },
+    {
+      "code": "NRU",
+      "label": "Nauru",
+      "geographyId": "m49:520"
+    },
+    {
+      "code": "NPL",
+      "label": "Nepal",
+      "geographyId": "m49:524"
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands",
+      "geographyId": "m49:528"
+    },
+    {
+      "code": "CUW",
+      "label": "Curaçao",
+      "geographyId": "m49:531"
+    },
+    {
+      "code": "SXM",
+      "label": "Sint Maarten (Dutch part)",
+      "geographyId": "m49:534"
+    },
+    {
+      "code": "NCL",
+      "label": "New Caledonia",
+      "geographyId": "m49:540"
+    },
+    {
+      "code": "VUT",
+      "label": "Vanuatu",
+      "geographyId": "m49:548"
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "geographyId": "m49:554"
+    },
+    {
+      "code": "NIC",
+      "label": "Nicaragua",
+      "geographyId": "m49:558"
+    },
+    {
+      "code": "NER",
+      "label": "Niger",
+      "geographyId": "m49:562"
+    },
+    {
+      "code": "NGA",
+      "label": "Nigeria",
+      "geographyId": "m49:566"
+    },
+    {
+      "code": "NIU",
+      "label": "Niue",
+      "geographyId": "m49:570"
+    },
+    {
+      "code": "NFK",
+      "label": "Norfolk Island",
+      "geographyId": "m49:574"
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "geographyId": "m49:578"
+    },
+    {
+      "code": "OMN",
+      "label": "Oman",
+      "geographyId": "m49:512"
+    },
+    {
+      "code": "MHL",
+      "label": "Marshall Islands",
+      "geographyId": "m49:584"
+    },
+    {
+      "code": "PAK",
+      "label": "Pakistan",
+      "geographyId": "m49:586"
+    },
+    {
+      "code": "PSE",
+      "label": "Palestine",
+      "geographyId": "m49:275"
+    },
+    {
+      "code": "PAN",
+      "label": "Panama",
+      "geographyId": "m49:591"
+    },
+    {
+      "code": "PNG",
+      "label": "Papua New Guinea",
+      "geographyId": "m49:598"
+    },
+    {
+      "code": "PRY",
+      "label": "Paraguay",
+      "geographyId": "m49:600"
+    },
+    {
+      "code": "PER",
+      "label": "Peru",
+      "geographyId": "m49:604"
+    },
+    {
+      "code": "PHL",
+      "label": "Philippines",
+      "geographyId": "m49:608"
+    },
+    {
+      "code": "PCN",
+      "label": "Pitcairn",
+      "geographyId": "m49:612"
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "geographyId": "m49:616"
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "geographyId": "m49:620"
+    },
+    {
+      "code": "MDA",
+      "label": "Republic of Moldova",
+      "geographyId": "m49:498"
+    },
+    {
+      "code": "GNB",
+      "label": "Guinea-Bissau",
+      "geographyId": "m49:624"
+    },
+    {
+      "code": "TLS",
+      "label": "Timor-Leste",
+      "geographyId": "m49:626"
+    },
+    {
+      "code": "PRI",
+      "label": "Puerto Rico",
+      "geographyId": "m49:630"
+    },
+    {
+      "code": "QAT",
+      "label": "Qatar",
+      "geographyId": "m49:634"
+    },
+    {
+      "code": "REU",
+      "label": "Réunion",
+      "geographyId": "m49:638"
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "geographyId": "m49:642"
+    },
+    {
+      "code": "RUS",
+      "label": "Russian Federation",
+      "geographyId": "m49:643"
+    },
+    {
+      "code": "RWA",
+      "label": "Rwanda",
+      "geographyId": "m49:646"
+    },
+    {
+      "code": "BLM",
+      "label": "Saint-Barthélemy",
+      "geographyId": "m49:652"
+    },
+    {
+      "code": "SHN",
+      "label": "Saint Helena",
+      "geographyId": "m49:654"
+    },
+    {
+      "code": "KNA",
+      "label": "Saint Kitts and Nevis",
+      "geographyId": "m49:659"
+    },
+    {
+      "code": "LCA",
+      "label": "Saint Lucia",
+      "geographyId": "m49:662"
+    },
+    {
+      "code": "MAF",
+      "label": "Saint-Martin (French part)",
+      "geographyId": "m49:663"
+    },
+    {
+      "code": "SPM",
+      "label": "Saint Pierre and Miquelon",
+      "geographyId": "m49:666"
+    },
+    {
+      "code": "VCT",
+      "label": "Saint Vincent and the Grenadines",
+      "geographyId": "m49:670"
+    },
+    {
+      "code": "SVK",
+      "label": "Slovakia",
+      "geographyId": "m49:703"
+    },
+    {
+      "code": "SMR",
+      "label": "San Marino",
+      "geographyId": "m49:674"
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "geographyId": "m49:705"
+    },
+    {
+      "code": "STP",
+      "label": "Sao Tome and Principe",
+      "geographyId": "m49:678"
+    },
+    {
+      "code": "SAU",
+      "label": "Saudi Arabia",
+      "geographyId": "m49:682"
+    },
+    {
+      "code": "SEN",
+      "label": "Senegal",
+      "geographyId": "m49:686"
+    },
+    {
+      "code": "SRB",
+      "label": "Serbia",
+      "geographyId": "m49:688"
+    },
+    {
+      "code": "SYC",
+      "label": "Seychelles",
+      "geographyId": "m49:690"
+    },
+    {
+      "code": "SLE",
+      "label": "Sierra Leone",
+      "geographyId": "m49:694"
+    },
+    {
+      "code": "SGP",
+      "label": "Singapore",
+      "geographyId": "m49:702"
+    },
+    {
+      "code": "SOM",
+      "label": "Somalia",
+      "geographyId": "m49:706"
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "geographyId": "m49:710"
+    },
+    {
+      "code": "ZWE",
+      "label": "Zimbabwe",
+      "geographyId": "m49:716"
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "geographyId": "m49:724"
+    },
+    {
+      "code": "SSD",
+      "label": "South Sudan",
+      "geographyId": "m49:728"
+    },
+    {
+      "code": "SDN",
+      "label": "Sudan",
+      "geographyId": "m49:729"
+    },
+    {
+      "code": "ESH",
+      "label": "Western Sahara",
+      "geographyId": "m49:732"
+    },
+    {
+      "code": "LKA",
+      "label": "Sri Lanka",
+      "geographyId": "m49:144"
+    },
+    {
+      "code": "SUR",
+      "label": "Suriname",
+      "geographyId": "m49:740"
+    },
+    {
+      "code": "SJM",
+      "label": "Svalbard and Jan Mayen Islands",
+      "geographyId": "m49:744"
+    },
+    {
+      "code": "SWZ",
+      "label": "Eswatini",
+      "geographyId": "m49:748"
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "geographyId": "m49:752"
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "geographyId": "m49:756"
+    },
+    {
+      "code": "SYR",
+      "label": "Syrian Arab Republic",
+      "geographyId": "m49:760"
+    },
+    {
+      "code": "TJK",
+      "label": "Tajikistan",
+      "geographyId": "m49:762"
+    },
+    {
+      "code": "TZA",
+      "label": "United Republic of Tanzania",
+      "geographyId": "m49:834"
+    },
+    {
+      "code": "THA",
+      "label": "Thailand",
+      "geographyId": "m49:764"
+    },
+    {
+      "code": "TGO",
+      "label": "Togo",
+      "geographyId": "m49:768"
+    },
+    {
+      "code": "TKL",
+      "label": "Tokelau",
+      "geographyId": "m49:772"
+    },
+    {
+      "code": "TON",
+      "label": "Tonga",
+      "geographyId": "m49:776"
+    },
+    {
+      "code": "TUV",
+      "label": "Tuvalu",
+      "geographyId": "m49:798"
+    },
+    {
+      "code": "TTO",
+      "label": "Trinidad and Tobago",
+      "geographyId": "m49:780"
+    },
+    {
+      "code": "TUN",
+      "label": "Tunisia",
+      "geographyId": "m49:788"
+    },
+    {
+      "code": "TUR",
+      "label": "Türkiye",
+      "geographyId": "m49:792"
+    },
+    {
+      "code": "TKM",
+      "label": "Turkmenistan",
+      "geographyId": "m49:795"
+    },
+    {
+      "code": "TCA",
+      "label": "Turks and Caicos Islands",
+      "geographyId": "m49:796"
+    },
+    {
+      "code": "UGA",
+      "label": "Uganda",
+      "geographyId": "m49:800"
+    },
+    {
+      "code": "BLR",
+      "label": "Belarus",
+      "geographyId": "m49:112"
+    },
+    {
+      "code": "UKR",
+      "label": "Ukraine",
+      "geographyId": "m49:804"
+    },
+    {
+      "code": "ARE",
+      "label": "United Arab Emirates",
+      "geographyId": "m49:784"
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom of Great Britain and Northern Ireland",
+      "geographyId": "m49:826"
+    },
+    {
+      "code": "GGY",
+      "label": "Guernsey",
+      "geographyId": "m49:831"
+    },
+    {
+      "code": "JEY",
+      "label": "Jersey",
+      "geographyId": "m49:832"
+    },
+    {
+      "code": "IMN",
+      "label": "Isle of Man",
+      "geographyId": "m49:833"
+    },
+    {
+      "code": "USA",
+      "label": "United States of America",
+      "geographyId": "m49:840"
+    },
+    {
+      "code": "BFA",
+      "label": "Burkina Faso",
+      "geographyId": "m49:854"
+    },
+    {
+      "code": "URY",
+      "label": "Uruguay",
+      "geographyId": "m49:858"
+    },
+    {
+      "code": "UZB",
+      "label": "Uzbekistan",
+      "geographyId": "m49:860"
+    },
+    {
+      "code": "VEN",
+      "label": "Venezuela (Bolivarian Republic of)",
+      "geographyId": "m49:862"
+    },
+    {
+      "code": "VNM",
+      "label": "Viet Nam",
+      "geographyId": "m49:704"
+    },
+    {
+      "code": "VGB",
+      "label": "British Virgin Islands",
+      "geographyId": "m49:092"
+    },
+    {
+      "code": "VIR",
+      "label": "United States Virgin Islands",
+      "geographyId": "m49:850"
+    },
+    {
+      "code": "WLF",
+      "label": "Wallis and Futuna Islands",
+      "geographyId": "m49:876"
+    },
+    {
+      "code": "WSM",
+      "label": "Samoa",
+      "geographyId": "m49:882"
+    },
+    {
+      "code": "YEM",
+      "label": "Yemen",
+      "geographyId": "m49:887"
+    },
+    {
+      "code": "COD",
+      "label": "Democratic Republic of the Congo",
+      "geographyId": "m49:180"
+    },
+    {
+      "code": "ZMB",
+      "label": "Zambia",
+      "geographyId": "m49:894"
+    },
+    {
+      "code": "SDG: Australia and New Zealand",
+      "label": "Australia and New Zealand",
+      "geographyId": "uis:australia_and_new_zealand"
+    },
+    {
+      "code": "SDG: Central Asia",
+      "label": "Central Asia",
+      "geographyId": "uis:central_asia"
+    },
+    {
+      "code": "SDG: Central and Southern Asia",
+      "label": "Central and Southern Asia",
+      "geographyId": "uis:central_and_southern_asia"
+    },
+    {
+      "code": "SDG: Eastern Asia",
+      "label": "Eastern Asia",
+      "geographyId": "uis:eastern_asia"
+    },
+    {
+      "code": "SDG: Eastern and South-Eastern Asia",
+      "label": "Eastern and South-Eastern Asia",
+      "geographyId": "uis:eastern_and_south_eastern_asia"
+    },
+    {
+      "code": "SDG: Europe",
+      "label": "Europe",
+      "geographyId": "uis:europe"
+    },
+    {
+      "code": "SDG: Europe and Northern America",
+      "label": "Europe and Northern America",
+      "geographyId": "uis:europe_and_northern_america"
+    },
+    {
+      "code": "SDG: Europe, Northern America, Australia and New Zealand",
+      "label": "Europe, Northern America, Australia and New Zealand",
+      "geographyId": "uis:europe_northern_america_australia_and_new_zealand"
+    },
+    {
+      "code": "SDG: Landlocked Developing Countries",
+      "label": "Landlocked Developing Countries",
+      "geographyId": "uis:landlocked_developing_countries"
+    },
+    {
+      "code": "SDG: Latin America and the Caribbean",
+      "label": "Latin America and the Caribbean",
+      "geographyId": "uis:latin_america_and_the_caribbean"
+    },
+    {
+      "code": "SDG: Least Developed Countries",
+      "label": "Least Developed Countries",
+      "geographyId": "uis:least_developed_countries"
+    },
+    {
+      "code": "SDG: Northern Africa",
+      "label": "Northern Africa",
+      "geographyId": "uis:northern_africa"
+    },
+    {
+      "code": "SDG: Northern Africa and Western Asia",
+      "label": "Northern Africa and Western Asia",
+      "geographyId": "uis:northern_africa_and_western_asia"
+    },
+    {
+      "code": "SDG: Northern America",
+      "label": "Northern America",
+      "geographyId": "uis:northern_america"
+    },
+    {
+      "code": "SDG: Oceania",
+      "label": "Oceania",
+      "geographyId": "uis:oceania"
+    },
+    {
+      "code": "SDG: Oceania (excluding Australia and New Zealand)",
+      "label": "Oceania (excluding Australia and New Zealand)",
+      "geographyId": "uis:oceania_excluding_australia_and_new_zealand"
+    },
+    {
+      "code": "SDG: Small Island Developing States",
+      "label": "Small Island Developing States",
+      "geographyId": "uis:small_island_developing_states"
+    },
+    {
+      "code": "SDG: South-Eastern Asia",
+      "label": "South-Eastern Asia",
+      "geographyId": "uis:south_eastern_asia"
+    },
+    {
+      "code": "SDG: Southern Asia",
+      "label": "Southern Asia",
+      "geographyId": "uis:southern_asia"
+    },
+    {
+      "code": "SDG: Sub-Saharan Africa",
+      "label": "Sub-Saharan Africa",
+      "geographyId": "uis:sub_saharan_africa"
+    },
+    {
+      "code": "SDG: Western Asia",
+      "label": "Western Asia",
+      "geographyId": "uis:western_asia"
+    },
+    {
+      "code": "SDG: World",
+      "label": "World",
+      "geographyId": "uis:world"
+    }
+  ],
+  "excludedCountries": [
+    {
+      "COUNTRY_ID": "ANT",
+      "COUNTRY_NAME_EN": "Netherlands Antilles"
+    },
+    {
+      "COUNTRY_ID": "XDN",
+      "COUNTRY_NAME_EN": "Sudan (pre-secession)"
+    },
+    {
+      "COUNTRY_ID": "ZZA",
+      "COUNTRY_NAME_EN": "Channel Islands"
+    }
+  ]
+}

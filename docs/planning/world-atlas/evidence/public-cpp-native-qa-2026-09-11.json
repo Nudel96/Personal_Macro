@@ -1,0 +1,274 @@
+{
+  "checkedAt": "2026-09-11T04:38:16.058Z",
+  "status": "passed",
+  "runtime": "Owned native Tauri profile com.personal-macro.atlas-public-20260911; native backend and copied public Atlas cache only",
+  "checks": [
+    {
+      "check": "Coverage Germany lists exactly five native commercial series",
+      "passed": true
+    },
+    {
+      "label": "Germany national default, numbers off",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:Q.DE.0.D.0.2.6.0",
+      "since": 0,
+      "numbers": false,
+      "points": 72,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": false
+    },
+    {
+      "label": "Germany national original numbers",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:Q.DE.0.D.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 72,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Germany original bis-commercial-property:A.DE.4.D.0.2.6.0",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:A.DE.4.D.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 31,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Germany original bis-commercial-property:A.DE.9.D.0.2.6.0",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:A.DE.9.D.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 31,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Germany original bis-commercial-property:Q.DE.0.B.0.2.6.0",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:Q.DE.0.B.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 54,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Germany original bis-commercial-property:Q.DE.0.C.0.2.6.0",
+      "geo": "m49:276",
+      "metric": "bis-commercial-property:Q.DE.0.C.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 54,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "France lacks Germany office-and-retail type; no silent substitute",
+      "passed": true
+    },
+    {
+      "label": "Explicit France all-commercial comparison",
+      "geo": "m49:250",
+      "metric": "bis-commercial-property:Q.FR.0.A.0.0.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 46,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "Saved and reopened Germany/France with both original selections, 2010 horizon and BIS provenance",
+      "passed": true
+    },
+    {
+      "check": "Greece retains unavailable office-and-retail request with explicit local alternatives",
+      "passed": true
+    },
+    {
+      "label": "Greece half-year original bis-commercial-property:H.GR.0.B.0.0.6.0",
+      "geo": "m49:300",
+      "metric": "bis-commercial-property:H.GR.0.B.0.0.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 32,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Greece half-year original bis-commercial-property:H.GR.2.B.0.0.6.0",
+      "geo": "m49:300",
+      "metric": "bis-commercial-property:H.GR.2.B.0.0.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 40,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Greece half-year original bis-commercial-property:H.GR.0.C.0.0.6.0",
+      "geo": "m49:300",
+      "metric": "bis-commercial-property:H.GR.0.C.0.0.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 32,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Greece half-year original bis-commercial-property:H.GR.2.C.0.0.6.0",
+      "geo": "m49:300",
+      "metric": "bis-commercial-property:H.GR.2.C.0.0.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 40,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Greece provisional half years with numbers off",
+      "geo": "m49:300",
+      "metric": "bis-commercial-property:H.GR.2.C.0.0.6.0",
+      "since": 0,
+      "numbers": false,
+      "points": 40,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": false
+    },
+    {
+      "check": "Native 1024 px minimum, readable half-year chart, no horizontal overflow; screenshot reviewed",
+      "passed": true
+    },
+    {
+      "label": "US all original prices 1945–2026",
+      "geo": "m49:840",
+      "metric": "bis-commercial-property:Q.US.0.A.0.2.6.0",
+      "since": 0,
+      "numbers": true,
+      "points": 304,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Brazil monthly originals with 130 missing months",
+      "geo": "m49:076",
+      "metric": "bis-commercial-property:M.BR.4.D.0.2.1.0",
+      "since": 0,
+      "numbers": true,
+      "points": 174,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "Brazil 2014 and 2016 area additions split curve into three segments and show source notes",
+      "passed": true
+    },
+    {
+      "label": "Makati original PHP per square metre prices",
+      "geo": "m49:608",
+      "metric": "bis-commercial-property:Q.PH.2.M.0.2.1.0",
+      "since": 0,
+      "numbers": true,
+      "points": 74,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "Makati source revision remains a break with original PHP/m² unit",
+      "passed": true
+    },
+    {
+      "label": "Japan 1955–2026 only actual Q1 and Q3 land observations",
+      "geo": "m49:392",
+      "metric": "bis-commercial-property:Q.JP.9.M.1.4.1.0",
+      "since": 0,
+      "numbers": true,
+      "points": 143,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "Japan missing Q2/Q4 never interpolated; 143 isolated original points",
+      "passed": true
+    },
+    {
+      "check": "Indien has no invented commercial price series",
+      "passed": true
+    },
+    {
+      "check": "Schweiz has no invented commercial price series",
+      "passed": true
+    },
+    {
+      "check": "Welt has no invented commercial price series",
+      "passed": true
+    },
+    {
+      "label": "Fixed euro area 20 country group",
+      "geo": "bis:cpp_euro_area20",
+      "metric": "bis-commercial-property:Q.XM.0.A.0.0.0.0",
+      "since": 0,
+      "numbers": true,
+      "points": 104,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Iceland separate nominal/real original bis-commercial-property:Q.IS.3.A.0.0.1.0",
+      "geo": "m49:352",
+      "metric": "bis-commercial-property:Q.IS.3.A.0.0.1.0",
+      "since": 0,
+      "numbers": true,
+      "points": 120,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Iceland separate nominal/real original bis-commercial-property:Q.IS.3.A.0.0.8.0",
+      "geo": "m49:352",
+      "metric": "bis-commercial-property:Q.IS.3.A.0.0.8.0",
+      "since": 0,
+      "numbers": true,
+      "points": 120,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "label": "Hong Kong offices with eight missing months",
+      "geo": "m49:344",
+      "metric": "bis-commercial-property:M.HK.0.B.0.1.1.0",
+      "since": 0,
+      "numbers": true,
+      "points": 394,
+      "allPeriodsAndStatusesMatch": true,
+      "allOriginalDisplayedValuesMatch": true
+    },
+    {
+      "check": "Unsupported India coverage is one explicit commercial source-area entry, not foreign prices",
+      "passed": true
+    },
+    {
+      "check": "US 1996 source change splits two curves and retains dated source attribution",
+      "passed": true
+    },
+    {
+      "check": "Explicit source-area selector navigates from unsupported India to actual US profile",
+      "passed": true
+    },
+    {
+      "check": "Complete original method, source title and underlying national provider accessible in disclosure",
+      "passed": true
+    }
+  ],
+  "screenshots": [
+    "output/atlas-cpp-comparison.png",
+    "output/atlas-cpp-halfyears.png",
+    "output/atlas-cpp-minwidth.png",
+    "output/atlas-cpp-japan-gaps.png"
+  ],
+  "screenshotsVisuallyReviewed": true
+}

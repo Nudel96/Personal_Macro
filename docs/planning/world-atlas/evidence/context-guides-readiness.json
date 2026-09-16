@@ -1,0 +1,25 @@
+{
+  "identifier": "com.personal-macro.atlas-context-guides-20260909",
+  "firstRunAt": "2026-09-09T11:11:02.216Z",
+  "restartRunAt": "2026-09-09T11:12:52.827Z",
+  "guideContexts": 10,
+  "destinationContexts": 22,
+  "nativeNotebookRoundtrips": 32,
+  "preservedAfterProcessRestart": 32,
+  "lastContextVerifiedByNativeCommandAfterRestart": true,
+  "sourceReferences": 0,
+  "chartSnapshots": 0,
+  "scope": "Navigation contexts only; this test does not claim source availability or native UI clicks.",
+  "guideTopics": [
+    "long_history:crises_recoveries",
+    "long_history:long_run_inflation",
+    "long_history:long_run_population",
+    "long_history:long_run_rates",
+    "structural_change:education_expansion",
+    "structural_change:energy_transitions",
+    "structural_change:industrialization",
+    "structural_change:productivity_regimes",
+    "structural_change:service_transition",
+    "structural_change:urban_transition"
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "sourceSha256": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72",
+  "sourceRows": 1995192,
+  "numericValues": 1995192,
+  "sourceMissingValues": 0,
+  "zeroValues": 426,
+  "areas": 234,
+  "items": 196,
+  "maximumAbsoluteDifference": 0,
+  "provenanceEqualAcrossProfiles": true,
+  "selectedHistory": [
+    {
+      "area": "79",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "79",
+      "item": "15",
+      "lastYear": 2017
+    },
+    {
+      "area": "79",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "100",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "100",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "100",
+      "item": "661",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "231",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "231",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "231",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "5100",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "5100",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "5100",
+      "item": "661",
+      "lastYear": 2024
+    }
+  ],
+  "native": null,
+  "scope": "All original numeric keys, published zeroes, provider labels, and native cached source identity."
+}

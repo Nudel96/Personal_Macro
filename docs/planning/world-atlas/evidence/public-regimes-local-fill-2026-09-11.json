@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T06:33:29.984100+00:00",
+  "status": "passed",
+  "sourceId": "jst-exchange-regimes",
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "profiles": 36,
+  "classifiedYears": 5336,
+  "missing": 100,
+  "allOriginalProfilesExact": true,
+  "provenance": {
+    "sourceId": "jst-exchange-regimes",
+    "retrievedAt": "2026-09-11T06:31:22.398485400+00:00",
+    "publishedAt": "2022-07",
+    "url": "https://sfff5b3ac9317c4be.jimcontent.com/download/version/1763503850/module/9834512569/name/JSTdatasetR6.xlsx",
+    "documentationUrl": "https://www.macrohistory.net/database/",
+    "sha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+    "recipe": "jst-r6-original-peg-classifications-v1",
+    "sourceRows": 2718,
+    "numericValues": 5336,
+    "areaCount": 18
+  }
+}

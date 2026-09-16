@@ -1,0 +1,1434 @@
+{
+  "sourceId": "aci-trilemma",
+  "file": "aci-trilemma-2020.xlsx",
+  "sheet": "Sheet1",
+  "header": [
+    "IMF-World Bank Country Code",
+    "year",
+    "Exchange Rate Stability Index",
+    "Monetary Independence Index",
+    "Financial Openness Index",
+    "Country Name"
+  ],
+  "columns": [
+    {
+      "code": "ers",
+      "index": 2,
+      "column": "C",
+      "title": "Exchange Rate Stability Index",
+      "note": "ERS: höhere Werte bedeuten stabilere Wechselkurse zur Bezugswährung. Das Modell verwendet Volatilität und Bindungsschwellen; kein Wechselkursniveau."
+    },
+    {
+      "code": "mi",
+      "index": 3,
+      "column": "D",
+      "title": "Monetary Independence Index",
+      "note": "MI: höher bedeutet größere geldpolitische Unabhängigkeit im Modell. Die Quelle glättet mit Vorjahr, aktuellem Jahr und Folgejahr. Konstante Zinsen können den Modellwert 0,5 erzeugen; er bedeutet keine politische Neutralität. Kein in Echtzeit verfügbares Handelssignal."
+    },
+    {
+      "code": "kaopen",
+      "index": 4,
+      "column": "E",
+      "title": "Financial Openness Index",
+      "note": "KAOPEN: höher bedeutet rechtlich offeneren Kapitalverkehr. Modellindex aus gemeldeten Vorschriften, keine beobachteten Kapitalströme. Diese gemeinsame Ausgabe endet hier 2019; sie wird nicht mit der späteren eigenständigen Chinn-Ito-Ausgabe vermischt."
+    }
+  ],
+  "countries": {
+    "112": {
+      "label": "United Kingdom",
+      "iso3": "GBR",
+      "geographyId": "m49:826",
+      "breakYears": [],
+      "note": ""
+    },
+    "122": {
+      "label": "Austria",
+      "iso3": "AUT",
+      "geographyId": "m49:040",
+      "breakYears": [],
+      "note": ""
+    },
+    "124": {
+      "label": "Belgium",
+      "iso3": "BEL",
+      "geographyId": "m49:056",
+      "breakYears": [],
+      "note": ""
+    },
+    "128": {
+      "label": "Denmark",
+      "iso3": "DNK",
+      "geographyId": "m49:208",
+      "breakYears": [],
+      "note": ""
+    },
+    "132": {
+      "label": "France",
+      "iso3": "FRA",
+      "geographyId": "m49:250",
+      "breakYears": [],
+      "note": ""
+    },
+    "134": {
+      "label": "Germany",
+      "iso3": "DEU",
+      "geographyId": "m49:276",
+      "breakYears": [1991],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "135": {
+      "label": "San Marino",
+      "iso3": "SMR",
+      "geographyId": "m49:674",
+      "breakYears": [],
+      "note": ""
+    },
+    "136": {
+      "label": "Italy",
+      "iso3": "ITA",
+      "geographyId": "m49:380",
+      "breakYears": [],
+      "note": ""
+    },
+    "137": {
+      "label": "Luxembourg",
+      "iso3": "LUX",
+      "geographyId": "m49:442",
+      "breakYears": [],
+      "note": ""
+    },
+    "138": {
+      "label": "Netherlands",
+      "iso3": "NLD",
+      "geographyId": "m49:528",
+      "breakYears": [],
+      "note": ""
+    },
+    "142": {
+      "label": "Norway",
+      "iso3": "NOR",
+      "geographyId": "m49:578",
+      "breakYears": [],
+      "note": ""
+    },
+    "144": {
+      "label": "Sweden",
+      "iso3": "SWE",
+      "geographyId": "m49:752",
+      "breakYears": [],
+      "note": ""
+    },
+    "146": {
+      "label": "Switzerland",
+      "iso3": "CHE",
+      "geographyId": "m49:756",
+      "breakYears": [],
+      "note": ""
+    },
+    "156": {
+      "label": "Canada",
+      "iso3": "CAN",
+      "geographyId": "m49:124",
+      "breakYears": [],
+      "note": ""
+    },
+    "158": {
+      "label": "Japan",
+      "iso3": "JPN",
+      "geographyId": "m49:392",
+      "breakYears": [],
+      "note": ""
+    },
+    "163": {
+      "label": "Euro_Area",
+      "iso3": null,
+      "geographyId": null,
+      "breakYears": [],
+      "note": ""
+    },
+    "172": {
+      "label": "Finland",
+      "iso3": "FIN",
+      "geographyId": "m49:246",
+      "breakYears": [],
+      "note": ""
+    },
+    "174": {
+      "label": "Greece",
+      "iso3": "GRC",
+      "geographyId": "m49:300",
+      "breakYears": [],
+      "note": ""
+    },
+    "176": {
+      "label": "Iceland",
+      "iso3": "ISL",
+      "geographyId": "m49:352",
+      "breakYears": [],
+      "note": ""
+    },
+    "178": {
+      "label": "Ireland",
+      "iso3": "IRL",
+      "geographyId": "m49:372",
+      "breakYears": [],
+      "note": ""
+    },
+    "181": {
+      "label": "Malta",
+      "iso3": "MLT",
+      "geographyId": "m49:470",
+      "breakYears": [],
+      "note": ""
+    },
+    "182": {
+      "label": "Portugal",
+      "iso3": "PRT",
+      "geographyId": "m49:620",
+      "breakYears": [],
+      "note": ""
+    },
+    "184": {
+      "label": "Spain",
+      "iso3": "ESP",
+      "geographyId": "m49:724",
+      "breakYears": [],
+      "note": ""
+    },
+    "186": {
+      "label": "Turkey",
+      "iso3": "TUR",
+      "geographyId": "m49:792",
+      "breakYears": [],
+      "note": ""
+    },
+    "193": {
+      "label": "Australia",
+      "iso3": "AUS",
+      "geographyId": "m49:036",
+      "breakYears": [],
+      "note": ""
+    },
+    "196": {
+      "label": "New Zealand",
+      "iso3": "NZL",
+      "geographyId": "m49:554",
+      "breakYears": [],
+      "note": ""
+    },
+    "199": {
+      "label": "South Africa",
+      "iso3": "ZAF",
+      "geographyId": "m49:710",
+      "breakYears": [],
+      "note": ""
+    },
+    "213": {
+      "label": "Argentina",
+      "iso3": "ARG",
+      "geographyId": "m49:032",
+      "breakYears": [],
+      "note": ""
+    },
+    "218": {
+      "label": "Bolivia",
+      "iso3": "BOL",
+      "geographyId": "m49:068",
+      "breakYears": [],
+      "note": ""
+    },
+    "223": {
+      "label": "Brazil",
+      "iso3": "BRA",
+      "geographyId": "m49:076",
+      "breakYears": [],
+      "note": ""
+    },
+    "228": {
+      "label": "Chile",
+      "iso3": "CHL",
+      "geographyId": "m49:152",
+      "breakYears": [],
+      "note": ""
+    },
+    "233": {
+      "label": "Colombia",
+      "iso3": "COL",
+      "geographyId": "m49:170",
+      "breakYears": [],
+      "note": ""
+    },
+    "238": {
+      "label": "Costa Rica",
+      "iso3": "CRI",
+      "geographyId": "m49:188",
+      "breakYears": [],
+      "note": ""
+    },
+    "243": {
+      "label": "Dominican Republic",
+      "iso3": "DOM",
+      "geographyId": "m49:214",
+      "breakYears": [],
+      "note": ""
+    },
+    "248": {
+      "label": "Ecuador",
+      "iso3": "ECU",
+      "geographyId": "m49:218",
+      "breakYears": [],
+      "note": ""
+    },
+    "253": {
+      "label": "El Salvador",
+      "iso3": "SLV",
+      "geographyId": "m49:222",
+      "breakYears": [],
+      "note": ""
+    },
+    "258": {
+      "label": "Guatemala",
+      "iso3": "GTM",
+      "geographyId": "m49:320",
+      "breakYears": [],
+      "note": ""
+    },
+    "263": {
+      "label": "Haiti",
+      "iso3": "HTI",
+      "geographyId": "m49:332",
+      "breakYears": [],
+      "note": ""
+    },
+    "268": {
+      "label": "Honduras",
+      "iso3": "HND",
+      "geographyId": "m49:340",
+      "breakYears": [],
+      "note": ""
+    },
+    "273": {
+      "label": "Mexico",
+      "iso3": "MEX",
+      "geographyId": "m49:484",
+      "breakYears": [],
+      "note": ""
+    },
+    "278": {
+      "label": "Nicaragua",
+      "iso3": "NIC",
+      "geographyId": "m49:558",
+      "breakYears": [],
+      "note": ""
+    },
+    "283": {
+      "label": "Panama",
+      "iso3": "PAN",
+      "geographyId": "m49:591",
+      "breakYears": [],
+      "note": ""
+    },
+    "288": {
+      "label": "Paraguay",
+      "iso3": "PRY",
+      "geographyId": "m49:600",
+      "breakYears": [],
+      "note": ""
+    },
+    "293": {
+      "label": "Peru",
+      "iso3": "PER",
+      "geographyId": "m49:604",
+      "breakYears": [],
+      "note": ""
+    },
+    "298": {
+      "label": "Uruguay",
+      "iso3": "URY",
+      "geographyId": "m49:858",
+      "breakYears": [],
+      "note": ""
+    },
+    "299": {
+      "label": "Venezuela, RB",
+      "iso3": "VEN",
+      "geographyId": "m49:862",
+      "breakYears": [],
+      "note": ""
+    },
+    "311": {
+      "label": "Antigua and Barbuda",
+      "iso3": "ATG",
+      "geographyId": "m49:028",
+      "breakYears": [],
+      "note": ""
+    },
+    "313": {
+      "label": "Bahamas, The",
+      "iso3": "BHS",
+      "geographyId": "m49:044",
+      "breakYears": [],
+      "note": ""
+    },
+    "314": {
+      "label": "Aruba",
+      "iso3": "ABW",
+      "geographyId": "m49:533",
+      "breakYears": [],
+      "note": ""
+    },
+    "316": {
+      "label": "Barbados",
+      "iso3": "BRB",
+      "geographyId": "m49:052",
+      "breakYears": [],
+      "note": ""
+    },
+    "319": {
+      "label": "Bermuda",
+      "iso3": "BMU",
+      "geographyId": "m49:060",
+      "breakYears": [],
+      "note": ""
+    },
+    "321": {
+      "label": "Dominica",
+      "iso3": "DMA",
+      "geographyId": "m49:212",
+      "breakYears": [],
+      "note": ""
+    },
+    "326": {
+      "label": "Greenland",
+      "iso3": "GRL",
+      "geographyId": "m49:304",
+      "breakYears": [],
+      "note": ""
+    },
+    "328": {
+      "label": "Grenada",
+      "iso3": "GRD",
+      "geographyId": "m49:308",
+      "breakYears": [],
+      "note": ""
+    },
+    "336": {
+      "label": "Guyana",
+      "iso3": "GUY",
+      "geographyId": "m49:328",
+      "breakYears": [],
+      "note": ""
+    },
+    "339": {
+      "label": "Belize",
+      "iso3": "BLZ",
+      "geographyId": "m49:084",
+      "breakYears": [],
+      "note": ""
+    },
+    "343": {
+      "label": "Jamaica",
+      "iso3": "JAM",
+      "geographyId": "m49:388",
+      "breakYears": [],
+      "note": ""
+    },
+    "353": {
+      "label": "Netherlands Antilles",
+      "iso3": null,
+      "geographyId": null,
+      "breakYears": [],
+      "note": ""
+    },
+    "361": {
+      "label": "St. Kitts and Nevis",
+      "iso3": "KNA",
+      "geographyId": "m49:659",
+      "breakYears": [],
+      "note": ""
+    },
+    "362": {
+      "label": "St. Lucia",
+      "iso3": "LCA",
+      "geographyId": "m49:662",
+      "breakYears": [],
+      "note": ""
+    },
+    "364": {
+      "label": "St. Vincent and the Grenadines",
+      "iso3": "VCT",
+      "geographyId": "m49:670",
+      "breakYears": [],
+      "note": ""
+    },
+    "366": {
+      "label": "Suriname",
+      "iso3": "SUR",
+      "geographyId": "m49:740",
+      "breakYears": [],
+      "note": ""
+    },
+    "369": {
+      "label": "Trinidad and Tobago",
+      "iso3": "TTO",
+      "geographyId": "m49:780",
+      "breakYears": [],
+      "note": ""
+    },
+    "377": {
+      "label": "Cayman Islands",
+      "iso3": "CYM",
+      "geographyId": "m49:136",
+      "breakYears": [],
+      "note": ""
+    },
+    "419": {
+      "label": "Bahrain",
+      "iso3": "BHR",
+      "geographyId": "m49:048",
+      "breakYears": [],
+      "note": ""
+    },
+    "423": {
+      "label": "Cyprus",
+      "iso3": "CYP",
+      "geographyId": "m49:196",
+      "breakYears": [],
+      "note": ""
+    },
+    "429": {
+      "label": "Iran, Islamic Rep.",
+      "iso3": "IRN",
+      "geographyId": "m49:364",
+      "breakYears": [],
+      "note": ""
+    },
+    "433": {
+      "label": "Iraq",
+      "iso3": "IRQ",
+      "geographyId": "m49:368",
+      "breakYears": [],
+      "note": ""
+    },
+    "436": {
+      "label": "Israel",
+      "iso3": "ISR",
+      "geographyId": "m49:376",
+      "breakYears": [],
+      "note": ""
+    },
+    "439": {
+      "label": "Jordan",
+      "iso3": "JOR",
+      "geographyId": "m49:400",
+      "breakYears": [],
+      "note": ""
+    },
+    "443": {
+      "label": "Kuwait",
+      "iso3": "KWT",
+      "geographyId": "m49:414",
+      "breakYears": [],
+      "note": ""
+    },
+    "446": {
+      "label": "Lebanon",
+      "iso3": "LBN",
+      "geographyId": "m49:422",
+      "breakYears": [],
+      "note": ""
+    },
+    "449": {
+      "label": "Oman",
+      "iso3": "OMN",
+      "geographyId": "m49:512",
+      "breakYears": [],
+      "note": ""
+    },
+    "453": {
+      "label": "Qatar",
+      "iso3": "QAT",
+      "geographyId": "m49:634",
+      "breakYears": [],
+      "note": ""
+    },
+    "456": {
+      "label": "Saudi Arabia",
+      "iso3": "SAU",
+      "geographyId": "m49:682",
+      "breakYears": [],
+      "note": ""
+    },
+    "463": {
+      "label": "Syrian Arab Republic",
+      "iso3": "SYR",
+      "geographyId": "m49:760",
+      "breakYears": [],
+      "note": ""
+    },
+    "466": {
+      "label": "United Arab Emirates",
+      "iso3": "ARE",
+      "geographyId": "m49:784",
+      "breakYears": [],
+      "note": ""
+    },
+    "469": {
+      "label": "Egypt, Arab Rep.",
+      "iso3": "EGY",
+      "geographyId": "m49:818",
+      "breakYears": [],
+      "note": ""
+    },
+    "474": {
+      "label": "Yemen, Rep.",
+      "iso3": "YEM",
+      "geographyId": "m49:887",
+      "breakYears": [1990],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "487": {
+      "label": "West Bank and Gaza",
+      "iso3": "PSE",
+      "geographyId": "m49:275",
+      "breakYears": [],
+      "note": ""
+    },
+    "512": {
+      "label": "Afghanistan",
+      "iso3": "AFG",
+      "geographyId": "m49:004",
+      "breakYears": [],
+      "note": ""
+    },
+    "513": {
+      "label": "Bangladesh",
+      "iso3": "BGD",
+      "geographyId": "m49:050",
+      "breakYears": [1972],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "514": {
+      "label": "Bhutan",
+      "iso3": "BTN",
+      "geographyId": "m49:064",
+      "breakYears": [],
+      "note": ""
+    },
+    "516": {
+      "label": "Brunei",
+      "iso3": "BRN",
+      "geographyId": "m49:096",
+      "breakYears": [],
+      "note": ""
+    },
+    "518": {
+      "label": "Myanmar",
+      "iso3": "MMR",
+      "geographyId": "m49:104",
+      "breakYears": [],
+      "note": ""
+    },
+    "522": {
+      "label": "Cambodia",
+      "iso3": "KHM",
+      "geographyId": "m49:116",
+      "breakYears": [],
+      "note": ""
+    },
+    "524": {
+      "label": "Sri Lanka",
+      "iso3": "LKA",
+      "geographyId": "m49:144",
+      "breakYears": [],
+      "note": ""
+    },
+    "528": {
+      "label": "Taiwan",
+      "iso3": "TWN",
+      "geographyId": "provider:TWN",
+      "breakYears": [],
+      "note": ""
+    },
+    "532": {
+      "label": "Hong Kong, China",
+      "iso3": "HKG",
+      "geographyId": "m49:344",
+      "breakYears": [],
+      "note": ""
+    },
+    "534": {
+      "label": "India",
+      "iso3": "IND",
+      "geographyId": "m49:356",
+      "breakYears": [],
+      "note": ""
+    },
+    "536": {
+      "label": "Indonesia",
+      "iso3": "IDN",
+      "geographyId": "m49:360",
+      "breakYears": [],
+      "note": ""
+    },
+    "537": {
+      "label": "Timor-Leste",
+      "iso3": "TLS",
+      "geographyId": "m49:626",
+      "breakYears": [],
+      "note": ""
+    },
+    "542": {
+      "label": "Korea, Rep.",
+      "iso3": "KOR",
+      "geographyId": "m49:410",
+      "breakYears": [],
+      "note": ""
+    },
+    "544": {
+      "label": "Lao PDR",
+      "iso3": "LAO",
+      "geographyId": "m49:418",
+      "breakYears": [],
+      "note": ""
+    },
+    "548": {
+      "label": "Malaysia",
+      "iso3": "MYS",
+      "geographyId": "m49:458",
+      "breakYears": [],
+      "note": ""
+    },
+    "556": {
+      "label": "Maldives",
+      "iso3": "MDV",
+      "geographyId": "m49:462",
+      "breakYears": [],
+      "note": ""
+    },
+    "558": {
+      "label": "Nepal",
+      "iso3": "NPL",
+      "geographyId": "m49:524",
+      "breakYears": [],
+      "note": ""
+    },
+    "564": {
+      "label": "Pakistan",
+      "iso3": "PAK",
+      "geographyId": "m49:586",
+      "breakYears": [1972],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "565": {
+      "label": "Palau",
+      "iso3": "PLW",
+      "geographyId": "m49:585",
+      "breakYears": [],
+      "note": ""
+    },
+    "566": {
+      "label": "Philippines",
+      "iso3": "PHL",
+      "geographyId": "m49:608",
+      "breakYears": [],
+      "note": ""
+    },
+    "576": {
+      "label": "Singapore",
+      "iso3": "SGP",
+      "geographyId": "m49:702",
+      "breakYears": [],
+      "note": ""
+    },
+    "578": {
+      "label": "Thailand",
+      "iso3": "THA",
+      "geographyId": "m49:764",
+      "breakYears": [],
+      "note": ""
+    },
+    "582": {
+      "label": "Vietnam",
+      "iso3": "VNM",
+      "geographyId": "m49:704",
+      "breakYears": [],
+      "note": ""
+    },
+    "611": {
+      "label": "Djibouti",
+      "iso3": "DJI",
+      "geographyId": "m49:262",
+      "breakYears": [],
+      "note": ""
+    },
+    "612": {
+      "label": "Algeria",
+      "iso3": "DZA",
+      "geographyId": "m49:012",
+      "breakYears": [],
+      "note": ""
+    },
+    "614": {
+      "label": "Angola",
+      "iso3": "AGO",
+      "geographyId": "m49:024",
+      "breakYears": [],
+      "note": ""
+    },
+    "616": {
+      "label": "Botswana",
+      "iso3": "BWA",
+      "geographyId": "m49:072",
+      "breakYears": [],
+      "note": ""
+    },
+    "618": {
+      "label": "Burundi",
+      "iso3": "BDI",
+      "geographyId": "m49:108",
+      "breakYears": [],
+      "note": ""
+    },
+    "622": {
+      "label": "Cameroon",
+      "iso3": "CMR",
+      "geographyId": "m49:120",
+      "breakYears": [],
+      "note": ""
+    },
+    "624": {
+      "label": "Cape Verde",
+      "iso3": "CPV",
+      "geographyId": "m49:132",
+      "breakYears": [],
+      "note": ""
+    },
+    "626": {
+      "label": "Central African Republic",
+      "iso3": "CAF",
+      "geographyId": "m49:140",
+      "breakYears": [],
+      "note": ""
+    },
+    "628": {
+      "label": "Chad",
+      "iso3": "TCD",
+      "geographyId": "m49:148",
+      "breakYears": [],
+      "note": ""
+    },
+    "632": {
+      "label": "Comoros",
+      "iso3": "COM",
+      "geographyId": "m49:174",
+      "breakYears": [],
+      "note": ""
+    },
+    "634": {
+      "label": "Congo, Rep.",
+      "iso3": "COG",
+      "geographyId": "m49:178",
+      "breakYears": [],
+      "note": ""
+    },
+    "636": {
+      "label": "Congo, Dem. Rep.",
+      "iso3": "COD",
+      "geographyId": "m49:180",
+      "breakYears": [],
+      "note": ""
+    },
+    "638": {
+      "label": "Benin",
+      "iso3": "BEN",
+      "geographyId": "m49:204",
+      "breakYears": [],
+      "note": ""
+    },
+    "642": {
+      "label": "Equatorial Guinea",
+      "iso3": "GNQ",
+      "geographyId": "m49:226",
+      "breakYears": [],
+      "note": ""
+    },
+    "643": {
+      "label": "Eritrea",
+      "iso3": "ERI",
+      "geographyId": "m49:232",
+      "breakYears": [1993],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "644": {
+      "label": "Ethiopia",
+      "iso3": "ETH",
+      "geographyId": "m49:231",
+      "breakYears": [1993],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "646": {
+      "label": "Gabon",
+      "iso3": "GAB",
+      "geographyId": "m49:266",
+      "breakYears": [],
+      "note": ""
+    },
+    "648": {
+      "label": "Gambia, The",
+      "iso3": "GMB",
+      "geographyId": "m49:270",
+      "breakYears": [],
+      "note": ""
+    },
+    "652": {
+      "label": "Ghana",
+      "iso3": "GHA",
+      "geographyId": "m49:288",
+      "breakYears": [],
+      "note": ""
+    },
+    "654": {
+      "label": "Guinea-Bissau",
+      "iso3": "GNB",
+      "geographyId": "m49:624",
+      "breakYears": [],
+      "note": ""
+    },
+    "656": {
+      "label": "Guinea",
+      "iso3": "GIN",
+      "geographyId": "m49:324",
+      "breakYears": [],
+      "note": ""
+    },
+    "662": {
+      "label": "C?e d'Ivoire",
+      "iso3": "CIV",
+      "geographyId": "m49:384",
+      "breakYears": [],
+      "note": ""
+    },
+    "664": {
+      "label": "Kenya",
+      "iso3": "KEN",
+      "geographyId": "m49:404",
+      "breakYears": [],
+      "note": ""
+    },
+    "666": {
+      "label": "Lesotho",
+      "iso3": "LSO",
+      "geographyId": "m49:426",
+      "breakYears": [],
+      "note": ""
+    },
+    "668": {
+      "label": "Liberia",
+      "iso3": "LBR",
+      "geographyId": "m49:430",
+      "breakYears": [],
+      "note": ""
+    },
+    "672": {
+      "label": "Libya",
+      "iso3": "LBY",
+      "geographyId": "m49:434",
+      "breakYears": [],
+      "note": ""
+    },
+    "674": {
+      "label": "Madagascar",
+      "iso3": "MDG",
+      "geographyId": "m49:450",
+      "breakYears": [],
+      "note": ""
+    },
+    "676": {
+      "label": "Malawi",
+      "iso3": "MWI",
+      "geographyId": "m49:454",
+      "breakYears": [],
+      "note": ""
+    },
+    "678": {
+      "label": "Mali",
+      "iso3": "MLI",
+      "geographyId": "m49:466",
+      "breakYears": [],
+      "note": ""
+    },
+    "682": {
+      "label": "Mauritania",
+      "iso3": "MRT",
+      "geographyId": "m49:478",
+      "breakYears": [],
+      "note": ""
+    },
+    "684": {
+      "label": "Mauritius",
+      "iso3": "MUS",
+      "geographyId": "m49:480",
+      "breakYears": [],
+      "note": ""
+    },
+    "686": {
+      "label": "Morocco",
+      "iso3": "MAR",
+      "geographyId": "m49:504",
+      "breakYears": [],
+      "note": ""
+    },
+    "688": {
+      "label": "Mozambique",
+      "iso3": "MOZ",
+      "geographyId": "m49:508",
+      "breakYears": [],
+      "note": ""
+    },
+    "692": {
+      "label": "Niger",
+      "iso3": "NER",
+      "geographyId": "m49:562",
+      "breakYears": [],
+      "note": ""
+    },
+    "694": {
+      "label": "Nigeria",
+      "iso3": "NGA",
+      "geographyId": "m49:566",
+      "breakYears": [],
+      "note": ""
+    },
+    "698": {
+      "label": "Zimbabwe",
+      "iso3": "ZWE",
+      "geographyId": "m49:716",
+      "breakYears": [],
+      "note": ""
+    },
+    "714": {
+      "label": "Rwanda",
+      "iso3": "RWA",
+      "geographyId": "m49:646",
+      "breakYears": [],
+      "note": ""
+    },
+    "716": {
+      "label": "S? Tom�and Principe",
+      "iso3": "STP",
+      "geographyId": "m49:678",
+      "breakYears": [],
+      "note": ""
+    },
+    "718": {
+      "label": "Seychelles",
+      "iso3": "SYC",
+      "geographyId": "m49:690",
+      "breakYears": [],
+      "note": ""
+    },
+    "722": {
+      "label": "Senegal",
+      "iso3": "SEN",
+      "geographyId": "m49:686",
+      "breakYears": [],
+      "note": ""
+    },
+    "724": {
+      "label": "Sierra Leone",
+      "iso3": "SLE",
+      "geographyId": "m49:694",
+      "breakYears": [],
+      "note": ""
+    },
+    "726": {
+      "label": "Somalia",
+      "iso3": "SOM",
+      "geographyId": "m49:706",
+      "breakYears": [],
+      "note": ""
+    },
+    "728": {
+      "label": "Namibia",
+      "iso3": "NAM",
+      "geographyId": "m49:516",
+      "breakYears": [1990],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "732": {
+      "label": "Sudan",
+      "iso3": "SDN",
+      "geographyId": "m49:729",
+      "breakYears": [2011, 2012],
+      "note": "Historische Gebietsabgrenzung der Quelle; vor und nach Gebietsänderungen keine Rekonstruktion identischer heutiger Landesgrenzen. Atlas trennt bekannte Übergänge in der Linie."
+    },
+    "734": {
+      "label": "Swaziland",
+      "iso3": "SWZ",
+      "geographyId": "m49:748",
+      "breakYears": [],
+      "note": ""
+    },
+    "738": {
+      "label": "Tanzania",
+      "iso3": "TZA",
+      "geographyId": "m49:834",
+      "breakYears": [],
+      "note": ""
+    },
+    "742": {
+      "label": "Togo",
+      "iso3": "TGO",
+      "geographyId": "m49:768",
+      "breakYears": [],
+      "note": ""
+    },
+    "744": {
+      "label": "Tunisia",
+      "iso3": "TUN",
+      "geographyId": "m49:788",
+      "breakYears": [],
+      "note": ""
+    },
+    "746": {
+      "label": "Uganda",
+      "iso3": "UGA",
+      "geographyId": "m49:800",
+      "breakYears": [],
+      "note": ""
+    },
+    "748": {
+      "label": "Burkina Faso",
+      "iso3": "BFA",
+      "geographyId": "m49:854",
+      "breakYears": [],
+      "note": ""
+    },
+    "754": {
+      "label": "Zambia",
+      "iso3": "ZMB",
+      "geographyId": "m49:894",
+      "breakYears": [],
+      "note": ""
+    },
+    "813": {
+      "label": "Solomon Islands",
+      "iso3": "SLB",
+      "geographyId": "m49:090",
+      "breakYears": [],
+      "note": ""
+    },
+    "819": {
+      "label": "Fiji",
+      "iso3": "FJI",
+      "geographyId": "m49:242",
+      "breakYears": [],
+      "note": ""
+    },
+    "826": {
+      "label": "Kiribati",
+      "iso3": "KIR",
+      "geographyId": "m49:296",
+      "breakYears": [],
+      "note": ""
+    },
+    "829": {
+      "label": "Guam",
+      "iso3": "GUM",
+      "geographyId": "m49:316",
+      "breakYears": [],
+      "note": ""
+    },
+    "839": {
+      "label": "New Caledonia",
+      "iso3": "NCL",
+      "geographyId": "m49:540",
+      "breakYears": [],
+      "note": ""
+    },
+    "846": {
+      "label": "Vanuatu",
+      "iso3": "VUT",
+      "geographyId": "m49:548",
+      "breakYears": [],
+      "note": ""
+    },
+    "853": {
+      "label": "Papua New Guinea",
+      "iso3": "PNG",
+      "geographyId": "m49:598",
+      "breakYears": [],
+      "note": ""
+    },
+    "859": {
+      "label": "American Samoa",
+      "iso3": null,
+      "geographyId": null,
+      "breakYears": [],
+      "note": ""
+    },
+    "862": {
+      "label": "Samoa",
+      "iso3": "WSM",
+      "geographyId": "m49:882",
+      "breakYears": [],
+      "note": ""
+    },
+    "866": {
+      "label": "Tonga",
+      "iso3": "TON",
+      "geographyId": "m49:776",
+      "breakYears": [],
+      "note": ""
+    },
+    "867": {
+      "label": "Marshall Islands",
+      "iso3": "MHL",
+      "geographyId": "m49:584",
+      "breakYears": [],
+      "note": ""
+    },
+    "868": {
+      "label": "Micronesia, Fed. Sts.",
+      "iso3": "FSM",
+      "geographyId": "m49:583",
+      "breakYears": [],
+      "note": ""
+    },
+    "887": {
+      "label": "French Polynesia",
+      "iso3": "PYF",
+      "geographyId": "m49:258",
+      "breakYears": [],
+      "note": ""
+    },
+    "911": {
+      "label": "Armenia",
+      "iso3": "ARM",
+      "geographyId": "m49:051",
+      "breakYears": [],
+      "note": ""
+    },
+    "912": {
+      "label": "Azerbaijan",
+      "iso3": "AZE",
+      "geographyId": "m49:031",
+      "breakYears": [],
+      "note": ""
+    },
+    "913": {
+      "label": "Belarus",
+      "iso3": "BLR",
+      "geographyId": "m49:112",
+      "breakYears": [],
+      "note": ""
+    },
+    "914": {
+      "label": "Albania",
+      "iso3": "ALB",
+      "geographyId": "m49:008",
+      "breakYears": [],
+      "note": ""
+    },
+    "915": {
+      "label": "Georgia",
+      "iso3": "GEO",
+      "geographyId": "m49:268",
+      "breakYears": [],
+      "note": ""
+    },
+    "916": {
+      "label": "Kazakhstan",
+      "iso3": "KAZ",
+      "geographyId": "m49:398",
+      "breakYears": [],
+      "note": ""
+    },
+    "917": {
+      "label": "Kyrgyz Republic",
+      "iso3": "KGZ",
+      "geographyId": "m49:417",
+      "breakYears": [],
+      "note": ""
+    },
+    "918": {
+      "label": "Bulgaria",
+      "iso3": "BGR",
+      "geographyId": "m49:100",
+      "breakYears": [],
+      "note": ""
+    },
+    "921": {
+      "label": "Moldova",
+      "iso3": "MDA",
+      "geographyId": "m49:498",
+      "breakYears": [],
+      "note": ""
+    },
+    "922": {
+      "label": "Russian Federation",
+      "iso3": "RUS",
+      "geographyId": "m49:643",
+      "breakYears": [],
+      "note": ""
+    },
+    "923": {
+      "label": "Tajikistan",
+      "iso3": "TJK",
+      "geographyId": "m49:762",
+      "breakYears": [],
+      "note": ""
+    },
+    "924": {
+      "label": "China",
+      "iso3": "CHN",
+      "geographyId": "m49:156",
+      "breakYears": [],
+      "note": ""
+    },
+    "925": {
+      "label": "Turkmenistan",
+      "iso3": "TKM",
+      "geographyId": "m49:795",
+      "breakYears": [],
+      "note": ""
+    },
+    "926": {
+      "label": "Ukraine",
+      "iso3": "UKR",
+      "geographyId": "m49:804",
+      "breakYears": [],
+      "note": ""
+    },
+    "927": {
+      "label": "Uzbekistan",
+      "iso3": "UZB",
+      "geographyId": "m49:860",
+      "breakYears": [],
+      "note": ""
+    },
+    "928": {
+      "label": "Cuba",
+      "iso3": "CUB",
+      "geographyId": "m49:192",
+      "breakYears": [],
+      "note": ""
+    },
+    "934": {
+      "label": "Czechoslovakia",
+      "iso3": null,
+      "geographyId": null,
+      "breakYears": [],
+      "note": ""
+    },
+    "935": {
+      "label": "Czech Republic",
+      "iso3": "CZE",
+      "geographyId": "m49:203",
+      "breakYears": [],
+      "note": ""
+    },
+    "936": {
+      "label": "Slovak Republic",
+      "iso3": "SVK",
+      "geographyId": "m49:703",
+      "breakYears": [],
+      "note": ""
+    },
+    "939": {
+      "label": "Estonia",
+      "iso3": "EST",
+      "geographyId": "m49:233",
+      "breakYears": [],
+      "note": ""
+    },
+    "941": {
+      "label": "Latvia",
+      "iso3": "LVA",
+      "geographyId": "m49:428",
+      "breakYears": [],
+      "note": ""
+    },
+    "942": {
+      "label": "Serbia, Rep. of",
+      "iso3": "SRB",
+      "geographyId": "m49:688",
+      "breakYears": [],
+      "note": ""
+    },
+    "943": {
+      "label": "Montenegro",
+      "iso3": "MNE",
+      "geographyId": "m49:499",
+      "breakYears": [],
+      "note": ""
+    },
+    "944": {
+      "label": "Hungary",
+      "iso3": "HUN",
+      "geographyId": "m49:348",
+      "breakYears": [],
+      "note": ""
+    },
+    "946": {
+      "label": "Lithuania",
+      "iso3": "LTU",
+      "geographyId": "m49:440",
+      "breakYears": [],
+      "note": ""
+    },
+    "948": {
+      "label": "Mongolia",
+      "iso3": "MNG",
+      "geographyId": "m49:496",
+      "breakYears": [],
+      "note": ""
+    },
+    "960": {
+      "label": "Croatia",
+      "iso3": "HRV",
+      "geographyId": "m49:191",
+      "breakYears": [],
+      "note": ""
+    },
+    "961": {
+      "label": "Slovenia",
+      "iso3": "SVN",
+      "geographyId": "m49:705",
+      "breakYears": [],
+      "note": ""
+    },
+    "962": {
+      "label": "North Macedonia",
+      "iso3": "MKD",
+      "geographyId": "m49:807",
+      "breakYears": [],
+      "note": ""
+    },
+    "963": {
+      "label": "Bosnia and Herzegovina",
+      "iso3": "BIH",
+      "geographyId": "m49:070",
+      "breakYears": [],
+      "note": ""
+    },
+    "964": {
+      "label": "Poland",
+      "iso3": "POL",
+      "geographyId": "m49:616",
+      "breakYears": [],
+      "note": ""
+    },
+    "968": {
+      "label": "Romania",
+      "iso3": "ROU",
+      "geographyId": "m49:642",
+      "breakYears": [],
+      "note": ""
+    }
+  },
+  "originalNumeric": 24761,
+  "zipEntries": 7,
+  "uncompressedBytes": 2758856
+}

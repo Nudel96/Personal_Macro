@@ -1,0 +1,373 @@
+{
+  "checkedAt": "2026-09-11",
+  "release": "2026.Q2.G.02",
+  "results": [
+    {
+      "id": "unsdg:SP_PSR_OSATIS_GOV",
+      "requestedRows": 311,
+      "selectedRows": 75,
+      "numericRows": 75,
+      "areaCount": 46,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "31b9a2ff2692537949cae295ce0dc32132e496e73f3f1770fca5ada99268b8da"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_PSR_OSATIS_GOV&releaseCode=2026.Q2.G.02&page=1&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "16"
+        ],
+        "target": [
+          "16.6"
+        ],
+        "indicator": [
+          "16.6.2"
+        ],
+        "series": "SP_PSR_OSATIS_GOV",
+        "seriesDescription": "Proportion of population who say that overall they are satisfied with the quality of government services (%)",
+        "seriesCount": "311",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2023.0,
+        "value": "51.1",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "2023 OECD Survey on Drivers of Trust in Public Institutions",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Location": "ALLAREA",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Quantile": "_T",
+          "Disability status": "_T",
+          "Population Group": "TOTAL"
+        }
+      },
+      "first": 2015.0,
+      "natures": {
+        "C": 75
+      },
+      "independentFullSeriesMatched": true,
+      "metadataUrl": "https://unstats.un.org/sdgs/metadata/files/Metadata-16-06-02.pdf"
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_HLTH",
+      "requestedRows": 1598,
+      "selectedRows": 491,
+      "numericRows": 491,
+      "areaCount": 148,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "602c133e5f7c4f90f79c6ba3ac5bfe491bac057cba8ad603620badf81af9dc4a",
+        "17276e7d202627ddf55b4beb5ba5bef87d72c76cb7a27610c84a40b4d28baaa8"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_PSR_OSATIS_HLTH&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_PSR_OSATIS_HLTH&releaseCode=2026.Q2.G.02&page=2&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "16"
+        ],
+        "target": [
+          "16.6"
+        ],
+        "indicator": [
+          "16.6.2"
+        ],
+        "series": "SP_PSR_OSATIS_HLTH",
+        "seriesDescription": "Proportion of population who say that overall they are satisfied with the quality of healthcare services (%)",
+        "seriesCount": "1598",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2023.0,
+        "value": "52.6",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "2023 OECD Survey on Drivers of Trust in Public Institutions",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Location": "ALLAREA",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Quantile": "_T",
+          "Disability status": "_T",
+          "Population Group": "TOTAL"
+        }
+      },
+      "first": 2015.0,
+      "natures": {
+        "N": 1,
+        "C": 490
+      },
+      "independentFullSeriesMatched": true,
+      "metadataUrl": "https://unstats.un.org/sdgs/metadata/files/Metadata-16-06-02.pdf"
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_PRM",
+      "requestedRows": 153,
+      "selectedRows": 25,
+      "numericRows": 25,
+      "areaCount": 12,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "c0aa1a684040124bf86cf700f6f43ccc275acd54bd271347750a84dab01ead9c"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_PSR_OSATIS_PRM&releaseCode=2026.Q2.G.02&page=1&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "16"
+        ],
+        "target": [
+          "16.6"
+        ],
+        "indicator": [
+          "16.6.2"
+        ],
+        "series": "SP_PSR_OSATIS_PRM",
+        "seriesDescription": "Proportion of population who say that overall they are satisfied with the quality of primary education services (%)",
+        "seriesCount": "153",
+        "geoAreaCode": "51",
+        "geoAreaName": "Armenia",
+        "timePeriodStart": 2021.0,
+        "value": "89",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "2021 Integrated Living Conditions Survey (housing section)\n\nhttps://armstat.am/en/?nid=205",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "The information on disability, gender and age groups refer to the household head.The information about education refer to the entire education system.\n\nThe Integrated Living Conditions Survey (ILCS), conducted annually by the NSS National Statistical Service of the Republic of Armenia, formed the basis for monitoring living conditions in Armenia. The ILCS is a universally recognized best-practice survey for collecting data to inform about the living standards of households. The ILCS comprises comprehensive and valuable data on the welfare of households and separate individuals which gives the NSS an opportunity to provide the public with up to date information on the population’s income, expenditures, the level of poverty and the other changes in living standards on an annual basis."
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Location": "ALLAREA",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Quantile": "_T",
+          "Disability status": "_T",
+          "Population Group": "TOTAL"
+        }
+      },
+      "first": 2015.0,
+      "natures": {
+        "C": 25
+      },
+      "independentFullSeriesMatched": true,
+      "metadataUrl": "https://unstats.un.org/sdgs/metadata/files/Metadata-16-06-02.pdf"
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_SEC",
+      "requestedRows": 258,
+      "selectedRows": 68,
+      "numericRows": 68,
+      "areaCount": 44,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "ee2cea38e10548c076677cedd5f7b7bd1c0adcd26b03a387892faad878aa413e"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_PSR_OSATIS_SEC&releaseCode=2026.Q2.G.02&page=1&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "16"
+        ],
+        "target": [
+          "16.6"
+        ],
+        "indicator": [
+          "16.6.2"
+        ],
+        "series": "SP_PSR_OSATIS_SEC",
+        "seriesDescription": "Proportion of population who say that overall they are satisfied with the quality of secondary education services (%)",
+        "seriesCount": "258",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2023.0,
+        "value": "41",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "2023 OECD Survey on Drivers of Trust in Public Institutions",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Location": "ALLAREA",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Quantile": "_T",
+          "Disability status": "_T",
+          "Population Group": "TOTAL"
+        }
+      },
+      "first": 2015.0,
+      "natures": {
+        "C": 68
+      },
+      "independentFullSeriesMatched": true,
+      "metadataUrl": "https://unstats.un.org/sdgs/metadata/files/Metadata-16-06-02.pdf"
+    },
+    {
+      "id": "unsdg:SP_TRN_PUBL",
+      "requestedRows": 2924,
+      "selectedRows": 71,
+      "numericRows": 71,
+      "areaCount": 29,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "cc67c41382f09ef0204b29956b69d1f9939e8bd1e2706ec34144fbd83300261e",
+        "46caf889f05f26d571ea832de83771d981caa8d0d9ee2201c16ae02dd3c7ffd8",
+        "8f7b223d1dd76519555b1e8613d74c0ca17e2144220ac5c1ff13749d173a8d28"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_TRN_PUBL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_TRN_PUBL&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_TRN_PUBL&releaseCode=2026.Q2.G.02&page=3&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "11"
+        ],
+        "target": [
+          "11.2"
+        ],
+        "indicator": [
+          "11.2.1"
+        ],
+        "series": "SP_TRN_PUBL",
+        "seriesDescription": "Proportion of population that has convenient access to public transport (%)",
+        "seriesCount": "2924",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2016.0,
+        "value": "79.0",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Federal Office for Research on Building, Urban Affairs and Spatial Development , German Aerospace Center , Federal Ministry for Digital and Transport",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "National urban average. Designation and data provided by the country and compiled by UNHabitat. The designations employed do not imply the expression of any opinion whatsoever on the part of the Secretariat of the United Nations concerning the legal status of any country, territory, city or area; or of its authorities, or concerning the delimitation of its frontiers or boundaries."
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Sex": "BOTHSEX",
+          "Cities": "NOCITI",
+          "Reporting Type": "G",
+          "Disability status": "_T"
+        }
+      },
+      "first": 2000.0,
+      "natures": {
+        "N": 1,
+        "C": 69,
+        "E": 1
+      },
+      "independentFullSeriesMatched": true,
+      "metadataUrl": "https://unstats.un.org/sdgs/metadata/files/Metadata-11-02-01.pdf"
+    }
+  ]
+}

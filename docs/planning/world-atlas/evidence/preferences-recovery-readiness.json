@@ -1,0 +1,280 @@
+{
+  "native": {
+    "calls": [
+      {
+        "case": "unchanged",
+        "code": "ATLAS_PREFERENCES_BUSY",
+        "context": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "perCapita",
+            "area": "m49:356",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:06:55.159Z",
+        "startedAt": "2026-09-09T08:06:49.585Z"
+      },
+      {
+        "case": "unchanged",
+        "context": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "perCapita",
+            "area": "m49:356",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:06:56.18Z",
+        "ok": true,
+        "startedAt": "2026-09-09T08:06:55.41Z"
+      },
+      {
+        "case": "superseded",
+        "code": "ATLAS_PREFERENCES_BUSY",
+        "context": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "total",
+            "area": "m49:840",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:07:09.085Z",
+        "startedAt": "2026-09-09T08:07:03.507Z"
+      },
+      {
+        "case": "superseded",
+        "context": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "perCapita",
+            "area": "m49:156",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:07:10.096Z",
+        "ok": true,
+        "startedAt": "2026-09-09T08:07:09.085Z"
+      },
+      {
+        "case": "reopen",
+        "code": "ATLAS_PREFERENCES_BUSY",
+        "context": {
+          "params": {
+            "area": "m49:276",
+            "historyProportional": "0",
+            "historySince": "1800",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:07:18.683Z",
+        "startedAt": "2026-09-09T08:07:13.056Z"
+      },
+      {
+        "case": "reopen",
+        "context": {
+          "params": {
+            "area": "m49:276",
+            "historyProportional": "0",
+            "historySince": "1800",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "finishedAt": "2026-09-09T08:07:19.565Z",
+        "ok": true,
+        "startedAt": "2026-09-09T08:07:18.683Z"
+      }
+    ],
+    "cases": [
+      {
+        "case": "unchanged",
+        "stored": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "perCapita",
+            "area": "m49:356",
+            "numbers": "0"
+          },
+          "version": 1
+        },
+        "visibleError": null
+      },
+      {
+        "attempted": [
+          "m49:840",
+          "m49:156"
+        ],
+        "case": "superseded",
+        "stored": {
+          "params": {
+            "agriItem": "15",
+            "agriMode": "perCapita",
+            "area": "m49:156",
+            "numbers": "0"
+          },
+          "version": 1
+        }
+      },
+      {
+        "case": "reopen",
+        "rendered": "area=m49%3A276&numbers=0&historySince=1800&historyProportional=0",
+        "stored": {
+          "params": {
+            "area": "m49:276",
+            "historyProportional": "0",
+            "historySince": "1800",
+            "numbers": "0"
+          },
+          "version": 1
+        }
+      }
+    ],
+    "completedAt": "2026-09-09T08:07:20.037Z",
+    "identifier": "com.personal-macro.atlas-preferences-recovery-20260909",
+    "mode": "recovery",
+    "ok": true,
+    "reads": [
+      {
+        "case": "unchanged",
+        "finishedAt": "2026-09-09T08:06:49.055Z",
+        "startedAt": "2026-09-09T08:06:49.052Z"
+      },
+      {
+        "case": "superseded",
+        "finishedAt": "2026-09-09T08:07:02.996Z",
+        "startedAt": "2026-09-09T08:07:02.991Z"
+      },
+      {
+        "case": "reopen",
+        "finishedAt": "2026-09-09T08:07:12.553Z",
+        "startedAt": "2026-09-09T08:07:12.549Z"
+      },
+      {
+        "case": "reopen",
+        "finishedAt": "2026-09-09T08:07:19.57Z",
+        "startedAt": "2026-09-09T08:07:19.565Z"
+      }
+    ],
+    "runAt": "2026-09-09T08:06:11.996Z"
+  },
+  "independentLocks": [
+    {
+      "case": "unchanged",
+      "acquiredAt": "2026-09-09T10:06:47.107479+02:00",
+      "holdSeconds": 9,
+      "releasedAt": "2026-09-09T10:06:56.108904+02:00"
+    },
+    {
+      "case": "superseded",
+      "acquiredAt": "2026-09-09T10:07:01.000465+02:00",
+      "holdSeconds": 9,
+      "releasedAt": "2026-09-09T10:07:10.003794+02:00"
+    },
+    {
+      "case": "reopen",
+      "acquiredAt": "2026-09-09T10:07:10.546796+02:00",
+      "holdSeconds": 9,
+      "releasedAt": "2026-09-09T10:07:19.548908+02:00"
+    }
+  ],
+  "sqlitePreference": {
+    "version": 1,
+    "params": {
+      "area": "m49:276",
+      "historyProportional": "0",
+      "historySince": "1800",
+      "numbers": "0"
+    }
+  },
+  "checks": {
+    "actualBusyResponses": 3,
+    "recoveredWrites": 3,
+    "staleIntermediateWriteSkipped": true,
+    "rereadAfterPriorWrite": true,
+    "allWritesSerialized": true
+  },
+  "scope": "Real Tauri commands and production React preference hook with independent nine-second SQLite write locks in the named isolated profile. Programmatic selection changes; not a full native click acceptance.",
+  "restart": {
+    "native": {
+      "calls": [],
+      "cases": [],
+      "completedAt": "2026-09-09T08:08:57.642Z",
+      "identifier": "com.personal-macro.atlas-preferences-recovery-20260909",
+      "mode": "restart",
+      "noPreferenceWrites": true,
+      "ok": true,
+      "reads": [
+        {
+          "case": "restart",
+          "finishedAt": "2026-09-09T08:08:56.557Z",
+          "startedAt": "2026-09-09T08:08:56.553Z"
+        }
+      ],
+      "restored": {
+        "params": {
+          "area": "m49:276",
+          "historyProportional": "0",
+          "historySince": "1800",
+          "numbers": "0"
+        },
+        "version": 1
+      },
+      "runAt": "2026-09-09T08:08:56.497Z"
+    },
+    "firstProcess": {
+      "Id": 7012,
+      "Path": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\debug\\personal-macro-desktop.exe",
+      "StartTime": "2026-09-09T10:06:09.0673694+02:00"
+    },
+    "restartedProcess": {
+      "Id": 10936,
+      "Path": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\debug\\personal-macro-desktop.exe",
+      "StartTime": "2026-09-09T10:08:55.8013775+02:00"
+    },
+    "storedPreferenceEqual": true,
+    "noRedundantPreferenceWrites": true
+  },
+  "validation": {
+    "atlasFrontendTests": 149,
+    "atlasFrontendFiles": 23,
+    "rustLibraryTests": 227,
+    "rustLibraryIgnored": 20,
+    "typecheck": "passed as part of build",
+    "productionBuild": "passed; existing chunk-size warning",
+    "targetedEslint": "passed",
+    "targetedPrettier": "passed",
+    "rustfmt": "passed",
+    "clippyAllTargets": "passed with -D warnings",
+    "gitDiffCheck": "passed"
+  },
+  "precedingFailureContext": {
+    "profile": "com.personal-macro.atlas-agriculture-validation",
+    "publicCotRows": 26280,
+    "firstCotRowPreparedAt": "2026-09-09T07:42:32.943642700+00:00",
+    "lastCotRowPreparedAt": "2026-09-09T07:42:44.297504400+00:00",
+    "configuredBusyTimeoutSeconds": 5,
+    "observedPreferenceFailure": "SQLite error 5 after approximately 5.6 seconds",
+    "interpretation": "The COT import prepares and writes its rows inside one transaction. These timestamps locate a long competing import, not the exact instant SQLite acquired its write lock."
+  },
+  "limits": [
+    "Only the last-view autocommit upsert is automatically retried.",
+    "Three additional retries at most; persistent busy and other failures remain visible.",
+    "Forced process termination can precede the pending write.",
+    "Injected test locks also caused provider-job database warnings; those are not claimed as a normal-start regression.",
+    "Native scenarios drive the production React hook programmatically and are not a full native click acceptance."
+  ],
+  "cleanup": {
+    "lockHelperCompleted": true,
+    "productionDatabaseUsed": false,
+    "restartProcessStopped": true,
+    "firstProcessStopped": true,
+    "vitePort5188Stopped": true
+  }
+}

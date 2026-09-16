@@ -1,0 +1,1972 @@
+{
+  "areas": [
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:004",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "4",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:008",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "8",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:012",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "12",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:016",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "16",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:020",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "20",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:024",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "24",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:028",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "28",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:031",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "31",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:032",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "32",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:036",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "36",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:040",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "40",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:044",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "44",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:048",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "48",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:050",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "50",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:051",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "51",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:052",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "52",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:056",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "56",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:060",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "60",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:064",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "64",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:068",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "68",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:070",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "70",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:072",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "72",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:076",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "76",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:084",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "84",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:090",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "90",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:092",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "92",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:096",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "96",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:100",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "100",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:104",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "104",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:108",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "108",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:112",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "112",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:116",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "116",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:120",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "120",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:124",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "124",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:132",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "132",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:136",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "136",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:140",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "140",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:144",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "144",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:148",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "148",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:152",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "152",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:156",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "156",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:170",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "170",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:174",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "174",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:175",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "175",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:178",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "178",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:180",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "180",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:184",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "184",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:188",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "188",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:191",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "191",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:192",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "192",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:196",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "196",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:203",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "203",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:204",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "204",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:208",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "208",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:212",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "212",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:214",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "214",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:218",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "218",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:222",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "222",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:226",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "226",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:231",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "231",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:232",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "232",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:233",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "233",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:234",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "234",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:238",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "238",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:242",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "242",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:246",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "246",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:250",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "250",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:254",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "254",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:258",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "258",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:262",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "262",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:266",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "266",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:268",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "268",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:270",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "270",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:275",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "275",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:276",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "276",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:288",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "288",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:292",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "292",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:296",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "296",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:300",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "300",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:304",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "304",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:308",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "308",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:312",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "312",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:316",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "316",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:320",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "320",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:324",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "324",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:328",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "328",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:332",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "332",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:336",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "336",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:340",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "340",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:344",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "344",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:348",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "348",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:352",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "352",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:356",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "356",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:360",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "360",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:364",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "364",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:368",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "368",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:372",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "372",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:376",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "376",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:380",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "380",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:384",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "384",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:388",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "388",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:392",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "392",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:398",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "398",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:400",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "400",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:404",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "404",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:408",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "408",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:410",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "410",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:414",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "414",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:417",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "417",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:418",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "418",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:422",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "422",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:426",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "426",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:428",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "428",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:430",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "430",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:434",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "434",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:438",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "438",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:440",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "440",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:442",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "442",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:446",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "446",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:450",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "450",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:454",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "454",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:458",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "458",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:462",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "462",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:466",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "466",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:470",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "470",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:474",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "474",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:478",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "478",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:480",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "480",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:484",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "484",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:492",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "492",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:496",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "496",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:498",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "498",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:499",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "499",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:500",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "500",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:504",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "504",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:508",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "508",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:512",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "512",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:516",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "516",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:520",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "520",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:524",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "524",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:528",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "528",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:531",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "531",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:533",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "533",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:534",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "534",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:535",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "535",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:540",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "540",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:548",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "548",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:554",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "554",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:558",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "558",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:562",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "562",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:566",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "566",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:570",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "570",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:578",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "578",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:580",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "580",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:583",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "583",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:584",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "584",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:585",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "585",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:586",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "586",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:591",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "591",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:598",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "598",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:600",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "600",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:604",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "604",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:608",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "608",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:616",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "616",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:620",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "620",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:624",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "624",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:626",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "626",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:630",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "630",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:634",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "634",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:638",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "638",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:642",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "642",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:643",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "643",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:646",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "646",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:652",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "652",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:654",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "654",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:659",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "659",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:660",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "660",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:662",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "662",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:663",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "663",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:666",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "666",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:670",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "670",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:674",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "674",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:678",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "678",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:682",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "682",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:686",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "686",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:688",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "688",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:690",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "690",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:694",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "694",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:702",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "702",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:703",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "703",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:704",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "704",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:705",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "705",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:706",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "706",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:710",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "710",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:716",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "716",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:724",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "724",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:728",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "728",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:729",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "729",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:732",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "732",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:740",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "740",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:748",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "748",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:752",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "752",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:756",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "756",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:760",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "760",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:762",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "762",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:764",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "764",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:768",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "768",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:772",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "772",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:776",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "776",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:780",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "780",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:784",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "784",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:788",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "788",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:792",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "792",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:795",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "795",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:796",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "796",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:798",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "798",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:800",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "800",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:804",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "804",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:807",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "807",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:818",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "818",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:826",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "826",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:831",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "831",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:832",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "832",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:833",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "833",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:834",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "834",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:840",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "840",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:850",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "850",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:854",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "854",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:858",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "858",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:860",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "860",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:862",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "862",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:876",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "876",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:882",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "882",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:887",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "887",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "m49:894",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "894",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "provider:TWN",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "158",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "provider:XKX",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "412",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "un-wpp:5505",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "5505",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "un-wpp:903",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "903",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "un-wpp:908",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "908",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "un-wpp:909",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "909",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "un-wpp:935",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "935",
+      "years": 151
+    },
+    {
+      "firstYear": 1950,
+      "geographyId": "world",
+      "lastYear": 2100,
+      "missingCells": 0,
+      "providerId": "900",
+      "years": 151
+    }
+  ],
+  "license": "CC BY 3.0 IGO",
+  "provenance": {
+    "areaCount": 243,
+    "estimateEnd": 2023,
+    "pages": [
+      {
+        "sha256": "a04d7d1486a5eb2832cc812d599448f0a71e8ac9e1e7e6fa4066673d6a2487cd",
+        "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_PopulationByAge5GroupSex_Medium.csv.gz"
+      },
+      {
+        "sha256": "eb7846bf5d937ee15060198e1130e770b885e58c24035b314966681ed929ca9f",
+        "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/WPP2024_CSV_files_update.zip"
+      },
+      {
+        "sha256": "afaf6c08ff4336fe7dd4fded31b197fddb8526fd14746e17d487f39fe131b6d9",
+        "url": "https://population.un.org/wpp/assets/Excel%20Files/1_Indicator%20(Standard)/CSV_FILES/WPP2024_Locations_notes.csv"
+      }
+    ],
+    "projectionStart": 2024,
+    "retrievedAt": "2026-09-08T20:34:17.737557100+00:00",
+    "revision": "WPP 2024 · Togo-Korrektur vom 19.01.2026",
+    "sourceRowCount": 1759905
+  },
+  "source": "UN DESA Population Division, WPP 2024 with Togo interim update"
+}

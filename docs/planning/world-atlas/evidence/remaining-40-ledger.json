@@ -1,0 +1,1659 @@
+{
+  "objective": "Die restlichen 40 Katalogthemen selbstÃƒÂ¤ndig mit Daten abgleichen und implementieren.",
+  "createdAt": "2026-09-10T22:02:26.248Z",
+  "baselineCatalogVersion": "2026-09-10.17",
+  "baselineTopicCount": 40,
+  "completionRule": "All original topic IDs require a fitting source, validated import, product view, genuine local data, and scoped automated/native verification. Source notes, contextual proxies, mock data or removing a catalog topic do not establish completion.",
+  "topics": [
+    {
+      "id": "labor:wages",
+      "label": "ReallÃƒÂ¶hne",
+      "meaning": "Wie verÃƒÂ¤ndert sich, was Menschen mit ihrem Arbeitslohn kaufen kÃƒÂ¶nnen?",
+      "boundary": "Stunden- und Monatslohn, brutto und netto sowie Mindest- und Durchschnittslohn bleiben getrennt. Die ergÃƒÂ¤nzende Preisentwicklung allein misst keinen Reallohn.",
+      "priorFinding": "ILOSTAT bietet Verdienstreihen. FÃƒÂ¼r ein Reallohnbild fehlen hier noch ein passender Preisindex und eine ÃƒÂ¼ber die Zeit vergleichbare BeschÃƒÂ¤ftigtengruppe.",
+      "candidateSources": [
+        {
+          "id": "earnings",
+          "label": "ILOSTAT Ã‚Â· Verdienste und Arbeitseinkommen",
+          "url": "https://ilostat.ilo.org/topics/wages/",
+          "finding": "Der Katalog unterscheidet unter anderem Stundenverdienste, MindestlÃƒÂ¶hne und VerteilungsmaÃƒÅ¸e. LandeswÃƒÂ¤hrung, BeschÃƒÂ¤ftigtenkreis und Erhebung gehÃƒÂ¶ren zur Definition."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "oecd-wages",
+          "documentationUrl": "https://www.oecd.org/en/data/indicators/average-annual-wages.html",
+          "originalUrl": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-oecd-wages-audit.json",
+          "areaCount": 38,
+          "values": 1298,
+          "boundary": "Durchschnitt, kein Median und kein verfÃƒÂ¼gbares Haushaltseinkommen. Ãƒâ€žnderungen der BeschÃƒÂ¤ftigtenstruktur kÃƒÂ¶nnen den Durchschnitt verÃƒÂ¤ndern. Basis 2025; frÃƒÂ¼here Ausgaben mit anderer Preisbasis werden nicht vermischt."
+        }
+      ],
+      "implementation": {
+        "sourceId": "oecd-wages",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_source.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "4 passed; full original files and temporary SQLite reopen",
+        "frontend": "282/283 full Atlas tests passed initially; obsolete source-only fixture updated and its full 5-test file passed; new public and notebook scoped checks passed",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "labor:working_hours",
+      "label": "Arbeitszeit",
+      "meaning": "Wie viel Zeit verbringen ErwerbstÃƒÂ¤tige mit bezahlter Arbeit?",
+      "boundary": "Wochen- und Jahresstunden sowie Vollzeit und alle BeschÃƒÂ¤ftigten sind nicht austauschbar. Leistung je ErwerbstÃƒÂ¤tigem enthÃƒÂ¤lt keine Stundenkorrektur.",
+      "priorFinding": "ILOSTAT dokumentiert ArbeitszeitmaÃƒÅ¸e. Ein LÃƒÂ¤nderbild benÃƒÂ¶tigt noch die geprÃƒÂ¼fte Unterscheidung zwischen tatsÃƒÂ¤chlich geleisteter und ÃƒÂ¼blicher Arbeitszeit.",
+      "candidateSources": [
+        {
+          "id": "hours",
+          "label": "ILOSTAT Ã‚Â· LÃƒÂ¶hne und Arbeitszeit: Definitionen",
+          "url": "https://ilostat.ilo.org/methods/concepts-and-definitions/description-wages-and-working-time-statistics/",
+          "finding": "Die COND-Dokumentation erlÃƒÂ¤utert Lohn- und Arbeitszeitstatistiken. Die Dokumentation wurde ÃƒÂ¼ber den offiziellen Suchindex geprÃƒÂ¼ft; der direkte Seitenabruf war nicht erfolgreich."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "oecd-hours",
+          "documentationUrl": "https://www.oecd.org/en/data/indicators/hours-worked.html",
+          "originalUrl": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_HW@DF_AVG_ANN_HRS_WKD,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-oecd-hours-audit.json",
+          "areaCount": 45,
+          "values": 3722,
+          "boundary": "Die OECD empfiehlt wegen unterschiedlicher Quellen und Methoden vor allem Zeitvergleiche innerhalb eines Landes. Urlaub, Feiertage und krankheitsbedingte Abwesenheit zÃƒÂ¤hlen nicht als geleistete Arbeit. Jahresstunden sind keine ÃƒÂ¼bliche Wochenarbeitszeit."
+        }
+      ],
+      "implementation": {
+        "sourceId": "oecd-hours",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_source.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "4 passed; full original files and temporary SQLite reopen",
+        "frontend": "282/283 full Atlas tests passed initially; obsolete source-only fixture updated and its full 5-test file passed; new public and notebook scoped checks passed",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "macro:purchasing_power",
+      "label": "Kaufkraftvergleiche",
+      "meaning": "Wie viel lÃƒÂ¤sst sich mit Einkommen in unterschiedlichen LÃƒÂ¤ndern tatsÃƒÂ¤chlich kaufen?",
+      "boundary": "Ein Kaufkraftvergleich ist kein Wechselkursziel. Referenzjahre und Fortschreibungen bilden keine automatisch gemessene Jahreswelle.",
+      "priorFinding": "Der ICP bietet passende Kaufkraft- und Preisniveauvergleiche. Die einzelnen Ausgabenkomponenten und VerÃƒÂ¶ffentlichungsstÃƒÂ¤nde sind noch nicht als eigene Bilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "icp",
+          "label": "Weltbank Ã‚Â· International Comparison Program",
+          "url": "https://www.worldbank.org/en/programs/icp/brief/ICP2021",
+          "finding": "Der ICP-Stand 2021 umfasst KaufkraftparitÃƒÂ¤ten, Preisniveaus und Ausgabenkomponenten. Referenzjahr, Revisionen und Fortschreibungen sind unterschiedliche Datenarten."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "worldbank_wdi",
+          "reviewedAt": "2026-09-11",
+          "evidence": "purchasing-power-audit.json",
+          "finding": "Two current WDI price-level perspectives, USA=100, annual source estimates through 2025. Old ratio is now archive-only and excluded."
+        }
+      ],
+      "implementation": null,
+      "localEvidence": "public-second-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full original Census, IEA and WDI tests passed; complete numeric source comparison and temporary SQLite reopen",
+        "frontend": "286 Atlas tests passed; TypeScript, scoped ESLint and Clippy passed",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "finance:debt_service",
+      "label": "Schuldendienst",
+      "meaning": "Wie viel des Einkommens wird durch Zins und Tilgung gebunden?",
+      "boundary": "Ein hoher Schuldenbestand bedeutet nicht automatisch einen hohen laufenden Schuldendienst. Die BIS-Modelle eignen sich vor allem fÃƒÂ¼r VerÃƒÂ¤nderungen innerhalb eines Landes.",
+      "priorFinding": "Die BIS verÃƒÂ¶ffentlicht eigene Schuldendienstmodelle. Diese Reihe ist noch nicht angebunden; die vorhandene Kreditquote zeigt ergÃƒÂ¤nzend den Schuldenbestand.",
+      "candidateSources": [
+        {
+          "id": "dsr",
+          "label": "BIS Ã‚Â· Debt service ratios",
+          "url": "https://data.bis.org/topics/DSR",
+          "finding": "Quartalsmodelle messen den fÃƒÂ¼r Zins und Tilgung verwendeten Einkommensanteil. Die BIS empfiehlt vor allem zeitliche Vergleiche innerhalb eines Landes; absolute LÃƒÂ¤nderniveaus sind weniger gut vergleichbar."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "date": "2026-09-11",
+          "url": "https://data.bis.org/topics/DSR",
+          "dataUrl": "https://data.bis.org/static/bulk/WS_DSR_csv_flat.zip",
+          "evidence": "public-dsr-audit.json",
+          "finding": "7.116 Originalwerte, 66 Quartalsreihen fÃƒÂ¼r 32 LÃƒÂ¤nder; Haushalte/Unternehmen nur fÃƒÂ¼r 17. Absoluter LÃƒÂ¤ndervergleich wird nicht als gleichartig dargestellt."
+        }
+      ],
+      "implementation": {
+        "sourceId": "bis-dsr",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_source.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "4 passed; full original files and temporary SQLite reopen",
+        "frontend": "282/283 full Atlas tests passed initially; obsolete source-only fixture updated and its full 5-test file passed; new public and notebook scoped checks passed",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "market_context:relative_strength",
+      "label": "Sektoren im Marktvergleich",
+      "meaning": "Entwickelt sich ein Sektor stÃƒÂ¤rker oder schwÃƒÂ¤cher als sein Vergleichsmarkt?",
+      "boundary": "Beide Seiten benÃƒÂ¶tigen denselben Kalender, dieselbe WÃƒÂ¤hrung und dieselbe AusschÃƒÂ¼ttungsbehandlung. Die HÃƒÂ¶he zweier eigener Marktwellen ist keine relative Rendite.",
+      "priorFinding": "Vorhandene Fondsreihen kÃƒÂ¶nnen Ausgangsdaten liefern. Ein ausdrÃƒÂ¼cklich passender Vergleichsmarkt und ein geprÃƒÂ¼ftes Rezept fÃƒÂ¼r die relative Entwicklung fehlen noch.",
+      "candidateSources": [
+        {
+          "id": "etf",
+          "label": "EODHD Ã‚Â· ETF-Datenfelder",
+          "url": "https://eodhd.com/financial-academy/financial-faq/fundamentals-glossary-etf",
+          "finding": "Die Dokumentation fÃƒÂ¼hrt Fondsbestandteile, Sektorgewichte und Performance auf. Eine Feldbeschreibung belegt weder eine lange Historie der Zusammensetzung noch die Berechtigung des vorhandenen Tarifs."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "existing-eodhd-monthly-cache",
+          "reviewedAt": "2026-09-11",
+          "documentationUrl": "https://eodhd.com/financial-apis/api-for-historical-data-and-volumes",
+          "methodUrl": "https://www.fidelity.com/learning-center/trading-investing/technical-analysis/technical-indicator-guide/relative-strength-comparison",
+          "finding": "25 monthly relative price comparisons use 26 real cached USD ETF histories. No added API calls or fabricated waves. Month alignment is explicit; exact per-month trading dates are not claimed."
+        }
+      ],
+      "implementation": {
+        "nativeRead": "apps/desktop/src-tauri/src/world_atlas/market_store.rs",
+        "calculation": "apps/desktop/src/features/world-atlas/atlas-relative.ts",
+        "view": "apps/desktop/src/features/world-atlas/atlas-relative-panel.tsx",
+        "migration": null,
+        "recipe": "atlas-relative-monthly-adjusted-ratio-common-base-v1"
+      },
+      "localEvidence": "relative-strength-local-data-2026-09-11.json",
+      "verification": {
+        "originalData": "relative-strength-original-checks-2026-09-11.json",
+        "native": "Temporary SQLite save/reopen, last context and both new parameters passed",
+        "frontend": "60 relevant cases across eight test files; 11 renderer tests rerun after responsive change; scoped ESLint passed",
+        "nativeUi": "relative-strength-native-qa-2026-09-11.json",
+        "windowsRelease": "relative-strength-windows-release-2026-09-11.json"
+      },
+      "completedAt": "2026-09-11T08:16:58.312694+00:00",
+      "windowsBuildSha256": "7ee1de592dd14eb8d8927315419446126b423e9451d6c6206f28d88e7bae0622"
+    },
+    {
+      "id": "market_context:market_concentration",
+      "label": "Marktkonzentration",
+      "meaning": "Wie stark wird ein BÃƒÂ¶rsenmarkt von wenigen groÃƒÅ¸en Unternehmen geprÃƒÂ¤gt?",
+      "boundary": "Heutige Fondsgewichte dÃƒÂ¼rfen keine frÃƒÂ¼here Zusammensetzung ersetzen. BÃƒÂ¶rsenkonzentration misst weder Wettbewerb in der gesamten Wirtschaft noch faire Bewertung.",
+      "priorFinding": "EODHD beschreibt Fondsgewichte und Bestandteile. Historische Zusammensetzungen, Tarifzugang und ein zur Frage passender Fonds sind noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "etf",
+          "label": "EODHD Ã‚Â· ETF-Datenfelder",
+          "url": "https://eodhd.com/financial-academy/financial-faq/fundamentals-glossary-etf",
+          "finding": "Die Dokumentation fÃƒÂ¼hrt Fondsbestandteile, Sektorgewichte und Performance auf. Eine Feldbeschreibung belegt weder eine lange Historie der Zusammensetzung noch die Berechtigung des vorhandenen Tarifs."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "worldbank-gfdd-concentration",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-gfdd-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "worldbank-gfdd-concentration",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_gfdd.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "sourceAudit": "public-gfdd-audit.json",
+        "native": "Original/mutation tests, all 120 profiles and SQLite roundtrip passed",
+        "frontend": "25 public/coverage tests, TypeScript and scoped ESLint passed",
+        "localFill": "public-gfdd-local-fill-2026-09-11.json",
+        "nativeUi": "public-gfdd-native-qa-2026-09-11.json",
+        "windowsRelease": "public-gfdd-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "fuels:bioenergy",
+      "label": "Bioenergie",
+      "meaning": "Wie werden biogene Rohstoffe als Brennstoff, WÃƒÂ¤rmequelle und Energiequelle genutzt?",
+      "boundary": "Die vorhandenen Strombilder zu Bioenergie zeigen nur elektrische Erzeugung. Traditionelle Biomassenutzung, moderne Brennstoffe und Nachhaltigkeit sind eigene Fragen.",
+      "priorFinding": "Die IEA trennt biogene Brennstoffe nach Verwendungszweck. Eine Gesamtansicht ÃƒÂ¼ber WÃƒÂ¤rme, Verkehr und Strom ist noch nicht angebunden.",
+      "candidateSources": [
+        {
+          "id": "fuels",
+          "label": "IEA Ã‚Â· Renewables 2024 Dataset",
+          "url": "https://www.iea.org/data-and-statistics/data-product/renewables-2024-dataset",
+          "finding": "Das Angebot trennt erneuerbaren Strom, Brennstoffe und WÃƒÂ¤rme sowie Geschichte und Prognosen. Es enthÃƒÂ¤lt zusÃƒÂ¤tzliche Premiumdaten und hat eigene Nutzungsbedingungen; kein pauschal freier Gesamtdownload."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-bioenergy",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Inländische Primärerzeugung, nicht Verbrauch, Stromerzeugung oder Export. Terajoule sind ein Energieinhalt, keine Tonnage oder Marktpreise. Die beiden Brennstoffgruppen sind getrennte Ausschnitte der Bioenergie; flüssige Biokraftstoffe sind hier nicht enthalten. Schätzungen und vorläufiges Randjahr bleiben gekennzeichnet. Die Quelle kann echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben als Null melden; solche Nullen bleiben als Quellenhinweis erhalten und im Diagramm offen. Keine Aussage über Klimaneutralität, Nachhaltigkeit oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-bioenergy",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Inländische Primärerzeugung, nicht Verbrauch, Stromerzeugung oder Export. Terajoule sind ein Energieinhalt, keine Tonnage oder Marktpreise. Die beiden Brennstoffgruppen sind getrennte Ausschnitte der Bioenergie; flüssige Biokraftstoffe sind hier nicht enthalten. Schätzungen und vorläufiges Randjahr bleiben gekennzeichnet. Die Quelle kann echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben als Null melden; solche Nullen bleiben als Quellenhinweis erhalten und im Diagramm offen. Keine Aussage über Klimaneutralität, Nachhaltigkeit oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        }
+      ],
+      "implementation": {
+        "native": "public_energy.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-energy-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "fuels:synthetic_fuels",
+      "label": "Synthetische Kraftstoffe",
+      "meaning": "Wie entwickelt sich die Herstellung synthetischer EnergietrÃƒÂ¤ger?",
+      "boundary": "AngekÃƒÂ¼ndigte Projekte, installierte Produktionsleistung und tatsÃƒÂ¤chlich erzeugter Kraftstoff bleiben getrennt. Ein Szenario ist kein beobachteter Ausbau.",
+      "priorFinding": "IEA-VerÃƒÂ¶ffentlichungen behandeln E-Fuels; manche Tabellen fassen sie mit erneuerbarem Wasserstoff zusammen. Eine eigene historische LÃƒÂ¤nderreihe ist noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "fuels",
+          "label": "IEA Ã‚Â· Renewables 2024 Dataset",
+          "url": "https://www.iea.org/data-and-statistics/data-product/renewables-2024-dataset",
+          "finding": "Das Angebot trennt erneuerbaren Strom, Brennstoffe und WÃƒÂ¤rme sowie Geschichte und Prognosen. Es enthÃƒÂ¤lt zusÃƒÂ¤tzliche Premiumdaten und hat eigene Nutzungsbedingungen; kein pauschal freier Gesamtdownload."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "sasol-synthetic-fuels",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-synfuels-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "sasol-synthetic-fuels",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_synfuels.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-synfuels-local-fill-2026-09-11.json",
+      "verification": {
+        "sourceAudit": "public-synfuels-audit.json",
+        "native": "2 original/mutation tests and temporary SQLite reopen passed",
+        "frontend": "29 public/coverage tests, TypeScript and scoped ESLint passed",
+        "nativeUi": "public-synfuels-native-qa-2026-09-11.json",
+        "windowsRelease": "public-synfuels-windows-release-2026-09-11.json"
+      },
+      "sourceId": "sasol-synthetic-fuels",
+      "completedAt": "2026-09-11T07:53:18.031853+00:00",
+      "localProfiles": 4,
+      "localObservations": 36,
+      "nativeQaChecks": 10,
+      "windowsBuildSha256": "37efed2f5807b6eb79354cb24ddda96c81fecbd92b7b80ad4301ccd1a19cbc66",
+      "evidence": [
+        "public-synfuels-audit.json",
+        "public-synfuels-local-fill-2026-09-11.json",
+        "public-synfuels-native-qa-2026-09-11.json",
+        "public-synfuels-windows-release-2026-09-11.json"
+      ]
+    },
+    {
+      "id": "energy_systems:battery_storage",
+      "label": "Batteriespeicher",
+      "meaning": "Wie wÃƒÂ¤chst die FÃƒÂ¤higkeit eines Stromsystems, Energie zeitweise in Batterien zu speichern?",
+      "boundary": "Leistung, Speichermenge und Batteriefabriken sind drei verschiedene GrÃƒÂ¶ÃƒÅ¸en. Fahrzeugbatterien dÃƒÂ¼rfen nicht als Netzspeicherbestand erscheinen.",
+      "priorFinding": "Der IEA-Quelleneinstieg wurde geprÃƒÂ¼ft. Eine belastbare eigene LÃƒÂ¤nderhistorie fÃƒÂ¼r stationÃƒÂ¤re Batteriespeicher ist im Atlas noch offen.",
+      "candidateSources": [
+        {
+          "id": "storage",
+          "label": "IEA Ã‚Â· Electricity 2026",
+          "url": "https://www.iea.org/reports/electricity-2026",
+          "finding": "Der frÃƒÂ¼here IEA-Einstieg zu groÃƒÅ¸en Stromspeichern leitet auf diesen Strombericht weiter. Ein stabiler separater LÃƒÂ¤nderexport zu Batteriespeichern ist damit noch nicht geprÃƒÂ¼ft."
+        },
+        {
+          "id": "investment",
+          "label": "IEA Ã‚Â· Investment Data Explorer 2026",
+          "url": "https://www.iea.org/data-and-statistics/data-tools/investment-data-explorer",
+          "finding": "Der Explorer stellt Energieinvestitionen mit eigener Methodendokumentation und CC BY 4.0 bereit. Sektor, Gebiet, Preisbasis und SchÃƒÂ¤tzstatus mÃƒÂ¼ssen fÃƒÂ¼r eine ÃƒÅ“bernahme geprÃƒÂ¼ft werden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eia-battery-storage",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eia-storage-audit.json"
+        }
+      ],
+      "implementation": {
+        "native": "public_eia_storage.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "2 passed; all 69 original decimal strings and five profiles with temporary SQLite reopen",
+        "localImport": "public-eia-storage-local-fill-2026-09-11.json",
+        "nativeUi": "public-eia-storage-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eia-storage-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-eia-storage-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "energy_systems:heat_pumps",
+      "label": "WÃƒÂ¤rmepumpen",
+      "meaning": "Wie verbreitet sich das Heizen mit WÃƒÂ¤rmepumpen?",
+      "boundary": "Verkauf und Bestand sowie HaushaltsgerÃƒÂ¤te und groÃƒÅ¸e WÃƒÂ¤rmenetzanlagen bleiben getrennt. Allgemeine Energieeffizienz ist nur ergÃƒÂ¤nzender Kontext.",
+      "priorFinding": "Der IEA-Bericht zu WÃƒÂ¤rmenetzen behandelt auch groÃƒÅ¸e WÃƒÂ¤rmepumpen. Er reicht noch nicht als geprÃƒÂ¼fte LÃƒÂ¤nderhistorie aller verkauften oder betriebenen Anlagen.",
+      "candidateSources": [
+        {
+          "id": "heat",
+          "label": "IEA Ã‚Â· Renewables in District Energy 2026",
+          "url": "https://www.iea.org/reports/renewables-in-district-energy",
+          "finding": "Der ÃƒÂ¶ffentliche Bericht behandelt regionale WÃƒÂ¤rmenetze, Brennstoffmix, groÃƒÅ¸e WÃƒÂ¤rmepumpen und WÃƒÂ¤rmespeicher. Er trÃƒÂ¤gt CC BY 4.0; er ersetzt keinen geprÃƒÂ¼ften weltweiten Bestandsdatensatz."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-heat-pumps",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-heat-pumps",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-heat-pumps",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Veröffentlichte maximale thermische Leistung zum Jahresende (31. Dezember) in MW Wärmeleistung, über alle erfassten Nutzersektoren. Keine elektrische Anschlussleistung, erzeugte Wärmemenge, Zahl verkaufter Geräte oder Marktwert. Luft-, Erd- und Wasserwärme bleiben getrennt; keine zusätzliche Summe aus überlappenden Untertechnologien. Beginn bewusst 2004: Der Quellenbericht nennt Meldungen ab 2004/2017; die API enthält zusätzlich ungeklärte frühere Werte, die hier ausgeschlossen bleiben. Nationale Erhebungsmethoden und spätere Ergänzungen können Zeitvergleiche begrenzen; fehlende Kennzeichen beweisen keine direkte Messung. Das gemeinsame jährliche Energie-Meldesystem kann fehlende und sehr kleine Angaben ebenfalls als Null melden. Solche Nullen bleiben daher als Quellenhinweis erhalten und im Bild offen; sie beweisen keinen fehlenden Bestand. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        }
+      ],
+      "implementation": {
+        "native": "public_energy.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-energy-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "energy_systems:district_heating",
+      "label": "WÃƒÂ¤rmenetze",
+      "meaning": "Wie versorgen gemeinsame Netze GebÃƒÂ¤ude mit WÃƒÂ¤rme?",
+      "boundary": "Elektrische Kraftwerksleistung kann keine WÃƒÂ¤rmeversorgung messen. Quellenregionen und einzelne groÃƒÅ¸e Netze dÃƒÂ¼rfen keine vollstÃƒÂ¤ndige Landesabdeckung vortÃƒÂ¤uschen.",
+      "priorFinding": "Ein ÃƒÂ¶ffentlicher IEA-Bericht enthÃƒÂ¤lt regionale Perspektiven. Anschlusszahlen, abgegebene WÃƒÂ¤rme und Brennstoffmix benÃƒÂ¶tigen noch eigene Zeitreihen.",
+      "candidateSources": [
+        {
+          "id": "heat",
+          "label": "IEA Ã‚Â· Renewables in District Energy 2026",
+          "url": "https://www.iea.org/reports/renewables-in-district-energy",
+          "finding": "Der ÃƒÂ¶ffentliche Bericht behandelt regionale WÃƒÂ¤rmenetze, Brennstoffmix, groÃƒÅ¸e WÃƒÂ¤rmepumpen und WÃƒÂ¤rmespeicher. Er trÃƒÂ¤gt CC BY 4.0; er ersetzt keinen geprÃƒÂ¼ften weltweiten Bestandsdatensatz."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-district-heating",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-energy-audit.json",
+          "boundary": "Anteil der Personen in Privathaushalten, deren Wohnung über ein Fernwärmenetz beheizt wird. Alle Haushaltszusammensetzungen und alle Siedlungsarten, EU-SILC 2023. Personengewichtet, keine Quote aller Gebäude, kein Anteil an der erzeugten Wärme, keine Netzlänge oder Zahl der Anschlüsse. Ein einzelnes Erhebungsjahr ohne Verlaufslinie. Gemeinschaftsunterkünfte und Einrichtungen sind grundsätzlich ausgenommen. Frankreich ohne Mayotte, einschließlich vier weiterer Überseedepartements; Zypern nur regierungskontrolliertes Gebiet, Niederlande ohne Überseegebiete und Norwegen ohne Spitzbergen. Nationale Erhebungsunterschiede und Stichprobenunsicherheit bleiben Grenzen des Vergleichs. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        }
+      ],
+      "implementation": {
+        "native": "public_energy.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-energy-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "industry:cement",
+      "label": "Zement",
+      "meaning": "Wie entwickelt sich die Herstellung des Baustoffs Zement?",
+      "boundary": "Zement, Klinker und Beton sind nicht dieselbe Produktmenge. Die gesamte Bauwirtschaft ist kein Ersatz fÃƒÂ¼r den Zementsektor.",
+      "priorFinding": "USGS verÃƒÂ¶ffentlicht ein eigenes Zementkapitel. Produktion, KapazitÃƒÂ¤t und unterschiedliche historische Landesabgrenzungen sind noch nicht als Atlasreihe geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "minerals",
+          "label": "USGS Ã‚Â· Mineral Commodity Summaries 2026",
+          "url": "https://pubs.usgs.gov/publication/mcs2026",
+          "finding": "Die amtliche VerÃƒÂ¶ffentlichung enthÃƒÂ¤lt getrennte Rohstoffkapitel. LÃƒÂ¤nderproduktion, Reserven, Handelsdaten und Preise haben verschiedene Einheiten und dÃƒÂ¼rfen keine gemeinsame Ersatzreihe bilden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "bgs-cement",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Die Quelle umfasst europäische Länder. Fertigzement und Klinker sind verschiedene Verarbeitungsstufen und werden nicht addiert. Länderangaben können Verkäufe statt der gesamten Produktion, nur Portlandzement, Großbritannien statt des ganzen Vereinigten Königreichs oder die Schweiz einschließlich Liechtensteins umfassen; solche Quellennoten bleiben bei der Beobachtung erhalten. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-cement",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Die Quelle umfasst europäische Länder. Fertigzement und Klinker sind verschiedene Verarbeitungsstufen und werden nicht addiert. Länderangaben können Verkäufe statt der gesamten Produktion, nur Portlandzement, Großbritannien statt des ganzen Vereinigten Königreichs oder die Schweiz einschließlich Liechtensteins umfassen; solche Quellennoten bleiben bei der Beobachtung erhalten. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "bgs-cement"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_bgs.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "originalData": "public-bgs-audit.json",
+        "localImport": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json",
+        "tests": "Full original BGS profiles, source markers, rejects and temporary SQLite roundtrip passed; public chart tests, TypeScript, ESLint and Rust Clippy passed."
+      }
+    },
+    {
+      "id": "materials:lithium",
+      "label": "Lithium",
+      "meaning": "Wie verÃƒÂ¤ndern sich FÃƒÂ¶rderung und verfÃƒÂ¼gbare Lithiumversorgung?",
+      "boundary": "Lithiumgehalt, Lithiumcarbonat-Ãƒâ€žquivalent, Erzmenge und Reserven sind getrennte GrÃƒÂ¶ÃƒÅ¸en. Ressourcen sagen nichts ÃƒÂ¼ber einen fairen Rohstoffpreis aus.",
+      "priorFinding": "USGS bietet ein eigenes Lithiumkapitel. Die LÃƒÂ¤nder- und Einheitendefinitionen benÃƒÂ¶tigen vor einer langen Datenansicht einen Abgleich.",
+      "candidateSources": [
+        {
+          "id": "minerals",
+          "label": "USGS Ã‚Â· Mineral Commodity Summaries 2026",
+          "url": "https://pubs.usgs.gov/publication/mcs2026",
+          "finding": "Die amtliche VerÃƒÂ¶ffentlichung enthÃƒÂ¤lt getrennte Rohstoffkapitel. LÃƒÂ¤nderproduktion, Reserven, Handelsdaten und Preise haben verschiedene Einheiten und dÃƒÂ¼rfen keine gemeinsame Ersatzreihe bilden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        },
+        {
+          "sourceId": "bgs-lithium",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Mineral- und Produktmasse bleiben vom enthaltenen Lithium getrennt. Der Quellengehalt wird unverändert übernommen und nicht aus pauschalen Umrechnungsfaktoren berechnet. Teilprodukte können dieselbe Verarbeitungskette betreffen; keine Addition zu Länder- oder Weltproduktion. Der unspezifische historische Mineralcode und die nach Land unterschiedlich abgegrenzte allgemeine Lithiumgehaltsreihe werden nicht als einheitliche Gesamtproduktion verwendet. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "bgs-lithium"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_bgs.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "originalData": "public-bgs-audit.json",
+        "localImport": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json",
+        "tests": "Full original BGS profiles, source markers, rejects and temporary SQLite roundtrip passed; public chart tests, TypeScript, ESLint and Rust Clippy passed."
+      }
+    },
+    {
+      "id": "materials:rare_earths",
+      "label": "Seltene Erden",
+      "meaning": "Wo werden Seltene Erden gewonnen und wie verÃƒÂ¤ndert sich die Versorgung?",
+      "boundary": "Seltene Erden umfassen mehrere Elemente. Ein Mengenaggregat darf keine einheitliche Preis- oder Bewertungswelle vortÃƒÂ¤uschen.",
+      "priorFinding": "Das USGS-Kapitel ist ein konkreter Ausgangspunkt. FÃƒÂ¶rderung, Verarbeitung und einzelne chemische Formen sind noch nicht als LÃƒÂ¤nderbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "minerals",
+          "label": "USGS Ã‚Â· Mineral Commodity Summaries 2026",
+          "url": "https://pubs.usgs.gov/publication/mcs2026",
+          "finding": "Die amtliche VerÃƒÂ¶ffentlichung enthÃƒÂ¤lt getrennte Rohstoffkapitel. LÃƒÂ¤nderproduktion, Reserven, Handelsdaten und Preise haben verschiedene Einheiten und dÃƒÂ¼rfen keine gemeinsame Ersatzreihe bilden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "bgs-rare-earths",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-bgs-audit.json",
+          "boundary": "Originalwerte in Seltenerdoxiden oder von BGS berechnetem Oxidäquivalent. Die ältere Tabelle über Mineralmengen wird nicht angehängt. Soweit möglich Zuordnung zum Abbauland; Verarbeitung aus Lagerbeständen kann in den Quellennoten getrennt erwähnt sein. Indien verwendet teils das am folgenden 31. März endende Berichtsjahr, Australien teils das am 30. Juni endende Jahr. Keine erfundene Welt- oder Afrika-Summe. Zusammenstellung des British Geological Survey aus amtlichen und weiteren Quellen, einschließlich Schätzungen. Fehlende Angaben bleiben leer; ein Quellenstrich bedeutet keine Produktion, ein gerundetes Nullzeichen weniger als eine halbe Einheit. Quellenbrüche und besondere Gebiets- oder Berichtsjahre bleiben erläutert. Keine Reserven, Marktpreise oder Bewertung. World Mineral Statistics contributed by permission of the British Geological Survey. Nutzung für persönliche, nichtkommerzielle Recherche nach den Quellenbedingungen."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "bgs-rare-earths"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_bgs.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "originalData": "public-bgs-audit.json",
+        "localImport": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json",
+        "tests": "Full original BGS profiles, source markers, rejects and temporary SQLite roundtrip passed; public chart tests, TypeScript, ESLint and Rust Clippy passed."
+      }
+    },
+    {
+      "id": "digital:cloud",
+      "label": "Cloud und Rechenzentren",
+      "meaning": "Wie entwickelt sich die Infrastruktur hinter Cloud-Diensten und Rechenzentren?",
+      "boundary": "AnkÃƒÂ¼ndigungen, betriebene Serverleistung, Stromverbrauch und bezahlte Cloud-Dienste mÃƒÂ¼ssen getrennt bleiben.",
+      "priorFinding": "UNCTAD beschreibt angekÃƒÂ¼ndigte Investitionen in Rechenzentren. Diese Quelle belegt noch keinen einheitlichen historischen Bestand oder Cloud-Umsatz je Land.",
+      "candidateSources": [
+        {
+          "id": "datacentres",
+          "label": "UNCTAD Ã‚Â· Rechenzentren und Investitionen",
+          "url": "https://unctad.org/news/data-centres-are-reshaping-global-investment-landscape",
+          "finding": "Die Auswertung vom Januar 2026 behandelt angekÃƒÂ¼ndigte auslÃƒÂ¤ndische Neuinvestitionen. AnkÃƒÂ¼ndigungen sind weder realisierte Ausgaben noch ein Bestand betriebener Rechenzentren."
+        },
+        {
+          "id": "ai",
+          "label": "OECD.AI Ã‚Â· Trends und Daten",
+          "url": "https://oecd.ai/en/trends-and-data",
+          "finding": "Die OECD bietet getrennte Perspektiven auf Forschung, Investitionen, Arbeit, Software, RechenkapazitÃƒÂ¤t und Patente. Eine einheitliche Messung des schnell verÃƒÂ¤nderlichen KI-Feldes bleibt anspruchsvoll."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "census-construction",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-census-audit.json",
+          "finding": "Original US monthly construction spending, distinct data center/warehouse categories; published values rather than investment announcements."
+        }
+      ],
+      "implementation": null,
+      "localEvidence": "public-second-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full original Census, IEA and WDI tests passed; complete numeric source comparison and temporary SQLite reopen",
+        "frontend": "286 Atlas tests passed; TypeScript, scoped ESLint and Clippy passed",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "digital:cybersecurity",
+      "label": "Cybersicherheit",
+      "meaning": "Wie bauen LÃƒÂ¤nder FÃƒÂ¤higkeiten zum Schutz digitaler Systeme auf?",
+      "boundary": "Die MaÃƒÅ¸nahmenbewertung misst keinen fairen Wert der Cybersicherheitsbranche und keine garantierte Sicherheit. Neue Ausgaben kÃƒÂ¶nnen eine andere Skala verwenden.",
+      "priorFinding": "Der ITU-Index bietet eine belegte Perspektive auf nationale SchutzmaÃƒÅ¸nahmen. MethodenstÃƒÂ¤nde und ihre Vergleichbarkeit sind noch nicht als Atlasansicht ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "cyber",
+          "label": "ITU Ã‚Â· Global Cybersecurity Index 2024",
+          "url": "https://www.itu.int/epublications/publication/global-cybersecurity-index-2024",
+          "finding": "Die ITU bewertet nationale MaÃƒÅ¸nahmen in mehreren Bereichen. Die Ausgabe erlÃƒÂ¤utert MethodenÃƒÂ¤nderungen; sie misst nicht den Umsatz von Sicherheitsfirmen oder einfach die Zahl erfolgreicher Angriffe."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-cybersecurity",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Fragenkatalog ab 2022; nicht an ältere Summen mit anderer Maßnahmenliste angehängt. Maßnahmen sind kein Nachweis garantierter Sicherheit. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-cybersecurity",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Mindestens fünf Maßnahmen aus dem Fragenkatalog ab 2022. Keine Rangliste staatlicher Cybersicherheitsfähigkeiten. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-cybersecurity",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Einschließlich Cloud-Backups; kein gemessenes Wiederherstellungsergebnis. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-cybersecurity",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Gemeldete Nutzung der Maßnahme, keine Zahl erfolgreich verhinderter Angriffe. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-cybersecurity"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "digital:digital_platforms",
+      "label": "Digitale Plattformen",
+      "meaning": "Wie verbreiten sich digitale Vermittler zwischen Anbietern und Nutzern?",
+      "boundary": "Plattformumsatz, vermittelte Warenwerte und aktive Nutzer sind verschiedene GrÃƒÂ¶ÃƒÅ¸en. Der Firmensitz ist nicht automatisch der Ort der wirtschaftlichen Nutzung.",
+      "priorFinding": "UNCTAD fÃƒÂ¼hrt Daten zur digitalen Wirtschaft und zum Onlinehandel. Eine abgegrenzte lange LÃƒÂ¤nderreihe speziell zu Plattformen ist noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-ecommerce",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Vermittelnde Marktplätze, die mehrere Unternehmen nutzen. Keine selbst betriebene Shop-Software, keine Plattformumsätze, Warenwerte oder aktiven Nutzer. Zuordnung nach befragtem Unternehmen, nicht nach Sitz des Plattformbetreibers. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Verkaufsjahr: Quellen-Erhebungsjahr minus eins (z. B. Erhebung 2025 = Verkäufe 2024). Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-ecommerce"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "innovation:artificial_intelligence",
+      "label": "KÃƒÂ¼nstliche Intelligenz",
+      "meaning": "Wie entwickeln sich Forschung, Nutzung und wirtschaftliche AktivitÃƒÂ¤t rund um KI?",
+      "boundary": "Patente, Modelle, RechenkapazitÃƒÂ¤t und Investitionen messen unterschiedliche VorgÃƒÂ¤nge. Kein einzelnes dieser Bilder ist eine Bewertung des gesamten KI-Markts.",
+      "priorFinding": "OECD.AI bietet mehrere passende Datenperspektiven. Eine Definition und geprÃƒÂ¼fte Historie je Perspektive fehlen noch; allgemeine Forschungsausgaben sind nur Kontext.",
+      "candidateSources": [
+        {
+          "id": "ai",
+          "label": "OECD.AI Ã‚Â· Trends und Daten",
+          "url": "https://oecd.ai/en/trends-and-data",
+          "finding": "Die OECD bietet getrennte Perspektiven auf Forschung, Investitionen, Arbeit, Software, RechenkapazitÃƒÂ¤t und Patente. Eine einheitliche Messung des schnell verÃƒÂ¤nderlichen KI-Feldes bleibt anspruchsvoll."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-ai",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Die Technologieliste wird mit der Erhebung weiterentwickelt. 2025 enthält sie auch die Erzeugung von Bildern, Videos und Audio; kein unveränderter Gesamtmarktindex. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-ai",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Text Mining; keine Zahl entwickelter Modelle, Patente oder Investitionen. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-ai",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Einschließlich Deep Learning; Nutzung im befragten Unternehmen, kein Forschungs- oder Marktwert. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-ai"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "innovation:robotics",
+      "label": "Robotik",
+      "meaning": "Wie verbreiten sich Roboter in Produktion und Dienstleistungen?",
+      "boundary": "Neue Installationen, laufender Bestand und Roboterdichte haben verschiedene Bedeutungen. Einzelne Pressezahlen ergeben keine durchgehende LÃƒÂ¤nderwelle.",
+      "priorFinding": "Die IFR bietet eine detaillierte historische Datenbank kostenpflichtig an. Eine ausreichend breite frei nutzbare Ersatzhistorie ist noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "robots",
+          "label": "IFR Ã‚Â· World Robotics",
+          "url": "https://ifr.org/worldrobotics/",
+          "finding": "Die Seite bietet detaillierte LÃƒÂ¤nder-, Branchen- und historische Daten als kostenpflichtiges Produkt an. Ãƒâ€“ffentlich beschriebene Ergebnisse sind kein freier Ersatz fÃƒÂ¼r die gesamte Datenhistorie."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-robotics",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Anteil der Unternehmen mit mindestens einer der beiden Roboterarten. Keine Zahl von Robotern, Installationen oder Roboterdichte. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-robotics",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Physische industrielle Roboter; keine reine Softwareautomatisierung. Unternehmen können zugleich Serviceroboter einsetzen. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-robotics",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Physische Serviceroboter mit einem Grad an Autonomie; keine reine Softwareautomatisierung. Beide Robotergruppen sind nicht addierbar. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Erhebungsjahr. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-robotics"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "innovation:quantum",
+      "label": "Quantentechnologien",
+      "meaning": "Wie entwickelt sich Forschung zu Quantentechnologien?",
+      "boundary": "Eine breite Patentklasse oder das Wort Quantum allein identifiziert keinen vollstÃƒÂ¤ndigen Sektor. Patente sind keine UmsÃƒÂ¤tze oder nachgewiesene technische LeistungsfÃƒÂ¤higkeit.",
+      "priorFinding": "Ein offizielles WIPO-Suchbeispiel ist vorhanden. Eine reproduzierbare Abgrenzung von Quantencomputing, Kommunikation und Sensorik als historische Reihe ist noch offen.",
+      "candidateSources": [
+        {
+          "id": "quantum",
+          "label": "WIPO Ã‚Â· PATENTSCOPE-Webinar: Quanten-Suchbeispiel",
+          "url": "https://www.wipo.int/edocs/mdocs/webinars/en/wipo_webinar_patentscope_2025_14/wipo_webinar_patentscope_2025_14_1.pdf",
+          "finding": "Die offiziellen Schulungsfolien enthalten ein abgegrenztes Suchbeispiel zu Quantencomputing. Suchabfrage, Patentdatum und Herkunft sind Teil des Ergebnisses; dies ist noch keine vollstÃƒÂ¤ndige Marktstatistik."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "epo-quantum-sensing",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-epo-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "epo-quantum-sensing",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_epo.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "sourceAudit": "public-epo-audit.json",
+        "native": "2 original/mutation tests and SQLite roundtrip passed",
+        "frontend": "24 public/coverage tests, TypeScript and scoped ESLint passed",
+        "localFill": "public-epo-local-fill-2026-09-11.json",
+        "nativeUi": "public-epo-native-qa-2026-09-11.json",
+        "windowsRelease": "public-epo-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "innovation:space_technology",
+      "label": "Raumfahrttechnologie",
+      "meaning": "Wie entwickeln sich Raumfahrttechnik und darauf aufbauende wirtschaftliche Anwendungen?",
+      "boundary": "Startsysteme, Satelliten, Bodentechnik und nachgelagerte Dienste bilden unterschiedliche MÃƒÂ¤rkte. Startzahlen allein messen keinen wirtschaftlichen Gesamtwert.",
+      "priorFinding": "Der OECD-Bericht 2026 bietet einen aktuellen Einstieg. Die einzelnen LÃƒÂ¤nderindikatoren sind noch nicht als zusammenhÃƒÂ¤ngende Datenbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "space",
+          "label": "OECD Ã‚Â· The Space Economy at a Glance 2026",
+          "url": "https://www.oecd.org/en/publications/the-space-economy-at-a-glance-2026_cbf9b240-en.html",
+          "finding": "Die neue VerÃƒÂ¶ffentlichung untersucht Raumfahrtwirtschaft und ihre wirtschaftlichen Verflechtungen. LÃƒÂ¤nderabgrenzung und einzelne Indikatoren benÃƒÂ¶tigen eine eigene DatenprÃƒÂ¼fung vor einer langen Vergleichsreihe."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "epo-cosmonautics",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-epo-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "epo-cosmonautics",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_epo.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "sourceAudit": "public-epo-audit.json",
+        "native": "2 original/mutation tests and SQLite roundtrip passed",
+        "frontend": "24 public/coverage tests, TypeScript and scoped ESLint passed",
+        "localFill": "public-epo-local-fill-2026-09-11.json",
+        "nativeUi": "public-epo-native-qa-2026-09-11.json",
+        "windowsRelease": "public-epo-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "innovation:advanced_materials",
+      "label": "Neue Materialien",
+      "meaning": "Wie entstehen neue Werkstoffe mit besonderen technischen Eigenschaften?",
+      "boundary": "Chemie- oder Metallurgiepatente insgesamt dÃƒÂ¼rfen nicht als ausschlieÃƒÅ¸lich neue Materialien erscheinen. Forschung und kommerzielle Nutzung sind getrennt.",
+      "priorFinding": "Die vorhandene WIPO-Klassifikation umfasst breite Technologiefelder. Eine gesonderte, nachvollziehbare Auswahl moderner Werkstoffe ist noch nicht definiert.",
+      "candidateSources": [
+        {
+          "id": "patentFields",
+          "label": "WIPO Ã‚Â· IPC und Technologiefelder",
+          "url": "https://www.wipo.int/edocs/mdocs/classifications/en/ipc_ce_41/ipc_ce_41_5-main1.pdf",
+          "finding": "Die Methodengrundlage ordnet Patentklassen breiten Technologiefeldern zu. Diese Einteilung ist kein Verzeichnis aller heutigen SpezialmÃƒÂ¤rkte und keine Bewertung ihrer Unternehmen."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eu-advanced-materials",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-materials-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "eu-advanced-materials",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_materials.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-materials-local-fill-2026-09-11.json",
+      "verification": {
+        "sourceAudit": "public-materials-audit.json",
+        "native": "2 original/mutation tests; all 36 facts and SQLite roundtrip",
+        "frontend": "28 public/coverage tests, TypeScript and scoped ESLint passed",
+        "nativeUi": "public-materials-native-qa-2026-09-11.json",
+        "windowsRelease": "public-materials-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "housing:rents",
+      "label": "Mieten",
+      "meaning": "Wie verÃƒÂ¤ndern sich die Kosten gemieteter Wohnungen?",
+      "boundary": "Neuvertrags- und Bestandsmieten sowie Preisindex und absolute Monatsmiete sind verschieden. Das vorhandene Kaufpreis-Miet-VerhÃƒÂ¤ltnis ist kein Mietpreisniveau.",
+      "priorFinding": "Die OECD-Wohndaten sind ein konkreter Ausgangspunkt. Eigene Mietreihen mit geprÃƒÂ¼fter Abgrenzung sind noch nicht ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "housing",
+          "label": "OECD Ã‚Â· Affordable Housing Database",
+          "url": "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html",
+          "finding": "Die Datenbank enthÃƒÂ¤lt Wohnungsbestand, Bau, Preise und Wohnbedingungen fÃƒÂ¼r OECD-, EU- und ausgewÃƒÂ¤hlte PartnerlÃƒÂ¤nder. Einzelindikatoren erlÃƒÂ¤utern Definitionen und Vergleichsgrenzen."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-rents",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Harmonisierter Verbraucherpreisindex, Jahresdurchschnitt 2025 = 100, ECOICOP 2. Tatsächliche Mieten einschließlich Haupt-/Zweitwohnungen und zugehöriger Garagen; keine unterstellten Eigentümermieten, Nebenkosten oder isolierten Neuvertragsmieten. Ein gleicher Indexwert bedeutet keine gleiche Monatsmiete. Die von Eurostat neu veröffentlichte Historie wird unverändert übernommen; keine Verknüpfung mit den archivierten Tabellen auf älterer Basis. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-rents"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "housing:housing_supply",
+      "label": "Wohnungsangebot",
+      "meaning": "Wie verÃƒÂ¤ndert sich der Bestand verfÃƒÂ¼gbarer Wohnungen?",
+      "boundary": "Genehmigungen, Baubeginne, Fertigstellungen, Bestand und tatsÃƒÂ¤chlich verfÃƒÂ¼gbare Wohnungen sind getrennte Schritte.",
+      "priorFinding": "Die OECD fÃƒÂ¼hrt Wohnungsbestand und BautÃƒÂ¤tigkeit. Ihre LÃƒÂ¤nderdefinitionen und ZeitrÃƒÂ¤ume sind noch nicht als eigene Atlasbilder geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "housing",
+          "label": "OECD Ã‚Â· Affordable Housing Database",
+          "url": "https://www.oecd.org/en/data/datasets/oecd-affordable-housing-database.html",
+          "finding": "Die Datenbank enthÃƒÂ¤lt Wohnungsbestand, Bau, Preise und Wohnbedingungen fÃƒÂ¼r OECD-, EU- und ausgewÃƒÂ¤hlte PartnerlÃƒÂ¤nder. Einzelindikatoren erlÃƒÂ¤utern Definitionen und Vergleichsgrenzen."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "oecd-housing-stock",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-housing-stock-audit.json",
+          "documentation": "SERVICES-AND-HOUSING.md"
+        }
+      ],
+      "implementation": {
+        "native": "public_housing_stock.rs",
+        "localImport": "public-housing-stock-local-fill-2026-09-11.json",
+        "originalTests": "passed",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      },
+      "localEvidence": null,
+      "verification": null
+    },
+    {
+      "id": "housing:commercial_property",
+      "label": "Gewerbeimmobilien",
+      "meaning": "Wie verÃƒÂ¤ndern sich Preise gewerblich genutzter Immobilien?",
+      "boundary": "BÃƒÂ¼ros, Einzelhandel, GewerbeflÃƒÂ¤chen und Industriestandorte dÃƒÂ¼rfen nicht ungeprÃƒÂ¼ft als gleichartige LandesmÃƒÂ¤rkte verglichen werden.",
+      "priorFinding": "Die BIS bietet Gewerbeimmobilienreihen an. Wegen ihrer unterschiedlichen Objekt- und Gebietsabgrenzungen ist die ÃƒÅ“bernahme noch offen.",
+      "candidateSources": [
+        {
+          "id": "commercial",
+          "label": "BIS Ã‚Â· Commercial Property Prices",
+          "url": "https://data.bis.org/topics/CPP",
+          "finding": "Nominale Gewerbeimmobilienreihen sind verfÃƒÂ¼gbar. Die BIS warnt vor erheblichen Unterschieden bei GebÃƒÂ¤udetyp, rÃƒÂ¤umlicher Abdeckung, Frequenz und Berechnung zwischen LÃƒÂ¤ndern."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "bis-commercial-property",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-cpp-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "bis-commercial-property",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_cpp.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-cpp-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "2 passed, complete original oracle and temporary SQLite reopen; shared calendar regressions passed",
+        "frontend": "30 scoped checks and 25 post-UI-change checks passed; TypeScript and ESLint passed",
+        "nativeUi": "public-cpp-native-qa-2026-09-11.json",
+        "windowsRelease": "public-cpp-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "housing:logistics_property",
+      "label": "Logistikimmobilien",
+      "meaning": "Wie entwickelt sich der Markt fÃƒÂ¼r Lager- und LogistikgebÃƒÂ¤ude?",
+      "boundary": "Allgemeine Industrie- oder Gewerbeimmobilien sind kein genauer Ersatz. Miete, Kaufpreis, Leerstand und Neubau bleiben verschiedene Bilder.",
+      "priorFinding": "BIS-Gewerbeimmobiliendaten sind ein Quellenkandidat. Ob sie fÃƒÂ¼r ein Land einen passenden eigenen Logistikbereich enthalten, ist noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "commercial",
+          "label": "BIS Ã‚Â· Commercial Property Prices",
+          "url": "https://data.bis.org/topics/CPP",
+          "finding": "Nominale Gewerbeimmobilienreihen sind verfÃƒÂ¼gbar. Die BIS warnt vor erheblichen Unterschieden bei GebÃƒÂ¤udetyp, rÃƒÂ¤umlicher Abdeckung, Frequenz und Berechnung zwischen LÃƒÂ¤ndern."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "census-construction",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-census-audit.json",
+          "finding": "Original US monthly construction spending, distinct data center/warehouse categories; published values rather than investment announcements."
+        }
+      ],
+      "implementation": null,
+      "localEvidence": "public-second-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full original Census, IEA and WDI tests passed; complete numeric source comparison and temporary SQLite reopen",
+        "frontend": "286 Atlas tests passed; TypeScript, scoped ESLint and Clippy passed",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "consumer_services:ecommerce",
+      "label": "Onlinehandel",
+      "meaning": "Wie verlagert sich der Handel zu digital bestellten Waren und Dienstleistungen?",
+      "boundary": "Digital bestellt ist nicht automatisch digital geliefert. GeschÃƒÂ¤ftskunden, Privatkunden sowie Inlands- und AuslandsgeschÃƒÂ¤ft benÃƒÂ¶tigen getrennte Nenner.",
+      "priorFinding": "UNCTAD fÃƒÂ¼hrt eigene DatensÃƒÂ¤tze zu OnlineverkÃƒÂ¤ufen und digital bestelltem grenzÃƒÂ¼berschreitendem Handel. Sie sind noch nicht als Atlasbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        },
+        {
+          "id": "findex",
+          "label": "Weltbank Ã‚Â· Global Findex 2025",
+          "url": "https://www.worldbank.org/en/publication/globalfindex/download-data",
+          "finding": "Kostenlose LÃƒÂ¤nderdateien enthalten Befragungen zu Konten, Zahlungen und finanzieller WiderstandsfÃƒÂ¤higkeit. VerfÃƒÂ¼gbare Erhebungsjahre sind 2011, 2014, 2017, 2021 und 2024, je nach Indikator."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-ecommerce",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Web/App/Marktplätze und EDI. B2B, B2G und B2C zusammen; keine reine Einzelhandelsquote. Ohne Ein-Prozent-Umsatzschwelle. Manuell geschriebene E-Mails sind ausgeschlossen. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Verkaufsjahr: Quellen-Erhebungsjahr minus eins (z. B. Erhebung 2025 = Verkäufe 2024). Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        },
+        {
+          "sourceId": "eurostat-ecommerce",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-eurostat-audit.json",
+          "boundary": "Web-Verkäufe ohne reine EDI-Bestellungen. Digitale Bestellung verlangt weder digitale Bezahlung noch digitale Lieferung; keine Umsatzquote. Stichprobenerhebung bei Unternehmen mit mindestens zehn Beschäftigten einschließlich Selbständiger. NACE Rev. 2: C–J, L–N und Reparatur von Computern/Kommunikationsgeräten (95.1); nicht die gesamte Volkswirtschaft. Ab 2021 umfasst der Erhebungsrahmen zusätzlich Tierarztpraxen (M75). Nur tatsächlich veröffentlichte Erhebungsjahre; Länderbrüche und geringe Zuverlässigkeit bleiben gekennzeichnet. Die Prozentbasis sind alle erfassten Unternehmen, nicht nur Internetnutzer oder Technologieanwender. Die Zeitachse zeigt das Verkaufsjahr: Quellen-Erhebungsjahr minus eins (z. B. Erhebung 2025 = Verkäufe 2024). Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht. Persönliche, nichtkommerzielle Verwendung; ursprüngliche Nutzungsbedingungen gelten."
+        }
+      ],
+      "implementation": {
+        "sourceIds": [
+          "eurostat-ecommerce"
+        ],
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_eurostat.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-eurostat-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full six original files, independent JSON-stat reconstruction, 538 profiles and temporary SQLite reopen passed",
+        "frontend": "17 scoped tests, TypeScript and ESLint passed; Clippy passed",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "consumer_services:professional_services",
+      "label": "Unternehmensdienstleistungen",
+      "meaning": "Wie entwickeln sich Dienstleistungen fÃƒÂ¼r Unternehmen?",
+      "boundary": "Die gesamte DienstleistungswertschÃƒÂ¶pfung zeigt nur den wirtschaftlichen Kontext. Sie enthÃƒÂ¤lt auch viele andere TÃƒÂ¤tigkeiten; AuÃƒÅ¸enhandel ist nicht die gesamte Produktion.",
+      "priorFinding": "UNCTAD unterscheidet Dienstleistungskategorien im AuÃƒÅ¸enhandel. Eine eigene LÃƒÂ¤nderreihe fÃƒÂ¼r die gesamte heimische Unternehmensdienstleistung ist noch nicht geprÃƒÂ¼ft.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-business-services",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 M umfasst freiberufliche, wissenschaftliche und technische Dienstleistungen: unter anderem Recht, Buchführung, Beratung, Architektur, Ingenieurwesen, Forschung, Werbung und Veterinärwesen. Statistische Unternehmen; keine Zählung sämtlicher Betriebsstätten oder rechtlicher Einheiten. Aktuelle EBS-Reihe ab 2021, getrennt von der älteren SBS-Sammlung; Änderungen von Umfang und Definitionen werden nicht verkettet. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-business-services",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 M umfasst freiberufliche, wissenschaftliche und technische Dienstleistungen: unter anderem Recht, Buchführung, Beratung, Architektur, Ingenieurwesen, Forschung, Werbung und Veterinärwesen. Erwerbstätige einschließlich tätiger Inhaber und mithelfender Familienangehöriger; Kopfzahl, keine Vollzeitäquivalente. Aktuelle EBS-Reihe ab 2021, getrennt von der älteren SBS-Sammlung; Änderungen von Umfang und Definitionen werden nicht verkettet. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-professional-history",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 M umfasst freiberufliche, wissenschaftliche und technische Dienstleistungen: unter anderem Recht, Buchführung, Beratung, Architektur, Ingenieurwesen, Forschung, Werbung und Veterinärwesen. Statistische Unternehmen; keine Zählung sämtlicher Betriebsstätten oder rechtlicher Einheiten. Archivierte SBS-Sammlung 2005–2020; keine Verlängerung mit den EBS-Werten ab 2021. Die vor 2008 vorhandenen Punkte bleiben an der Klassifikationsgrenze getrennt. Das Archiv enthält die Branche S96 der persönlichen Dienstleistungen nicht. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-professional-history",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 M umfasst freiberufliche, wissenschaftliche und technische Dienstleistungen: unter anderem Recht, Buchführung, Beratung, Architektur, Ingenieurwesen, Forschung, Werbung und Veterinärwesen. Erwerbstätige einschließlich tätiger Inhaber und mithelfender Familienangehöriger; Kopfzahl, keine Vollzeitäquivalente. Archivierte SBS-Sammlung 2005–2020; keine Verlängerung mit den EBS-Werten ab 2021. Die vor 2008 vorhandenen Punkte bleiben an der Klassifikationsgrenze getrennt. Das Archiv enthält die Branche S96 der persönlichen Dienstleistungen nicht. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        }
+      ],
+      "implementation": {
+        "native": "public_sbs.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-sbs-local-fill-2026-09-11.json",
+        "nativeUi": "public-sbs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-sbs-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-sbs-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "consumer_services:personal_services",
+      "label": "PersÃƒÂ¶nliche Dienstleistungen",
+      "meaning": "Wie entwickeln sich Dienstleistungen unmittelbar fÃƒÂ¼r Menschen und Haushalte?",
+      "boundary": "BeschÃƒÂ¤ftigung, WertschÃƒÂ¶pfung und grenzÃƒÂ¼berschreitender Handel sind unterschiedliche Perspektiven. Der gesamte Dienstleistungsbereich bleibt nur ergÃƒÂ¤nzender Kontext.",
+      "priorFinding": "Die vorhandenen Branchenklassifikationen fassen mehrere persÃƒÂ¶nliche Dienste zusammen. Eine klar abgegrenzte eigene Zeitreihe fehlt noch.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "eurostat-business-services",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 S96 umfasst sonstige persönliche Dienstleistungen, etwa Wäscherei, Friseur-, Kosmetik- und Bestattungsdienste. Gesundheitsversorgung, Bildung und private Haushalte als Arbeitgeber gehören nicht zu dieser Branche. Statistische Unternehmen; keine Zählung sämtlicher Betriebsstätten oder rechtlicher Einheiten. Aktuelle EBS-Reihe ab 2021, getrennt von der älteren SBS-Sammlung; Änderungen von Umfang und Definitionen werden nicht verkettet. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        },
+        {
+          "sourceId": "eurostat-business-services",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-sbs-audit.json",
+          "boundary": "NACE Rev. 2 S96 umfasst sonstige persönliche Dienstleistungen, etwa Wäscherei, Friseur-, Kosmetik- und Bestattungsdienste. Gesundheitsversorgung, Bildung und private Haushalte als Arbeitgeber gehören nicht zu dieser Branche. Erwerbstätige einschließlich tätiger Inhaber und mithelfender Familienangehöriger; Kopfzahl, keine Vollzeitäquivalente. Aktuelle EBS-Reihe ab 2021, getrennt von der älteren SBS-Sammlung; Änderungen von Umfang und Definitionen werden nicht verkettet. Marktproduzierende Unternehmen aller Größenklassen, zugeordnet nach ihrer Haupttätigkeit. Keine Berufsstatistik aller Menschen mit entsprechender Ausbildung und kein Gesamtbild aller Dienstleistungen. Statistische Unternehmen können mehrere rechtliche Einheiten umfassen; die Umstellung von rechtlichen Einheiten auf Unternehmen kann insbesondere um 2018 Reihenbrüche erzeugen. Register, administrative Angaben, Erhebungen und Quellenschätzungen; nationale Methoden können abweichen. EU-Werte sind veröffentlichte Aggregate, keine selbst berechnete Summe. Zahlen beschreiben Umfang, keine Qualität, Produktivität oder Anlagebewertung. Quelle: Eurostat. Auswahl und deutsche Erläuterung durch Personal Macro; Eurostat verantwortet diese Darstellung nicht."
+        }
+      ],
+      "implementation": {
+        "native": "public_sbs.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-sbs-local-fill-2026-09-11.json",
+        "nativeUi": "public-sbs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-sbs-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-sbs-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "transport:public_transport",
+      "label": "Ãƒâ€“ffentlicher Verkehr",
+      "meaning": "Wie gut kÃƒÂ¶nnen Menschen Busse, Bahnen und andere ÃƒÂ¶ffentliche Verkehrsmittel erreichen?",
+      "boundary": "Eine Stadterhebung ist kein gesamter Landeswert. NÃƒÂ¤he zur Haltestelle misst nicht automatisch Takt, ZuverlÃƒÂ¤ssigkeit oder Erschwinglichkeit.",
+      "priorFinding": "UN SDG 11.2.1 dokumentiert eine passende Zugangsperspektive. Die rÃƒÂ¤umlichen Erhebungen und verfÃƒÂ¼gbaren StÃƒÂ¤dte sind noch nicht als Atlasbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "transit",
+          "label": "UN SDG 11.2.1 Ã‚Â· Zugang zum ÃƒÂ¶ffentlichen Verkehr",
+          "url": "https://unstats.un.org/sdgs/metadata/files/Metadata-11-02-01.pdf",
+          "finding": "Die Methodendokumentation behandelt den Zugang der BevÃƒÂ¶lkerung zum ÃƒÂ¶ffentlichen Verkehr. RÃƒÂ¤umliche Erreichbarkeit ist eine andere GrÃƒÂ¶ÃƒÅ¸e als Fahrgastzahl, Netzausbau oder Verkehrsumsatz."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "unsdg",
+          "reviewedAt": "2026-09-11",
+          "evidence": "sdg-services-audit.json",
+          "documentation": "SERVICES-AND-HOUSING.md"
+        }
+      ],
+      "implementation": {
+        "native": "sdg_source.rs",
+        "localImport": "sdg-services-local-fill-2026-09-11.json",
+        "originalTests": "passed",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      },
+      "localEvidence": null,
+      "verification": null
+    },
+    {
+      "id": "transport:electric_vehicles",
+      "label": "ElektromobilitÃƒÂ¤t",
+      "meaning": "Wie verÃƒÂ¤ndert sich die Verbreitung elektrisch angetriebener Fahrzeuge?",
+      "boundary": "Bestand, neue VerkÃƒÂ¤ufe und Marktanteile bleiben getrennt. Rein elektrische Fahrzeuge und Plug-in-Hybride sind keine identische Kategorie.",
+      "priorFinding": "Der IEA-EV-Explorer enthÃƒÂ¤lt einen ÃƒÂ¶ffentlichen Datendownload. Fahrzeugtypen, historische Werte und Szenarien sind noch nicht als eigene Atlasansicht ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "ev",
+          "label": "IEA Ã‚Â· Global EV Data Explorer 2026",
+          "url": "https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer?os=0",
+          "finding": "Der ÃƒÂ¶ffentliche Explorer mit Datendownload und CC BY 4.0 unterscheidet FahrzeugverkÃƒÂ¤ufe, Bestand und Ladeinfrastruktur. Historie und Projektionen mÃƒÂ¼ssen getrennt ÃƒÂ¼bernommen werden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "iea-ev",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-iea-audit.json",
+          "finding": "IEA 2026 original public historical CSV with distinct stock/sales/share and slow/fast/ultra-fast public charging; scenarios excluded."
+        }
+      ],
+      "implementation": null,
+      "localEvidence": "public-second-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full original Census, IEA and WDI tests passed; complete numeric source comparison and temporary SQLite reopen",
+        "frontend": "286 Atlas tests passed; TypeScript, scoped ESLint and Clippy passed",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "transport:charging",
+      "label": "Ladeinfrastruktur",
+      "meaning": "Wie wÃƒÂ¤chst die Infrastruktur zum Laden elektrischer Fahrzeuge?",
+      "boundary": "Ãƒâ€“ffentlich und privat, schnell und langsam sowie Standorte, AnschlÃƒÂ¼sse und Ladeleistung dÃƒÂ¼rfen nicht vermischt werden.",
+      "priorFinding": "Der IEA-EV-Explorer enthÃƒÂ¤lt Ladeinfrastruktur als eigene Perspektive. Die Definition der Ladepunkte und ihre LÃƒÂ¤nderhistorien benÃƒÂ¶tigen noch einen Abgleich.",
+      "candidateSources": [
+        {
+          "id": "ev",
+          "label": "IEA Ã‚Â· Global EV Data Explorer 2026",
+          "url": "https://www.iea.org/data-and-statistics/data-tools/global-ev-data-explorer?os=0",
+          "finding": "Der ÃƒÂ¶ffentliche Explorer mit Datendownload und CC BY 4.0 unterscheidet FahrzeugverkÃƒÂ¤ufe, Bestand und Ladeinfrastruktur. Historie und Projektionen mÃƒÂ¼ssen getrennt ÃƒÂ¼bernommen werden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "iea-ev",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-iea-audit.json",
+          "finding": "IEA 2026 original public historical CSV with distinct stock/sales/share and slow/fast/ultra-fast public charging; scenarios excluded."
+        }
+      ],
+      "implementation": null,
+      "localEvidence": "public-second-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "Full original Census, IEA and WDI tests passed; complete numeric source comparison and temporary SQLite reopen",
+        "frontend": "286 Atlas tests passed; TypeScript, scoped ESLint and Clippy passed",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "trade:trade_partners",
+      "label": "Handelspartner",
+      "meaning": "Mit welchen LÃƒÂ¤ndern ist eine Wirtschaft ÃƒÂ¼ber den Handel verbunden?",
+      "boundary": "Ursprungsland, Versandland und Zielmarkt kÃƒÂ¶nnen verschieden sein. Die vorhandenen Gesamtexporte zeigen nur die AuÃƒÅ¸enhandelsgrÃƒÂ¶ÃƒÅ¸e.",
+      "priorFinding": "UNCTAD fÃƒÂ¼hrt bilaterale Handelsmatrizen. Partnerzuordnungen, Waren- und Dienstleistungsabgrenzungen sind noch nicht als eigene Netz- oder Anteilsbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "oecd-tiva-partners",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-tiva-audit.json"
+        }
+      ],
+      "implementation": {
+        "native": "public_tiva.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-tiva-local-fill-2026-09-11.json",
+        "nativeUi": "public-tiva-native-qa-2026-09-11.json",
+        "windowsRelease": "public-tiva-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-tiva-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "trade:supply_chains",
+      "label": "Lieferketten",
+      "meaning": "Wie sind LÃƒÂ¤nder ÃƒÂ¼ber Vorleistungen und WertschÃƒÂ¶pfung miteinander verbunden?",
+      "boundary": "Bruttoexporte enthalten mehrfach ÃƒÂ¼ber Grenzen laufende Vorleistungen. Sie messen weder den heimischen WertschÃƒÂ¶pfungsanteil noch unmittelbar Lieferausfallrisiken.",
+      "priorFinding": "OECD TiVA bietet eine passende Perspektive auf Produktionsverflechtungen. LÃƒÂ¤nder, Branchen und ModellstÃƒÂ¤nde sind noch nicht als Atlasbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "tiva",
+          "label": "OECD Ã‚Â· Trade in Value Added",
+          "url": "https://www.oecd.org/en/topics/sub-issues/trade-in-value-added.html",
+          "finding": "TiVA untersucht WertschÃƒÂ¶pfungsursprÃƒÂ¼nge und Produktionsverflechtungen auf Grundlage harmonisierter Input-Output-Tabellen. Das unterscheidet sich von GrenzÃƒÂ¼bertritten einzelner Waren."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "oecd-tiva-supply",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-tiva-audit.json"
+        }
+      ],
+      "implementation": {
+        "native": "public_tiva.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "passed",
+        "localImport": "public-tiva-local-fill-2026-09-11.json",
+        "nativeUi": "public-tiva-native-qa-2026-09-11.json",
+        "windowsRelease": "public-tiva-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-tiva-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "trade:export_concentration",
+      "label": "Exportkonzentration",
+      "meaning": "Wie stark hÃƒÂ¤ngen Ausfuhren von wenigen Produkten oder AbsatzmÃƒÂ¤rkten ab?",
+      "boundary": "Ein konzentrierter Exportkorb ist keine automatische ÃƒÅ“berbewertung. Ãƒâ€žnderungen der Warenklassifikation kÃƒÂ¶nnen den historischen Vergleich verÃƒÂ¤ndern.",
+      "priorFinding": "UNCTAD verÃƒÂ¶ffentlicht getrennte KonzentrationsmaÃƒÅ¸e. Produkt-, Partner- und Herkunftskonzentration sind noch nicht als eigene Bilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "unctad",
+          "label": "UNCTAD Ã‚Â· Data Centre",
+          "url": "https://unctadstat.unctad.org/datacentre/",
+          "finding": "Der Katalog fÃƒÂ¼hrt Warenhandel, Dienstleistungshandel, digitale Wirtschaft, Onlinehandel und Konzentrationsindizes. Die MessgrÃƒÂ¶ÃƒÅ¸en verwenden unterschiedliche Abgrenzungen; ein Katalogeintrag garantiert keine LÃƒÂ¤nderwerte."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "wits-export-concentration",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-wits-audit.json"
+        }
+      ],
+      "implementation": {
+        "native": "public_wits.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "2 passed including all original rows and 239-profile SQLite reopen",
+        "localImport": "public-wits-local-fill-2026-09-11.json",
+        "nativeUi": "public-wits-native-qa-2026-09-11.json",
+        "windowsRelease": "public-wits-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-wits-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "institutions:public_services",
+      "label": "Ãƒâ€“ffentliche Versorgung",
+      "meaning": "Wie gut erreichen grundlegende Versorgungsangebote die BevÃƒÂ¶lkerung?",
+      "boundary": "Zugang allein beschreibt nicht QualitÃƒÂ¤t, ZuverlÃƒÂ¤ssigkeit oder TrÃƒÂ¤gerschaft. Die Bilder zeigen Versorgung, ohne alle Anbieter als staatlich zu bezeichnen.",
+      "priorFinding": "Wasser-, SanitÃƒÂ¤r- und Stromzugang sind bereits getrennt als LÃƒÂ¤nderbilder erreichbar. Einen gemeinsamen Index aller ÃƒÂ¶ffentlichen Leistungen gibt es hier nicht.",
+      "candidateSources": [
+        {
+          "id": "governance",
+          "label": "Weltbank Ã‚Â· Worldwide Governance Indicators",
+          "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+          "finding": "Die Revision 2025 verwendet Wahrnehmungsdaten und ÃƒÂ¼berarbeitete historische SchÃƒÂ¤tzungen. Standardisierte MaÃƒÅ¸e und eine neue Skala mit festen Referenzpunkten dÃƒÂ¼rfen nicht mit alten VerÃƒÂ¶ffentlichungen vermischt werden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "unsdg",
+          "reviewedAt": "2026-09-11",
+          "evidence": "sdg-services-audit.json",
+          "documentation": "SERVICES-AND-HOUSING.md"
+        }
+      ],
+      "implementation": {
+        "native": "sdg_source.rs",
+        "localImport": "sdg-services-local-fill-2026-09-11.json",
+        "originalTests": "passed",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      },
+      "localEvidence": null,
+      "verification": null
+    },
+    {
+      "id": "institutions:institutional_indicators",
+      "label": "Institutionelle Indikatoren",
+      "meaning": "Wie werden institutionelle Rahmenbedingungen eines Landes eingeschÃƒÂ¤tzt?",
+      "boundary": "Zusammengesetzte WahrnehmungsmaÃƒÅ¸e sind keine objektive Gesamtnote eines Landes. Kleine AbstÃƒÂ¤nde kÃƒÂ¶nnen innerhalb der statistischen Unsicherheit liegen.",
+      "priorFinding": "Die WGI bieten sechs getrennte geschÃƒÂ¤tzte Dimensionen. Ihre Revision 2025 und Unsicherheiten sind noch nicht als eigene Atlasbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "governance",
+          "label": "Weltbank Ã‚Â· Worldwide Governance Indicators",
+          "url": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+          "finding": "Die Revision 2025 verwendet Wahrnehmungsdaten und ÃƒÂ¼berarbeitete historische SchÃƒÂ¤tzungen. Standardisierte MaÃƒÅ¸e und eine neue Skala mit festen Referenzpunkten dÃƒÂ¼rfen nicht mit alten VerÃƒÂ¶ffentlichungen vermischt werden."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "worldbank-wgi",
+          "documentationUrl": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+          "originalUrl": "https://datacatalogfiles.worldbank.org/ddh-published/0038026/DR0095947/wgidataset_with_sourcedata-2025.xlsx",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-wgi-audit.json",
+          "areaCount": 215,
+          "values": 32319,
+          "boundary": "WGI-Modell aus Befragungen und ExpertenschÃƒÂ¤tzungen; kein direkt gemessener Zustand und keine politische Bewertung des Atlas. Absolute Skala 0Ã¢â‚¬â€œ100 mit festen Referenzpunkten, kein LÃƒÂ¤nder-Perzentil. Senkrechte Balken zeigen das verÃƒÂ¶ffentlichte 90%-Unsicherheitsintervall. ÃƒÅ“berlappende Intervalle erlauben keine sichere Rang- oder Ãƒâ€žnderungsbehauptung. Die methodisch revidierte Ausgabe 2025 wird nur mit ihrer neu berechneten Geschichte verwendet."
+        }
+      ],
+      "implementation": {
+        "sourceId": "worldbank-wgi",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_source.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-local-fill-2026-09-11.json",
+      "verification": {
+        "nativeSourceTests": "4 passed; full original files and temporary SQLite reopen",
+        "frontend": "282/283 full Atlas tests passed initially; obsolete source-only fixture updated and its full 5-test file passed; new public and notebook scoped checks passed",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "institutions:economic_policy_regimes",
+      "label": "Wirtschaftspolitische Regime",
+      "meaning": "Welche wirtschaftspolitischen Rahmen prÃƒÂ¤gen eine Epoche?",
+      "boundary": "Ein Wechselkursregime beschreibt nur einen Teil der Wirtschaftspolitik. LÃƒÂ¤nder brauchen belegte Zeitabschnitte; eine universelle Phasenuhr lÃƒÂ¤sst sich daraus nicht ableiten.",
+      "priorFinding": "IMF-AREAER beschreibt bestimmte Wechselkurs- und Zahlungsregeln. Eine breitere, datierte Einordnung wirtschaftspolitischer Regime ist noch nicht erstellt.",
+      "candidateSources": [
+        {
+          "id": "monetary",
+          "label": "IMF Ã‚Â· AREAER-VerÃƒÂ¶ffentlichungen",
+          "url": "https://www.elibrary.imf.org/subject/012",
+          "finding": "Die Berichte behandeln Wechselkursarrangements, ZahlungsbeschrÃƒÂ¤nkungen und geldpolitische Rahmen. Die gesonderte AREAER-Datenbank meldete bei der PrÃƒÂ¼fung einen erforderlichen Zugang; keine freie Gesamthistorie zugesagt."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "aci-trilemma",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-trilemma-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "aci-trilemma",
+        "catalog": "apps/desktop/src/features/world-atlas/data/public-series-catalog.json",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_trilemma.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": null,
+      "verification": {
+        "sourceAudit": "public-trilemma-audit.json",
+        "native": "Original/mutation tests, all 532 profiles and SQLite roundtrip passed",
+        "frontend": "26 public/coverage tests, TypeScript and scoped ESLint passed",
+        "localFill": "public-trilemma-local-fill-2026-09-11.json",
+        "nativeUi": "public-trilemma-native-qa-2026-09-11.json",
+        "windowsRelease": "public-trilemma-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "id": "environment:climate_exposure",
+      "label": "Klimatische Belastung",
+      "meaning": "Welchen klimatischen Belastungen kann ein Land ausgesetzt sein?",
+      "boundary": "Ein LÃƒÂ¤nderindex ist keine lokale Wettervorhersage. Der ergÃƒÂ¤nzende Wasserstress beschreibt Wasserentnahme relativ zu Ressourcen, nicht alle Klimarisiken.",
+      "priorFinding": "ND-GAIN bietet Verwundbarkeitskomponenten. Einzelne Gefahren, gesellschaftliche Empfindlichkeit und Modellannahmen sind noch nicht getrennt als Atlasbilder ÃƒÂ¼bernommen.",
+      "candidateSources": [
+        {
+          "id": "climate",
+          "label": "University of Notre Dame Ã‚Â· ND-GAIN-Methodik",
+          "url": "https://gain.nd.edu/our-work/country-index/methodology/",
+          "finding": "ND-GAIN trennt Verwundbarkeit und Bereitschaft zur Anpassung. Zusammengesetzte Indizes benÃƒÂ¶tigen ihre Gewichtung und EingangsgrÃƒÂ¶ÃƒÅ¸en; sie sind keine direkten Schadensmessungen."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "ndgain-climate",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-ndgain-audit.json"
+        }
+      ],
+      "implementation": {
+        "native": "public_ndgain.rs",
+        "catalog": "public-series-catalog.json",
+        "originalTests": "2 passed; complete Decimal audit, 1847 profiles and 192-country SQLite reopen",
+        "localImport": "public-ndgain-local-fill-2026-09-11.json",
+        "nativeUi": "public-ndgain-native-qa-2026-09-11.json",
+        "windowsRelease": "public-ndgain-windows-release-2026-09-11.json"
+      },
+      "localEvidence": "public-ndgain-local-fill-2026-09-11.json",
+      "verification": null
+    },
+    {
+      "id": "long_history:monetary_systems",
+      "label": "Geld- und WÃƒÂ¤hrungssysteme",
+      "meaning": "Wie verÃƒÂ¤ndern sich Geldordnungen und Wechselkursarrangements ÃƒÂ¼ber lange ZeitrÃƒÂ¤ume?",
+      "boundary": "Ein Wechsel der Geldordnung ist ein historisches Ereignis, keine gleichmÃƒÂ¤ÃƒÅ¸ig wiederkehrende Phase. Unterschiede zwischen angekÃƒÂ¼ndigter Regel und tatsÃƒÂ¤chlicher Praxis bleiben relevant.",
+      "priorFinding": "IMF-AREAER ist eine konkrete Quelle fÃƒÂ¼r neuere Regelungen. Eine belegte Jahrhundert-Zeitleiste einschlieÃƒÅ¸lich frÃƒÂ¼herer Geldordnungen ist noch offen.",
+      "candidateSources": [
+        {
+          "id": "monetary",
+          "label": "IMF Ã‚Â· AREAER-VerÃƒÂ¶ffentlichungen",
+          "url": "https://www.elibrary.imf.org/subject/012",
+          "finding": "Die Berichte behandeln Wechselkursarrangements, ZahlungsbeschrÃƒÂ¤nkungen und geldpolitische Rahmen. Die gesonderte AREAER-Datenbank meldete bei der PrÃƒÂ¼fung einen erforderlichen Zugang; keine freie Gesamthistorie zugesagt."
+        }
+      ],
+      "status": "implemented_native_verified",
+      "research": [
+        {
+          "sourceId": "jst-exchange-regimes",
+          "reviewedAt": "2026-09-11",
+          "evidence": "public-regimes-audit.json"
+        }
+      ],
+      "implementation": {
+        "sourceId": "jst-exchange-regimes",
+        "native": "apps/desktop/src-tauri/src/world_atlas/public_regimes.rs",
+        "view": "apps/desktop/src/features/world-atlas/atlas-public-panel.tsx",
+        "migration": "0022_public_series.sql"
+      },
+      "localEvidence": "public-regimes-local-fill-2026-09-11.json",
+      "verification": {
+        "sourceAudit": "public-regimes-audit.json",
+        "native": "2 original/mutation tests; all 36 profiles and SQLite roundtrip",
+        "frontend": "27 public/coverage tests, TypeScript and scoped ESLint passed",
+        "nativeUi": "public-regimes-native-qa-2026-09-11.json",
+        "windowsRelease": "public-regimes-windows-release-2026-09-11.json"
+      }
+    }
+  ],
+  "updatedAt": "2026-09-11T08:16:58.312694+00:00",
+  "completedAt": "2026-09-11T08:16:58.312694+00:00"
+}

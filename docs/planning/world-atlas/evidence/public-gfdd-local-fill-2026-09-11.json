@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T05:51:14.319283+00:00",
+  "status": "passed",
+  "sourceId": "worldbank-gfdd-concentration",
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "profiles": 120,
+  "numeric": 1829,
+  "missing": 931,
+  "allOriginalProfilesExact": true,
+  "provenance": {
+    "sourceId": "worldbank-gfdd-concentration",
+    "retrievedAt": "2026-09-11T05:50:49.457616700+00:00",
+    "publishedAt": "2022-09",
+    "url": "https://thedocs.worldbank.org/en/doc/5882f2b2117b882d58a78f9c64ea3613-0050062022/original/20220909-global-financial-development-database.xlsx",
+    "documentationUrl": "https://www.worldbank.org/en/publication/gfdr/data/global-financial-development-database",
+    "sha256": "bb86ad8c15da875f094c9b23db69731570e7ffa1e14e22fb2c8ba2aef30884dc",
+    "recipe": "gfdd-20220909-original-am01-am02-through2020-v1",
+    "sourceRows": 13268,
+    "numericValues": 1829,
+    "areaCount": 60
+  }
+}

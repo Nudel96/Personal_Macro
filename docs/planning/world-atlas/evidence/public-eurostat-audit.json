@@ -1,0 +1,2348 @@
+[
+  {
+    "source": {
+      "id": "eurostat-ai",
+      "label": "Eurostat · KI-Nutzung",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_AI_TANY&indic_is=E_AI_TTM&indic_is=E_AI_TML",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-06-15",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-ai-original-jsonstat-20260911-v1",
+      "observationKind": "survey_estimate",
+      "expectedSha256": "4b3e164a0d9226f905f553efbb65267e2a48cc53a8485b4ae768011c8f708f28",
+      "expectedRows": 413,
+      "expectedNumeric": 401,
+      "firstPeriod": "2021",
+      "lastPeriod": "2025",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "E_AI_TTM": "Artificial intelligence by size class of enterprise | Enterprises using AI technologies performing analysis of written language (text mining) | Percentage of enterprises",
+            "E_AI_TML": "Artificial intelligence by size class of enterprise | Enterprises using machine learning (e.g. deep learning) for data analysis | Percentage of enterprises",
+            "E_AI_TANY": "Artificial intelligence by size class of enterprise | Enterprises using at least one of the AI technologies: AI_TTM, AI_TSR, AI_TNLG, AI_TIR, AI_TML, AI_TPA, AI_TAR, E_AI_TPVSG | Percentage of enterprises"
+          }
+        }
+      ]
+    },
+    "profileCount": 104,
+    "originalNumericCount": 413,
+    "omittedAggregateNumericCount": {
+      "EA": 12
+    },
+    "missingCells": 15,
+    "statusCounts": {
+      "Reihenbruch laut Quelle (b)": 7,
+      "Geringe Zuverlässigkeit laut Quelle (u)": 2,
+      "Vertraulicher Quellenwert (C)": 2
+    },
+    "metrics": [
+      {
+        "id": "eurostat-ai:E_AI_TANY",
+        "profiles": 34
+      },
+      {
+        "id": "eurostat-ai:E_AI_TTM",
+        "profiles": 35
+      },
+      {
+        "id": "eurostat-ai:E_AI_TML",
+        "profiles": 35
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-robotics",
+      "label": "Eurostat · Roboternutzung",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_p3d?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_RBT&indic_is=E_RBTI&indic_is=E_RBTS",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2025-07-17",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-robotics-original-jsonstat-20260911-v1",
+      "observationKind": "survey_estimate",
+      "expectedSha256": "e3df56cf44bcf8d68feb452b72ab0036f41657a1944115a6a9e64c5f74afb975",
+      "expectedRows": 296,
+      "expectedNumeric": 278,
+      "firstPeriod": "2018",
+      "lastPeriod": "2022",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "E_RBTI": "3D printing and robotics by size class of enterprise | Use industrial robots | Percentage of enterprises",
+            "E_RBTS": "3D printing and robotics by size class of enterprise | Use service robots | Percentage of enterprises",
+            "E_RBT": "3D printing and robotics by size class of enterprise | Use industrial or service robots | Percentage of enterprises"
+          }
+        }
+      ]
+    },
+    "profileCount": 107,
+    "originalNumericCount": 296,
+    "omittedAggregateNumericCount": {
+      "EU28": 3,
+      "EU27_2007": 3,
+      "EU15": 3,
+      "EA": 9
+    },
+    "missingCells": 43,
+    "statusCounts": {
+      "Geringe Zuverlässigkeit laut Quelle (u)": 3,
+      "Reihenbruch laut Quelle (b)": 3
+    },
+    "metrics": [
+      {
+        "id": "eurostat-robotics:E_RBT",
+        "profiles": 35
+      },
+      {
+        "id": "eurostat-robotics:E_RBTI",
+        "profiles": 36
+      },
+      {
+        "id": "eurostat-robotics:E_RBTS",
+        "profiles": 36
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-cybersecurity",
+      "label": "Eurostat · IT-Sicherheitsmaßnahmen",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_cisce_ra?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_SECMGE1&indic_is=E_SECMGE5&indic_is=E_SECMOSBU&indic_is=E_SECMTST",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-06-15",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-cybersecurity-original-jsonstat-20260911-v1",
+      "observationKind": "survey_estimate",
+      "expectedSha256": "53b6e54ca675937ad124dac12132b413a9b4705d46db1a08385f4ae40dc61653",
+      "expectedRows": 349,
+      "expectedNumeric": 337,
+      "firstPeriod": "2015",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises",
+            "E_SECMGE1": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using any ICT security measure (as of 2022) | Percentage of enterprises",
+            "E_SECMGE5": "Security policy, measures, risks and staff awareness by size class of enterprise | Enterprises using at least 5 ICT security measures (as of 2022) | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "E_SECMOSBU": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: data backup to a separate location (including backup to the cloud) | Percentage of enterprises",
+            "E_SECMTST": "Security policy, measures, risks and staff awareness by size class of enterprise | ICT security measure used: ICT security tests | Percentage of enterprises"
+          }
+        }
+      ]
+    },
+    "profileCount": 141,
+    "originalNumericCount": 349,
+    "omittedAggregateNumericCount": {
+      "EU28": 2,
+      "EU27_2007": 0,
+      "EU15": 0,
+      "EA": 10
+    },
+    "missingCells": 227,
+    "statusCounts": {
+      "Reihenbruch laut Quelle (b)": 13,
+      "Geringe Zuverlässigkeit laut Quelle (u)": 2
+    },
+    "metrics": [
+      {
+        "id": "eurostat-cybersecurity:E_SECMGE1",
+        "profiles": 35
+      },
+      {
+        "id": "eurostat-cybersecurity:E_SECMGE5",
+        "profiles": 34
+      },
+      {
+        "id": "eurostat-cybersecurity:E_SECMOSBU",
+        "profiles": 36
+      },
+      {
+        "id": "eurostat-cybersecurity:E_SECMTST",
+        "profiles": 36
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-ecommerce",
+      "label": "Eurostat · elektronischer Handel",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_ec_esels?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_AESELL&indic_is=E_AWSELL&indic_is=E_AWS_CMP",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-06-15",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-ecommerce-original-jsonstat-20260911-v1",
+      "observationKind": "survey_estimate",
+      "expectedSha256": "b4e7e801ce51665e7e90f8d4a6f5bb0351d17df60096d329286edd684292f9b5",
+      "expectedRows": 1424,
+      "expectedNumeric": 1323,
+      "firstPeriod": "2009",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IS",
+          "label": "Iceland",
+          "geographyId": "m49:352",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "E_AESELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with e-commerce sales | Percentage of enterprises",
+            "E_AWSELL": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales (via websites, apps or marketplaces) | Percentage of enterprises",
+            "E_AWS_CMP": "E-commerce sales of enterprises by size class of enterprise | Enterprises with web sales via e-commerce marketplaces | Percentage of enterprises"
+          }
+        }
+      ]
+    },
+    "profileCount": 111,
+    "originalNumericCount": 1424,
+    "omittedAggregateNumericCount": {
+      "EU28": 22,
+      "EU27_2007": 19,
+      "EU25": 1,
+      "EU15": 19,
+      "EA": 40
+    },
+    "missingCells": 453,
+    "statusCounts": {
+      "Geringe Zuverlässigkeit laut Quelle (u)": 13,
+      "Reihenbruch laut Quelle (b)": 7,
+      "Vertraulicher Quellenwert (C)": 12
+    },
+    "metrics": [
+      {
+        "id": "eurostat-ecommerce:E_AESELL",
+        "profiles": 37
+      },
+      {
+        "id": "eurostat-ecommerce:E_AWSELL",
+        "profiles": 37
+      },
+      {
+        "id": "eurostat-ecommerce:E_AWS_CMP",
+        "profiles": 37
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-cloud",
+      "label": "Eurostat · Cloud-Nutzung",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_cicce_use?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_CC",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-02-27",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-cloud-original-jsonstat-20260911-v1",
+      "observationKind": "survey_estimate",
+      "expectedSha256": "9de2a9d87aa17753b8da3c10bc548fe3ddafe4a887ec28e76c16ebc6c5b4de3a",
+      "expectedRows": 293,
+      "expectedNumeric": 277,
+      "firstPeriod": "2014",
+      "lastPeriod": "2025",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BA",
+          "label": "Bosnia and Herzegovina",
+          "geographyId": "m49:070",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IS",
+          "label": "Iceland",
+          "geographyId": "m49:352",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        },
+        {
+          "code": "UK",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "E_CC": "Cloud computing services by size class of enterprise | Enterprises using paid cloud computing services used over the internet | Percentage of enterprises"
+          }
+        }
+      ]
+    },
+    "profileCount": 37,
+    "originalNumericCount": 293,
+    "omittedAggregateNumericCount": {
+      "EU28": 3,
+      "EU27_2007": 3,
+      "EU15": 3,
+      "EA": 7
+    },
+    "missingCells": 93,
+    "statusCounts": {
+      "Reihenbruch laut Quelle (b)": 3,
+      "Geringe Zuverlässigkeit laut Quelle (u)": 2
+    },
+    "metrics": [
+      {
+        "id": "eurostat-cloud:E_CC",
+        "profiles": 37
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "eurostat-rents",
+      "label": "Eurostat · tatsächliche Wohnungsmieten",
+      "adapter": "eurostat_jsonstat",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_ainr?lang=EN&freq=A&unit=INX_A_AVG&coicop18=CP041",
+      "documentationUrl": "https://ec.europa.eu/eurostat/web/hicp/information-data",
+      "licenseUrl": "https://ec.europa.eu/eurostat/help/copyright-notice",
+      "publishedAt": "2026-09-01",
+      "reviewedAt": "2026-09-11",
+      "recipe": "eurostat-rents-original-jsonstat-20260911-v1",
+      "observationKind": "observed",
+      "expectedSha256": "40fe8f7fba847104b130689a38e0cca34578cb1573fa711f4c4ad4109542ce86",
+      "expectedRows": 1094,
+      "expectedNumeric": 973,
+      "firstPeriod": "1996",
+      "lastPeriod": "2025",
+      "areas": [
+        {
+          "code": "AL",
+          "label": "Albania",
+          "geographyId": "m49:008",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "AT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "BE",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "BG",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "CH",
+          "label": "Switzerland",
+          "geographyId": "m49:756",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "CY",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "CZ",
+          "label": "Czechia",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "DE",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "DK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "EE",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "EL",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "ES",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "EU27_2020",
+          "label": "European Union - 27 countries (from 2020)",
+          "geographyId": "eurostat:eu27_2020",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "FI",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "FR",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "GE",
+          "label": "Georgia",
+          "geographyId": "m49:268",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "HR",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "HU",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "IE",
+          "label": "Ireland",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "IS",
+          "label": "Iceland",
+          "geographyId": "m49:352",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "IT",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "LT",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "LU",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "LV",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "ME",
+          "label": "Montenegro",
+          "geographyId": "m49:499",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "MK",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "MT",
+          "label": "Malta",
+          "geographyId": "m49:470",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "NL",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "NO",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "PL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "PT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "RO",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "RS",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "SE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "SI",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "SK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "TR",
+          "label": "Türkiye",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        },
+        {
+          "code": "XK",
+          "label": "Kosovo*",
+          "geographyId": "provider:XKX",
+          "seriesTitles": {
+            "CP041": "Harmonised index of consumer prices (HICP) - ECOICOP ver.2 - indices and rates of change, annual data | Actual rental payments made for housing | Annual average index"
+          }
+        }
+      ]
+    },
+    "profileCount": 38,
+    "originalNumericCount": 1094,
+    "omittedAggregateNumericCount": {
+      "EU": 6,
+      "EA": 30,
+      "EA21": 26,
+      "EA20": 26,
+      "EA19": 27,
+      "EEA": 6
+    },
+    "missingCells": 167,
+    "statusCounts": {},
+    "metrics": [
+      {
+        "id": "eurostat-rents:CP041",
+        "profiles": 38
+      }
+    ]
+  }
+]

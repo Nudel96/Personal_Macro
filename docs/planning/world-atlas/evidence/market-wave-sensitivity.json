@@ -1,0 +1,192 @@
+{
+  "checkedAt": "2026-09-08T20:07:25.660Z",
+  "recipe": "log-ols60-trailing12-rank120-min60-v1",
+  "note": "Parameterempfindlichkeit, keine Prognosevalidierung. Nur vorhandene Werte, keine persönlichen Daten.",
+  "results": [
+    {
+      "symbol": "SPY.US",
+      "sourceHash": "6c4545659b9e870366d5f2c190dc0580fbc7ca17d89855bb686ce716f8265b07",
+      "sourceLastDate": "2026-09-04",
+      "maxNativeDifference": 2.1316282072803006e-14,
+      "latestDirection": 1,
+      "variations": [
+        {
+          "trend": 48,
+          "smooth": 12,
+          "commonMonths": 334,
+          "directionAgreement": 0.8622754491017964,
+          "latestDirection": 1
+        },
+        {
+          "trend": 84,
+          "smooth": 12,
+          "commonMonths": 310,
+          "directionAgreement": 0.867741935483871,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 6,
+          "commonMonths": 334,
+          "directionAgreement": 0.8832335329341318,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 18,
+          "commonMonths": 328,
+          "directionAgreement": 0.9115853658536586,
+          "latestDirection": 1
+        }
+      ]
+    },
+    {
+      "symbol": "EWG.US",
+      "sourceHash": "06dfd00f9c67a7f697f77cc861130372146b77719496cb4baafd37f298258536",
+      "sourceLastDate": "2026-09-04",
+      "maxNativeDifference": 2.1316282072803006e-14,
+      "latestDirection": 1,
+      "variations": [
+        {
+          "trend": 48,
+          "smooth": 12,
+          "commonMonths": 296,
+          "directionAgreement": 0.8885135135135135,
+          "latestDirection": -1
+        },
+        {
+          "trend": 84,
+          "smooth": 12,
+          "commonMonths": 272,
+          "directionAgreement": 0.8566176470588235,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 6,
+          "commonMonths": 296,
+          "directionAgreement": 0.8851351351351351,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 18,
+          "commonMonths": 290,
+          "directionAgreement": 0.9103448275862069,
+          "latestDirection": 1
+        }
+      ]
+    },
+    {
+      "symbol": "XLV.US",
+      "sourceHash": "563f4b43b91011c719236a5c32d7fce06c2db3123cf3d72d9c7bee51f9de9af3",
+      "sourceLastDate": "2026-09-04",
+      "maxNativeDifference": 2.4868995751603507e-14,
+      "latestDirection": 1,
+      "variations": [
+        {
+          "trend": 48,
+          "smooth": 12,
+          "commonMonths": 263,
+          "directionAgreement": 0.8365019011406845,
+          "latestDirection": 1
+        },
+        {
+          "trend": 84,
+          "smooth": 12,
+          "commonMonths": 239,
+          "directionAgreement": 0.8326359832635983,
+          "latestDirection": -1
+        },
+        {
+          "trend": 60,
+          "smooth": 6,
+          "commonMonths": 263,
+          "directionAgreement": 0.8859315589353612,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 18,
+          "commonMonths": 257,
+          "directionAgreement": 0.9221789883268483,
+          "latestDirection": -1
+        }
+      ]
+    },
+    {
+      "symbol": "HYDR.US",
+      "sourceHash": "a5e1942c6f1a82f23e67a51e11177535b0dcfae7da81686113980e2b0fb69766",
+      "sourceLastDate": "2026-09-04",
+      "maxNativeDifference": 0,
+      "latestDirection": null,
+      "variations": [
+        {
+          "trend": 48,
+          "smooth": 12,
+          "commonMonths": 0,
+          "directionAgreement": null,
+          "latestDirection": 1
+        },
+        {
+          "trend": 84,
+          "smooth": 12,
+          "commonMonths": 0,
+          "directionAgreement": null,
+          "latestDirection": null
+        },
+        {
+          "trend": 60,
+          "smooth": 6,
+          "commonMonths": 0,
+          "directionAgreement": null,
+          "latestDirection": null
+        },
+        {
+          "trend": 60,
+          "smooth": 18,
+          "commonMonths": 0,
+          "directionAgreement": null,
+          "latestDirection": null
+        }
+      ]
+    },
+    {
+      "symbol": "TAN.US",
+      "sourceHash": "9432fde8fc69768e8b76989d658408e32154ac9b2e12da39c20840318129b28f",
+      "sourceLastDate": "2026-09-04",
+      "maxNativeDifference": 7.105427357601002e-14,
+      "latestDirection": 1,
+      "variations": [
+        {
+          "trend": 48,
+          "smooth": 12,
+          "commonMonths": 151,
+          "directionAgreement": 0.9006622516556292,
+          "latestDirection": 1
+        },
+        {
+          "trend": 84,
+          "smooth": 12,
+          "commonMonths": 127,
+          "directionAgreement": 0.7401574803149606,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 6,
+          "commonMonths": 151,
+          "directionAgreement": 0.9139072847682119,
+          "latestDirection": 1
+        },
+        {
+          "trend": 60,
+          "smooth": 18,
+          "commonMonths": 145,
+          "directionAgreement": 0.903448275862069,
+          "latestDirection": 1
+        }
+      ]
+    }
+  ]
+}

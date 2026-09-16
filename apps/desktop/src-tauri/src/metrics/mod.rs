@@ -1,7 +1,9 @@
 use chrono::DateTime;
 use serde::Serialize;
 
+pub mod account_journal;
 pub mod policy_rates;
+pub mod seasonality_opportunities;
 pub mod technical_trend;
 
 pub const CALCULATION_VERSION: &str = "journal-metrics-v1";

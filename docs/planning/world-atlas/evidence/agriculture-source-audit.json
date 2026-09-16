@@ -1,0 +1,2668 @@
+{
+  "source": "https://bulks-faostat.fao.org/production/Production_Indices_E_All_Data_(Normalized).zip",
+  "metadata": {
+    "DatasetCode": "QI",
+    "DatasetName": "Production: Production Indices",
+    "Topic": "The FAO indices of agricultural production show the relative level of the aggregate volume of agricultural production for each year in comparison with the base period 2014-2016. They are based on the sum of price-weighted quantities of different agricultural commodities produced after deductions of quantities used as seed and feed weighted in a similar manner. The resulting aggregate represents, therefore, disposable production for any use except as seed and feed.",
+    "DatasetDescription": "The FAO indices of agricultural production show the relative level of the aggregate volume of agricultural production for each year in comparison with the base period 2014-2016. Indices for meat production are computed based on data on production from indigenous animals.",
+    "Contact": "Food and Agriculture Organization of the United Nations (FAO): Statistics Division (ESS), Crops, Livestock and Food Statistics Team",
+    "Email": "faostat@fao.org",
+    "DateUpdate": "2026-05-11T00:00:00",
+    "CompressionFormat": "zip",
+    "FileType": "csv",
+    "FileSize": "15789KB",
+    "FileRows": 1995192,
+    "FileLocation": "https://bulks-faostat.fao.org/production/Production_Indices_E_All_Data_(Normalized).zip"
+  },
+  "sha256": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72",
+  "bytes": 16167197,
+  "rowCount": 1995192,
+  "items": 196,
+  "areaCount": 234,
+  "countries": 199,
+  "sourceRegions": 35,
+  "flags": {
+    "E": 1995192
+  },
+  "zeroValues": 426,
+  "areas": [
+    {
+      "code": "2",
+      "m49": "'004",
+      "providerLabel": "Afghanistan",
+      "geographyId": "m49:004",
+      "rows": 7518,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "3",
+      "m49": "'008",
+      "providerLabel": "Albania",
+      "geographyId": "m49:008",
+      "rows": 8330,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "4",
+      "m49": "'012",
+      "providerLabel": "Algeria",
+      "geographyId": "m49:012",
+      "rows": 10162,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "7",
+      "m49": "'024",
+      "providerLabel": "Angola",
+      "geographyId": "m49:024",
+      "rows": 6466,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "8",
+      "m49": "'028",
+      "providerLabel": "Antigua and Barbuda",
+      "geographyId": "m49:028",
+      "rows": 4780,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "9",
+      "m49": "'032",
+      "providerLabel": "Argentina",
+      "geographyId": "m49:032",
+      "rows": 12810,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "1",
+      "m49": "'051",
+      "providerLabel": "Armenia",
+      "geographyId": "m49:051",
+      "rows": 3408,
+      "years": [
+        1997,
+        2024
+      ]
+    },
+    {
+      "code": "10",
+      "m49": "'036",
+      "providerLabel": "Australia",
+      "geographyId": "m49:036",
+      "rows": 12500,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "11",
+      "m49": "'040",
+      "providerLabel": "Austria",
+      "geographyId": "m49:040",
+      "rows": 9004,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "52",
+      "m49": "'031",
+      "providerLabel": "Azerbaijan",
+      "geographyId": "m49:031",
+      "rows": 5214,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "12",
+      "m49": "'044",
+      "providerLabel": "Bahamas",
+      "geographyId": "m49:044",
+      "rows": 4122,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "13",
+      "m49": "'048",
+      "providerLabel": "Bahrain",
+      "geographyId": "m49:048",
+      "rows": 4438,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "16",
+      "m49": "'050",
+      "providerLabel": "Bangladesh",
+      "geographyId": "m49:050",
+      "rows": 10512,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "14",
+      "m49": "'052",
+      "providerLabel": "Barbados",
+      "geographyId": "m49:052",
+      "rows": 5146,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "57",
+      "m49": "'112",
+      "providerLabel": "Belarus",
+      "geographyId": "m49:112",
+      "rows": 3688,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "255",
+      "m49": "'056",
+      "providerLabel": "Belgium",
+      "geographyId": "m49:056",
+      "rows": 2638,
+      "years": [
+        2000,
+        2024
+      ]
+    },
+    {
+      "code": "23",
+      "m49": "'084",
+      "providerLabel": "Belize",
+      "geographyId": "m49:084",
+      "rows": 5882,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "53",
+      "m49": "'204",
+      "providerLabel": "Benin",
+      "geographyId": "m49:204",
+      "rows": 7106,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "18",
+      "m49": "'064",
+      "providerLabel": "Bhutan",
+      "geographyId": "m49:064",
+      "rows": 6366,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "19",
+      "m49": "'068",
+      "providerLabel": "Bolivia (Plurinational State of)",
+      "geographyId": "m49:068",
+      "rows": 11364,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "80",
+      "m49": "'070",
+      "providerLabel": "Bosnia and Herzegovina",
+      "geographyId": "m49:070",
+      "rows": 4250,
+      "years": [
+        1996,
+        2024
+      ]
+    },
+    {
+      "code": "20",
+      "m49": "'072",
+      "providerLabel": "Botswana",
+      "geographyId": "m49:072",
+      "rows": 4208,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "21",
+      "m49": "'076",
+      "providerLabel": "Brazil",
+      "geographyId": "m49:076",
+      "rows": 12426,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "26",
+      "m49": "'096",
+      "providerLabel": "Brunei Darussalam",
+      "geographyId": "m49:096",
+      "rows": 5000,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "27",
+      "m49": "'100",
+      "providerLabel": "Bulgaria",
+      "geographyId": "m49:100",
+      "rows": 9720,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "233",
+      "m49": "'854",
+      "providerLabel": "Burkina Faso",
+      "geographyId": "m49:854",
+      "rows": 7126,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "29",
+      "m49": "'108",
+      "providerLabel": "Burundi",
+      "geographyId": "m49:108",
+      "rows": 5962,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "35",
+      "m49": "'132",
+      "providerLabel": "Cabo Verde",
+      "geographyId": "m49:132",
+      "rows": 5148,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "115",
+      "m49": "'116",
+      "providerLabel": "Cambodia",
+      "geographyId": "m49:116",
+      "rows": 6468,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "32",
+      "m49": "'120",
+      "providerLabel": "Cameroon",
+      "geographyId": "m49:120",
+      "rows": 10360,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "33",
+      "m49": "'124",
+      "providerLabel": "Canada",
+      "geographyId": "m49:124",
+      "rows": 9688,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "37",
+      "m49": "'140",
+      "providerLabel": "Central African Republic",
+      "geographyId": "m49:140",
+      "rows": 6884,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "39",
+      "m49": "'148",
+      "providerLabel": "Chad",
+      "geographyId": "m49:148",
+      "rows": 5338,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "40",
+      "m49": "'152",
+      "providerLabel": "Chile",
+      "geographyId": "m49:152",
+      "rows": 11004,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "351",
+      "m49": "'159",
+      "providerLabel": "China",
+      "geographyId": "fao:351",
+      "rows": 19050,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "96",
+      "m49": "'344",
+      "providerLabel": "China, Hong Kong SAR",
+      "geographyId": "m49:344",
+      "rows": 3954,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "128",
+      "m49": "'446",
+      "providerLabel": "China, Macao SAR",
+      "geographyId": "m49:446",
+      "rows": 1624,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "41",
+      "m49": "'156",
+      "providerLabel": "China, mainland",
+      "geographyId": "m49:156",
+      "rows": 17854,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "214",
+      "m49": "'158",
+      "providerLabel": "China, Taiwan Province of",
+      "geographyId": "provider:TWN",
+      "rows": 11402,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "44",
+      "m49": "'170",
+      "providerLabel": "Colombia",
+      "geographyId": "m49:170",
+      "rows": 10030,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "45",
+      "m49": "'174",
+      "providerLabel": "Comoros",
+      "geographyId": "m49:174",
+      "rows": 4178,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "46",
+      "m49": "'178",
+      "providerLabel": "Congo",
+      "geographyId": "m49:178",
+      "rows": 6816,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "47",
+      "m49": "'184",
+      "providerLabel": "Cook Islands",
+      "geographyId": "m49:184",
+      "rows": 3992,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "48",
+      "m49": "'188",
+      "providerLabel": "Costa Rica",
+      "geographyId": "m49:188",
+      "rows": 7856,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "107",
+      "m49": "'384",
+      "providerLabel": "Côte d'Ivoire",
+      "geographyId": "m49:384",
+      "rows": 8792,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "98",
+      "m49": "'191",
+      "providerLabel": "Croatia",
+      "geographyId": "m49:191",
+      "rows": 4514,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "49",
+      "m49": "'192",
+      "providerLabel": "Cuba",
+      "geographyId": "m49:192",
+      "rows": 7734,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "50",
+      "m49": "'196",
+      "providerLabel": "Cyprus",
+      "geographyId": "m49:196",
+      "rows": 10200,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "167",
+      "m49": "'203",
+      "providerLabel": "Czechia",
+      "geographyId": "m49:203",
+      "rows": 4326,
+      "years": [
+        1993,
+        2024
+      ]
+    },
+    {
+      "code": "116",
+      "m49": "'408",
+      "providerLabel": "Democratic People's Republic of Korea",
+      "geographyId": "m49:408",
+      "rows": 6832,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "250",
+      "m49": "'180",
+      "providerLabel": "Democratic Republic of the Congo",
+      "geographyId": "m49:180",
+      "rows": 9124,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "54",
+      "m49": "'208",
+      "providerLabel": "Denmark",
+      "geographyId": "m49:208",
+      "rows": 6682,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "72",
+      "m49": "'262",
+      "providerLabel": "Djibouti",
+      "geographyId": "m49:262",
+      "rows": 4064,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "55",
+      "m49": "'212",
+      "providerLabel": "Dominica",
+      "geographyId": "m49:212",
+      "rows": 6160,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "56",
+      "m49": "'214",
+      "providerLabel": "Dominican Republic",
+      "geographyId": "m49:214",
+      "rows": 8664,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "58",
+      "m49": "'218",
+      "providerLabel": "Ecuador",
+      "geographyId": "m49:218",
+      "rows": 13000,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "59",
+      "m49": "'818",
+      "providerLabel": "Egypt",
+      "geographyId": "m49:818",
+      "rows": 13296,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "60",
+      "m49": "'222",
+      "providerLabel": "El Salvador",
+      "geographyId": "m49:222",
+      "rows": 7468,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "61",
+      "m49": "'226",
+      "providerLabel": "Equatorial Guinea",
+      "geographyId": "m49:226",
+      "rows": 2956,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "178",
+      "m49": "'232",
+      "providerLabel": "Eritrea",
+      "geographyId": "m49:232",
+      "rows": 2752,
+      "years": [
+        1993,
+        2024
+      ]
+    },
+    {
+      "code": "63",
+      "m49": "'233",
+      "providerLabel": "Estonia",
+      "geographyId": "m49:233",
+      "rows": 2720,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "209",
+      "m49": "'748",
+      "providerLabel": "Eswatini",
+      "geographyId": "m49:748",
+      "rows": 5370,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "238",
+      "m49": "'231",
+      "providerLabel": "Ethiopia",
+      "geographyId": "m49:231",
+      "rows": 6064,
+      "years": [
+        1993,
+        2024
+      ]
+    },
+    {
+      "code": "64",
+      "m49": "'234",
+      "providerLabel": "Faroe Islands",
+      "geographyId": "m49:234",
+      "rows": 1156,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "66",
+      "m49": "'242",
+      "providerLabel": "Fiji",
+      "geographyId": "m49:242",
+      "rows": 6560,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "67",
+      "m49": "'246",
+      "providerLabel": "Finland",
+      "geographyId": "m49:246",
+      "rows": 5792,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "68",
+      "m49": "'250",
+      "providerLabel": "France",
+      "geographyId": "m49:250",
+      "rows": 12298,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "70",
+      "m49": "'258",
+      "providerLabel": "French Polynesia",
+      "geographyId": "m49:258",
+      "rows": 6110,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "74",
+      "m49": "'266",
+      "providerLabel": "Gabon",
+      "geographyId": "m49:266",
+      "rows": 5186,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "75",
+      "m49": "'270",
+      "providerLabel": "Gambia",
+      "geographyId": "m49:270",
+      "rows": 3834,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "73",
+      "m49": "'268",
+      "providerLabel": "Georgia",
+      "geographyId": "m49:268",
+      "rows": 4070,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "79",
+      "m49": "'276",
+      "providerLabel": "Germany",
+      "geographyId": "m49:276",
+      "rows": 8662,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "81",
+      "m49": "'288",
+      "providerLabel": "Ghana",
+      "geographyId": "m49:288",
+      "rows": 7668,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "84",
+      "m49": "'300",
+      "providerLabel": "Greece",
+      "geographyId": "m49:300",
+      "rows": 12600,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "86",
+      "m49": "'308",
+      "providerLabel": "Grenada",
+      "geographyId": "m49:308",
+      "rows": 6834,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "89",
+      "m49": "'320",
+      "providerLabel": "Guatemala",
+      "geographyId": "m49:320",
+      "rows": 9350,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "90",
+      "m49": "'324",
+      "providerLabel": "Guinea",
+      "geographyId": "m49:324",
+      "rows": 6676,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "175",
+      "m49": "'624",
+      "providerLabel": "Guinea-Bissau",
+      "geographyId": "m49:624",
+      "rows": 4946,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "91",
+      "m49": "'328",
+      "providerLabel": "Guyana",
+      "geographyId": "m49:328",
+      "rows": 6354,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "93",
+      "m49": "'332",
+      "providerLabel": "Haiti",
+      "geographyId": "m49:332",
+      "rows": 8856,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "95",
+      "m49": "'340",
+      "providerLabel": "Honduras",
+      "geographyId": "m49:340",
+      "rows": 8156,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "97",
+      "m49": "'348",
+      "providerLabel": "Hungary",
+      "geographyId": "m49:348",
+      "rows": 11264,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "99",
+      "m49": "'352",
+      "providerLabel": "Iceland",
+      "geographyId": "m49:352",
+      "rows": 3178,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "100",
+      "m49": "'356",
+      "providerLabel": "India",
+      "geographyId": "m49:356",
+      "rows": 13730,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "101",
+      "m49": "'360",
+      "providerLabel": "Indonesia",
+      "geographyId": "m49:360",
+      "rows": 10704,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "102",
+      "m49": "'364",
+      "providerLabel": "Iran (Islamic Republic of)",
+      "geographyId": "m49:364",
+      "rows": 12838,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "103",
+      "m49": "'368",
+      "providerLabel": "Iraq",
+      "geographyId": "m49:368",
+      "rows": 10886,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "104",
+      "m49": "'372",
+      "providerLabel": "Ireland",
+      "geographyId": "m49:372",
+      "rows": 5784,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "105",
+      "m49": "'376",
+      "providerLabel": "Israel",
+      "geographyId": "m49:376",
+      "rows": 11738,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "106",
+      "m49": "'380",
+      "providerLabel": "Italy",
+      "geographyId": "m49:380",
+      "rows": 12712,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "109",
+      "m49": "'388",
+      "providerLabel": "Jamaica",
+      "geographyId": "m49:388",
+      "rows": 9224,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "110",
+      "m49": "'392",
+      "providerLabel": "Japan",
+      "geographyId": "m49:392",
+      "rows": 11276,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "112",
+      "m49": "'400",
+      "providerLabel": "Jordan",
+      "geographyId": "m49:400",
+      "rows": 9392,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "108",
+      "m49": "'398",
+      "providerLabel": "Kazakhstan",
+      "geographyId": "m49:398",
+      "rows": 5564,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "114",
+      "m49": "'404",
+      "providerLabel": "Kenya",
+      "geographyId": "m49:404",
+      "rows": 12256,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "83",
+      "m49": "'296",
+      "providerLabel": "Kiribati",
+      "geographyId": "m49:296",
+      "rows": 2048,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "118",
+      "m49": "'414",
+      "providerLabel": "Kuwait",
+      "geographyId": "m49:414",
+      "rows": 5580,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "113",
+      "m49": "'417",
+      "providerLabel": "Kyrgyzstan",
+      "geographyId": "m49:417",
+      "rows": 4926,
+      "years": [
+        1998,
+        2024
+      ]
+    },
+    {
+      "code": "120",
+      "m49": "'418",
+      "providerLabel": "Lao People's Democratic Republic",
+      "geographyId": "m49:418",
+      "rows": 6566,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "119",
+      "m49": "'428",
+      "providerLabel": "Latvia",
+      "geographyId": "m49:428",
+      "rows": 3330,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "121",
+      "m49": "'422",
+      "providerLabel": "Lebanon",
+      "geographyId": "m49:422",
+      "rows": 10392,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "122",
+      "m49": "'426",
+      "providerLabel": "Lesotho",
+      "geographyId": "m49:426",
+      "rows": 3800,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "123",
+      "m49": "'430",
+      "providerLabel": "Liberia",
+      "geographyId": "m49:430",
+      "rows": 5596,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "124",
+      "m49": "'434",
+      "providerLabel": "Libya",
+      "geographyId": "m49:434",
+      "rows": 8054,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "126",
+      "m49": "'440",
+      "providerLabel": "Lithuania",
+      "geographyId": "m49:440",
+      "rows": 3838,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "256",
+      "m49": "'442",
+      "providerLabel": "Luxembourg",
+      "geographyId": "m49:442",
+      "rows": 2072,
+      "years": [
+        2000,
+        2024
+      ]
+    },
+    {
+      "code": "129",
+      "m49": "'450",
+      "providerLabel": "Madagascar",
+      "geographyId": "m49:450",
+      "rows": 12136,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "130",
+      "m49": "'454",
+      "providerLabel": "Malawi",
+      "geographyId": "m49:454",
+      "rows": 6890,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "131",
+      "m49": "'458",
+      "providerLabel": "Malaysia",
+      "geographyId": "m49:458",
+      "rows": 8058,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "132",
+      "m49": "'462",
+      "providerLabel": "Maldives",
+      "geographyId": "m49:462",
+      "rows": 3040,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "133",
+      "m49": "'466",
+      "providerLabel": "Mali",
+      "geographyId": "m49:466",
+      "rows": 9230,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "134",
+      "m49": "'470",
+      "providerLabel": "Malta",
+      "geographyId": "m49:470",
+      "rows": 5876,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "127",
+      "m49": "'584",
+      "providerLabel": "Marshall Islands",
+      "geographyId": "m49:584",
+      "rows": 272,
+      "years": [
+        1991,
+        2024
+      ]
+    },
+    {
+      "code": "136",
+      "m49": "'478",
+      "providerLabel": "Mauritania",
+      "geographyId": "m49:478",
+      "rows": 4982,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "137",
+      "m49": "'480",
+      "providerLabel": "Mauritius",
+      "geographyId": "m49:480",
+      "rows": 7126,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "138",
+      "m49": "'484",
+      "providerLabel": "Mexico",
+      "geographyId": "m49:484",
+      "rows": 15420,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "145",
+      "m49": "'583",
+      "providerLabel": "Micronesia (Federated States of)",
+      "geographyId": "m49:583",
+      "rows": 1528,
+      "years": [
+        1991,
+        2024
+      ]
+    },
+    {
+      "code": "141",
+      "m49": "'496",
+      "providerLabel": "Mongolia",
+      "geographyId": "m49:496",
+      "rows": 4450,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "273",
+      "m49": "'499",
+      "providerLabel": "Montenegro",
+      "geographyId": "m49:499",
+      "rows": 2120,
+      "years": [
+        2006,
+        2024
+      ]
+    },
+    {
+      "code": "143",
+      "m49": "'504",
+      "providerLabel": "Morocco",
+      "geographyId": "m49:504",
+      "rows": 14570,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "144",
+      "m49": "'508",
+      "providerLabel": "Mozambique",
+      "geographyId": "m49:508",
+      "rows": 7858,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "28",
+      "m49": "'104",
+      "providerLabel": "Myanmar",
+      "geographyId": "m49:104",
+      "rows": 8672,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "147",
+      "m49": "'516",
+      "providerLabel": "Namibia",
+      "geographyId": "m49:516",
+      "rows": 4450,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "148",
+      "m49": "'520",
+      "providerLabel": "Nauru",
+      "geographyId": "m49:520",
+      "rows": 1536,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "149",
+      "m49": "'524",
+      "providerLabel": "Nepal",
+      "geographyId": "m49:524",
+      "rows": 7998,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "150",
+      "m49": "'528",
+      "providerLabel": "Netherlands (Kingdom of the)",
+      "geographyId": "m49:528",
+      "rows": 7502,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "153",
+      "m49": "'540",
+      "providerLabel": "New Caledonia",
+      "geographyId": "m49:540",
+      "rows": 4400,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "156",
+      "m49": "'554",
+      "providerLabel": "New Zealand",
+      "geographyId": "m49:554",
+      "rows": 10764,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "157",
+      "m49": "'558",
+      "providerLabel": "Nicaragua",
+      "geographyId": "m49:558",
+      "rows": 6284,
+      "years": [
+        1961,
+        2023
+      ]
+    },
+    {
+      "code": "158",
+      "m49": "'562",
+      "providerLabel": "Niger",
+      "geographyId": "m49:562",
+      "rows": 7568,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "159",
+      "m49": "'566",
+      "providerLabel": "Nigeria",
+      "geographyId": "m49:566",
+      "rows": 8350,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "160",
+      "m49": "'570",
+      "providerLabel": "Niue",
+      "geographyId": "m49:570",
+      "rows": 3056,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "154",
+      "m49": "'807",
+      "providerLabel": "North Macedonia",
+      "geographyId": "m49:807",
+      "rows": 5490,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "162",
+      "m49": "'578",
+      "providerLabel": "Norway",
+      "geographyId": "m49:578",
+      "rows": 6356,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "221",
+      "m49": "'512",
+      "providerLabel": "Oman",
+      "geographyId": "m49:512",
+      "rows": 4498,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "165",
+      "m49": "'586",
+      "providerLabel": "Pakistan",
+      "geographyId": "m49:586",
+      "rows": 11926,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "299",
+      "m49": "'275",
+      "providerLabel": "Palestine",
+      "geographyId": "m49:275",
+      "rows": 4872,
+      "years": [
+        1990,
+        2022
+      ]
+    },
+    {
+      "code": "166",
+      "m49": "'591",
+      "providerLabel": "Panama",
+      "geographyId": "m49:591",
+      "rows": 6322,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "168",
+      "m49": "'598",
+      "providerLabel": "Papua New Guinea",
+      "geographyId": "m49:598",
+      "rows": 7372,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "169",
+      "m49": "'600",
+      "providerLabel": "Paraguay",
+      "geographyId": "m49:600",
+      "rows": 9480,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "170",
+      "m49": "'604",
+      "providerLabel": "Peru",
+      "geographyId": "m49:604",
+      "rows": 13898,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "171",
+      "m49": "'608",
+      "providerLabel": "Philippines",
+      "geographyId": "m49:608",
+      "rows": 11156,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "173",
+      "m49": "'616",
+      "providerLabel": "Poland",
+      "geographyId": "m49:616",
+      "rows": 8910,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "174",
+      "m49": "'620",
+      "providerLabel": "Portugal",
+      "geographyId": "m49:620",
+      "rows": 10390,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "177",
+      "m49": "'630",
+      "providerLabel": "Puerto Rico",
+      "geographyId": "m49:630",
+      "rows": 6204,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "179",
+      "m49": "'634",
+      "providerLabel": "Qatar",
+      "geographyId": "m49:634",
+      "rows": 4788,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "117",
+      "m49": "'410",
+      "providerLabel": "Republic of Korea",
+      "geographyId": "m49:410",
+      "rows": 10250,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "146",
+      "m49": "'498",
+      "providerLabel": "Republic of Moldova",
+      "geographyId": "m49:498",
+      "rows": 4872,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "183",
+      "m49": "'642",
+      "providerLabel": "Romania",
+      "geographyId": "m49:642",
+      "rows": 8730,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "185",
+      "m49": "'643",
+      "providerLabel": "Russian Federation",
+      "geographyId": "m49:643",
+      "rows": 6076,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "184",
+      "m49": "'646",
+      "providerLabel": "Rwanda",
+      "geographyId": "m49:646",
+      "rows": 6846,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "188",
+      "m49": "'659",
+      "providerLabel": "Saint Kitts and Nevis",
+      "geographyId": "m49:659",
+      "rows": 3446,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "189",
+      "m49": "'662",
+      "providerLabel": "Saint Lucia",
+      "geographyId": "m49:662",
+      "rows": 5086,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "191",
+      "m49": "'670",
+      "providerLabel": "Saint Vincent and the Grenadines",
+      "geographyId": "m49:670",
+      "rows": 5366,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "244",
+      "m49": "'882",
+      "providerLabel": "Samoa",
+      "geographyId": "m49:882",
+      "rows": 4864,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "193",
+      "m49": "'678",
+      "providerLabel": "Sao Tome and Principe",
+      "geographyId": "m49:678",
+      "rows": 4094,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "194",
+      "m49": "'682",
+      "providerLabel": "Saudi Arabia",
+      "geographyId": "m49:682",
+      "rows": 5754,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "195",
+      "m49": "'686",
+      "providerLabel": "Senegal",
+      "geographyId": "m49:686",
+      "rows": 7390,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "272",
+      "m49": "'688",
+      "providerLabel": "Serbia",
+      "geographyId": "m49:688",
+      "rows": 2972,
+      "years": [
+        2006,
+        2024
+      ]
+    },
+    {
+      "code": "196",
+      "m49": "'690",
+      "providerLabel": "Seychelles",
+      "geographyId": "m49:690",
+      "rows": 3796,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "197",
+      "m49": "'694",
+      "providerLabel": "Sierra Leone",
+      "geographyId": "m49:694",
+      "rows": 6616,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "200",
+      "m49": "'702",
+      "providerLabel": "Singapore",
+      "geographyId": "m49:702",
+      "rows": 2906,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "199",
+      "m49": "'703",
+      "providerLabel": "Slovakia",
+      "geographyId": "m49:703",
+      "rows": 4868,
+      "years": [
+        1993,
+        2024
+      ]
+    },
+    {
+      "code": "198",
+      "m49": "'705",
+      "providerLabel": "Slovenia",
+      "geographyId": "m49:705",
+      "rows": 4034,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "25",
+      "m49": "'090",
+      "providerLabel": "Solomon Islands",
+      "geographyId": "m49:090",
+      "rows": 4084,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "201",
+      "m49": "'706",
+      "providerLabel": "Somalia",
+      "geographyId": "m49:706",
+      "rows": 5642,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "202",
+      "m49": "'710",
+      "providerLabel": "South Africa",
+      "geographyId": "m49:710",
+      "rows": 12104,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "277",
+      "m49": "'728",
+      "providerLabel": "South Sudan",
+      "geographyId": "m49:728",
+      "rows": 1060,
+      "years": [
+        2012,
+        2024
+      ]
+    },
+    {
+      "code": "203",
+      "m49": "'724",
+      "providerLabel": "Spain",
+      "geographyId": "m49:724",
+      "rows": 14370,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "38",
+      "m49": "'144",
+      "providerLabel": "Sri Lanka",
+      "geographyId": "m49:144",
+      "rows": 8710,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "276",
+      "m49": "'729",
+      "providerLabel": "Sudan",
+      "geographyId": "m49:729",
+      "rows": 1742,
+      "years": [
+        2012,
+        2024
+      ]
+    },
+    {
+      "code": "207",
+      "m49": "'740",
+      "providerLabel": "Suriname",
+      "geographyId": "m49:740",
+      "rows": 5812,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "210",
+      "m49": "'752",
+      "providerLabel": "Sweden",
+      "geographyId": "m49:752",
+      "rows": 5758,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "211",
+      "m49": "'756",
+      "providerLabel": "Switzerland",
+      "geographyId": "m49:756",
+      "rows": 9060,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "212",
+      "m49": "'760",
+      "providerLabel": "Syrian Arab Republic",
+      "geographyId": "m49:760",
+      "rows": 11852,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "208",
+      "m49": "'762",
+      "providerLabel": "Tajikistan",
+      "geographyId": "m49:762",
+      "rows": 4026,
+      "years": [
+        1993,
+        2024
+      ]
+    },
+    {
+      "code": "216",
+      "m49": "'764",
+      "providerLabel": "Thailand",
+      "geographyId": "m49:764",
+      "rows": 11432,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "176",
+      "m49": "'626",
+      "providerLabel": "Timor-Leste",
+      "geographyId": "m49:626",
+      "rows": 5512,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "217",
+      "m49": "'768",
+      "providerLabel": "Togo",
+      "geographyId": "m49:768",
+      "rows": 6150,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "218",
+      "m49": "'772",
+      "providerLabel": "Tokelau",
+      "geographyId": "m49:772",
+      "rows": 1792,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "219",
+      "m49": "'776",
+      "providerLabel": "Tonga",
+      "geographyId": "m49:776",
+      "rows": 4346,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "220",
+      "m49": "'780",
+      "providerLabel": "Trinidad and Tobago",
+      "geographyId": "m49:780",
+      "rows": 6842,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "222",
+      "m49": "'788",
+      "providerLabel": "Tunisia",
+      "geographyId": "m49:788",
+      "rows": 12136,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "223",
+      "m49": "'792",
+      "providerLabel": "Türkiye",
+      "geographyId": "m49:792",
+      "rows": 15358,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "213",
+      "m49": "'795",
+      "providerLabel": "Turkmenistan",
+      "geographyId": "m49:795",
+      "rows": 3062,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "227",
+      "m49": "'798",
+      "providerLabel": "Tuvalu",
+      "geographyId": "m49:798",
+      "rows": 2004,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "226",
+      "m49": "'800",
+      "providerLabel": "Uganda",
+      "geographyId": "m49:800",
+      "rows": 6976,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "230",
+      "m49": "'804",
+      "providerLabel": "Ukraine",
+      "geographyId": "m49:804",
+      "rows": 6354,
+      "years": [
+        1994,
+        2024
+      ]
+    },
+    {
+      "code": "225",
+      "m49": "'784",
+      "providerLabel": "United Arab Emirates",
+      "geographyId": "m49:784",
+      "rows": 5590,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "229",
+      "m49": "'826",
+      "providerLabel": "United Kingdom of Great Britain and Northern Ireland",
+      "geographyId": "m49:826",
+      "rows": 8126,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "215",
+      "m49": "'834",
+      "providerLabel": "United Republic of Tanzania",
+      "geographyId": "m49:834",
+      "rows": 10752,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "231",
+      "m49": "'840",
+      "providerLabel": "United States of America",
+      "geographyId": "m49:840",
+      "rows": 13776,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "234",
+      "m49": "'858",
+      "providerLabel": "Uruguay",
+      "geographyId": "m49:858",
+      "rows": 8194,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "235",
+      "m49": "'860",
+      "providerLabel": "Uzbekistan",
+      "geographyId": "m49:860",
+      "rows": 6338,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "155",
+      "m49": "'548",
+      "providerLabel": "Vanuatu",
+      "geographyId": "m49:548",
+      "rows": 3426,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "236",
+      "m49": "'862",
+      "providerLabel": "Venezuela (Bolivarian Republic of)",
+      "geographyId": "m49:862",
+      "rows": 7852,
+      "years": [
+        1961,
+        2014
+      ]
+    },
+    {
+      "code": "237",
+      "m49": "'704",
+      "providerLabel": "Viet Nam",
+      "geographyId": "m49:704",
+      "rows": 8236,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "249",
+      "m49": "'887",
+      "providerLabel": "Yemen",
+      "geographyId": "m49:887",
+      "rows": 7772,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "251",
+      "m49": "'894",
+      "providerLabel": "Zambia",
+      "geographyId": "m49:894",
+      "rows": 4708,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "181",
+      "m49": "'716",
+      "providerLabel": "Zimbabwe",
+      "geographyId": "m49:716",
+      "rows": 9798,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5000",
+      "m49": "'001",
+      "providerLabel": "World",
+      "geographyId": "fao:5000",
+      "rows": 24964,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5100",
+      "m49": "'002",
+      "providerLabel": "Africa",
+      "geographyId": "fao:5100",
+      "rows": 21896,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5101",
+      "m49": "'014",
+      "providerLabel": "Eastern Africa",
+      "geographyId": "fao:5101",
+      "rows": 17946,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5102",
+      "m49": "'017",
+      "providerLabel": "Middle Africa",
+      "geographyId": "fao:5102",
+      "rows": 13676,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5103",
+      "m49": "'015",
+      "providerLabel": "Northern Africa",
+      "geographyId": "fao:5103",
+      "rows": 17514,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5104",
+      "m49": "'018",
+      "providerLabel": "Southern Africa",
+      "geographyId": "fao:5104",
+      "rows": 13016,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5105",
+      "m49": "'011",
+      "providerLabel": "Western Africa",
+      "geographyId": "fao:5105",
+      "rows": 14322,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5200",
+      "m49": "'019",
+      "providerLabel": "Americas",
+      "geographyId": "fao:5200",
+      "rows": 22252,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5203",
+      "m49": "'021",
+      "providerLabel": "Northern America",
+      "geographyId": "fao:5203",
+      "rows": 14798,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5204",
+      "m49": "'013",
+      "providerLabel": "Central America",
+      "geographyId": "fao:5204",
+      "rows": 17132,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5206",
+      "m49": "'029",
+      "providerLabel": "Caribbean",
+      "geographyId": "fao:5206",
+      "rows": 13094,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5207",
+      "m49": "'005",
+      "providerLabel": "South America",
+      "geographyId": "fao:5207",
+      "rows": 20390,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5300",
+      "m49": "'142",
+      "providerLabel": "Asia",
+      "geographyId": "fao:5300",
+      "rows": 23136,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5301",
+      "m49": "'143",
+      "providerLabel": "Central Asia",
+      "geographyId": "fao:5301",
+      "rows": 7474,
+      "years": [
+        1992,
+        2024
+      ]
+    },
+    {
+      "code": "5302",
+      "m49": "'030",
+      "providerLabel": "Eastern Asia",
+      "geographyId": "fao:5302",
+      "rows": 19892,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5303",
+      "m49": "'034",
+      "providerLabel": "Southern Asia",
+      "geographyId": "fao:5303",
+      "rows": 18450,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5304",
+      "m49": "'035",
+      "providerLabel": "South-eastern Asia",
+      "geographyId": "fao:5304",
+      "rows": 16776,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5305",
+      "m49": "'145",
+      "providerLabel": "Western Asia",
+      "geographyId": "fao:5305",
+      "rows": 18516,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5400",
+      "m49": "'150",
+      "providerLabel": "Europe",
+      "geographyId": "fao:5400",
+      "rows": 19536,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5401",
+      "m49": "'151",
+      "providerLabel": "Eastern Europe",
+      "geographyId": "fao:5401",
+      "rows": 15898,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5402",
+      "m49": "'154",
+      "providerLabel": "Northern Europe",
+      "geographyId": "fao:5402",
+      "rows": 10290,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5403",
+      "m49": "'039",
+      "providerLabel": "Southern Europe",
+      "geographyId": "fao:5403",
+      "rows": 18586,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5404",
+      "m49": "'155",
+      "providerLabel": "Western Europe",
+      "geographyId": "fao:5404",
+      "rows": 14604,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5500",
+      "m49": "'009",
+      "providerLabel": "Oceania",
+      "geographyId": "fao:5500",
+      "rows": 17548,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5501",
+      "m49": "'053",
+      "providerLabel": "Australia and New Zealand",
+      "geographyId": "fao:5501",
+      "rows": 14352,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5502",
+      "m49": "'054",
+      "providerLabel": "Melanesia",
+      "geographyId": "fao:5502",
+      "rows": 9144,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5503",
+      "m49": "'057",
+      "providerLabel": "Micronesia",
+      "geographyId": "fao:5503",
+      "rows": 2740,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5504",
+      "m49": "'061",
+      "providerLabel": "Polynesia",
+      "geographyId": "fao:5504",
+      "rows": 8034,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5707",
+      "m49": "'097",
+      "providerLabel": "European Union (27)",
+      "geographyId": "fao:5707",
+      "rows": 18924,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5801",
+      "m49": "'199",
+      "providerLabel": "Least Developed Countries (LDCs)",
+      "geographyId": "fao:5801",
+      "rows": 20168,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5802",
+      "m49": "'432",
+      "providerLabel": "Land Locked Developing Countries (LLDCs)",
+      "geographyId": "fao:5802",
+      "rows": 20796,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5803",
+      "m49": "'722",
+      "providerLabel": "Small Island Developing States (SIDS)",
+      "geographyId": "fao:5803",
+      "rows": 15590,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5815",
+      "m49": "'901",
+      "providerLabel": "Low Income Food Deficit Countries (LIFDCs)",
+      "geographyId": "fao:5815",
+      "rows": 21736,
+      "years": [
+        1961,
+        2024
+      ]
+    },
+    {
+      "code": "5817",
+      "m49": "'902",
+      "providerLabel": "Net Food Importing Developing Countries (NFIDCs)",
+      "geographyId": "fao:5817",
+      "rows": 23120,
+      "years": [
+        1961,
+        2024
+      ]
+    }
+  ],
+  "directoryAreasWithoutRows": [
+    {
+      "Area Code": "15",
+      "M49 Code": "'058",
+      "Area": "Belgium-Luxembourg"
+    },
+    {
+      "Area Code": "51",
+      "M49 Code": "'200",
+      "Area": "Czechoslovakia"
+    },
+    {
+      "Area Code": "62",
+      "M49 Code": "'230",
+      "Area": "Ethiopia PDR"
+    },
+    {
+      "Area Code": "69",
+      "M49 Code": "'254",
+      "Area": "French Guiana"
+    },
+    {
+      "Area Code": "87",
+      "M49 Code": "'312",
+      "Area": "Guadeloupe"
+    },
+    {
+      "Area Code": "135",
+      "M49 Code": "'474",
+      "Area": "Martinique"
+    },
+    {
+      "Area Code": "182",
+      "M49 Code": "'638",
+      "Area": "Réunion"
+    },
+    {
+      "Area Code": "186",
+      "M49 Code": "'891",
+      "Area": "Serbia and Montenegro"
+    },
+    {
+      "Area Code": "206",
+      "M49 Code": "'736",
+      "Area": "Sudan (former)"
+    },
+    {
+      "Area Code": "228",
+      "M49 Code": "'810",
+      "Area": "USSR"
+    },
+    {
+      "Area Code": "248",
+      "M49 Code": "'890",
+      "Area": "Yugoslav SFR"
+    }
+  ],
+  "boundaries": [
+    "Mainland China uses 41/156; the distinct China group uses 351/159.",
+    "Regions are provider aggregates, never averages of national indices.",
+    "Former countries listed only in the directory do not have rows in this release.",
+    "All values are flagged E (estimated). Zero is retained.",
+    "The original element labels say gross. The general PDF describes net deductions; do not recalculate or label these rows as net."
+  ]
+}

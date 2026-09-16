@@ -1,0 +1,178 @@
+{
+  "checkedAt": "2026-09-11T04:02:23.812Z",
+  "status": "passed",
+  "runtime": "Native Tauri / isolated com.personal-macro.atlas-public-20260911 / normal UI only",
+  "screenshots": [
+    "output/atlas-ndgain-exposure.png",
+    "output/atlas-ndgain-minwidth.png",
+    "output/atlas-ndgain-history.png"
+  ],
+  "checks": [
+    {
+      "label": "India fixed exposure, numbers hidden",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:exposure",
+      "numbers": false,
+      "points": 1,
+      "numericValuesHidden": true
+    },
+    {
+      "label": "India exposure, optional original number",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:exposure",
+      "numbers": true,
+      "points": 1,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Gesamtmodell",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:vulnerability",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimaexposition · Projektionen",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:exposure",
+      "numbers": true,
+      "points": 1,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Empfindlichkeit gegenüber Klimafolgen",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:sensitivity",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Anpassungskapazität · Belastungsbeitrag",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:capacity",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Ernährung",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:food",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Wasser",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:water",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Gesundheit",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:health",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Ökosysteme",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:ecosystems",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Lebensraum",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:habitat",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India Klimatische Anfälligkeit · Infrastruktur",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:infrastructure",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India historical filter from 2020",
+      "geo": "m49:356",
+      "metric": "ndgain-climate:infrastructure",
+      "numbers": true,
+      "points": 5,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "History filter preserved; projection always one point; India/Germany share original 0–1 positions",
+      "passed": true
+    },
+    {
+      "label": "Projection comparison keeps values out of tooltips when numbers are hidden",
+      "passed": true
+    },
+    {
+      "label": "Liechtenstein has no aggregate vulnerability; no substituted model",
+      "passed": true
+    },
+    {
+      "label": "Liechtenstein independently available exposure",
+      "geo": "m49:438",
+      "metric": "ndgain-climate:exposure",
+      "numbers": false,
+      "points": 1,
+      "numericValuesHidden": true
+    },
+    {
+      "label": "No fabricated world climate profile",
+      "passed": true
+    },
+    {
+      "label": "Germany exposure original number",
+      "geo": "m49:276",
+      "metric": "ndgain-climate:exposure",
+      "numbers": true,
+      "points": 1,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Coverage uses projection publication, never an observed-year count",
+      "passed": true
+    },
+    {
+      "label": "Native minimum width has no horizontal clipping",
+      "passed": true,
+      "width": 1024,
+      "client": 1015,
+      "scroll": 1015,
+      "svg": [
+        {
+          "x": 498,
+          "right": 974,
+          "width": 476
+        }
+      ]
+    },
+    {
+      "label": "Saved projection retains source edition and exact original-model recipe",
+      "passed": true
+    },
+    {
+      "label": "Germany full modeled vulnerability history after coverage navigation",
+      "geo": "m49:276",
+      "metric": "ndgain-climate:vulnerability",
+      "numbers": true,
+      "points": 30,
+      "allOriginalValuesMatch": true
+    }
+  ]
+}

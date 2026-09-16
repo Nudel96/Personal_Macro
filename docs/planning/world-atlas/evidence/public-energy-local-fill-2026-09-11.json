@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-09-11T01:51:55.227510+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sources": [
+    {
+      "sourceId": "eurostat-bioenergy",
+      "provenance": {
+        "sourceId": "eurostat-bioenergy",
+        "retrievedAt": "2026-09-11T01:49:59.280283300+00:00",
+        "publishedAt": "2026-08-27",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_cb_rw?lang=en&nrg_bal=IPRD&unit=TJ&siec=R5110-5150_W6000RI&siec=R5300",
+        "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/nrg_cb_esms.htm",
+        "sha256": "dbc18cef2ced71904f9fa78dd8b371f3964ea73c972fed0a8f13278a6607408a",
+        "recipe": "eurostat-bioenergy-original-jsonstat-20260911-v1",
+        "sourceRows": 2904,
+        "numericValues": 2307,
+        "areaCount": 42
+      },
+      "profiles": 84,
+      "numeric": 2307,
+      "ambiguousZeros": 455,
+      "fullOriginalAuditEquality": true
+    },
+    {
+      "sourceId": "eurostat-heat-pumps",
+      "provenance": {
+        "sourceId": "eurostat-heat-pumps",
+        "retrievedAt": "2026-09-11T01:50:00.267801400+00:00",
+        "publishedAt": "2026-07-09",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nrg_inf_hptc?lang=en&plant_tec=CAP_HEAT&unit=MW&hp_tech=ATH&hp_tech=GTH&hp_tech=HTH",
+        "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/nrg_inf_hptc_esms.htm",
+        "sha256": "2375ae23ad5c93be57ace189d52299e842d28740c6d1f563df1b3e2433a2c397",
+        "recipe": "eurostat-heat-pumps-original-jsonstat-20260911-v1",
+        "sourceRows": 4245,
+        "numericValues": 803,
+        "areaCount": 42
+      },
+      "profiles": 126,
+      "numeric": 803,
+      "ambiguousZeros": 1708,
+      "fullOriginalAuditEquality": true
+    },
+    {
+      "sourceId": "eurostat-district-heating",
+      "provenance": {
+        "sourceId": "eurostat-district-heating",
+        "retrievedAt": "2026-09-11T01:50:01.259418800+00:00",
+        "publishedAt": "2026-01-23",
+        "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/ilc_lvhe02?lang=en&amenity=DHEAT&deg_urb=TOTAL&hhcomp=TOTAL&unit=PC",
+        "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/ilc_sieusilc.htm",
+        "sha256": "6e3759ed3a6f7cdfdcc020933ba65c7ba5d36a531192b50e26e934cc73935d1e",
+        "recipe": "eurostat-district-heating-original-jsonstat-20260911-v1",
+        "sourceRows": 33,
+        "numericValues": 32,
+        "areaCount": 32
+      },
+      "profiles": 32,
+      "numeric": 32,
+      "ambiguousZeros": 0,
+      "fullOriginalAuditEquality": true
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-11T03:32:33.852631+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sourceId": "wits-export-concentration",
+  "provenance": {
+    "sourceId": "wits-export-concentration",
+    "retrievedAt": "2026-09-11T03:30:22.046851600+00:00",
+    "publishedAt": "2023-03-11",
+    "url": "https://datacatalogfiles.worldbank.org/ddh-published/0064719/DR0092974/bulk_files_Herfindahl-Hirschman_Product_Concentration_Index_Mirrored_Export.xlsx",
+    "documentationUrl": "https://wits.worldbank.org/WITS/WITS/TradeIndicatorsHelp/TradeOutcomes_Help.htm",
+    "sha256": "afed92d5442572e9471b982e5af844e4b0550bc39b476bd61aada0aec8445ea1",
+    "recipe": "wits-hhpci-mirrored-1988-2022-original-zips-v1",
+    "sourceRows": 716648,
+    "numericValues": 7739,
+    "areaCount": 239
+  },
+  "profiles": 239,
+  "numeric": 7739,
+  "fullOriginalAuditEquality": true
+}

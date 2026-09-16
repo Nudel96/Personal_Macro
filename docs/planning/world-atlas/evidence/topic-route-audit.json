@@ -1,0 +1,3439 @@
+{
+  "checkedAt": "2026-09-11T07:57:35.672Z",
+  "catalogVersion": "2026-09-11.23",
+  "scope": "Routing and editorial source review, not a proof of numeric availability in every area or completed native acceptance.",
+  "geographyCount": 378,
+  "topicCount": 255,
+  "counts": {
+    "numeric_perspective": 235,
+    "context_guide": 14,
+    "source_review": 0,
+    "theory": 6,
+    "unresolved": 0
+  },
+  "groups": [
+    {
+      "id": "demography",
+      "label": "Demografie",
+      "topics": [
+        "demography:population",
+        "demography:population_growth",
+        "demography:fertility",
+        "demography:mortality",
+        "demography:life_expectancy",
+        "demography:age_structure",
+        "demography:working_age",
+        "demography:dependency",
+        "demography:migration",
+        "demography:urbanization",
+        "demography:households",
+        "demography:population_projection"
+      ]
+    },
+    {
+      "id": "education",
+      "label": "Bildung",
+      "topics": [
+        "education:early_learning",
+        "education:primary_school",
+        "education:secondary_school",
+        "education:higher_education",
+        "education:vocational_training",
+        "education:adult_learning",
+        "education:literacy",
+        "education:learning_outcomes",
+        "education:education_spending",
+        "education:teachers",
+        "education:education_business",
+        "education:education_technology"
+      ]
+    },
+    {
+      "id": "health",
+      "label": "Gesundheit & Pflege",
+      "topics": [
+        "health:healthcare_access",
+        "health:healthcare_spending",
+        "health:hospitals",
+        "health:medical_equipment",
+        "health:pharmaceuticals",
+        "health:biotechnology",
+        "health:elderly_care",
+        "health:health_insurance",
+        "health:prevention",
+        "health:digital_health"
+      ]
+    },
+    {
+      "id": "labor",
+      "label": "Arbeit & Einkommen",
+      "topics": [
+        "labor:employment",
+        "labor:sector_structure",
+        "labor:unemployment",
+        "labor:youth_employment",
+        "labor:participation",
+        "labor:wages",
+        "labor:labor_productivity",
+        "labor:informal_work",
+        "labor:skills",
+        "labor:working_hours",
+        "labor:income_distribution"
+      ]
+    },
+    {
+      "id": "macro",
+      "label": "Wirtschaft & Wohlstand",
+      "topics": [
+        "macro:real_output",
+        "macro:output_per_capita",
+        "macro:growth",
+        "macro:inflation",
+        "macro:productivity",
+        "macro:investment",
+        "macro:consumption",
+        "macro:savings",
+        "macro:industrial_share",
+        "macro:manufacturing_share",
+        "macro:service_share",
+        "macro:agricultural_share",
+        "macro:purchasing_power"
+      ]
+    },
+    {
+      "id": "finance",
+      "label": "Finanzsystem & Verschuldung",
+      "topics": [
+        "finance:banks",
+        "finance:insurance",
+        "finance:asset_management",
+        "finance:payments",
+        "finance:household_debt",
+        "finance:corporate_debt",
+        "finance:public_debt",
+        "finance:credit_growth",
+        "finance:debt_service",
+        "finance:financial_access",
+        "finance:capital_markets",
+        "finance:financial_stress"
+      ]
+    },
+    {
+      "id": "market_context",
+      "label": "Marktlage & Bewertung",
+      "topics": [
+        "market_context:country_equities",
+        "market_context:regional_equities",
+        "market_context:sector_equities",
+        "market_context:theme_equities",
+        "market_context:relative_strength",
+        "market_context:historical_valuation",
+        "market_context:earnings_quality",
+        "market_context:market_concentration",
+        "market_context:sector_materials",
+        "market_context:sector_communication",
+        "market_context:sector_energy",
+        "market_context:sector_financials",
+        "market_context:sector_industrials",
+        "market_context:sector_technology",
+        "market_context:sector_staples",
+        "market_context:sector_real_estate",
+        "market_context:sector_utilities",
+        "market_context:sector_healthcare",
+        "market_context:sector_discretionary"
+      ]
+    },
+    {
+      "id": "electricity",
+      "label": "Strom & Erzeugung",
+      "topics": [
+        "electricity:electricity_access",
+        "electricity:electricity_demand",
+        "electricity:generation_mix",
+        "electricity:solar",
+        "electricity:wind_onshore",
+        "electricity:wind_offshore",
+        "electricity:hydropower",
+        "electricity:geothermal",
+        "electricity:nuclear",
+        "electricity:coal_power",
+        "electricity:gas_power",
+        "electricity:utilities",
+        "electricity:other_fossil",
+        "electricity:bioenergy",
+        "electricity:other_renewables",
+        "electricity:wind_total",
+        "electricity:total_generation",
+        "electricity:net_imports"
+      ]
+    },
+    {
+      "id": "fuels",
+      "label": "Brennstoffe & Energieträger",
+      "topics": [
+        "fuels:oil",
+        "fuels:natural_gas",
+        "fuels:lng",
+        "fuels:coal",
+        "fuels:uranium",
+        "fuels:hydrogen",
+        "fuels:bioenergy",
+        "fuels:synthetic_fuels"
+      ]
+    },
+    {
+      "id": "energy_systems",
+      "label": "Netze, Speicher & Energiewende",
+      "topics": [
+        "energy_systems:power_grids",
+        "energy_systems:battery_storage",
+        "energy_systems:long_duration_storage",
+        "energy_systems:energy_efficiency",
+        "energy_systems:heat_pumps",
+        "energy_systems:district_heating",
+        "energy_systems:energy_imports",
+        "energy_systems:energy_investment"
+      ]
+    },
+    {
+      "id": "industry",
+      "label": "Industrie & Herstellung",
+      "topics": [
+        "industry:machinery",
+        "industry:automotive",
+        "industry:chemicals",
+        "industry:steel",
+        "industry:cement",
+        "industry:aerospace",
+        "industry:defense_industry",
+        "industry:electrical_equipment",
+        "industry:textiles",
+        "industry:packaging",
+        "industry:shipbuilding",
+        "industry:industrial_automation"
+      ]
+    },
+    {
+      "id": "materials",
+      "label": "Rohstoffe & Kreislaufwirtschaft",
+      "topics": [
+        "materials:commodity_prices",
+        "materials:copper",
+        "materials:aluminium",
+        "materials:lithium",
+        "materials:nickel",
+        "materials:rare_earths",
+        "materials:precious_metals",
+        "materials:mining",
+        "materials:fertilizers",
+        "materials:recycling",
+        "materials:forestry"
+      ]
+    },
+    {
+      "id": "food_water",
+      "label": "Ernährung, Landwirtschaft & Wasser",
+      "topics": [
+        "food_water:crop_production",
+        "food_water:livestock",
+        "food_water:fisheries",
+        "food_water:food_processing",
+        "food_water:food_security",
+        "food_water:agricultural_yields",
+        "food_water:agricultural_land",
+        "food_water:drinking_water",
+        "food_water:sanitation",
+        "food_water:water_stress"
+      ]
+    },
+    {
+      "id": "digital",
+      "label": "Digitalisierung & Kommunikation",
+      "topics": [
+        "digital:internet",
+        "digital:broadband",
+        "digital:mobile_networks",
+        "digital:telecom",
+        "digital:software",
+        "digital:cloud",
+        "digital:cybersecurity",
+        "digital:semiconductors",
+        "digital:digital_platforms",
+        "digital:digital_payments"
+      ]
+    },
+    {
+      "id": "innovation",
+      "label": "Forschung & Neue Technologien",
+      "topics": [
+        "innovation:research_spending",
+        "innovation:researchers",
+        "innovation:patents",
+        "innovation:artificial_intelligence",
+        "innovation:robotics",
+        "innovation:quantum",
+        "innovation:space_technology",
+        "innovation:advanced_materials",
+        "innovation:technology_adoption",
+        "innovation:entrepreneurship"
+      ]
+    },
+    {
+      "id": "housing",
+      "label": "Wohnen & Immobilien",
+      "topics": [
+        "housing:house_prices",
+        "housing:affordability",
+        "housing:price_rent",
+        "housing:rents",
+        "housing:construction",
+        "housing:housing_supply",
+        "housing:commercial_property",
+        "housing:logistics_property",
+        "housing:real_estate_companies"
+      ]
+    },
+    {
+      "id": "consumer_services",
+      "label": "Konsum & Dienstleistungen",
+      "topics": [
+        "consumer_services:consumer_staples",
+        "consumer_services:consumer_discretionary",
+        "consumer_services:retail",
+        "consumer_services:ecommerce",
+        "consumer_services:tourism",
+        "consumer_services:hospitality",
+        "consumer_services:media",
+        "consumer_services:entertainment",
+        "consumer_services:professional_services",
+        "consumer_services:personal_services"
+      ]
+    },
+    {
+      "id": "transport",
+      "label": "Mobilität & Infrastruktur",
+      "topics": [
+        "transport:roads",
+        "transport:rail",
+        "transport:public_transport",
+        "transport:shipping_ports",
+        "transport:aviation",
+        "transport:logistics",
+        "transport:electric_vehicles",
+        "transport:charging",
+        "transport:infrastructure_spending",
+        "transport:connectivity"
+      ]
+    },
+    {
+      "id": "trade",
+      "label": "Handel & Globale Verflechtung",
+      "topics": [
+        "trade:exports",
+        "trade:imports",
+        "trade:trade_balance",
+        "trade:trade_partners",
+        "trade:supply_chains",
+        "trade:foreign_investment",
+        "trade:remittances",
+        "trade:export_concentration",
+        "trade:terms_of_trade",
+        "trade:trade_openness"
+      ]
+    },
+    {
+      "id": "institutions",
+      "label": "Institutionen & Gesellschaft",
+      "topics": [
+        "institutions:public_finances",
+        "institutions:tax_structure",
+        "institutions:public_services",
+        "institutions:institutional_indicators",
+        "institutions:poverty",
+        "institutions:inequality",
+        "institutions:conflict_context",
+        "institutions:economic_policy_regimes"
+      ]
+    },
+    {
+      "id": "environment",
+      "label": "Umwelt & Natürliche Grundlagen",
+      "topics": [
+        "environment:emissions",
+        "environment:emission_intensity",
+        "environment:air_quality",
+        "environment:forest_cover",
+        "environment:biodiversity_context",
+        "environment:resource_use",
+        "environment:climate_exposure",
+        "environment:adaptation"
+      ]
+    },
+    {
+      "id": "structural_change",
+      "label": "Strukturwandel & Generationen",
+      "topics": [
+        "structural_change:demographic_transition",
+        "structural_change:industrialization",
+        "structural_change:service_transition",
+        "structural_change:urban_transition",
+        "structural_change:energy_transitions",
+        "structural_change:education_expansion",
+        "structural_change:productivity_regimes",
+        "structural_change:global_economic_weights"
+      ]
+    },
+    {
+      "id": "long_history",
+      "label": "Jahrhundertperspektiven",
+      "topics": [
+        "long_history:long_run_prosperity",
+        "long_history:long_run_population",
+        "long_history:long_run_credit",
+        "long_history:long_run_housing",
+        "long_history:long_run_inflation",
+        "long_history:long_run_rates",
+        "long_history:monetary_systems",
+        "long_history:crises_recoveries",
+        "long_history:long_run_output",
+        "long_history:financial_history"
+      ]
+    },
+    {
+      "id": "cycle_hypotheses",
+      "label": "Zyklusthesen untersuchen",
+      "topics": [
+        "cycle_hypotheses:business_cycles",
+        "cycle_hypotheses:financial_cycles",
+        "cycle_hypotheses:investment_waves",
+        "cycle_hypotheses:innovation_waves",
+        "cycle_hypotheses:kondratiev",
+        "cycle_hypotheses:secular_cycles"
+      ]
+    }
+  ],
+  "sourceReviewDate": "2026-09-09",
+  "sources": {},
+  "codeHashes": {
+    "atlas-topic-research.ts": "7be76f12cc9340e196a4b45e1e30d4b51d7dcdb4e885a21786612ef4ab904101",
+    "atlas-context-guides.ts": "7f86c8c6e9adf2c13b89be7e7fd3cf1cb5c42d987d48001fea1d3283ee2d6eca",
+    "atlas-context-panel.tsx": "4615d284b288318b35a6b8b9cd42c60578dcc41461c91d420c3da6cf11a805b0",
+    "atlas-coverage.ts": "88f5fa3d0a272b741f4e746cfc31a3fdbcd4aab4f5d9875a4f46ae366a100ff4",
+    "atlas-findex.ts": "025aad42f17b3a9a697e3f6965a52c72ba7e0bc8d1d7796551316702307711cd",
+    "world-atlas-page.tsx": "c2c9de1260c763f25b8c95e857e3d128e7c4b84dae9c4b77a38be301301d056e",
+    "data/catalog.json": "c8fc1eb14690d69f521e985b5befea86347cd3cf7dc7fb55f8feebd622d53f28",
+    "data/findex-catalog.json": "66ace65dd938d1101502c5c78e67d6f0c763313a91c980974392284a36ce01fc"
+  },
+  "topics": [
+    {
+      "id": "demography:population",
+      "label": "Bevölkerung",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:population_growth",
+      "label": "Bevölkerungswachstum",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:fertility",
+      "label": "Geburten und Fertilität",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:mortality",
+      "label": "Sterblichkeit",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:life_expectancy",
+      "label": "Lebenserwartung",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:age_structure",
+      "label": "Altersstruktur",
+      "groupId": "demography",
+      "families": [
+        "demography",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:working_age",
+      "label": "Bevölkerung im Erwerbsalter",
+      "groupId": "demography",
+      "families": [
+        "demography"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:dependency",
+      "label": "Jugend- und Altenquotient",
+      "groupId": "demography",
+      "families": [
+        "demography"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:migration",
+      "label": "Zu- und Abwanderung",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:urbanization",
+      "label": "Stadt und Land",
+      "groupId": "demography",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:households",
+      "label": "Haushalte und Haushaltsgrößen",
+      "groupId": "demography",
+      "families": [
+        "households"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "demography:population_projection",
+      "label": "Bevölkerungsszenarien",
+      "groupId": "demography",
+      "families": [
+        "demography"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:early_learning",
+      "label": "Frühkindliche Bildung",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:primary_school",
+      "label": "Grundbildung",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:secondary_school",
+      "label": "Weiterführende Bildung",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:higher_education",
+      "label": "Hochschulen",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:vocational_training",
+      "label": "Berufliche Bildung",
+      "groupId": "education",
+      "families": [
+        "education"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:adult_learning",
+      "label": "Weiterbildung",
+      "groupId": "education",
+      "families": [
+        "education"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:literacy",
+      "label": "Alphabetisierung",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:learning_outcomes",
+      "label": "Lernergebnisse",
+      "groupId": "education",
+      "families": [
+        "education"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:education_spending",
+      "label": "Bildungsausgaben",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:teachers",
+      "label": "Lehrkräfte",
+      "groupId": "education",
+      "families": [
+        "education",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:education_business",
+      "label": "Private Bildungswirtschaft",
+      "groupId": "education",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "education:education_technology",
+      "label": "Digitale Bildung",
+      "groupId": "education",
+      "families": [
+        "education"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:healthcare_access",
+      "label": "Gesundheitsversorgung",
+      "groupId": "health",
+      "families": [
+        "health",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:healthcare_spending",
+      "label": "Gesundheitsausgaben",
+      "groupId": "health",
+      "families": [
+        "health",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:hospitals",
+      "label": "Krankenhäuser",
+      "groupId": "health",
+      "families": [
+        "health",
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:medical_equipment",
+      "label": "Medizintechnik",
+      "groupId": "health",
+      "families": [
+        "health",
+        "innovation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:pharmaceuticals",
+      "label": "Pharma",
+      "groupId": "health",
+      "families": [
+        "health",
+        "innovation",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:biotechnology",
+      "label": "Biotechnologie",
+      "groupId": "health",
+      "families": [
+        "innovation",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:elderly_care",
+      "label": "Pflege",
+      "groupId": "health",
+      "families": [
+        "health"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:health_insurance",
+      "label": "Krankenversicherung",
+      "groupId": "health",
+      "families": [
+        "health"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:prevention",
+      "label": "Prävention",
+      "groupId": "health",
+      "families": [
+        "health",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "health:digital_health",
+      "label": "Digitale Gesundheit",
+      "groupId": "health",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:employment",
+      "label": "Beschäftigung",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:sector_structure",
+      "label": "Beschäftigung nach Wirtschaftsbereichen",
+      "groupId": "labor",
+      "families": [
+        "labor"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:unemployment",
+      "label": "Arbeitslosigkeit",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:youth_employment",
+      "label": "Jugend und Arbeit",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:participation",
+      "label": "Erwerbsbeteiligung",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:wages",
+      "label": "Reallöhne",
+      "groupId": "labor",
+      "families": [
+        "public:oecd-wages"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:labor_productivity",
+      "label": "Arbeitsproduktivität",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:informal_work",
+      "label": "Informelle Beschäftigung",
+      "groupId": "labor",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:skills",
+      "label": "Qualifikation und Fachkräfte",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:working_hours",
+      "label": "Arbeitszeit",
+      "groupId": "labor",
+      "families": [
+        "public:oecd-hours"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "labor:income_distribution",
+      "label": "Einkommensverteilung",
+      "groupId": "labor",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:real_output",
+      "label": "Reale Wirtschaftsleistung",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:output_per_capita",
+      "label": "Wohlstand je Einwohner",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:growth",
+      "label": "Wirtschaftswachstum",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:inflation",
+      "label": "Inflation und Kaufkraft",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:productivity",
+      "label": "Gesamtproduktivität",
+      "groupId": "macro",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "labor:labor_productivity",
+          "series": "worldbank:2:SL.GDP.PCAP.EM.KD",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "macro:investment",
+      "label": "Investitionen",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:consumption",
+      "label": "Privater Konsum",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:savings",
+      "label": "Sparen",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:industrial_share",
+      "label": "Industrieanteil",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:manufacturing_share",
+      "label": "Anteil verarbeitendes Gewerbe",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:service_share",
+      "label": "Dienstleistungsanteil",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:agricultural_share",
+      "label": "Landwirtschaftsanteil",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "macro:purchasing_power",
+      "label": "Kaufkraftvergleiche",
+      "groupId": "macro",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:banks",
+      "label": "Banken",
+      "groupId": "finance",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:insurance",
+      "label": "Versicherungen",
+      "groupId": "finance",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:asset_management",
+      "label": "Vermögensverwaltung",
+      "groupId": "finance",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:payments",
+      "label": "Zahlungsverkehr",
+      "groupId": "finance",
+      "families": [
+        "findex"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:household_debt",
+      "label": "Haushaltsverschuldung",
+      "groupId": "finance",
+      "families": [
+        "debt"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:corporate_debt",
+      "label": "Unternehmensverschuldung",
+      "groupId": "finance",
+      "families": [
+        "debt"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:public_debt",
+      "label": "Staatsverschuldung",
+      "groupId": "finance",
+      "families": [
+        "fiscal"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:credit_growth",
+      "label": "Kreditvergabe",
+      "groupId": "finance",
+      "families": [
+        "credit",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:debt_service",
+      "label": "Schuldendienst",
+      "groupId": "finance",
+      "families": [
+        "public:bis-dsr"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:financial_access",
+      "label": "Finanzielle Teilhabe",
+      "groupId": "finance",
+      "families": [
+        "findex"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:capital_markets",
+      "label": "Kapitalmärkte",
+      "groupId": "finance",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "finance:financial_stress",
+      "label": "Finanzielle Anspannung",
+      "groupId": "finance",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "finance:credit_growth",
+          "perspective": "credit",
+          "creditMode": "gap",
+          "creditSince": "0"
+        },
+        {
+          "topic": "long_history:financial_history",
+          "jstMetric": "output",
+          "jstGroup": "economy",
+          "jstSince": "1870",
+          "jstReal": "1",
+          "jstCrises": "1"
+        }
+      ]
+    },
+    {
+      "id": "market_context:country_equities",
+      "label": "Länderaktienmärkte",
+      "groupId": "market_context",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:regional_equities",
+      "label": "Regionale Aktienmärkte",
+      "groupId": "market_context",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_equities",
+      "label": "Sektormärkte",
+      "groupId": "market_context",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:theme_equities",
+      "label": "Themenmärkte",
+      "groupId": "market_context",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:relative_strength",
+      "label": "Relative Stärke · Länder & Sektoren",
+      "groupId": "market_context",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:historical_valuation",
+      "label": "Historische Bewertung",
+      "groupId": "market_context",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:earnings_quality",
+      "label": "Gewinne und Bewertungsqualität",
+      "groupId": "market_context",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:market_concentration",
+      "label": "Marktkonzentration",
+      "groupId": "market_context",
+      "families": [
+        "public:worldbank-gfdd-concentration"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:electricity_access",
+      "label": "Stromzugang",
+      "groupId": "electricity",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:electricity_demand",
+      "label": "Stromnachfrage",
+      "groupId": "electricity",
+      "families": [
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:generation_mix",
+      "label": "Strommix",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:solar",
+      "label": "Solarenergie",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy",
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:wind_onshore",
+      "label": "Windenergie an Land",
+      "groupId": "electricity",
+      "families": [
+        "capacity"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:wind_offshore",
+      "label": "Windenergie auf See",
+      "groupId": "electricity",
+      "families": [
+        "capacity"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:hydropower",
+      "label": "Wasserkraft",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:geothermal",
+      "label": "Geothermie",
+      "groupId": "electricity",
+      "families": [
+        "capacity"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:nuclear",
+      "label": "Kernenergie",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy",
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:coal_power",
+      "label": "Kohleverstromung",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:gas_power",
+      "label": "Gasverstromung",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:utilities",
+      "label": "Versorgungsunternehmen",
+      "groupId": "electricity",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:oil",
+      "label": "Erdöl",
+      "groupId": "fuels",
+      "families": [
+        "commodities",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:natural_gas",
+      "label": "Erdgas",
+      "groupId": "fuels",
+      "families": [
+        "commodities",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:lng",
+      "label": "Flüssigerdgas",
+      "groupId": "fuels",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:coal",
+      "label": "Kohle",
+      "groupId": "fuels",
+      "families": [
+        "commodities",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:uranium",
+      "label": "Uran",
+      "groupId": "fuels",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:hydrogen",
+      "label": "Wasserstoff",
+      "groupId": "fuels",
+      "families": [
+        "markets"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:bioenergy",
+      "label": "Bioenergie",
+      "groupId": "fuels",
+      "families": [
+        "public:eurostat-bioenergy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "fuels:synthetic_fuels",
+      "label": "Synthetische Kraftstoffe",
+      "groupId": "fuels",
+      "families": [
+        "public:sasol-synthetic-fuels"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:power_grids",
+      "label": "Stromnetze",
+      "groupId": "energy_systems",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:battery_storage",
+      "label": "Batteriespeicher",
+      "groupId": "energy_systems",
+      "families": [
+        "public:eia-battery-storage"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:long_duration_storage",
+      "label": "Langzeitspeicher",
+      "groupId": "energy_systems",
+      "families": [
+        "capacity"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:energy_efficiency",
+      "label": "Energieeffizienz",
+      "groupId": "energy_systems",
+      "families": [
+        "sdg",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:heat_pumps",
+      "label": "Wärmepumpen",
+      "groupId": "energy_systems",
+      "families": [
+        "public:eurostat-heat-pumps"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:district_heating",
+      "label": "Wärmenetze",
+      "groupId": "energy_systems",
+      "families": [
+        "public:eurostat-district-heating"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:energy_imports",
+      "label": "Energieimportabhängigkeit",
+      "groupId": "energy_systems",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "energy_systems:energy_investment",
+      "label": "Energieinvestitionen",
+      "groupId": "energy_systems",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:machinery",
+      "label": "Maschinenbau",
+      "groupId": "industry",
+      "families": [
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:automotive",
+      "label": "Automobilindustrie",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:chemicals",
+      "label": "Chemie",
+      "groupId": "industry",
+      "families": [
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:steel",
+      "label": "Stahl",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:cement",
+      "label": "Zement",
+      "groupId": "industry",
+      "families": [
+        "public:bgs-cement"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:aerospace",
+      "label": "Luft- und Raumfahrt",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:defense_industry",
+      "label": "Verteidigungsindustrie",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:electrical_equipment",
+      "label": "Elektrotechnik",
+      "groupId": "industry",
+      "families": [
+        "innovation",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:textiles",
+      "label": "Textilindustrie",
+      "groupId": "industry",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:packaging",
+      "label": "Verpackungen",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:shipbuilding",
+      "label": "Schiffbau",
+      "groupId": "industry",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "industry:industrial_automation",
+      "label": "Industrieautomation",
+      "groupId": "industry",
+      "families": [
+        "innovation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:commodity_prices",
+      "label": "Internationale Rohstoffpreise",
+      "groupId": "materials",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:copper",
+      "label": "Kupfer",
+      "groupId": "materials",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:aluminium",
+      "label": "Aluminium",
+      "groupId": "materials",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:lithium",
+      "label": "Lithium",
+      "groupId": "materials",
+      "families": [
+        "public:bgs-lithium"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:nickel",
+      "label": "Nickel",
+      "groupId": "materials",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:rare_earths",
+      "label": "Seltene Erden",
+      "groupId": "materials",
+      "families": [
+        "public:bgs-rare-earths"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:precious_metals",
+      "label": "Edelmetalle",
+      "groupId": "materials",
+      "families": [
+        "commodities",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:mining",
+      "label": "Bergbau",
+      "groupId": "materials",
+      "families": [
+        "commodities",
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:fertilizers",
+      "label": "Düngemittel",
+      "groupId": "materials",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:recycling",
+      "label": "Recycling",
+      "groupId": "materials",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "materials:forestry",
+      "label": "Forstwirtschaft",
+      "groupId": "materials",
+      "families": [
+        "commodities",
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:crop_production",
+      "label": "Pflanzenbau",
+      "groupId": "food_water",
+      "families": [
+        "agriculture",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:livestock",
+      "label": "Tierhaltung",
+      "groupId": "food_water",
+      "families": [
+        "agriculture",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:fisheries",
+      "label": "Fischerei und Aquakultur",
+      "groupId": "food_water",
+      "families": [
+        "commodities"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:food_processing",
+      "label": "Lebensmittelverarbeitung",
+      "groupId": "food_water",
+      "families": [
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:food_security",
+      "label": "Ernährungssicherheit",
+      "groupId": "food_water",
+      "families": [
+        "agriculture"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:agricultural_yields",
+      "label": "Agrarproduktivität",
+      "groupId": "food_water",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:agricultural_land",
+      "label": "Landnutzung",
+      "groupId": "food_water",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:drinking_water",
+      "label": "Trinkwasser",
+      "groupId": "food_water",
+      "families": [
+        "sdg",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:sanitation",
+      "label": "Abwasser und Sanitärversorgung",
+      "groupId": "food_water",
+      "families": [
+        "sdg",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "food_water:water_stress",
+      "label": "Wasserknappheit",
+      "groupId": "food_water",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:internet",
+      "label": "Internetzugang",
+      "groupId": "digital",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:broadband",
+      "label": "Breitband",
+      "groupId": "digital",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:mobile_networks",
+      "label": "Mobilfunk",
+      "groupId": "digital",
+      "families": [
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:telecom",
+      "label": "Telekommunikation",
+      "groupId": "digital",
+      "families": [
+        "innovation",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:software",
+      "label": "Software",
+      "groupId": "digital",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:cloud",
+      "label": "Cloud und Rechenzentren",
+      "groupId": "digital",
+      "families": [
+        "public:census-construction",
+        "public:eurostat-cloud"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:cybersecurity",
+      "label": "Cybersicherheit",
+      "groupId": "digital",
+      "families": [
+        "public:eurostat-cybersecurity"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:semiconductors",
+      "label": "Halbleiter",
+      "groupId": "digital",
+      "families": [
+        "innovation",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:digital_platforms",
+      "label": "Digitale Plattformen",
+      "groupId": "digital",
+      "families": [
+        "public:eurostat-ecommerce"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "digital:digital_payments",
+      "label": "Digitale Zahlungen",
+      "groupId": "digital",
+      "families": [
+        "findex"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:research_spending",
+      "label": "Forschungsausgaben",
+      "groupId": "innovation",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:researchers",
+      "label": "Forschende",
+      "groupId": "innovation",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:patents",
+      "label": "Patente",
+      "groupId": "innovation",
+      "families": [
+        "innovation",
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:artificial_intelligence",
+      "label": "Künstliche Intelligenz",
+      "groupId": "innovation",
+      "families": [
+        "public:eurostat-ai"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:robotics",
+      "label": "Robotik",
+      "groupId": "innovation",
+      "families": [
+        "public:eurostat-robotics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:quantum",
+      "label": "Quantentechnologien",
+      "groupId": "innovation",
+      "families": [
+        "public:epo-quantum-sensing"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:space_technology",
+      "label": "Raumfahrttechnologie",
+      "groupId": "innovation",
+      "families": [
+        "public:epo-cosmonautics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:advanced_materials",
+      "label": "Neue Materialien",
+      "groupId": "innovation",
+      "families": [
+        "public:eu-advanced-materials"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "innovation:technology_adoption",
+      "label": "Technologieverbreitung",
+      "groupId": "innovation",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "digital:internet",
+          "series": "worldbank:2:IT.NET.USER.ZS",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "digital:broadband",
+          "series": "worldbank:2:IT.NET.BBND.P2",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "digital:mobile_networks",
+          "series": "worldbank:2:IT.CEL.SETS.P2",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "innovation:entrepreneurship",
+      "label": "Unternehmensgründungen",
+      "groupId": "innovation",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:house_prices",
+      "label": "Wohnimmobilienpreise",
+      "groupId": "housing",
+      "families": [
+        "property"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:affordability",
+      "label": "Bezahlbarkeit von Wohnen",
+      "groupId": "housing",
+      "families": [
+        "housingRatios"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:price_rent",
+      "label": "Kaufpreise im Mietvergleich",
+      "groupId": "housing",
+      "families": [
+        "housingRatios"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:rents",
+      "label": "Mieten",
+      "groupId": "housing",
+      "families": [
+        "public:eurostat-rents"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:construction",
+      "label": "Wohnungsbau",
+      "groupId": "housing",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:housing_supply",
+      "label": "Wohnungsangebot",
+      "groupId": "housing",
+      "families": [
+        "public:oecd-housing-stock"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:commercial_property",
+      "label": "Gewerbeimmobilien",
+      "groupId": "housing",
+      "families": [
+        "public:bis-commercial-property"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:logistics_property",
+      "label": "Logistikimmobilien",
+      "groupId": "housing",
+      "families": [
+        "public:census-construction"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "housing:real_estate_companies",
+      "label": "Immobilienunternehmen",
+      "groupId": "housing",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:consumer_staples",
+      "label": "Basiskonsumgüter",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:consumer_discretionary",
+      "label": "Zyklischer Konsum",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:retail",
+      "label": "Einzelhandel",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:ecommerce",
+      "label": "Onlinehandel",
+      "groupId": "consumer_services",
+      "families": [
+        "public:eurostat-ecommerce"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:tourism",
+      "label": "Tourismus",
+      "groupId": "consumer_services",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:hospitality",
+      "label": "Hotels und Gastronomie",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:media",
+      "label": "Medien",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:entertainment",
+      "label": "Unterhaltung",
+      "groupId": "consumer_services",
+      "families": [
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:professional_services",
+      "label": "Unternehmensdienstleistungen",
+      "groupId": "consumer_services",
+      "families": [
+        "public:eurostat-business-services",
+        "public:eurostat-professional-history"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "consumer_services:personal_services",
+      "label": "Persönliche Dienstleistungen",
+      "groupId": "consumer_services",
+      "families": [
+        "public:eurostat-business-services"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:roads",
+      "label": "Straßen",
+      "groupId": "transport",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:rail",
+      "label": "Schienenverkehr",
+      "groupId": "transport",
+      "families": [
+        "sdg",
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:public_transport",
+      "label": "Öffentlicher Verkehr",
+      "groupId": "transport",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:shipping_ports",
+      "label": "Schifffahrt und Häfen",
+      "groupId": "transport",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:aviation",
+      "label": "Luftverkehr",
+      "groupId": "transport",
+      "families": [
+        "sdg",
+        "statistics",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:logistics",
+      "label": "Logistik",
+      "groupId": "transport",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:electric_vehicles",
+      "label": "Elektromobilität",
+      "groupId": "transport",
+      "families": [
+        "public:iea-ev"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:charging",
+      "label": "Ladeinfrastruktur",
+      "groupId": "transport",
+      "families": [
+        "public:iea-ev"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:infrastructure_spending",
+      "label": "Infrastrukturinvestitionen",
+      "groupId": "transport",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "transport:connectivity",
+      "label": "Erreichbarkeit",
+      "groupId": "transport",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:exports",
+      "label": "Exporte",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:imports",
+      "label": "Importe",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:trade_balance",
+      "label": "Handelsbilanz",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:trade_partners",
+      "label": "Handelspartner",
+      "groupId": "trade",
+      "families": [
+        "public:oecd-tiva-partners"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:supply_chains",
+      "label": "Lieferketten",
+      "groupId": "trade",
+      "families": [
+        "public:oecd-tiva-supply"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:foreign_investment",
+      "label": "Direktinvestitionen",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:remittances",
+      "label": "Rücküberweisungen",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:export_concentration",
+      "label": "Exportkonzentration",
+      "groupId": "trade",
+      "families": [
+        "public:wits-export-concentration"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:terms_of_trade",
+      "label": "Austauschverhältnisse",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "trade:trade_openness",
+      "label": "Handelsverflechtung",
+      "groupId": "trade",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:public_finances",
+      "label": "Staatsfinanzen",
+      "groupId": "institutions",
+      "families": [
+        "fiscal"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:tax_structure",
+      "label": "Steuerstruktur",
+      "groupId": "institutions",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:public_services",
+      "label": "Öffentliche Versorgung",
+      "groupId": "institutions",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:institutional_indicators",
+      "label": "Institutionelle Indikatoren",
+      "groupId": "institutions",
+      "families": [
+        "public:worldbank-wgi"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:poverty",
+      "label": "Armut",
+      "groupId": "institutions",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:inequality",
+      "label": "Ungleichheit",
+      "groupId": "institutions",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "labor:income_distribution",
+          "series": "worldbank:2:SI.POV.GINI",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "institutions:conflict_context",
+      "label": "Konflikte als historischer Kontext",
+      "groupId": "institutions",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "institutions:economic_policy_regimes",
+      "label": "Wirtschaftspolitische Regime",
+      "groupId": "institutions",
+      "families": [
+        "public:aci-trilemma"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:emissions",
+      "label": "Emissionen",
+      "groupId": "environment",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:emission_intensity",
+      "label": "Emissionsintensität",
+      "groupId": "environment",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:air_quality",
+      "label": "Luftqualität",
+      "groupId": "environment",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:forest_cover",
+      "label": "Waldflächen",
+      "groupId": "environment",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:biodiversity_context",
+      "label": "Biodiversität",
+      "groupId": "environment",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:resource_use",
+      "label": "Ressourcenverbrauch",
+      "groupId": "environment",
+      "families": [
+        "statistics"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:climate_exposure",
+      "label": "Klimatische Belastung",
+      "groupId": "environment",
+      "families": [
+        "public:ndgain-climate"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "environment:adaptation",
+      "label": "Anpassung und Widerstandsfähigkeit",
+      "groupId": "environment",
+      "families": [
+        "sdg"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "structural_change:demographic_transition",
+      "label": "Demografischer Übergang",
+      "groupId": "structural_change",
+      "families": [
+        "demography"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "structural_change:industrialization",
+      "label": "Industrialisierung",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "labor:employment",
+          "series": "worldbank:2:SL.IND.EMPL.ZS",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "macro:industrial_share",
+          "series": "worldbank:2:NV.IND.TOTL.ZS",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "macro:manufacturing_share",
+          "series": "worldbank:2:NV.IND.MANF.ZS",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:service_transition",
+      "label": "Wandel zur Dienstleistungswirtschaft",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "labor:employment",
+          "series": "worldbank:2:SL.SRV.EMPL.ZS",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "macro:service_share",
+          "series": "worldbank:2:NV.SRV.TOTL.ZS",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:urban_transition",
+      "label": "Urbaner Wandel",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "demography:urbanization",
+          "series": "worldbank:2:SP.URB.TOTL.IN.ZS",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:energy_transitions",
+      "label": "Historische Energiewenden",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "electricity:generation_mix",
+          "energySince": "2000",
+          "energyMeasure": "share"
+        },
+        {
+          "topic": "electricity:solar",
+          "perspective": "energy",
+          "energySince": "2000",
+          "energyMeasure": "share"
+        },
+        {
+          "topic": "electricity:nuclear",
+          "perspective": "energy",
+          "energySince": "2000",
+          "energyMeasure": "share"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:education_expansion",
+      "label": "Bildungsexpansion",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "education:primary_school",
+          "series": "worldbank:2:SE.PRM.ENRR",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "education:secondary_school",
+          "perspective": "education",
+          "educationMetric": "CR.2",
+          "educationSince": "0"
+        },
+        {
+          "topic": "education:higher_education",
+          "series": "worldbank:2:SE.TER.ENRR",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:productivity_regimes",
+      "label": "Produktivitätsphasen",
+      "groupId": "structural_change",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "labor:labor_productivity",
+          "series": "worldbank:2:SL.GDP.PCAP.EM.KD",
+          "perspective": "worldbank"
+        },
+        {
+          "topic": "long_history:long_run_prosperity",
+          "historySince": "1",
+          "historyProportional": "1"
+        }
+      ]
+    },
+    {
+      "id": "structural_change:global_economic_weights",
+      "label": "Verschiebung wirtschaftlicher Gewichte",
+      "groupId": "structural_change",
+      "families": [
+        "history"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:long_run_prosperity",
+      "label": "Wohlstand über Jahrhunderte",
+      "groupId": "long_history",
+      "families": [
+        "history"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:long_run_population",
+      "label": "Langfristige Bevölkerungsentwicklung",
+      "groupId": "long_history",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "demography:population_projection",
+          "demoProjection": "0",
+          "demoYear": "2023"
+        },
+        {
+          "topic": "demography:age_structure",
+          "demoProjection": "0",
+          "demoYear": "2023"
+        }
+      ]
+    },
+    {
+      "id": "long_history:long_run_credit",
+      "label": "Lange Kredit- und Schuldenentwicklung",
+      "groupId": "long_history",
+      "families": [
+        "credit"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:long_run_housing",
+      "label": "Lange Immobiliengeschichte",
+      "groupId": "long_history",
+      "families": [
+        "property"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:long_run_inflation",
+      "label": "Historische Inflationsphasen",
+      "groupId": "long_history",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "macro:inflation",
+          "series": "worldbank:2:FP.CPI.TOTL.ZG",
+          "perspective": "worldbank"
+        }
+      ]
+    },
+    {
+      "id": "long_history:long_run_rates",
+      "label": "Historische Zinsentwicklung",
+      "groupId": "long_history",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "long_history:financial_history",
+          "jstMetric": "shortRate",
+          "jstGroup": "interest",
+          "jstSince": "1870",
+          "jstReal": "1",
+          "jstCrises": "0"
+        },
+        {
+          "topic": "long_history:financial_history",
+          "jstMetric": "longRate",
+          "jstGroup": "interest",
+          "jstSince": "1870",
+          "jstReal": "1",
+          "jstCrises": "0"
+        },
+        {
+          "topic": "institutions:public_finances",
+          "fiscalMetric": "realLongRate",
+          "fiscalGroup": "economy",
+          "fiscalSince": "1800"
+        }
+      ]
+    },
+    {
+      "id": "long_history:monetary_systems",
+      "label": "Geld- und Währungssysteme",
+      "groupId": "long_history",
+      "families": [
+        "public:jst-exchange-regimes"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:crises_recoveries",
+      "label": "Krisen und Erholungen",
+      "groupId": "long_history",
+      "families": [],
+      "route": "context_guide",
+      "researchSourceIds": [],
+      "contextTargets": [
+        {
+          "topic": "long_history:financial_history",
+          "jstMetric": "output",
+          "jstGroup": "economy",
+          "jstSince": "1870",
+          "jstReal": "1",
+          "jstCrises": "1"
+        },
+        {
+          "topic": "institutions:public_finances",
+          "fiscalMetric": "realGrowth",
+          "fiscalGroup": "economy",
+          "fiscalSince": "1800"
+        }
+      ]
+    },
+    {
+      "id": "cycle_hypotheses:business_cycles",
+      "label": "Konjunkturelle Schwankungen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "cycle_hypotheses:financial_cycles",
+      "label": "Mehrjährige Kredit- und Immobilienzyklen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "cycle_hypotheses:investment_waves",
+      "label": "Investitions- und Infrastrukturwellen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "cycle_hypotheses:innovation_waves",
+      "label": "Innovationswellen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "cycle_hypotheses:kondratiev",
+      "label": "Kondratjew-Hypothesen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "cycle_hypotheses:secular_cycles",
+      "label": "Säkulare und Jahrhundertzyklus-Hypothesen",
+      "groupId": "cycle_hypotheses",
+      "families": [],
+      "route": "theory",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:other_fossil",
+      "label": "Weitere fossile Quellen",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:bioenergy",
+      "label": "Bioenergie",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:other_renewables",
+      "label": "Weitere erneuerbare Quellen",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:wind_total",
+      "label": "Windenergie insgesamt",
+      "groupId": "electricity",
+      "families": [
+        "capacity",
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:total_generation",
+      "label": "Gesamte Stromerzeugung",
+      "groupId": "electricity",
+      "families": [
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "electricity:net_imports",
+      "label": "Strom-Nettoimporte",
+      "groupId": "electricity",
+      "families": [
+        "energy"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_materials",
+      "label": "Grundstoffe",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_communication",
+      "label": "Kommunikation & Medien",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_energy",
+      "label": "Energieunternehmen",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_financials",
+      "label": "Finanzunternehmen",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_industrials",
+      "label": "Industrieunternehmen",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_technology",
+      "label": "Technologie",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_staples",
+      "label": "Basiskonsumgüter",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_real_estate",
+      "label": "Immobilienunternehmen",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_utilities",
+      "label": "Versorgungsunternehmen",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_healthcare",
+      "label": "Healthcare · Gesundheit",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "market_context:sector_discretionary",
+      "label": "Zyklischer Konsum",
+      "groupId": "market_context",
+      "families": [
+        "markets",
+        "valuation"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:long_run_output",
+      "label": "Wirtschaftsgröße über Jahrhunderte",
+      "groupId": "long_history",
+      "families": [
+        "history"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    },
+    {
+      "id": "long_history:financial_history",
+      "label": "Finanzgeschichte seit 1870",
+      "groupId": "long_history",
+      "families": [
+        "macrohistory"
+      ],
+      "route": "numeric_perspective",
+      "researchSourceIds": [],
+      "contextTargets": []
+    }
+  ]
+}

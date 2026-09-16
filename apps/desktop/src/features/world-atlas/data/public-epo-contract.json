@@ -1,0 +1,927 @@
+[
+  {
+    "sourceId": "epo-quantum-sensing",
+    "file": "epo-quantum-sensing.pptx",
+    "zipEntries": 199,
+    "firstYear": 2000,
+    "lastYear": 2017,
+    "books": [
+      {
+        "member": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx",
+        "sha256": "b5d027ce0adcde7f8a8f09831db1615ab1acca1ba3f40ec8a23c27fa8d0c8844",
+        "sheetNames": ["Tabelle1"],
+        "headers": [
+          {
+            "sheet": "Tabelle1",
+            "row": 0,
+            "column": 1,
+            "value": "patent families"
+          }
+        ],
+        "axisColumn": null,
+        "axisFirstRow": null,
+        "chart": "ppt/charts/chart3.xml",
+        "chartSha256": "5903691f977cbf0ae8e81dd8a76e53383316cda3e9727b5f725ac46d884fe17b"
+      },
+      {
+        "member": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx",
+        "sha256": "bbb04367839e2f7a1a6a456424f26b08de551c6012656de80a6fd24d256e7e82",
+        "sheetNames": ["Tabelle1"],
+        "headers": [
+          {
+            "sheet": "Tabelle1",
+            "row": 0,
+            "column": 1,
+            "value": "CN"
+          },
+          {
+            "sheet": "Tabelle1",
+            "row": 0,
+            "column": 2,
+            "value": "US"
+          },
+          {
+            "sheet": "Tabelle1",
+            "row": 0,
+            "column": 3,
+            "value": "JP"
+          }
+        ],
+        "axisColumn": null,
+        "axisFirstRow": null,
+        "chart": "ppt/charts/chart4.xml",
+        "chartSha256": "f702aed53d4581971a9ec68477f5393c9235b2da3e9164e1bb8ecf4e38200ee9"
+      }
+    ],
+    "columns": [
+      {
+        "metricCode": "families",
+        "areaCode": "WLD",
+        "areaLabel": "Worldwide",
+        "geographyId": "world",
+        "book": 0,
+        "sheet": "Tabelle1",
+        "yearColumn": 0,
+        "valueColumn": 1,
+        "firstRow": 1,
+        "lastRow": 19,
+        "firstYear": 2000,
+        "lastYear": 2017,
+        "title": "Number of patent families by first publication year",
+        "note": "Weltweite Patentfamilien nach erstem Veröffentlichungsjahr; historische Quantensensorik-Recherche."
+      },
+      {
+        "metricCode": "priority",
+        "areaCode": "CN",
+        "areaLabel": "China",
+        "geographyId": "m49:156",
+        "book": 1,
+        "sheet": "Tabelle1",
+        "yearColumn": 0,
+        "valueColumn": 1,
+        "firstRow": 1,
+        "lastRow": 18,
+        "firstYear": 2000,
+        "lastYear": 2017,
+        "title": "Number of priority filings by jurisdiction and publication year | CN",
+        "note": "Erste Patentzuständigkeit CN; Veröffentlichungsjahr. Kein belegter Wohnsitz von Erfindern oder Unternehmen."
+      },
+      {
+        "metricCode": "priority",
+        "areaCode": "US",
+        "areaLabel": "United States",
+        "geographyId": "m49:840",
+        "book": 1,
+        "sheet": "Tabelle1",
+        "yearColumn": 0,
+        "valueColumn": 2,
+        "firstRow": 1,
+        "lastRow": 18,
+        "firstYear": 2000,
+        "lastYear": 2017,
+        "title": "Number of priority filings by jurisdiction and publication year | US",
+        "note": "Erste Patentzuständigkeit US; Veröffentlichungsjahr. Kein belegter Wohnsitz von Erfindern oder Unternehmen."
+      },
+      {
+        "metricCode": "priority",
+        "areaCode": "JP",
+        "areaLabel": "Japan",
+        "geographyId": "m49:392",
+        "book": 1,
+        "sheet": "Tabelle1",
+        "yearColumn": 0,
+        "valueColumn": 3,
+        "firstRow": 1,
+        "lastRow": 18,
+        "firstYear": 2000,
+        "lastYear": 2017,
+        "title": "Number of priority filings by jurisdiction and publication year | JP",
+        "note": "Erste Patentzuständigkeit JP; Veröffentlichungsjahr. Kein belegter Wohnsitz von Erfindern oder Unternehmen."
+      }
+    ]
+  },
+  {
+    "sourceId": "epo-cosmonautics",
+    "file": "epo-cosmonautics.pptx",
+    "zipEntries": 285,
+    "firstYear": 1990,
+    "lastYear": 2017,
+    "books": [
+      {
+        "member": "ppt/embeddings/Microsoft_Excel_Worksheet3.xlsx",
+        "sha256": "823872a34a4ba2ddc3c0c98833b12ae08ed3b70f0f58cea441af555b8e9faf7d",
+        "sheetNames": ["AsianOriginPatentCitations"],
+        "headers": [
+          {
+            "sheet": "AsianOriginPatentCitations",
+            "row": 0,
+            "column": 1,
+            "value": "No. of patent families"
+          },
+          {
+            "sheet": "AsianOriginPatentCitations",
+            "row": 0,
+            "column": 2,
+            "value": "No. of patent applications"
+          }
+        ],
+        "axisColumn": null,
+        "axisFirstRow": null,
+        "chart": "ppt/charts/chart4.xml",
+        "chartSha256": "6528293bd0fe1916fb9c0b5656bd53aee197e56687c24fdf57800b8f31ebdc71"
+      },
+      {
+        "member": "ppt/embeddings/Microsoft_Excel_Worksheet4.xlsx",
+        "sha256": "9c5c6df7442bf35b2003139c5e39c9042bb342d0c703f4b73876b1c021ba60de",
+        "sheetNames": ["AsianOriginPatentCitations"],
+        "headers": [
+          {
+            "sheet": "AsianOriginPatentCitations",
+            "row": 0,
+            "column": 1,
+            "value": "No. of patent families"
+          },
+          {
+            "sheet": "AsianOriginPatentCitations",
+            "row": 0,
+            "column": 2,
+            "value": "No. of patent applications"
+          }
+        ],
+        "axisColumn": null,
+        "axisFirstRow": null,
+        "chart": "ppt/charts/chart5.xml",
+        "chartSha256": "d06cf52ff31e586dcb3e2310c6c0f8cc4b6bad9942e33cf268741851a007a18e"
+      },
+      {
+        "member": "ppt/embeddings/Microsoft_Excel_Worksheet10.xlsx",
+        "sha256": "3e51ecf22da8573165b3cf12c861b64c0349ec5e1b2faa3a12602e53534bfe7a",
+        "sheetNames": ["ChartData", "LegendData"],
+        "headers": [
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 15,
+            "value": "Germany"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 16,
+            "value": "Germany - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 17,
+            "value": "France"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 18,
+            "value": "France - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 19,
+            "value": "United Kingdom"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 20,
+            "value": "United Kingdom - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 21,
+            "value": "Italy"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 22,
+            "value": "Italy - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 23,
+            "value": "Sweden"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 24,
+            "value": "Sweden - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 25,
+            "value": "Spain"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 26,
+            "value": "Spain - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 27,
+            "value": "Netherlands"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 28,
+            "value": "Netherlands - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 29,
+            "value": "Switzerland"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 30,
+            "value": "Switzerland - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 31,
+            "value": "Austria"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 32,
+            "value": "Austria - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 33,
+            "value": "Belgium"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 34,
+            "value": "Belgium - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 35,
+            "value": "Norway"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 36,
+            "value": "Norway - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 37,
+            "value": "Luxembourg"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 38,
+            "value": "Luxembourg - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 39,
+            "value": "Finland"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 40,
+            "value": "Finland - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 41,
+            "value": "Greece"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 42,
+            "value": "Greece - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 43,
+            "value": "Turkey"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 44,
+            "value": "Turkey - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 45,
+            "value": "Romania"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 46,
+            "value": "Romania - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 47,
+            "value": "Ireland"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 48,
+            "value": "Ireland - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 49,
+            "value": "Portugal"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 50,
+            "value": "Portugal - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 51,
+            "value": "Cyprus"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 52,
+            "value": "Cyprus - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 53,
+            "value": "Denmark"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 54,
+            "value": "Denmark - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 55,
+            "value": "Poland"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 56,
+            "value": "Poland - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 57,
+            "value": "Czech Republic"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 58,
+            "value": "Czech Republic - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 59,
+            "value": "Lithuania"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 60,
+            "value": "Lithuania - Size"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 63,
+            "value": "Hungary"
+          },
+          {
+            "sheet": "ChartData",
+            "row": 0,
+            "column": 64,
+            "value": "Hungary - Size"
+          }
+        ],
+        "axisColumn": 66,
+        "axisFirstRow": 510,
+        "chart": "ppt/charts/chart11.xml",
+        "chartSha256": "a9d3917bee3821772a661daeb5bfd97d31e970ce4d1c4e8beac3c4e037f9ddd6"
+      }
+    ],
+    "columns": [
+      {
+        "metricCode": "families_world",
+        "areaCode": "WLD",
+        "areaLabel": "Worldwide",
+        "geographyId": "world",
+        "book": 0,
+        "sheet": "AsianOriginPatentCitations",
+        "yearColumn": 0,
+        "valueColumn": 1,
+        "firstRow": 1,
+        "lastRow": 28,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – worldwide patent filing developments | No. of patent families",
+        "note": "Anmeldejahr; weltweite Patentaktivität."
+      },
+      {
+        "metricCode": "applications_world",
+        "areaCode": "WLD",
+        "areaLabel": "Worldwide",
+        "geographyId": "world",
+        "book": 0,
+        "sheet": "AsianOriginPatentCitations",
+        "yearColumn": 0,
+        "valueColumn": 2,
+        "firstRow": 1,
+        "lastRow": 28,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – worldwide patent filing developments | No. of patent applications",
+        "note": "Anmeldejahr; weltweite Patentaktivität."
+      },
+      {
+        "metricCode": "families_epo38",
+        "areaCode": "WLD",
+        "areaLabel": "Worldwide",
+        "geographyId": "world",
+        "book": 1,
+        "sheet": "AsianOriginPatentCitations",
+        "yearColumn": 0,
+        "valueColumn": 1,
+        "firstRow": 1,
+        "lastRow": 28,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – developments in patents filed in the EPO 38+, not limited to appl. from Europe | No. of patent families",
+        "note": "Anmeldejahr; Schutz in EPO38+ laut fester Gebietsabgrenzung 2019, unabhängig vom Herkunftsland."
+      },
+      {
+        "metricCode": "applications_epo38",
+        "areaCode": "WLD",
+        "areaLabel": "Worldwide",
+        "geographyId": "world",
+        "book": 1,
+        "sheet": "AsianOriginPatentCitations",
+        "yearColumn": 0,
+        "valueColumn": 2,
+        "firstRow": 1,
+        "lastRow": 28,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – developments in patents filed in the EPO 38+, not limited to appl. from Europe | No. of patent applications",
+        "note": "Anmeldejahr; Schutz in EPO38+ laut fester Gebietsabgrenzung 2019, unabhängig vom Herkunftsland."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "DEU",
+        "areaLabel": "Germany",
+        "geographyId": "m49:276",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 16,
+        "firstRow": 211,
+        "lastRow": 239,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Germany",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "FRA",
+        "areaLabel": "France",
+        "geographyId": "m49:250",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 18,
+        "firstRow": 240,
+        "lastRow": 268,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | France",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "GBR",
+        "areaLabel": "United Kingdom",
+        "geographyId": "m49:826",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 20,
+        "firstRow": 269,
+        "lastRow": 297,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | United Kingdom",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "ITA",
+        "areaLabel": "Italy",
+        "geographyId": "m49:380",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 22,
+        "firstRow": 298,
+        "lastRow": 322,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Italy",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "SWE",
+        "areaLabel": "Sweden",
+        "geographyId": "m49:752",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 24,
+        "firstRow": 323,
+        "lastRow": 340,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Sweden",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "ESP",
+        "areaLabel": "Spain",
+        "geographyId": "m49:724",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 26,
+        "firstRow": 341,
+        "lastRow": 358,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Spain",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "NLD",
+        "areaLabel": "Netherlands",
+        "geographyId": "m49:528",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 28,
+        "firstRow": 359,
+        "lastRow": 382,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Netherlands",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "CHE",
+        "areaLabel": "Switzerland",
+        "geographyId": "m49:756",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 30,
+        "firstRow": 383,
+        "lastRow": 401,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Switzerland",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "AUT",
+        "areaLabel": "Austria",
+        "geographyId": "m49:040",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 32,
+        "firstRow": 402,
+        "lastRow": 419,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Austria",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "BEL",
+        "areaLabel": "Belgium",
+        "geographyId": "m49:056",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 34,
+        "firstRow": 420,
+        "lastRow": 426,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Belgium",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "NOR",
+        "areaLabel": "Norway",
+        "geographyId": "m49:578",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 36,
+        "firstRow": 427,
+        "lastRow": 432,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Norway",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "LUX",
+        "areaLabel": "Luxembourg",
+        "geographyId": "m49:442",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 38,
+        "firstRow": 433,
+        "lastRow": 437,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Luxembourg",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "FIN",
+        "areaLabel": "Finland",
+        "geographyId": "m49:246",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 40,
+        "firstRow": 438,
+        "lastRow": 442,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Finland",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "GRC",
+        "areaLabel": "Greece",
+        "geographyId": "m49:300",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 42,
+        "firstRow": 443,
+        "lastRow": 448,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Greece",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "TUR",
+        "areaLabel": "Turkey",
+        "geographyId": "m49:792",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 44,
+        "firstRow": 449,
+        "lastRow": 452,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Turkey",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "ROU",
+        "areaLabel": "Romania",
+        "geographyId": "m49:642",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 46,
+        "firstRow": 453,
+        "lastRow": 457,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Romania",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "IRL",
+        "areaLabel": "Ireland",
+        "geographyId": "m49:372",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 48,
+        "firstRow": 458,
+        "lastRow": 461,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Ireland",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "PRT",
+        "areaLabel": "Portugal",
+        "geographyId": "m49:620",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 50,
+        "firstRow": 462,
+        "lastRow": 465,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Portugal",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "CYP",
+        "areaLabel": "Cyprus",
+        "geographyId": "m49:196",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 52,
+        "firstRow": 466,
+        "lastRow": 467,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Cyprus",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "DNK",
+        "areaLabel": "Denmark",
+        "geographyId": "m49:208",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 54,
+        "firstRow": 468,
+        "lastRow": 470,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Denmark",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "POL",
+        "areaLabel": "Poland",
+        "geographyId": "m49:616",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 56,
+        "firstRow": 471,
+        "lastRow": 473,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Poland",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "CZE",
+        "areaLabel": "Czech Republic",
+        "geographyId": "m49:203",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 58,
+        "firstRow": 474,
+        "lastRow": 475,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Czech Republic",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "LTU",
+        "areaLabel": "Lithuania",
+        "geographyId": "m49:440",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 60,
+        "firstRow": 476,
+        "lastRow": 477,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Lithuania",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      },
+      {
+        "metricCode": "applicant_origin",
+        "areaCode": "HUN",
+        "areaLabel": "Hungary",
+        "geographyId": "m49:348",
+        "book": 2,
+        "sheet": "ChartData",
+        "yearColumn": 0,
+        "valueColumn": 64,
+        "firstRow": 479,
+        "lastRow": 479,
+        "firstYear": 1990,
+        "lastYear": 2017,
+        "title": "Cosmonautics – development of filings from EPO38+ by country of applicant | Hungary",
+        "note": "Herkunftsland des Anmelders laut Figure 12; Anmeldejahr. Nur veröffentlichte Diagrammpunkte werden gezählt."
+      }
+    ]
+  }
+]

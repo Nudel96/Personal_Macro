@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T06:15:22.728249+00:00",
+  "status": "passed",
+  "sourceId": "aci-trilemma",
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "profiles": 532,
+  "numeric": 24641,
+  "missing": 7803,
+  "allOriginalProfilesExact": true,
+  "provenance": {
+    "sourceId": "aci-trilemma",
+    "retrievedAt": "2026-09-11T06:14:46.898369500+00:00",
+    "publishedAt": "2021-08-31",
+    "url": "https://web.pdx.edu/~ito/trilemma_indexes_update2020.xlsx",
+    "documentationUrl": "https://web.pdx.edu/~ito/trilemma_indexes.htm",
+    "sha256": "3091a6f2de4656d3f07155de1b7a96b5b6680ffb1a7a3d77ca1acd4fdd2f7107",
+    "recipe": "aci-2020-original-three-dimensions-v1",
+    "sourceRows": 12077,
+    "numericValues": 24641,
+    "areaCount": 183
+  }
+}

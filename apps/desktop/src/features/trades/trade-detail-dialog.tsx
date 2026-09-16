@@ -21,6 +21,9 @@ import {
   fromInputDateTime,
 } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { TradeOutcomeEditor } from "./trade-outcome-editor";
+import { accountMoney } from "../accounts/use-account-journal";
+import "./trade-capture.css";
 import type {
   BootstrapData,
   CustomField,
@@ -53,6 +56,9 @@ export function TradeDetailDialog({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
   });
+  const currency =
+    bootstrap.data?.accounts.find((account) => account.id === accountId)
+      ?.baseCurrency ?? "EUR";
   const mistakeQuery = useQuery({
     queryKey: ["trade-mistakes", accountId, tradeId],
     queryFn: () => api.tradeMistakes(accountId!, tradeId!),
@@ -75,6 +81,7 @@ export function TradeDetailDialog({
   });
   const detailKey = `${accountId ?? ""}:${tradeId ?? ""}`;
   const [draft, setDraft] = useState<TradeDetail | null>(null);
+  const [outcomeValid, setOutcomeValid] = useState(true);
   const [context, setContext] = useState<TradeContext | null>(null);
   const [mistakeId, setMistakeId] = useState("");
   const [mistakeSeverity, setMistakeSeverity] = useState(2);
@@ -83,6 +90,7 @@ export function TradeDetailDialog({
   const [mediaId, setMediaId] = useState("");
   useEffect(() => {
     setDraft(null);
+    setOutcomeValid(true);
     setContext(null);
     setMistakeId("");
     setMediaId("");
@@ -102,9 +110,19 @@ export function TradeDetailDialog({
     queryClient.invalidateQueries({ queryKey: ["trades"] });
     queryClient.invalidateQueries({ queryKey: ["dashboard"] });
     queryClient.invalidateQueries({ queryKey: ["bootstrap"] });
+    queryClient.invalidateQueries({ queryKey: ["calendar"] });
+    queryClient.invalidateQueries({ queryKey: ["analytics"] });
   };
   const save = useMutation({
     mutationFn: async () => {
+      if (
+        !outcomeValid ||
+        (draft?.status === "closed" &&
+          (!draft.closedAt ||
+            (draft.openedAt &&
+              new Date(draft.closedAt) < new Date(draft.openedAt))))
+      )
+        throw { message: "Bitte Abschlusszeit und Ergebnis prüfen." };
       const trade = await api.updateTrade(accountId!, tradeId!, {
         ...toInput(draft!),
         accountId: accountId!,
@@ -130,6 +148,7 @@ export function TradeDetailDialog({
     },
     onSuccess: (trade) => {
       setDraft(trade);
+      queryClient.setQueryData(["trade", accountId, tradeId], trade);
       queryClient.invalidateQueries({
         queryKey: ["trade-context", accountId, tradeId],
       });
@@ -250,18 +269,31 @@ export function TradeDetailDialog({
               <div className="skeleton" style={{ height: 360 }} />
             ) : (
               <>
+                <TradeOutcomeEditor
+                  key={`${draft.id}:${draft.updatedAt}`}
+                  trade={draft}
+                  currency={currency}
+                  onChange={setDraft}
+                  onValidityChange={setOutcomeValid}
+                  onSave={() => save.mutate()}
+                  pending={save.isPending}
+                />
                 <div
                   className="grid"
                   style={{
-                    gridTemplateColumns: "repeat(4, 1fr)",
+                    gridTemplateColumns: "repeat(3, 1fr)",
                     marginBottom: 18,
                   }}
                 >
                   <Metric
                     label="Netto-P&L"
-                    value={formatMoneyMinor(draft.netPnlMinor)}
+                    value={accountMoney(draft.netPnlMinor, currency)}
                     tone={
-                      (draft.netPnlMinor ?? 0) >= 0 ? "positive" : "negative"
+                      draft.netPnlMinor == null || draft.netPnlMinor === 0
+                        ? undefined
+                        : draft.netPnlMinor > 0
+                          ? "positive"
+                          : "negative"
                     }
                   />
                   <Metric
@@ -271,12 +303,6 @@ export function TradeDetailDialog({
                       (Number(draft.calculatedR) || 0) >= 0
                         ? "positive"
                         : "negative"
-                    }
-                  />
-                  <Metric
-                    label="Prozess-Score"
-                    value={
-                      draft.processScore ? `${draft.processScore} / 10` : "—"
                     }
                   />
                   <Metric label="Status" value={draft.status} />
@@ -357,23 +383,6 @@ export function TradeDetailDialog({
                         value={draft.actualExit ?? ""}
                         onChange={(event) =>
                           setDraft({ ...draft, actualExit: event.target.value })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Prozess-Score">
-                      <input
-                        className="input"
-                        type="number"
-                        min="1"
-                        max="10"
-                        value={draft.processScore ?? ""}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            processScore: event.target.value
-                              ? Number(event.target.value)
-                              : null,
-                          })
                         }
                       />
                     </EditField>
@@ -653,20 +662,6 @@ function JournalContextEditor({
         legIndex === index ? { ...leg, ...patch } : leg,
       ),
     });
-  const setEmotion = (
-    phase: "before" | "during" | "after",
-    emotionId: string,
-  ) => {
-    const remaining = context.emotions.filter(
-      (emotion) => emotion.phase !== phase,
-    );
-    onChange({
-      ...context,
-      emotions: emotionId
-        ? [...remaining, { emotionId, phase, intensity: 5 }]
-        : remaining,
-    });
-  };
   const setCustomValue = (customFieldId: string, value: unknown) => {
     const values = context.customValues.filter(
       (item) => item.customFieldId !== customFieldId,
@@ -831,60 +826,6 @@ function JournalContextEditor({
               <span className="muted">Kein Snapshot vorhanden.</span>
             )}
           </div>
-        </div>
-        <div>
-          <label>Emotionen</label>
-          {(["before", "during", "after"] as const).map((phase) => {
-            const current = context.emotions.find(
-              (emotion) => emotion.phase === phase,
-            );
-            return (
-              <div className="context-emotion" key={phase}>
-                <span>
-                  {phase === "before"
-                    ? "Vorher"
-                    : phase === "during"
-                      ? "Währenddessen"
-                      : "Danach"}
-                </span>
-                <select
-                  className="select"
-                  value={current?.emotionId ?? ""}
-                  onChange={(event) => setEmotion(phase, event.target.value)}
-                >
-                  <option value="">Nicht bewertet</option>
-                  {bootstrap?.emotions.map((emotion) => (
-                    <option key={emotion.id} value={emotion.id}>
-                      {emotion.name}
-                    </option>
-                  ))}
-                </select>
-                {current && (
-                  <input
-                    className="input"
-                    aria-label={`Intensität ${phase}`}
-                    type="number"
-                    min="1"
-                    max="10"
-                    value={current.intensity}
-                    onChange={(event) =>
-                      onChange({
-                        ...context,
-                        emotions: context.emotions.map((emotion) =>
-                          emotion.phase === phase
-                            ? {
-                                ...emotion,
-                                intensity: Number(event.target.value),
-                              }
-                            : emotion,
-                        ),
-                      })
-                    }
-                  />
-                )}
-              </div>
-            );
-          })}
         </div>
       </div>
       {customFields.length > 0 && (

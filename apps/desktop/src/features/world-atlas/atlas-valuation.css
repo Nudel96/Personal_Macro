@@ -1,0 +1,218 @@
+.atlas-valuation-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+  margin: 18px 0;
+}
+.atlas-valuation-topic {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 18px 0;
+  padding: 14px 16px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.atlas-valuation-topic > div {
+  flex: 1;
+  min-width: 240px;
+}
+.atlas-valuation-topic strong {
+  font-size: 14px;
+}
+.atlas-valuation-topic p {
+  margin: 6px 0 0;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.atlas-valuation-controls label {
+  display: grid;
+  flex: 1;
+  gap: 6px;
+  min-width: 200px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+.atlas-valuation-controls .input {
+  width: 100%;
+  min-width: 0;
+}
+.atlas-valuation-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin: 18px 0;
+}
+.atlas-valuation-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.atlas-valuation-card:hover {
+  border-color: var(--atlas-blue);
+}
+.atlas-valuation-card:focus-visible {
+  outline: 2px solid var(--atlas-blue);
+  outline-offset: 3px;
+}
+.atlas-valuation-card h3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 12px;
+  font-size: 14px;
+  min-height: 36px;
+}
+.atlas-valuation-card h3 svg {
+  flex-shrink: 0;
+}
+.atlas-valuation-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+.atlas-valuation-axis {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.atlas-valuation-tick {
+  fill: var(--text-3);
+  font-size: 11px;
+}
+.atlas-valuation-line {
+  color: var(--atlas-blue);
+}
+.atlas-valuation-line.is-comparison {
+  color: var(--atlas-violet);
+}
+.atlas-valuation-line polyline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.6;
+  stroke-linejoin: round;
+}
+.atlas-valuation-line.is-comparison polyline {
+  stroke-dasharray: 7 4;
+}
+.atlas-valuation-line circle {
+  fill: currentColor;
+}
+.atlas-valuation-reference,
+.atlas-valuation-boundary {
+  stroke: var(--text-3);
+  stroke-width: 1;
+  stroke-dasharray: 4 5;
+  opacity: 0.7;
+}
+.atlas-valuation-no-picture {
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  padding: 18px;
+  text-align: center;
+  color: var(--text-3);
+  font-size: 13px;
+}
+.atlas-valuation-reading {
+  display: grid;
+  gap: 6px;
+  margin-top: 12px;
+}
+.atlas-valuation-reading strong {
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 500;
+}
+.atlas-valuation-reading span,
+.atlas-valuation-readings > div > span {
+  color: var(--text-3);
+  font-size: 12px;
+}
+.atlas-valuation-readings {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  margin: 12px 0;
+}
+.atlas-valuation-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin: 14px 0;
+  font-size: 12px;
+}
+.atlas-valuation-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 18px;
+  margin: 0 7px 3px 0;
+  border-top: 3px solid var(--atlas-blue);
+}
+.atlas-valuation-legend .is-comparison::before {
+  border-color: var(--atlas-violet);
+  border-top-style: dashed;
+}
+.atlas-valuation-paging {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin: 20px 0;
+}
+.atlas-valuation-paging span {
+  color: var(--text-3);
+  font-size: 12px;
+}
+.atlas-valuation-progress {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+.atlas-valuation-progress p {
+  flex-basis: 100%;
+  margin: 12px 0 0;
+}
+.atlas-valuation-progress progress {
+  accent-color: var(--atlas-blue);
+  max-width: 240px;
+}
+.atlas-valuation-data {
+  max-height: 380px;
+  overflow: auto;
+  margin: 18px 0;
+}
+.atlas-valuation-data table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+  text-align: left;
+}
+.atlas-valuation-data th,
+.atlas-valuation-data td {
+  padding: 10px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+}
+.atlas-valuation-data caption {
+  text-align: left;
+  margin-bottom: 10px;
+  color: var(--text-2);
+}
+.atlas-valuation-data small {
+  display: block;
+  color: var(--text-3);
+  margin-top: 5px;
+}

@@ -1,0 +1,32 @@
+[
+  {
+    "sourceId": "iea-battery-world",
+    "sourceFile": "iea-battery-world.html",
+    "canonicalSha256": "d2f6076ac0ee86eae0f9bdb1af9868c010d787b8d37258c825e8b8560fdd3a3c",
+    "wholeHtmlSha256": "c3802c38467b7f7008b7dbeebf8d2b7dd7ca1c59d9892b787cbf1fdf789dde02",
+    "numeric": 12,
+    "profiles": 2,
+    "firstPeriod": "2020",
+    "lastPeriod": "2025"
+  },
+  {
+    "sourceId": "iea-battery-region",
+    "sourceFile": "iea-battery-region.html",
+    "canonicalSha256": "1db5e3c255bc95a26b371767ce44e075dc17ae2ed61cfb4493fb64ea5e537da8",
+    "wholeHtmlSha256": "38bea11815a978b204fcf695d32a1a288c98c1415d44f692ba67d1e3a50419c7",
+    "numeric": 24,
+    "profiles": 8,
+    "firstPeriod": "2023",
+    "lastPeriod": "2025"
+  },
+  {
+    "sourceId": "iea-battery-2010-2023",
+    "sourceFile": "iea-battery-2010-2023.html",
+    "canonicalSha256": "8167b5a0f08711ea452f71192ff540695347407ec3b0af745d3fb48fee74a763",
+    "wholeHtmlSha256": "9043ef2950270b1954bd9f80c317fea72dafe9e2d1c2e6c32d5679f4bfc7048a",
+    "numeric": 14,
+    "profiles": 1,
+    "firstPeriod": "2010",
+    "lastPeriod": "2023"
+  }
+]

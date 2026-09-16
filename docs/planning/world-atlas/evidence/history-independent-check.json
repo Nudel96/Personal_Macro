@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "Independent CSV/Decimal comparison with native Rust output; OWID publication layer, not the inaccessible original MPD workbook",
+  "retrievedAt": "2026-09-08T21:15:15.283884500+00:00",
+  "areas": 12,
+  "counts": {
+    "originalValues": 4274,
+    "worldShares": 235,
+    "missingValues": 4425
+  },
+  "maximumOriginalValueError": "0",
+  "hashes": {
+    "maddison.csv": "0545ad6ca37529206af49f9f964f17af927e8c154c1fe8d3813c523e0d2f43f8",
+    "maddison-gdp.csv": "86b1fae7e6219f258613367599f659cf15d752be3aef13231c9d814ac444fbd7"
+  }
+}

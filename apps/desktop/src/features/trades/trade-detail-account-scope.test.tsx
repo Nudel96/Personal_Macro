@@ -1,6 +1,12 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { fireEvent, render, screen, waitFor } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
+import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { api } from "../../services/commands";
 import type { BootstrapData, TradeDetail } from "../../types/domain";
 import { TradeDetailDialog } from "./trade-detail-dialog";
@@ -32,6 +38,7 @@ const bootstrap = {
 
 describe("TradeDetailDialog account boundary", () => {
   let client: QueryClient;
+  afterEach(cleanup);
 
   beforeEach(() => {
     vi.restoreAllMocks();
@@ -96,5 +103,59 @@ describe("TradeDetailDialog account boundary", () => {
         queryKey: ["trade-media", "account-b", "trade-b"],
       }),
     );
+  });
+
+  it("closes the existing position with a net outcome and refreshes the entire account", async () => {
+    const open = {
+      ...trade("account-a", "trade-a", "EURUSD"),
+      status: "open" as const,
+      openedAt: "2026-01-01T10:00:00Z",
+      netPnlMinor: null,
+    };
+    vi.spyOn(api, "getTrade").mockResolvedValue(open);
+    const update = vi.spyOn(api, "updateTrade").mockImplementation(
+      async (_accountId, _id, input) =>
+        ({
+          ...open,
+          ...input,
+          updatedAt: "2026-09-10T10:00:00Z",
+        }) as TradeDetail,
+    );
+    vi.spyOn(api, "saveTradeContext").mockResolvedValue({
+      tags: [],
+      legs: [],
+      checklistItems: [],
+      emotions: [],
+      customValues: [],
+    });
+    const invalidate = vi.spyOn(client, "invalidateQueries");
+    render(view("account-a", "trade-a"));
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Trade abschließen" }),
+    );
+    fireEvent.change(screen.getByLabelText("Gewinn / Verlust (EUR)"), {
+      target: { value: "34,59" },
+    });
+    fireEvent.click(
+      screen.getByRole("button", { name: "Abschluss speichern" }),
+    );
+    await waitFor(() =>
+      expect(update).toHaveBeenCalledWith(
+        "account-a",
+        "trade-a",
+        expect.objectContaining({
+          status: "closed",
+          netPnlMinor: 3459,
+          closedAt: expect.any(String),
+          accountId: "account-a",
+        }),
+      ),
+    );
+    await waitFor(() =>
+      expect(invalidate).toHaveBeenCalledWith({ queryKey: ["bootstrap"] }),
+    );
+    expect(
+      client.getQueryData(["trade", "account-a", "trade-a"]),
+    ).toMatchObject({ status: "closed", netPnlMinor: 3459 });
   });
 });

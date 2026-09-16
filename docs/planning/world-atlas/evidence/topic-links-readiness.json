@@ -1,0 +1,14 @@
+{
+  "identifier": "com.personal-macro.atlas-topic-links-20260909",
+  "firstRunAt": "2026-09-09T15:40:55.700Z",
+  "restartRunAt": "2026-09-09T15:42:02.455Z",
+  "guideContexts": 14,
+  "guideDestinationContexts": 29,
+  "valuationDestinationContexts": 3,
+  "nativeNotebookRoundtrips": 46,
+  "preservedAfterProcessRestart": 46,
+  "lastContextVerifiedByNativeCommandAfterRestart": true,
+  "sourceReferences": 0,
+  "chartSnapshots": 0,
+  "scope": "Navigation only; existing numeric data paths and formulas are unchanged. No native UI click or new data availability claim."
+}

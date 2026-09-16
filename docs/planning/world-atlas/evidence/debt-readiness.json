@@ -1,0 +1,114 @@
+{
+  "checkedOn": "2026-09-09",
+  "status": "implemented_with_verified_data_and_documented_acceptance_limits",
+  "topicIds": [
+    "finance:household_debt",
+    "finance:corporate_debt"
+  ],
+  "sourceAudit": "debt-source-audit.json",
+  "publicSourceOnly": true,
+  "additionalPaidApi": false,
+  "catalogGeographies": 353,
+  "topics": 253,
+  "sourceFamilies": 16,
+  "native": {
+    "first": {
+      "phase": "first",
+      "status": "passed",
+      "runAt": "2026-09-09T12:43:42.301Z",
+      "identifier": "com.personal-macro.atlas-debt-20260909",
+      "nativeResponsesRead": 50,
+      "availableProfiles": 48,
+      "unsupported": [
+        "world",
+        "un-wpp:903"
+      ],
+      "sourceSha256": "aab49fd183db1d8623e9ea2c3c10167ace31ed7a36f58ba6b5983529090eabac",
+      "numericCells": 14118,
+      "jobs": 1,
+      "atlasMigrations": 16,
+      "savedNoteAndPicture": true,
+      "pictureSha256": "0d0abb72f73cf23d1aeac44d8f95d24336dcc0eb70485d8eed496e3cc2e71377",
+      "savedPictureSha256": "0d0abb72f73cf23d1aeac44d8f95d24336dcc0eb70485d8eed496e3cc2e71377",
+      "exactPersistedResponsesAndNoteAfterRestart": false,
+      "productionDataAccessed": false
+    },
+    "restart": {
+      "phase": "restart",
+      "status": "passed",
+      "runAt": "2026-09-09T12:46:24.007Z",
+      "identifier": "com.personal-macro.atlas-debt-20260909",
+      "nativeResponsesRead": 50,
+      "availableProfiles": 48,
+      "unsupported": [
+        "world",
+        "un-wpp:903"
+      ],
+      "sourceSha256": "aab49fd183db1d8623e9ea2c3c10167ace31ed7a36f58ba6b5983529090eabac",
+      "numericCells": 14118,
+      "jobs": 0,
+      "atlasMigrations": 16,
+      "savedNoteAndPicture": true,
+      "pictureSha256": "8d6dc44d7792f4c602225b112ee8d0f1eff8d5febe8faa14aa46af5688fe16a0",
+      "savedPictureSha256": "0d0abb72f73cf23d1aeac44d8f95d24336dcc0eb70485d8eed496e3cc2e71377",
+      "exactPersistedResponsesAndNoteAfterRestart": true,
+      "productionDataAccessed": false
+    }
+  },
+  "checks": {
+    "nativeSourceExactDecimalValues": 14118,
+    "nativeProfiles": 48,
+    "rustDebtTestsIncludingLiveDownload": 3,
+    "fullAtlasFrontendTests": 202,
+    "frontendFiles": 31,
+    "postVisualCorrectionRelevantTests": 55,
+    "postVisualCorrectionFiles": 2,
+    "typecheck": "passed",
+    "build": "passed",
+    "rustFmt": "passed",
+    "rustClippyAllTargetsWarningsDenied": "passed",
+    "targetedESLint": "passed",
+    "prettier": "passed",
+    "initialAndExistingTestDatabaseMigration": "passed",
+    "atomicRollbackAndGlobalGate": "passed",
+    "nativeRestartResponsesNoteAndOriginalPng": "exact_match",
+    "browserConsoleWarningsAndErrors": 0
+  },
+  "visualChecks": {
+    "driver": "CUA in-app browser",
+    "data": "Public snapshots from actual isolated Tauri commands; no fabricated source responses",
+    "widths": [
+      1024,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "scenarios": [
+      "Germany / USA household quote with different historical start dates",
+      "India / China corporate year-over-year change on shared axes",
+      "Separate household and corporation topics",
+      "Numbers hidden by default and optional axes / original tooltip values",
+      "Africa unavailable, explicit South Africa alternative",
+      "BIS reporting aggregate distinct from world, source card opens household quote",
+      "Comparison dashes remain visible in dense quarterly series",
+      "SVG screenshot from real native render"
+    ]
+  },
+  "methodologyVisualReview": {
+    "source": "https://www.bis.org/statistics/totcredit/credpriv_doc.pdf",
+    "dated": "2026-06-15",
+    "visuallyInspectedLocalPages": [
+      14,
+      23
+    ],
+    "tableDefinitionsRead": true
+  },
+  "warningsAndLimits": [
+    "The first notebook insert in the isolated fresh profile returned SQLITE_BUSY during background startup. The next attempt after startup succeeded using the existing complete BIS cache; no repeated source download. This transient startup contention was not changed in product code.",
+    "Native startup reports existing non-Atlas EODHD Technicals provider rejection and overlapping central-bank report update.",
+    "Build passes with size warnings for existing large chunks; Atlas route now approximately 508 kB minified / 139 kB gzip.",
+    "Browser interaction and real native commands/rendering verified separately; complete native mouse/keyboard acceptance is still open.",
+    "The new capture after the dashed-line visual correction differs from the earlier screenshot, while the originally saved notebook image remains byte-identical, as required.",
+    "No complete world or Africa aggregate, no valuation inference or fixed cycle period."
+  ],
+  "overallGoalComplete": false
+}

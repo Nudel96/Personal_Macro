@@ -1,0 +1,330 @@
+{
+  "checkedAt": "2026-09-11T07:49:33.775196+00:00",
+  "status": "independent_oracle_prepared",
+  "cacheReadOnly": true,
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "sourceCount": 26,
+  "pairCount": 25,
+  "horizons": [
+    10,
+    20,
+    "all"
+  ],
+  "computedPoints": 12692,
+  "calculation": "Python Decimal ratios from actual monthly adjusted closes; common month, no wave values",
+  "sources": [
+    {
+      "proxyId": "eodhd:SPY.US",
+      "months": 404,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:41.810288900+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/SPY.US",
+        "sha256": "74194f746587ae7b61ac468b496d6925ee5bd0fd7378068bf23e67d16ef0cf15",
+        "sourceFirstDate": "1993-01-29",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:ACWI.US",
+      "months": 222,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:43.285690800+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/ACWI.US",
+        "sha256": "b1f6bbc14ed72dad9c33e9fc89402d5d3d7ca1abdd947f704e8d03b4a44bc666",
+        "sourceFirstDate": "2008-03-28",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWG.US",
+      "months": 366,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:45.087321700+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWG.US",
+        "sha256": "f3474f37ecf53bee18f8aa7bafb2441460233014073edbd1b016011219c51dc7",
+        "sourceFirstDate": "1996-03-18",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:INDA.US",
+      "months": 175,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:46.520085900+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/INDA.US",
+        "sha256": "7a79d04883a0d9c87b6971830ec7563319a9fd31ce958267e574b032dd98d335",
+        "sourceFirstDate": "2012-02-03",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:MCHI.US",
+      "months": 186,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:47.919437400+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/MCHI.US",
+        "sha256": "3c5346f5e3ab86249b6adfecad9c6d194112de324a16ccb6b50383afdf09f2ac",
+        "sourceFirstDate": "2011-03-31",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EZA.US",
+      "months": 283,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:50.222135700+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EZA.US",
+        "sha256": "319f2396f8829235a169109690cd8884a671818327875ff21ab01ce3a9761a53",
+        "sourceFirstDate": "2003-02-07",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWJ.US",
+      "months": 366,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:52.084740100+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWJ.US",
+        "sha256": "d8cf2baf9afad4932449736d8b6cb6a2ffb9f25ff50182257185697a50698925",
+        "sourceFirstDate": "1996-03-18",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWA.US",
+      "months": 366,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:53.967998300+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWA.US",
+        "sha256": "b39c233ece8e377005cc2c6e107322f220db03501bc4b0e453a3e744356b5e5f",
+        "sourceFirstDate": "1996-03-18",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWC.US",
+      "months": 366,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:55.822224+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWC.US",
+        "sha256": "3083dfdc9850ec8df8bd259617255ceb3107bafd57c2bc2df3160b1799621917",
+        "sourceFirstDate": "1996-03-18",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWU.US",
+      "months": 366,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:57.684689400+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWU.US",
+        "sha256": "b7dfb5e1f65329fbe507236105eeb5be2200cc149a951f9bc6b51d334cb4f1d8",
+        "sourceFirstDate": "1996-03-18",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:EWZ.US",
+      "months": 314,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:09:59.416446500+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/EWZ.US",
+        "sha256": "fa22317898bc5b2344f53e63bc2812f6d82405a1966b4549ffa1112cde024677",
+        "sourceFirstDate": "2000-07-14",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLB.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:01.183362100+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLB.US",
+        "sha256": "51098ae13413809005f70d373b5dd7a056b133a6cc958b9840a857aa929a52d1",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLC.US",
+      "months": 99,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:02.474680800+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLC.US",
+        "sha256": "9ac03a7524d902a904b5ad69636ac998c5bdaf6efe0cd544801d488b55e0a76f",
+        "sourceFirstDate": "2018-06-19",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLE.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:04.183572100+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLE.US",
+        "sha256": "fd7382f693f3e8e8b9502a9d211cbe5d72b3f43c6647696df982b73ccb6f8a1d",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLF.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:05.997359500+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLF.US",
+        "sha256": "187cba88e1fd66e57fcae3b0cd2d3a513f6c8dc64aaa401e536d8afabeacc0ed",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLI.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:07.742438500+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLI.US",
+        "sha256": "800a1661417e8ad775144bc992a9ae2d12c62e652cde6b448864b6f885da8d51",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLK.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:09.703860100+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLK.US",
+        "sha256": "888cfcc3150745b29ddd0f74c6b3c278d6e7e3865b22a59a795ad7cf05e2d35b",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLP.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:11.687839200+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLP.US",
+        "sha256": "e8949b51bc6becce66027015cdbd20131fe293669e62c7fc1ad9999b612e0e01",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLRE.US",
+      "months": 131,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:13.613637400+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLRE.US",
+        "sha256": "078e0514877fb4b1b3f174bf3be31c85c63c4e8dd42a5499704722b1ab883182",
+        "sourceFirstDate": "2015-10-08",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLU.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:15.238790900+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLU.US",
+        "sha256": "f7820f5e711f027f85eaefe3de8eecd699df0693c9a375b0e33ecbea98e3431d",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLV.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:16.942504800+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLV.US",
+        "sha256": "4515e86e8ec75575764b4a039687ea0d93886e304b89aa1a069d13ef5c77acec",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:XLY.US",
+      "months": 333,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:18.598958400+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/XLY.US",
+        "sha256": "ea3e2d4cf06ece1bb2ac861ba306e64dfc7e20384a6906d5f26e7ed8fb39cf5a",
+        "sourceFirstDate": "1998-12-22",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:HYDR.US",
+      "months": 62,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:19.661094100+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/HYDR.US",
+        "sha256": "b433bc7d63d638532a08cc50a5c898b7ce312f3d9dc9931f7d0388a7ccc745e9",
+        "sourceFirstDate": "2021-07-14",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:TAN.US",
+      "months": 221,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:21.090406+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/TAN.US",
+        "sha256": "0561e8079e04be778b0f241ecaffe7103d93229885dda2d98f3a443d896413c8",
+        "sourceFirstDate": "2008-04-15",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:NLR.US",
+      "months": 229,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:22.539070200+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/NLR.US",
+        "sha256": "637caed0f55b14fbd5018a4bff513e412e5c949e749becd02e4977f5eef2a28c",
+        "sourceFirstDate": "2007-08-15",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    },
+    {
+      "proxyId": "eodhd:URA.US",
+      "months": 190,
+      "provenance": {
+        "retrievedAt": "2026-09-10T21:10:23.976284900+00:00",
+        "sourceUrl": "https://eodhd.com/api/eod/URA.US",
+        "sha256": "5d146556f50017a84ee11248ddd5713d85dab86f949b4ecf4d66d5ab5f476248",
+        "sourceFirstDate": "2010-11-05",
+        "sourceLastDate": "2026-09-10",
+        "adjustment": "EODHD adjusted_close: Splits und Ausschüttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+      }
+    }
+  ],
+  "newDownloads": 0
+}

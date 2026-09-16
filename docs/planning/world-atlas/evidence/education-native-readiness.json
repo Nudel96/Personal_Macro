@@ -1,0 +1,4233 @@
+{
+  "verifiedAt": "2026-09-09T06:49:16.808276+00:00",
+  "catalogVersion": "2026-09-09.7",
+  "source": {
+    "retrievedAt": "2026-09-09T06:44:36.575284200+00:00",
+    "fileModifiedAt": "Fri, 08 May 2026 16:59:32 GMT",
+    "url": "https://download.uis.unesco.org/bdds/202602/SDG.zip",
+    "sha256": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+    "release": "Februar 2026",
+    "sourceRowCount": 103593,
+    "numericCellCount": 103593,
+    "metadataCount": 124541,
+    "areaCount": 245,
+    "recipe": "uis-sdg-202602-v1"
+  },
+  "native": {
+    "areas": [
+      {
+        "id": "uis:australia_and_new_zealand",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:central_asia",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:central_and_southern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:eastern_asia",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:eastern_and_south_eastern_asia",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe_and_northern_america",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe_northern_america_australia_and_new_zealand",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:landlocked_developing_countries",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:latin_america_and_the_caribbean",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:least_developed_countries",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_africa",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_africa_and_western_asia",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_america",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:oceania",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:oceania_excluding_australia_and_new_zealand",
+        "metrics": 18,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:small_island_developing_states",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:south_eastern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:southern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:sub_saharan_africa",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:western_asia",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:world",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "oecd:housing_members",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "oecd:housing_euro_area",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "oecd:housing_euro_area_17",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:property_world",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:advanced_economies",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:emerging_economies",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:euro_area",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:central_america_caribbean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:eurasia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:middle_east",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:north_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:oceania",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:south_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:latin_america_caribbean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:middle_east",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:north_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:oceania",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:asean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:eu",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:g20",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:g7",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:oecd",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "world",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:903",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:935",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:908",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:5505",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:909",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:east_asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:eastern_europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:latin_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:mena",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:south_southeast_asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:sub_saharan_africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:western_europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:western_offshoots",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:012",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:818",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:434",
+        "metrics": 13,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:504",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:729",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:788",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:732",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:086",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:108",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:174",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:262",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:232",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:231",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:260",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:404",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:450",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:454",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:480",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:175",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:508",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:638",
+        "metrics": 6,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:646",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:690",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:706",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:728",
+        "metrics": 24,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:800",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:834",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:894",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:716",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:024",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:120",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:140",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:148",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:178",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:180",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:226",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:266",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:678",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:072",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:748",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:426",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:516",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:710",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:204",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:854",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:132",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:384",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:270",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:288",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:324",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:624",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:430",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:466",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:478",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:562",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:566",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:654",
+        "metrics": 10,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:686",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:694",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:768",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:660",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:028",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:533",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:044",
+        "metrics": 17,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:052",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:535",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:092",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:136",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:192",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:531",
+        "metrics": 12,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:212",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:214",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:308",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:312",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:332",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:388",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:474",
+        "metrics": 6,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:500",
+        "metrics": 24,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:630",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:652",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:659",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:662",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:663",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:670",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:534",
+        "metrics": 8,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:780",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:796",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:850",
+        "metrics": 1,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:084",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:188",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:222",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:320",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:340",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:484",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:558",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:591",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:032",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:068",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:074",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:076",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:152",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:170",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:218",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:238",
+        "metrics": 1,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:254",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:328",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:600",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:604",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:239",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:740",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:858",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:862",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:060",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:124",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:304",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:666",
+        "metrics": 4,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:840",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:010",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:398",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:417",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:762",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:795",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:860",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:156",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:344",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:446",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:408",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:392",
+        "metrics": 14,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:496",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:410",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:096",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:116",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:360",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:418",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:458",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:104",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:608",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:702",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:764",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:626",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:704",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:004",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:050",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:064",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:356",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:364",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:462",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:524",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:586",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:144",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:051",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:031",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:048",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:196",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:268",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:368",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:376",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:400",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:414",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:422",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:512",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:634",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:682",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:275",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:760",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:792",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:784",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:887",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:112",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:100",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:203",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:348",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:616",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:498",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:642",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:643",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:703",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:804",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:248",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:208",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:233",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:234",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:246",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:831",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:352",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:372",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:833",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:832",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:428",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:440",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:578",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:744",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:752",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:826",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:008",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:020",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:070",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:191",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:292",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:300",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:336",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:380",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:470",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:499",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:807",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:620",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:674",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:688",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:705",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:724",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:040",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:056",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:250",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:276",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:438",
+        "metrics": 12,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:442",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:492",
+        "metrics": 18,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:528",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:756",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:036",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:162",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:166",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:334",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:554",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:574",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:242",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:540",
+        "metrics": 13,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:598",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:090",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:548",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:316",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:296",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:584",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:583",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:520",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:580",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:585",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:581",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:016",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:184",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:258",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:570",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:612",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:882",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:772",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:776",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:798",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:876",
+        "metrics": 9,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "provider:TWN",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "provider:XKX",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      }
+    ],
+    "chart": "Grundschule abgeschlossen. Indien. Einzelne Erhebungen. Anteil der beschriebenen Gruppe, Prozent. 2005 bis 2019. Gemeinsamer Maßstab. Fehlende Jahre bleiben offen. UNESCO UIS, Februar 2026.",
+    "identifier": "com.personal-macro.atlas-education-validation",
+    "ok": true,
+    "restart": true,
+    "runAt": "2026-09-09T06:47:41.409Z",
+    "source": {
+      "areaCount": 245,
+      "fileModifiedAt": "Fri, 08 May 2026 16:59:32 GMT",
+      "metadataCount": 124541,
+      "numericCellCount": 103593,
+      "recipe": "uis-sdg-202602-v1",
+      "release": "Februar 2026",
+      "retrievedAt": "2026-09-09T06:44:36.575284200+00:00",
+      "sha256": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+      "sourceRowCount": 103593,
+      "url": "https://download.uis.unesco.org/bdds/202602/SDG.zip"
+    },
+    "picture": "apps/desktop/.tmp/atlas-validation/education-native-picture.png"
+  },
+  "initialNative": {
+    "areas": [
+      {
+        "id": "uis:australia_and_new_zealand",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:central_asia",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:central_and_southern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:eastern_asia",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:eastern_and_south_eastern_asia",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe_and_northern_america",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:europe_northern_america_australia_and_new_zealand",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:landlocked_developing_countries",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:latin_america_and_the_caribbean",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:least_developed_countries",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_africa",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_africa_and_western_asia",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:northern_america",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:oceania",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:oceania_excluding_australia_and_new_zealand",
+        "metrics": 18,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:small_island_developing_states",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:south_eastern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:southern_asia",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:sub_saharan_africa",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:western_asia",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "uis:world",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "oecd:housing_members",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "oecd:housing_euro_area",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "oecd:housing_euro_area_17",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:property_world",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:advanced_economies",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:emerging_economies",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "bis:euro_area",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:central_america_caribbean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:eurasia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:middle_east",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:north_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:oceania",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "irena:south_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:latin_america_caribbean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:middle_east",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:north_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:oceania",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:asean",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:eu",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:g20",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:g7",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "ember:oecd",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "world",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:903",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:935",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:908",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:5505",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "un-wpp:909",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:east_asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:eastern_europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:latin_america",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:mena",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:south_southeast_asia",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:sub_saharan_africa",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:western_europe",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "maddison:western_offshoots",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:012",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:818",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:434",
+        "metrics": 13,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:504",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:729",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:788",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:732",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:086",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:108",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:174",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:262",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:232",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:231",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:260",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:404",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:450",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:454",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:480",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:175",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:508",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:638",
+        "metrics": 6,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:646",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:690",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:706",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:728",
+        "metrics": 24,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:800",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:834",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:894",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:716",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:024",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:120",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:140",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:148",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:178",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:180",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:226",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:266",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:678",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:072",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:748",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:426",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:516",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:710",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:204",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:854",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:132",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:384",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:270",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:288",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:324",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:624",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:430",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:466",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:478",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:562",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:566",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:654",
+        "metrics": 10,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:686",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:694",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:768",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:660",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:028",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:533",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:044",
+        "metrics": 17,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:052",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:535",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:092",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:136",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:192",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:531",
+        "metrics": 12,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:212",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:214",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:308",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:312",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:332",
+        "metrics": 20,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:388",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:474",
+        "metrics": 6,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:500",
+        "metrics": 24,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:630",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:652",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:659",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:662",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:663",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:670",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:534",
+        "metrics": 8,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:780",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:796",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:850",
+        "metrics": 1,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:084",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:188",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:222",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:320",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:340",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:484",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:558",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:591",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:032",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:068",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:074",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:076",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:152",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:170",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:218",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:238",
+        "metrics": 1,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:254",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:328",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:600",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:604",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:239",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:740",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:858",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:862",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:060",
+        "metrics": 21,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:124",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:304",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:666",
+        "metrics": 4,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:840",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:010",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:398",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:417",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:762",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:795",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:860",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:156",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:344",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:446",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:408",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:392",
+        "metrics": 14,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:496",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:410",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:096",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:116",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:360",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:418",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:458",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:104",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:608",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:702",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:764",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:626",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:704",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:004",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:050",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:064",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:356",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:364",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:462",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:524",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:586",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:144",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:051",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:031",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:048",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:196",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:268",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:368",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:376",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:400",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:414",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:422",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:512",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:634",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:682",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:275",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:760",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:792",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:784",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:887",
+        "metrics": 25,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:112",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:100",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:203",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:348",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:616",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:498",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:642",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:643",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:703",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:804",
+        "metrics": 33,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:248",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:208",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:233",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:234",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:246",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:831",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:352",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:372",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:833",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:832",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:428",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:440",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:578",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:744",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:752",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:826",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:008",
+        "metrics": 40,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:020",
+        "metrics": 23,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:070",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:191",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:292",
+        "metrics": 19,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:300",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:336",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:380",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:470",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:499",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:807",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:620",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:674",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:688",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:705",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:724",
+        "metrics": 39,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:040",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:056",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:250",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:276",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:438",
+        "metrics": 12,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:442",
+        "metrics": 31,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:492",
+        "metrics": 18,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:528",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:756",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:036",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:162",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:166",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:334",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:554",
+        "metrics": 22,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:574",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:242",
+        "metrics": 30,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:540",
+        "metrics": 13,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:598",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:090",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:548",
+        "metrics": 26,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:316",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:296",
+        "metrics": 36,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:584",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:583",
+        "metrics": 27,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:520",
+        "metrics": 35,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:580",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:585",
+        "metrics": 32,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:581",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "m49:016",
+        "metrics": 7,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:184",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:258",
+        "metrics": 5,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:570",
+        "metrics": 29,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:612",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "empty"
+      },
+      {
+        "id": "m49:882",
+        "metrics": 34,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:772",
+        "metrics": 28,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:776",
+        "metrics": 37,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:798",
+        "metrics": 38,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "m49:876",
+        "metrics": 9,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "available"
+      },
+      {
+        "id": "provider:TWN",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      },
+      {
+        "id": "provider:XKX",
+        "metrics": 0,
+        "source": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+        "status": "unsupported_area"
+      }
+    ],
+    "chart": "Grundschule abgeschlossen. Indien. Einzelne Erhebungen. Anteil der beschriebenen Gruppe, Prozent. 2005 bis 2019. Gemeinsamer Maßstab. Fehlende Jahre bleiben offen. UNESCO UIS, Februar 2026.",
+    "identifier": "com.personal-macro.atlas-education-validation",
+    "job": {
+      "finishedAt": "2026-09-09T06:44:41.557414400+00:00",
+      "id": "2b83e82e-4a6d-4deb-9f02-087d724d0d55",
+      "message": "Die UNESCO-Bildungsbilder sind lokal verfügbar.",
+      "observations": 103593,
+      "page": 2,
+      "pages": 2,
+      "seriesId": "uis-education",
+      "startedAt": "2026-09-09T06:44:12.437621600+00:00",
+      "status": "complete"
+    },
+    "ok": true,
+    "restart": false,
+    "runAt": "2026-09-09T06:44:12.267Z",
+    "source": {
+      "areaCount": 245,
+      "fileModifiedAt": "Fri, 08 May 2026 16:59:32 GMT",
+      "metadataCount": 124541,
+      "numericCellCount": 103593,
+      "recipe": "uis-sdg-202602-v1",
+      "release": "Februar 2026",
+      "retrievedAt": "2026-09-09T06:44:36.575284200+00:00",
+      "sha256": "8f68d5d01e2f3d8cdb20dd5149da126fc21d7915f86a003cf56e88a40e1bfce5",
+      "sourceRowCount": 103593,
+      "url": "https://download.uis.unesco.org/bdds/202602/SDG.zip"
+    },
+    "picture": "apps/desktop/.tmp/atlas-validation/education-native-picture.png"
+  },
+  "independentCheck": {
+    "numericCells": 103593,
+    "metadataRows": 124541,
+    "uniqueNotes": 124541,
+    "profiles": 245,
+    "maximumAbsoluteDifference": 0,
+    "apiIndiaObservations": 496,
+    "apiVersion": "20260507-91260335",
+    "apiMetadataNote": "The API check covers values and flags; native footnotes are compared against the complete bulk metadata file."
+  },
+  "metrics": [
+    {
+      "code": "NER.02.CP",
+      "topicId": "education:early_learning",
+      "kind": "administrative",
+      "areas": 223,
+      "first": 1997,
+      "last": 2025
+    },
+    {
+      "code": "NERA.AGM1.CP",
+      "topicId": "education:early_learning",
+      "kind": "administrative",
+      "areas": 219,
+      "first": 1998,
+      "last": 2025
+    },
+    {
+      "code": "CR.1",
+      "topicId": "education:primary_school",
+      "kind": "survey",
+      "areas": 180,
+      "first": 1990,
+      "last": 2025
+    },
+    {
+      "code": "ROFST.1.CP",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 238,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "EA.1T8.AG25T99",
+      "topicId": "education:primary_school",
+      "kind": "survey",
+      "areas": 205,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "CR.2",
+      "topicId": "education:secondary_school",
+      "kind": "survey",
+      "areas": 183,
+      "first": 1990,
+      "last": 2025
+    },
+    {
+      "code": "CR.3",
+      "topicId": "education:secondary_school",
+      "kind": "survey",
+      "areas": 188,
+      "first": 1990,
+      "last": 2025
+    },
+    {
+      "code": "ROFST.2.CP",
+      "topicId": "education:secondary_school",
+      "kind": "administrative",
+      "areas": 224,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "ROFST.3.CP",
+      "topicId": "education:secondary_school",
+      "kind": "administrative",
+      "areas": 225,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "EA.3T8.AG25T99",
+      "topicId": "education:secondary_school",
+      "kind": "survey",
+      "areas": 205,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "GER.5T8",
+      "topicId": "education:higher_education",
+      "kind": "administrative",
+      "areas": 228,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "EA.6T8.AG25T99",
+      "topicId": "education:higher_education",
+      "kind": "survey",
+      "areas": 192,
+      "first": 1970,
+      "last": 2024
+    },
+    {
+      "code": "EV1524P.2T5.V",
+      "topicId": "education:vocational_training",
+      "kind": "administrative",
+      "areas": 225,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "PRYA.12MO.AG15T24",
+      "topicId": "education:adult_learning",
+      "kind": "survey",
+      "areas": 192,
+      "first": 1990,
+      "last": 2025
+    },
+    {
+      "code": "PRYA.12MO.AG15T64",
+      "topicId": "education:adult_learning",
+      "kind": "survey",
+      "areas": 192,
+      "first": 1990,
+      "last": 2025
+    },
+    {
+      "code": "LR.AG15T24",
+      "topicId": "education:literacy",
+      "kind": "survey",
+      "areas": 201,
+      "first": 1970,
+      "last": 2024
+    },
+    {
+      "code": "LR.AG15T99",
+      "topicId": "education:literacy",
+      "kind": "survey",
+      "areas": 199,
+      "first": 1970,
+      "last": 2024
+    },
+    {
+      "code": "LR.AG25T64",
+      "topicId": "education:literacy",
+      "kind": "survey",
+      "areas": 194,
+      "first": 1970,
+      "last": 2024
+    },
+    {
+      "code": "LR.AG65T99",
+      "topicId": "education:literacy",
+      "kind": "survey",
+      "areas": 198,
+      "first": 1970,
+      "last": 2024
+    },
+    {
+      "code": "READ.PRIMARY",
+      "topicId": "education:learning_outcomes",
+      "kind": "assessment",
+      "areas": 127,
+      "first": 2000,
+      "last": 2023
+    },
+    {
+      "code": "READ.LOWERSEC",
+      "topicId": "education:learning_outcomes",
+      "kind": "assessment",
+      "areas": 100,
+      "first": 2000,
+      "last": 2022
+    },
+    {
+      "code": "MATH.PRIMARY",
+      "topicId": "education:learning_outcomes",
+      "kind": "assessment",
+      "areas": 139,
+      "first": 1995,
+      "last": 2023
+    },
+    {
+      "code": "MATH.LOWERSEC",
+      "topicId": "education:learning_outcomes",
+      "kind": "assessment",
+      "areas": 109,
+      "first": 1995,
+      "last": 2023
+    },
+    {
+      "code": "XGDP.FSGOV",
+      "topicId": "education:education_spending",
+      "kind": "administrative",
+      "areas": 206,
+      "first": 1970,
+      "last": 2025
+    },
+    {
+      "code": "TRTP.02",
+      "topicId": "education:teachers",
+      "kind": "administrative",
+      "areas": 166,
+      "first": 1998,
+      "last": 2025
+    },
+    {
+      "code": "TRTP.1",
+      "topicId": "education:teachers",
+      "kind": "administrative",
+      "areas": 179,
+      "first": 1998,
+      "last": 2025
+    },
+    {
+      "code": "TRTP.2",
+      "topicId": "education:teachers",
+      "kind": "administrative",
+      "areas": 151,
+      "first": 1997,
+      "last": 2025
+    },
+    {
+      "code": "TRTP.3",
+      "topicId": "education:teachers",
+      "kind": "administrative",
+      "areas": 148,
+      "first": 1998,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WINTERN",
+      "topicId": "education:education_technology",
+      "kind": "administrative",
+      "areas": 178,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.2.WINTERN",
+      "topicId": "education:education_technology",
+      "kind": "administrative",
+      "areas": 176,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.3.WINTERN",
+      "topicId": "education:education_technology",
+      "kind": "administrative",
+      "areas": 177,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WCOMPUT",
+      "topicId": "education:education_technology",
+      "kind": "administrative",
+      "areas": 199,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WELEC",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 199,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WWATA",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 181,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WWASH",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 177,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WTOILA",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 170,
+      "first": 1999,
+      "last": 2025
+    },
+    {
+      "code": "SCHBSP.1.WINFSTUDIS",
+      "topicId": "education:primary_school",
+      "kind": "administrative",
+      "areas": 121,
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "code": "CR.MOD.1",
+      "topicId": "education:primary_school",
+      "kind": "modelled",
+      "areas": 165,
+      "first": 1981,
+      "last": 2025
+    },
+    {
+      "code": "CR.MOD.2",
+      "topicId": "education:secondary_school",
+      "kind": "modelled",
+      "areas": 164,
+      "first": 1981,
+      "last": 2025
+    },
+    {
+      "code": "CR.MOD.3",
+      "topicId": "education:secondary_school",
+      "kind": "modelled",
+      "areas": 164,
+      "first": 1981,
+      "last": 2025
+    }
+  ],
+  "limits": [
+    "Country and metric coverage varies.",
+    "Published modelled completion series remain separate from surveys.",
+    "Learning assessments are not overlaid across countries without assessment equivalence.",
+    "No market valuation or sine cycle is inferred.",
+    "Native command and restart checks do not replace the remaining full Atlas UI acceptance."
+  ],
+  "processRestart": {
+    "initialPid": 4692,
+    "restartPid": 15672,
+    "initialProcessExited": true,
+    "sameSourceHashAndRetrievedAt": true
+  },
+  "visualReview": {
+    "viewports": [
+      {
+        "width": 1024,
+        "height": 820,
+        "scrollWidth": 1024
+      },
+      {
+        "width": 1440,
+        "height": 900,
+        "scrollWidth": 1431
+      }
+    ],
+    "cases": [
+      "India CR.1 survey points",
+      "India CR.MOD.1 separate published model",
+      "India and China GER.5T8 common calendar and scale",
+      "optional number toggle"
+    ],
+    "surface": "browser with original native public snapshots",
+    "fullNativeUiAcceptance": false
+  },
+  "checks": {
+    "frontend": {
+      "passed": 134,
+      "files": 22
+    },
+    "rustLibrary": {
+      "passed": 222,
+      "ignored": 19
+    },
+    "typecheck": "passed",
+    "build": "passed",
+    "clippyAllTargets": "passed",
+    "rustfmt": "passed",
+    "finalRelevantFrontendTests": 48,
+    "eslint": "passed",
+    "prettier": "passed"
+  },
+  "backgroundWarnings": [
+    "Existing EODHD intraday entitlement warning in Technicals",
+    "Central-bank-report synchronization already-running conflicts; outside Atlas"
+  ],
+  "cleanup": {
+    "nativeValidationProcessStopped": true,
+    "temporaryViteStopped": true,
+    "temporaryBrowserTabClosed": true,
+    "viewportReset": true
+  }
+}

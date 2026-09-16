@@ -1,0 +1,2165 @@
+{
+  "version": "2026-09-09.1",
+  "datasetId": "who-health-finance",
+  "recipe": "who-ghed-april-2026-v1",
+  "release": "WHO GHED · Korrektur 1. April 2026",
+  "sourceUrl": "https://apps.who.int/nha/database/DocumentationCentre/en",
+  "methodologyUrl": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/64181221/en",
+  "files": [
+    {
+      "label": "data",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/64396441/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"GHED all data (March 2026).xlsx\"",
+      "lastModified": null,
+      "bytes": 38922209,
+      "sha256": "729c4d978178fe82e14bb57319837df0d7309e01b0b469462537ef2d73969594",
+      "localFile": "data.xlsx"
+    },
+    {
+      "label": "country-notes",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/60559681/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"Country notes (December 2025).xlsx\"",
+      "lastModified": null,
+      "bytes": 96454,
+      "sha256": "04a919b6a588219ffe037b7a280a7e3f98e404531ef7d39a0fb77a91f3acfe59",
+      "localFile": "country-notes.xlsx"
+    }
+  ],
+  "workbookVersion": [
+    "WHO Global Health Expenditure Database (GHED)",
+    "https://apps.who.int/nha/database",
+    "Last updated: April 1st, 2026",
+    "Notes: Year 2023 added for December 2025 update. Data for 2024 are preliminary and subject to revision. \n            GHED partial update April 2026 includes updated data for Jordan (new HK values for 2020-2022), Montenegro \n            (all classifications for 2021) and Togo (new population data 2000-2023 from UN WPP interim update and \n            consequently readjusted per capita indicators). Other data remain the same than Dec.2025 GHED update."
+  ],
+  "expectedRows": 4612,
+  "expectedColumns": 4120,
+  "metadataRows": 32667,
+  "metrics": [
+    {
+      "id": "che_gdp",
+      "field": "che_gdp",
+      "label": "Gesundheitsausgaben zur Wirtschaftsleistung",
+      "group": "volume",
+      "unit": "percent_gdp",
+      "scopeNote": "Laufende Gesundheitsausgaben im Verhältnis zum BIP. Investitionen sind gesondert erfasst.",
+      "column": 5,
+      "definition": [
+        "che_gdp",
+        "Current Health Expenditure (CHE) as % Gross Domestic Product (GDP)",
+        "CHE%GDP_SHA2011",
+        "INDICATORS",
+        "AGGREGATES",
+        "Percentage",
+        "-",
+        "Current Health Expenditure (CHE) / Gross Domestic Product (GDP)"
+      ]
+    },
+    {
+      "id": "che_pc_usd",
+      "field": "che_pc_usd",
+      "label": "Gesundheitsausgaben je Einwohner",
+      "group": "volume",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Laufende US-Dollar je Einwohner. Preis- und Wechselkursänderungen wirken mit; kein reales Wachstum.",
+      "column": 6,
+      "definition": [
+        "che_pc_usd",
+        "Current Health Expenditure (CHE) per Capita in US$",
+        "CHE_pc_US$_SHA2011",
+        "INDICATORS",
+        "AGGREGATES",
+        "Ones",
+        "US$",
+        "Current Health Expenditure (CHE) / Population / Exchange rate (NCU to USD)"
+      ]
+    },
+    {
+      "id": "gghed_gdp",
+      "field": "gghed_gdp",
+      "label": "Öffentliche Inlandsmittel zur Wirtschaftsleistung",
+      "group": "volume",
+      "unit": "percent_gdp",
+      "scopeNote": "Finanzierung aus inländischen Staatsmitteln und Sozialversicherungsbeiträgen. Der Nenner ist das BIP.",
+      "column": 17,
+      "definition": [
+        "gghed_gdp",
+        "Domestic General Government Health Expenditure (GGHE-D) as % Gross Domestic Product (GDP)",
+        "GGHE-D%GDP_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Transfers from government domestic revenue (allocated to health purposes) (FS.1) + Social insurance contributions (FS.3)) / Gross Domestic Product (GDP)"
+      ]
+    },
+    {
+      "id": "gghed_gge",
+      "field": "gghed_gge",
+      "label": "Gesundheit im öffentlichen Budget",
+      "group": "volume",
+      "unit": "percent_gge",
+      "scopeNote": "Inländische öffentliche Gesundheitsausgaben im Verhältnis zu allen Staatsausgaben.",
+      "column": 18,
+      "definition": [
+        "gghed_gge",
+        "Domestic General Government Health Expenditure (GGHE-D) as % General Government Expenditure (GGE)",
+        "GGHE-D%GGE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Transfers from government domestic revenue (allocated to health purposes) (FS.1) + Social insurance contributions (FS.3)) / General Government Expenditure (GGE)"
+      ]
+    },
+    {
+      "id": "gghed_che",
+      "field": "gghed_che",
+      "label": "Öffentliche Mittel aus dem Inland",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Anteil aus inländischen Staatsmitteln und Sozialversicherungsbeiträgen an den laufenden Gesundheitsausgaben.",
+      "column": 12,
+      "definition": [
+        "gghed_che",
+        "Domestic General Government Health Expenditure (GGHE-D) as % Current Health Expenditure (CHE)",
+        "GGHE-D%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Transfers from government domestic revenue (allocated to health purposes) (FS.1) + Social insurance contributions (FS.3)) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "pvtd_che",
+      "field": "pvtd_che",
+      "label": "Private Mittel aus dem Inland",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Private Finanzierungsquellen einschließlich eigener Haushaltszahlungen. Keine Einnahmen nur privater Kliniken.",
+      "column": 13,
+      "definition": [
+        "pvtd_che",
+        "Domestic Private Health Expenditure (PVT-D) as % Current Health Expenditure (CHE)",
+        "PVT-D%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Compulsory prepayment (Other, and unspecified, than social insurance contributions) (FS.4) + Voluntary prepayment (FS.5) + Other domestic revenues n.e.c. (FS.6) + Unspecified revenues of health care financing schemes n.e.c. (FS.nec)) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "ext_che",
+      "field": "ext_che",
+      "label": "Finanzierung aus dem Ausland",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Ausländische Transfers für laufende Gesundheitsausgaben, einschließlich staatlich verteilter Mittel.",
+      "column": 16,
+      "definition": [
+        "ext_che",
+        "External Health Expenditure (EXT) as % of Current Health Expenditure (CHE)",
+        "EXT%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Transfers distributed by government from foreign origin (FS.2) + Direct foreign transfers (FS.7)) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "oops_che",
+      "field": "oops_che",
+      "label": "Direkte Zahlungen der Haushalte",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Direkt selbst bezahlte Gesundheitsleistungen. Versicherungsbeiträge sind darin nicht enthalten.",
+      "column": 14,
+      "definition": [
+        "oops_che",
+        "Out-of-pocket (OOPS) as % of Current Health Expenditure (CHE)",
+        "OOPS%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "Household out-of-pocket payment (HF.3) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "vpp_che",
+      "field": "vpp_che",
+      "label": "Freiwillige Vorauszahlungen",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Freiwillige Vorauszahlungen als Finanzierungsquelle. Dies ist keine Quote versicherter Menschen.",
+      "column": 15,
+      "definition": [
+        "vpp_che",
+        "Voluntary Prepayments as % of Current Health Expenditure (CHE)",
+        "VPP%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "Voluntary prepayment (FS.5) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "dom_che",
+      "field": "dom_che",
+      "label": "Alle Mittel aus dem Inland",
+      "group": "funding",
+      "unit": "percent_che",
+      "scopeNote": "Öffentliche und private Inlandsmittel zusammen. Diese Reihe überlappt mit ihren Untergruppen.",
+      "column": 11,
+      "definition": [
+        "dom_che",
+        "Domestic Health Expenditure (DOM) as % of Current Health Expenditure (CHE)",
+        "DOM%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SOURCES",
+        "Percentage",
+        "-",
+        "(Transfers from government domestic revenue (allocated to health purposes) (FS.1) + Social insurance contributions (FS.3) + Compulsory prepayment (Other, and unspecified, than social insurance contributions) (FS.4) + Voluntary prepayment (FS.5) + Other domestic revenues n.e.c. (FS.6) + Unspecified revenues of health care financing schemes n.e.c. (FS.nec)) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "cfa_che",
+      "field": "cfa_che",
+      "label": "Staatliche und verpflichtende Systeme",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Staatliche Systeme und obligatorische beitragsfinanzierte Systeme zusammen; Untergruppen nicht hinzuaddieren.",
+      "column": 25,
+      "definition": [
+        "cfa_che",
+        "Compulsory Financing Arrangements (CFA) as % of Current Health Expenditure (CHE)",
+        "CFA%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Government schemes and compulsory contributory health care financing schemes (HF.1) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "gfa_che",
+      "field": "gfa_che",
+      "label": "Staatliche Finanzierungssysteme",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben staatlicher Systeme. Die Gliederung nach Systemen unterscheidet sich von der Herkunft der Mittel.",
+      "column": 26,
+      "definition": [
+        "gfa_che",
+        "Government Financing Arrangements (GFA) as % of Currrent Health Expenditure (CHE)",
+        "GFA%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Government schemes (HF.1.1) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "chi_che",
+      "field": "chi_che",
+      "label": "Verpflichtende Krankenversicherung",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Obligatorische beitragsfinanzierte Krankenversicherungssysteme, einschließlich sozialer Krankenversicherung.",
+      "column": 27,
+      "definition": [
+        "chi_che",
+        "Compulsory Health Insurance (CHI) as % of Current Health Expenditure (CHE)",
+        "CHI%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Compulsory contributory health insurance schemes (HF.1.2) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "shi_che",
+      "field": "shi_che",
+      "label": "Soziale Krankenversicherung",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben sozialer Krankenversicherungssysteme. Eine Untergruppe der verpflichtenden Versicherung.",
+      "column": 28,
+      "definition": [
+        "shi_che",
+        "Social Health Insurance (SHI) as % of Current Health Expenditure (CHE)",
+        "SHI%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Social health insurance schemes (HF.1.2.1) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "vhi_che",
+      "field": "vhi_che",
+      "label": "Freiwillige Krankenversicherung",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben freiwilliger Krankenversicherungssysteme; keine Zahl oder Quote der Versicherten.",
+      "column": 31,
+      "definition": [
+        "vhi_che",
+        "Voluntary Health Insurance (VHI) as % of Current Health Expenditure (CHE)",
+        "VHI%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Voluntary health insurance schemes (HF.2.1) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "row_che",
+      "field": "row_che",
+      "label": "Finanzierung durch ausländische Systeme",
+      "group": "schemes",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben nicht ansässiger Finanzierungssysteme für die Bevölkerung dieses Landes. Nicht gleich allen ausländischen Geldquellen.",
+      "column": 32,
+      "definition": [
+        "row_che",
+        "Rest of the World (RoW) as % of Current Health Expenditure (CHE)",
+        "ROW%CHE_SHA2011",
+        "INDICATORS",
+        "FINANCING SCHEMES",
+        "Percentage",
+        "-",
+        "Rest of the world financing schemes (non-resident) (HF.4) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "phc_che",
+      "field": "phc_che",
+      "label": "Grundversorgung im Gesundheitsbudget",
+      "group": "primary",
+      "unit": "percent_che",
+      "scopeNote": "WHO-Abgrenzung der Grundversorgung, einschließlich fest zugeteilter Anteile von Gütern und Verwaltung. Keine reine Hausarztstatistik.",
+      "column": 34,
+      "definition": [
+        "phc_che",
+        "Primary Health Care (PHC) Expenditure as % Current Health Expenditure (CHE)",
+        "PHC%CHE",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Percentage",
+        "-",
+        "Primary Health Care Expenditure (PHCE) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "phc_usd_pc",
+      "field": "phc_usd_pc",
+      "label": "Grundversorgung je Einwohner",
+      "group": "primary",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Ausgaben nach der WHO-Abgrenzung der Grundversorgung in laufenden US-Dollar je Einwohner.",
+      "column": 33,
+      "definition": [
+        "phc_usd_pc",
+        "Primary Health Care (PHC) Expenditure per Capita in US$",
+        "PHC_pc_US$",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Ones",
+        "US$",
+        "Primary Health Care Expenditure (PHCE) / Population / Exchange rate (NCU to USD)"
+      ]
+    },
+    {
+      "id": "gghed_phc_phc",
+      "field": "gghed_phc_phc",
+      "label": "Öffentlicher Anteil an der Grundversorgung",
+      "group": "primary",
+      "unit": "percent_phc",
+      "scopeNote": "Inländische öffentliche Mittel im Verhältnis zu den Ausgaben der Grundversorgung.",
+      "column": 37,
+      "definition": [
+        "gghed_phc_phc",
+        "Domestic General Government Expenditure on PHC as % PHC",
+        "GGHE-D_phc%PHC",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Percentage",
+        "-",
+        "Domestic General Government Expenditure on PHC (PHCE_gghe-d) / Primary Health Care Expenditure (PHCE)"
+      ]
+    },
+    {
+      "id": "ext_phc_phc",
+      "field": "ext_phc_phc",
+      "label": "Auslandsanteil an der Grundversorgung",
+      "group": "primary",
+      "unit": "percent_phc",
+      "scopeNote": "Ausländische Mittel im Verhältnis zu den Ausgaben der Grundversorgung.",
+      "column": 40,
+      "definition": [
+        "ext_phc_phc",
+        "External Expenditure on PHC as % PHC",
+        "EXT_phc%PHC",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Percentage",
+        "-",
+        "External sources of funding on Primary Health Care (PHCE_ext) / Primary Health Care Expenditure (PHCE)"
+      ]
+    },
+    {
+      "id": "pvtd_phc_phc",
+      "field": "pvtd_phc_phc",
+      "label": "Privater Anteil an der Grundversorgung",
+      "group": "primary",
+      "unit": "percent_phc",
+      "scopeNote": "Private Inlandsmittel im Verhältnis zu den Ausgaben der Grundversorgung.",
+      "column": 44,
+      "definition": [
+        "pvtd_phc_phc",
+        "Domestic Private Expenditure on PHC as % PHC",
+        "PVTD_phc%PHC",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Percentage",
+        "-",
+        "Domestic Private Health Expenditure on Primary Health Care (PHCE_pvtd) / Primary Health Care Expenditure (PHCE)"
+      ]
+    },
+    {
+      "id": "hc62_che",
+      "field": "hc62_che",
+      "label": "Impfprogramme im Gesundheitsbudget",
+      "group": "primary",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für Impfprogramme. Dies ist keine Impfquote und umfasst mehr als den Kauf von Impfstoffen.",
+      "column": 45,
+      "definition": [
+        "hc62_che",
+        "Expenditure on Immunization Programmes as % Current Health Expenditure (CHE)",
+        "HC62%CHE",
+        "INDICATORS",
+        "PRIMARY HEALTH CARE",
+        "Percentage",
+        "-",
+        "Expenditure on Immunization (HC.6.2) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "hc1_usd_pc",
+      "field": "hc1_usd_pc",
+      "label": "Behandlungsausgaben je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Kurative Versorgung nach Gesundheitszweck, unabhängig von der Art des Anbieters.",
+      "column": 1224,
+      "definition": [
+        "hc1_usd_pc",
+        "Curative care, in current US$ per capita",
+        "sha11.HC.1",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE FUNCTIONS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hc2_usd_pc",
+      "field": "hc2_usd_pc",
+      "label": "Rehabilitationsausgaben je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Rehabilitative Gesundheitsversorgung in laufenden US-Dollar je Einwohner.",
+      "column": 1235,
+      "definition": [
+        "hc2_usd_pc",
+        "Rehabilitative care, in current US$ per capita",
+        "sha11.HC.2",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE FUNCTIONS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hc3_usd_pc",
+      "field": "hc3_usd_pc",
+      "label": "Gesundheitliche Pflegeausgaben je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Gesundheitlicher Teil der Langzeitpflege. Rein soziale Betreuung ist nicht vollständig enthalten.",
+      "column": 1241,
+      "definition": [
+        "hc3_usd_pc",
+        "Long-term care (health), in current US$ per capita",
+        "sha11.HC.3",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE FUNCTIONS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hcri1_usd_pc",
+      "field": "hcri1_usd_pc",
+      "label": "Arzneimittelausgaben insgesamt je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Gesamter Arzneimittelverbrauch innerhalb und außerhalb von Behandlungsleistungen; zusätzlicher Merkposten, kein separater addierbarer Versorgungsblock.",
+      "column": 1417,
+      "definition": [
+        "hcri1_usd_pc",
+        "Total pharmaceutical expenditure (TPE), in current US$ per capita",
+        "sha11.HC.RI.1",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE FUNCTIONS REPORTING ITEMS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hc6_usd_pc",
+      "field": "hc6_usd_pc",
+      "label": "Präventionsausgaben je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Präventive Gesundheitsleistungen in laufenden US-Dollar je Einwohner. Ausgaben messen keine Wirksamkeit.",
+      "column": 1259,
+      "definition": [
+        "hc6_usd_pc",
+        "Preventive care, in current US$ per capita",
+        "sha11.HC.6",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE FUNCTIONS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hp1_usd_pc",
+      "field": "hp1_usd_pc",
+      "label": "Krankenhausausgaben je Einwohner",
+      "group": "care",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Ausgaben bei Krankenhausanbietern unabhängig von Eigentum und Finanzierung. Überschneidet sich mit der Gliederung nach Gesundheitszweck.",
+      "column": 1495,
+      "definition": [
+        "hp1_usd_pc",
+        "Hospitals, in current US$ per capita",
+        "sha11.HP.1",
+        "HEALTH EXPENDITURE DATA",
+        "HEALTH CARE PROVIDERS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hk_usd_pc",
+      "field": "hk_usd_pc",
+      "label": "Gesundheitsinvestitionen je Einwohner",
+      "group": "investment",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Erwerb von Vermögensgütern durch Gesundheitsanbieter; separat von laufenden Ausgaben. Fehlende Investitionen werden von der WHO nicht geschätzt.",
+      "column": 1531,
+      "definition": [
+        "hk_usd_pc",
+        "Capital health expenditure, in current US$ per capita",
+        "sha11.HK",
+        "HEALTH EXPENDITURE DATA",
+        "CAPITAL INVESTMENTS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hk111_usd_pc",
+      "field": "hk111_usd_pc",
+      "label": "Infrastrukturinvestitionen je Einwohner",
+      "group": "investment",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Investitionen in Infrastruktur von Gesundheitsanbietern, keine Bewertung von Krankenhausimmobilien.",
+      "column": 1534,
+      "definition": [
+        "hk111_usd_pc",
+        "Infrastructure, in current US$ per capita",
+        "sha11.HK.1.1.1",
+        "HEALTH EXPENDITURE DATA",
+        "CAPITAL INVESTMENTS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hk112_usd_pc",
+      "field": "hk112_usd_pc",
+      "label": "Investitionen in Ausstattung je Einwohner",
+      "group": "investment",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Investitionen in Maschinen und Ausstattung von Gesundheitsanbietern. Keine Umsätze der gesamten Medizintechnikbranche.",
+      "column": 1535,
+      "definition": [
+        "hk112_usd_pc",
+        "Machinery and equipment, in current US$ per capita",
+        "sha11.HK.1.1.2",
+        "HEALTH EXPENDITURE DATA",
+        "CAPITAL INVESTMENTS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "hk113_usd_pc",
+      "field": "hk113_usd_pc",
+      "label": "Wissensbasierte Investitionsgüter je Einwohner",
+      "group": "investment",
+      "unit": "current_usd_per_capita",
+      "scopeNote": "Investitionen der Gesundheitsanbieter in geistiges Eigentum, etwa Software. Kein allgemeiner Innovationsindex.",
+      "column": 1536,
+      "definition": [
+        "hk113_usd_pc",
+        "Intellectual property products, in current US$ per capita",
+        "sha11.HK.1.1.3",
+        "HEALTH EXPENDITURE DATA",
+        "CAPITAL INVESTMENTS",
+        "Ones",
+        "US$",
+        "-"
+      ]
+    },
+    {
+      "id": "dis1_che",
+      "field": "dis1_che",
+      "label": "Infektions- und parasitäre Krankheiten",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für diese Krankheitsgruppe als Anteil der laufenden Gesundheitsausgaben; keine Erkrankungshäufigkeit.",
+      "column": 51,
+      "definition": [
+        "dis1_che",
+        "Expenditure on Infectious and Parasitic Diseases as % of Current Health Expenditure (CHE)",
+        "dis1%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on infectious and parasitic diseases (DIS.1) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "dis2_che",
+      "field": "dis2_che",
+      "label": "Reproduktive Gesundheit",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für reproduktive Gesundheit einschließlich mütterlicher und perinataler Versorgung sowie Familienplanung.",
+      "column": 56,
+      "definition": [
+        "dis2_che",
+        "Expenditure on Reproductive Health as % of Current Health Expenditure (CHE)",
+        "dis2%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on reproductive health (DIS.2) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "dis3_che",
+      "field": "dis3_che",
+      "label": "Ernährungsbedingte Mangelzustände",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für ernährungsbedingte Mangelzustände; keine Quote mangelernährter Menschen.",
+      "column": 60,
+      "definition": [
+        "dis3_che",
+        "Expenditure on Nutritional Deficiencies as % of Current Health Expenditure (CHE)",
+        "dis3%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on nutritional deficiencies (DIS.3) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "dis4_che",
+      "field": "dis4_che",
+      "label": "Nicht übertragbare Krankheiten",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für nicht übertragbare Krankheiten als Anteil der laufenden Gesundheitsausgaben.",
+      "column": 61,
+      "definition": [
+        "dis4_che",
+        "Expenditure on Noncommunicable Diseases (NCDs) as % of Current Health Expenditure (CHE)",
+        "dis4%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on noncommunicable diseases (DIS.4) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "dis5_che",
+      "field": "dis5_che",
+      "label": "Verletzungen",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Ausgaben für Verletzungen als Anteil der laufenden Gesundheitsausgaben.",
+      "column": 62,
+      "definition": [
+        "dis5_che",
+        "Expenditure on Injuries as % of Current Health Expenditure (CHE)",
+        "dis5%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on injuries (DIS.5) / Current Health Expenditure (CHE)"
+      ]
+    },
+    {
+      "id": "disnec_che",
+      "field": "disnec_che",
+      "label": "Andere oder nicht zugeordnete Bereiche",
+      "group": "conditions",
+      "unit": "percent_che",
+      "scopeNote": "Andere und nicht näher bezeichnete Krankheiten und Zustände. Die WHO verteilt nicht krankheitsspezifische Ausgaben teilweise auf die übrigen Gruppen.",
+      "column": 63,
+      "definition": [
+        "disnec_che",
+        "Expenditure on other and unspecified diseases/conditions (n.e.c.) as % of Current Health Expenditure (CHE)",
+        "disnec%CHE",
+        "INDICATORS",
+        "DISEASES AND CONDITIONS",
+        "Percentage",
+        "-",
+        "Expenditure on unspecified diseases and conditions (DIS.nec) / Current Health Expenditure (CHE)"
+      ]
+    }
+  ],
+  "groups": [
+    {
+      "id": "volume",
+      "label": "Umfang & Priorität"
+    },
+    {
+      "id": "funding",
+      "label": "Herkunft der Mittel"
+    },
+    {
+      "id": "schemes",
+      "label": "Versicherungen & Systeme"
+    },
+    {
+      "id": "primary",
+      "label": "Grundversorgung & Vorsorge"
+    },
+    {
+      "id": "care",
+      "label": "Versorgung & Arzneimittel"
+    },
+    {
+      "id": "investment",
+      "label": "Investitionen"
+    },
+    {
+      "id": "conditions",
+      "label": "Gesundheitsbereiche"
+    }
+  ],
+  "areas": [
+    {
+      "code": "AFG",
+      "label": "Afghanistan",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:004"
+    },
+    {
+      "code": "AGO",
+      "label": "Angola",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:024"
+    },
+    {
+      "code": "ALB",
+      "label": "Albania",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:008"
+    },
+    {
+      "code": "AND",
+      "label": "Andorra",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:020"
+    },
+    {
+      "code": "ARE",
+      "label": "United Arab Emirates",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:784"
+    },
+    {
+      "code": "ARG",
+      "label": "Argentina",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:032"
+    },
+    {
+      "code": "ARM",
+      "label": "Armenia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:051"
+    },
+    {
+      "code": "ATG",
+      "label": "Antigua and Barbuda",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:028"
+    },
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:036"
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:040"
+    },
+    {
+      "code": "AZE",
+      "label": "Azerbaijan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:031"
+    },
+    {
+      "code": "BDI",
+      "label": "Burundi",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:108"
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:056"
+    },
+    {
+      "code": "BEN",
+      "label": "Benin",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:204"
+    },
+    {
+      "code": "BFA",
+      "label": "Burkina Faso",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:854"
+    },
+    {
+      "code": "BGD",
+      "label": "Bangladesh",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:050"
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:100"
+    },
+    {
+      "code": "BHR",
+      "label": "Bahrain",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:048"
+    },
+    {
+      "code": "BHS",
+      "label": "Bahamas",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:044"
+    },
+    {
+      "code": "BIH",
+      "label": "Bosnia and Herzegovina",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:070"
+    },
+    {
+      "code": "BLR",
+      "label": "Belarus",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:112"
+    },
+    {
+      "code": "BLZ",
+      "label": "Belize",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:084"
+    },
+    {
+      "code": "BOL",
+      "label": "Bolivia (Plurinational State of)",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:068"
+    },
+    {
+      "code": "BRA",
+      "label": "Brazil",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:076"
+    },
+    {
+      "code": "BRB",
+      "label": "Barbados",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:052"
+    },
+    {
+      "code": "BRN",
+      "label": "Brunei Darussalam",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:096"
+    },
+    {
+      "code": "BTN",
+      "label": "Bhutan",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:064"
+    },
+    {
+      "code": "BWA",
+      "label": "Botswana",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:072"
+    },
+    {
+      "code": "CAF",
+      "label": "Central African Republic",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:140"
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:124"
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:756"
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:152"
+    },
+    {
+      "code": "CHN",
+      "label": "China",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:156"
+    },
+    {
+      "code": "CIV",
+      "label": "Côte d'Ivoire",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:384"
+    },
+    {
+      "code": "CMR",
+      "label": "Cameroon",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:120"
+    },
+    {
+      "code": "COD",
+      "label": "Democratic Republic of the Congo",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:180"
+    },
+    {
+      "code": "COG",
+      "label": "Congo",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:178"
+    },
+    {
+      "code": "COK",
+      "label": "Cook Islands",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:184"
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:170"
+    },
+    {
+      "code": "COM",
+      "label": "Comoros",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:174"
+    },
+    {
+      "code": "CPV",
+      "label": "Cabo Verde",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:132"
+    },
+    {
+      "code": "CRI",
+      "label": "Costa Rica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:188"
+    },
+    {
+      "code": "CUB",
+      "label": "Cuba",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:192"
+    },
+    {
+      "code": "CYP",
+      "label": "Cyprus",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:196"
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:203"
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:276"
+    },
+    {
+      "code": "DJI",
+      "label": "Djibouti",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:262"
+    },
+    {
+      "code": "DMA",
+      "label": "Dominica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:212"
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:208"
+    },
+    {
+      "code": "DOM",
+      "label": "Dominican Republic",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:214"
+    },
+    {
+      "code": "DZA",
+      "label": "Algeria",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:012"
+    },
+    {
+      "code": "ECU",
+      "label": "Ecuador",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:218"
+    },
+    {
+      "code": "EGY",
+      "label": "Egypt",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:818"
+    },
+    {
+      "code": "ERI",
+      "label": "Eritrea",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:232"
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:724"
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:233"
+    },
+    {
+      "code": "ETH",
+      "label": "Ethiopia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:231"
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:246"
+    },
+    {
+      "code": "FJI",
+      "label": "Fiji",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:242"
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:250"
+    },
+    {
+      "code": "FSM",
+      "label": "Micronesia (Federated States of)",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:583"
+    },
+    {
+      "code": "GAB",
+      "label": "Gabon",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:266"
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom of Great Britain and Northern Ireland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:826"
+    },
+    {
+      "code": "GEO",
+      "label": "Georgia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:268"
+    },
+    {
+      "code": "GHA",
+      "label": "Ghana",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:288"
+    },
+    {
+      "code": "GIN",
+      "label": "Guinea",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:324"
+    },
+    {
+      "code": "GMB",
+      "label": "Gambia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:270"
+    },
+    {
+      "code": "GNB",
+      "label": "Guinea-Bissau",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:624"
+    },
+    {
+      "code": "GNQ",
+      "label": "Equatorial Guinea",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:226"
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:300"
+    },
+    {
+      "code": "GRD",
+      "label": "Grenada",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:308"
+    },
+    {
+      "code": "GTM",
+      "label": "Guatemala",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:320"
+    },
+    {
+      "code": "GUY",
+      "label": "Guyana",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:328"
+    },
+    {
+      "code": "HND",
+      "label": "Honduras",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:340"
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:191"
+    },
+    {
+      "code": "HTI",
+      "label": "Haiti",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:332"
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:348"
+    },
+    {
+      "code": "IDN",
+      "label": "Indonesia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:360"
+    },
+    {
+      "code": "IND",
+      "label": "India",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:356"
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:372"
+    },
+    {
+      "code": "IRN",
+      "label": "Iran (Islamic Republic of)",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:364"
+    },
+    {
+      "code": "IRQ",
+      "label": "Iraq",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:368"
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:352"
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:376"
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:380"
+    },
+    {
+      "code": "JAM",
+      "label": "Jamaica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:388"
+    },
+    {
+      "code": "JOR",
+      "label": "Jordan",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:400"
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:392"
+    },
+    {
+      "code": "KAZ",
+      "label": "Kazakhstan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:398"
+    },
+    {
+      "code": "KEN",
+      "label": "Kenya",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:404"
+    },
+    {
+      "code": "KGZ",
+      "label": "Kyrgyzstan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:417"
+    },
+    {
+      "code": "KHM",
+      "label": "Cambodia",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:116"
+    },
+    {
+      "code": "KIR",
+      "label": "Kiribati",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:296"
+    },
+    {
+      "code": "KNA",
+      "label": "Saint Kitts and Nevis",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:659"
+    },
+    {
+      "code": "KOR",
+      "label": "Republic of Korea",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:410"
+    },
+    {
+      "code": "KWT",
+      "label": "Kuwait",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:414"
+    },
+    {
+      "code": "LAO",
+      "label": "Lao People's Democratic Republic",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:418"
+    },
+    {
+      "code": "LBN",
+      "label": "Lebanon",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:422"
+    },
+    {
+      "code": "LBR",
+      "label": "Liberia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:430"
+    },
+    {
+      "code": "LBY",
+      "label": "Libya",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:434"
+    },
+    {
+      "code": "LCA",
+      "label": "Saint Lucia",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:662"
+    },
+    {
+      "code": "LIE",
+      "label": "Liechtenstein",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:438"
+    },
+    {
+      "code": "LKA",
+      "label": "Sri Lanka",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:144"
+    },
+    {
+      "code": "LSO",
+      "label": "Lesotho",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:426"
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:440"
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:442"
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:428"
+    },
+    {
+      "code": "MAR",
+      "label": "Morocco",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:504"
+    },
+    {
+      "code": "MCO",
+      "label": "Monaco",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:492"
+    },
+    {
+      "code": "MDA",
+      "label": "Republic of Moldova",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:498"
+    },
+    {
+      "code": "MDG",
+      "label": "Madagascar",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:450"
+    },
+    {
+      "code": "MDV",
+      "label": "Maldives",
+      "region": "SEAR",
+      "income": "Upper-middle",
+      "geographyId": "m49:462"
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:484"
+    },
+    {
+      "code": "MHL",
+      "label": "Marshall Islands",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:584"
+    },
+    {
+      "code": "MKD",
+      "label": "North Macedonia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:807"
+    },
+    {
+      "code": "MLI",
+      "label": "Mali",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:466"
+    },
+    {
+      "code": "MLT",
+      "label": "Malta",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:470"
+    },
+    {
+      "code": "MMR",
+      "label": "Myanmar",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:104"
+    },
+    {
+      "code": "MNE",
+      "label": "Montenegro",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:499"
+    },
+    {
+      "code": "MNG",
+      "label": "Mongolia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:496"
+    },
+    {
+      "code": "MOZ",
+      "label": "Mozambique",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:508"
+    },
+    {
+      "code": "MRT",
+      "label": "Mauritania",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:478"
+    },
+    {
+      "code": "MUS",
+      "label": "Mauritius",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:480"
+    },
+    {
+      "code": "MWI",
+      "label": "Malawi",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:454"
+    },
+    {
+      "code": "MYS",
+      "label": "Malaysia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:458"
+    },
+    {
+      "code": "NAM",
+      "label": "Namibia",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:516"
+    },
+    {
+      "code": "NER",
+      "label": "Niger",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:562"
+    },
+    {
+      "code": "NGA",
+      "label": "Nigeria",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:566"
+    },
+    {
+      "code": "NIC",
+      "label": "Nicaragua",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:558"
+    },
+    {
+      "code": "NIU",
+      "label": "Niue",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:570"
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands (Kingdom of the)",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:528"
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:578"
+    },
+    {
+      "code": "NPL",
+      "label": "Nepal",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:524"
+    },
+    {
+      "code": "NRU",
+      "label": "Nauru",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:520"
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:554"
+    },
+    {
+      "code": "OMN",
+      "label": "Oman",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:512"
+    },
+    {
+      "code": "PAK",
+      "label": "Pakistan",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:586"
+    },
+    {
+      "code": "PAN",
+      "label": "Panama",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:591"
+    },
+    {
+      "code": "PER",
+      "label": "Peru",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:604"
+    },
+    {
+      "code": "PHL",
+      "label": "Philippines",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:608"
+    },
+    {
+      "code": "PLW",
+      "label": "Palau",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:585"
+    },
+    {
+      "code": "PNG",
+      "label": "Papua New Guinea",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:598"
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:616"
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:620"
+    },
+    {
+      "code": "PRY",
+      "label": "Paraguay",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:600"
+    },
+    {
+      "code": "PSE",
+      "label": "occupied Palestinian territory, including east Jerusalem",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:275"
+    },
+    {
+      "code": "QAT",
+      "label": "Qatar",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:634"
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:642"
+    },
+    {
+      "code": "RUS",
+      "label": "Russian Federation",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:643"
+    },
+    {
+      "code": "RWA",
+      "label": "Rwanda",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:646"
+    },
+    {
+      "code": "SAU",
+      "label": "Saudi Arabia",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:682"
+    },
+    {
+      "code": "SDN",
+      "label": "Sudan",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:729"
+    },
+    {
+      "code": "SEN",
+      "label": "Senegal",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:686"
+    },
+    {
+      "code": "SGP",
+      "label": "Singapore",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:702"
+    },
+    {
+      "code": "SLB",
+      "label": "Solomon Islands",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:090"
+    },
+    {
+      "code": "SLE",
+      "label": "Sierra Leone",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:694"
+    },
+    {
+      "code": "SLV",
+      "label": "El Salvador",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:222"
+    },
+    {
+      "code": "SMR",
+      "label": "San Marino",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:674"
+    },
+    {
+      "code": "SOM",
+      "label": "Somalia",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:706"
+    },
+    {
+      "code": "SRB",
+      "label": "Serbia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:688"
+    },
+    {
+      "code": "SSD",
+      "label": "South Sudan",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:728"
+    },
+    {
+      "code": "STP",
+      "label": "Sao Tome and Principe",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:678"
+    },
+    {
+      "code": "SUR",
+      "label": "Suriname",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:740"
+    },
+    {
+      "code": "SVK",
+      "label": "Slovakia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:703"
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:705"
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:752"
+    },
+    {
+      "code": "SWZ",
+      "label": "Eswatini",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:748"
+    },
+    {
+      "code": "SYC",
+      "label": "Seychelles",
+      "region": "AFR",
+      "income": "High",
+      "geographyId": "m49:690"
+    },
+    {
+      "code": "SYR",
+      "label": "Syrian Arab Republic",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:760"
+    },
+    {
+      "code": "TCD",
+      "label": "Chad",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:148"
+    },
+    {
+      "code": "TGO",
+      "label": "Togo",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:768"
+    },
+    {
+      "code": "THA",
+      "label": "Thailand",
+      "region": "SEAR",
+      "income": "Upper-middle",
+      "geographyId": "m49:764"
+    },
+    {
+      "code": "TJK",
+      "label": "Tajikistan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:762"
+    },
+    {
+      "code": "TKM",
+      "label": "Turkmenistan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:795"
+    },
+    {
+      "code": "TLS",
+      "label": "Timor-Leste",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:626"
+    },
+    {
+      "code": "TON",
+      "label": "Tonga",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:776"
+    },
+    {
+      "code": "TTO",
+      "label": "Trinidad and Tobago",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:780"
+    },
+    {
+      "code": "TUN",
+      "label": "Tunisia",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:788"
+    },
+    {
+      "code": "TUR",
+      "label": "Türkiye",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:792"
+    },
+    {
+      "code": "TUV",
+      "label": "Tuvalu",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:798"
+    },
+    {
+      "code": "TZA",
+      "label": "United Republic of Tanzania",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:834"
+    },
+    {
+      "code": "UGA",
+      "label": "Uganda",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:800"
+    },
+    {
+      "code": "UKR",
+      "label": "Ukraine",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:804"
+    },
+    {
+      "code": "URY",
+      "label": "Uruguay",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:858"
+    },
+    {
+      "code": "USA",
+      "label": "United States of America",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:840"
+    },
+    {
+      "code": "UZB",
+      "label": "Uzbekistan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:860"
+    },
+    {
+      "code": "VCT",
+      "label": "Saint Vincent and the Grenadines",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:670"
+    },
+    {
+      "code": "VEN",
+      "label": "Venezuela (Bolivarian Republic of)",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:862"
+    },
+    {
+      "code": "VNM",
+      "label": "Viet Nam",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:704"
+    },
+    {
+      "code": "VUT",
+      "label": "Vanuatu",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:548"
+    },
+    {
+      "code": "WSM",
+      "label": "Samoa",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:882"
+    },
+    {
+      "code": "YEM",
+      "label": "Yemen",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:887"
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:710"
+    },
+    {
+      "code": "ZMB",
+      "label": "Zambia",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:894"
+    },
+    {
+      "code": "ZWE",
+      "label": "Zimbabwe",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:716"
+    }
+  ],
+  "firstYear": 2000,
+  "lastYear": 2024,
+  "preliminarySince": 2024
+}

@@ -1,0 +1,64 @@
+{
+  "checkedAt": "2026-09-10",
+  "publicCacheOnly": true,
+  "previousPackageCount": 9,
+  "newlyStoredPackageCount": 175,
+  "totalPackageCount": 184,
+  "failedPackageCount": 0,
+  "packages": {
+    "atlas_datasets": 124,
+    "atlas_market_datasets": 26,
+    "atlas_demography_dataset": 1,
+    "atlas_history_dataset": 1,
+    "atlas_energy_dataset": 1,
+    "atlas_valuation_datasets": 16,
+    "atlas_capacity_dataset": 1,
+    "atlas_credit_dataset": 1,
+    "atlas_property_dataset": 1,
+    "atlas_housing_ratio_dataset": 1,
+    "atlas_education_dataset": 1,
+    "atlas_agriculture_dataset": 1,
+    "atlas_macrohistory_dataset": 1,
+    "atlas_fiscal_dataset": 1,
+    "atlas_households_dataset": 1,
+    "atlas_debt_dataset": 1,
+    "atlas_health_dataset": 1,
+    "atlas_innovation_dataset": 1,
+    "atlas_labor_dataset": 1,
+    "atlas_commodity_dataset": 1,
+    "atlas_findex_dataset": 1
+  },
+  "statistics": {
+    "unsdg": 33,
+    "wdi": 91
+  },
+  "sdgObservations": [
+    80189,
+    79911,
+    249
+  ],
+  "libraryRuns": [
+    {
+      "id": "5339689e-170c-4245-9fa3-1669960ea724",
+      "seriesId": "atlas-library",
+      "status": "complete",
+      "page": 116,
+      "pages": 116,
+      "observations": 116,
+      "message": "116 Datenpakete neu lokal gespeichert. 116 Pakete geprüft. Bereits vorhandene Pakete wurden beibehalten.",
+      "startedAt": "2026-09-10T20:22:47.920557700+00:00",
+      "finishedAt": "2026-09-10T20:34:40.696984300+00:00"
+    },
+    {
+      "id": "7538a78b-cdca-4fa7-8186-01f6dfb023b8",
+      "seriesId": "atlas-library",
+      "status": "complete",
+      "page": 59,
+      "pages": 59,
+      "observations": 59,
+      "message": "59 Datenpakete neu lokal gespeichert. 59 Pakete geprüft. Bereits vorhandene Pakete wurden beibehalten.",
+      "startedAt": "2026-09-10T20:51:00.306044600+00:00",
+      "finishedAt": "2026-09-10T21:10:23.996489100+00:00"
+    }
+  ]
+}

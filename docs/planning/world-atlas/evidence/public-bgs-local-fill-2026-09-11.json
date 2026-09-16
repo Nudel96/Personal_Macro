@@ -1,0 +1,53 @@
+{
+  "bgs-cement": {
+    "provenance": {
+      "sourceId": "bgs-cement",
+      "retrievedAt": "2026-09-11T00:45:39.109494100+00:00",
+      "publishedAt": "2026-05-20",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25ement%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "sha256": "eece23e2defb602ce8a69079d74b3808d51dc702af868f92468de45376c2dd82",
+      "recipe": "bgs-cement-original-csv-20260911-v1",
+      "sourceRows": 1442,
+      "numericValues": 1434,
+      "areaCount": 33
+    },
+    "profiles": 61,
+    "numericValues": 1434,
+    "missingValues": 8
+  },
+  "bgs-lithium": {
+    "provenance": {
+      "sourceId": "bgs-lithium",
+      "retrievedAt": "2026-09-11T00:45:40.576957500+00:00",
+      "publishedAt": "2026-05-20",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25ithium%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "sha256": "9e3a869b0dd849db51565142b6d0487da57e2bf20fa8b6fa355323425ef00240",
+      "recipe": "bgs-lithium-original-csv-20260911-v1",
+      "sourceRows": 953,
+      "numericValues": 532,
+      "areaCount": 14
+    },
+    "profiles": 38,
+    "numericValues": 532,
+    "missingValues": 1
+  },
+  "bgs-rare-earths": {
+    "provenance": {
+      "sourceId": "bgs-rare-earths",
+      "retrievedAt": "2026-09-11T00:45:41.563879400+00:00",
+      "publishedAt": "2026-05-20",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25are%20earth%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "sha256": "8592ca9de4759212f4db9400245a54b04a444715d34e5fac77ccb38debded181",
+      "recipe": "bgs-rare-earths-original-csv-20260911-v1",
+      "sourceRows": 659,
+      "numericValues": 272,
+      "areaCount": 15
+    },
+    "profiles": 15,
+    "numericValues": 272,
+    "missingValues": 1
+  }
+}

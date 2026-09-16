@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T04:31:05.968488+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sourceId": "bis-commercial-property",
+  "provenance": {
+    "sourceId": "bis-commercial-property",
+    "retrievedAt": "2026-09-11T04:24:46.708928900+00:00",
+    "publishedAt": "2026-08-27",
+    "url": "https://data.bis.org/static/bulk/WS_CPP_csv_flat.zip",
+    "documentationUrl": "https://data.bis.org/topics/CPP",
+    "sha256": "e53082ec2eaf548b76a7e519cf1ab7608dc5d77a24a10cf5f15d98090165a94d",
+    "recipe": "bis-cpp-original-national-city-prices-20260827-v1",
+    "sourceRows": 6599,
+    "numericValues": 5586,
+    "areaCount": 25
+  },
+  "profiles": 65,
+  "numericValues": 5586,
+  "explicitMissing": 649,
+  "fullOriginalAuditEquality": true
+}

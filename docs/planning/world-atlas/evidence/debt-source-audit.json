@@ -1,0 +1,1048 @@
+{
+  "status": "native_exact_match",
+  "url": "https://data.bis.org/static/bulk/WS_TC_csv_flat.zip",
+  "sha256": "aab49fd183db1d8623e9ea2c3c10167ace31ed7a36f58ba6b5983529090eabac",
+  "bytes": 1803310,
+  "sourceRows": 187215,
+  "selectedObservations": 14118,
+  "metadataRows": 96,
+  "areas": 48,
+  "countryAndEuroAreaProfiles": 44,
+  "ownAggregates": 4,
+  "numeric": 14118,
+  "zero": 0,
+  "missing": 0,
+  "breaks": 0,
+  "headers": [
+    "STRUCTURE",
+    "STRUCTURE_ID",
+    "ACTION",
+    "FREQ:Frequency",
+    "BORROWERS_CTY:Borrowers' country",
+    "TC_BORROWERS:Borrowing sector",
+    "TC_LENDERS:Lending sector",
+    "VALUATION:Valuation method",
+    "UNIT_TYPE:Unit type",
+    "TC_ADJUST:Adjustment",
+    "TIME_PERIOD:Time period or range",
+    "OBS_VALUE:Observation Value",
+    "COLLECTION:Collection Indicator",
+    "UNIT_MULT:Unit Multiplier",
+    "UNIT_MEASURE:Unit of measure",
+    "TITLE_TS:Title (tseries level)",
+    "DECIMALS:Decimals",
+    "OBS_STATUS:Observation Status",
+    "OBS_PRE_BREAK:Pre-Break Observation",
+    "OBS_CONF:Observation confidentiality"
+  ],
+  "coverage": [
+    {
+      "code": "4T",
+      "label": "Emerging market economies (aggregate)",
+      "geographyId": "bis:debt_emerging",
+      "decimals": 1,
+      "seriesLabel": "Emerging market economies (aggregate)",
+      "measures": {
+        "households": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        },
+        "corporations": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        }
+      }
+    },
+    {
+      "code": "5A",
+      "label": "All reporting economies",
+      "geographyId": "bis:debt_reporting",
+      "decimals": 1,
+      "seriesLabel": "All reporting countries (aggregate)",
+      "measures": {
+        "households": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        },
+        "corporations": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        }
+      }
+    },
+    {
+      "code": "5R",
+      "label": "Advanced economies",
+      "geographyId": "bis:debt_advanced",
+      "decimals": 1,
+      "seriesLabel": "Advanced economies (aggregate)",
+      "measures": {
+        "households": {
+          "first": "1999-Q4",
+          "last": "2025-Q4",
+          "rows": 105,
+          "numeric": 105
+        },
+        "corporations": {
+          "first": "1999-Q4",
+          "last": "2025-Q4",
+          "rows": 105,
+          "numeric": 105
+        }
+      }
+    },
+    {
+      "code": "AR",
+      "label": "Argentina",
+      "geographyId": "m49:032",
+      "decimals": 1,
+      "seriesLabel": "Argentina",
+      "measures": {
+        "households": {
+          "first": "1994-Q1",
+          "last": "2025-Q4",
+          "rows": 128,
+          "numeric": 128
+        },
+        "corporations": {
+          "first": "1994-Q1",
+          "last": "2025-Q4",
+          "rows": 128,
+          "numeric": 128
+        }
+      }
+    },
+    {
+      "code": "AT",
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "decimals": 1,
+      "seriesLabel": "Austria",
+      "measures": {
+        "households": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        },
+        "corporations": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        }
+      }
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "decimals": 1,
+      "seriesLabel": "Australia",
+      "measures": {
+        "households": {
+          "first": "1977-Q4",
+          "last": "2025-Q4",
+          "rows": 193,
+          "numeric": 193
+        },
+        "corporations": {
+          "first": "1977-Q4",
+          "last": "2025-Q4",
+          "rows": 193,
+          "numeric": 193
+        }
+      }
+    },
+    {
+      "code": "BE",
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "decimals": 1,
+      "seriesLabel": "Belgium",
+      "measures": {
+        "households": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        },
+        "corporations": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        }
+      }
+    },
+    {
+      "code": "BR",
+      "label": "Brazil",
+      "geographyId": "m49:076",
+      "decimals": 1,
+      "seriesLabel": "Brazil",
+      "measures": {
+        "households": {
+          "first": "1996-Q1",
+          "last": "2025-Q4",
+          "rows": 120,
+          "numeric": 120
+        },
+        "corporations": {
+          "first": "1996-Q1",
+          "last": "2025-Q4",
+          "rows": 120,
+          "numeric": 120
+        }
+      }
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "decimals": 1,
+      "seriesLabel": "Canada",
+      "measures": {
+        "households": {
+          "first": "1969-Q1",
+          "last": "2025-Q4",
+          "rows": 228,
+          "numeric": 228
+        },
+        "corporations": {
+          "first": "1969-Q1",
+          "last": "2025-Q4",
+          "rows": 228,
+          "numeric": 228
+        }
+      }
+    },
+    {
+      "code": "CH",
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "decimals": 1,
+      "seriesLabel": "Switzerland",
+      "measures": {
+        "households": {
+          "first": "1999-Q4",
+          "last": "2025-Q4",
+          "rows": 105,
+          "numeric": 105
+        },
+        "corporations": {
+          "first": "1999-Q4",
+          "last": "2025-Q4",
+          "rows": 105,
+          "numeric": 105
+        }
+      }
+    },
+    {
+      "code": "CL",
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "decimals": 1,
+      "seriesLabel": "Chile",
+      "measures": {
+        "households": {
+          "first": "2002-Q4",
+          "last": "2025-Q4",
+          "rows": 93,
+          "numeric": 93
+        },
+        "corporations": {
+          "first": "2002-Q4",
+          "last": "2025-Q4",
+          "rows": 93,
+          "numeric": 93
+        }
+      }
+    },
+    {
+      "code": "CN",
+      "label": "China",
+      "geographyId": "m49:156",
+      "decimals": 1,
+      "seriesLabel": "China",
+      "measures": {
+        "households": {
+          "first": "2006-Q1",
+          "last": "2025-Q4",
+          "rows": 80,
+          "numeric": 80
+        },
+        "corporations": {
+          "first": "2006-Q1",
+          "last": "2025-Q4",
+          "rows": 80,
+          "numeric": 80
+        }
+      }
+    },
+    {
+      "code": "CO",
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "decimals": 3,
+      "seriesLabel": "Colombia",
+      "measures": {
+        "households": {
+          "first": "1996-Q4",
+          "last": "2025-Q4",
+          "rows": 117,
+          "numeric": 117
+        },
+        "corporations": {
+          "first": "1996-Q4",
+          "last": "2025-Q4",
+          "rows": 117,
+          "numeric": 117
+        }
+      }
+    },
+    {
+      "code": "CZ",
+      "label": "Czechia",
+      "geographyId": "m49:203",
+      "decimals": 1,
+      "seriesLabel": "Czechia",
+      "measures": {
+        "households": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        },
+        "corporations": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        }
+      }
+    },
+    {
+      "code": "DE",
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "decimals": 1,
+      "seriesLabel": "Germany",
+      "measures": {
+        "households": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        },
+        "corporations": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        }
+      }
+    },
+    {
+      "code": "DK",
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "decimals": 1,
+      "seriesLabel": "Denmark",
+      "measures": {
+        "households": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        },
+        "corporations": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        }
+      }
+    },
+    {
+      "code": "ES",
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "decimals": 1,
+      "seriesLabel": "Spain",
+      "measures": {
+        "households": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        },
+        "corporations": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        }
+      }
+    },
+    {
+      "code": "FI",
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "decimals": 1,
+      "seriesLabel": "Finland",
+      "measures": {
+        "households": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        },
+        "corporations": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        }
+      }
+    },
+    {
+      "code": "FR",
+      "label": "France",
+      "geographyId": "m49:250",
+      "decimals": 1,
+      "seriesLabel": "France",
+      "measures": {
+        "households": {
+          "first": "1977-Q4",
+          "last": "2025-Q4",
+          "rows": 193,
+          "numeric": 193
+        },
+        "corporations": {
+          "first": "1977-Q4",
+          "last": "2025-Q4",
+          "rows": 193,
+          "numeric": 193
+        }
+      }
+    },
+    {
+      "code": "G2",
+      "label": "G20 economies",
+      "geographyId": "bis:debt_g20",
+      "decimals": 1,
+      "seriesLabel": "G20 (aggregate)",
+      "measures": {
+        "households": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        },
+        "corporations": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        }
+      }
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "geographyId": "m49:826",
+      "decimals": 1,
+      "seriesLabel": "United Kingdom",
+      "measures": {
+        "households": {
+          "first": "1966-Q4",
+          "last": "2025-Q4",
+          "rows": 237,
+          "numeric": 237
+        },
+        "corporations": {
+          "first": "1976-Q1",
+          "last": "2025-Q4",
+          "rows": 200,
+          "numeric": 200
+        }
+      }
+    },
+    {
+      "code": "GR",
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "decimals": 1,
+      "seriesLabel": "Greece",
+      "measures": {
+        "households": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        },
+        "corporations": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        }
+      }
+    },
+    {
+      "code": "HK",
+      "label": "Hong Kong SAR",
+      "geographyId": "m49:344",
+      "decimals": 1,
+      "seriesLabel": "Hong Kong SAR",
+      "measures": {
+        "households": {
+          "first": "1990-Q4",
+          "last": "2025-Q4",
+          "rows": 141,
+          "numeric": 141
+        },
+        "corporations": {
+          "first": "1990-Q4",
+          "last": "2025-Q4",
+          "rows": 141,
+          "numeric": 141
+        }
+      }
+    },
+    {
+      "code": "HU",
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "decimals": 1,
+      "seriesLabel": "Hungary",
+      "measures": {
+        "households": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        },
+        "corporations": {
+          "first": "1970-Q4",
+          "last": "2025-Q4",
+          "rows": 221,
+          "numeric": 221
+        }
+      }
+    },
+    {
+      "code": "ID",
+      "label": "Indonesia",
+      "geographyId": "m49:360",
+      "decimals": 1,
+      "seriesLabel": "Indonesia",
+      "measures": {
+        "households": {
+          "first": "2001-Q4",
+          "last": "2025-Q4",
+          "rows": 97,
+          "numeric": 97
+        },
+        "corporations": {
+          "first": "2001-Q4",
+          "last": "2025-Q4",
+          "rows": 97,
+          "numeric": 97
+        }
+      }
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "decimals": 1,
+      "seriesLabel": "Ireland",
+      "measures": {
+        "households": {
+          "first": "2002-Q1",
+          "last": "2025-Q4",
+          "rows": 96,
+          "numeric": 96
+        },
+        "corporations": {
+          "first": "2002-Q1",
+          "last": "2025-Q4",
+          "rows": 96,
+          "numeric": 96
+        }
+      }
+    },
+    {
+      "code": "IL",
+      "label": "Israel",
+      "geographyId": "m49:376",
+      "decimals": 1,
+      "seriesLabel": "Israel",
+      "measures": {
+        "households": {
+          "first": "1992-Q3",
+          "last": "2025-Q4",
+          "rows": 134,
+          "numeric": 134
+        },
+        "corporations": {
+          "first": "1992-Q3",
+          "last": "2025-Q4",
+          "rows": 134,
+          "numeric": 134
+        }
+      }
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "geographyId": "m49:356",
+      "decimals": 1,
+      "seriesLabel": "India",
+      "measures": {
+        "households": {
+          "first": "2007-Q2",
+          "last": "2025-Q4",
+          "rows": 75,
+          "numeric": 75
+        },
+        "corporations": {
+          "first": "2007-Q2",
+          "last": "2025-Q4",
+          "rows": 75,
+          "numeric": 75
+        }
+      }
+    },
+    {
+      "code": "IT",
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "decimals": 1,
+      "seriesLabel": "Italy",
+      "measures": {
+        "households": {
+          "first": "1960-Q4",
+          "last": "2025-Q4",
+          "rows": 261,
+          "numeric": 261
+        },
+        "corporations": {
+          "first": "1960-Q4",
+          "last": "2025-Q4",
+          "rows": 261,
+          "numeric": 261
+        }
+      }
+    },
+    {
+      "code": "JP",
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "decimals": 1,
+      "seriesLabel": "Japan",
+      "measures": {
+        "households": {
+          "first": "1964-Q4",
+          "last": "2025-Q4",
+          "rows": 245,
+          "numeric": 245
+        },
+        "corporations": {
+          "first": "1964-Q4",
+          "last": "2025-Q4",
+          "rows": 245,
+          "numeric": 245
+        }
+      }
+    },
+    {
+      "code": "KR",
+      "label": "Korea",
+      "geographyId": "m49:410",
+      "decimals": 1,
+      "seriesLabel": "Korea",
+      "measures": {
+        "households": {
+          "first": "1962-Q4",
+          "last": "2025-Q4",
+          "rows": 253,
+          "numeric": 253
+        },
+        "corporations": {
+          "first": "1962-Q4",
+          "last": "2025-Q4",
+          "rows": 253,
+          "numeric": 253
+        }
+      }
+    },
+    {
+      "code": "LU",
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "decimals": 1,
+      "seriesLabel": "Luxembourg",
+      "measures": {
+        "households": {
+          "first": "1995-Q1",
+          "last": "2025-Q4",
+          "rows": 124,
+          "numeric": 124
+        },
+        "corporations": {
+          "first": "1995-Q1",
+          "last": "2025-Q4",
+          "rows": 124,
+          "numeric": 124
+        }
+      }
+    },
+    {
+      "code": "MX",
+      "label": "Mexico",
+      "geographyId": "m49:484",
+      "decimals": 1,
+      "seriesLabel": "Mexico",
+      "measures": {
+        "households": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        },
+        "corporations": {
+          "first": "1994-Q4",
+          "last": "2025-Q4",
+          "rows": 125,
+          "numeric": 125
+        }
+      }
+    },
+    {
+      "code": "MY",
+      "label": "Malaysia",
+      "geographyId": "m49:458",
+      "decimals": 1,
+      "seriesLabel": "Malaysia",
+      "measures": {
+        "households": {
+          "first": "2006-Q1",
+          "last": "2025-Q4",
+          "rows": 80,
+          "numeric": 80
+        },
+        "corporations": {
+          "first": "2006-Q1",
+          "last": "2025-Q4",
+          "rows": 80,
+          "numeric": 80
+        }
+      }
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands",
+      "geographyId": "m49:528",
+      "decimals": 1,
+      "seriesLabel": "Netherlands",
+      "measures": {
+        "households": {
+          "first": "1990-Q4",
+          "last": "2025-Q4",
+          "rows": 141,
+          "numeric": 141
+        },
+        "corporations": {
+          "first": "1990-Q4",
+          "last": "2025-Q4",
+          "rows": 141,
+          "numeric": 141
+        }
+      }
+    },
+    {
+      "code": "NO",
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "decimals": 1,
+      "seriesLabel": "Norway",
+      "measures": {
+        "households": {
+          "first": "1975-Q1",
+          "last": "2025-Q4",
+          "rows": 204,
+          "numeric": 204
+        },
+        "corporations": {
+          "first": "1975-Q1",
+          "last": "2025-Q4",
+          "rows": 204,
+          "numeric": 204
+        }
+      }
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "decimals": 1,
+      "seriesLabel": "New Zealand",
+      "measures": {
+        "households": {
+          "first": "1990-Q4",
+          "last": "2025-Q4",
+          "rows": 141,
+          "numeric": 141
+        },
+        "corporations": {
+          "first": "1998-Q2",
+          "last": "2025-Q4",
+          "rows": 111,
+          "numeric": 111
+        }
+      }
+    },
+    {
+      "code": "PL",
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "decimals": 1,
+      "seriesLabel": "Poland",
+      "measures": {
+        "households": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        },
+        "corporations": {
+          "first": "1995-Q4",
+          "last": "2025-Q4",
+          "rows": 121,
+          "numeric": 121
+        }
+      }
+    },
+    {
+      "code": "PT",
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "decimals": 1,
+      "seriesLabel": "Portugal",
+      "measures": {
+        "households": {
+          "first": "1979-Q4",
+          "last": "2025-Q4",
+          "rows": 185,
+          "numeric": 185
+        },
+        "corporations": {
+          "first": "1979-Q4",
+          "last": "2025-Q4",
+          "rows": 185,
+          "numeric": 185
+        }
+      }
+    },
+    {
+      "code": "RU",
+      "label": "Russia",
+      "geographyId": "m49:643",
+      "decimals": 1,
+      "seriesLabel": "Russia",
+      "measures": {
+        "households": {
+          "first": "1998-Q1",
+          "last": "2025-Q4",
+          "rows": 112,
+          "numeric": 112
+        },
+        "corporations": {
+          "first": "1998-Q1",
+          "last": "2025-Q4",
+          "rows": 112,
+          "numeric": 112
+        }
+      }
+    },
+    {
+      "code": "SA",
+      "label": "Saudi Arabia",
+      "geographyId": "m49:682",
+      "decimals": 1,
+      "seriesLabel": "Saudi Arabia",
+      "measures": {
+        "households": {
+          "first": "1998-Q1",
+          "last": "2025-Q4",
+          "rows": 112,
+          "numeric": 112
+        },
+        "corporations": {
+          "first": "1998-Q1",
+          "last": "2025-Q4",
+          "rows": 112,
+          "numeric": 112
+        }
+      }
+    },
+    {
+      "code": "SE",
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "decimals": 1,
+      "seriesLabel": "Sweden",
+      "measures": {
+        "households": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        },
+        "corporations": {
+          "first": "1980-Q4",
+          "last": "2025-Q4",
+          "rows": 181,
+          "numeric": 181
+        }
+      }
+    },
+    {
+      "code": "SG",
+      "label": "Singapore",
+      "geographyId": "m49:702",
+      "decimals": 1,
+      "seriesLabel": "Singapore",
+      "measures": {
+        "households": {
+          "first": "1991-Q1",
+          "last": "2025-Q4",
+          "rows": 140,
+          "numeric": 140
+        },
+        "corporations": {
+          "first": "1991-Q1",
+          "last": "2025-Q4",
+          "rows": 140,
+          "numeric": 140
+        }
+      }
+    },
+    {
+      "code": "TH",
+      "label": "Thailand",
+      "geographyId": "m49:764",
+      "decimals": 1,
+      "seriesLabel": "Thailand",
+      "measures": {
+        "households": {
+          "first": "1991-Q4",
+          "last": "2025-Q4",
+          "rows": 137,
+          "numeric": 137
+        },
+        "corporations": {
+          "first": "1991-Q4",
+          "last": "2025-Q4",
+          "rows": 137,
+          "numeric": 137
+        }
+      }
+    },
+    {
+      "code": "TR",
+      "label": "Türkiye",
+      "geographyId": "m49:792",
+      "decimals": 1,
+      "seriesLabel": "Türkiye",
+      "measures": {
+        "households": {
+          "first": "1986-Q1",
+          "last": "2025-Q4",
+          "rows": 160,
+          "numeric": 160
+        },
+        "corporations": {
+          "first": "1986-Q1",
+          "last": "2025-Q4",
+          "rows": 160,
+          "numeric": 160
+        }
+      }
+    },
+    {
+      "code": "US",
+      "label": "United States",
+      "geographyId": "m49:840",
+      "decimals": 1,
+      "seriesLabel": "United States",
+      "measures": {
+        "households": {
+          "first": "1947-Q4",
+          "last": "2025-Q4",
+          "rows": 313,
+          "numeric": 313
+        },
+        "corporations": {
+          "first": "1947-Q4",
+          "last": "2025-Q4",
+          "rows": 313,
+          "numeric": 313
+        }
+      }
+    },
+    {
+      "code": "XM",
+      "label": "Euro area",
+      "geographyId": "bis:euro_area",
+      "decimals": 1,
+      "seriesLabel": "Euro area",
+      "measures": {
+        "households": {
+          "first": "1999-Q1",
+          "last": "2025-Q4",
+          "rows": 108,
+          "numeric": 108
+        },
+        "corporations": {
+          "first": "1997-Q4",
+          "last": "2025-Q4",
+          "rows": 113,
+          "numeric": 113
+        }
+      }
+    },
+    {
+      "code": "ZA",
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "decimals": 1,
+      "seriesLabel": "South Africa",
+      "measures": {
+        "households": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        },
+        "corporations": {
+          "first": "2008-Q1",
+          "last": "2025-Q4",
+          "rows": 72,
+          "numeric": 72
+        }
+      }
+    }
+  ]
+}

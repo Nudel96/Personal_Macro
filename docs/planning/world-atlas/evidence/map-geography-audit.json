@@ -1,0 +1,2745 @@
+{
+  "checkedOn": "2026-09-09",
+  "source": {
+    "name": "Natural Earth 1:110m Admin 0 Map Units",
+    "version": "5.1.1",
+    "url": "https://www.naturalearthdata.com/downloads/110m-cultural-vectors/110m-admin-0-details/",
+    "license": "Public domain",
+    "commit": "ca96624a56bd078437bca8184e78163e5039ad19"
+  },
+  "projectionReference": "https://proj.org/en/stable/operations/projections/eqearth.html",
+  "sourceFiles": [
+    {
+      "name": "ne_110m_admin_0_map_units.shp",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.shp",
+      "sha256": "18c549435a5ed097da26755f01ec3432f7a66c324391f52cd13a3641cf36028b"
+    },
+    {
+      "name": "ne_110m_admin_0_map_units.shx",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.shx",
+      "sha256": "37be1f0e5eac40096398743f7bd0ceeecb8ee815eec02d0bc26ae20270c11fe5"
+    },
+    {
+      "name": "ne_110m_admin_0_map_units.dbf",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.dbf",
+      "sha256": "8846de9c9dad58eb0f1059070492fad2d11aef355029c5fb5ce03e7fc09efeed"
+    },
+    {
+      "name": "ne_110m_admin_0_map_units.prj",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.prj",
+      "sha256": "3259f0e55290a82b1350646f604e8a7ee1e2136c0320a40fad838ab40819fff8"
+    },
+    {
+      "name": "ne_110m_admin_0_map_units.cpg",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.cpg",
+      "sha256": "3ad3031f5503a4404af825262ee8232cc04d4ea6683d42c5dd0a2f2a27ac9824"
+    },
+    {
+      "name": "ne_110m_admin_0_map_units.VERSION.txt",
+      "url": "https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/110m_cultural/ne_110m_admin_0_map_units.VERSION.txt",
+      "sha256": "f9893302cd3158f3b5aea394dcd2a91574869e9e6ff69e9235b10a3bf8c983fb"
+    }
+  ],
+  "sourceMapUnits": 183,
+  "mappedAreas": 177,
+  "crosswalk": [
+    {
+      "sourceUnit": "FJI",
+      "sourceName": "Fiji",
+      "isoA3": "FJI",
+      "isoA3Eh": "FJI",
+      "geographyId": "m49:242",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TZA",
+      "sourceName": "Tanzania",
+      "isoA3": "TZA",
+      "isoA3Eh": "TZA",
+      "geographyId": "m49:834",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SAH",
+      "sourceName": "W. Sahara",
+      "isoA3": "ESH",
+      "isoA3Eh": "ESH",
+      "geographyId": "m49:732",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CAN",
+      "sourceName": "Canada",
+      "isoA3": "CAN",
+      "isoA3Eh": "CAN",
+      "geographyId": "m49:124",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "USA",
+      "sourceName": "United States of America",
+      "isoA3": "USA",
+      "isoA3Eh": "USA",
+      "geographyId": "m49:840",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KAZ",
+      "sourceName": "Kazakhstan",
+      "isoA3": "KAZ",
+      "isoA3Eh": "KAZ",
+      "geographyId": "m49:398",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "UZB",
+      "sourceName": "Uzbekistan",
+      "isoA3": "UZB",
+      "isoA3Eh": "UZB",
+      "geographyId": "m49:860",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PNX",
+      "sourceName": "Papua New Guinea",
+      "isoA3": "-99",
+      "isoA3Eh": "PNG",
+      "geographyId": "m49:598",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "IDN",
+      "sourceName": "Indonesia",
+      "isoA3": "IDN",
+      "isoA3Eh": "IDN",
+      "geographyId": "m49:360",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ARG",
+      "sourceName": "Argentina",
+      "isoA3": "ARG",
+      "isoA3Eh": "ARG",
+      "geographyId": "m49:032",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CHL",
+      "sourceName": "Chile",
+      "isoA3": "CHL",
+      "isoA3Eh": "CHL",
+      "geographyId": "m49:152",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "COD",
+      "sourceName": "Dem. Rep. Congo",
+      "isoA3": "COD",
+      "isoA3Eh": "COD",
+      "geographyId": "m49:180",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SOM",
+      "sourceName": "Somalia",
+      "isoA3": "SOM",
+      "isoA3Eh": "SOM",
+      "geographyId": "m49:706",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KEN",
+      "sourceName": "Kenya",
+      "isoA3": "KEN",
+      "isoA3Eh": "KEN",
+      "geographyId": "m49:404",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SDN",
+      "sourceName": "Sudan",
+      "isoA3": "SDN",
+      "isoA3Eh": "SDN",
+      "geographyId": "m49:729",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TCD",
+      "sourceName": "Chad",
+      "isoA3": "TCD",
+      "isoA3Eh": "TCD",
+      "geographyId": "m49:148",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "HTI",
+      "sourceName": "Haiti",
+      "isoA3": "HTI",
+      "isoA3Eh": "HTI",
+      "geographyId": "m49:332",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "DOM",
+      "sourceName": "Dominican Rep.",
+      "isoA3": "DOM",
+      "isoA3Eh": "DOM",
+      "geographyId": "m49:214",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "RUS",
+      "sourceName": "Russia",
+      "isoA3": "RUS",
+      "isoA3Eh": "RUS",
+      "geographyId": "m49:643",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BHS",
+      "sourceName": "Bahamas",
+      "isoA3": "BHS",
+      "isoA3Eh": "BHS",
+      "geographyId": "m49:044",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "FLK",
+      "sourceName": "Falkland Is.",
+      "isoA3": "FLK",
+      "isoA3Eh": "FLK",
+      "geographyId": "m49:238",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NSV",
+      "sourceName": "Svalbard Is.",
+      "isoA3": "SJM",
+      "isoA3Eh": "SJM",
+      "geographyId": "m49:744",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GRL",
+      "sourceName": "Greenland",
+      "isoA3": "GRL",
+      "isoA3Eh": "GRL",
+      "geographyId": "m49:304",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ATF",
+      "sourceName": "Fr. S. Antarctic Lands",
+      "isoA3": "ATF",
+      "isoA3Eh": "ATF",
+      "geographyId": "m49:260",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TLS",
+      "sourceName": "Timor-Leste",
+      "isoA3": "TLS",
+      "isoA3Eh": "TLS",
+      "geographyId": "m49:626",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ZAF",
+      "sourceName": "South Africa",
+      "isoA3": "ZAF",
+      "isoA3Eh": "ZAF",
+      "geographyId": "m49:710",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LSO",
+      "sourceName": "Lesotho",
+      "isoA3": "LSO",
+      "isoA3Eh": "LSO",
+      "geographyId": "m49:426",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MEX",
+      "sourceName": "Mexico",
+      "isoA3": "MEX",
+      "isoA3Eh": "MEX",
+      "geographyId": "m49:484",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "URY",
+      "sourceName": "Uruguay",
+      "isoA3": "URY",
+      "isoA3Eh": "URY",
+      "geographyId": "m49:858",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BRA",
+      "sourceName": "Brazil",
+      "isoA3": "BRA",
+      "isoA3Eh": "BRA",
+      "geographyId": "m49:076",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BOL",
+      "sourceName": "Bolivia",
+      "isoA3": "BOL",
+      "isoA3Eh": "BOL",
+      "geographyId": "m49:068",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PER",
+      "sourceName": "Peru",
+      "isoA3": "PER",
+      "isoA3Eh": "PER",
+      "geographyId": "m49:604",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "COL",
+      "sourceName": "Colombia",
+      "isoA3": "COL",
+      "isoA3Eh": "COL",
+      "geographyId": "m49:170",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PAN",
+      "sourceName": "Panama",
+      "isoA3": "PAN",
+      "isoA3Eh": "PAN",
+      "geographyId": "m49:591",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CRI",
+      "sourceName": "Costa Rica",
+      "isoA3": "CRI",
+      "isoA3Eh": "CRI",
+      "geographyId": "m49:188",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NIC",
+      "sourceName": "Nicaragua",
+      "isoA3": "NIC",
+      "isoA3Eh": "NIC",
+      "geographyId": "m49:558",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "HND",
+      "sourceName": "Honduras",
+      "isoA3": "HND",
+      "isoA3Eh": "HND",
+      "geographyId": "m49:340",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SLV",
+      "sourceName": "El Salvador",
+      "isoA3": "SLV",
+      "isoA3Eh": "SLV",
+      "geographyId": "m49:222",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GTM",
+      "sourceName": "Guatemala",
+      "isoA3": "GTM",
+      "isoA3Eh": "GTM",
+      "geographyId": "m49:320",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BLZ",
+      "sourceName": "Belize",
+      "isoA3": "BLZ",
+      "isoA3Eh": "BLZ",
+      "geographyId": "m49:084",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "VEN",
+      "sourceName": "Venezuela",
+      "isoA3": "VEN",
+      "isoA3Eh": "VEN",
+      "geographyId": "m49:862",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GUY",
+      "sourceName": "Guyana",
+      "isoA3": "GUY",
+      "isoA3Eh": "GUY",
+      "geographyId": "m49:328",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SUR",
+      "sourceName": "Suriname",
+      "isoA3": "SUR",
+      "isoA3Eh": "SUR",
+      "geographyId": "m49:740",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GUF",
+      "sourceName": "French Guiana",
+      "isoA3": "GUF",
+      "isoA3Eh": "GUF",
+      "geographyId": "m49:254",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ECU",
+      "sourceName": "Ecuador",
+      "isoA3": "ECU",
+      "isoA3Eh": "ECU",
+      "geographyId": "m49:218",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PRI",
+      "sourceName": "Puerto Rico",
+      "isoA3": "PRI",
+      "isoA3Eh": "PRI",
+      "geographyId": "m49:630",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "JAM",
+      "sourceName": "Jamaica",
+      "isoA3": "JAM",
+      "isoA3Eh": "JAM",
+      "geographyId": "m49:388",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CUB",
+      "sourceName": "Cuba",
+      "isoA3": "CUB",
+      "isoA3Eh": "CUB",
+      "geographyId": "m49:192",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ZWE",
+      "sourceName": "Zimbabwe",
+      "isoA3": "ZWE",
+      "isoA3Eh": "ZWE",
+      "geographyId": "m49:716",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BWA",
+      "sourceName": "Botswana",
+      "isoA3": "BWA",
+      "isoA3Eh": "BWA",
+      "geographyId": "m49:072",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NAM",
+      "sourceName": "Namibia",
+      "isoA3": "NAM",
+      "isoA3Eh": "NAM",
+      "geographyId": "m49:516",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SEN",
+      "sourceName": "Senegal",
+      "isoA3": "SEN",
+      "isoA3Eh": "SEN",
+      "geographyId": "m49:686",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MLI",
+      "sourceName": "Mali",
+      "isoA3": "MLI",
+      "isoA3Eh": "MLI",
+      "geographyId": "m49:466",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MRT",
+      "sourceName": "Mauritania",
+      "isoA3": "MRT",
+      "isoA3Eh": "MRT",
+      "geographyId": "m49:478",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BEN",
+      "sourceName": "Benin",
+      "isoA3": "BEN",
+      "isoA3Eh": "BEN",
+      "geographyId": "m49:204",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NER",
+      "sourceName": "Niger",
+      "isoA3": "NER",
+      "isoA3Eh": "NER",
+      "geographyId": "m49:562",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NGA",
+      "sourceName": "Nigeria",
+      "isoA3": "NGA",
+      "isoA3Eh": "NGA",
+      "geographyId": "m49:566",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CMR",
+      "sourceName": "Cameroon",
+      "isoA3": "CMR",
+      "isoA3Eh": "CMR",
+      "geographyId": "m49:120",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TGO",
+      "sourceName": "Togo",
+      "isoA3": "TGO",
+      "isoA3Eh": "TGO",
+      "geographyId": "m49:768",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GHA",
+      "sourceName": "Ghana",
+      "isoA3": "GHA",
+      "isoA3Eh": "GHA",
+      "geographyId": "m49:288",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CIV",
+      "sourceName": "Côte d'Ivoire",
+      "isoA3": "CIV",
+      "isoA3Eh": "CIV",
+      "geographyId": "m49:384",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GIN",
+      "sourceName": "Guinea",
+      "isoA3": "GIN",
+      "isoA3Eh": "GIN",
+      "geographyId": "m49:324",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GNB",
+      "sourceName": "Guinea-Bissau",
+      "isoA3": "GNB",
+      "isoA3Eh": "GNB",
+      "geographyId": "m49:624",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LBR",
+      "sourceName": "Liberia",
+      "isoA3": "LBR",
+      "isoA3Eh": "LBR",
+      "geographyId": "m49:430",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SLE",
+      "sourceName": "Sierra Leone",
+      "isoA3": "SLE",
+      "isoA3Eh": "SLE",
+      "geographyId": "m49:694",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BFA",
+      "sourceName": "Burkina Faso",
+      "isoA3": "BFA",
+      "isoA3Eh": "BFA",
+      "geographyId": "m49:854",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CAF",
+      "sourceName": "Central African Rep.",
+      "isoA3": "CAF",
+      "isoA3Eh": "CAF",
+      "geographyId": "m49:140",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "COG",
+      "sourceName": "Congo",
+      "isoA3": "COG",
+      "isoA3Eh": "COG",
+      "geographyId": "m49:178",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GAB",
+      "sourceName": "Gabon",
+      "isoA3": "GAB",
+      "isoA3Eh": "GAB",
+      "geographyId": "m49:266",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GNQ",
+      "sourceName": "Eq. Guinea",
+      "isoA3": "GNQ",
+      "isoA3Eh": "GNQ",
+      "geographyId": "m49:226",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ZMB",
+      "sourceName": "Zambia",
+      "isoA3": "ZMB",
+      "isoA3Eh": "ZMB",
+      "geographyId": "m49:894",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MWI",
+      "sourceName": "Malawi",
+      "isoA3": "MWI",
+      "isoA3Eh": "MWI",
+      "geographyId": "m49:454",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MOZ",
+      "sourceName": "Mozambique",
+      "isoA3": "MOZ",
+      "isoA3Eh": "MOZ",
+      "geographyId": "m49:508",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SWZ",
+      "sourceName": "eSwatini",
+      "isoA3": "SWZ",
+      "isoA3Eh": "SWZ",
+      "geographyId": "m49:748",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "AGO",
+      "sourceName": "Angola",
+      "isoA3": "AGO",
+      "isoA3Eh": "AGO",
+      "geographyId": "m49:024",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BDI",
+      "sourceName": "Burundi",
+      "isoA3": "BDI",
+      "isoA3Eh": "BDI",
+      "geographyId": "m49:108",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ISR",
+      "sourceName": "Israel",
+      "isoA3": "ISR",
+      "isoA3Eh": "ISR",
+      "geographyId": "m49:376",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LBN",
+      "sourceName": "Lebanon",
+      "isoA3": "LBN",
+      "isoA3Eh": "LBN",
+      "geographyId": "m49:422",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MDG",
+      "sourceName": "Madagascar",
+      "isoA3": "MDG",
+      "isoA3Eh": "MDG",
+      "geographyId": "m49:450",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "WEB",
+      "sourceName": "West Bank",
+      "isoA3": "-99",
+      "isoA3Eh": "PSE",
+      "geographyId": "m49:275",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "GMB",
+      "sourceName": "Gambia",
+      "isoA3": "GMB",
+      "isoA3Eh": "GMB",
+      "geographyId": "m49:270",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TUN",
+      "sourceName": "Tunisia",
+      "isoA3": "TUN",
+      "isoA3Eh": "TUN",
+      "geographyId": "m49:788",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "DZA",
+      "sourceName": "Algeria",
+      "isoA3": "DZA",
+      "isoA3Eh": "DZA",
+      "geographyId": "m49:012",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "JOR",
+      "sourceName": "Jordan",
+      "isoA3": "JOR",
+      "isoA3Eh": "JOR",
+      "geographyId": "m49:400",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ARE",
+      "sourceName": "United Arab Emirates",
+      "isoA3": "ARE",
+      "isoA3Eh": "ARE",
+      "geographyId": "m49:784",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "QAT",
+      "sourceName": "Qatar",
+      "isoA3": "QAT",
+      "isoA3Eh": "QAT",
+      "geographyId": "m49:634",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KWT",
+      "sourceName": "Kuwait",
+      "isoA3": "KWT",
+      "isoA3Eh": "KWT",
+      "geographyId": "m49:414",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "IRQ",
+      "sourceName": "Iraq",
+      "isoA3": "IRQ",
+      "isoA3Eh": "IRQ",
+      "geographyId": "m49:368",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "OMN",
+      "sourceName": "Oman",
+      "isoA3": "OMN",
+      "isoA3Eh": "OMN",
+      "geographyId": "m49:512",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "VUT",
+      "sourceName": "Vanuatu",
+      "isoA3": "VUT",
+      "isoA3Eh": "VUT",
+      "geographyId": "m49:548",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KHM",
+      "sourceName": "Cambodia",
+      "isoA3": "KHM",
+      "isoA3Eh": "KHM",
+      "geographyId": "m49:116",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "THA",
+      "sourceName": "Thailand",
+      "isoA3": "THA",
+      "isoA3Eh": "THA",
+      "geographyId": "m49:764",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LAO",
+      "sourceName": "Laos",
+      "isoA3": "LAO",
+      "isoA3Eh": "LAO",
+      "geographyId": "m49:418",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MMR",
+      "sourceName": "Myanmar",
+      "isoA3": "MMR",
+      "isoA3Eh": "MMR",
+      "geographyId": "m49:104",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "VNM",
+      "sourceName": "Vietnam",
+      "isoA3": "VNM",
+      "isoA3Eh": "VNM",
+      "geographyId": "m49:704",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PRK",
+      "sourceName": "North Korea",
+      "isoA3": "PRK",
+      "isoA3Eh": "PRK",
+      "geographyId": "m49:408",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KOR",
+      "sourceName": "South Korea",
+      "isoA3": "KOR",
+      "isoA3Eh": "KOR",
+      "geographyId": "m49:410",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MNG",
+      "sourceName": "Mongolia",
+      "isoA3": "MNG",
+      "isoA3Eh": "MNG",
+      "geographyId": "m49:496",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "IND",
+      "sourceName": "India",
+      "isoA3": "IND",
+      "isoA3Eh": "IND",
+      "geographyId": "m49:356",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BGD",
+      "sourceName": "Bangladesh",
+      "isoA3": "BGD",
+      "isoA3Eh": "BGD",
+      "geographyId": "m49:050",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BTN",
+      "sourceName": "Bhutan",
+      "isoA3": "BTN",
+      "isoA3Eh": "BTN",
+      "geographyId": "m49:064",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NPL",
+      "sourceName": "Nepal",
+      "isoA3": "NPL",
+      "isoA3Eh": "NPL",
+      "geographyId": "m49:524",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PAK",
+      "sourceName": "Pakistan",
+      "isoA3": "PAK",
+      "isoA3Eh": "PAK",
+      "geographyId": "m49:586",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "AFG",
+      "sourceName": "Afghanistan",
+      "isoA3": "AFG",
+      "isoA3Eh": "AFG",
+      "geographyId": "m49:004",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TJK",
+      "sourceName": "Tajikistan",
+      "isoA3": "TJK",
+      "isoA3Eh": "TJK",
+      "geographyId": "m49:762",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KGZ",
+      "sourceName": "Kyrgyzstan",
+      "isoA3": "KGZ",
+      "isoA3Eh": "KGZ",
+      "geographyId": "m49:417",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TKM",
+      "sourceName": "Turkmenistan",
+      "isoA3": "TKM",
+      "isoA3Eh": "TKM",
+      "geographyId": "m49:795",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "IRN",
+      "sourceName": "Iran",
+      "isoA3": "IRN",
+      "isoA3Eh": "IRN",
+      "geographyId": "m49:364",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SYR",
+      "sourceName": "Syria",
+      "isoA3": "SYR",
+      "isoA3Eh": "SYR",
+      "geographyId": "m49:760",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ARM",
+      "sourceName": "Armenia",
+      "isoA3": "ARM",
+      "isoA3Eh": "ARM",
+      "geographyId": "m49:051",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NOR",
+      "sourceName": "Norway",
+      "isoA3": "-99",
+      "isoA3Eh": "NOR",
+      "geographyId": "m49:578",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "SWE",
+      "sourceName": "Sweden",
+      "isoA3": "SWE",
+      "isoA3Eh": "SWE",
+      "geographyId": "m49:752",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BLR",
+      "sourceName": "Belarus",
+      "isoA3": "BLR",
+      "isoA3Eh": "BLR",
+      "geographyId": "m49:112",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "UKR",
+      "sourceName": "Ukraine",
+      "isoA3": "UKR",
+      "isoA3Eh": "UKR",
+      "geographyId": "m49:804",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "POL",
+      "sourceName": "Poland",
+      "isoA3": "POL",
+      "isoA3Eh": "POL",
+      "geographyId": "m49:616",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "AUT",
+      "sourceName": "Austria",
+      "isoA3": "AUT",
+      "isoA3Eh": "AUT",
+      "geographyId": "m49:040",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "HUN",
+      "sourceName": "Hungary",
+      "isoA3": "HUN",
+      "isoA3Eh": "HUN",
+      "geographyId": "m49:348",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MDA",
+      "sourceName": "Moldova",
+      "isoA3": "MDA",
+      "isoA3Eh": "MDA",
+      "geographyId": "m49:498",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ROU",
+      "sourceName": "Romania",
+      "isoA3": "ROU",
+      "isoA3Eh": "ROU",
+      "geographyId": "m49:642",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LTU",
+      "sourceName": "Lithuania",
+      "isoA3": "LTU",
+      "isoA3Eh": "LTU",
+      "geographyId": "m49:440",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LVA",
+      "sourceName": "Latvia",
+      "isoA3": "LVA",
+      "isoA3Eh": "LVA",
+      "geographyId": "m49:428",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "EST",
+      "sourceName": "Estonia",
+      "isoA3": "EST",
+      "isoA3Eh": "EST",
+      "geographyId": "m49:233",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "DEU",
+      "sourceName": "Germany",
+      "isoA3": "DEU",
+      "isoA3Eh": "DEU",
+      "geographyId": "m49:276",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BGR",
+      "sourceName": "Bulgaria",
+      "isoA3": "BGR",
+      "isoA3Eh": "BGR",
+      "geographyId": "m49:100",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GRC",
+      "sourceName": "Greece",
+      "isoA3": "GRC",
+      "isoA3Eh": "GRC",
+      "geographyId": "m49:300",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TUR",
+      "sourceName": "Turkey",
+      "isoA3": "TUR",
+      "isoA3Eh": "TUR",
+      "geographyId": "m49:792",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ALB",
+      "sourceName": "Albania",
+      "isoA3": "ALB",
+      "isoA3Eh": "ALB",
+      "geographyId": "m49:008",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "HRV",
+      "sourceName": "Croatia",
+      "isoA3": "HRV",
+      "isoA3Eh": "HRV",
+      "geographyId": "m49:191",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CHE",
+      "sourceName": "Switzerland",
+      "isoA3": "CHE",
+      "isoA3Eh": "CHE",
+      "geographyId": "m49:756",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LUX",
+      "sourceName": "Luxembourg",
+      "isoA3": "LUX",
+      "isoA3Eh": "LUX",
+      "geographyId": "m49:442",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BEL",
+      "sourceName": "Belgium",
+      "isoA3": "BEL",
+      "isoA3Eh": "BEL",
+      "geographyId": "m49:056",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NLD",
+      "sourceName": "Netherlands",
+      "isoA3": "NLD",
+      "isoA3Eh": "NLD",
+      "geographyId": "m49:528",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PRT",
+      "sourceName": "Portugal",
+      "isoA3": "PRT",
+      "isoA3Eh": "PRT",
+      "geographyId": "m49:620",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ESP",
+      "sourceName": "Spain",
+      "isoA3": "ESP",
+      "isoA3Eh": "ESP",
+      "geographyId": "m49:724",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "IRL",
+      "sourceName": "Ireland",
+      "isoA3": "IRL",
+      "isoA3Eh": "IRL",
+      "geographyId": "m49:372",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NCL",
+      "sourceName": "New Caledonia",
+      "isoA3": "NCL",
+      "isoA3Eh": "NCL",
+      "geographyId": "m49:540",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SLB",
+      "sourceName": "Solomon Is.",
+      "isoA3": "SLB",
+      "isoA3Eh": "SLB",
+      "geographyId": "m49:090",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PNB",
+      "sourceName": "Bougainville",
+      "isoA3": "-99",
+      "isoA3Eh": "PNG",
+      "geographyId": "m49:598",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "NZL",
+      "sourceName": "New Zealand",
+      "isoA3": "NZL",
+      "isoA3Eh": "NZL",
+      "geographyId": "m49:554",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "AUS",
+      "sourceName": "Australia",
+      "isoA3": "AUS",
+      "isoA3Eh": "AUS",
+      "geographyId": "m49:036",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LKA",
+      "sourceName": "Sri Lanka",
+      "isoA3": "LKA",
+      "isoA3Eh": "LKA",
+      "geographyId": "m49:144",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CHN",
+      "sourceName": "China",
+      "isoA3": "CHN",
+      "isoA3Eh": "CHN",
+      "geographyId": "m49:156",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "TWN",
+      "sourceName": "Taiwan",
+      "isoA3": "TWN",
+      "isoA3Eh": "TWN",
+      "geographyId": "provider:TWN",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ITA",
+      "sourceName": "Italy",
+      "isoA3": "ITA",
+      "isoA3Eh": "ITA",
+      "geographyId": "m49:380",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "FXX",
+      "sourceName": "France",
+      "isoA3": "FRA",
+      "isoA3Eh": "FRA",
+      "geographyId": "m49:250",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "DNK",
+      "sourceName": "Denmark",
+      "isoA3": "DNK",
+      "isoA3Eh": "DNK",
+      "geographyId": "m49:208",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "NIR",
+      "sourceName": "N. Ireland",
+      "isoA3": "-99",
+      "isoA3Eh": "GBR",
+      "geographyId": "m49:826",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "ENG",
+      "sourceName": "England",
+      "isoA3": "-99",
+      "isoA3Eh": "GBR",
+      "geographyId": "m49:826",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "ISL",
+      "sourceName": "Iceland",
+      "isoA3": "ISL",
+      "isoA3Eh": "ISL",
+      "geographyId": "m49:352",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "AZE",
+      "sourceName": "Azerbaijan",
+      "isoA3": "AZE",
+      "isoA3Eh": "AZE",
+      "geographyId": "m49:031",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "GEO",
+      "sourceName": "Georgia",
+      "isoA3": "GEO",
+      "isoA3Eh": "GEO",
+      "geographyId": "m49:268",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PHL",
+      "sourceName": "Philippines",
+      "isoA3": "PHL",
+      "isoA3Eh": "PHL",
+      "geographyId": "m49:608",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MYS",
+      "sourceName": "Malaysia",
+      "isoA3": "MYS",
+      "isoA3Eh": "MYS",
+      "geographyId": "m49:458",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BRN",
+      "sourceName": "Brunei",
+      "isoA3": "BRN",
+      "isoA3Eh": "BRN",
+      "geographyId": "m49:096",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SVN",
+      "sourceName": "Slovenia",
+      "isoA3": "SVN",
+      "isoA3Eh": "SVN",
+      "geographyId": "m49:705",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "FIN",
+      "sourceName": "Finland",
+      "isoA3": "FIN",
+      "isoA3Eh": "FIN",
+      "geographyId": "m49:246",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SVK",
+      "sourceName": "Slovakia",
+      "isoA3": "SVK",
+      "isoA3Eh": "SVK",
+      "geographyId": "m49:703",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CZE",
+      "sourceName": "Czechia",
+      "isoA3": "CZE",
+      "isoA3Eh": "CZE",
+      "geographyId": "m49:203",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ERI",
+      "sourceName": "Eritrea",
+      "isoA3": "ERI",
+      "isoA3Eh": "ERI",
+      "geographyId": "m49:232",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "JPN",
+      "sourceName": "Japan",
+      "isoA3": "JPN",
+      "isoA3Eh": "JPN",
+      "geographyId": "m49:392",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "PRY",
+      "sourceName": "Paraguay",
+      "isoA3": "PRY",
+      "isoA3Eh": "PRY",
+      "geographyId": "m49:600",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "YEM",
+      "sourceName": "Yemen",
+      "isoA3": "YEM",
+      "isoA3Eh": "YEM",
+      "geographyId": "m49:887",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SAU",
+      "sourceName": "Saudi Arabia",
+      "isoA3": "SAU",
+      "isoA3Eh": "SAU",
+      "geographyId": "m49:682",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ATA",
+      "sourceName": "Antarctica",
+      "isoA3": "ATA",
+      "isoA3Eh": "ATA",
+      "geographyId": "m49:010",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "CYN",
+      "sourceName": "N. Cyprus",
+      "isoA3": "-99",
+      "isoA3Eh": "-99",
+      "geographyId": null,
+      "method": "No own catalog identity; outline only"
+    },
+    {
+      "sourceUnit": "CYP",
+      "sourceName": "Cyprus",
+      "isoA3": "CYP",
+      "isoA3Eh": "CYP",
+      "geographyId": "m49:196",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MAR",
+      "sourceName": "Morocco",
+      "isoA3": "MAR",
+      "isoA3Eh": "MAR",
+      "geographyId": "m49:504",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "EGY",
+      "sourceName": "Egypt",
+      "isoA3": "EGY",
+      "isoA3Eh": "EGY",
+      "geographyId": "m49:818",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "LBY",
+      "sourceName": "Libya",
+      "isoA3": "LBY",
+      "isoA3Eh": "LBY",
+      "geographyId": "m49:434",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "ETH",
+      "sourceName": "Ethiopia",
+      "isoA3": "ETH",
+      "isoA3Eh": "ETH",
+      "geographyId": "m49:231",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "DJI",
+      "sourceName": "Djibouti",
+      "isoA3": "DJI",
+      "isoA3Eh": "DJI",
+      "geographyId": "m49:262",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SOL",
+      "sourceName": "Somaliland",
+      "isoA3": "-99",
+      "isoA3Eh": "-99",
+      "geographyId": null,
+      "method": "No own catalog identity; outline only"
+    },
+    {
+      "sourceUnit": "UGA",
+      "sourceName": "Uganda",
+      "isoA3": "UGA",
+      "isoA3Eh": "UGA",
+      "geographyId": "m49:800",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "RWA",
+      "sourceName": "Rwanda",
+      "isoA3": "RWA",
+      "isoA3Eh": "RWA",
+      "geographyId": "m49:646",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "BIH",
+      "sourceName": "Bosnia and Herz.",
+      "isoA3": "BIH",
+      "isoA3Eh": "BIH",
+      "geographyId": "m49:070",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "MKD",
+      "sourceName": "North Macedonia",
+      "isoA3": "MKD",
+      "isoA3Eh": "MKD",
+      "geographyId": "m49:807",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "SRS",
+      "sourceName": "Serbia",
+      "isoA3": "-99",
+      "isoA3Eh": "SRB",
+      "geographyId": "m49:688",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "MNE",
+      "sourceName": "Montenegro",
+      "isoA3": "MNE",
+      "isoA3Eh": "MNE",
+      "geographyId": "m49:499",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "KOS",
+      "sourceName": "Kosovo",
+      "isoA3": "-99",
+      "isoA3Eh": "-99",
+      "geographyId": "provider:XKX",
+      "method": "explicit KOS -> provider:XKX"
+    },
+    {
+      "sourceUnit": "TTO",
+      "sourceName": "Trinidad and Tobago",
+      "isoA3": "TTO",
+      "isoA3Eh": "TTO",
+      "geographyId": "m49:780",
+      "method": "ISO_A3"
+    },
+    {
+      "sourceUnit": "WLS",
+      "sourceName": "Wales",
+      "isoA3": "-99",
+      "isoA3Eh": "GBR",
+      "geographyId": "m49:826",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "SCT",
+      "sourceName": "Scotland",
+      "isoA3": "-99",
+      "isoA3Eh": "GBR",
+      "geographyId": "m49:826",
+      "method": "ISO_A3_EH"
+    },
+    {
+      "sourceUnit": "SDS",
+      "sourceName": "S. Sudan",
+      "isoA3": "SSD",
+      "isoA3Eh": "SSD",
+      "geographyId": "m49:728",
+      "method": "ISO_A3"
+    }
+  ],
+  "listOnlyAreas": [
+    {
+      "id": "bis:debt_g20",
+      "label": "G20 · BIS-Schuldengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:debt_advanced",
+      "label": "Fortgeschrittene Volkswirtschaften · BIS-Schuldengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:debt_emerging",
+      "label": "Schwellenländer · BIS-Schuldengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:debt_reporting",
+      "label": "Alle berichtenden Volkswirtschaften · BIS-Schuldengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:351",
+      "label": "China · gesamtes FAO-Quellengebiet · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5000",
+      "label": "Welt · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5100",
+      "label": "Afrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5101",
+      "label": "Ostafrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5102",
+      "label": "Zentralafrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5103",
+      "label": "Nordafrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5104",
+      "label": "Südliches Afrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5105",
+      "label": "Westafrika · FAO",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5200",
+      "label": "Amerika · FAO",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5203",
+      "label": "Nordamerika · FAO",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5204",
+      "label": "Zentralamerika · FAO",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5206",
+      "label": "Karibik · FAO",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5207",
+      "label": "Südamerika · FAO",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5300",
+      "label": "Asien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5301",
+      "label": "Zentralasien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5302",
+      "label": "Ostasien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5303",
+      "label": "Südasien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5304",
+      "label": "Südostasien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5305",
+      "label": "Westasien · FAO",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5400",
+      "label": "Europa · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5401",
+      "label": "Osteuropa · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5402",
+      "label": "Nordeuropa · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5403",
+      "label": "Südeuropa · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5404",
+      "label": "Westeuropa · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5500",
+      "label": "Ozeanien · FAO",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5501",
+      "label": "Australien und Neuseeland · FAO",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5502",
+      "label": "Melanesien · FAO",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5503",
+      "label": "Mikronesien · FAO",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5504",
+      "label": "Polynesien · FAO",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5707",
+      "label": "Europäische Union · 27 Länder · FAO",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5801",
+      "label": "Am wenigsten entwickelte Länder · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5802",
+      "label": "Binnenentwicklungsländer · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5803",
+      "label": "Kleine Inselentwicklungsländer · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5815",
+      "label": "Einkommensarme Länder mit Nahrungsmitteldefizit · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "fao:5817",
+      "label": "Entwicklungsländer mit Netto-Nahrungsmittelimporten · FAO",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:australia_and_new_zealand",
+      "label": "Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:central_asia",
+      "label": "Zentralasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:central_and_southern_asia",
+      "label": "Zentral- und Südasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:eastern_asia",
+      "label": "Ostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:eastern_and_south_eastern_asia",
+      "label": "Ost- und Südostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:europe",
+      "label": "Europa · UIS-SDG-Region",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:europe_and_northern_america",
+      "label": "Europa und Nordamerika · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:europe_northern_america_australia_and_new_zealand",
+      "label": "Europa, Nordamerika, Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:landlocked_developing_countries",
+      "label": "Binnenentwicklungsländer · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:latin_america_and_the_caribbean",
+      "label": "Lateinamerika und Karibik · UIS-SDG-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:least_developed_countries",
+      "label": "Am wenigsten entwickelte Länder · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:northern_africa",
+      "label": "Nordafrika · UIS-SDG-Region",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:northern_africa_and_western_asia",
+      "label": "Nordafrika und Westasien · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:northern_america",
+      "label": "Nordamerika · UIS-SDG-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:oceania",
+      "label": "Ozeanien · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:oceania_excluding_australia_and_new_zealand",
+      "label": "Ozeanien ohne Australien und Neuseeland · UIS-SDG-Region",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:small_island_developing_states",
+      "label": "Kleine Inselentwicklungsländer · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:south_eastern_asia",
+      "label": "Südostasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:southern_asia",
+      "label": "Südasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:sub_saharan_africa",
+      "label": "Afrika südlich der Sahara · UIS-SDG-Region",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:western_asia",
+      "label": "Westasien · UIS-SDG-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "uis:world",
+      "label": "Welt · UIS-SDG-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "oecd:housing_members",
+      "label": "OECD-Länder · Immobiliengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "oecd:housing_euro_area",
+      "label": "Euroraum · OECD-Immobiliengruppe",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "oecd:housing_euro_area_17",
+      "label": "Euroraum mit 17 Ländern · OECD-Gruppe",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:property_world",
+      "label": "Welt · BIS-Immobiliengruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:advanced_economies",
+      "label": "Fortgeschrittene Volkswirtschaften · BIS-Gruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:emerging_economies",
+      "label": "Schwellenländer · BIS-Gruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "bis:euro_area",
+      "label": "Euroraum · BIS-Region",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:africa",
+      "label": "Afrika · IRENA-Region",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:asia",
+      "label": "Asien · IRENA-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:central_america_caribbean",
+      "label": "Zentralamerika und Karibik · IRENA-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:eurasia",
+      "label": "Eurasien · IRENA-Region",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:europe",
+      "label": "Europa · IRENA-Region",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:middle_east",
+      "label": "Naher Osten · IRENA-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:north_america",
+      "label": "Nordamerika · IRENA-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:oceania",
+      "label": "Ozeanien · IRENA-Region",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "irena:south_america",
+      "label": "Südamerika · IRENA-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:africa",
+      "label": "Afrika · Ember-Region",
+      "regionId": "Africa",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:asia",
+      "label": "Asien · Ember-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:europe",
+      "label": "Europa · Ember-Region",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:latin_america_caribbean",
+      "label": "Lateinamerika und Karibik · Ember-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:middle_east",
+      "label": "Naher Osten · Ember-Region",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:north_america",
+      "label": "Nordamerika · Ember-Region",
+      "regionId": "Americas",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:oceania",
+      "label": "Ozeanien · Ember-Region",
+      "regionId": "Oceania",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:asean",
+      "label": "ASEAN · Ember-Gruppe",
+      "regionId": "Asia",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:eu",
+      "label": "Europäische Union · Ember-Gruppe",
+      "regionId": "Europe",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:g20",
+      "label": "G20 · Ember-Gruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:g7",
+      "label": "G7 · Ember-Gruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "ember:oecd",
+      "label": "OECD · Ember-Gruppe",
+      "regionId": "world",
+      "iso3": "",
+      "kind": "aggregate"
+    },
+    {
+      "id": "world",
+      "label": "Welt",
+      "iso3": "WLD",
+      "regionId": "world",
+      "kind": "aggregate"
+    },
+    {
+      "id": "un-wpp:903",
+      "label": "Afrika · UN-Region",
+      "iso3": "",
+      "regionId": "Africa",
+      "kind": "aggregate"
+    },
+    {
+      "id": "un-wpp:935",
+      "label": "Asien · UN-Region",
+      "iso3": "",
+      "regionId": "Asia",
+      "kind": "aggregate"
+    },
+    {
+      "id": "un-wpp:908",
+      "label": "Europa · UN-Region",
+      "iso3": "",
+      "regionId": "Europe",
+      "kind": "aggregate"
+    },
+    {
+      "id": "un-wpp:5505",
+      "label": "Amerika · UN-Region",
+      "iso3": "",
+      "regionId": "Americas",
+      "kind": "aggregate"
+    },
+    {
+      "id": "un-wpp:909",
+      "label": "Ozeanien · UN-Region",
+      "iso3": "",
+      "regionId": "Oceania",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:east_asia",
+      "label": "Ostasien · Maddison-Region",
+      "iso3": "",
+      "regionId": "Asia",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:eastern_europe",
+      "label": "Osteuropa · Maddison-Region",
+      "iso3": "",
+      "regionId": "Europe",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:latin_america",
+      "label": "Lateinamerika · Maddison-Region",
+      "iso3": "",
+      "regionId": "Americas",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:mena",
+      "label": "Nahost und Nordafrika · Maddison-Region",
+      "iso3": "",
+      "regionId": "world",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:south_southeast_asia",
+      "label": "Süd- und Südostasien · Maddison-Region",
+      "iso3": "",
+      "regionId": "Asia",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:sub_saharan_africa",
+      "label": "Afrika südlich der Sahara · Maddison-Region",
+      "iso3": "",
+      "regionId": "Africa",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:western_europe",
+      "label": "Westeuropa · Maddison-Region",
+      "iso3": "",
+      "regionId": "Europe",
+      "kind": "aggregate"
+    },
+    {
+      "id": "maddison:western_offshoots",
+      "label": "USA, Kanada, Australien und Neuseeland · Maddison-Region",
+      "iso3": "",
+      "regionId": "world",
+      "kind": "aggregate"
+    },
+    {
+      "id": "m49:086",
+      "label": "Britisches Territorium im Indischen Ozean",
+      "iso3": "IOT",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:174",
+      "label": "Komoren",
+      "iso3": "COM",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:480",
+      "label": "Mauritius",
+      "iso3": "MUS",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:175",
+      "label": "Mayotte",
+      "iso3": "MYT",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:638",
+      "label": "Réunion",
+      "iso3": "REU",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:690",
+      "label": "Seychellen",
+      "iso3": "SYC",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:678",
+      "label": "São Tomé und Príncipe",
+      "iso3": "STP",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:132",
+      "label": "Cabo Verde",
+      "iso3": "CPV",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:654",
+      "label": "St. Helena",
+      "iso3": "SHN",
+      "regionId": "Africa",
+      "kind": "area"
+    },
+    {
+      "id": "m49:660",
+      "label": "Anguilla",
+      "iso3": "AIA",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:028",
+      "label": "Antigua und Barbuda",
+      "iso3": "ATG",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:533",
+      "label": "Aruba",
+      "iso3": "ABW",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:052",
+      "label": "Barbados",
+      "iso3": "BRB",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:535",
+      "label": "Karibische Niederlande",
+      "iso3": "BES",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:092",
+      "label": "Britische Jungferninseln",
+      "iso3": "VGB",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:136",
+      "label": "Kaimaninseln",
+      "iso3": "CYM",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:531",
+      "label": "Curaçao",
+      "iso3": "CUW",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:212",
+      "label": "Dominica",
+      "iso3": "DMA",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:308",
+      "label": "Grenada",
+      "iso3": "GRD",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:312",
+      "label": "Guadeloupe",
+      "iso3": "GLP",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:474",
+      "label": "Martinique",
+      "iso3": "MTQ",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:500",
+      "label": "Montserrat",
+      "iso3": "MSR",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:652",
+      "label": "St. Barthélemy",
+      "iso3": "BLM",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:659",
+      "label": "St. Kitts und Nevis",
+      "iso3": "KNA",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:662",
+      "label": "St. Lucia",
+      "iso3": "LCA",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:663",
+      "label": "St. Martin",
+      "iso3": "MAF",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:670",
+      "label": "St. Vincent und die Grenadinen",
+      "iso3": "VCT",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:534",
+      "label": "Sint Maarten",
+      "iso3": "SXM",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:796",
+      "label": "Turks- und Caicosinseln",
+      "iso3": "TCA",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:850",
+      "label": "Amerikanische Jungferninseln",
+      "iso3": "VIR",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:074",
+      "label": "Bouvetinsel",
+      "iso3": "BVT",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:239",
+      "label": "Südgeorgien und die Südlichen Sandwichinseln",
+      "iso3": "SGS",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:060",
+      "label": "Bermuda",
+      "iso3": "BMU",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:666",
+      "label": "St. Pierre und Miquelon",
+      "iso3": "SPM",
+      "regionId": "Americas",
+      "kind": "area"
+    },
+    {
+      "id": "m49:344",
+      "label": "Sonderverwaltungsregion Hongkong",
+      "iso3": "HKG",
+      "regionId": "Asia",
+      "kind": "area"
+    },
+    {
+      "id": "m49:446",
+      "label": "Sonderverwaltungsregion Macau",
+      "iso3": "MAC",
+      "regionId": "Asia",
+      "kind": "area"
+    },
+    {
+      "id": "m49:702",
+      "label": "Singapur",
+      "iso3": "SGP",
+      "regionId": "Asia",
+      "kind": "area"
+    },
+    {
+      "id": "m49:462",
+      "label": "Malediven",
+      "iso3": "MDV",
+      "regionId": "Asia",
+      "kind": "area"
+    },
+    {
+      "id": "m49:048",
+      "label": "Bahrain",
+      "iso3": "BHR",
+      "regionId": "Asia",
+      "kind": "area"
+    },
+    {
+      "id": "m49:248",
+      "label": "Ålandinseln",
+      "iso3": "ALA",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:234",
+      "label": "Färöer",
+      "iso3": "FRO",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:831",
+      "label": "Guernsey",
+      "iso3": "GGY",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:833",
+      "label": "Isle of Man",
+      "iso3": "IMN",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:832",
+      "label": "Jersey",
+      "iso3": "JEY",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:020",
+      "label": "Andorra",
+      "iso3": "AND",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:292",
+      "label": "Gibraltar",
+      "iso3": "GIB",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:336",
+      "label": "Vatikanstadt",
+      "iso3": "VAT",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:470",
+      "label": "Malta",
+      "iso3": "MLT",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:674",
+      "label": "San Marino",
+      "iso3": "SMR",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:438",
+      "label": "Liechtenstein",
+      "iso3": "LIE",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:492",
+      "label": "Monaco",
+      "iso3": "MCO",
+      "regionId": "Europe",
+      "kind": "area"
+    },
+    {
+      "id": "m49:162",
+      "label": "Weihnachtsinsel",
+      "iso3": "CXR",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:166",
+      "label": "Kokosinseln",
+      "iso3": "CCK",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:334",
+      "label": "Heard und McDonaldinseln",
+      "iso3": "HMD",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:574",
+      "label": "Norfolkinsel",
+      "iso3": "NFK",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:316",
+      "label": "Guam",
+      "iso3": "GUM",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:296",
+      "label": "Kiribati",
+      "iso3": "KIR",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:584",
+      "label": "Marshallinseln",
+      "iso3": "MHL",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:583",
+      "label": "Mikronesien",
+      "iso3": "FSM",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:520",
+      "label": "Nauru",
+      "iso3": "NRU",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:580",
+      "label": "Nördliche Marianen",
+      "iso3": "MNP",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:585",
+      "label": "Palau",
+      "iso3": "PLW",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:581",
+      "label": "Amerikanische Überseeinseln",
+      "iso3": "UMI",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:016",
+      "label": "Amerikanisch-Samoa",
+      "iso3": "ASM",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:184",
+      "label": "Cookinseln",
+      "iso3": "COK",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:258",
+      "label": "Französisch-Polynesien",
+      "iso3": "PYF",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:570",
+      "label": "Niue",
+      "iso3": "NIU",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:612",
+      "label": "Pitcairninseln",
+      "iso3": "PCN",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:882",
+      "label": "Samoa",
+      "iso3": "WSM",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:772",
+      "label": "Tokelau",
+      "iso3": "TKL",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:776",
+      "label": "Tonga",
+      "iso3": "TON",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:798",
+      "label": "Tuvalu",
+      "iso3": "TUV",
+      "regionId": "Oceania",
+      "kind": "area"
+    },
+    {
+      "id": "m49:876",
+      "label": "Wallis und Futuna",
+      "iso3": "WLF",
+      "regionId": "Oceania",
+      "kind": "area"
+    }
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "checkedAt": "2026-09-11T03:38:46.053Z",
+  "status": "passed",
+  "runtime": "Native Tauri / isolated com.personal-macro.atlas-public-20260911 / normal UI only",
+  "screenshots": [
+    "output/atlas-wits-comparison.png",
+    "output/atlas-wits-minwidth.png"
+  ],
+  "checks": [
+    {
+      "label": "India full mirror history, numbers hidden",
+      "geo": "m49:356",
+      "numbers": false,
+      "points": 35,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India optional original values",
+      "geo": "m49:356",
+      "numbers": true,
+      "points": 35,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "2022 remains an original, explicitly separated incomplete edge",
+      "passed": true
+    },
+    {
+      "label": "India and South Africa share the original 0–1 scale",
+      "passed": true
+    },
+    {
+      "label": "Published WITS world series without a constructed average",
+      "geo": "world",
+      "numbers": true,
+      "points": 35,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Germany starts in 1991, no DDR splicing",
+      "geo": "m49:276",
+      "numbers": true,
+      "points": 32,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "1024 px native viewport no horizontal overflow",
+      "client": 1015,
+      "scroll": 1015,
+      "passed": true
+    },
+    {
+      "label": "Anguilla has no invented zero index in 1988",
+      "geo": "m49:660",
+      "numbers": true,
+      "points": 34,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Single-product missing value has a visible source explanation",
+      "passed": true
+    },
+    {
+      "label": "WITS SUD uses current Sudan from 2012 only",
+      "geo": "m49:729",
+      "numbers": true,
+      "points": 11,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Saved archive date and mirror-source recipe retained",
+      "passed": true
+    },
+    {
+      "label": "Shared-scale comparison caption verified after metadata correction",
+      "passed": true
+    }
+  ]
+}

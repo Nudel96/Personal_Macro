@@ -1,0 +1,167 @@
+[
+  {
+    "sourceId": "imf-gdd-pvd_ls",
+    "sourceFile": "imf-PVD_LS.json",
+    "sha256": "3e9e40a979dc576ec904992cb4c7e6cc61002c20f415b79af8c6cbde940b9c53",
+    "rows": 8385,
+    "numeric": 8385,
+    "profiles": 160,
+    "areasWithValues": 160,
+    "africanCountriesWithValues": 45,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "imf-gdd-hh_ls",
+    "sourceFile": "imf-HH_LS.json",
+    "sha256": "d372b0c1b78e68cb9c06a2fb19a733f8a96598f1563f696ec0ef53b95eb4dbf8",
+    "rows": 2684,
+    "numeric": 2684,
+    "profiles": 86,
+    "areasWithValues": 86,
+    "africanCountriesWithValues": 10,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "imf-gdd-nfc_ls",
+    "sourceFile": "imf-NFC_LS.json",
+    "sha256": "e1c838d2563a93164079b00da1f52fb478cdb4b1d102e8e316f23fcb2a0d36d6",
+    "rows": 2671,
+    "numeric": 2671,
+    "profiles": 86,
+    "areasWithValues": 86,
+    "africanCountriesWithValues": 10,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "imf-gdd-privatedebt_all",
+    "sourceFile": "imf-Privatedebt_all.json",
+    "sha256": "20a9f8a9137f356091866d8b0d13885148488c2086b1b09a77bc7b7e5dc34306",
+    "rows": 1197,
+    "numeric": 1197,
+    "profiles": 44,
+    "areasWithValues": 44,
+    "africanCountriesWithValues": 1,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "imf-gdd-hh_all",
+    "sourceFile": "imf-HH_ALL.json",
+    "sha256": "0e1ee25422f88de9c978a673cbea0a0e2e3e6c577f8b873fa34deec99fd1514d",
+    "rows": 1197,
+    "numeric": 1197,
+    "profiles": 44,
+    "areasWithValues": 44,
+    "africanCountriesWithValues": 1,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "imf-gdd-nfc_all",
+    "sourceFile": "imf-NFC_ALL.json",
+    "sha256": "a470dfd9690c07c69ac55f1a5e603b7eb7f84540688c1c3624f4acdf17fb44b0",
+    "rows": 1197,
+    "numeric": 1197,
+    "profiles": 44,
+    "areasWithValues": 44,
+    "africanCountriesWithValues": 1,
+    "firstPeriod": "1950",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "ilo-real-wage-growth",
+    "sourceFile": "ilo-real-wages.xlsx",
+    "sha256": "a91c97531293bebd1233b5d958f10ce17b366391f9ca6a06d907762eb7f68eb9",
+    "rows": 157,
+    "numeric": 2786,
+    "profiles": 157,
+    "areasWithValues": 154,
+    "africanCountriesWithValues": 40,
+    "firstPeriod": "2000",
+    "lastPeriod": "2023"
+  },
+  {
+    "sourceId": "ilo-weekly-hours",
+    "sourceFile": "ilo-weekly-hours.csv",
+    "sha256": "651213ef87cba9526963ac212c18ebdef037b5080191162b99dc76b64df14d1c",
+    "rows": 3903,
+    "numeric": 2163,
+    "profiles": 160,
+    "areasWithValues": 160,
+    "africanCountriesWithValues": 42,
+    "firstPeriod": "1976",
+    "lastPeriod": "2024"
+  },
+  {
+    "sourceId": "worldbank-icp-housing",
+    "sourceFile": "icp-housing.json",
+    "sha256": "351910245f8531d809514802b7d8cd54da379907857be8b8cab3bff5bb679419",
+    "rows": 1656,
+    "numeric": 1492,
+    "profiles": 828,
+    "areasWithValues": 193,
+    "africanCountriesWithValues": 52,
+    "firstPeriod": "2017",
+    "lastPeriod": "2021"
+  },
+  {
+    "sourceId": "wto-merchandise",
+    "sourceFile": "wto-values.zip",
+    "sha256": "e5076201fdadb0db77caac42e674fdad03e9e86db74aae2ab9afa70082e71375",
+    "rows": 239782,
+    "numeric": 237978,
+    "profiles": 7566,
+    "areasWithValues": 283,
+    "africanCountriesWithValues": 56,
+    "firstPeriod": "1948",
+    "lastPeriod": "2025",
+    "rawSha256": "c56c96d0423ea6758cbd2a7e81e96f7d773d76ba9ba8c0a0ff7b84e75dee2c42",
+    "reviewedAliases": {
+      "158": {
+        "sourceIso3": "CHT",
+        "sourceLabel": "Chinese Taipei",
+        "iso3": "TWN",
+        "geographyId": "provider:TWN"
+      },
+      "642": {
+        "sourceIso3": "ROM",
+        "sourceLabel": "Romania",
+        "iso3": "ROU",
+        "geographyId": "m49:642"
+      },
+      "254": {
+        "sourceIso3": "",
+        "sourceLabel": "French Guiana",
+        "iso3": "GUF",
+        "geographyId": "m49:254"
+      },
+      "312": {
+        "sourceIso3": "",
+        "sourceLabel": "Guadeloupe",
+        "iso3": "GLP",
+        "geographyId": "m49:312"
+      },
+      "638": {
+        "sourceIso3": "",
+        "sourceLabel": "Reunion",
+        "iso3": "REU",
+        "geographyId": "m49:638"
+      },
+      "474": {
+        "sourceIso3": "",
+        "sourceLabel": "Martinique",
+        "iso3": "MTQ",
+        "geographyId": "m49:474"
+      },
+      "535": {
+        "sourceIso3": "",
+        "sourceLabel": "Bonaire, Sint Eustatius and Saba",
+        "iso3": "BES",
+        "geographyId": "m49:535"
+      }
+    }
+  }
+]

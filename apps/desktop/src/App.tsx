@@ -61,6 +61,18 @@ const RegimeInsightsPage = lazy(() =>
     default: module.RegimeInsightsPage,
   })),
 );
+const WorldAtlasPage = lazy(() =>
+  import("./features/world-atlas/world-atlas-page").then((module) => ({
+    default: module.WorldAtlasPage,
+  })),
+);
+const GovernmentBondsPage = lazy(() =>
+  import("./features/government-bonds/government-bonds-page").then(
+    (module) => ({
+      default: module.GovernmentBondsPage,
+    }),
+  ),
+);
 const EconomicDataPage = lazy(() =>
   import("./features/economic-data/economic-data-page").then((module) => ({
     default: module.EconomicDataPage,
@@ -90,11 +102,6 @@ const CentralBankReportsPage = lazy(() =>
   import("./features/central-bank-reports/central-bank-reports-page").then(
     (module) => ({ default: module.CentralBankReportsPage }),
   ),
-);
-const PutCallRatioPage = lazy(() =>
-  import("./features/put-call-ratio/put-call-ratio-page").then((module) => ({
-    default: module.PutCallRatioPage,
-  })),
 );
 const ImportExportPage = lazy(() =>
   import("./features/import-export/import-export-page").then((module) => ({
@@ -132,6 +139,7 @@ export default function App() {
                   <Route path="media" element={<MediaPage />} />
                   <Route path="goals" element={<GoalsPage />} />
                   <Route path="macro" element={<MacroPage />} />
+                  <Route path="world-atlas" element={<WorldAtlasPage />} />
                   <Route
                     path="regime-insights"
                     element={<RegimeInsightsPage />}
@@ -145,10 +153,13 @@ export default function App() {
                   <Route path="seasonality" element={<SeasonalityPage />} />
                   <Route path="rates" element={<RatesPage />} />
                   <Route
+                    path="government-bonds"
+                    element={<GovernmentBondsPage />}
+                  />
+                  <Route
                     path="central-bank-reports"
                     element={<CentralBankReportsPage />}
                   />
-                  <Route path="put-call-ratio" element={<PutCallRatioPage />} />
                   <Route path="import-export" element={<ImportExportPage />} />
                   <Route path="settings" element={<SettingsPage />} />
                   <Route path="*" element={<Navigate to="/" replace />} />

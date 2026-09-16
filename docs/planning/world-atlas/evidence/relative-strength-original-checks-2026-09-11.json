@@ -1,0 +1,686 @@
+{
+  "checkedAt": "2026-09-11T07:53:25.242Z",
+  "status": "passed",
+  "recipe": "atlas-relative-monthly-adjusted-ratio-common-base-v1",
+  "checks": [
+    {
+      "proxyId": "eodhd:SPY.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:SPY.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:SPY.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWG.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWG.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWG.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:INDA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:INDA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2012-02",
+      "last": "2026-08",
+      "points": 175,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:INDA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2012-02",
+      "last": "2026-08",
+      "points": 175,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:MCHI.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:MCHI.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2011-03",
+      "last": "2026-08",
+      "points": 186,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:MCHI.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2011-03",
+      "last": "2026-08",
+      "points": 186,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EZA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EZA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EZA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWJ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWJ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWJ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWC.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWC.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWC.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWU.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWU.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWU.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWZ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWZ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:EWZ.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-03",
+      "last": "2026-08",
+      "points": 222,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLB.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLB.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLB.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLC.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2018-06",
+      "last": "2026-08",
+      "points": 99,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLC.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2018-06",
+      "last": "2026-08",
+      "points": 99,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLC.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "2018-06",
+      "last": "2026-08",
+      "points": 99,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLF.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-10",
+      "last": "2026-08",
+      "points": 119,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLF.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2016-10",
+      "last": "2026-08",
+      "points": 119,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLF.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "2016-10",
+      "last": "2026-08",
+      "points": 119,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLI.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLI.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLI.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLK.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLK.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLK.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLP.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLP.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLP.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLRE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLRE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2015-10",
+      "last": "2026-08",
+      "points": 131,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLRE.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "2015-10",
+      "last": "2026-08",
+      "points": 131,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLU.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLU.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLU.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLV.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLV.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2006-09",
+      "last": "2026-08",
+      "points": 240,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLV.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "1998-12",
+      "last": "2026-08",
+      "points": 333,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLY.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 10,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLY.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": 20,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:XLY.US",
+      "benchmarkId": "eodhd:SPY.US",
+      "horizon": null,
+      "first": "2018-10",
+      "last": "2026-08",
+      "points": 95,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:HYDR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2021-07",
+      "last": "2026-08",
+      "points": 62,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:HYDR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2021-07",
+      "last": "2026-08",
+      "points": 62,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:HYDR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2021-07",
+      "last": "2026-08",
+      "points": 62,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:TAN.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:TAN.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2008-04",
+      "last": "2026-08",
+      "points": 221,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:TAN.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2008-04",
+      "last": "2026-08",
+      "points": 221,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:NLR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2016-09",
+      "last": "2026-08",
+      "points": 120,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:NLR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2014-04",
+      "last": "2026-08",
+      "points": 149,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:NLR.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2014-04",
+      "last": "2026-08",
+      "points": 149,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:URA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 10,
+      "first": "2018-09",
+      "last": "2026-08",
+      "points": 96,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:URA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": 20,
+      "first": "2018-09",
+      "last": "2026-08",
+      "points": 96,
+      "status": "passed"
+    },
+    {
+      "proxyId": "eodhd:URA.US",
+      "benchmarkId": "eodhd:ACWI.US",
+      "horizon": null,
+      "first": "2018-09",
+      "last": "2026-08",
+      "points": 96,
+      "status": "passed"
+    }
+  ],
+  "points": 12692,
+  "maxAbsoluteError": 8.526512829121202e-14,
+  "readOnly": true,
+  "newDownloads": 0
+}

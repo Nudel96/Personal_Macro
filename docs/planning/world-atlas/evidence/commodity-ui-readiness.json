@@ -1,0 +1,25 @@
+{
+  "reviewedAt": "2026-09-09",
+  "environment": "In-app browser; actual native-parsed public World Bank source values, no invented market data",
+  "minimumViewport": { "width": 1024, "height": 800, "documentWidth": 1024 },
+  "checks": {
+    "copperNickelComparison": true,
+    "identicalInternationalChartAfterGermanyToIndiaSelection": true,
+    "sixCardsOnSharedScaleAndCalendar": true,
+    "paginationAndGroupSelection": true,
+    "keyboardOpensOilIndexDetail": true,
+    "realOilIndex2014Preserves98_3AndHollowMarker": true,
+    "nominalBasisRemovesRealOnlyDiscrepancyNotice": true,
+    "numbersOffRemovesNumericValuesFromPointTooltips": true,
+    "ironOreComparableHistoryStarts2009WithExplanation": true,
+    "countryCoverageDoesNotClaimOwnCommodityPrices": true,
+    "copperCoverageSearchOpensExactMetricAndExplicitWorldScope": true,
+    "indiaChinaGasContextPreservesWdiReturn": true,
+    "freshPageHasNoConsoleWarningsOrErrors": true,
+    "nativeSavedPngHasMetricNamesLegendCalendarPriceBasisAndReference": true
+  },
+  "limits": [
+    "Native computer-control surfaces are unavailable; this is browser interaction acceptance combined with separately documented real Tauri command and process-restart checks.",
+    "Development hot reload during edits produced duplicate-root warnings in the temporary harness. The final fresh-page check has no warnings; the harness is excluded from product builds."
+  ]
+}

@@ -1,0 +1,210 @@
+[
+  {
+    "proxyId": "eodhd:ACWI.US",
+    "months": 222,
+    "first": "2008-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:43.285690800+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWA.US",
+    "months": 366,
+    "first": "1996-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:53.967998300+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWC.US",
+    "months": 366,
+    "first": "1996-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:55.822224+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWG.US",
+    "months": 366,
+    "first": "1996-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:45.087321700+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWJ.US",
+    "months": 366,
+    "first": "1996-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:52.084740100+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWU.US",
+    "months": 366,
+    "first": "1996-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:57.684689400+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EWZ.US",
+    "months": 314,
+    "first": "2000-07",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:59.416446500+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:EZA.US",
+    "months": 283,
+    "first": "2003-02",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:50.222135700+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:HYDR.US",
+    "months": 62,
+    "first": "2021-07",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:19.661094100+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:INDA.US",
+    "months": 175,
+    "first": "2012-02",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:46.520085900+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:MCHI.US",
+    "months": 186,
+    "first": "2011-03",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:47.919437400+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:NLR.US",
+    "months": 229,
+    "first": "2007-08",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:22.539070200+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:SPY.US",
+    "months": 404,
+    "first": "1993-01",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:09:41.810288900+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:TAN.US",
+    "months": 221,
+    "first": "2008-04",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:21.090406+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:URA.US",
+    "months": 190,
+    "first": "2010-11",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:23.976284900+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLB.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:01.183362100+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLC.US",
+    "months": 99,
+    "first": "2018-06",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:02.474680800+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLE.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:04.183572100+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLF.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:05.997359500+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLI.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:07.742438500+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLK.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:09.703860100+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLP.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:11.687839200+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLRE.US",
+    "months": 131,
+    "first": "2015-10",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:13.613637400+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLU.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:15.238790900+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLV.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:16.942504800+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  },
+  {
+    "proxyId": "eodhd:XLY.US",
+    "months": 333,
+    "first": "1998-12",
+    "last": "2026-08",
+    "retrievedAt": "2026-09-10T21:10:18.598958400+00:00",
+    "adjustment": "EODHD adjusted_close: Splits und Aussch\u00fcttungen; jeweils letzter gelieferter Handelstag des abgeschlossenen Monats. Kein Rohkurs-Fallback."
+  }
+]

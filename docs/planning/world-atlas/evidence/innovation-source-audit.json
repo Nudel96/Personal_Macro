@@ -1,0 +1,1448 @@
+{
+  "source": "WIPO Statistics Database",
+  "release": "Source: WIPO statistics database. Last updated: May 2026",
+  "url": "https://api.ipstatsdc.deda.prd.web1.wipo.int/api/v1/public/ips-search/downloadCsv?selectedTab=patent&indicator=17&reportType=13&fromYear=1980&toYear=2024&ipsOriSelValues=AF,AL,DZ,AD,AO,AG,AR,AM,AU,AT,AZ,BS,BH,BD,BB,BY,BE,BZ,BJ,BT,BO,BQ,BA,BW,BR,BN,BG,BF,BI,CV,KH,CM,CA,CF,TD,CL,CN,HK,MO,CO,KM,CG,CK,CR,CI,HR,CU,CW,CY,CZ,CS,KP,CD,DK,DJ,DM,DO,EC,EG,SV,GQ,ER,EE,SZ,ET,FJ,FI,FR,GA,GM,GE,DD,DE,GH,GR,GD,GT,GN,GW,GY,HT,VA,HN,HU,IS,IN,ID,IR,IQ,IE,IL,IT,JM,JP,JO,KZ,KE,KI,KW,KG,LA,LV,LB,LS,LR,LY,LI,LT,LU,MG,MW,MY,MV,ML,MT,MH,MR,MU,MX,FM,MC,MN,ME,MA,MZ,MM,NA,NR,NP,NL,AN,NZ,NI,NE,NG,NU,MK,NO,OM,PK,PW,PA,PG,PY,PE,PH,PL,PT,QA,KR,MD,RO,RU,RW,KN,LC,VC,WS,SM,ST,SA,SN,RS,SC,SL,SG,SX,SK,SI,SB,SO,ZA,SS,SU,ES,LK,SD,SR,SE,CH,SY,TJ,TH,TL,TG,TO,TT,TN,TR,TM,TV,UG,UA,AE,GB,TZ,US,UY,UZ,VU,VE,VN,YE,YU,ZR,ZM,ZW&ipsTechSelValues=0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35",
+  "sha256": "c7e93cd7ad4b9305190f5cb72c899ef854771209794c3025621859c94de84f48",
+  "bytes": 1285013,
+  "rows": 5645,
+  "currentRows": 5470,
+  "numericCells": 112086,
+  "currentNumericCells": 108696,
+  "currentMissingCells": 213684,
+  "profiles": 199,
+  "fields": 36,
+  "years": [
+    1980,
+    2024
+  ],
+  "excludedOrigins": [
+    {
+      "code": "AN",
+      "label": "Netherlands Antilles"
+    },
+    {
+      "code": "CS",
+      "label": "Czechoslovakia"
+    },
+    {
+      "code": "DD",
+      "label": "German Democratic Republic"
+    },
+    {
+      "code": "SU",
+      "label": "Soviet Union"
+    },
+    {
+      "code": "YU",
+      "label": "Yugoslavia"
+    },
+    {
+      "code": "ZR",
+      "label": "Zaire"
+    }
+  ],
+  "absentOrigins": [
+    "NU",
+    "TL"
+  ],
+  "mapping": [
+    {
+      "code": "AD",
+      "label": "Andorra",
+      "geographyId": "m49:020",
+      "iso3": "AND"
+    },
+    {
+      "code": "AE",
+      "label": "United Arab Emirates",
+      "geographyId": "m49:784",
+      "iso3": "ARE"
+    },
+    {
+      "code": "AF",
+      "label": "Afghanistan",
+      "geographyId": "m49:004",
+      "iso3": "AFG"
+    },
+    {
+      "code": "AG",
+      "label": "Antigua and Barbuda",
+      "geographyId": "m49:028",
+      "iso3": "ATG"
+    },
+    {
+      "code": "AL",
+      "label": "Albania",
+      "geographyId": "m49:008",
+      "iso3": "ALB"
+    },
+    {
+      "code": "AM",
+      "label": "Armenia",
+      "geographyId": "m49:051",
+      "iso3": "ARM"
+    },
+    {
+      "code": "AO",
+      "label": "Angola",
+      "geographyId": "m49:024",
+      "iso3": "AGO"
+    },
+    {
+      "code": "AR",
+      "label": "Argentina",
+      "geographyId": "m49:032",
+      "iso3": "ARG"
+    },
+    {
+      "code": "AT",
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "iso3": "AUT"
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "iso3": "AUS"
+    },
+    {
+      "code": "AZ",
+      "label": "Azerbaijan",
+      "geographyId": "m49:031",
+      "iso3": "AZE"
+    },
+    {
+      "code": "BA",
+      "label": "Bosnia and Herzegovina",
+      "geographyId": "m49:070",
+      "iso3": "BIH"
+    },
+    {
+      "code": "BB",
+      "label": "Barbados",
+      "geographyId": "m49:052",
+      "iso3": "BRB"
+    },
+    {
+      "code": "BD",
+      "label": "Bangladesh",
+      "geographyId": "m49:050",
+      "iso3": "BGD"
+    },
+    {
+      "code": "BE",
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "iso3": "BEL"
+    },
+    {
+      "code": "BF",
+      "label": "Burkina Faso",
+      "geographyId": "m49:854",
+      "iso3": "BFA"
+    },
+    {
+      "code": "BG",
+      "label": "Bulgaria",
+      "geographyId": "m49:100",
+      "iso3": "BGR"
+    },
+    {
+      "code": "BH",
+      "label": "Bahrain",
+      "geographyId": "m49:048",
+      "iso3": "BHR"
+    },
+    {
+      "code": "BI",
+      "label": "Burundi",
+      "geographyId": "m49:108",
+      "iso3": "BDI"
+    },
+    {
+      "code": "BJ",
+      "label": "Benin",
+      "geographyId": "m49:204",
+      "iso3": "BEN"
+    },
+    {
+      "code": "BN",
+      "label": "Brunei Darussalam",
+      "geographyId": "m49:096",
+      "iso3": "BRN"
+    },
+    {
+      "code": "BO",
+      "label": "Bolivia (Plurinational State of)",
+      "geographyId": "m49:068",
+      "iso3": "BOL"
+    },
+    {
+      "code": "BQ",
+      "label": "Bonaire, Sint Eustatius and Saba",
+      "geographyId": "m49:535",
+      "iso3": "BES"
+    },
+    {
+      "code": "BR",
+      "label": "Brazil",
+      "geographyId": "m49:076",
+      "iso3": "BRA"
+    },
+    {
+      "code": "BS",
+      "label": "Bahamas",
+      "geographyId": "m49:044",
+      "iso3": "BHS"
+    },
+    {
+      "code": "BT",
+      "label": "Bhutan",
+      "geographyId": "m49:064",
+      "iso3": "BTN"
+    },
+    {
+      "code": "BW",
+      "label": "Botswana",
+      "geographyId": "m49:072",
+      "iso3": "BWA"
+    },
+    {
+      "code": "BY",
+      "label": "Belarus",
+      "geographyId": "m49:112",
+      "iso3": "BLR"
+    },
+    {
+      "code": "BZ",
+      "label": "Belize",
+      "geographyId": "m49:084",
+      "iso3": "BLZ"
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "iso3": "CAN"
+    },
+    {
+      "code": "CD",
+      "label": "Democratic Republic of the Congo",
+      "geographyId": "m49:180",
+      "iso3": "COD"
+    },
+    {
+      "code": "CF",
+      "label": "Central African Republic",
+      "geographyId": "m49:140",
+      "iso3": "CAF"
+    },
+    {
+      "code": "CG",
+      "label": "Congo",
+      "geographyId": "m49:178",
+      "iso3": "COG"
+    },
+    {
+      "code": "CH",
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "iso3": "CHE"
+    },
+    {
+      "code": "CI",
+      "label": "Côte d'Ivoire",
+      "geographyId": "m49:384",
+      "iso3": "CIV"
+    },
+    {
+      "code": "CK",
+      "label": "Cook Islands",
+      "geographyId": "m49:184",
+      "iso3": "COK"
+    },
+    {
+      "code": "CL",
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "iso3": "CHL"
+    },
+    {
+      "code": "CM",
+      "label": "Cameroon",
+      "geographyId": "m49:120",
+      "iso3": "CMR"
+    },
+    {
+      "code": "CN",
+      "label": "China",
+      "geographyId": "m49:156",
+      "iso3": "CHN"
+    },
+    {
+      "code": "CO",
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "iso3": "COL"
+    },
+    {
+      "code": "CR",
+      "label": "Costa Rica",
+      "geographyId": "m49:188",
+      "iso3": "CRI"
+    },
+    {
+      "code": "CU",
+      "label": "Cuba",
+      "geographyId": "m49:192",
+      "iso3": "CUB"
+    },
+    {
+      "code": "CV",
+      "label": "Cabo Verde",
+      "geographyId": "m49:132",
+      "iso3": "CPV"
+    },
+    {
+      "code": "CW",
+      "label": "Curaçao",
+      "geographyId": "m49:531",
+      "iso3": "CUW"
+    },
+    {
+      "code": "CY",
+      "label": "Cyprus",
+      "geographyId": "m49:196",
+      "iso3": "CYP"
+    },
+    {
+      "code": "CZ",
+      "label": "Czech Republic",
+      "geographyId": "m49:203",
+      "iso3": "CZE"
+    },
+    {
+      "code": "DE",
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "iso3": "DEU"
+    },
+    {
+      "code": "DJ",
+      "label": "Djibouti",
+      "geographyId": "m49:262",
+      "iso3": "DJI"
+    },
+    {
+      "code": "DK",
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "iso3": "DNK"
+    },
+    {
+      "code": "DM",
+      "label": "Dominica",
+      "geographyId": "m49:212",
+      "iso3": "DMA"
+    },
+    {
+      "code": "DO",
+      "label": "Dominican Republic",
+      "geographyId": "m49:214",
+      "iso3": "DOM"
+    },
+    {
+      "code": "DZ",
+      "label": "Algeria",
+      "geographyId": "m49:012",
+      "iso3": "DZA"
+    },
+    {
+      "code": "EC",
+      "label": "Ecuador",
+      "geographyId": "m49:218",
+      "iso3": "ECU"
+    },
+    {
+      "code": "EE",
+      "label": "Estonia",
+      "geographyId": "m49:233",
+      "iso3": "EST"
+    },
+    {
+      "code": "EG",
+      "label": "Egypt",
+      "geographyId": "m49:818",
+      "iso3": "EGY"
+    },
+    {
+      "code": "ER",
+      "label": "Eritrea",
+      "geographyId": "m49:232",
+      "iso3": "ERI"
+    },
+    {
+      "code": "ES",
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "iso3": "ESP"
+    },
+    {
+      "code": "ET",
+      "label": "Ethiopia",
+      "geographyId": "m49:231",
+      "iso3": "ETH"
+    },
+    {
+      "code": "FI",
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "iso3": "FIN"
+    },
+    {
+      "code": "FJ",
+      "label": "Fiji",
+      "geographyId": "m49:242",
+      "iso3": "FJI"
+    },
+    {
+      "code": "FM",
+      "label": "Micronesia (Federated States of)",
+      "geographyId": "m49:583",
+      "iso3": "FSM"
+    },
+    {
+      "code": "FR",
+      "label": "France",
+      "geographyId": "m49:250",
+      "iso3": "FRA"
+    },
+    {
+      "code": "GA",
+      "label": "Gabon",
+      "geographyId": "m49:266",
+      "iso3": "GAB"
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "geographyId": "m49:826",
+      "iso3": "GBR"
+    },
+    {
+      "code": "GD",
+      "label": "Grenada",
+      "geographyId": "m49:308",
+      "iso3": "GRD"
+    },
+    {
+      "code": "GE",
+      "label": "Georgia",
+      "geographyId": "m49:268",
+      "iso3": "GEO"
+    },
+    {
+      "code": "GH",
+      "label": "Ghana",
+      "geographyId": "m49:288",
+      "iso3": "GHA"
+    },
+    {
+      "code": "GM",
+      "label": "Gambia",
+      "geographyId": "m49:270",
+      "iso3": "GMB"
+    },
+    {
+      "code": "GN",
+      "label": "Guinea",
+      "geographyId": "m49:324",
+      "iso3": "GIN"
+    },
+    {
+      "code": "GQ",
+      "label": "Equatorial Guinea",
+      "geographyId": "m49:226",
+      "iso3": "GNQ"
+    },
+    {
+      "code": "GR",
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "iso3": "GRC"
+    },
+    {
+      "code": "GT",
+      "label": "Guatemala",
+      "geographyId": "m49:320",
+      "iso3": "GTM"
+    },
+    {
+      "code": "GW",
+      "label": "Guinea-Bissau",
+      "geographyId": "m49:624",
+      "iso3": "GNB"
+    },
+    {
+      "code": "GY",
+      "label": "Guyana",
+      "geographyId": "m49:328",
+      "iso3": "GUY"
+    },
+    {
+      "code": "HK",
+      "label": "China, Hong Kong SAR",
+      "geographyId": "m49:344",
+      "iso3": "HKG"
+    },
+    {
+      "code": "HN",
+      "label": "Honduras",
+      "geographyId": "m49:340",
+      "iso3": "HND"
+    },
+    {
+      "code": "HR",
+      "label": "Croatia",
+      "geographyId": "m49:191",
+      "iso3": "HRV"
+    },
+    {
+      "code": "HT",
+      "label": "Haiti",
+      "geographyId": "m49:332",
+      "iso3": "HTI"
+    },
+    {
+      "code": "HU",
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "iso3": "HUN"
+    },
+    {
+      "code": "ID",
+      "label": "Indonesia",
+      "geographyId": "m49:360",
+      "iso3": "IDN"
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "iso3": "IRL"
+    },
+    {
+      "code": "IL",
+      "label": "Israel",
+      "geographyId": "m49:376",
+      "iso3": "ISR"
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "geographyId": "m49:356",
+      "iso3": "IND"
+    },
+    {
+      "code": "IQ",
+      "label": "Iraq",
+      "geographyId": "m49:368",
+      "iso3": "IRQ"
+    },
+    {
+      "code": "IR",
+      "label": "Iran (Islamic Republic of)",
+      "geographyId": "m49:364",
+      "iso3": "IRN"
+    },
+    {
+      "code": "IS",
+      "label": "Iceland",
+      "geographyId": "m49:352",
+      "iso3": "ISL"
+    },
+    {
+      "code": "IT",
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "iso3": "ITA"
+    },
+    {
+      "code": "JM",
+      "label": "Jamaica",
+      "geographyId": "m49:388",
+      "iso3": "JAM"
+    },
+    {
+      "code": "JO",
+      "label": "Jordan",
+      "geographyId": "m49:400",
+      "iso3": "JOR"
+    },
+    {
+      "code": "JP",
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "iso3": "JPN"
+    },
+    {
+      "code": "KE",
+      "label": "Kenya",
+      "geographyId": "m49:404",
+      "iso3": "KEN"
+    },
+    {
+      "code": "KG",
+      "label": "Kyrgyzstan",
+      "geographyId": "m49:417",
+      "iso3": "KGZ"
+    },
+    {
+      "code": "KH",
+      "label": "Cambodia",
+      "geographyId": "m49:116",
+      "iso3": "KHM"
+    },
+    {
+      "code": "KI",
+      "label": "Kiribati",
+      "geographyId": "m49:296",
+      "iso3": "KIR"
+    },
+    {
+      "code": "KM",
+      "label": "Comoros",
+      "geographyId": "m49:174",
+      "iso3": "COM"
+    },
+    {
+      "code": "KN",
+      "label": "Saint Kitts and Nevis",
+      "geographyId": "m49:659",
+      "iso3": "KNA"
+    },
+    {
+      "code": "KP",
+      "label": "Democratic People's Republic of Korea",
+      "geographyId": "m49:408",
+      "iso3": "PRK"
+    },
+    {
+      "code": "KR",
+      "label": "Republic of Korea",
+      "geographyId": "m49:410",
+      "iso3": "KOR"
+    },
+    {
+      "code": "KW",
+      "label": "Kuwait",
+      "geographyId": "m49:414",
+      "iso3": "KWT"
+    },
+    {
+      "code": "KZ",
+      "label": "Kazakhstan",
+      "geographyId": "m49:398",
+      "iso3": "KAZ"
+    },
+    {
+      "code": "LA",
+      "label": "Lao People's Democratic Republic",
+      "geographyId": "m49:418",
+      "iso3": "LAO"
+    },
+    {
+      "code": "LB",
+      "label": "Lebanon",
+      "geographyId": "m49:422",
+      "iso3": "LBN"
+    },
+    {
+      "code": "LC",
+      "label": "Saint Lucia",
+      "geographyId": "m49:662",
+      "iso3": "LCA"
+    },
+    {
+      "code": "LI",
+      "label": "Liechtenstein",
+      "geographyId": "m49:438",
+      "iso3": "LIE"
+    },
+    {
+      "code": "LK",
+      "label": "Sri Lanka",
+      "geographyId": "m49:144",
+      "iso3": "LKA"
+    },
+    {
+      "code": "LR",
+      "label": "Liberia",
+      "geographyId": "m49:430",
+      "iso3": "LBR"
+    },
+    {
+      "code": "LS",
+      "label": "Lesotho",
+      "geographyId": "m49:426",
+      "iso3": "LSO"
+    },
+    {
+      "code": "LT",
+      "label": "Lithuania",
+      "geographyId": "m49:440",
+      "iso3": "LTU"
+    },
+    {
+      "code": "LU",
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "iso3": "LUX"
+    },
+    {
+      "code": "LV",
+      "label": "Latvia",
+      "geographyId": "m49:428",
+      "iso3": "LVA"
+    },
+    {
+      "code": "LY",
+      "label": "Libya",
+      "geographyId": "m49:434",
+      "iso3": "LBY"
+    },
+    {
+      "code": "MA",
+      "label": "Morocco",
+      "geographyId": "m49:504",
+      "iso3": "MAR"
+    },
+    {
+      "code": "MC",
+      "label": "Monaco",
+      "geographyId": "m49:492",
+      "iso3": "MCO"
+    },
+    {
+      "code": "MD",
+      "label": "Republic of Moldova",
+      "geographyId": "m49:498",
+      "iso3": "MDA"
+    },
+    {
+      "code": "ME",
+      "label": "Montenegro",
+      "geographyId": "m49:499",
+      "iso3": "MNE"
+    },
+    {
+      "code": "MG",
+      "label": "Madagascar",
+      "geographyId": "m49:450",
+      "iso3": "MDG"
+    },
+    {
+      "code": "MH",
+      "label": "Marshall Islands",
+      "geographyId": "m49:584",
+      "iso3": "MHL"
+    },
+    {
+      "code": "MK",
+      "label": "North Macedonia",
+      "geographyId": "m49:807",
+      "iso3": "MKD"
+    },
+    {
+      "code": "ML",
+      "label": "Mali",
+      "geographyId": "m49:466",
+      "iso3": "MLI"
+    },
+    {
+      "code": "MM",
+      "label": "Myanmar",
+      "geographyId": "m49:104",
+      "iso3": "MMR"
+    },
+    {
+      "code": "MN",
+      "label": "Mongolia",
+      "geographyId": "m49:496",
+      "iso3": "MNG"
+    },
+    {
+      "code": "MO",
+      "label": "China, Macao SAR",
+      "geographyId": "m49:446",
+      "iso3": "MAC"
+    },
+    {
+      "code": "MR",
+      "label": "Mauritania",
+      "geographyId": "m49:478",
+      "iso3": "MRT"
+    },
+    {
+      "code": "MT",
+      "label": "Malta",
+      "geographyId": "m49:470",
+      "iso3": "MLT"
+    },
+    {
+      "code": "MU",
+      "label": "Mauritius",
+      "geographyId": "m49:480",
+      "iso3": "MUS"
+    },
+    {
+      "code": "MV",
+      "label": "Maldives",
+      "geographyId": "m49:462",
+      "iso3": "MDV"
+    },
+    {
+      "code": "MW",
+      "label": "Malawi",
+      "geographyId": "m49:454",
+      "iso3": "MWI"
+    },
+    {
+      "code": "MX",
+      "label": "Mexico",
+      "geographyId": "m49:484",
+      "iso3": "MEX"
+    },
+    {
+      "code": "MY",
+      "label": "Malaysia",
+      "geographyId": "m49:458",
+      "iso3": "MYS"
+    },
+    {
+      "code": "MZ",
+      "label": "Mozambique",
+      "geographyId": "m49:508",
+      "iso3": "MOZ"
+    },
+    {
+      "code": "NA",
+      "label": "Namibia",
+      "geographyId": "m49:516",
+      "iso3": "NAM"
+    },
+    {
+      "code": "NE",
+      "label": "Niger",
+      "geographyId": "m49:562",
+      "iso3": "NER"
+    },
+    {
+      "code": "NG",
+      "label": "Nigeria",
+      "geographyId": "m49:566",
+      "iso3": "NGA"
+    },
+    {
+      "code": "NI",
+      "label": "Nicaragua",
+      "geographyId": "m49:558",
+      "iso3": "NIC"
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands (Kingdom of the)",
+      "geographyId": "m49:528",
+      "iso3": "NLD"
+    },
+    {
+      "code": "NO",
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "iso3": "NOR"
+    },
+    {
+      "code": "NP",
+      "label": "Nepal",
+      "geographyId": "m49:524",
+      "iso3": "NPL"
+    },
+    {
+      "code": "NR",
+      "label": "Nauru",
+      "geographyId": "m49:520",
+      "iso3": "NRU"
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "iso3": "NZL"
+    },
+    {
+      "code": "OM",
+      "label": "Oman",
+      "geographyId": "m49:512",
+      "iso3": "OMN"
+    },
+    {
+      "code": "PA",
+      "label": "Panama",
+      "geographyId": "m49:591",
+      "iso3": "PAN"
+    },
+    {
+      "code": "PE",
+      "label": "Peru",
+      "geographyId": "m49:604",
+      "iso3": "PER"
+    },
+    {
+      "code": "PG",
+      "label": "Papua New Guinea",
+      "geographyId": "m49:598",
+      "iso3": "PNG"
+    },
+    {
+      "code": "PH",
+      "label": "Philippines",
+      "geographyId": "m49:608",
+      "iso3": "PHL"
+    },
+    {
+      "code": "PK",
+      "label": "Pakistan",
+      "geographyId": "m49:586",
+      "iso3": "PAK"
+    },
+    {
+      "code": "PL",
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "iso3": "POL"
+    },
+    {
+      "code": "PT",
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "iso3": "PRT"
+    },
+    {
+      "code": "PW",
+      "label": "Palau",
+      "geographyId": "m49:585",
+      "iso3": "PLW"
+    },
+    {
+      "code": "PY",
+      "label": "Paraguay",
+      "geographyId": "m49:600",
+      "iso3": "PRY"
+    },
+    {
+      "code": "QA",
+      "label": "Qatar",
+      "geographyId": "m49:634",
+      "iso3": "QAT"
+    },
+    {
+      "code": "RO",
+      "label": "Romania",
+      "geographyId": "m49:642",
+      "iso3": "ROU"
+    },
+    {
+      "code": "RS",
+      "label": "Serbia",
+      "geographyId": "m49:688",
+      "iso3": "SRB"
+    },
+    {
+      "code": "RU",
+      "label": "Russian Federation",
+      "geographyId": "m49:643",
+      "iso3": "RUS"
+    },
+    {
+      "code": "RW",
+      "label": "Rwanda",
+      "geographyId": "m49:646",
+      "iso3": "RWA"
+    },
+    {
+      "code": "SA",
+      "label": "Saudi Arabia",
+      "geographyId": "m49:682",
+      "iso3": "SAU"
+    },
+    {
+      "code": "SB",
+      "label": "Solomon Islands",
+      "geographyId": "m49:090",
+      "iso3": "SLB"
+    },
+    {
+      "code": "SC",
+      "label": "Seychelles",
+      "geographyId": "m49:690",
+      "iso3": "SYC"
+    },
+    {
+      "code": "SD",
+      "label": "Sudan",
+      "geographyId": "m49:729",
+      "iso3": "SDN"
+    },
+    {
+      "code": "SE",
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "iso3": "SWE"
+    },
+    {
+      "code": "SG",
+      "label": "Singapore",
+      "geographyId": "m49:702",
+      "iso3": "SGP"
+    },
+    {
+      "code": "SI",
+      "label": "Slovenia",
+      "geographyId": "m49:705",
+      "iso3": "SVN"
+    },
+    {
+      "code": "SK",
+      "label": "Slovakia",
+      "geographyId": "m49:703",
+      "iso3": "SVK"
+    },
+    {
+      "code": "SL",
+      "label": "Sierra Leone",
+      "geographyId": "m49:694",
+      "iso3": "SLE"
+    },
+    {
+      "code": "SM",
+      "label": "San Marino",
+      "geographyId": "m49:674",
+      "iso3": "SMR"
+    },
+    {
+      "code": "SN",
+      "label": "Senegal",
+      "geographyId": "m49:686",
+      "iso3": "SEN"
+    },
+    {
+      "code": "SO",
+      "label": "Somalia",
+      "geographyId": "m49:706",
+      "iso3": "SOM"
+    },
+    {
+      "code": "SR",
+      "label": "Suriname",
+      "geographyId": "m49:740",
+      "iso3": "SUR"
+    },
+    {
+      "code": "SS",
+      "label": "South Sudan",
+      "geographyId": "m49:728",
+      "iso3": "SSD"
+    },
+    {
+      "code": "ST",
+      "label": "Sao Tome and Principe",
+      "geographyId": "m49:678",
+      "iso3": "STP"
+    },
+    {
+      "code": "SV",
+      "label": "El Salvador",
+      "geographyId": "m49:222",
+      "iso3": "SLV"
+    },
+    {
+      "code": "SX",
+      "label": "Sint Maarten (Dutch Part)",
+      "geographyId": "m49:534",
+      "iso3": "SXM"
+    },
+    {
+      "code": "SY",
+      "label": "Syrian Arab Republic",
+      "geographyId": "m49:760",
+      "iso3": "SYR"
+    },
+    {
+      "code": "SZ",
+      "label": "Eswatini",
+      "geographyId": "m49:748",
+      "iso3": "SWZ"
+    },
+    {
+      "code": "TD",
+      "label": "Chad",
+      "geographyId": "m49:148",
+      "iso3": "TCD"
+    },
+    {
+      "code": "TG",
+      "label": "Togo",
+      "geographyId": "m49:768",
+      "iso3": "TGO"
+    },
+    {
+      "code": "TH",
+      "label": "Thailand",
+      "geographyId": "m49:764",
+      "iso3": "THA"
+    },
+    {
+      "code": "TJ",
+      "label": "Tajikistan",
+      "geographyId": "m49:762",
+      "iso3": "TJK"
+    },
+    {
+      "code": "TM",
+      "label": "Turkmenistan",
+      "geographyId": "m49:795",
+      "iso3": "TKM"
+    },
+    {
+      "code": "TN",
+      "label": "Tunisia",
+      "geographyId": "m49:788",
+      "iso3": "TUN"
+    },
+    {
+      "code": "TO",
+      "label": "Tonga",
+      "geographyId": "m49:776",
+      "iso3": "TON"
+    },
+    {
+      "code": "TR",
+      "label": "Türkiye",
+      "geographyId": "m49:792",
+      "iso3": "TUR"
+    },
+    {
+      "code": "TT",
+      "label": "Trinidad and Tobago",
+      "geographyId": "m49:780",
+      "iso3": "TTO"
+    },
+    {
+      "code": "TV",
+      "label": "Tuvalu",
+      "geographyId": "m49:798",
+      "iso3": "TUV"
+    },
+    {
+      "code": "TZ",
+      "label": "United Republic of Tanzania",
+      "geographyId": "m49:834",
+      "iso3": "TZA"
+    },
+    {
+      "code": "UA",
+      "label": "Ukraine",
+      "geographyId": "m49:804",
+      "iso3": "UKR"
+    },
+    {
+      "code": "UG",
+      "label": "Uganda",
+      "geographyId": "m49:800",
+      "iso3": "UGA"
+    },
+    {
+      "code": "US",
+      "label": "United States of America",
+      "geographyId": "m49:840",
+      "iso3": "USA"
+    },
+    {
+      "code": "UY",
+      "label": "Uruguay",
+      "geographyId": "m49:858",
+      "iso3": "URY"
+    },
+    {
+      "code": "UZ",
+      "label": "Uzbekistan",
+      "geographyId": "m49:860",
+      "iso3": "UZB"
+    },
+    {
+      "code": "VA",
+      "label": "Holy See",
+      "geographyId": "m49:336",
+      "iso3": "VAT"
+    },
+    {
+      "code": "VC",
+      "label": "Saint Vincent and the Grenadines",
+      "geographyId": "m49:670",
+      "iso3": "VCT"
+    },
+    {
+      "code": "VE",
+      "label": "Venezuela (Bolivarian Republic of)",
+      "geographyId": "m49:862",
+      "iso3": "VEN"
+    },
+    {
+      "code": "VN",
+      "label": "Viet Nam",
+      "geographyId": "m49:704",
+      "iso3": "VNM"
+    },
+    {
+      "code": "VU",
+      "label": "Vanuatu",
+      "geographyId": "m49:548",
+      "iso3": "VUT"
+    },
+    {
+      "code": "WS",
+      "label": "Samoa",
+      "geographyId": "m49:882",
+      "iso3": "WSM"
+    },
+    {
+      "code": "YE",
+      "label": "Yemen",
+      "geographyId": "m49:887",
+      "iso3": "YEM"
+    },
+    {
+      "code": "ZA",
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "iso3": "ZAF"
+    },
+    {
+      "code": "ZM",
+      "label": "Zambia",
+      "geographyId": "m49:894",
+      "iso3": "ZMB"
+    },
+    {
+      "code": "ZW",
+      "label": "Zimbabwe",
+      "geographyId": "m49:716",
+      "iso3": "ZWE"
+    }
+  ],
+  "numericCellCountsByOrigin": {
+    "AF": 73,
+    "AL": 136,
+    "DZ": 330,
+    "AD": 298,
+    "AO": 25,
+    "AG": 126,
+    "AR": 1397,
+    "AM": 405,
+    "AU": 1568,
+    "AT": 1553,
+    "AZ": 504,
+    "BS": 869,
+    "BH": 170,
+    "BD": 77,
+    "BB": 964,
+    "BY": 1058,
+    "BE": 1558,
+    "BZ": 251,
+    "BJ": 30,
+    "BT": 15,
+    "BO": 60,
+    "BQ": 2,
+    "BA": 251,
+    "BW": 54,
+    "BR": 1551,
+    "BN": 138,
+    "BG": 1486,
+    "BF": 32,
+    "BI": 40,
+    "CV": 22,
+    "KH": 27,
+    "CM": 121,
+    "CA": 1572,
+    "CF": 30,
+    "TD": 15,
+    "CL": 954,
+    "CN": 1496,
+    "HK": 1451,
+    "MO": 301,
+    "CO": 1000,
+    "KM": 24,
+    "CG": 41,
+    "CK": 117,
+    "CR": 491,
+    "CI": 136,
+    "HR": 996,
+    "CU": 787,
+    "CW": 157,
+    "CY": 1013,
+    "CZ": 1458,
+    "KP": 463,
+    "CD": 31,
+    "DK": 1554,
+    "DJ": 11,
+    "DM": 41,
+    "DO": 257,
+    "EC": 628,
+    "EG": 1001,
+    "SV": 117,
+    "GQ": 4,
+    "ER": 19,
+    "EE": 893,
+    "SZ": 122,
+    "ET": 38,
+    "FJ": 15,
+    "FI": 1560,
+    "FR": 1583,
+    "GA": 100,
+    "GM": 16,
+    "GE": 847,
+    "DE": 1590,
+    "GH": 61,
+    "GR": 1349,
+    "GD": 32,
+    "GT": 533,
+    "GN": 59,
+    "GW": 4,
+    "GY": 5,
+    "HT": 34,
+    "VA": 24,
+    "HN": 45,
+    "HU": 1496,
+    "IS": 975,
+    "IN": 1306,
+    "ID": 629,
+    "IR": 710,
+    "IQ": 96,
+    "IE": 1547,
+    "IL": 1561,
+    "IT": 1577,
+    "JM": 190,
+    "JP": 1595,
+    "JO": 393,
+    "KZ": 779,
+    "KE": 280,
+    "KI": 35,
+    "KW": 540,
+    "KG": 226,
+    "LA": 41,
+    "LV": 990,
+    "LB": 390,
+    "LS": 9,
+    "LR": 108,
+    "LY": 40,
+    "LI": 1425,
+    "LT": 949,
+    "LU": 1483,
+    "MG": 39,
+    "MW": 31,
+    "MY": 1204,
+    "MV": 6,
+    "ML": 37,
+    "MT": 729,
+    "MH": 69,
+    "MR": 33,
+    "MU": 462,
+    "MX": 1416,
+    "FM": 4,
+    "MC": 1016,
+    "MN": 147,
+    "ME": 90,
+    "MA": 1049,
+    "MZ": 9,
+    "MM": 19,
+    "NA": 196,
+    "NR": 9,
+    "NP": 42,
+    "NL": 1569,
+    "NZ": 1494,
+    "NI": 56,
+    "NE": 123,
+    "NG": 156,
+    "MK": 147,
+    "NO": 1537,
+    "OM": 166,
+    "PK": 283,
+    "PW": 10,
+    "PA": 944,
+    "PG": 42,
+    "PY": 161,
+    "PE": 724,
+    "PH": 1015,
+    "PL": 1533,
+    "PT": 1382,
+    "QA": 352,
+    "KR": 1557,
+    "MD": 989,
+    "RO": 1514,
+    "RU": 1153,
+    "RW": 13,
+    "KN": 272,
+    "LC": 19,
+    "VC": 101,
+    "WS": 388,
+    "SM": 400,
+    "ST": 298,
+    "SA": 958,
+    "SN": 122,
+    "RS": 683,
+    "SC": 427,
+    "SL": 103,
+    "SG": 1340,
+    "SX": 3,
+    "SK": 1246,
+    "SI": 1143,
+    "SB": 8,
+    "SO": 16,
+    "ZA": 1535,
+    "SS": 2,
+    "ES": 1554,
+    "LK": 365,
+    "SD": 90,
+    "SR": 13,
+    "SE": 1576,
+    "CH": 1576,
+    "SY": 161,
+    "TJ": 287,
+    "TH": 910,
+    "TG": 20,
+    "TO": 23,
+    "TT": 167,
+    "TN": 628,
+    "TR": 1238,
+    "TM": 183,
+    "TV": 5,
+    "UG": 35,
+    "UA": 1143,
+    "AE": 729,
+    "GB": 1580,
+    "TZ": 29,
+    "US": 1592,
+    "UY": 715,
+    "UZ": 337,
+    "VU": 82,
+    "VE": 631,
+    "VN": 450,
+    "YE": 26,
+    "ZM": 61,
+    "ZW": 263
+  },
+  "meaning": "Patent publications by technology; provider Total by applicant origin retained. No invented world total, successor-state splicing, valuation, unique-invention count or missing-to-zero conversion.",
+  "freshness": "Current export and release metadata require Accept-Language: en. The older public bulk ZIP ends in 2022 and is not a fallback.",
+  "boundary": "2024 is an editorially flagged boundary year, not a source per-cell preliminary flag. WIPI 2025 technology discussion uses 2023 because of publication delay."
+}

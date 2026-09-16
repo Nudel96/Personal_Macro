@@ -1,0 +1,2189 @@
+{
+  "version": "2026-09-11.1",
+  "release": "2026.Q2.G.02",
+  "sourceUrl": "https://unstats.un.org/SDGAPI/swagger/",
+  "areas": [
+    {
+      "code": "4",
+      "providerLabel": "Afghanistan",
+      "geographyId": "m49:004"
+    },
+    {
+      "code": "248",
+      "providerLabel": "Åland Islands",
+      "geographyId": "m49:248"
+    },
+    {
+      "code": "8",
+      "providerLabel": "Albania",
+      "geographyId": "m49:008"
+    },
+    {
+      "code": "12",
+      "providerLabel": "Algeria",
+      "geographyId": "m49:012"
+    },
+    {
+      "code": "16",
+      "providerLabel": "American Samoa",
+      "geographyId": "m49:016"
+    },
+    {
+      "code": "20",
+      "providerLabel": "Andorra",
+      "geographyId": "m49:020"
+    },
+    {
+      "code": "24",
+      "providerLabel": "Angola",
+      "geographyId": "m49:024"
+    },
+    {
+      "code": "660",
+      "providerLabel": "Anguilla",
+      "geographyId": "m49:660"
+    },
+    {
+      "code": "10",
+      "providerLabel": "Antarctica",
+      "geographyId": "m49:010"
+    },
+    {
+      "code": "28",
+      "providerLabel": "Antigua and Barbuda",
+      "geographyId": "m49:028"
+    },
+    {
+      "code": "32",
+      "providerLabel": "Argentina",
+      "geographyId": "m49:032"
+    },
+    {
+      "code": "51",
+      "providerLabel": "Armenia",
+      "geographyId": "m49:051"
+    },
+    {
+      "code": "533",
+      "providerLabel": "Aruba",
+      "geographyId": "m49:533"
+    },
+    {
+      "code": "36",
+      "providerLabel": "Australia",
+      "geographyId": "m49:036"
+    },
+    {
+      "code": "40",
+      "providerLabel": "Austria",
+      "geographyId": "m49:040"
+    },
+    {
+      "code": "31",
+      "providerLabel": "Azerbaijan",
+      "geographyId": "m49:031"
+    },
+    {
+      "code": "44",
+      "providerLabel": "Bahamas",
+      "geographyId": "m49:044"
+    },
+    {
+      "code": "48",
+      "providerLabel": "Bahrain",
+      "geographyId": "m49:048"
+    },
+    {
+      "code": "50",
+      "providerLabel": "Bangladesh",
+      "geographyId": "m49:050"
+    },
+    {
+      "code": "52",
+      "providerLabel": "Barbados",
+      "geographyId": "m49:052"
+    },
+    {
+      "code": "112",
+      "providerLabel": "Belarus",
+      "geographyId": "m49:112"
+    },
+    {
+      "code": "56",
+      "providerLabel": "Belgium",
+      "geographyId": "m49:056"
+    },
+    {
+      "code": "84",
+      "providerLabel": "Belize",
+      "geographyId": "m49:084"
+    },
+    {
+      "code": "204",
+      "providerLabel": "Benin",
+      "geographyId": "m49:204"
+    },
+    {
+      "code": "60",
+      "providerLabel": "Bermuda",
+      "geographyId": "m49:060"
+    },
+    {
+      "code": "64",
+      "providerLabel": "Bhutan",
+      "geographyId": "m49:064"
+    },
+    {
+      "code": "68",
+      "providerLabel": "Bolivia (Plurinational State of)",
+      "geographyId": "m49:068"
+    },
+    {
+      "code": "70",
+      "providerLabel": "Bosnia and Herzegovina",
+      "geographyId": "m49:070"
+    },
+    {
+      "code": "72",
+      "providerLabel": "Botswana",
+      "geographyId": "m49:072"
+    },
+    {
+      "code": "74",
+      "providerLabel": "Bouvet Island",
+      "geographyId": "m49:074"
+    },
+    {
+      "code": "76",
+      "providerLabel": "Brazil",
+      "geographyId": "m49:076"
+    },
+    {
+      "code": "92",
+      "providerLabel": "British Virgin Islands",
+      "geographyId": "m49:092"
+    },
+    {
+      "code": "86",
+      "providerLabel": "British Indian Ocean Territory",
+      "geographyId": "m49:086"
+    },
+    {
+      "code": "96",
+      "providerLabel": "Brunei Darussalam",
+      "geographyId": "m49:096"
+    },
+    {
+      "code": "100",
+      "providerLabel": "Bulgaria",
+      "geographyId": "m49:100"
+    },
+    {
+      "code": "854",
+      "providerLabel": "Burkina Faso",
+      "geographyId": "m49:854"
+    },
+    {
+      "code": "108",
+      "providerLabel": "Burundi",
+      "geographyId": "m49:108"
+    },
+    {
+      "code": "116",
+      "providerLabel": "Cambodia",
+      "geographyId": "m49:116"
+    },
+    {
+      "code": "120",
+      "providerLabel": "Cameroon",
+      "geographyId": "m49:120"
+    },
+    {
+      "code": "124",
+      "providerLabel": "Canada",
+      "geographyId": "m49:124"
+    },
+    {
+      "code": "132",
+      "providerLabel": "Cabo Verde",
+      "geographyId": "m49:132"
+    },
+    {
+      "code": "136",
+      "providerLabel": "Cayman Islands",
+      "geographyId": "m49:136"
+    },
+    {
+      "code": "140",
+      "providerLabel": "Central African Republic",
+      "geographyId": "m49:140"
+    },
+    {
+      "code": "148",
+      "providerLabel": "Chad",
+      "geographyId": "m49:148"
+    },
+    {
+      "code": "152",
+      "providerLabel": "Chile",
+      "geographyId": "m49:152"
+    },
+    {
+      "code": "156",
+      "providerLabel": "China",
+      "geographyId": "m49:156"
+    },
+    {
+      "code": "344",
+      "providerLabel": "China, Hong Kong Special Administrative Region",
+      "geographyId": "m49:344"
+    },
+    {
+      "code": "446",
+      "providerLabel": "China, Macao Special Administrative Region",
+      "geographyId": "m49:446"
+    },
+    {
+      "code": "162",
+      "providerLabel": "Christmas Island",
+      "geographyId": "m49:162"
+    },
+    {
+      "code": "166",
+      "providerLabel": "Cocos (Keeling) Islands",
+      "geographyId": "m49:166"
+    },
+    {
+      "code": "170",
+      "providerLabel": "Colombia",
+      "geographyId": "m49:170"
+    },
+    {
+      "code": "174",
+      "providerLabel": "Comoros",
+      "geographyId": "m49:174"
+    },
+    {
+      "code": "178",
+      "providerLabel": "Congo",
+      "geographyId": "m49:178"
+    },
+    {
+      "code": "180",
+      "providerLabel": "Democratic Republic of the Congo",
+      "geographyId": "m49:180"
+    },
+    {
+      "code": "184",
+      "providerLabel": "Cook Islands",
+      "geographyId": "m49:184"
+    },
+    {
+      "code": "188",
+      "providerLabel": "Costa Rica",
+      "geographyId": "m49:188"
+    },
+    {
+      "code": "384",
+      "providerLabel": "Côte d'Ivoire",
+      "geographyId": "m49:384"
+    },
+    {
+      "code": "191",
+      "providerLabel": "Croatia",
+      "geographyId": "m49:191"
+    },
+    {
+      "code": "192",
+      "providerLabel": "Cuba",
+      "geographyId": "m49:192"
+    },
+    {
+      "code": "196",
+      "providerLabel": "Cyprus",
+      "geographyId": "m49:196"
+    },
+    {
+      "code": "203",
+      "providerLabel": "Czechia",
+      "geographyId": "m49:203"
+    },
+    {
+      "code": "208",
+      "providerLabel": "Denmark",
+      "geographyId": "m49:208"
+    },
+    {
+      "code": "262",
+      "providerLabel": "Djibouti",
+      "geographyId": "m49:262"
+    },
+    {
+      "code": "212",
+      "providerLabel": "Dominica",
+      "geographyId": "m49:212"
+    },
+    {
+      "code": "214",
+      "providerLabel": "Dominican Republic",
+      "geographyId": "m49:214"
+    },
+    {
+      "code": "218",
+      "providerLabel": "Ecuador",
+      "geographyId": "m49:218"
+    },
+    {
+      "code": "818",
+      "providerLabel": "Egypt",
+      "geographyId": "m49:818"
+    },
+    {
+      "code": "222",
+      "providerLabel": "El Salvador",
+      "geographyId": "m49:222"
+    },
+    {
+      "code": "226",
+      "providerLabel": "Equatorial Guinea",
+      "geographyId": "m49:226"
+    },
+    {
+      "code": "232",
+      "providerLabel": "Eritrea",
+      "geographyId": "m49:232"
+    },
+    {
+      "code": "233",
+      "providerLabel": "Estonia",
+      "geographyId": "m49:233"
+    },
+    {
+      "code": "231",
+      "providerLabel": "Ethiopia",
+      "geographyId": "m49:231"
+    },
+    {
+      "code": "238",
+      "providerLabel": "Falkland Islands (Malvinas)",
+      "geographyId": "m49:238"
+    },
+    {
+      "code": "234",
+      "providerLabel": "Faroe Islands",
+      "geographyId": "m49:234"
+    },
+    {
+      "code": "242",
+      "providerLabel": "Fiji",
+      "geographyId": "m49:242"
+    },
+    {
+      "code": "246",
+      "providerLabel": "Finland",
+      "geographyId": "m49:246"
+    },
+    {
+      "code": "250",
+      "providerLabel": "France",
+      "geographyId": "m49:250"
+    },
+    {
+      "code": "254",
+      "providerLabel": "French Guiana",
+      "geographyId": "m49:254"
+    },
+    {
+      "code": "258",
+      "providerLabel": "French Polynesia",
+      "geographyId": "m49:258"
+    },
+    {
+      "code": "260",
+      "providerLabel": "French Southern Territories",
+      "geographyId": "m49:260"
+    },
+    {
+      "code": "266",
+      "providerLabel": "Gabon",
+      "geographyId": "m49:266"
+    },
+    {
+      "code": "270",
+      "providerLabel": "Gambia",
+      "geographyId": "m49:270"
+    },
+    {
+      "code": "268",
+      "providerLabel": "Georgia",
+      "geographyId": "m49:268"
+    },
+    {
+      "code": "276",
+      "providerLabel": "Germany",
+      "geographyId": "m49:276"
+    },
+    {
+      "code": "288",
+      "providerLabel": "Ghana",
+      "geographyId": "m49:288"
+    },
+    {
+      "code": "292",
+      "providerLabel": "Gibraltar",
+      "geographyId": "m49:292"
+    },
+    {
+      "code": "300",
+      "providerLabel": "Greece",
+      "geographyId": "m49:300"
+    },
+    {
+      "code": "304",
+      "providerLabel": "Greenland",
+      "geographyId": "m49:304"
+    },
+    {
+      "code": "308",
+      "providerLabel": "Grenada",
+      "geographyId": "m49:308"
+    },
+    {
+      "code": "312",
+      "providerLabel": "Guadeloupe",
+      "geographyId": "m49:312"
+    },
+    {
+      "code": "316",
+      "providerLabel": "Guam",
+      "geographyId": "m49:316"
+    },
+    {
+      "code": "320",
+      "providerLabel": "Guatemala",
+      "geographyId": "m49:320"
+    },
+    {
+      "code": "831",
+      "providerLabel": "Guernsey",
+      "geographyId": "m49:831"
+    },
+    {
+      "code": "324",
+      "providerLabel": "Guinea",
+      "geographyId": "m49:324"
+    },
+    {
+      "code": "624",
+      "providerLabel": "Guinea-Bissau",
+      "geographyId": "m49:624"
+    },
+    {
+      "code": "328",
+      "providerLabel": "Guyana",
+      "geographyId": "m49:328"
+    },
+    {
+      "code": "332",
+      "providerLabel": "Haiti",
+      "geographyId": "m49:332"
+    },
+    {
+      "code": "334",
+      "providerLabel": "Heard Island and McDonald Islands",
+      "geographyId": "m49:334"
+    },
+    {
+      "code": "336",
+      "providerLabel": "Holy See",
+      "geographyId": "m49:336"
+    },
+    {
+      "code": "340",
+      "providerLabel": "Honduras",
+      "geographyId": "m49:340"
+    },
+    {
+      "code": "348",
+      "providerLabel": "Hungary",
+      "geographyId": "m49:348"
+    },
+    {
+      "code": "352",
+      "providerLabel": "Iceland",
+      "geographyId": "m49:352"
+    },
+    {
+      "code": "356",
+      "providerLabel": "India",
+      "geographyId": "m49:356"
+    },
+    {
+      "code": "360",
+      "providerLabel": "Indonesia",
+      "geographyId": "m49:360"
+    },
+    {
+      "code": "364",
+      "providerLabel": "Iran (Islamic Republic of)",
+      "geographyId": "m49:364"
+    },
+    {
+      "code": "368",
+      "providerLabel": "Iraq",
+      "geographyId": "m49:368"
+    },
+    {
+      "code": "372",
+      "providerLabel": "Ireland",
+      "geographyId": "m49:372"
+    },
+    {
+      "code": "833",
+      "providerLabel": "Isle of Man",
+      "geographyId": "m49:833"
+    },
+    {
+      "code": "376",
+      "providerLabel": "Israel",
+      "geographyId": "m49:376"
+    },
+    {
+      "code": "380",
+      "providerLabel": "Italy",
+      "geographyId": "m49:380"
+    },
+    {
+      "code": "388",
+      "providerLabel": "Jamaica",
+      "geographyId": "m49:388"
+    },
+    {
+      "code": "392",
+      "providerLabel": "Japan",
+      "geographyId": "m49:392"
+    },
+    {
+      "code": "832",
+      "providerLabel": "Jersey",
+      "geographyId": "m49:832"
+    },
+    {
+      "code": "400",
+      "providerLabel": "Jordan",
+      "geographyId": "m49:400"
+    },
+    {
+      "code": "398",
+      "providerLabel": "Kazakhstan",
+      "geographyId": "m49:398"
+    },
+    {
+      "code": "404",
+      "providerLabel": "Kenya",
+      "geographyId": "m49:404"
+    },
+    {
+      "code": "296",
+      "providerLabel": "Kiribati",
+      "geographyId": "m49:296"
+    },
+    {
+      "code": "408",
+      "providerLabel": "Democratic People's Republic of Korea",
+      "geographyId": "m49:408"
+    },
+    {
+      "code": "410",
+      "providerLabel": "Republic of Korea",
+      "geographyId": "m49:410"
+    },
+    {
+      "code": "414",
+      "providerLabel": "Kuwait",
+      "geographyId": "m49:414"
+    },
+    {
+      "code": "417",
+      "providerLabel": "Kyrgyzstan",
+      "geographyId": "m49:417"
+    },
+    {
+      "code": "418",
+      "providerLabel": "Lao People's Democratic Republic",
+      "geographyId": "m49:418"
+    },
+    {
+      "code": "428",
+      "providerLabel": "Latvia",
+      "geographyId": "m49:428"
+    },
+    {
+      "code": "422",
+      "providerLabel": "Lebanon",
+      "geographyId": "m49:422"
+    },
+    {
+      "code": "426",
+      "providerLabel": "Lesotho",
+      "geographyId": "m49:426"
+    },
+    {
+      "code": "430",
+      "providerLabel": "Liberia",
+      "geographyId": "m49:430"
+    },
+    {
+      "code": "434",
+      "providerLabel": "Libya",
+      "geographyId": "m49:434"
+    },
+    {
+      "code": "438",
+      "providerLabel": "Liechtenstein",
+      "geographyId": "m49:438"
+    },
+    {
+      "code": "440",
+      "providerLabel": "Lithuania",
+      "geographyId": "m49:440"
+    },
+    {
+      "code": "442",
+      "providerLabel": "Luxembourg",
+      "geographyId": "m49:442"
+    },
+    {
+      "code": "807",
+      "providerLabel": "North Macedonia",
+      "geographyId": "m49:807"
+    },
+    {
+      "code": "450",
+      "providerLabel": "Madagascar",
+      "geographyId": "m49:450"
+    },
+    {
+      "code": "454",
+      "providerLabel": "Malawi",
+      "geographyId": "m49:454"
+    },
+    {
+      "code": "458",
+      "providerLabel": "Malaysia",
+      "geographyId": "m49:458"
+    },
+    {
+      "code": "462",
+      "providerLabel": "Maldives",
+      "geographyId": "m49:462"
+    },
+    {
+      "code": "466",
+      "providerLabel": "Mali",
+      "geographyId": "m49:466"
+    },
+    {
+      "code": "470",
+      "providerLabel": "Malta",
+      "geographyId": "m49:470"
+    },
+    {
+      "code": "584",
+      "providerLabel": "Marshall Islands",
+      "geographyId": "m49:584"
+    },
+    {
+      "code": "474",
+      "providerLabel": "Martinique",
+      "geographyId": "m49:474"
+    },
+    {
+      "code": "478",
+      "providerLabel": "Mauritania",
+      "geographyId": "m49:478"
+    },
+    {
+      "code": "480",
+      "providerLabel": "Mauritius",
+      "geographyId": "m49:480"
+    },
+    {
+      "code": "175",
+      "providerLabel": "Mayotte",
+      "geographyId": "m49:175"
+    },
+    {
+      "code": "484",
+      "providerLabel": "Mexico",
+      "geographyId": "m49:484"
+    },
+    {
+      "code": "583",
+      "providerLabel": "Micronesia (Federated States of)",
+      "geographyId": "m49:583"
+    },
+    {
+      "code": "498",
+      "providerLabel": "Republic of Moldova",
+      "geographyId": "m49:498"
+    },
+    {
+      "code": "492",
+      "providerLabel": "Monaco",
+      "geographyId": "m49:492"
+    },
+    {
+      "code": "496",
+      "providerLabel": "Mongolia",
+      "geographyId": "m49:496"
+    },
+    {
+      "code": "499",
+      "providerLabel": "Montenegro",
+      "geographyId": "m49:499"
+    },
+    {
+      "code": "500",
+      "providerLabel": "Montserrat",
+      "geographyId": "m49:500"
+    },
+    {
+      "code": "504",
+      "providerLabel": "Morocco",
+      "geographyId": "m49:504"
+    },
+    {
+      "code": "508",
+      "providerLabel": "Mozambique",
+      "geographyId": "m49:508"
+    },
+    {
+      "code": "104",
+      "providerLabel": "Myanmar",
+      "geographyId": "m49:104"
+    },
+    {
+      "code": "516",
+      "providerLabel": "Namibia",
+      "geographyId": "m49:516"
+    },
+    {
+      "code": "520",
+      "providerLabel": "Naoero",
+      "geographyId": "m49:520"
+    },
+    {
+      "code": "524",
+      "providerLabel": "Nepal",
+      "geographyId": "m49:524"
+    },
+    {
+      "code": "528",
+      "providerLabel": "Netherlands (Kingdom of the)",
+      "geographyId": "m49:528"
+    },
+    {
+      "code": "540",
+      "providerLabel": "New Caledonia",
+      "geographyId": "m49:540"
+    },
+    {
+      "code": "554",
+      "providerLabel": "New Zealand",
+      "geographyId": "m49:554"
+    },
+    {
+      "code": "558",
+      "providerLabel": "Nicaragua",
+      "geographyId": "m49:558"
+    },
+    {
+      "code": "562",
+      "providerLabel": "Niger",
+      "geographyId": "m49:562"
+    },
+    {
+      "code": "566",
+      "providerLabel": "Nigeria",
+      "geographyId": "m49:566"
+    },
+    {
+      "code": "570",
+      "providerLabel": "Niue",
+      "geographyId": "m49:570"
+    },
+    {
+      "code": "574",
+      "providerLabel": "Norfolk Island",
+      "geographyId": "m49:574"
+    },
+    {
+      "code": "580",
+      "providerLabel": "Northern Mariana Islands",
+      "geographyId": "m49:580"
+    },
+    {
+      "code": "578",
+      "providerLabel": "Norway",
+      "geographyId": "m49:578"
+    },
+    {
+      "code": "512",
+      "providerLabel": "Oman",
+      "geographyId": "m49:512"
+    },
+    {
+      "code": "586",
+      "providerLabel": "Pakistan",
+      "geographyId": "m49:586"
+    },
+    {
+      "code": "585",
+      "providerLabel": "Palau",
+      "geographyId": "m49:585"
+    },
+    {
+      "code": "275",
+      "providerLabel": "State of Palestine",
+      "geographyId": "m49:275"
+    },
+    {
+      "code": "591",
+      "providerLabel": "Panama",
+      "geographyId": "m49:591"
+    },
+    {
+      "code": "598",
+      "providerLabel": "Papua New Guinea",
+      "geographyId": "m49:598"
+    },
+    {
+      "code": "600",
+      "providerLabel": "Paraguay",
+      "geographyId": "m49:600"
+    },
+    {
+      "code": "604",
+      "providerLabel": "Peru",
+      "geographyId": "m49:604"
+    },
+    {
+      "code": "608",
+      "providerLabel": "Philippines",
+      "geographyId": "m49:608"
+    },
+    {
+      "code": "612",
+      "providerLabel": "Pitcairn",
+      "geographyId": "m49:612"
+    },
+    {
+      "code": "616",
+      "providerLabel": "Poland",
+      "geographyId": "m49:616"
+    },
+    {
+      "code": "620",
+      "providerLabel": "Portugal",
+      "geographyId": "m49:620"
+    },
+    {
+      "code": "630",
+      "providerLabel": "Puerto Rico",
+      "geographyId": "m49:630"
+    },
+    {
+      "code": "634",
+      "providerLabel": "Qatar",
+      "geographyId": "m49:634"
+    },
+    {
+      "code": "638",
+      "providerLabel": "Réunion",
+      "geographyId": "m49:638"
+    },
+    {
+      "code": "642",
+      "providerLabel": "Romania",
+      "geographyId": "m49:642"
+    },
+    {
+      "code": "643",
+      "providerLabel": "Russian Federation",
+      "geographyId": "m49:643"
+    },
+    {
+      "code": "646",
+      "providerLabel": "Rwanda",
+      "geographyId": "m49:646"
+    },
+    {
+      "code": "654",
+      "providerLabel": "Saint Helena",
+      "geographyId": "m49:654"
+    },
+    {
+      "code": "659",
+      "providerLabel": "Saint Kitts and Nevis",
+      "geographyId": "m49:659"
+    },
+    {
+      "code": "662",
+      "providerLabel": "Saint Lucia",
+      "geographyId": "m49:662"
+    },
+    {
+      "code": "666",
+      "providerLabel": "Saint Pierre and Miquelon",
+      "geographyId": "m49:666"
+    },
+    {
+      "code": "882",
+      "providerLabel": "Samoa",
+      "geographyId": "m49:882"
+    },
+    {
+      "code": "674",
+      "providerLabel": "San Marino",
+      "geographyId": "m49:674"
+    },
+    {
+      "code": "678",
+      "providerLabel": "Sao Tome and Principe",
+      "geographyId": "m49:678"
+    },
+    {
+      "code": "682",
+      "providerLabel": "Saudi Arabia",
+      "geographyId": "m49:682"
+    },
+    {
+      "code": "686",
+      "providerLabel": "Senegal",
+      "geographyId": "m49:686"
+    },
+    {
+      "code": "688",
+      "providerLabel": "Serbia",
+      "geographyId": "m49:688"
+    },
+    {
+      "code": "690",
+      "providerLabel": "Seychelles",
+      "geographyId": "m49:690"
+    },
+    {
+      "code": "694",
+      "providerLabel": "Sierra Leone",
+      "geographyId": "m49:694"
+    },
+    {
+      "code": "702",
+      "providerLabel": "Singapore",
+      "geographyId": "m49:702"
+    },
+    {
+      "code": "703",
+      "providerLabel": "Slovakia",
+      "geographyId": "m49:703"
+    },
+    {
+      "code": "705",
+      "providerLabel": "Slovenia",
+      "geographyId": "m49:705"
+    },
+    {
+      "code": "90",
+      "providerLabel": "Solomon Islands",
+      "geographyId": "m49:090"
+    },
+    {
+      "code": "706",
+      "providerLabel": "Somalia",
+      "geographyId": "m49:706"
+    },
+    {
+      "code": "710",
+      "providerLabel": "South Africa",
+      "geographyId": "m49:710"
+    },
+    {
+      "code": "239",
+      "providerLabel": "South Georgia and the South Sandwich Islands",
+      "geographyId": "m49:239"
+    },
+    {
+      "code": "728",
+      "providerLabel": "South Sudan",
+      "geographyId": "m49:728"
+    },
+    {
+      "code": "724",
+      "providerLabel": "Spain",
+      "geographyId": "m49:724"
+    },
+    {
+      "code": "144",
+      "providerLabel": "Sri Lanka",
+      "geographyId": "m49:144"
+    },
+    {
+      "code": "729",
+      "providerLabel": "Sudan",
+      "geographyId": "m49:729"
+    },
+    {
+      "code": "740",
+      "providerLabel": "Suriname",
+      "geographyId": "m49:740"
+    },
+    {
+      "code": "744",
+      "providerLabel": "Svalbard and Jan Mayen Islands",
+      "geographyId": "m49:744"
+    },
+    {
+      "code": "748",
+      "providerLabel": "Eswatini",
+      "geographyId": "m49:748"
+    },
+    {
+      "code": "752",
+      "providerLabel": "Sweden",
+      "geographyId": "m49:752"
+    },
+    {
+      "code": "756",
+      "providerLabel": "Switzerland",
+      "geographyId": "m49:756"
+    },
+    {
+      "code": "760",
+      "providerLabel": "Syrian Arab Republic",
+      "geographyId": "m49:760"
+    },
+    {
+      "code": "762",
+      "providerLabel": "Tajikistan",
+      "geographyId": "m49:762"
+    },
+    {
+      "code": "834",
+      "providerLabel": "United Republic of Tanzania",
+      "geographyId": "m49:834"
+    },
+    {
+      "code": "764",
+      "providerLabel": "Thailand",
+      "geographyId": "m49:764"
+    },
+    {
+      "code": "626",
+      "providerLabel": "Timor-Leste",
+      "geographyId": "m49:626"
+    },
+    {
+      "code": "768",
+      "providerLabel": "Togo",
+      "geographyId": "m49:768"
+    },
+    {
+      "code": "772",
+      "providerLabel": "Tokelau",
+      "geographyId": "m49:772"
+    },
+    {
+      "code": "776",
+      "providerLabel": "Tonga",
+      "geographyId": "m49:776"
+    },
+    {
+      "code": "780",
+      "providerLabel": "Trinidad and Tobago",
+      "geographyId": "m49:780"
+    },
+    {
+      "code": "788",
+      "providerLabel": "Tunisia",
+      "geographyId": "m49:788"
+    },
+    {
+      "code": "792",
+      "providerLabel": "Türkiye",
+      "geographyId": "m49:792"
+    },
+    {
+      "code": "795",
+      "providerLabel": "Turkmenistan",
+      "geographyId": "m49:795"
+    },
+    {
+      "code": "796",
+      "providerLabel": "Turks and Caicos Islands",
+      "geographyId": "m49:796"
+    },
+    {
+      "code": "798",
+      "providerLabel": "Tuvalu",
+      "geographyId": "m49:798"
+    },
+    {
+      "code": "800",
+      "providerLabel": "Uganda",
+      "geographyId": "m49:800"
+    },
+    {
+      "code": "804",
+      "providerLabel": "Ukraine",
+      "geographyId": "m49:804"
+    },
+    {
+      "code": "784",
+      "providerLabel": "United Arab Emirates",
+      "geographyId": "m49:784"
+    },
+    {
+      "code": "826",
+      "providerLabel": "United Kingdom of Great Britain and Northern Ireland",
+      "geographyId": "m49:826"
+    },
+    {
+      "code": "840",
+      "providerLabel": "United States of America",
+      "geographyId": "m49:840"
+    },
+    {
+      "code": "581",
+      "providerLabel": "United States Minor Outlying Islands",
+      "geographyId": "m49:581"
+    },
+    {
+      "code": "858",
+      "providerLabel": "Uruguay",
+      "geographyId": "m49:858"
+    },
+    {
+      "code": "860",
+      "providerLabel": "Uzbekistan",
+      "geographyId": "m49:860"
+    },
+    {
+      "code": "548",
+      "providerLabel": "Vanuatu",
+      "geographyId": "m49:548"
+    },
+    {
+      "code": "862",
+      "providerLabel": "Venezuela (Bolivarian Republic of)",
+      "geographyId": "m49:862"
+    },
+    {
+      "code": "704",
+      "providerLabel": "Viet Nam",
+      "geographyId": "m49:704"
+    },
+    {
+      "code": "876",
+      "providerLabel": "Wallis and Futuna Islands",
+      "geographyId": "m49:876"
+    },
+    {
+      "code": "732",
+      "providerLabel": "Western Sahara",
+      "geographyId": "m49:732"
+    },
+    {
+      "code": "887",
+      "providerLabel": "Yemen",
+      "geographyId": "m49:887"
+    },
+    {
+      "code": "894",
+      "providerLabel": "Zambia",
+      "geographyId": "m49:894"
+    },
+    {
+      "code": "716",
+      "providerLabel": "Zimbabwe",
+      "geographyId": "m49:716"
+    },
+    {
+      "code": "1",
+      "providerLabel": "World",
+      "geographyId": "world"
+    },
+    {
+      "code": "535",
+      "providerLabel": "Bonaire, Sint Eustatius and Saba",
+      "geographyId": "m49:535"
+    },
+    {
+      "code": "531",
+      "providerLabel": "Curaçao",
+      "geographyId": "m49:531"
+    },
+    {
+      "code": "652",
+      "providerLabel": "Saint Barthélemy",
+      "geographyId": "m49:652"
+    },
+    {
+      "code": "663",
+      "providerLabel": "Saint Martin (French Part)",
+      "geographyId": "m49:663"
+    },
+    {
+      "code": "670",
+      "providerLabel": "Saint Vincent and the Grenadines",
+      "geographyId": "m49:670"
+    },
+    {
+      "code": "534",
+      "providerLabel": "Sint Maarten (Dutch part)",
+      "geographyId": "m49:534"
+    },
+    {
+      "code": "850",
+      "providerLabel": "United States Virgin Islands",
+      "geographyId": "m49:850"
+    }
+  ],
+  "series": [
+    {
+      "id": "unsdg:SL_ISV_IFEM",
+      "topicId": "labor:informal_work",
+      "sourceId": "unsdg",
+      "providerCode": "SL_ISV_IFEM",
+      "label": "Informelle Beschäftigung · 13. ICLS",
+      "providerLabel": "Proportion of informal employment, by sector and sex - 13th ICLS (%)",
+      "unit": "Anteil an der Beschäftigung (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Informelle Beschäftigung ab 15 Jahren, beide Geschlechter und alle Wirtschaftszweige. Die Definition nach 13. ICLS bleibt getrennt von der neueren 19. ICLS.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Age": "15+",
+        "Sex": "BOTHSEX",
+        "Activity": "TOTAL"
+      },
+      "indicator": "8.3.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 4667,
+      "expectedNumeric": 1328,
+      "areaCount": 146
+    },
+    {
+      "id": "unsdg:SL_ISV_IFEM_19ICLS",
+      "topicId": "labor:informal_work",
+      "sourceId": "unsdg",
+      "providerCode": "SL_ISV_IFEM_19ICLS",
+      "label": "Informelle Beschäftigung · 19. ICLS",
+      "providerLabel": "Proportion of informal employment, by sector and sex - 19th ICLS (%)",
+      "unit": "Anteil an der Beschäftigung (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Informelle Beschäftigung nach 19. ICLS; beide Geschlechter ab 15 Jahren und alle Wirtschaftszweige. Die ältere Reihe wird nicht angehängt.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Age": "15+",
+        "Sex": "BOTHSEX",
+        "Activity": "TOTAL"
+      },
+      "indicator": "8.3.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 1471,
+      "expectedNumeric": 512,
+      "areaCount": 95
+    },
+    {
+      "id": "unsdg:EN_EWT_RCYR",
+      "topicId": "materials:recycling",
+      "sourceId": "unsdg",
+      "providerCode": "EN_EWT_RCYR",
+      "label": "Elektroschrott · Recyclinganteil",
+      "providerLabel": "Proportion of electronic waste recycled (%)",
+      "unit": "Anteil am Elektroschrott (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Dokumentiert gesammelter und recycelter Elektroschrott relativ zur erzeugten Menge. Diese Quote beschreibt nur Elektroschrott.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "12.5.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 813,
+      "expectedNumeric": 475,
+      "areaCount": 51
+    },
+    {
+      "id": "unsdg:EN_MWT_RCYR",
+      "topicId": "materials:recycling",
+      "sourceId": "unsdg",
+      "providerCode": "EN_MWT_RCYR",
+      "label": "Siedlungsabfälle · Recyclinganteil",
+      "providerLabel": "Proportion of municipal waste recycled (%)",
+      "unit": "Anteil an Siedlungsabfällen (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichter Recyclinganteil der Siedlungsabfälle. Abfalldefinitionen und Erfassung können sich zwischen Ländern unterscheiden.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "12.5.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 1328,
+      "expectedNumeric": 1328,
+      "areaCount": 96
+    },
+    {
+      "id": "unsdg:ST_GDP_ZS",
+      "topicId": "consumer_services:tourism",
+      "sourceId": "unsdg",
+      "providerCode": "ST_GDP_ZS",
+      "label": "Tourismus · direkter Beitrag zum BIP",
+      "providerLabel": "Tourism direct GDP as a proportion of total GDP (%)",
+      "unit": "Anteil am BIP (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichter direkter Tourismusbeitrag. Einzelne Länder melden touristische Bruttowertschöpfung als Ersatzgröße; die jeweilige Abgrenzung steht am Quellenpunkt. Indirekte Effekte sind nicht als Gesamtbeitrag enthalten.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "8.9.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 1669,
+      "expectedNumeric": 1329,
+      "areaCount": 129
+    },
+    {
+      "id": "unsdg:ST_EMP_TRSMN",
+      "topicId": "consumer_services:tourism",
+      "sourceId": "unsdg",
+      "providerCode": "ST_EMP_TRSMN",
+      "label": "Beschäftigte in Tourismusbranchen",
+      "providerLabel": "Employed persons in the tourism industries (number)",
+      "unit": "Personen",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Beschäftigte in den abgegrenzten Tourismusbranchen. Diese Branchen bedienen auch Einheimische; die Zahl ist keine ausschließlich durch Reisende ausgelöste Beschäftigung.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "8.9.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "NUMBER",
+      "expectedRows": 1472,
+      "expectedNumeric": 1132,
+      "areaCount": 145
+    },
+    {
+      "id": "unsdg:SP_ROD_R2KM",
+      "topicId": "transport:roads",
+      "sourceId": "unsdg",
+      "providerCode": "SP_ROD_R2KM",
+      "label": "Ländlicher Zugang zu ganzjährig nutzbaren Straßen",
+      "providerLabel": "Proportion of the rural population who live within 2 km of an all-season road",
+      "unit": "Anteil der ländlichen Bevölkerung (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Menschen im ländlichen Raum in höchstens zwei Kilometern Entfernung zu einer ganzjährig nutzbaren Straße. Einzelne Erhebungsjahre; kein Straßennetzbestand.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Location": "RURAL"
+      },
+      "indicator": "9.1.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 26,
+      "expectedNumeric": 26,
+      "areaCount": 25
+    },
+    {
+      "id": "unsdg:SI_POV_DAY1",
+      "topicId": "institutions:poverty",
+      "sourceId": "unsdg",
+      "providerCode": "SI_POV_DAY1",
+      "label": "Armut unter 3 Dollar pro Tag · Kaufkraftbasis 2021",
+      "providerLabel": "Proportion of population below international poverty line (%)",
+      "unit": "Bevölkerungsanteil (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Bevölkerung unter der internationalen Armutsgrenze von 3 Dollar pro Tag auf Kaufkraftbasis 2021. Ländererhebungen verwenden Einkommen oder Konsum; Erhebungsjahr und Grundlage stehen am Quellenpunkt.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Age": "ALLAGE",
+        "Location": "ALLAREA",
+        "Sex": "BOTHSEX"
+      },
+      "indicator": "1.1.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 9208,
+      "expectedNumeric": 2456,
+      "areaCount": 171
+    },
+    {
+      "id": "unsdg:SI_POV_NAHC",
+      "topicId": "institutions:poverty",
+      "sourceId": "unsdg",
+      "providerCode": "SI_POV_NAHC",
+      "label": "Nationale Armutsgrenze",
+      "providerLabel": "Proportion of population living below the national poverty line (%)",
+      "unit": "Bevölkerungsanteil (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Armut nach der jeweiligen nationalen Grenze. Länder verwenden unterschiedliche Grenzen; diese Reihe wird deshalb nur für ein Land angezeigt.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Location": "ALLAREA"
+      },
+      "indicator": "1.2.1",
+      "connect": false,
+      "compare": false,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 1159,
+      "expectedNumeric": 1159,
+      "areaCount": 158
+    },
+    {
+      "id": "unsdg:GC_GOB_TAXD",
+      "topicId": "institutions:tax_structure",
+      "sourceId": "unsdg",
+      "providerCode": "GC_GOB_TAXD",
+      "label": "Steuern zur Finanzierung des Staatshaushalts",
+      "providerLabel": "Proportion of domestic budget funded by domestic taxes (%)",
+      "unit": "Anteil am Staatshaushalt (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Anteil des Haushalts, der durch inländische Steuern finanziert wird. Die institutionelle Abgrenzung der Originalquelle bleibt maßgeblich.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "17.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 3319,
+      "expectedNumeric": 3306,
+      "areaCount": 182
+    },
+    {
+      "id": "unsdg:GC_TAX_TOTL_GD_ZS",
+      "topicId": "institutions:tax_structure",
+      "sourceId": "unsdg",
+      "providerCode": "GC_TAX_TOTL_GD_ZS",
+      "label": "Steuereinnahmen im Verhältnis zum BIP",
+      "providerLabel": "Tax revenue as a proportion of GDP (%)",
+      "unit": "Anteil am BIP (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichte Steuerquote. Sie beschreibt die in der Quelle erfasste staatliche Ebene, nicht zwangsläufig sämtliche gesamtstaatlichen Abgaben.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "17.13.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 3476,
+      "expectedNumeric": 2959,
+      "areaCount": 156
+    },
+    {
+      "id": "unsdg:EN_ATM_CO2GDP",
+      "topicId": "environment:emission_intensity",
+      "sourceId": "unsdg",
+      "providerCode": "EN_ATM_CO2GDP",
+      "label": "CO₂-Intensität der Wirtschaftsleistung",
+      "providerLabel": "Carbon dioxide emissions per unit of GDP PPP (kilogrammes of CO2 per constant 2021 United States dollars)",
+      "unit": "kg CO₂ je internationalem Dollar (Kaufkraftbasis 2021)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "CO₂ im Verhältnis zur kaufkraftbereinigten Wirtschaftsleistung auf Basis 2021. Sinkende Intensität bedeutet nicht zwingend sinkende Gesamtemissionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "9.4.1",
+      "connect": true,
+      "compare": true,
+      "expectedUnit": "KG_PER_CON_USD",
+      "expectedRows": 4536,
+      "expectedNumeric": 3535,
+      "areaCount": 148
+    },
+    {
+      "id": "unsdg:ER_RSK_LST",
+      "topicId": "environment:biodiversity_context",
+      "sourceId": "unsdg",
+      "providerCode": "ER_RSK_LST",
+      "label": "Red List Index · Aussterberisiko",
+      "providerLabel": "Red List Index",
+      "unit": "Index · 1 = geringeres, 0 = höchstes Risiko",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichter Index des Aussterberisikos bewerteter Arten. Höher bedeutet geringeres Risiko; Unsicherheitsgrenzen gehören zur Quellenangabe.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "15.5.1",
+      "connect": true,
+      "compare": true,
+      "expectedUnit": "INDEX",
+      "expectedRows": 12322,
+      "expectedNumeric": 11441,
+      "areaCount": 249
+    },
+    {
+      "id": "unsdg:SG_DSR_LGRGSR",
+      "topicId": "environment:adaptation",
+      "sourceId": "unsdg",
+      "providerCode": "SG_DSR_LGRGSR",
+      "label": "Umsetzung nationaler Katastrophenvorsorge",
+      "providerLabel": "Score of adoption and implementation of national DRR strategies in line with the Sendai Framework",
+      "unit": "Index",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Selbstberichteter Umsetzungsstand nationaler Strategien zur Katastrophenrisikominderung nach dem Sendai-Rahmen. Das ist keine Messung vermiedener Schäden.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "1.5.3",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "INDEX",
+      "expectedRows": 2370,
+      "expectedNumeric": 790,
+      "areaCount": 141
+    },
+    {
+      "id": "unsdg:SG_DSR_SILS",
+      "topicId": "environment:adaptation",
+      "sourceId": "unsdg",
+      "providerCode": "SG_DSR_SILS",
+      "label": "Lokale Strategien zur Katastrophenvorsorge",
+      "providerLabel": "Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies (%)",
+      "unit": "Anteil lokaler Regierungen (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Anteil lokaler Regierungen mit abgestimmten Strategien zur Katastrophenrisikominderung. Die nationale Verwaltungsstruktur beeinflusst den Nenner.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "1.5.4",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 2637,
+      "expectedNumeric": 879,
+      "areaCount": 129
+    },
+    {
+      "id": "unsdg:DC_TOF_INFRAL",
+      "topicId": "transport:infrastructure_spending",
+      "sourceId": "unsdg",
+      "providerCode": "DC_TOF_INFRAL",
+      "label": "Öffentliche internationale Infrastrukturfinanzierung",
+      "providerLabel": "Total official flows for infrastructure, by recipient countries (millions of constant 2024 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2024)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Offizielle Entwicklungs- und weitere öffentliche Finanzflüsse an Empfängerländer für Infrastruktur. Das sind keine gesamten inländischen Infrastrukturinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "9.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4471,
+      "expectedNumeric": 3630,
+      "areaCount": 157
+    },
+    {
+      "id": "unsdg:GF_COM_PPPI",
+      "topicId": "transport:infrastructure_spending",
+      "sourceId": "unsdg",
+      "providerCode": "GF_COM_PPPI",
+      "label": "Infrastrukturprojekte mit privater Beteiligung",
+      "providerLabel": "Amount of United States dollars committed to public-private partnerships for infrastructure, million USD nominal",
+      "unit": "Mio. laufende US-Dollar",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Zugesagte Investitionen in Infrastrukturprojekte mit privater Beteiligung. Zusagen beim Finanzierungsabschluss sind keine tatsächlich im jeweiligen Jahr ausgezahlten Gesamtausgaben.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "17.17.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CU_USD_M",
+      "expectedRows": 2704,
+      "expectedNumeric": 2683,
+      "areaCount": 128
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:ALL",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Insgesamt",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "ALL"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:SOLAR",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Solar",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "SOLAR"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:WIND",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Wind",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "WIND"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:HYDROPOWER",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Wasserkraft",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "HYDROPOWER"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:BIOENERGY",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Bioenergie",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "BIOENERGY"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:GEOTHERMAL",
+      "topicId": "energy_systems:energy_investment",
+      "sourceId": "unsdg",
+      "providerCode": "EG_IFF_RANDN",
+      "label": "Internationale Erneuerbaren-Finanzierung · Geothermie",
+      "providerLabel": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+      "unit": "Mio. US-Dollar (Preisbasis 2023)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Internationale Finanzierungszusagen an Entwicklungsländer für saubere Energieforschung und erneuerbare Erzeugung, preisbereinigt auf 2023 mit den Deflatoren der Geber. Zusagen sind keine tatsächlichen Auszahlungen und keine gesamten Energieinvestitionen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Type of renewable technology": "GEOTHERMAL"
+      },
+      "indicator": "7.a.1",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "CON_USD_M",
+      "expectedRows": 4525,
+      "expectedNumeric": 3825,
+      "areaCount": 153
+    },
+    {
+      "id": "unsdg:VC_DTH_TOTR",
+      "topicId": "institutions:conflict_context",
+      "sourceId": "unsdg",
+      "providerCode": "VC_DTH_TOTR",
+      "label": "Dokumentierte konfliktbedingte Todesfälle",
+      "providerLabel": "Number of total conflict-related deaths per 100,000 population (Per 100,000 population)",
+      "unit": "Todesfälle je 100.000 Menschen",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichte konfliktbedingte Sterberate. Erfassungsgrenzen und Unsicherheit stehen in der Quelle; fehlende Länderjahre bedeuten keine Konfliktfreiheit.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Cause of death": "_T"
+      },
+      "indicator": "16.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "PER_100000_POP",
+      "expectedRows": 183,
+      "expectedNumeric": 183,
+      "areaCount": 21
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:ROA",
+      "topicId": "transport:roads",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_FRGVOL",
+      "label": "Güterverkehr · Straße",
+      "providerLabel": "Freight volume, by mode of transport (tonne kilometres)",
+      "unit": "Tonnenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "ROA"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "T_KM",
+      "expectedRows": 200,
+      "expectedNumeric": 5,
+      "areaCount": 1
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:RAI",
+      "topicId": "transport:rail",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_FRGVOL",
+      "label": "Güterverkehr · Schiene",
+      "providerLabel": "Freight volume, by mode of transport (tonne kilometres)",
+      "unit": "Tonnenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "RAI"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "T_KM",
+      "expectedRows": 180,
+      "expectedNumeric": 5,
+      "areaCount": 1
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:AIR",
+      "topicId": "transport:aviation",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_FRGVOL",
+      "label": "Güterverkehr · Luftverkehr",
+      "providerLabel": "Freight volume, by mode of transport (tonne kilometres)",
+      "unit": "Tonnenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "AIR"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "T_KM",
+      "expectedRows": 1476,
+      "expectedNumeric": 1175,
+      "areaCount": 248
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:ROA",
+      "topicId": "transport:roads",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_PFVOL",
+      "label": "Personenverkehr · Straße",
+      "providerLabel": "Passenger volume (passenger kilometres), by mode of transport",
+      "unit": "Personenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "ROA"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "P_KM",
+      "expectedRows": 200,
+      "expectedNumeric": 5,
+      "areaCount": 1
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:RAI",
+      "topicId": "transport:rail",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_PFVOL",
+      "label": "Personenverkehr · Schiene",
+      "providerLabel": "Passenger volume (passenger kilometres), by mode of transport",
+      "unit": "Personenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "RAI"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "P_KM",
+      "expectedRows": 190,
+      "expectedNumeric": 5,
+      "areaCount": 1
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:AIR",
+      "topicId": "transport:aviation",
+      "sourceId": "unsdg",
+      "providerCode": "IS_RDP_PFVOL",
+      "label": "Personenverkehr · Luftverkehr",
+      "providerLabel": "Passenger volume (passenger kilometres), by mode of transport",
+      "unit": "Personenkilometer",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Verkehrsleistung des ausdrücklich gewählten Verkehrsträgers. Entfernung und beförderte Menge werden gemeinsam erfasst; der Wert ist weder Umsatz noch ein Bestand an Infrastruktur.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Mode of transportation": "AIR"
+      },
+      "indicator": "9.1.2",
+      "connect": false,
+      "compare": true,
+      "expectedUnit": "P_KM",
+      "expectedRows": 1502,
+      "expectedNumeric": 1200,
+      "areaCount": 248
+    },
+    {
+      "id": "unsdg:EG_FEC_RNEW",
+      "topicId": "energy_systems:energy_efficiency",
+      "sourceId": "unsdg",
+      "providerCode": "EG_FEC_RNEW",
+      "label": "Erneuerbare am gesamten Endenergieverbrauch",
+      "providerLabel": "Renewable energy share in the total final energy consumption (%)",
+      "unit": "Anteil am Endenergieverbrauch (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Erneuerbare Energie über Strom, Wärme und Verkehr im Verhältnis zum gesamten Endenergieverbrauch. Diese Perspektive ist von einem reinen Strommix getrennt.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G"
+      },
+      "indicator": "7.2.1",
+      "connect": true,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 9343,
+      "expectedNumeric": 7707,
+      "areaCount": 231
+    },
+    {
+      "id": "unsdg:SH_H2O_SAFE",
+      "topicId": "food_water:drinking_water",
+      "sourceId": "unsdg",
+      "providerCode": "SH_H2O_SAFE",
+      "label": "Sicher bewirtschaftetes Trinkwasser",
+      "providerLabel": "Proportion of population using safely managed drinking water services, by urban/rural (%)",
+      "unit": "Bevölkerungsanteil (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Sicher bewirtschaftete Trinkwasserversorgung für die Gesamtbevölkerung nach der JMP-Definition. Dies stellt strengere Anforderungen als eine grundlegende Versorgung.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Location": "ALLAREA"
+      },
+      "indicator": "6.1.1",
+      "connect": true,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 4761,
+      "expectedNumeric": 4016,
+      "areaCount": 164
+    },
+    {
+      "id": "unsdg:SH_SAN_SAFE",
+      "topicId": "food_water:sanitation",
+      "sourceId": "unsdg",
+      "providerCode": "SH_SAN_SAFE",
+      "label": "Sicher bewirtschaftete Sanitärversorgung",
+      "providerLabel": "Proportion of population using safely managed sanitation services, by urban/rural (%)",
+      "unit": "Bevölkerungsanteil (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Sicher bewirtschaftete Sanitärversorgung der Gesamtbevölkerung; veröffentlichte JMP-Schätzungen.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02. Die jeweilige Ursprungsquelle, Datenart, Fußnoten und gegebenenfalls Unsicherheitsgrenzen bleiben erhalten. Keine Markt- oder Anlagebewertung.",
+      "dimensions": {
+        "Reporting Type": "G",
+        "Location": "ALLAREA"
+      },
+      "indicator": "6.2.1",
+      "connect": true,
+      "compare": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 4542,
+      "expectedNumeric": 3692,
+      "areaCount": 151
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_GOV",
+      "topicId": "institutions:public_services",
+      "sourceId": "unsdg",
+      "providerCode": "SP_PSR_OSATIS_GOV",
+      "providerLabel": "Proportion of population who say that overall they are satisfied with the quality of government services (%)",
+      "label": "Zufriedenheit mit Behördenleistungen",
+      "unit": "Anteil der erfassten Befragten (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Gesamtzufriedenheit mit Verwaltungsleistungen wie Ausweisen und Personenstandsregistrierung. Veröffentlicht wird die Antwort auf die Gesamtfrage, kein selbst berechneter Durchschnitt einzelner Qualitätsmerkmale.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02, Indikator 16.6.2. Befragungen von Statistikämtern, OECD und Gallup unterscheiden sich in Fragen, Teilnehmerkreis und Antwortskala. Zufriedenheit beschreibt eine Erfahrung oder Wahrnehmung; sie ist kein objektiver Leistungsindex. Die Ansichten bleiben deshalb pro Land getrennt. Einzelne Erhebungsjahre werden nicht verbunden. Ursprungsbefragung, Fußnoten und Datenart bleiben je Jahr erhalten.",
+      "dimensions": {
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Reporting Type": "G",
+        "Disability status": "_T",
+        "Location": "ALLAREA",
+        "Population Group": "TOTAL",
+        "Quantile": "_T"
+      },
+      "indicator": "16.6.2",
+      "connect": false,
+      "compare": false,
+      "unfiltered": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 311,
+      "expectedNumeric": 75,
+      "areaCount": 46
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_HLTH",
+      "topicId": "institutions:public_services",
+      "sourceId": "unsdg",
+      "providerCode": "SP_PSR_OSATIS_HLTH",
+      "providerLabel": "Proportion of population who say that overall they are satisfied with the quality of healthcare services (%)",
+      "label": "Zufriedenheit mit Gesundheitsdiensten",
+      "unit": "Anteil der erfassten Befragten (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Gesamtzufriedenheit mit der Gesundheitsversorgung. Der UN-Zielstandard betrifft die grundlegende öffentliche Versorgung; einzelne Ursprungsbefragungen grenzen Gesundheitsdienste weiter ab. Veröffentlicht wird die Antwort auf die Gesamtfrage, kein selbst berechneter Durchschnitt einzelner Qualitätsmerkmale.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02, Indikator 16.6.2. Befragungen von Statistikämtern, OECD und Gallup unterscheiden sich in Fragen, Teilnehmerkreis und Antwortskala. Zufriedenheit beschreibt eine Erfahrung oder Wahrnehmung; sie ist kein objektiver Leistungsindex. Die Ansichten bleiben deshalb pro Land getrennt. Einzelne Erhebungsjahre werden nicht verbunden. Ursprungsbefragung, Fußnoten und Datenart bleiben je Jahr erhalten.",
+      "dimensions": {
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Reporting Type": "G",
+        "Disability status": "_T",
+        "Location": "ALLAREA",
+        "Population Group": "TOTAL",
+        "Quantile": "_T"
+      },
+      "indicator": "16.6.2",
+      "connect": false,
+      "compare": false,
+      "unfiltered": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 1598,
+      "expectedNumeric": 491,
+      "areaCount": 148
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_PRM",
+      "topicId": "institutions:public_services",
+      "sourceId": "unsdg",
+      "providerCode": "SP_PSR_OSATIS_PRM",
+      "providerLabel": "Proportion of population who say that overall they are satisfied with the quality of primary education services (%)",
+      "label": "Zufriedenheit mit Primarschulen",
+      "unit": "Anteil der erfassten Befragten (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Gesamtzufriedenheit mit der Primarschulbildung. Einzelne Länder melden das gesamte Bildungssystem als Ersatz; diese Abweichung bleibt am Quellenjahr sichtbar. Veröffentlicht wird die Antwort auf die Gesamtfrage, kein selbst berechneter Durchschnitt einzelner Qualitätsmerkmale.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02, Indikator 16.6.2. Befragungen von Statistikämtern, OECD und Gallup unterscheiden sich in Fragen, Teilnehmerkreis und Antwortskala. Zufriedenheit beschreibt eine Erfahrung oder Wahrnehmung; sie ist kein objektiver Leistungsindex. Die Ansichten bleiben deshalb pro Land getrennt. Einzelne Erhebungsjahre werden nicht verbunden. Ursprungsbefragung, Fußnoten und Datenart bleiben je Jahr erhalten.",
+      "dimensions": {
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Reporting Type": "G",
+        "Disability status": "_T",
+        "Location": "ALLAREA",
+        "Population Group": "TOTAL",
+        "Quantile": "_T"
+      },
+      "indicator": "16.6.2",
+      "connect": false,
+      "compare": false,
+      "unfiltered": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 153,
+      "expectedNumeric": 25,
+      "areaCount": 12
+    },
+    {
+      "id": "unsdg:SP_PSR_OSATIS_SEC",
+      "topicId": "institutions:public_services",
+      "sourceId": "unsdg",
+      "providerCode": "SP_PSR_OSATIS_SEC",
+      "providerLabel": "Proportion of population who say that overall they are satisfied with the quality of secondary education services (%)",
+      "label": "Zufriedenheit mit Sekundarschulen",
+      "unit": "Anteil der erfassten Befragten (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Gesamtzufriedenheit mit der Sekundarschulbildung. Die tatsächlich erfasste Schulstufe und Befragung stehen in den Quellenhinweisen. Veröffentlicht wird die Antwort auf die Gesamtfrage, kein selbst berechneter Durchschnitt einzelner Qualitätsmerkmale.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02, Indikator 16.6.2. Befragungen von Statistikämtern, OECD und Gallup unterscheiden sich in Fragen, Teilnehmerkreis und Antwortskala. Zufriedenheit beschreibt eine Erfahrung oder Wahrnehmung; sie ist kein objektiver Leistungsindex. Die Ansichten bleiben deshalb pro Land getrennt. Einzelne Erhebungsjahre werden nicht verbunden. Ursprungsbefragung, Fußnoten und Datenart bleiben je Jahr erhalten.",
+      "dimensions": {
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Reporting Type": "G",
+        "Disability status": "_T",
+        "Location": "ALLAREA",
+        "Population Group": "TOTAL",
+        "Quantile": "_T"
+      },
+      "indicator": "16.6.2",
+      "connect": false,
+      "compare": false,
+      "unfiltered": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 258,
+      "expectedNumeric": 68,
+      "areaCount": 44
+    },
+    {
+      "id": "unsdg:SP_TRN_PUBL",
+      "topicId": "transport:public_transport",
+      "sourceId": "unsdg",
+      "providerCode": "SP_TRN_PUBL",
+      "providerLabel": "Proportion of population that has convenient access to public transport (%)",
+      "label": "Erreichbarkeit öffentlicher Verkehrsmittel",
+      "unit": "Anteil der erfassten Bevölkerung (%)",
+      "observationKind": "source_estimates",
+      "throughYear": 2025,
+      "explanation": "Veröffentlichte Länder- und Weltwerte zur Erreichbarkeit öffentlicher Verkehrsmittel. Der UN-Standard misst Fußwege von bis zu 500 Metern zu kleineren Verkehrssystemen oder einem Kilometer zu Bahn, Metro und Fähre. Die jeweilige städtische oder nationale Abgrenzung steht am Quellenjahr.",
+      "scopeNote": "UN-SDG-Ausgabe 2026.Q2.G.02, Indikator 11.2.1. Nur veröffentlichte Gesamtzeilen ohne einzelne Stadt oder Sonderuntergruppe werden übernommen. Länderwerte können auf Stadtstichproben beruhen; sie beschreiben weder Fahrgastzahlen noch Umsatz oder den Anteil am Verkehr. Nationale Methoden und die Erfassung informeller Haltestellen unterscheiden sich. Einzelne Erhebungsjahre bleiben unverbunden. Die Weltreihe stammt unverändert von der UN, nicht aus einer eigenen Ländermittelung.",
+      "dimensions": {
+        "Age": "ALLAGE",
+        "Sex": "BOTHSEX",
+        "Reporting Type": "G",
+        "Disability status": "_T",
+        "Cities": "NOCITI"
+      },
+      "indicator": "11.2.1",
+      "connect": false,
+      "compare": true,
+      "unfiltered": true,
+      "expectedUnit": "PERCENT",
+      "expectedRows": 2924,
+      "expectedNumeric": 71,
+      "areaCount": 29
+    }
+  ]
+}

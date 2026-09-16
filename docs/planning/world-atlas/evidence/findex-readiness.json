@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-09-09T17:32:55.827810+00:00",
+  "catalogVersion": "2026-09-09.16",
+  "scope": "Global Findex data, real native commands and process restart, browser product UI; not complete native UI acceptance.",
+  "sources": {
+    "family": "worldbank-findex",
+    "release": "Global Findex 2025",
+    "metrics": 42,
+    "groups": 7,
+    "populations": 5,
+    "profiles": 174,
+    "countriesAndTerritories": 162,
+    "aggregates": 12,
+    "numericCells": 59471,
+    "missingCells": 98701,
+    "realZeros": 273,
+    "scientificStringsPreserved": 10
+  },
+  "checks": {
+    "atlasFrontend": {
+      "passed": 268,
+      "files": 38
+    },
+    "finalFindexFrontend": {
+      "passed": 6,
+      "includes": [
+        "scientific fraction",
+        "population label preserved in chart",
+        "fixed share scale",
+        "missing comparison",
+        "exact survey year",
+        "coverage and stored filters"
+      ]
+    },
+    "findexRust": {
+      "passed": 3,
+      "originalFileRoundtrip": true
+    },
+    "typecheck": "passed",
+    "targetedEslint": "passed",
+    "productionBuild": "passed",
+    "rustfmt": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "sourceAudit": "findex-source-audit.json",
+    "nativeRestart": "findex-native-readiness.json",
+    "topicRouteAudit": {
+      "file": "topic-route-audit.json",
+      "topics": 255,
+      "groups": 24,
+      "geographies": 365,
+      "numeric": 183,
+      "sourceReview": 52,
+      "contextGuide": 14,
+      "theory": 6,
+      "unresolved": 0
+    }
+  },
+  "browser": {
+    "entry": "/.tmp/atlas-validation/findex.html",
+    "data": "Public original CSV through real Rust parser and temporary SQLite store; no invented observations.",
+    "widths": [
+      1024,
+      1440
+    ],
+    "checked": [
+      "India and China, women and all adults",
+      "Germany and USA, actual common 2021 year for online purchases",
+      "explicit Findex Sub-Saharan Africa aggregate and world",
+      "missing comparison preserves primary chart",
+      "six-card fixed-scale overview",
+      "numbers opt-in including SVG titles",
+      "closed source information, Enter keyboard toggle",
+      "exact online-purchases search route via coverage",
+      "unsupported geography shows browser desktop-required boundary"
+    ],
+    "nativeClicks": false,
+    "noHorizontalOverflow": true,
+    "freshLoadNoNewWarningsOrErrors": true,
+    "earlierFixtureHmrMessage": {
+      "at": "2026-09-09T17:16:54.025Z",
+      "message": "Temporary harness createRoot called twice during hot replacement; no new messages after a full page load."
+    }
+  },
+  "knownLimits": [
+    "Complete native UI acceptance remains open: CUA provides browser surfaces only.",
+    "Existing Technicals and central-bank background warnings recur.",
+    "First native run encountered the previously documented pdf-extract InvalidContentStream panic outside Atlas.",
+    "Existing large Vite chunks warning remains."
+  ]
+}

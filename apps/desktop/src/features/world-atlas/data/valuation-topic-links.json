@@ -1,0 +1,445 @@
+{
+  "version": "2026-09-09.2",
+  "reviewedAt": "2026-09-09",
+  "classificationSource": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/databreakdown.html",
+  "industrySource": "https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/pbvdata.html",
+  "basis": "Editorial topic navigation over already audited NYU industry identities; no reclassification, aggregation or additional observations.",
+  "bindings": [
+    {
+      "topicId": "electricity:utilities",
+      "topicLabel": "Versorgungsunternehmen",
+      "providerLabels": ["Power", "Utility (General)", "Utility (Water)"],
+      "scopeNote": "Stromunternehmen, allgemeine Versorger und Wasserversorger bleiben drei eigene NYU-Branchen. Die Auswahl enthält auch Wasserversorgung; sie ist kein reiner Stromsektor und wird nicht zu einem Gesamtwert verrechnet."
+    },
+    {
+      "topicId": "industry:aerospace",
+      "topicLabel": "Luft- und Raumfahrt",
+      "providerLabels": ["Aerospace/Defense"],
+      "scopeNote": "Die NYU-Quelle fasst Luft- und Raumfahrt mit Verteidigung in Aerospace/Defense zusammen. Diese gemeinsame Branche lässt sich hier nicht in zivile Luftfahrt, Raumfahrt und Rüstung aufteilen."
+    },
+    {
+      "topicId": "industry:defense_industry",
+      "topicLabel": "Verteidigungsindustrie",
+      "providerLabels": ["Aerospace/Defense"],
+      "scopeNote": "Die NYU-Quelle fasst Verteidigung mit Luft- und Raumfahrt in Aerospace/Defense zusammen. Beide Themeneinstiege zeigen dieselbe gemeinsame Branche, keine gesonderte Rüstungsbewertung."
+    },
+    {
+      "topicId": "education:education_business",
+      "topicLabel": "Private Bildungswirtschaft",
+      "providerLabels": ["Education"],
+      "scopeNote": "Börsennotierte Bildungsunternehmen; keine Schulqualität oder Bewertung des gesamten Bildungssystems."
+    },
+    {
+      "topicId": "health:hospitals",
+      "topicLabel": "Krankenhäuser",
+      "providerLabels": ["Hospitals/Healthcare Facilities"],
+      "scopeNote": "Krankenhaus- und Versorgungsgesellschaften der Quelle; keine Bewertung der öffentlichen Gesundheitsversorgung."
+    },
+    {
+      "topicId": "health:pharmaceuticals",
+      "topicLabel": "Pharma",
+      "providerLabels": ["Drugs (Pharmaceutical)"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "health:biotechnology",
+      "topicLabel": "Biotechnologie",
+      "providerLabels": ["Drugs (Biotechnology)"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "health:digital_health",
+      "topicLabel": "Digitale Gesundheit",
+      "providerLabels": ["Heathcare Information and Technology"],
+      "scopeNote": "Die Quelle führt Gesundheitsinformation und -technologie gemeinsam; einzelne Digital-Health-Nischen werden nicht getrennt."
+    },
+    {
+      "topicId": "finance:banks",
+      "topicLabel": "Banken",
+      "providerLabels": ["Bank (Money Center)", "Banks (Regional)"],
+      "scopeNote": "Großbanken und regionale Banken bleiben zwei eigene Quellenbranchen."
+    },
+    {
+      "topicId": "market_context:sector_energy",
+      "topicLabel": "Energieunternehmen",
+      "providerLabels": [
+        "Coal & Related Energy",
+        "Green & Renewable Energy",
+        "Oil/Gas (Integrated)",
+        "Oil/Gas (Production and Exploration)",
+        "Oil/Gas Distribution",
+        "Oilfield Svcs/Equip."
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_healthcare",
+      "topicLabel": "Healthcare · Gesundheit",
+      "providerLabels": [
+        "Healthcare Products",
+        "Healthcare Support Services",
+        "Hospitals/Healthcare Facilities",
+        "Drugs (Pharmaceutical)",
+        "Drugs (Biotechnology)"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_utilities",
+      "topicLabel": "Versorgungsunternehmen",
+      "providerLabels": ["Power", "Utility (General)", "Utility (Water)"],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_technology",
+      "topicLabel": "Technologie",
+      "providerLabels": [
+        "Computer Services",
+        "Computers/Peripherals",
+        "Semiconductor",
+        "Semiconductor Equip",
+        "Software (Internet)",
+        "Software (System & Application)"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_real_estate",
+      "topicLabel": "Immobilienunternehmen",
+      "providerLabels": [
+        "R.E.I.T.",
+        "Real Estate (Development)",
+        "Real Estate (General/Diversified)",
+        "Real Estate (Operations & Services)"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_financials",
+      "topicLabel": "Finanzunternehmen",
+      "providerLabels": [
+        "Bank (Money Center)",
+        "Banks (Regional)",
+        "Brokerage & Investment Banking",
+        "Financial Svcs. (Non-bank & Insurance)",
+        "Insurance (General)",
+        "Insurance (Life)",
+        "Insurance (Prop/Cas.)",
+        "Investments & Asset Management",
+        "Reinsurance"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_materials",
+      "topicLabel": "Grundstoffe",
+      "providerLabels": [
+        "Building Materials",
+        "Chemical (Basic)",
+        "Chemical (Diversified)",
+        "Chemical (Specialty)",
+        "Metals & Mining",
+        "Packaging & Container",
+        "Paper/Forest Products",
+        "Precious Metals",
+        "Steel"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_communication",
+      "topicLabel": "Kommunikation & Medien",
+      "providerLabels": [
+        "Advertising",
+        "Broadcasting",
+        "Cable TV",
+        "Entertainment",
+        "Publishing & Newspapers",
+        "Software (Entertainment)",
+        "Telecom (Wireless)",
+        "Telecom. Equipment",
+        "Telecom. Services"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_industrials",
+      "topicLabel": "Industrieunternehmen",
+      "providerLabels": [
+        "Aerospace/Defense",
+        "Air Transport",
+        "Business & Consumer Services",
+        "Diversified",
+        "Electrical Equipment",
+        "Engineering/Construction",
+        "Environmental & Waste Services",
+        "Machinery",
+        "Office Equipment & Services",
+        "Shipbuilding & Marine",
+        "Transportation",
+        "Transportation (Railroads)",
+        "Trucking"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_staples",
+      "topicLabel": "Basiskonsumgüter",
+      "providerLabels": [
+        "Beverage (Alcoholic)",
+        "Beverage (Soft)",
+        "Food Processing",
+        "Food Wholesalers",
+        "Household Products",
+        "Retail (Grocery and Food)",
+        "Tobacco"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "market_context:sector_discretionary",
+      "topicLabel": "Zyklischer Konsum",
+      "providerLabels": [
+        "Apparel",
+        "Auto & Truck",
+        "Auto Parts",
+        "Electronics (Consumer & Office)",
+        "Furn/Home Furnishings",
+        "Homebuilding",
+        "Hotel/Gaming",
+        "Recreation",
+        "Restaurant/Dining",
+        "Retail (Automotive)",
+        "Retail (General)",
+        "Retail (Special Lines)",
+        "Rubber& Tires",
+        "Shoe"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "finance:insurance",
+      "topicLabel": "Versicherungen",
+      "providerLabels": [
+        "Insurance (General)",
+        "Insurance (Life)",
+        "Insurance (Prop/Cas.)",
+        "Reinsurance"
+      ],
+      "scopeNote": "Allgemeine, Lebens-, Schaden-/Unfall- und Rückversicherer bleiben getrennt; keine eigene Krankenversicherungsbranche."
+    },
+    {
+      "topicId": "finance:asset_management",
+      "topicLabel": "Vermögensverwaltung",
+      "providerLabels": ["Investments & Asset Management"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "industry:machinery",
+      "topicLabel": "Maschinenbau",
+      "providerLabels": ["Machinery"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "industry:automotive",
+      "topicLabel": "Automobilindustrie",
+      "providerLabels": ["Auto & Truck", "Auto Parts"],
+      "scopeNote": "Fahrzeughersteller einschließlich Lkw und Zulieferer bleiben getrennt. Keine eigene Elektroauto-Bewertung."
+    },
+    {
+      "topicId": "industry:chemicals",
+      "topicLabel": "Chemie",
+      "providerLabels": [
+        "Chemical (Basic)",
+        "Chemical (Diversified)",
+        "Chemical (Specialty)"
+      ],
+      "scopeNote": "Grund-, diversifizierte und Spezialchemie sind eigene Branchen; daraus entsteht keine separate Düngemittelbewertung."
+    },
+    {
+      "topicId": "industry:steel",
+      "topicLabel": "Stahl",
+      "providerLabels": ["Steel"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "industry:electrical_equipment",
+      "topicLabel": "Elektrotechnik",
+      "providerLabels": ["Electrical Equipment"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "industry:packaging",
+      "topicLabel": "Verpackungen",
+      "providerLabels": ["Packaging & Container"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "industry:shipbuilding",
+      "topicLabel": "Schiffbau",
+      "providerLabels": ["Shipbuilding & Marine"],
+      "scopeNote": "Die veröffentlichte Branche umfasst Schiffbau und Meerestechnik gemeinsam."
+    },
+    {
+      "topicId": "materials:precious_metals",
+      "topicLabel": "Edelmetalle",
+      "providerLabels": ["Precious Metals"],
+      "scopeNote": "Bewertung der veröffentlichten Unternehmensbranche; dies ist kein Gold-, Silber- oder anderer Metallpreis."
+    },
+    {
+      "topicId": "materials:mining",
+      "topicLabel": "Bergbau",
+      "providerLabels": ["Metals & Mining"],
+      "scopeNote": "Die Quelle fasst Metalle und Bergbau zusammen; einzelne Rohstoffe wie Kupfer oder Lithium sind nicht separat bewertet."
+    },
+    {
+      "topicId": "materials:forestry",
+      "topicLabel": "Forstwirtschaft",
+      "providerLabels": ["Paper/Forest Products"],
+      "scopeNote": "Die Quellenbranche umfasst Papier- und Forstprodukte gemeinsam; sie misst weder Holzpreise noch Waldflächen."
+    },
+    {
+      "topicId": "food_water:food_processing",
+      "topicLabel": "Lebensmittelverarbeitung",
+      "providerLabels": ["Food Processing"],
+      "scopeNote": "Veröffentlichte Unternehmensbranchen; keine vollständige Erfassung der Realwirtschaft."
+    },
+    {
+      "topicId": "digital:telecom",
+      "topicLabel": "Telekommunikation",
+      "providerLabels": [
+        "Telecom (Wireless)",
+        "Telecom. Equipment",
+        "Telecom. Services"
+      ],
+      "scopeNote": "Mobilfunk, Telekommunikationsdienste und Ausrüstung sind getrennte Quellenbranchen; keine Abdeckungs- oder Netzqualitätsmessung."
+    },
+    {
+      "topicId": "digital:mobile_networks",
+      "topicLabel": "Mobilfunk",
+      "providerLabels": ["Telecom (Wireless)"],
+      "scopeNote": "Börsennotierte Mobilfunkunternehmen; die Bewertung misst weder Netzabdeckung noch die Zahl erreichter Menschen."
+    },
+    {
+      "topicId": "digital:software",
+      "topicLabel": "Software",
+      "providerLabels": [
+        "Software (Internet)",
+        "Software (System & Application)",
+        "Software (Entertainment)"
+      ],
+      "scopeNote": "Internet-, Anwendungs-/System- und Unterhaltungssoftware bleiben getrennt. Cloud, KI und Cybersicherheit sind keine eigenen Quellenbranchen."
+    },
+    {
+      "topicId": "digital:semiconductors",
+      "topicLabel": "Halbleiter",
+      "providerLabels": ["Semiconductor", "Semiconductor Equip"],
+      "scopeNote": "Halbleiterunternehmen und ihre Ausrüster sind getrennte Branchen; keine separate KI-Chip-Bewertung."
+    },
+    {
+      "topicId": "housing:construction",
+      "topicLabel": "Wohnungsbau",
+      "providerLabels": ["Homebuilding"],
+      "scopeNote": "Börsennotierte Wohnungsbauunternehmen; keine Anzahl neu gebauter Wohnungen oder Immobilienpreisreihe."
+    },
+    {
+      "topicId": "housing:real_estate_companies",
+      "topicLabel": "Immobilienunternehmen",
+      "providerLabels": [
+        "R.E.I.T.",
+        "Real Estate (Development)",
+        "Real Estate (General/Diversified)",
+        "Real Estate (Operations & Services)",
+        "Retail (REITs)"
+      ],
+      "scopeNote": "Quellenbranchen von Projektentwicklung bis REITs bleiben getrennt; keine eigene Logistikimmobilienreihe."
+    },
+    {
+      "topicId": "consumer_services:consumer_staples",
+      "topicLabel": "Basiskonsumgüter",
+      "providerLabels": [
+        "Beverage (Alcoholic)",
+        "Beverage (Soft)",
+        "Food Processing",
+        "Food Wholesalers",
+        "Household Products",
+        "Retail (Grocery and Food)",
+        "Tobacco"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "consumer_services:consumer_discretionary",
+      "topicLabel": "Zyklischer Konsum",
+      "providerLabels": [
+        "Apparel",
+        "Auto & Truck",
+        "Auto Parts",
+        "Electronics (Consumer & Office)",
+        "Furn/Home Furnishings",
+        "Homebuilding",
+        "Hotel/Gaming",
+        "Recreation",
+        "Restaurant/Dining",
+        "Retail (Automotive)",
+        "Retail (General)",
+        "Retail (Special Lines)",
+        "Rubber& Tires",
+        "Shoe"
+      ],
+      "scopeNote": "Redaktionelle Auswahl benannter NYU-Branchen. Sie ist weder ein vollständiger Sektorindex noch eine GICS-Zuordnung; es wird kein gemeinsamer Sektorwert berechnet."
+    },
+    {
+      "topicId": "consumer_services:retail",
+      "topicLabel": "Einzelhandel",
+      "providerLabels": [
+        "Retail (Automotive)",
+        "Retail (Building Supply)",
+        "Retail (Distributors)",
+        "Retail (General)",
+        "Retail (Grocery and Food)",
+        "Retail (Special Lines)"
+      ],
+      "scopeNote": "Sechs getrennte Handelsbranchen. Online- und stationärer Handel werden hier nicht eindeutig getrennt."
+    },
+    {
+      "topicId": "consumer_services:media",
+      "topicLabel": "Medien",
+      "providerLabels": [
+        "Advertising",
+        "Broadcasting",
+        "Cable TV",
+        "Publishing & Newspapers"
+      ],
+      "scopeNote": "Werbung, Rundfunk, Kabelfernsehen und Verlage bleiben einzelne Quellenbranchen."
+    },
+    {
+      "topicId": "consumer_services:entertainment",
+      "topicLabel": "Unterhaltung",
+      "providerLabels": [
+        "Entertainment",
+        "Software (Entertainment)",
+        "Recreation"
+      ],
+      "scopeNote": "Unterhaltung, Freizeit und Unterhaltungssoftware bleiben getrennte Quellenbranchen."
+    },
+    {
+      "topicId": "consumer_services:hospitality",
+      "topicLabel": "Hotels und Gastronomie",
+      "providerLabels": ["Hotel/Gaming", "Restaurant/Dining"],
+      "scopeNote": "Hotelunternehmen werden von der Quelle gemeinsam mit Glücksspielunternehmen geführt. Gastronomie bleibt ein eigenes Bild."
+    },
+    {
+      "topicId": "transport:aviation",
+      "topicLabel": "Luftverkehr",
+      "providerLabels": ["Air Transport"],
+      "scopeNote": "Luftverkehrsunternehmen; keine eigenständige Bewertung von Flughäfen oder Flugzeugbau."
+    },
+    {
+      "topicId": "transport:rail",
+      "topicLabel": "Schienenverkehr",
+      "providerLabels": ["Transportation (Railroads)"],
+      "scopeNote": "Eisenbahngesellschaften der Quelle; kein Maß für Schienennetzlänge oder öffentliche Verkehrsqualität."
+    }
+  ]
+}

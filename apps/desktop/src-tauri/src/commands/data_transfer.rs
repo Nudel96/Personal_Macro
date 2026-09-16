@@ -133,8 +133,23 @@ pub async fn create_backup(state: State<'_, AppState>) -> CommandResult<BackupRe
 }
 
 pub async fn create_backup_for_state(state: &AppState) -> Result<BackupRecord, AppError> {
-    sqlx::query("PRAGMA wal_checkpoint(FULL)")
-        .fetch_all(&state.db)
+    // SQLite owns the consistent point-in-time copy. Reading the active file
+    // after a checkpoint could race a subsequent note/preference write.
+    struct SnapshotFile(std::path::PathBuf);
+    impl Drop for SnapshotFile {
+        fn drop(&mut self) {
+            let _ = fs::remove_file(&self.0);
+        }
+    }
+    let snapshot = SnapshotFile(
+        state
+            .paths
+            .backups
+            .join(format!(".database-snapshot-{}.sqlite", Uuid::new_v4())),
+    );
+    sqlx::query("VACUUM main INTO ?")
+        .bind(snapshot.0.to_string_lossy().as_ref())
+        .execute(&state.db)
         .await
         .map_err(AppError::from)?;
     let created_at = Utc::now().to_rfc3339();
@@ -143,7 +158,7 @@ pub async fn create_backup_for_state(state: &AppState) -> Result<BackupRecord, A
         .paths
         .backups
         .join(format!("personal-macro-{stamp}-{}.zip", Uuid::new_v4()));
-    let mut files = vec![state.paths.database.clone()];
+    let mut files = vec![snapshot.0.clone()];
     if state.paths.media.exists() {
         files.extend(
             WalkDir::new(&state.paths.media)
@@ -156,11 +171,14 @@ pub async fn create_backup_for_state(state: &AppState) -> Result<BackupRecord, A
     let manifest_files: Vec<ManifestFile> = files
         .iter()
         .map(|file| {
-            let relative = file
-                .strip_prefix(&state.paths.root)
-                .unwrap_or(file)
-                .to_string_lossy()
-                .replace('\\', "/");
+            let relative = if *file == snapshot.0 {
+                "database/journal.sqlite".to_string()
+            } else {
+                file.strip_prefix(&state.paths.root)
+                    .unwrap_or(file)
+                    .to_string_lossy()
+                    .replace('\\', "/")
+            };
             Ok(ManifestFile {
                 path: relative,
                 size_bytes: file.metadata()?.len(),
@@ -181,11 +199,14 @@ pub async fn create_backup_for_state(state: &AppState) -> Result<BackupRecord, A
         .compression_method(CompressionMethod::Deflated)
         .unix_permissions(0o600);
     for file in &files {
-        let name = file
-            .strip_prefix(&state.paths.root)
-            .unwrap_or(file)
-            .to_string_lossy()
-            .replace('\\', "/");
+        let name = if *file == snapshot.0 {
+            "database/journal.sqlite".to_string()
+        } else {
+            file.strip_prefix(&state.paths.root)
+                .unwrap_or(file)
+                .to_string_lossy()
+                .replace('\\', "/")
+        };
         zip.start_file(&name, options)
             .map_err(|error| AppError::DataTransfer(error.to_string()))?;
         let mut input = File::open(file).map_err(AppError::from)?;
@@ -349,6 +370,13 @@ pub async fn stage_backup_restore(
     state: State<'_, AppState>,
     path: String,
 ) -> CommandResult<RestoreStageResult> {
+    stage_backup_restore_for_state(&state, path).await
+}
+
+pub(crate) async fn stage_backup_restore_for_state(
+    state: &AppState,
+    path: String,
+) -> CommandResult<RestoreStageResult> {
     let archive_path = PathBuf::from(&path);
     let file = File::open(&archive_path).map_err(AppError::from)?;
     let mut archive =
@@ -421,15 +449,16 @@ pub async fn stage_backup_restore(
         .into());
     }
 
-    sqlx::query("PRAGMA wal_checkpoint(FULL)")
+    let safety_copy = state.paths.backups.join(format!(
+        "pre-restore-{}-{}.sqlite",
+        Utc::now().format("%Y%m%d-%H%M%S"),
+        Uuid::new_v4()
+    ));
+    sqlx::query("VACUUM main INTO ?")
+        .bind(safety_copy.to_string_lossy().as_ref())
         .execute(&state.db)
         .await
         .map_err(AppError::from)?;
-    let safety_copy = state.paths.backups.join(format!(
-        "pre-restore-{}.sqlite",
-        Utc::now().format("%Y%m%d-%H%M%S")
-    ));
-    fs::copy(&state.paths.database, &safety_copy).map_err(AppError::from)?;
     let pending = PendingRestore {
         staging_root: staging.to_string_lossy().into_owned(),
         staged_at: Utc::now().to_rfc3339(),

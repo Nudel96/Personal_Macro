@@ -1,0 +1,18 @@
+{
+  "createdAt": "2026-09-11",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "scope": "Only a dedicated QA profile with a copy of the public Atlas cache; no user journal testing.",
+  "checks": [
+    "Open all six implemented perspectives through the coverage search and source metric selector.",
+    "Germany source anchors and visible units for both fuels, three heat-pump technologies and district heating.",
+    "Numbers off/on/off; source type, dates, ambiguous-zero and provisional flags remain intelligible.",
+    "Compare Germany and Denmark with the same calendar and unit; district heating has single points and no invented line.",
+    "Heat-pump picture starts no earlier than 2004; missing and ambiguous-zero cells do not connect.",
+    "Explicit empty source geography India or World does not borrow European data; navigate to EU27 explicitly.",
+    "A heat-pump technology with only ambiguous zeros stays empty while source markers can be inspected.",
+    "Change year range, save a view, leave, restore metric, area, range, optional-number state and source provenance.",
+    "Fresh source download disabled; stored provenance and source title visible.",
+    "Inspect initial native window and 1024 px minimum width with screenshots; text, chart, selectors and focus remain usable.",
+    "Explore source-area and metric switches followed by a return to the original selection; no leaked previous-country chart."
+  ]
+}

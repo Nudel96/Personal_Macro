@@ -1,0 +1,3557 @@
+{
+  "release": "WHO GHED Â· Korrektur 1. April 2026",
+  "downloads": [
+    {
+      "label": "data",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/64396441/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"GHED all data (March 2026).xlsx\"",
+      "lastModified": null,
+      "bytes": 38922209,
+      "sha256": "729c4d978178fe82e14bb57319837df0d7309e01b0b469462537ef2d73969594",
+      "localFile": "data.xlsx"
+    },
+    {
+      "label": "methodology",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/64181221/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"GHED Methodology.pdf\"",
+      "lastModified": null,
+      "bytes": 2773727,
+      "sha256": "94b99c52c30502b6f62079f366720cf35e356941797a6d096a303b99aeab5234",
+      "localFile": "methodology.pdf"
+    },
+    {
+      "label": "indicators",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/59598151/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"GHED Indicator List (2025).xlsx\"",
+      "lastModified": null,
+      "bytes": 37752,
+      "sha256": "28e3e3672e592b1cbdaac46d5f39481de19a45a7032823bfc6e5d6805358c222",
+      "localFile": "indicators.xlsx"
+    },
+    {
+      "label": "availability",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/60147811/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"GHED Data Availability (March 2026).xlsx\"",
+      "lastModified": null,
+      "bytes": 124229,
+      "sha256": "a48cb86ed529355d9af6500a301b45f65d1cadd84c19b3af81a60493611a7fe6",
+      "localFile": "availability.xlsx"
+    },
+    {
+      "label": "country-notes",
+      "url": "https://apps.who.int/nha/database/DocumentationCentre/GetFile/60559681/en",
+      "status": 200,
+      "contentType": "application/octet-stream",
+      "disposition": "attachment; filename=\"Country notes (December 2025).xlsx\"",
+      "lastModified": null,
+      "bytes": 96454,
+      "sha256": "04a919b6a588219ffe037b7a280a7e3f98e404531ef7d39a0fb77a91f3acfe59",
+      "localFile": "country-notes.xlsx"
+    }
+  ],
+  "areas": 195,
+  "metrics": 38,
+  "rows": 4612,
+  "numericCells": 81762,
+  "missingCells": 93494,
+  "metadataRows": 32667,
+  "abnormal": [
+    [
+      "DNK",
+      2011,
+      "dom_che",
+      100.00001526
+    ],
+    [
+      "DEU",
+      2003,
+      "dom_che",
+      100.00043487999999
+    ],
+    [
+      "DEU",
+      2008,
+      "dom_che",
+      100.00038147
+    ],
+    [
+      "DEU",
+      2010,
+      "dom_che",
+      100.00035095000001
+    ],
+    [
+      "DEU",
+      2023,
+      "dom_che",
+      100.00020599
+    ],
+    [
+      "HUN",
+      2005,
+      "dom_che",
+      100.00005340999999
+    ],
+    [
+      "HUN",
+      2006,
+      "dom_che",
+      100.00005340999999
+    ],
+    [
+      "HUN",
+      2008,
+      "dom_che",
+      100.00005340999999
+    ],
+    [
+      "HUN",
+      2014,
+      "dom_che",
+      100.00004578000001
+    ],
+    [
+      "HUN",
+      2016,
+      "dom_che",
+      100.00003052
+    ],
+    [
+      "ISL",
+      2002,
+      "dom_che",
+      100.00001526
+    ],
+    [
+      "LVA",
+      2015,
+      "dom_che",
+      100.01439667000001
+    ],
+    [
+      "LIE",
+      2013,
+      "dom_che",
+      100.00006103999998
+    ],
+    [
+      "LIE",
+      2016,
+      "dom_che",
+      100.00011443999999
+    ],
+    [
+      "LIE",
+      2019,
+      "dom_che",
+      100.00001526
+    ],
+    [
+      "LIE",
+      2022,
+      "dom_che",
+      100.00008392
+    ],
+    [
+      "MLT",
+      2003,
+      "dom_che",
+      100.26454926000002
+    ],
+    [
+      "MLT",
+      2006,
+      "dom_che",
+      100.21008301000002
+    ],
+    [
+      "MNE",
+      2011,
+      "dom_che",
+      100.00014496000001
+    ],
+    [
+      "MNE",
+      2012,
+      "dom_che",
+      100.00006866
+    ],
+    [
+      "MNE",
+      2013,
+      "dom_che",
+      100.00004578000001
+    ],
+    [
+      "MNE",
+      2018,
+      "dom_che",
+      100.00257110999999
+    ],
+    [
+      "BRN",
+      2000,
+      "dom_che",
+      100.10873412999997
+    ],
+    [
+      "BRN",
+      2001,
+      "dom_che",
+      100.11544037
+    ],
+    [
+      "BRN",
+      2002,
+      "dom_che",
+      100.11270142000001
+    ],
+    [
+      "BRN",
+      2003,
+      "dom_che",
+      100.11711884
+    ],
+    [
+      "BRN",
+      2004,
+      "dom_che",
+      100.11614227000003
+    ],
+    [
+      "BRN",
+      2005,
+      "dom_che",
+      100.11219025000003
+    ],
+    [
+      "BRN",
+      2006,
+      "dom_che",
+      100.11588287000001
+    ],
+    [
+      "BRN",
+      2007,
+      "dom_che",
+      100.11579132
+    ],
+    [
+      "BRN",
+      2008,
+      "dom_che",
+      100.10502625
+    ],
+    [
+      "BRN",
+      2009,
+      "dom_che",
+      100.11326599
+    ],
+    [
+      "BRN",
+      2010,
+      "dom_che",
+      100.11315155
+    ],
+    [
+      "BRN",
+      2011,
+      "dom_che",
+      100.11587524
+    ],
+    [
+      "BRN",
+      2012,
+      "dom_che",
+      100.12081146000003
+    ],
+    [
+      "BRN",
+      2013,
+      "dom_che",
+      100.12823485999999
+    ],
+    [
+      "BRN",
+      2014,
+      "dom_che",
+      100.12921143
+    ],
+    [
+      "BRN",
+      2015,
+      "dom_che",
+      100.13219452000001
+    ],
+    [
+      "BRN",
+      2016,
+      "dom_che",
+      100.13237762000001
+    ]
+  ],
+  "coverage": {
+    "che_gdp": {
+      "min": 1.2226020100000001,
+      "max": 79.73292542000002,
+      "numericCells": 4610
+    },
+    "che_pc_usd": {
+      "min": 4.175786020000002,
+      "max": 13473.19335938,
+      "numericCells": 4607
+    },
+    "gghed_gdp": {
+      "min": 0.06221032,
+      "max": 42.50036621,
+      "numericCells": 4595
+    },
+    "gghed_gge": {
+      "min": 0.73440903,
+      "max": 39.68181992,
+      "numericCells": 4595
+    },
+    "gghed_che": {
+      "min": 0.7859893400000002,
+      "max": 99.87667084,
+      "numericCells": 4595
+    },
+    "pvtd_che": {
+      "min": 0.06144708000000001,
+      "max": 89.16981505999999,
+      "numericCells": 4595
+    },
+    "ext_che": {
+      "min": 0,
+      "max": 81.58046722000002,
+      "numericCells": 4031
+    },
+    "oops_che": {
+      "min": 0.04458594,
+      "max": 87.90393828999999,
+      "numericCells": 4610
+    },
+    "vpp_che": {
+      "min": 0,
+      "max": 50.62254333,
+      "numericCells": 4171
+    },
+    "dom_che": {
+      "min": 18.419532780000004,
+      "max": 100.26454926000002,
+      "numericCells": 4595
+    },
+    "cfa_che": {
+      "min": 0.85409987,
+      "max": 99.89559937000001,
+      "numericCells": 4610
+    },
+    "gfa_che": {
+      "min": 0.16859770000000002,
+      "max": 99.89559937000001,
+      "numericCells": 4606
+    },
+    "chi_che": {
+      "min": 0,
+      "max": 84.03781890999998,
+      "numericCells": 4433
+    },
+    "shi_che": {
+      "min": 0,
+      "max": 84.03781890999998,
+      "numericCells": 4434
+    },
+    "vhi_che": {
+      "min": 0,
+      "max": 50.62254333,
+      "numericCells": 4185
+    },
+    "row_che": {
+      "min": 0,
+      "max": 35.47675323,
+      "numericCells": 1276
+    },
+    "phc_che": {
+      "min": 18.601858139999997,
+      "max": 92.57991790999998,
+      "numericCells": 644
+    },
+    "phc_usd_pc": {
+      "min": 9.50823403,
+      "max": 4728.112558690001,
+      "numericCells": 644
+    },
+    "gghed_phc_phc": {
+      "min": 0.8872028000000001,
+      "max": 99.42352295,
+      "numericCells": 363
+    },
+    "ext_phc_phc": {
+      "min": 0,
+      "max": 85.15866089,
+      "numericCells": 363
+    },
+    "pvtd_phc_phc": {
+      "min": 0,
+      "max": 92.82313537999998,
+      "numericCells": 363
+    },
+    "hc62_che": {
+      "min": 0.00020122,
+      "max": 13.550539020000002,
+      "numericCells": 617
+    },
+    "hc1_usd_pc": {
+      "min": 2.7282583706059658,
+      "max": 9004.791172378578,
+      "numericCells": 808
+    },
+    "hc2_usd_pc": {
+      "min": 1.2136897555593466e-09,
+      "max": 878.5764680928089,
+      "numericCells": 628
+    },
+    "hc3_usd_pc": {
+      "min": 0,
+      "max": 2644.0311105735527,
+      "numericCells": 583
+    },
+    "hcri1_usd_pc": {
+      "min": 24.32095204706821,
+      "max": 1429.029469008129,
+      "numericCells": 160
+    },
+    "hc6_usd_pc": {
+      "min": 0.09178830364396641,
+      "max": 731.2627107138026,
+      "numericCells": 808
+    },
+    "hp1_usd_pc": {
+      "min": 1.4212351259573615,
+      "max": 4424.433614074244,
+      "numericCells": 680
+    },
+    "hk_usd_pc": {
+      "min": 0,
+      "max": 2348.5457844719963,
+      "numericCells": 2231
+    },
+    "hk111_usd_pc": {
+      "min": 0,
+      "max": 269.177122651915,
+      "numericCells": 816
+    },
+    "hk112_usd_pc": {
+      "min": 0.00029762346719088006,
+      "max": 289.3800381386736,
+      "numericCells": 808
+    },
+    "hk113_usd_pc": {
+      "min": 0,
+      "max": 53.898777951332775,
+      "numericCells": 543
+    },
+    "dis1_che": {
+      "min": 0.3924571899999999,
+      "max": 90.81994628999999,
+      "numericCells": 360
+    },
+    "dis2_che": {
+      "min": 1.07530224,
+      "max": 56.644668579999994,
+      "numericCells": 360
+    },
+    "dis3_che": {
+      "min": 0,
+      "max": 16.087385180000002,
+      "numericCells": 360
+    },
+    "dis4_che": {
+      "min": 0.6765615300000001,
+      "max": 69.23789978,
+      "numericCells": 360
+    },
+    "dis5_che": {
+      "min": 0.01631109,
+      "max": 14.18126202,
+      "numericCells": 355
+    },
+    "disnec_che": {
+      "min": 0,
+      "max": 83.01337432999999,
+      "numericCells": 360
+    }
+  },
+  "zip": [
+    {
+      "name": "[Content_Types].xml",
+      "bytes": 2597
+    },
+    {
+      "name": "_rels/.rels",
+      "bytes": 735
+    },
+    {
+      "name": "xl/workbook.xml",
+      "bytes": 2639
+    },
+    {
+      "name": "xl/_rels/workbook.xml.rels",
+      "bytes": 1548
+    },
+    {
+      "name": "xl/worksheets/sheet1.xml",
+      "bytes": 142148653
+    },
+    {
+      "name": "xl/worksheets/sheet2.xml",
+      "bytes": 1639307
+    },
+    {
+      "name": "xl/worksheets/sheet3.xml",
+      "bytes": 17229202
+    },
+    {
+      "name": "xl/worksheets/sheet4.xml",
+      "bytes": 2083
+    },
+    {
+      "name": "xl/theme/theme1.xml",
+      "bytes": 8450
+    },
+    {
+      "name": "xl/styles.xml",
+      "bytes": 1894913
+    },
+    {
+      "name": "xl/sharedStrings.xml",
+      "bytes": 8440459
+    },
+    {
+      "name": "xl/worksheets/_rels/sheet1.xml.rels",
+      "bytes": 293
+    },
+    {
+      "name": "xl/worksheets/_rels/sheet2.xml.rels",
+      "bytes": 293
+    },
+    {
+      "name": "xl/worksheets/_rels/sheet3.xml.rels",
+      "bytes": 293
+    },
+    {
+      "name": "xl/worksheets/_rels/sheet4.xml.rels",
+      "bytes": 497
+    },
+    {
+      "name": "xl/tables/table1.xml",
+      "bytes": 457928
+    },
+    {
+      "name": "xl/tables/table2.xml",
+      "bytes": 1655
+    },
+    {
+      "name": "xl/tables/table3.xml",
+      "bytes": 2050
+    },
+    {
+      "name": "xl/printerSettings/printerSettings1.bin",
+      "bytes": 7132
+    },
+    {
+      "name": "customXml/item1.xml",
+      "bytes": 219
+    },
+    {
+      "name": "customXml/itemProps1.xml",
+      "bytes": 335
+    },
+    {
+      "name": "customXml/item2.xml",
+      "bytes": 1081
+    },
+    {
+      "name": "customXml/itemProps2.xml",
+      "bytes": 547
+    },
+    {
+      "name": "customXml/item3.xml",
+      "bytes": 16939
+    },
+    {
+      "name": "customXml/itemProps3.xml",
+      "bytes": 1149
+    },
+    {
+      "name": "docProps/core.xml",
+      "bytes": 902
+    },
+    {
+      "name": "docProps/app.xml",
+      "bytes": 944
+    },
+    {
+      "name": "docProps/custom.xml",
+      "bytes": 530
+    },
+    {
+      "name": "customXml/_rels/item1.xml.rels",
+      "bytes": 296
+    },
+    {
+      "name": "customXml/_rels/item2.xml.rels",
+      "bytes": 296
+    },
+    {
+      "name": "customXml/_rels/item3.xml.rels",
+      "bytes": 296
+    }
+  ],
+  "countries": {
+    "DZA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 361
+    },
+    "AGO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 313
+    },
+    "BEN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 424
+    },
+    "BWA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 475
+    },
+    "BFA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 554
+    },
+    "BDI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 444
+    },
+    "CPV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 510
+    },
+    "CMR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 370
+    },
+    "CAF": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 431
+    },
+    "TCD": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 434
+    },
+    "COM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 440
+    },
+    "COG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 483
+    },
+    "CIV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 524
+    },
+    "COD": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 539
+    },
+    "GNQ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 431
+    },
+    "ERI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 312
+    },
+    "SWZ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 433
+    },
+    "ETH": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 453
+    },
+    "GAB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 490
+    },
+    "GMB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 450
+    },
+    "GHA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 522
+    },
+    "GIN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 508
+    },
+    "GNB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 356
+    },
+    "KEN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 435
+    },
+    "LSO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 320
+    },
+    "LBR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 426
+    },
+    "MDG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 422
+    },
+    "MWI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 476
+    },
+    "MLI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 540
+    },
+    "MRT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 540
+    },
+    "MUS": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 409
+    },
+    "MOZ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 400
+    },
+    "NAM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 461
+    },
+    "NER": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 539
+    },
+    "NGA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 558
+    },
+    "RWA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 362
+    },
+    "STP": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 505
+    },
+    "SEN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 544
+    },
+    "SYC": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 395
+    },
+    "SLE": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 465
+    },
+    "ZAF": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 462
+    },
+    "SSD": {
+      "years": [
+        2017,
+        2023
+      ],
+      "rows": 7,
+      "numericCells": 160
+    },
+    "TGO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 494
+    },
+    "UGA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 517
+    },
+    "TZA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 459
+    },
+    "ZMB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 477
+    },
+    "ZWE": {
+      "years": [
+        2010,
+        2023
+      ],
+      "rows": 14,
+      "numericCells": 291
+    },
+    "ATG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 383
+    },
+    "ARG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 386
+    },
+    "BHS": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 381
+    },
+    "BRB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 390
+    },
+    "BLZ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 385
+    },
+    "BOL": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 434
+    },
+    "BRA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 400
+    },
+    "CAN": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 535
+    },
+    "CHL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 442
+    },
+    "COL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 382
+    },
+    "CRI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 530
+    },
+    "CUB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 378
+    },
+    "DMA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 381
+    },
+    "DOM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 482
+    },
+    "ECU": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 392
+    },
+    "SLV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 400
+    },
+    "GRD": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 385
+    },
+    "GTM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 391
+    },
+    "GUY": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 444
+    },
+    "HTI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 463
+    },
+    "HND": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 375
+    },
+    "JAM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 385
+    },
+    "MEX": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 496
+    },
+    "NIC": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 384
+    },
+    "PAN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 384
+    },
+    "PRY": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 515
+    },
+    "PER": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 393
+    },
+    "KNA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 387
+    },
+    "LCA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 384
+    },
+    "VCT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 384
+    },
+    "SUR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 402
+    },
+    "TTO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 417
+    },
+    "USA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 487
+    },
+    "URY": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 491
+    },
+    "VEN": {
+      "years": [
+        2018,
+        2023
+      ],
+      "rows": 6,
+      "numericCells": 93
+    },
+    "AFG": {
+      "years": [
+        2002,
+        2023
+      ],
+      "rows": 22,
+      "numericCells": 437
+    },
+    "BHR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 371
+    },
+    "DJI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 418
+    },
+    "EGY": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 398
+    },
+    "IRN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 409
+    },
+    "IRQ": {
+      "years": [
+        2003,
+        2023
+      ],
+      "rows": 21,
+      "numericCells": 317
+    },
+    "JOR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 446
+    },
+    "KWT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 401
+    },
+    "LBN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 400
+    },
+    "LBY": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 288
+    },
+    "MAR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 427
+    },
+    "PSE": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 443
+    },
+    "OMN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 346
+    },
+    "PAK": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 443
+    },
+    "QAT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 363
+    },
+    "SAU": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 336
+    },
+    "SOM": {
+      "years": [
+        2013,
+        2023
+      ],
+      "rows": 11,
+      "numericCells": 165
+    },
+    "SDN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 401
+    },
+    "SYR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 334
+    },
+    "TUN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 446
+    },
+    "ARE": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 430
+    },
+    "YEM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 402
+    },
+    "ALB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 375
+    },
+    "AND": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 352
+    },
+    "ARM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 592
+    },
+    "AUT": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 453
+    },
+    "AZE": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 348
+    },
+    "BLR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 453
+    },
+    "BEL": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 445
+    },
+    "BIH": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 431
+    },
+    "BGR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 412
+    },
+    "HRV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 467
+    },
+    "CYP": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 424
+    },
+    "CZE": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 449
+    },
+    "DNK": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 499
+    },
+    "EST": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 489
+    },
+    "FIN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 492
+    },
+    "FRA": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 414
+    },
+    "GEO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 438
+    },
+    "DEU": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 437
+    },
+    "GRC": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 434
+    },
+    "HUN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 429
+    },
+    "ISL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 441
+    },
+    "IRL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 453
+    },
+    "ISR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 431
+    },
+    "ITA": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 405
+    },
+    "KAZ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 423
+    },
+    "KGZ": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 400
+    },
+    "LVA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 452
+    },
+    "LIE": {
+      "years": [
+        2013,
+        2023
+      ],
+      "rows": 11,
+      "numericCells": 229
+    },
+    "LTU": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 454
+    },
+    "LUX": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 465
+    },
+    "MLT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 408
+    },
+    "MCO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 352
+    },
+    "MNE": {
+      "years": [
+        2011,
+        2023
+      ],
+      "rows": 13,
+      "numericCells": 272
+    },
+    "NLD": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 430
+    },
+    "MKD": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 464
+    },
+    "NOR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 389
+    },
+    "POL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 416
+    },
+    "PRT": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 413
+    },
+    "MDA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 466
+    },
+    "ROU": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 428
+    },
+    "RUS": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 379
+    },
+    "SMR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 301
+    },
+    "SRB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 393
+    },
+    "SVK": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 341
+    },
+    "SVN": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 429
+    },
+    "ESP": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 409
+    },
+    "SWE": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 497
+    },
+    "CHE": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 456
+    },
+    "TJK": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 476
+    },
+    "TUR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 335
+    },
+    "TKM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 362
+    },
+    "UKR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 360
+    },
+    "GBR": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 555
+    },
+    "UZB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 439
+    },
+    "BGD": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 426
+    },
+    "BTN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 416
+    },
+    "IND": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 422
+    },
+    "MDV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 398
+    },
+    "MMR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 501
+    },
+    "NPL": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 508
+    },
+    "LKA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 544
+    },
+    "THA": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 460
+    },
+    "TLS": {
+      "years": [
+        2003,
+        2023
+      ],
+      "rows": 21,
+      "numericCells": 324
+    },
+    "AUS": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 445
+    },
+    "BRN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 404
+    },
+    "KHM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 496
+    },
+    "CHN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 413
+    },
+    "COK": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 376
+    },
+    "FJI": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 448
+    },
+    "IDN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 425
+    },
+    "JPN": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 408
+    },
+    "KIR": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 322
+    },
+    "LAO": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 422
+    },
+    "MYS": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 390
+    },
+    "MHL": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 381
+    },
+    "FSM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 375
+    },
+    "MNG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 485
+    },
+    "NRU": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 348
+    },
+    "NZL": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 352
+    },
+    "NIU": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 349
+    },
+    "PLW": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 406
+    },
+    "PNG": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 370
+    },
+    "PHL": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 528
+    },
+    "KOR": {
+      "years": [
+        2000,
+        2024
+      ],
+      "rows": 25,
+      "numericCells": 535
+    },
+    "WSM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 360
+    },
+    "SGP": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 365
+    },
+    "SLB": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 376
+    },
+    "TON": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 379
+    },
+    "TUV": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 372
+    },
+    "VUT": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 369
+    },
+    "VNM": {
+      "years": [
+        2000,
+        2023
+      ],
+      "rows": 24,
+      "numericCells": 432
+    }
+  },
+  "referenceSha256": "8716762cdf2a27b1f2372f8526522ce7acb59f029351785ecdc578a0f5431eca",
+  "areaCrosswalk": [
+    {
+      "code": "AFG",
+      "label": "Afghanistan",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:004"
+    },
+    {
+      "code": "AGO",
+      "label": "Angola",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:024"
+    },
+    {
+      "code": "ALB",
+      "label": "Albania",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:008"
+    },
+    {
+      "code": "AND",
+      "label": "Andorra",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:020"
+    },
+    {
+      "code": "ARE",
+      "label": "United Arab Emirates",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:784"
+    },
+    {
+      "code": "ARG",
+      "label": "Argentina",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:032"
+    },
+    {
+      "code": "ARM",
+      "label": "Armenia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:051"
+    },
+    {
+      "code": "ATG",
+      "label": "Antigua and Barbuda",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:028"
+    },
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:036"
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:040"
+    },
+    {
+      "code": "AZE",
+      "label": "Azerbaijan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:031"
+    },
+    {
+      "code": "BDI",
+      "label": "Burundi",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:108"
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:056"
+    },
+    {
+      "code": "BEN",
+      "label": "Benin",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:204"
+    },
+    {
+      "code": "BFA",
+      "label": "Burkina Faso",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:854"
+    },
+    {
+      "code": "BGD",
+      "label": "Bangladesh",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:050"
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:100"
+    },
+    {
+      "code": "BHR",
+      "label": "Bahrain",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:048"
+    },
+    {
+      "code": "BHS",
+      "label": "Bahamas",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:044"
+    },
+    {
+      "code": "BIH",
+      "label": "Bosnia and Herzegovina",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:070"
+    },
+    {
+      "code": "BLR",
+      "label": "Belarus",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:112"
+    },
+    {
+      "code": "BLZ",
+      "label": "Belize",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:084"
+    },
+    {
+      "code": "BOL",
+      "label": "Bolivia (Plurinational State of)",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:068"
+    },
+    {
+      "code": "BRA",
+      "label": "Brazil",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:076"
+    },
+    {
+      "code": "BRB",
+      "label": "Barbados",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:052"
+    },
+    {
+      "code": "BRN",
+      "label": "Brunei Darussalam",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:096"
+    },
+    {
+      "code": "BTN",
+      "label": "Bhutan",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:064"
+    },
+    {
+      "code": "BWA",
+      "label": "Botswana",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:072"
+    },
+    {
+      "code": "CAF",
+      "label": "Central African Republic",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:140"
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:124"
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:756"
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:152"
+    },
+    {
+      "code": "CHN",
+      "label": "China",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:156"
+    },
+    {
+      "code": "CIV",
+      "label": "Côte d'Ivoire",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:384"
+    },
+    {
+      "code": "CMR",
+      "label": "Cameroon",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:120"
+    },
+    {
+      "code": "COD",
+      "label": "Democratic Republic of the Congo",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:180"
+    },
+    {
+      "code": "COG",
+      "label": "Congo",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:178"
+    },
+    {
+      "code": "COK",
+      "label": "Cook Islands",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:184"
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:170"
+    },
+    {
+      "code": "COM",
+      "label": "Comoros",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:174"
+    },
+    {
+      "code": "CPV",
+      "label": "Cabo Verde",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:132"
+    },
+    {
+      "code": "CRI",
+      "label": "Costa Rica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:188"
+    },
+    {
+      "code": "CUB",
+      "label": "Cuba",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:192"
+    },
+    {
+      "code": "CYP",
+      "label": "Cyprus",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:196"
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:203"
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:276"
+    },
+    {
+      "code": "DJI",
+      "label": "Djibouti",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:262"
+    },
+    {
+      "code": "DMA",
+      "label": "Dominica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:212"
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:208"
+    },
+    {
+      "code": "DOM",
+      "label": "Dominican Republic",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:214"
+    },
+    {
+      "code": "DZA",
+      "label": "Algeria",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:012"
+    },
+    {
+      "code": "ECU",
+      "label": "Ecuador",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:218"
+    },
+    {
+      "code": "EGY",
+      "label": "Egypt",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:818"
+    },
+    {
+      "code": "ERI",
+      "label": "Eritrea",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:232"
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:724"
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:233"
+    },
+    {
+      "code": "ETH",
+      "label": "Ethiopia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:231"
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:246"
+    },
+    {
+      "code": "FJI",
+      "label": "Fiji",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:242"
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:250"
+    },
+    {
+      "code": "FSM",
+      "label": "Micronesia (Federated States of)",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:583"
+    },
+    {
+      "code": "GAB",
+      "label": "Gabon",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:266"
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom of Great Britain and Northern Ireland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:826"
+    },
+    {
+      "code": "GEO",
+      "label": "Georgia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:268"
+    },
+    {
+      "code": "GHA",
+      "label": "Ghana",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:288"
+    },
+    {
+      "code": "GIN",
+      "label": "Guinea",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:324"
+    },
+    {
+      "code": "GMB",
+      "label": "Gambia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:270"
+    },
+    {
+      "code": "GNB",
+      "label": "Guinea-Bissau",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:624"
+    },
+    {
+      "code": "GNQ",
+      "label": "Equatorial Guinea",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:226"
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:300"
+    },
+    {
+      "code": "GRD",
+      "label": "Grenada",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:308"
+    },
+    {
+      "code": "GTM",
+      "label": "Guatemala",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:320"
+    },
+    {
+      "code": "GUY",
+      "label": "Guyana",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:328"
+    },
+    {
+      "code": "HND",
+      "label": "Honduras",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:340"
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:191"
+    },
+    {
+      "code": "HTI",
+      "label": "Haiti",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:332"
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:348"
+    },
+    {
+      "code": "IDN",
+      "label": "Indonesia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:360"
+    },
+    {
+      "code": "IND",
+      "label": "India",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:356"
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:372"
+    },
+    {
+      "code": "IRN",
+      "label": "Iran (Islamic Republic of)",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:364"
+    },
+    {
+      "code": "IRQ",
+      "label": "Iraq",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:368"
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:352"
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:376"
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:380"
+    },
+    {
+      "code": "JAM",
+      "label": "Jamaica",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:388"
+    },
+    {
+      "code": "JOR",
+      "label": "Jordan",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:400"
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:392"
+    },
+    {
+      "code": "KAZ",
+      "label": "Kazakhstan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:398"
+    },
+    {
+      "code": "KEN",
+      "label": "Kenya",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:404"
+    },
+    {
+      "code": "KGZ",
+      "label": "Kyrgyzstan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:417"
+    },
+    {
+      "code": "KHM",
+      "label": "Cambodia",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:116"
+    },
+    {
+      "code": "KIR",
+      "label": "Kiribati",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:296"
+    },
+    {
+      "code": "KNA",
+      "label": "Saint Kitts and Nevis",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:659"
+    },
+    {
+      "code": "KOR",
+      "label": "Republic of Korea",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:410"
+    },
+    {
+      "code": "KWT",
+      "label": "Kuwait",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:414"
+    },
+    {
+      "code": "LAO",
+      "label": "Lao People's Democratic Republic",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:418"
+    },
+    {
+      "code": "LBN",
+      "label": "Lebanon",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:422"
+    },
+    {
+      "code": "LBR",
+      "label": "Liberia",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:430"
+    },
+    {
+      "code": "LBY",
+      "label": "Libya",
+      "region": "EMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:434"
+    },
+    {
+      "code": "LCA",
+      "label": "Saint Lucia",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:662"
+    },
+    {
+      "code": "LIE",
+      "label": "Liechtenstein",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:438"
+    },
+    {
+      "code": "LKA",
+      "label": "Sri Lanka",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:144"
+    },
+    {
+      "code": "LSO",
+      "label": "Lesotho",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:426"
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:440"
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:442"
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:428"
+    },
+    {
+      "code": "MAR",
+      "label": "Morocco",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:504"
+    },
+    {
+      "code": "MCO",
+      "label": "Monaco",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:492"
+    },
+    {
+      "code": "MDA",
+      "label": "Republic of Moldova",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:498"
+    },
+    {
+      "code": "MDG",
+      "label": "Madagascar",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:450"
+    },
+    {
+      "code": "MDV",
+      "label": "Maldives",
+      "region": "SEAR",
+      "income": "Upper-middle",
+      "geographyId": "m49:462"
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:484"
+    },
+    {
+      "code": "MHL",
+      "label": "Marshall Islands",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:584"
+    },
+    {
+      "code": "MKD",
+      "label": "North Macedonia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:807"
+    },
+    {
+      "code": "MLI",
+      "label": "Mali",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:466"
+    },
+    {
+      "code": "MLT",
+      "label": "Malta",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:470"
+    },
+    {
+      "code": "MMR",
+      "label": "Myanmar",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:104"
+    },
+    {
+      "code": "MNE",
+      "label": "Montenegro",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:499"
+    },
+    {
+      "code": "MNG",
+      "label": "Mongolia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:496"
+    },
+    {
+      "code": "MOZ",
+      "label": "Mozambique",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:508"
+    },
+    {
+      "code": "MRT",
+      "label": "Mauritania",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:478"
+    },
+    {
+      "code": "MUS",
+      "label": "Mauritius",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:480"
+    },
+    {
+      "code": "MWI",
+      "label": "Malawi",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:454"
+    },
+    {
+      "code": "MYS",
+      "label": "Malaysia",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:458"
+    },
+    {
+      "code": "NAM",
+      "label": "Namibia",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:516"
+    },
+    {
+      "code": "NER",
+      "label": "Niger",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:562"
+    },
+    {
+      "code": "NGA",
+      "label": "Nigeria",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:566"
+    },
+    {
+      "code": "NIC",
+      "label": "Nicaragua",
+      "region": "AMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:558"
+    },
+    {
+      "code": "NIU",
+      "label": "Niue",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:570"
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands (Kingdom of the)",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:528"
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:578"
+    },
+    {
+      "code": "NPL",
+      "label": "Nepal",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:524"
+    },
+    {
+      "code": "NRU",
+      "label": "Nauru",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:520"
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:554"
+    },
+    {
+      "code": "OMN",
+      "label": "Oman",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:512"
+    },
+    {
+      "code": "PAK",
+      "label": "Pakistan",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:586"
+    },
+    {
+      "code": "PAN",
+      "label": "Panama",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:591"
+    },
+    {
+      "code": "PER",
+      "label": "Peru",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:604"
+    },
+    {
+      "code": "PHL",
+      "label": "Philippines",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:608"
+    },
+    {
+      "code": "PLW",
+      "label": "Palau",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:585"
+    },
+    {
+      "code": "PNG",
+      "label": "Papua New Guinea",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:598"
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:616"
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:620"
+    },
+    {
+      "code": "PRY",
+      "label": "Paraguay",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:600"
+    },
+    {
+      "code": "PSE",
+      "label": "occupied Palestinian territory, including east Jerusalem",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:275"
+    },
+    {
+      "code": "QAT",
+      "label": "Qatar",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:634"
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:642"
+    },
+    {
+      "code": "RUS",
+      "label": "Russian Federation",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:643"
+    },
+    {
+      "code": "RWA",
+      "label": "Rwanda",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:646"
+    },
+    {
+      "code": "SAU",
+      "label": "Saudi Arabia",
+      "region": "EMR",
+      "income": "High",
+      "geographyId": "m49:682"
+    },
+    {
+      "code": "SDN",
+      "label": "Sudan",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:729"
+    },
+    {
+      "code": "SEN",
+      "label": "Senegal",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:686"
+    },
+    {
+      "code": "SGP",
+      "label": "Singapore",
+      "region": "WPR",
+      "income": "High",
+      "geographyId": "m49:702"
+    },
+    {
+      "code": "SLB",
+      "label": "Solomon Islands",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:090"
+    },
+    {
+      "code": "SLE",
+      "label": "Sierra Leone",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:694"
+    },
+    {
+      "code": "SLV",
+      "label": "El Salvador",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:222"
+    },
+    {
+      "code": "SMR",
+      "label": "San Marino",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:674"
+    },
+    {
+      "code": "SOM",
+      "label": "Somalia",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:706"
+    },
+    {
+      "code": "SRB",
+      "label": "Serbia",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:688"
+    },
+    {
+      "code": "SSD",
+      "label": "South Sudan",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:728"
+    },
+    {
+      "code": "STP",
+      "label": "Sao Tome and Principe",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:678"
+    },
+    {
+      "code": "SUR",
+      "label": "Suriname",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:740"
+    },
+    {
+      "code": "SVK",
+      "label": "Slovakia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:703"
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:705"
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "region": "EUR",
+      "income": "High",
+      "geographyId": "m49:752"
+    },
+    {
+      "code": "SWZ",
+      "label": "Eswatini",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:748"
+    },
+    {
+      "code": "SYC",
+      "label": "Seychelles",
+      "region": "AFR",
+      "income": "High",
+      "geographyId": "m49:690"
+    },
+    {
+      "code": "SYR",
+      "label": "Syrian Arab Republic",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:760"
+    },
+    {
+      "code": "TCD",
+      "label": "Chad",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:148"
+    },
+    {
+      "code": "TGO",
+      "label": "Togo",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:768"
+    },
+    {
+      "code": "THA",
+      "label": "Thailand",
+      "region": "SEAR",
+      "income": "Upper-middle",
+      "geographyId": "m49:764"
+    },
+    {
+      "code": "TJK",
+      "label": "Tajikistan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:762"
+    },
+    {
+      "code": "TKM",
+      "label": "Turkmenistan",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:795"
+    },
+    {
+      "code": "TLS",
+      "label": "Timor-Leste",
+      "region": "SEAR",
+      "income": "Lower-middle",
+      "geographyId": "m49:626"
+    },
+    {
+      "code": "TON",
+      "label": "Tonga",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:776"
+    },
+    {
+      "code": "TTO",
+      "label": "Trinidad and Tobago",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:780"
+    },
+    {
+      "code": "TUN",
+      "label": "Tunisia",
+      "region": "EMR",
+      "income": "Lower-middle",
+      "geographyId": "m49:788"
+    },
+    {
+      "code": "TUR",
+      "label": "Türkiye",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:792"
+    },
+    {
+      "code": "TUV",
+      "label": "Tuvalu",
+      "region": "WPR",
+      "income": "Upper-middle",
+      "geographyId": "m49:798"
+    },
+    {
+      "code": "TZA",
+      "label": "United Republic of Tanzania",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:834"
+    },
+    {
+      "code": "UGA",
+      "label": "Uganda",
+      "region": "AFR",
+      "income": "Low",
+      "geographyId": "m49:800"
+    },
+    {
+      "code": "UKR",
+      "label": "Ukraine",
+      "region": "EUR",
+      "income": "Upper-middle",
+      "geographyId": "m49:804"
+    },
+    {
+      "code": "URY",
+      "label": "Uruguay",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:858"
+    },
+    {
+      "code": "USA",
+      "label": "United States of America",
+      "region": "AMR",
+      "income": "High",
+      "geographyId": "m49:840"
+    },
+    {
+      "code": "UZB",
+      "label": "Uzbekistan",
+      "region": "EUR",
+      "income": "Lower-middle",
+      "geographyId": "m49:860"
+    },
+    {
+      "code": "VCT",
+      "label": "Saint Vincent and the Grenadines",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:670"
+    },
+    {
+      "code": "VEN",
+      "label": "Venezuela (Bolivarian Republic of)",
+      "region": "AMR",
+      "income": "Upper-middle",
+      "geographyId": "m49:862"
+    },
+    {
+      "code": "VNM",
+      "label": "Viet Nam",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:704"
+    },
+    {
+      "code": "VUT",
+      "label": "Vanuatu",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:548"
+    },
+    {
+      "code": "WSM",
+      "label": "Samoa",
+      "region": "WPR",
+      "income": "Lower-middle",
+      "geographyId": "m49:882"
+    },
+    {
+      "code": "YEM",
+      "label": "Yemen",
+      "region": "EMR",
+      "income": "Low",
+      "geographyId": "m49:887"
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "region": "AFR",
+      "income": "Upper-middle",
+      "geographyId": "m49:710"
+    },
+    {
+      "code": "ZMB",
+      "label": "Zambia",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:894"
+    },
+    {
+      "code": "ZWE",
+      "label": "Zimbabwe",
+      "region": "AFR",
+      "income": "Lower-middle",
+      "geographyId": "m49:716"
+    }
+  ],
+  "methodologyPagesVisuallyReviewed": [
+    9,
+    18,
+    19,
+    20,
+    26
+  ]
+}

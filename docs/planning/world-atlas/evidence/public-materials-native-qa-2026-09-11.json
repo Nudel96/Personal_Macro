@@ -1,0 +1,398 @@
+{
+  "checkedAt": "2026-09-11T07:11:54.181Z",
+  "status": "passed",
+  "runtime": "Native Tauri owned example; actual public cache independently checked against all 36 EU table values",
+  "checks": [
+    {
+      "label": "Germany stays unsupported; no substitute for its own patents",
+      "pass": true
+    },
+    {
+      "label": "EU total with numbers hidden",
+      "id": "eu-advanced-materials:total_count",
+      "geo": "eu:am_priority",
+      "numbers": false,
+      "value": "28865",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:total_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "28865",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "24.1",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:construction_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "11779",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:construction_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "24.1",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:electronics_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "20545",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:electronics_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "25.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:energy_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "4429",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:energy_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "27.6",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:medical_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "2676",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:medical_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "34.8",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:mobility_count",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "2880",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "EU original table cell",
+      "id": "eu-advanced-materials:mobility_triadic",
+      "geo": "eu:am_priority",
+      "numbers": true,
+      "value": "19.2",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:total_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "35257",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "13.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:construction_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "9932",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:construction_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "18.4",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:electronics_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "28704",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:electronics_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "13.5",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:energy_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "4235",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:energy_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "16.6",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:medical_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "3620",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:medical_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "19.4",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:mobility_count",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "1807",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:mobility_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "19.3",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:total_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "194216",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "0.6",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:construction_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "53771",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:construction_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "0.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:electronics_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "146096",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:electronics_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "0.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:energy_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "25357",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:energy_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "0.9",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:medical_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "9366",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:medical_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "1.1",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:mobility_count",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "3945",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Original priority-jurisdiction cell",
+      "id": "eu-advanced-materials:mobility_triadic",
+      "geo": "m49:156",
+      "numbers": true,
+      "value": "0.9",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "China/EU comparison shares complete window and count scale",
+      "ratio": 6.728425428719903,
+      "pass": true
+    },
+    {
+      "label": "No substitution for m49:356",
+      "pass": true
+    },
+    {
+      "label": "No substitution for eurostat:eu27_2020",
+      "pass": true
+    },
+    {
+      "label": "No substitution for world",
+      "pass": true
+    },
+    {
+      "label": "US triadic source share restored",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "13.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Saved view restores source recipe, jurisdiction and perspective",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "13.7",
+      "period": "2010/2024",
+      "pass": true
+    },
+    {
+      "label": "Minimum desktop width",
+      "id": "eu-advanced-materials:total_triadic",
+      "geo": "m49:840",
+      "numbers": true,
+      "value": "13.7",
+      "period": "2010/2024",
+      "pass": true
+    }
+  ],
+  "viewport": {
+    "width": 1024,
+    "document": 1015
+  },
+  "screenshots": [
+    "output/atlas-materials-eu.png",
+    "output/atlas-materials-comparison.png",
+    "output/atlas-materials-minwidth.png"
+  ],
+  "pageErrors": []
+}

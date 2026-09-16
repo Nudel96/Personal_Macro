@@ -1,0 +1,134 @@
+{
+  "sourceUrl": "https://files.ember-energy.org/public-downloads/yearly_full_release_long_format.csv",
+  "methodologyUrl": "https://files.ember-energy.org/public-downloads/ember_electricity_data_methodology.pdf",
+  "fuels": [
+    {
+      "id": "coal",
+      "variable": "Coal",
+      "label": "Kohle",
+      "topicId": "electricity:coal_power"
+    },
+    {
+      "id": "gas",
+      "variable": "Gas",
+      "label": "Erdgas",
+      "topicId": "electricity:gas_power"
+    },
+    {
+      "id": "other_fossil",
+      "variable": "Other Fossil",
+      "label": "Weitere fossile Quellen",
+      "topicId": "electricity:other_fossil"
+    },
+    {
+      "id": "nuclear",
+      "variable": "Nuclear",
+      "label": "Kernenergie",
+      "topicId": "electricity:nuclear"
+    },
+    {
+      "id": "hydro",
+      "variable": "Hydro",
+      "label": "Wasserkraft",
+      "topicId": "electricity:hydropower"
+    },
+    {
+      "id": "bioenergy",
+      "variable": "Bioenergy",
+      "label": "Bioenergie",
+      "topicId": "electricity:bioenergy"
+    },
+    {
+      "id": "other_renewables",
+      "variable": "Other Renewables",
+      "label": "Weitere erneuerbare Quellen",
+      "topicId": "electricity:other_renewables"
+    },
+    {
+      "id": "wind",
+      "variable": "Wind",
+      "label": "Windenergie insgesamt",
+      "topicId": "electricity:wind_total"
+    },
+    {
+      "id": "solar",
+      "variable": "Solar",
+      "label": "Solarenergie",
+      "topicId": "electricity:solar"
+    }
+  ],
+  "regions": [
+    {
+      "id": "ember:africa",
+      "name": "Africa",
+      "label": "Afrika · Ember-Region",
+      "regionId": "Africa"
+    },
+    {
+      "id": "ember:asia",
+      "name": "Asia",
+      "label": "Asien · Ember-Region",
+      "regionId": "Asia"
+    },
+    {
+      "id": "ember:europe",
+      "name": "Europe",
+      "label": "Europa · Ember-Region",
+      "regionId": "Europe"
+    },
+    {
+      "id": "ember:latin_america_caribbean",
+      "name": "Latin America and Caribbean",
+      "label": "Lateinamerika und Karibik · Ember-Region",
+      "regionId": "Americas"
+    },
+    {
+      "id": "ember:middle_east",
+      "name": "Middle East",
+      "label": "Naher Osten · Ember-Region",
+      "regionId": "Asia"
+    },
+    {
+      "id": "ember:north_america",
+      "name": "North America",
+      "label": "Nordamerika · Ember-Region",
+      "regionId": "Americas"
+    },
+    {
+      "id": "ember:oceania",
+      "name": "Oceania",
+      "label": "Ozeanien · Ember-Region",
+      "regionId": "Oceania"
+    },
+    {
+      "id": "ember:asean",
+      "name": "ASEAN",
+      "label": "ASEAN · Ember-Gruppe",
+      "regionId": "Asia"
+    },
+    {
+      "id": "ember:eu",
+      "name": "EU",
+      "label": "Europäische Union · Ember-Gruppe",
+      "regionId": "Europe"
+    },
+    {
+      "id": "ember:g20",
+      "name": "G20",
+      "label": "G20 · Ember-Gruppe",
+      "regionId": "world"
+    },
+    {
+      "id": "ember:g7",
+      "name": "G7",
+      "label": "G7 · Ember-Gruppe",
+      "regionId": "world"
+    },
+    {
+      "id": "ember:oecd",
+      "name": "OECD",
+      "label": "OECD · Ember-Gruppe",
+      "regionId": "world"
+    }
+  ]
+}

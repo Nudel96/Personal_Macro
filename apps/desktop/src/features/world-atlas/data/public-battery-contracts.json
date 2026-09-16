@@ -1,0 +1,83 @@
+{
+  "iea-battery-world": {
+    "slug": "global-battery-storage-capacity-additions-2020-2025",
+    "attributes": [
+      "identifier",
+      "csv",
+      "chartoptions",
+      "units",
+      "credit",
+      "crediturl",
+      "lasthistoricalyear",
+      "futurescenariolabel"
+    ],
+    "delimiter": ";",
+    "headers": ["", "Utility-scale", "Behind-the-meter"],
+    "groups": [
+      {
+        "label": "World",
+        "years": [2020, 2021, 2022, 2023, 2024, 2025]
+      }
+    ],
+    "sourceFile": "iea-battery-world.html"
+  },
+  "iea-battery-region": {
+    "slug": "battery-storage-capacity-additions-by-region-2023-2025",
+    "attributes": [
+      "identifier",
+      "csv",
+      "chartoptions",
+      "units",
+      "credit",
+      "crediturl",
+      "lasthistoricalyear",
+      "futurescenariolabel"
+    ],
+    "delimiter": ";",
+    "headers": ["", "Utility-scale", "Behind-the-meter"],
+    "groups": [
+      {
+        "label": "China",
+        "years": [2023, 2024, 2025]
+      },
+      {
+        "label": "United States",
+        "years": [2023, 2024, 2025]
+      },
+      {
+        "label": "Europe",
+        "years": [2023, 2024, 2025]
+      },
+      {
+        "label": "Rest of world",
+        "years": [2023, 2024, 2025]
+      }
+    ],
+    "sourceFile": "iea-battery-region.html"
+  },
+  "iea-battery-2010-2023": {
+    "slug": "global-battery-storage-capacity-additions-2010-2023",
+    "attributes": [
+      "identifier",
+      "csv",
+      "chartoptions",
+      "units",
+      "credit",
+      "crediturl",
+      "lasthistoricalyear",
+      "futurescenariolabel"
+    ],
+    "delimiter": ",",
+    "headers": ["", "Battery storage capacity additions "],
+    "groups": [
+      {
+        "label": "World",
+        "years": [
+          2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020,
+          2021, 2022, 2023
+        ]
+      }
+    ],
+    "sourceFile": "iea-battery-2010-2023.html"
+  }
+}

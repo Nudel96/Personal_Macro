@@ -1,0 +1,43 @@
+{
+  "originalFileRoundtrip": {
+    "years": 66,
+    "numeric": 10310,
+    "missing": 910
+  },
+  "first": {
+    "years": 66,
+    "numeric": 10310,
+    "missing": 910,
+    "runAt": "2026-09-09T16:07:50.924Z",
+    "jobs": [
+      {
+        "finishedAt": "2026-09-09T16:07:58.561861600+00:00",
+        "id": "404b918a-c86e-4aea-b475-0825e15eb7d8",
+        "message": "Die Rohstoffbilder sind lokal verfügbar.",
+        "observations": 10310,
+        "page": 2,
+        "pages": 2,
+        "seriesId": "worldbank-commodity-prices",
+        "startedAt": "2026-09-09T16:07:50.992053900+00:00",
+        "status": "complete"
+      }
+    ]
+  },
+  "restart": {
+    "years": 66,
+    "numeric": 10310,
+    "missing": 910,
+    "runAt": "2026-09-09T16:14:32.631Z",
+    "jobs": []
+  },
+  "identifier": "com.personal-macro.atlas-commodities-20260909",
+  "restartProcess": {
+    "identifier": "com.personal-macro.atlas-commodities-20260909",
+    "pid": 33400,
+    "previousPid": 29272,
+    "createdAt": "2026-09-09T16:14:30.7029270Z",
+    "executablePath": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\debug\\personal-macro-desktop.exe"
+  },
+  "notebookAndFixedPictureUnchangedAfterProcessRestart": true,
+  "nativeUiClickAcceptance": false
+}

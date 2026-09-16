@@ -48,6 +48,7 @@ import { DashboardPage } from "../dashboard/dashboard-page";
 import { MistakesPage } from "../mistakes/mistakes-page";
 import { PlaybookPage } from "../playbook/playbook-page";
 import { ReviewsPage } from "../reviews/reviews-page";
+import { JournalAccountBar } from "./journal-account-bar";
 
 function select(id: string | null) {
   journal.status = id ? "ready" : "selectionRequired";
@@ -59,6 +60,7 @@ function view(client: QueryClient, Page: ComponentType) {
   return (
     <QueryClientProvider client={client}>
       <MemoryRouter>
+        <JournalAccountBar />
         <Page />
       </MemoryRouter>
     </QueryClientProvider>
@@ -79,6 +81,9 @@ describe("Reviews, Playbook and Mistakes account boundaries", () => {
 
   beforeEach(() => {
     vi.restoreAllMocks();
+    vi.spyOn(api, "accountJournal").mockImplementation(
+      () => new Promise(() => undefined),
+    );
     journal.accounts = [account("account-a"), account("account-b")];
     select(null);
     journal.selectAccount.mockReset();

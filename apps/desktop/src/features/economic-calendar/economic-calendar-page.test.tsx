@@ -5,6 +5,7 @@ import {
   render,
   screen,
   waitFor,
+  within,
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { EconomicCalendarEvent } from "../../types/domain";
@@ -88,8 +89,75 @@ afterEach(() => {
 });
 
 describe("EconomicCalendarPage", () => {
+  it("opens the full active week with past values and the next upcoming event", async () => {
+    economicCalendarMock.mockResolvedValueOnce({
+      asOf: "2026-09-10T10:00:00Z",
+      from: "2026-09-06T22:00:00Z",
+      to: "2026-09-13T22:00:00Z",
+      sourceName: "EODHD Economic Events API",
+      sourceUrl: "https://eodhd.com/api/economic-events",
+      events: [
+        { ...events[1], scheduledAt: "2026-09-11T08:00:00Z" },
+        { ...events[0], scheduledAt: "2026-09-07T12:30:00Z" },
+        {
+          ...events[0],
+          id: "missing-actual",
+          title: "Release ohne Actual",
+          scheduledAt: "2026-09-09T12:30:00Z",
+          actualText: null,
+        },
+      ],
+    });
+    renderPage();
+
+    await screen.findByText("Wirtschaftsdaten dieser Woche");
+    expect(economicCalendarMock).toHaveBeenLastCalledWith({
+      range: "currentWeek",
+      timezoneOffsetMinutes: expect.any(Number),
+      timezone: expect.any(String),
+    });
+    expect(
+      screen
+        .getByRole("button", { name: "Diese Woche" })
+        .getAttribute("aria-pressed"),
+    ).toBe("true");
+    const rows = within(screen.getByRole("table")).getAllByRole("row");
+    expect(within(rows[1]).getByText("Inflation Rate")).toBeTruthy();
+    expect(within(rows[1]).getByText("3.1")).toBeTruthy();
+    expect(within(rows[1]).getByText("2.8")).toBeTruthy();
+    expect(within(rows[1]).getByText("2.9")).toBeTruthy();
+    expect(within(rows[1]).getByText("Vergangen")).toBeTruthy();
+    expect(within(rows[2]).getByText("Release ohne Actual")).toBeTruthy();
+    expect(within(rows[2]).getByText("—")).toBeTruthy();
+    expect(within(rows[3]).getByText("HCOB Manufacturing PMI")).toBeTruthy();
+    expect(within(rows[3]).getByText("Kommend")).toBeTruthy();
+    expect(screen.getAllByText("HCOB Manufacturing PMI")).toHaveLength(2);
+    expect(screen.getAllByText("Inflation Rate")).toHaveLength(1);
+  });
+
+  it("keeps past weekly releases visible when no upcoming events remain", async () => {
+    economicCalendarMock.mockResolvedValueOnce({
+      asOf: "2026-09-13T18:00:00Z",
+      from: "2026-09-06T22:00:00Z",
+      to: "2026-09-13T22:00:00Z",
+      sourceName: "EODHD Economic Events API",
+      sourceUrl: "https://eodhd.com/api/economic-events",
+      events: [{ ...events[0], scheduledAt: "2026-09-07T12:30:00Z" }],
+    });
+    renderPage();
+
+    expect(await screen.findByText("Inflation Rate")).toBeTruthy();
+    expect(
+      screen.getByText("Keine weiteren passenden Termine diese Woche"),
+    ).toBeTruthy();
+    expect(screen.getByText("3.1")).toBeTruthy();
+  });
+
   it("filters future releases independently by country and category", async () => {
     renderPage();
+    await screen.findByText("Wirtschaftsdaten dieser Woche");
+    fireEvent.click(screen.getByRole("button", { name: "Kommend" }));
+    await screen.findByText("Kommende Macro-Termine");
 
     expect((await screen.findAllByText("Inflation Rate")).length).toBe(1);
     expect(screen.getAllByText("HCOB Manufacturing PMI").length).toBe(2);
@@ -131,18 +199,60 @@ describe("EconomicCalendarPage", () => {
       expect(economicCalendarMock).toHaveBeenLastCalledWith({
         range: "today",
         timezoneOffsetMinutes: expect.any(Number),
+        timezone: expect.any(String),
       });
     });
     expect(await screen.findByText("Vergangene Wirtschaftsdaten")).toBeTruthy();
     expect(screen.getByText("3.1")).toBeTruthy();
+
+    fireEvent.click(screen.getByRole("button", { name: "Seit Wochenbeginn" }));
+    await waitFor(() => {
+      expect(economicCalendarMock).toHaveBeenLastCalledWith({
+        range: "week",
+        timezoneOffsetMinutes: expect.any(Number),
+        timezone: expect.any(String),
+      });
+    });
+    await screen.findByText("Vergangene Wirtschaftsdaten");
 
     fireEvent.click(screen.getByRole("button", { name: "Dieser Monat" }));
     await waitFor(() => {
       expect(economicCalendarMock).toHaveBeenLastCalledWith({
         range: "month",
         timezoneOffsetMinutes: expect.any(Number),
+        timezone: expect.any(String),
       });
     });
+  });
+
+  it("returns to the full week from upcoming ranges while preserving filters", async () => {
+    renderPage();
+    await screen.findByText("Wirtschaftsdaten dieser Woche");
+    fireEvent.change(screen.getByLabelText("Land"), {
+      target: { value: "EUR" },
+    });
+    fireEvent.click(screen.getByRole("button", { name: "Kommend" }));
+    await screen.findByText("Kommende Macro-Termine");
+
+    for (const days of [7, 90]) {
+      fireEvent.click(screen.getByRole("button", { name: `${days} Tage` }));
+      await waitFor(() => {
+        expect(economicCalendarMock).toHaveBeenLastCalledWith({
+          range: `future${days}`,
+          timezoneOffsetMinutes: expect.any(Number),
+          timezone: expect.any(String),
+        });
+      });
+      await screen.findByText("Kommende Macro-Termine");
+    }
+
+    fireEvent.click(screen.getByRole("button", { name: "Diese Woche" }));
+    await screen.findByText("Wirtschaftsdaten dieser Woche");
+    expect((screen.getByLabelText("Land") as HTMLSelectElement).value).toBe(
+      "EUR",
+    );
+    expect(screen.queryByText("Inflation Rate")).toBeNull();
+    expect(screen.getAllByText("HCOB Manufacturing PMI")).toHaveLength(2);
   });
 });
 

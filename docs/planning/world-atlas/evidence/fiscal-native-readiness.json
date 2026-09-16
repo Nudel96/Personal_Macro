@@ -1,0 +1,119 @@
+{
+  "status": "native_storage_passed_browser_review_passed_native_click_open",
+  "first": {
+    "phase": "first",
+    "status": "passed",
+    "runAt": "2026-09-09T09:48:58.554Z",
+    "identifier": "com.personal-macro.atlas-fiscal-20260909",
+    "nativeResponsesRead": 153,
+    "availableCountries": 151,
+    "unsupported": [
+      "world",
+      "un-wpp:903"
+    ],
+    "sourceSha256": "de8ae724dbf4aca064aef3bc49554c4d00221f6eef3762b29412450cb1c65e54",
+    "numericCells": 68406,
+    "jobs": 1,
+    "atlasMigrations": 14,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "035401336753a161bb91f76301acf012da73697604b6dfab9878ddef970e489b",
+    "exactPersistedResponsesAndNoteAfterRestart": false,
+    "productionDataAccessed": false
+  },
+  "restart": {
+    "phase": "restart",
+    "status": "passed",
+    "runAt": "2026-09-09T09:54:56.672Z",
+    "identifier": "com.personal-macro.atlas-fiscal-20260909",
+    "nativeResponsesRead": 153,
+    "availableCountries": 151,
+    "unsupported": [
+      "world",
+      "un-wpp:903"
+    ],
+    "sourceSha256": "de8ae724dbf4aca064aef3bc49554c4d00221f6eef3762b29412450cb1c65e54",
+    "numericCells": 68406,
+    "jobs": 0,
+    "atlasMigrations": 14,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "035401336753a161bb91f76301acf012da73697604b6dfab9878ddef970e489b",
+    "exactPersistedResponsesAndNoteAfterRestart": true,
+    "productionDataAccessed": false
+  },
+  "cacheAudit": {
+    "file": "fiscal-native-cache.json",
+    "sha256": "50dee62e689aff47782c61040ddf4b5ca68dd977f01f89558bd5e3c1777372a8",
+    "counts": {
+      "scopeFlags": 67692,
+      "missing": 202362,
+      "zeros": 3,
+      "negative": 7040,
+      "numeric": 68406,
+      "comparedNumericCells": 68406,
+      "exactDecimalMatches": 68406,
+      "owidRoundedExpenditureChecks": 9265
+    },
+    "maximumRelativeNumericDifference": "0"
+  },
+  "proofComparison": "All 153 persisted command responses and the saved note/picture are exactly equal after an actual process restart. No new IMF source job was started.",
+  "protocolObservation": "The harness allows four machine-epsilon units when the additional get_settings JSON conversion is read through JavaScript. The independent saved-proof comparison is exact, and all original workbook numbers match the actual Tauri cache exactly.",
+  "recordedBrowserReview": {
+    "reviewedAt": "2026-09-09",
+    "method": "Observed through CUA, not executed by this report generator",
+    "surface": "Actual WorldAtlasPage with public snapshots obtained by the native IMF commands",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        1024,
+        720
+      ]
+    ],
+    "horizontalOverflow": false,
+    "checked": [
+      "India/China four budget pictures; expenditure detail 1982-2024 and optional same-year 2024 values",
+      "Primary balance opened by Enter; explicit Ausgeglichen reference and no required number table",
+      "Germany/USA debt comparison: separate central/general government segments and missing scope years",
+      "All three groups; macroeconomic context has no government-scope warning",
+      "India expenditure single history 1861-2024",
+      "France expenditure: 1978 documented definition break and separate segments",
+      "Unsupported world comparison preserves the available main country",
+      "Unsupported UN-Africa and world main views show no chart or fabricated values",
+      "IMF source card reports locally available data and returns to the actual fiscal topic"
+    ],
+    "consoleWarnings": [],
+    "consoleErrors": [],
+    "nativeClickAcceptance": false,
+    "nativeHelperLimit": "Native accessibility text was readable; screenshots failed with SetIsBorderRequired / 0x80004002 and clicking failed because coordinate input geometry was unavailable. No successful native click is claimed."
+  },
+  "recordedValidation": {
+    "atlasVitest": {
+      "filesPassed": 25,
+      "testsPassed": 167,
+      "maxWorkers": 2
+    },
+    "rustLibrary": {
+      "passed": 234,
+      "ignoredExplicitOrExternal": 22
+    },
+    "explicitLiveImfRoundtrip": "passed",
+    "typecheck": "passed",
+    "productionBuild": "passed",
+    "targetedEslint": "passed",
+    "cargoFmtCheck": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "testObservation": "An earlier unbounded parallel Atlas run hit the existing notebook snapshot timing test. The affected files passed when rerun; the full 25-file suite passed with two workers. No product fix is inferred from that timing failure."
+  },
+  "nativeBackgroundObservations": [
+    "No new Atlas initialization error",
+    "Existing EODHD intraday entitlement failure",
+    "Existing central-bank synchronization busy warning",
+    "Previously recorded pdf-extract Parse(InvalidContentStream) panic outside the Atlas pipeline",
+    "MSVC linker stdout warning; Clippy completed successfully"
+  ],
+  "catalogVersion": "2026-09-09.11",
+  "productionDataAccessed": false,
+  "fullAtlasGoalComplete": false
+}

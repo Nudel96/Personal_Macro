@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "sourceSha256": "862cada9beaa7a011f5af38c9b9a46042a361e9e29cd212cb3763f4f51f7a8f7",
+  "sourceBytes": 40896725,
+  "sourceRows": 140625,
+  "sourceAreas": 276,
+  "mappedProfiles": 190,
+  "countryTerritoryProfiles": 188,
+  "providerAggregates": [
+    "X01",
+    "X06"
+  ],
+  "excludedAreas": 86,
+  "metrics": 14,
+  "exactNumericCells": 96765,
+  "missingCalendarCells": 135,
+  "flags": {
+    "": 89261,
+    "A": 7504
+  },
+  "incompleteYears": {
+    "LBN": [
+      2024
+    ],
+    "PSE": [
+      2023,
+      2024
+    ],
+    "SDN": [
+      2023,
+      2024
+    ],
+    "SSD": [
+      2024
+    ],
+    "UKR": [
+      2022,
+      2023,
+      2024
+    ]
+  },
+  "largestPublishedComponentSumDifferencePeople": 94,
+  "rebalancedByApp": false,
+  "containsValuation": false
+}

@@ -1,4 +1,13 @@
+import type { AtlasFiscalResponse } from "../types/domain";
 import { invoke } from "@tauri-apps/api/core";
+import {
+  browserAccountBootstrap,
+  browserAccountJournal,
+  browserAccountCashflows,
+  browserSaveAccount,
+  browserArchiveAccount,
+  browserAddAccountCashflow,
+} from "./accounts-browser";
 import {
   browserBootstrap,
   browserCreateTrade,
@@ -10,13 +19,28 @@ import {
   browserTrashTrade,
   browserUpdateTrade,
 } from "./browser-adapter";
-import {
-  browserPutCallDashboard,
-  browserSyncPutCall,
-} from "./put-call-browser";
 import type {
+  GovernmentBondsDashboard,
+  GovernmentBondDetail,
+  BondDetailInput,
+  BondSyncJob,
+  AtlasCatalog,
+  AtlasValuationResponse,
+  AtlasDemographyResponse,
+  AtlasEnergyResponse,
+  AtlasCreditResponse,
+  AtlasHousingRatiosResponse,
+  AtlasEducationResponse,
+  AtlasPropertyResponse,
+  AtlasCapacityResponse,
+  AtlasHistoryResponse,
+  AtlasMarketResponse,
+  AtlasSeriesInput,
+  AtlasSeriesResponse,
+  AtlasSyncJob,
   BootstrapData,
   Account,
+  AccountJournal,
   AccountInput,
   AccountCashflow,
   BrokerConnection,
@@ -47,12 +71,15 @@ import type {
   CentralBankReportDashboard,
   CentralBankReportDetail,
   CentralBankSyncResult,
+  CentralBankSummaryResult,
   SeasonalityDashboard,
   SeasonalityAssetDetail,
   SeasonalityForexPair,
   SeasonalityAnalysis,
   SeasonalityAnalysisInput,
   SeasonalityScreenerRow,
+  SeasonalityOpportunityInput,
+  SeasonalityOpportunityResponse,
   GoalInput,
   GoalRecord,
   MistakeAnalytics,
@@ -72,6 +99,8 @@ import type {
   TradeDetail,
   TradeFilter,
   TradeInput,
+  TradeScreenshotInput,
+  TradeScreenshotAnalysis,
   TradeMistakeRecord,
   TaxonomyItem,
   TradeContext,
@@ -89,12 +118,23 @@ import type {
   MetaTraderHtmlCommitResult,
   MetaTraderHtmlPreview,
   MetaTraderHtmlPreviewInput,
-  PutCallDashboard,
-  PutCallBatchImportResult,
-  PutCallSyncResult,
 } from "../types/domain";
 
+import type {
+  AtlasNotebookCreateInput,
+  AtlasNotebookEntry,
+  AtlasNotebookSummary,
+  AtlasNotebookUpdateInput,
+  AtlasSavedContext,
+} from "../features/world-atlas/atlas-notebook-types";
+
 export const isTauri = () => "__TAURI_INTERNALS__" in window;
+const atlasPersonalDesktopRequired = () =>
+  Promise.reject({
+    code: "DESKTOP_REQUIRED",
+    message:
+      "Persönliche Atlasansichten werden in der Desktop-App zusammen mit dem Journal gesichert.",
+  });
 
 function normalizeError(error: unknown): CommandError {
   if (typeof error === "object" && error && "message" in error) {
@@ -119,37 +159,473 @@ async function call<T>(
 }
 
 export const api = {
+  governmentBonds: (): Promise<GovernmentBondsDashboard> =>
+    isTauri()
+      ? call("get_government_bonds")
+      : import("./government-bonds-browser").then((m) =>
+          m.browserGovernmentBonds(),
+        ),
+  governmentBondDetail: (
+    input: BondDetailInput,
+  ): Promise<GovernmentBondDetail> =>
+    isTauri()
+      ? call("get_government_bond_detail", { input })
+      : import("./government-bonds-browser").then((m) =>
+          m.browserGovernmentBondDetail(input),
+        ),
+  syncGovernmentBonds: (
+    countryId: string | null = null,
+  ): Promise<BondSyncJob> =>
+    isTauri()
+      ? call("sync_government_bonds", { countryId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Staatsanleihe-Renditen werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  governmentBondSync: (): Promise<BondSyncJob | null> =>
+    isTauri() ? call("get_government_bond_sync") : Promise.resolve(null),
+  cancelGovernmentBondSync: (jobId: string): Promise<void> =>
+    isTauri()
+      ? call("cancel_government_bond_sync", { jobId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Im Browser läuft kein Anleiheabruf.",
+        } satisfies CommandError),
+  atlasNotebook: (trashed = false): Promise<AtlasNotebookSummary[]> =>
+    isTauri()
+      ? call("list_atlas_notebook", { trashed })
+      : atlasPersonalDesktopRequired(),
+  atlasNotebookEntry: (id: string): Promise<AtlasNotebookEntry> =>
+    isTauri()
+      ? call("get_atlas_notebook_entry", { id })
+      : atlasPersonalDesktopRequired(),
+  createAtlasNotebookEntry: (
+    input: AtlasNotebookCreateInput,
+  ): Promise<AtlasNotebookEntry> =>
+    isTauri()
+      ? call("create_atlas_notebook_entry", { input })
+      : atlasPersonalDesktopRequired(),
+  updateAtlasNotebookEntry: (
+    input: AtlasNotebookUpdateInput,
+  ): Promise<AtlasNotebookEntry> =>
+    isTauri()
+      ? call("update_atlas_notebook_entry", { input })
+      : atlasPersonalDesktopRequired(),
+  trashAtlasNotebookEntry: (
+    id: string,
+    revision: number,
+    trashed: boolean,
+  ): Promise<AtlasNotebookEntry> =>
+    isTauri()
+      ? call("trash_atlas_notebook_entry", { id, revision, trashed })
+      : atlasPersonalDesktopRequired(),
+  atlasLastContext: (): Promise<AtlasSavedContext | null> =>
+    isTauri() ? call("get_atlas_last_context") : atlasPersonalDesktopRequired(),
+  saveAtlasLastContext: (context: AtlasSavedContext): Promise<void> =>
+    isTauri()
+      ? call("save_atlas_last_context", { context })
+      : atlasPersonalDesktopRequired(),
+  atlasValuation: (datasetId: string): Promise<AtlasValuationResponse> =>
+    isTauri()
+      ? call("get_atlas_valuation", { datasetId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasValuation(datasetId),
+        ),
+  syncAtlasValuation: (datasetId: string): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_valuation", { datasetId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Bewertungstabellen werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  cancelAtlasValuation: (jobId: string): Promise<void> =>
+    isTauri()
+      ? call("cancel_atlas_valuation", { jobId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Im Browser läuft kein nativer Bewertungsabruf.",
+        } satisfies CommandError),
+  syncAtlasStatisticsBatch: (seriesIds: string[]): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_statistics_batch", { seriesIds })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Länderstatistiken werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  cancelAtlasStatisticsBatch: (jobId: string): Promise<void> =>
+    isTauri()
+      ? call("cancel_atlas_statistics_batch", { jobId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Im Browser läuft kein nativer Statistikabruf.",
+        } satisfies CommandError),
+  atlasEnergy: (geographyId: string): Promise<AtlasEnergyResponse> =>
+    isTauri()
+      ? call("get_atlas_energy", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasEnergy(geographyId),
+        ),
+  atlasHousingRatios: (
+    geographyId: string,
+  ): Promise<AtlasHousingRatiosResponse> =>
+    isTauri()
+      ? call("get_atlas_housing_ratios", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasHousingRatios(geographyId),
+        ),
+  atlasEducation: (geographyId: string): Promise<AtlasEducationResponse> =>
+    isTauri()
+      ? call("get_atlas_education", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasEducation(geographyId),
+        ),
+  atlasAgriculture: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-agriculture").AtlasAgricultureResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_agriculture", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasAgriculture(geographyId),
+        ),
+  syncAtlasAgriculture: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_agriculture")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "FAO-Produktionsdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasEducation: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_education")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "UNESCO-Bildungsdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasHousingRatios: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_housing_ratios")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "OECD-Wohnvergleiche werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasProperty: (geographyId: string): Promise<AtlasPropertyResponse> =>
+    isTauri()
+      ? call("get_atlas_property", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasProperty(geographyId),
+        ),
+  syncAtlasProperty: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_property")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "BIS-Immobiliendaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasCredit: (geographyId: string): Promise<AtlasCreditResponse> =>
+    isTauri()
+      ? call("get_atlas_credit", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasCredit(geographyId),
+        ),
+  atlasCommodities: (): Promise<
+    import("../features/world-atlas/atlas-commodities").AtlasCommodityResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_commodities")
+      : import("./atlas-browser").then((m) => m.browserAtlasCommodities()),
+  syncAtlasCommodities: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_commodities")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Rohstoffpreise werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasLabor: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-labor").AtlasLaborResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_labor", { geographyId })
+      : import("./atlas-browser").then((m) => m.browserAtlasLabor(geographyId)),
+  atlasPublicSource: (
+    sourceId: string,
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-public").AtlasPublicResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_public_source", { sourceId, geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasPublicSource(sourceId, geographyId),
+        ),
+  syncAtlasPublicSource: (sourceId: string): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_public_source", { sourceId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die öffentlichen Quellenwerte werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasFindex: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-findex").AtlasFindexResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_findex", { geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasFindex(geographyId),
+        ),
+  syncAtlasFindex: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_findex")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Findex-Erhebungen werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasLabor: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_labor")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "ILO-Beschäftigungsdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasInnovation: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-innovation").AtlasInnovationResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_innovation", { geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasInnovation(geographyId),
+        ),
+  syncAtlasInnovation: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_innovation")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "WIPO-Technologiedaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasHealth: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-health").AtlasHealthResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_health", { geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasHealth(geographyId),
+        ),
+  syncAtlasHealth: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_health")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "WHO-Gesundheitsdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasDebt: (
+    geographyId: string,
+  ): Promise<import("../features/world-atlas/atlas-debt").AtlasDebtResponse> =>
+    isTauri()
+      ? call("get_atlas_debt", { geographyId })
+      : import("./atlas-browser").then((m) => m.browserAtlasDebt(geographyId)),
+  syncAtlasDebt: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_debt")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "BIS-Schuldenbilder werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasFiscal: (geographyId: string): Promise<AtlasFiscalResponse> =>
+    isTauri()
+      ? call("get_atlas_fiscal", { geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasFiscal(geographyId),
+        ),
+  atlasHouseholds: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-households").AtlasHouseholdsResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_households", { geographyId })
+      : import("./atlas-browser").then((m) =>
+          m.browserAtlasHouseholds(geographyId),
+        ),
+  syncAtlasHouseholds: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_households")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "UN-Haushaltsdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasFiscal: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_fiscal")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "IMF-Staatsfinanzen werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasMacrohistory: (
+    geographyId: string,
+  ): Promise<
+    import("../features/world-atlas/atlas-macrohistory").AtlasMacrohistoryResponse
+  > =>
+    isTauri()
+      ? call("get_atlas_macrohistory", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasMacrohistory(geographyId),
+        ),
+  syncAtlasMacrohistory: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_macrohistory")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Historische JST-Daten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasCredit: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_credit")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "BIS-Kreditdaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasCapacity: (geographyId: string): Promise<AtlasCapacityResponse> =>
+    isTauri()
+      ? call("get_atlas_capacity", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasCapacity(geographyId),
+        ),
+  syncAtlasCapacity: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_capacity")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "IRENA-Anlagendaten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  syncAtlasEnergy: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_energy")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Stromdaten werden in der Desktop-App geladen und lokal gespeichert.",
+        } satisfies CommandError),
+  syncAtlasMarketBatch: (proxyIds: string[]): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_market_batch", { proxyIds })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Marktgeschichten werden in der Desktop-App geladen.",
+        } satisfies CommandError),
+  cancelAtlasMarketBatch: (jobId: string): Promise<void> =>
+    isTauri()
+      ? call("cancel_atlas_market_batch", { jobId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Im Browser läuft kein nativer Markt-Abruf.",
+        } satisfies CommandError),
+  atlasHistory: (geographyId: string): Promise<AtlasHistoryResponse> =>
+    isTauri()
+      ? call("get_atlas_history", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasHistory(geographyId),
+        ),
+  syncAtlasHistory: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_history")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Historische Daten werden in der Desktop-App geladen und lokal gespeichert.",
+        } satisfies CommandError),
+  atlasDemography: (geographyId: string): Promise<AtlasDemographyResponse> =>
+    isTauri()
+      ? call("get_atlas_demography", { geographyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasDemography(geographyId),
+        ),
+  syncAtlasDemography: (): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_demography")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "UN-Demografiedaten werden in der Desktop-App geladen und lokal gespeichert.",
+        } satisfies CommandError),
+  atlasMarket: (proxyId: string): Promise<AtlasMarketResponse> =>
+    isTauri()
+      ? call("get_atlas_market", { proxyId })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasMarket(proxyId),
+        ),
+  syncAtlasMarket: (proxyId: string): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_market", { proxyId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Marktgeschichten werden über die vorhandene EODHD-Konfiguration in der Desktop-App geladen.",
+        } satisfies CommandError),
+  atlasCatalog: (): Promise<AtlasCatalog> =>
+    isTauri()
+      ? call("get_atlas_catalog")
+      : import("../features/world-atlas/atlas-catalog").then(
+          (module) => module.atlasCatalog,
+        ),
+  atlasSeries: (input: AtlasSeriesInput): Promise<AtlasSeriesResponse> =>
+    isTauri()
+      ? call("get_atlas_series", { input })
+      : import("./atlas-browser").then((module) =>
+          module.browserAtlasSeries(input),
+        ),
+  syncAtlasSeries: (seriesId: string): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_series", { seriesId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Öffentliche Atlas-Daten werden in der Desktop-App geladen und lokal gespeichert.",
+        } satisfies CommandError),
+  atlasSyncStatus: (jobId?: string): Promise<AtlasSyncJob | null> =>
+    isTauri()
+      ? call("get_atlas_sync_status", { jobId })
+      : Promise.resolve(null),
+  syncAtlasLibrary: (includeMarkets = false): Promise<AtlasSyncJob> =>
+    isTauri()
+      ? call("sync_atlas_library", { includeMarkets })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Der Atlas-Datenbestand wird in der Desktop-App lokal ergänzt.",
+        } satisfies CommandError),
+  cancelAtlasLibrary: (jobId: string): Promise<void> =>
+    isTauri()
+      ? call("cancel_atlas_library", { jobId })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Der Abruf läuft nur in der Desktop-App.",
+        } satisfies CommandError),
   bootstrap: (): Promise<BootstrapData> =>
     isTauri()
       ? call("get_bootstrap_data")
-      : Promise.resolve(structuredClone(browserBootstrap)),
+      : Promise.resolve().then(browserAccountBootstrap),
+  accountJournal: (accountId: string): Promise<AccountJournal> =>
+    isTauri()
+      ? call("get_account_journal", { accountId })
+      : Promise.resolve().then(() => browserAccountJournal(accountId)),
   saveAccount: (input: AccountInput): Promise<Account> =>
     isTauri()
       ? call("save_account", { input })
-      : Promise.resolve().then(() => {
-          const current = browserBootstrap.accounts.find(
-            (account) => account.id === input.id,
-          );
-          const account: Account = {
-            ...input,
-            id: input.id ?? crypto.randomUUID(),
-            currentBalanceMinor:
-              current?.currentBalanceMinor ?? input.initialBalanceMinor,
-            isArchived: false,
-          };
-          if (current) Object.assign(current, account);
-          else browserBootstrap.accounts.push(account);
-          return account;
-        }),
+      : Promise.resolve().then(() => browserSaveAccount(input)),
   archiveAccount: (id: string): Promise<void> =>
     isTauri()
       ? call("archive_account", { id })
-      : Promise.resolve().then(() => {
-          const account = browserBootstrap.accounts.find(
-            (item) => item.id === id,
-          );
-          if (account) account.isArchived = true;
-        }),
+      : Promise.resolve().then(() => browserArchiveAccount(id)),
   brokerConnections: (): Promise<BrokerConnection[]> =>
     isTauri() ? call("list_broker_connections") : Promise.resolve([]),
   detectMt5Account: (terminalPath?: string): Promise<Mt5AccountSnapshot> =>
@@ -213,36 +689,13 @@ export const api = {
   accountCashflows: (accountId: string): Promise<AccountCashflow[]> =>
     isTauri()
       ? call("list_account_cashflows", { accountId })
-      : Promise.resolve(
-          JSON.parse(
-            localStorage.getItem(
-              `personal-macro:browser-cashflows:${accountId}`,
-            ) ?? "[]",
-          ),
-        ),
+      : Promise.resolve().then(() => browserAccountCashflows(accountId)),
   addAccountCashflow: (
     input: Omit<AccountCashflow, "id" | "createdAt">,
   ): Promise<AccountCashflow> =>
     isTauri()
       ? call("add_account_cashflow", { input })
-      : Promise.resolve().then(() => {
-          const row = {
-            ...input,
-            id: crypto.randomUUID(),
-            createdAt: new Date().toISOString(),
-          };
-          const rows = JSON.parse(
-            localStorage.getItem(
-              `personal-macro:browser-cashflows:${input.accountId}`,
-            ) ?? "[]",
-          ) as AccountCashflow[];
-          rows.unshift(row);
-          localStorage.setItem(
-            `personal-macro:browser-cashflows:${input.accountId}`,
-            JSON.stringify(rows),
-          );
-          return row;
-        }),
+      : Promise.resolve().then(() => browserAddAccountCashflow(input)),
   listTrades: (
     accountId: string,
     filter: Omit<TradeFilter, "accountIds"> = {},
@@ -256,6 +709,27 @@ export const api = {
       : browserGetTrade(accountId, id),
   createTrade: (input: TradeInput): Promise<TradeDetail> =>
     isTauri() ? call("create_trade", { input }) : browserCreateTrade(input),
+  analyzeTradeScreenshot: (
+    input: TradeScreenshotInput,
+  ): Promise<TradeScreenshotAnalysis> =>
+    isTauri()
+      ? call("analyze_trade_screenshot", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die lokale Screenshot-Erkennung ist in der Windows-Desktop-App verfügbar.",
+        } satisfies CommandError),
+  createTradeWithScreenshot: (
+    input: TradeInput,
+    screenshot: TradeScreenshotInput,
+  ): Promise<TradeDetail> =>
+    isTauri()
+      ? call("create_trade_with_screenshot", { input, screenshot })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Screenshots werden in der Windows-Desktop-App am Trade gespeichert.",
+        } satisfies CommandError),
   updateTrade: (
     accountId: string,
     id: string,
@@ -507,25 +981,6 @@ export const api = {
       : Promise.reject({
           message: "COT-Daten werden nur in der Desktop-App abgerufen.",
         }),
-  putCallDashboard: (assetSymbol = "EURUSD"): Promise<PutCallDashboard> =>
-    isTauri()
-      ? call("get_put_call_dashboard", { assetSymbol })
-      : browserPutCallDashboard(assetSymbol),
-  syncPutCall: (): Promise<PutCallSyncResult> =>
-    isTauri() ? call("sync_put_call_data") : browserSyncPutCall(),
-  importPutCallPdf: (path: string): Promise<PutCallSyncResult> =>
-    isTauri()
-      ? call("import_put_call_pdf", { path })
-      : Promise.reject({
-          message: "CME-PDFs können nur in der Desktop-App importiert werden.",
-        }),
-  importPutCallXlsx: (paths: string[]): Promise<PutCallBatchImportResult> =>
-    isTauri()
-      ? call("import_put_call_xlsx", { paths })
-      : Promise.reject({
-          message:
-            "CME-XLSX-Dateien können nur in der Desktop-App importiert werden.",
-        }),
   policyRates: (): Promise<PolicyRateDashboard> =>
     isTauri()
       ? call("get_policy_rates")
@@ -581,6 +1036,15 @@ export const api = {
     isTauri()
       ? call("mark_central_bank_report_read", { id })
       : Promise.resolve(),
+  summarizeCentralBankReports: (
+    id?: string,
+  ): Promise<CentralBankSummaryResult> =>
+    isTauri()
+      ? call("summarize_central_bank_reports", { id: id ?? null })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Deutsche Zentralbank-Briefings benötigen die Desktop-App.",
+        } satisfies CommandError),
   seasonality: (): Promise<SeasonalityDashboard> =>
     isTauri()
       ? call("get_seasonality")
@@ -619,6 +1083,16 @@ export const api = {
       : Promise.reject({
           message: "Der Seasonality-Screener benÃ¶tigt die Desktop-App.",
         }),
+  seasonalityOpportunities: (
+    input: SeasonalityOpportunityInput,
+  ): Promise<SeasonalityOpportunityResponse> =>
+    isTauri()
+      ? call("get_seasonality_opportunities", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die Fenstersuche benötigt die lokal gespeicherten Tageskurse in der Desktop-App.",
+        } satisfies CommandError),
   refreshSeasonality: (): Promise<SeasonalityDashboard> =>
     isTauri()
       ? call("refresh_seasonality_data")

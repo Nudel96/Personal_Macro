@@ -101,6 +101,14 @@ fn computed_values(input: &TradeInput) -> (Option<i64>, Option<String>) {
 }
 
 pub async fn create(db: &SqlitePool, input: TradeInput) -> Result<TradeDetail, AppError> {
+    let mut connection = db.acquire().await?;
+    create_on_connection(&mut connection, input).await
+}
+
+pub(crate) async fn create_on_connection(
+    connection: &mut sqlx::SqliteConnection,
+    input: TradeInput,
+) -> Result<TradeDetail, AppError> {
     validate_trade(&input)?;
     let now = Utc::now().to_rfc3339();
     let id = input
@@ -178,7 +186,7 @@ pub async fn create(db: &SqlitePool, input: TradeInput) -> Result<TradeDetail, A
     .bind(input.source_metadata_json.as_deref().unwrap_or("{}"))
     .bind(&now)
     .bind(&now)
-    .execute(db)
+    .execute(&mut *connection)
     .await
     .map_err(|error| match &error {
         sqlx::Error::Database(database_error) if database_error.is_unique_violation() => {
@@ -187,7 +195,14 @@ pub async fn create(db: &SqlitePool, input: TradeInput) -> Result<TradeDetail, A
         _ => AppError::Database(error),
     })?;
 
-    get(db, &id, &input.account_id).await
+    sqlx::query_as::<_, TradeDetail>(&format!(
+        "SELECT {TRADE_DETAIL_COLUMNS} FROM trades WHERE id = ? AND account_id = ? AND is_deleted = 0"
+    ))
+    .bind(&id)
+    .bind(&input.account_id)
+    .fetch_one(&mut *connection)
+    .await
+    .map_err(Into::into)
 }
 
 pub async fn update(db: &SqlitePool, id: &str, input: TradeInput) -> Result<TradeDetail, AppError> {

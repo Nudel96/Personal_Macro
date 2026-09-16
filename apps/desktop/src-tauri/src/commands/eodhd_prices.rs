@@ -108,6 +108,7 @@ struct Availability {
 
 pub fn http_client() -> Result<Client, CommandError> {
     Client::builder()
+        .tls_backend_rustls()
         .timeout(std::time::Duration::from_secs(45))
         .user_agent("PersonalMacro/1 eodhd-seasonality")
         .build()

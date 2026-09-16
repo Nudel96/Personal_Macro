@@ -1,0 +1,695 @@
+[
+  {
+    "source": {
+      "id": "bgs-cement",
+      "label": "BGS · Zementproduktion",
+      "adapter": "bgs_csv",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25ement%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "licenseUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/bgs-mineral-statistics-terms-and-conditions-ipr/",
+      "publishedAt": "2026-05-20",
+      "reviewedAt": "2026-09-11",
+      "recipe": "bgs-cement-original-csv-20260911-v1",
+      "observationKind": "source_estimates",
+      "expectedSha256": "eece23e2defb602ce8a69079d74b3808d51dc702af868f92468de45376c2dd82",
+      "expectedRows": 1442,
+      "expectedNumeric": 1434,
+      "firstPeriod": "1990",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "AUT",
+          "label": "Austria",
+          "geographyId": "m49:040",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Austria | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Austria | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BEL",
+          "label": "Belgium",
+          "geographyId": "m49:056",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Belgium | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Belgium | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BGR",
+          "label": "Bulgaria",
+          "geographyId": "m49:100",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Bulgaria | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Bulgaria | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CHE",
+          "label": "Switzerland",
+          "geographyId": "m49:756",
+          "seriesTitles": {
+            "2004": "World Mineral Statistics | Switzerland | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CYP",
+          "label": "Cyprus",
+          "geographyId": "m49:196",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Cyprus | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Cyprus | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CZE",
+          "label": "Czech Republic",
+          "geographyId": "m49:203",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Czech Republic | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Czech Republic | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "DEU",
+          "label": "Germany",
+          "geographyId": "m49:276",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Germany | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Germany | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "DNK",
+          "label": "Denmark",
+          "geographyId": "m49:208",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Denmark | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Denmark | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ESP",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Spain | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Spain | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "EST",
+          "label": "Estonia",
+          "geographyId": "m49:233",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Estonia | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Estonia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "FIN",
+          "label": "Finland",
+          "geographyId": "m49:246",
+          "seriesTitles": {
+            "2004": "World Mineral Statistics | Finland | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "FRA",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | France | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | France | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "GBR",
+          "label": "United Kingdom",
+          "geographyId": "m49:826",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | United Kingdom | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | United Kingdom | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "GRC",
+          "label": "Greece",
+          "geographyId": "m49:300",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Greece | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Greece | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "HRV",
+          "label": "Croatia",
+          "geographyId": "m49:191",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Croatia | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Croatia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "HUN",
+          "label": "Hungary",
+          "geographyId": "m49:348",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Hungary | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Hungary | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "IRL",
+          "label": "Ireland, Republic of",
+          "geographyId": "m49:372",
+          "seriesTitles": {
+            "2004": "World Mineral Statistics | Ireland, Republic of | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ITA",
+          "label": "Italy",
+          "geographyId": "m49:380",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Italy | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Italy | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "LTU",
+          "label": "Lithuania",
+          "geographyId": "m49:440",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Lithuania | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Lithuania | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "LUX",
+          "label": "Luxembourg",
+          "geographyId": "m49:442",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Luxembourg | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Luxembourg | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "LVA",
+          "label": "Latvia",
+          "geographyId": "m49:428",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Latvia | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Latvia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "MKD",
+          "label": "North Macedonia",
+          "geographyId": "m49:807",
+          "seriesTitles": {
+            "2004": "World Mineral Statistics | North Macedonia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "NLD",
+          "label": "Netherlands",
+          "geographyId": "m49:528",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Netherlands | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Netherlands | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "NOR",
+          "label": "Norway",
+          "geographyId": "m49:578",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Norway | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Norway | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "POL",
+          "label": "Poland",
+          "geographyId": "m49:616",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Poland | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Poland | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "PRT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Portugal | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Portugal | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ROU",
+          "label": "Romania",
+          "geographyId": "m49:642",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Romania | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Romania | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "SRB",
+          "label": "Serbia",
+          "geographyId": "m49:688",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Serbia | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Serbia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "SVK",
+          "label": "Slovakia",
+          "geographyId": "m49:703",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Slovakia | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Slovakia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "SVN",
+          "label": "Slovenia",
+          "geographyId": "m49:705",
+          "seriesTitles": {
+            "2004": "World Mineral Statistics | Slovenia | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "SWE",
+          "label": "Sweden",
+          "geographyId": "m49:752",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Sweden | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Sweden | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "TUR",
+          "label": "Turkey",
+          "geographyId": "m49:792",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Turkey | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Turkey | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        },
+        {
+          "code": "UKR",
+          "label": "Ukraine",
+          "geographyId": "m49:804",
+          "seriesTitles": {
+            "2003": "World Mineral Statistics | Ukraine | cement  clinker | Cement, clinker | tonnes (metric)",
+            "2004": "World Mineral Statistics | Ukraine | cement, finished | Cement, finished | tonnes (metric)"
+          }
+        }
+      ]
+    },
+    "profileCount": 61,
+    "missingCells": 8,
+    "numericZeroCount": 12,
+    "estimatedValues": 177,
+    "breaks": 11,
+    "excludedRows": 0,
+    "csvMatchesOriginalJson": true,
+    "repeatedCsvIdentical": true,
+    "metrics": [
+      {
+        "id": "bgs-cement:2004",
+        "profiles": 33
+      },
+      {
+        "id": "bgs-cement:2003",
+        "profiles": 28
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "bgs-lithium",
+      "label": "BGS · Lithiumprodukte",
+      "adapter": "bgs_csv",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25ithium%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "licenseUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/bgs-mineral-statistics-terms-and-conditions-ipr/",
+      "publishedAt": "2026-05-20",
+      "reviewedAt": "2026-09-11",
+      "recipe": "bgs-lithium-original-csv-20260911-v1",
+      "observationKind": "source_estimates",
+      "expectedSha256": "9e3a869b0dd849db51565142b6d0487da57e2bf20fa8b6fa355323425ef00240",
+      "expectedRows": 953,
+      "expectedNumeric": 532,
+      "firstPeriod": "1974",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "ARG",
+          "label": "Argentina",
+          "geographyId": "m49:032",
+          "seriesTitles": {
+            "1998": "World Mineral Statistics | Argentina | lithium minerals | Chloride | tonnes (metric)",
+            "20309": "World Mineral Statistics | Argentina | lithium minerals | Lithium minerals (Carbonate -Li content) | tonnes (metric)",
+            "20310": "World Mineral Statistics | Argentina | lithium minerals | Lithium minerals (Chloride -Li content) | tonnes (metric)",
+            "707": "World Mineral Statistics | Argentina | lithium minerals | Carbonate | tonnes (metric)"
+          }
+        },
+        {
+          "code": "AUS",
+          "label": "Australia",
+          "geographyId": "m49:036",
+          "seriesTitles": {
+            "20278": "World Mineral Statistics | Australia | lithium minerals | Lithium minerals (hydroxide) | tonnes (metric)",
+            "20311": "World Mineral Statistics | Australia | lithium minerals | Spodumene (Li content) | tonnes (metric)",
+            "896": "World Mineral Statistics | Australia | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BOL",
+          "label": "Bolivia",
+          "geographyId": "m49:068",
+          "seriesTitles": {
+            "707": "World Mineral Statistics | Bolivia | lithium minerals | Carbonate | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BRA",
+          "label": "Brazil",
+          "geographyId": "m49:076",
+          "seriesTitles": {
+            "894": "World Mineral Statistics | Brazil | lithium minerals | Lepidolite | tonnes (metric)",
+            "895": "World Mineral Statistics | Brazil | lithium minerals | Petalite | tonnes (metric)",
+            "896": "World Mineral Statistics | Brazil | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CAN",
+          "label": "Canada",
+          "geographyId": "m49:124",
+          "seriesTitles": {
+            "20309": "World Mineral Statistics | Canada | lithium minerals | Lithium minerals (Carbonate -Li content) | tonnes (metric)",
+            "707": "World Mineral Statistics | Canada | lithium minerals | Carbonate | tonnes (metric)",
+            "896": "World Mineral Statistics | Canada | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CHL",
+          "label": "Chile",
+          "geographyId": "m49:152",
+          "seriesTitles": {
+            "1998": "World Mineral Statistics | Chile | lithium minerals | Chloride | tonnes (metric)",
+            "20278": "World Mineral Statistics | Chile | lithium minerals | Lithium minerals (hydroxide) | tonnes (metric)",
+            "20309": "World Mineral Statistics | Chile | lithium minerals | Lithium minerals (Carbonate -Li content) | tonnes (metric)",
+            "20310": "World Mineral Statistics | Chile | lithium minerals | Lithium minerals (Chloride -Li content) | tonnes (metric)",
+            "707": "World Mineral Statistics | Chile | lithium minerals | Carbonate | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CHN",
+          "label": "China",
+          "geographyId": "m49:156",
+          "seriesTitles": {
+            "20309": "World Mineral Statistics | China | lithium minerals | Lithium minerals (Carbonate -Li content) | tonnes (metric)",
+            "707": "World Mineral Statistics | China | lithium minerals | Carbonate | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ESP",
+          "label": "Spain",
+          "geographyId": "m49:724",
+          "seriesTitles": {
+            "894": "World Mineral Statistics | Spain | lithium minerals | Lepidolite | tonnes (metric)"
+          }
+        },
+        {
+          "code": "FRA",
+          "label": "France",
+          "geographyId": "m49:250",
+          "seriesTitles": {
+            "20278": "World Mineral Statistics | France | lithium minerals | Lithium minerals (hydroxide) | tonnes (metric)"
+          }
+        },
+        {
+          "code": "MOZ",
+          "label": "Mozambique",
+          "geographyId": "m49:508",
+          "seriesTitles": {
+            "20311": "World Mineral Statistics | Mozambique | lithium minerals | Spodumene (Li content) | tonnes (metric)",
+            "20312": "World Mineral Statistics | Mozambique | lithium minerals | Lepidolite (Li content) | tonnes (metric)",
+            "894": "World Mineral Statistics | Mozambique | lithium minerals | Lepidolite | tonnes (metric)",
+            "896": "World Mineral Statistics | Mozambique | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        },
+        {
+          "code": "NAM",
+          "label": "Namibia",
+          "geographyId": "m49:516",
+          "seriesTitles": {
+            "20312": "World Mineral Statistics | Namibia | lithium minerals | Lepidolite (Li content) | tonnes (metric)",
+            "894": "World Mineral Statistics | Namibia | lithium minerals | Lepidolite | tonnes (metric)"
+          }
+        },
+        {
+          "code": "NGA",
+          "label": "Nigeria",
+          "geographyId": "m49:566",
+          "seriesTitles": {
+            "20311": "World Mineral Statistics | Nigeria | lithium minerals | Spodumene (Li content) | tonnes (metric)",
+            "895": "World Mineral Statistics | Nigeria | lithium minerals | Petalite | tonnes (metric)",
+            "896": "World Mineral Statistics | Nigeria | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        },
+        {
+          "code": "PRT",
+          "label": "Portugal",
+          "geographyId": "m49:620",
+          "seriesTitles": {
+            "894": "World Mineral Statistics | Portugal | lithium minerals | Lepidolite | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ZWE",
+          "label": "Zimbabwe",
+          "geographyId": "m49:716",
+          "seriesTitles": {
+            "20311": "World Mineral Statistics | Zimbabwe | lithium minerals | Spodumene (Li content) | tonnes (metric)",
+            "20312": "World Mineral Statistics | Zimbabwe | lithium minerals | Lepidolite (Li content) | tonnes (metric)",
+            "894": "World Mineral Statistics | Zimbabwe | lithium minerals | Lepidolite | tonnes (metric)",
+            "895": "World Mineral Statistics | Zimbabwe | lithium minerals | Petalite | tonnes (metric)",
+            "896": "World Mineral Statistics | Zimbabwe | lithium minerals | Spodumene | tonnes (metric)"
+          }
+        }
+      ]
+    },
+    "profileCount": 38,
+    "missingCells": 1,
+    "numericZeroCount": 93,
+    "estimatedValues": 55,
+    "breaks": 0,
+    "excludedRows": 420,
+    "csvMatchesOriginalJson": true,
+    "repeatedCsvIdentical": true,
+    "metrics": [
+      {
+        "id": "bgs-lithium:896",
+        "profiles": 6
+      },
+      {
+        "id": "bgs-lithium:707",
+        "profiles": 5
+      },
+      {
+        "id": "bgs-lithium:20278",
+        "profiles": 3
+      },
+      {
+        "id": "bgs-lithium:1998",
+        "profiles": 2
+      },
+      {
+        "id": "bgs-lithium:894",
+        "profiles": 6
+      },
+      {
+        "id": "bgs-lithium:895",
+        "profiles": 3
+      },
+      {
+        "id": "bgs-lithium:20311",
+        "profiles": 4
+      },
+      {
+        "id": "bgs-lithium:20309",
+        "profiles": 4
+      },
+      {
+        "id": "bgs-lithium:20310",
+        "profiles": 2
+      },
+      {
+        "id": "bgs-lithium:20312",
+        "profiles": 3
+      }
+    ]
+  },
+  {
+    "source": {
+      "id": "bgs-rare-earths",
+      "label": "BGS · Seltene Erden",
+      "adapter": "bgs_csv",
+      "url": "https://ogcapi.bgs.ac.uk/collections/world-mineral-statistics/items?f=csv&limit=10000&filter=bgs_commodity_trans%20LIKE%20%27%25are%20earth%25%27%20AND%20bgs_statistic_type_trans%20%3D%20%27Production%27",
+      "documentationUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/",
+      "licenseUrl": "https://www.bgs.ac.uk/mineralsuk/statistics/world-mineral-statistics/bgs-mineral-statistics-terms-and-conditions-ipr/",
+      "publishedAt": "2026-05-20",
+      "reviewedAt": "2026-09-11",
+      "recipe": "bgs-rare-earths-original-csv-20260911-v1",
+      "observationKind": "source_estimates",
+      "expectedSha256": "8592ca9de4759212f4db9400245a54b04a444715d34e5fac77ccb38debded181",
+      "expectedRows": 659,
+      "expectedNumeric": 272,
+      "firstPeriod": "1992",
+      "lastPeriod": "2024",
+      "areas": [
+        {
+          "code": "AUS",
+          "label": "Australia",
+          "geographyId": "m49:036",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Australia | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BDI",
+          "label": "Burundi",
+          "geographyId": "m49:108",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Burundi | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "BRA",
+          "label": "Brazil",
+          "geographyId": "m49:076",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Brazil | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "CHN",
+          "label": "China",
+          "geographyId": "m49:156",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | China | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "COD",
+          "label": "Congo, Democratic Republic",
+          "geographyId": "m49:180",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Congo, Democratic Republic | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "IND",
+          "label": "India",
+          "geographyId": "m49:356",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | India | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "LKA",
+          "label": "Sri Lanka",
+          "geographyId": "m49:144",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Sri Lanka | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "MDG",
+          "label": "Madagascar",
+          "geographyId": "m49:450",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Madagascar | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "MMR",
+          "label": "Myanmar",
+          "geographyId": "m49:104",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Myanmar | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "MYS",
+          "label": "Malaysia",
+          "geographyId": "m49:458",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Malaysia | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "RUS",
+          "label": "Russia",
+          "geographyId": "m49:643",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Russia | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "THA",
+          "label": "Thailand",
+          "geographyId": "m49:764",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Thailand | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "USA",
+          "label": "USA",
+          "geographyId": "m49:840",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | USA | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "VNM",
+          "label": "Vietnam",
+          "geographyId": "m49:704",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | Vietnam | rare earth oxides |  | tonnes (metric)"
+          }
+        },
+        {
+          "code": "ZAF",
+          "label": "South Africa",
+          "geographyId": "m49:710",
+          "seriesTitles": {
+            "20238": "World Mineral Statistics | South Africa | rare earth oxides |  | tonnes (metric)"
+          }
+        }
+      ]
+    },
+    "profileCount": 15,
+    "missingCells": 1,
+    "numericZeroCount": 42,
+    "estimatedValues": 95,
+    "breaks": 0,
+    "excludedRows": 386,
+    "csvMatchesOriginalJson": true,
+    "repeatedCsvIdentical": true,
+    "metrics": [
+      {
+        "id": "bgs-rare-earths:20238",
+        "profiles": 15
+      }
+    ]
+  }
+]

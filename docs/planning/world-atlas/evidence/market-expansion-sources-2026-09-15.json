@@ -1,0 +1,650 @@
+{
+  "reviewedAt": "2026-09-15",
+  "additionalMarkets": 33,
+  "proxiesTotal": 59,
+  "countriesWithMarketProxy": 43,
+  "sources": [
+    {
+      "file": "ishares-products.html",
+      "bytes": 494478,
+      "sha256": "fff6730963063dcabff9e3038ad7bf4df9b0836a15bd845befff57139d1ee251"
+    },
+    {
+      "file": "eod-us-etfs.json",
+      "bytes": 979683,
+      "sha256": "c31b5918e9801fe2f017d3698b626e7e3ca6ada8df25b7777870da6e59b39559"
+    },
+    {
+      "file": "ishares-EPU.html",
+      "bytes": 1680964,
+      "sha256": "47e74c753a83096591e24ba86f8f05cfe2eaef401462e87a8266451a1593612f"
+    },
+    {
+      "file": "globalx-grek.html",
+      "bytes": 289507,
+      "sha256": "c27e3fdb0b6978a012a42a3e79995a463e319b011f1b70b9c79061412e5d4ea4"
+    },
+    {
+      "file": "globalx-argt.html",
+      "bytes": 282544,
+      "sha256": "8869b909f47ce46376cd2110afa1e96f41afec9f44ddfbe88166376622750488"
+    },
+    {
+      "file": "vaneck-vnm.html",
+      "bytes": 274886,
+      "sha256": "522ea8b41993c25d8c094dd139d79f1a184a38fe02db5fd59e3f926e10f059eb"
+    },
+    {
+      "file": "vaneck-egpt.html",
+      "bytes": 120672,
+      "sha256": "b13959fff84edecfca3b64b701b08a4d9fb57c26ba0eaef4c8c45db8d35618e9"
+    }
+  ],
+  "funds": [
+    {
+      "symbol": "EWL.US",
+      "geographyId": "m49:756",
+      "iso3": "CHE",
+      "issuerName": "iShares MSCI Switzerland ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239685/ishares-msci-switzerland-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWL",
+        "Name": "iShares MSCI Switzerland ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867497"
+      }
+    },
+    {
+      "symbol": "EWQ.US",
+      "geographyId": "m49:250",
+      "iso3": "FRA",
+      "issuerName": "iShares MSCI France ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239648/ishares-msci-france-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWQ",
+        "Name": "iShares MSCI France ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867075"
+      }
+    },
+    {
+      "symbol": "EWP.US",
+      "geographyId": "m49:724",
+      "iso3": "ESP",
+      "issuerName": "iShares MSCI Spain ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239683/ishares-msci-spain-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWP",
+        "Name": "iShares MSCI Spain ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867646"
+      }
+    },
+    {
+      "symbol": "EWI.US",
+      "geographyId": "m49:380",
+      "iso3": "ITA",
+      "issuerName": "iShares MSCI Italy ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239664/ishares-msci-italy-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWI",
+        "Name": "iShares MSCI Italy ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434G8309"
+      }
+    },
+    {
+      "symbol": "EWN.US",
+      "geographyId": "m49:528",
+      "iso3": "NLD",
+      "issuerName": "iShares MSCI Netherlands ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239671/ishares-msci-netherlands-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWN",
+        "Name": "iShares MSCI Netherlands ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642868149"
+      }
+    },
+    {
+      "symbol": "EWO.US",
+      "geographyId": "m49:040",
+      "iso3": "AUT",
+      "issuerName": "iShares MSCI Austria ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239609/ishares-msci-austria-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWO",
+        "Name": "iShares MSCI Austria ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642862027"
+      }
+    },
+    {
+      "symbol": "EWK.US",
+      "geographyId": "m49:056",
+      "iso3": "BEL",
+      "issuerName": "iShares MSCI Belgium ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239610/ishares-msci-belgium-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWK",
+        "Name": "iShares MSCI Belgium ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642863017"
+      }
+    },
+    {
+      "symbol": "EWD.US",
+      "geographyId": "m49:752",
+      "iso3": "SWE",
+      "issuerName": "iShares MSCI Sweden ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239684/ishares-msci-sweden-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWD",
+        "Name": "iShares MSCI Sweden ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867562"
+      }
+    },
+    {
+      "symbol": "EDEN.US",
+      "geographyId": "m49:208",
+      "iso3": "DNK",
+      "issuerName": "iShares MSCI Denmark ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239621/ishares-msci-denmark-capped-etf",
+      "inception": "2012-01-25",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EDEN",
+        "Name": "iShares MSCI Denmark ETF",
+        "Country": "USA",
+        "Exchange": "BATS",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B5232"
+      }
+    },
+    {
+      "symbol": "ENOR.US",
+      "geographyId": "m49:578",
+      "iso3": "NOR",
+      "issuerName": "iShares MSCI Norway ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239673/ishares-msci-norway-capped-etf",
+      "inception": "2012-01-23",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "ENOR",
+        "Name": "iShares MSCI Norway ETF",
+        "Country": "USA",
+        "Exchange": "BATS",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B4995"
+      }
+    },
+    {
+      "symbol": "EFNL.US",
+      "geographyId": "m49:246",
+      "iso3": "FIN",
+      "issuerName": "iShares MSCI Finland ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239647/ishares-msci-finland-capped-etf",
+      "inception": "2012-01-25",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EFNL",
+        "Name": "iShares MSCI Finland ETF",
+        "Country": "USA",
+        "Exchange": "BATS",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B5158"
+      }
+    },
+    {
+      "symbol": "EIRL.US",
+      "geographyId": "m49:372",
+      "iso3": "IRL",
+      "issuerName": "iShares MSCI Ireland ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239662/ishares-msci-ireland-capped-etf",
+      "inception": "2010-05-05",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EIRL",
+        "Name": "iShares MSCI Ireland ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B5075"
+      }
+    },
+    {
+      "symbol": "EPOL.US",
+      "geographyId": "m49:616",
+      "iso3": "POL",
+      "issuerName": "iShares MSCI Poland ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239676/ishares-msci-poland-capped-etf",
+      "inception": "2010-05-25",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EPOL",
+        "Name": "iShares MSCI Poland ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B6065"
+      }
+    },
+    {
+      "symbol": "TUR.US",
+      "geographyId": "m49:792",
+      "iso3": "TUR",
+      "issuerName": "iShares MSCI Turkey ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239689/ishares-msci-turkey-etf",
+      "inception": "2008-03-26",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "TUR",
+        "Name": "iShares MSCI Turkey ETF",
+        "Country": "USA",
+        "Exchange": "NASDAQ",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867158"
+      }
+    },
+    {
+      "symbol": "EWW.US",
+      "geographyId": "m49:484",
+      "iso3": "MEX",
+      "issuerName": "iShares MSCI Mexico ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239670/ishares-msci-mexico-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWW",
+        "Name": "iShares MSCI Mexico ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642868222"
+      }
+    },
+    {
+      "symbol": "ECH.US",
+      "geographyId": "m49:152",
+      "iso3": "CHL",
+      "issuerName": "iShares MSCI Chile ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239618/ishares-msci-chile-capped-etf",
+      "inception": "2007-11-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "ECH",
+        "Name": "iShares MSCI Chile ETF",
+        "Country": "USA",
+        "Exchange": "BATS",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642866408"
+      }
+    },
+    {
+      "symbol": "EPU.US",
+      "geographyId": "m49:604",
+      "iso3": "PER",
+      "issuerName": "iShares MSCI Peru and Global Exposure ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239606/ishares-msci-all-peru-capped-etf",
+      "inception": "2009-06-19",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EPU",
+        "Name": "iShares MSCI Peru ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642898427"
+      }
+    },
+    {
+      "symbol": "EWM.US",
+      "geographyId": "m49:458",
+      "iso3": "MYS",
+      "issuerName": "iShares MSCI Malaysia ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239669/ishares-msci-malaysia-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWM",
+        "Name": "iShares MSCI Malaysia ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434G8143"
+      }
+    },
+    {
+      "symbol": "EIDO.US",
+      "geographyId": "m49:360",
+      "iso3": "IDN",
+      "issuerName": "iShares MSCI Indonesia ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239661/ishares-msci-indonesia-etf",
+      "inception": "2010-05-05",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EIDO",
+        "Name": "iShares MSCI Indonesia ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B3096"
+      }
+    },
+    {
+      "symbol": "EPHE.US",
+      "geographyId": "m49:608",
+      "iso3": "PHL",
+      "issuerName": "iShares MSCI Philippines ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239675/ishares-msci-philippines-etf",
+      "inception": "2010-09-28",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EPHE",
+        "Name": "iShares MSCI Philippines ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46429B4086"
+      }
+    },
+    {
+      "symbol": "THD.US",
+      "geographyId": "m49:764",
+      "iso3": "THA",
+      "issuerName": "iShares MSCI Thailand ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239688/ishares-msci-thailand-capped-etf",
+      "inception": "2008-03-26",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "THD",
+        "Name": "iShares MSCI Thailand ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642866242"
+      }
+    },
+    {
+      "symbol": "EWS.US",
+      "geographyId": "m49:702",
+      "iso3": "SGP",
+      "issuerName": "iShares MSCI Singapore ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239678/ishares-msci-singapore-capped-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWS",
+        "Name": "iShares MSCI Singapore ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434G7806"
+      }
+    },
+    {
+      "symbol": "EWY.US",
+      "geographyId": "m49:410",
+      "iso3": "KOR",
+      "issuerName": "iShares MSCI South Korea ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239681/ishares-msci-south-korea-capped-etf",
+      "inception": "2000-05-09",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWY",
+        "Name": "iShares MSCI South Korea ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642867729"
+      }
+    },
+    {
+      "symbol": "EWT.US",
+      "geographyId": "provider:TWN",
+      "iso3": "TWN",
+      "issuerName": "iShares MSCI Taiwan ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239686/ishares-msci-taiwan-etf",
+      "inception": "2000-06-20",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWT",
+        "Name": "iShares MSCI Taiwan ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434G7723"
+      }
+    },
+    {
+      "symbol": "EWH.US",
+      "geographyId": "m49:344",
+      "iso3": "HKG",
+      "issuerName": "iShares MSCI Hong Kong ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239657/ishares-msci-hong-kong-etf",
+      "inception": "1996-03-12",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EWH",
+        "Name": "iShares MSCI Hong Kong ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642868719"
+      }
+    },
+    {
+      "symbol": "EIS.US",
+      "geographyId": "m49:376",
+      "iso3": "ISR",
+      "issuerName": "iShares MSCI Israel ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239663/ishares-msci-israel-capped-etf",
+      "inception": "2008-03-26",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "EIS",
+        "Name": "iShares MSCI Israel ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642866325"
+      }
+    },
+    {
+      "symbol": "KSA.US",
+      "geographyId": "m49:682",
+      "iso3": "SAU",
+      "issuerName": "iShares MSCI Saudi Arabia ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/271542/ishares-msci-saudi-arabia-capped-etf",
+      "inception": "2015-09-16",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "KSA",
+        "Name": "iShares MSCI Saudi Arabia ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434V4234"
+      }
+    },
+    {
+      "symbol": "QAT.US",
+      "geographyId": "m49:634",
+      "iso3": "QAT",
+      "issuerName": "iShares MSCI Qatar ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/264273/ishares-msci-qatar-capped-etf",
+      "inception": "2014-04-29",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "QAT",
+        "Name": "iShares MSCI Qatar ETF",
+        "Country": "USA",
+        "Exchange": "NASDAQ",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434V7799"
+      }
+    },
+    {
+      "symbol": "UAE.US",
+      "geographyId": "m49:784",
+      "iso3": "ARE",
+      "issuerName": "iShares MSCI UAE ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/264275/ishares-msci-uae-capped-etf",
+      "inception": "2014-04-29",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "UAE",
+        "Name": "iShares MSCI UAE ETF",
+        "Country": "USA",
+        "Exchange": "NASDAQ",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US46434V7617"
+      }
+    },
+    {
+      "symbol": "ENZL.US",
+      "geographyId": "m49:554",
+      "iso3": "NZL",
+      "issuerName": "iShares MSCI New Zealand ETF",
+      "issuerUrl": "https://www.ishares.com/us/products/239672/ishares-msci-new-zealand-capped-etf",
+      "inception": "2010-09-01",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "ENZL",
+        "Name": "iShares MSCI New Zealand ETF",
+        "Country": "USA",
+        "Exchange": "NASDAQ",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US4642891232"
+      }
+    },
+    {
+      "symbol": "GREK.US",
+      "geographyId": "m49:300",
+      "iso3": "GRC",
+      "issuerName": "Global X MSCI Greece ETF",
+      "issuerUrl": "https://www.globalxetfs.com/funds/grek",
+      "inception": "2011-12-07",
+      "breaks": [
+        "2016-03"
+      ],
+      "providerRecord": {
+        "Code": "GREK",
+        "Name": "Global X MSCI Greece ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US37954Y3190"
+      }
+    },
+    {
+      "symbol": "ARGT.US",
+      "geographyId": "m49:032",
+      "iso3": "ARG",
+      "issuerName": "Global X MSCI Argentina ETF",
+      "issuerUrl": "https://www.globalxetfs.com/funds/argt",
+      "inception": "2011-03-02",
+      "breaks": [],
+      "providerRecord": {
+        "Code": "ARGT",
+        "Name": "Global X MSCI Argentina ETF",
+        "Country": "USA",
+        "Exchange": "NYSE ARCA",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US37950E2596"
+      }
+    },
+    {
+      "symbol": "VNM.US",
+      "geographyId": "m49:704",
+      "iso3": "VNM",
+      "issuerName": "VanEck Vietnam ETF",
+      "issuerUrl": "https://www.vaneck.com/us/en/investments/vietnam-etf-vnm/",
+      "inception": "2009-08-11",
+      "breaks": [
+        "2023-03"
+      ],
+      "providerRecord": {
+        "Code": "VNM",
+        "Name": "VanEck Vietnam ETF",
+        "Country": "USA",
+        "Exchange": "BATS",
+        "Currency": "USD",
+        "Type": "ETF",
+        "Isin": "US92189F8178"
+      }
+    }
+  ],
+  "excluded": [
+    {
+      "symbol": "EGPT.US",
+      "reason": "Die ehemalige Produktseite führt zur offiziellen Schließungsmitteilung. Kein aktueller Länderfonds.",
+      "url": "https://www.vaneck.com/us/en/press-releases/vaneck-announces-changes-to-etf-product-line-egypt-index-etf.pdf/"
+    }
+  ]
+}

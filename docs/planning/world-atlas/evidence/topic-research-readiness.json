@@ -1,0 +1,75 @@
+{
+  "checkedAt": "2026-09-09T16:51:02.3610503Z",
+  "scope": "UI and editorial source review; no new numeric provider adapter, Rust change, migration or personal data access.",
+  "status": "frontend_verified_overall_atlas_open",
+  "catalogVersion": "2026-09-09.15",
+  "topicCount": 255,
+  "geographyCount": 354,
+  "routeCounts": {
+    "numeric_perspective": 180,
+    "context_guide": 14,
+    "source_review": 55,
+    "theory": 6,
+    "unresolved": 0
+  },
+  "reviewedSourceCount": 38,
+  "sourceReviewEntries": 55,
+  "sourceReviewEntriesWithContext": 18,
+  "newContextLinks": 21,
+  "numericCoverageForSourceReviews": "unbound",
+  "checks": {
+    "atlasFrontendTests": {
+      "total": 261,
+      "passed": 261,
+      "failed": 0,
+      "files": 37,
+      "success": true,
+      "jsonSha256": "f7657b39955b4e81cdf6e45d6ec49d93291a0d49459f0b6355b967d41aa85a8a"
+    },
+    "typecheck": "passed",
+    "targetedEslint": "passed",
+    "changedFrontendPrettier": "passed",
+    "productionBuild": "passed",
+    "buildWarning": "Vite reports existing large chunks; no build failure.",
+    "topicRouteAudit": "passed across every catalog geography",
+    "browser": {
+      "page": "WorldAtlasPage with normal browser adapter; no injected numeric values or charts",
+      "cases": [
+        "China Robotik entry: paid history limitation, closed source disclosure, no invented chart",
+        "Keyboard Enter opens source disclosure and retains visible focus",
+        "India/China public services opens the exact electricity-access WDI series and returns with countries unchanged",
+        "Germany/USA selections retained across source coverage and Robotik entry",
+        "Coverage search Robotik retains missing numeric status and opens its topic entry"
+      ],
+      "viewports": [
+        {
+          "width": 1024,
+          "horizontalOverflow": false,
+          "height": 800
+        },
+        {
+          "width": 1440,
+          "horizontalOverflow": false,
+          "documentWidth": 1431,
+          "height": 900
+        }
+      ],
+      "warningsAndErrors": [],
+      "taskTabClosed": true
+    }
+  },
+  "native": {
+    "dataPathChanged": false,
+    "newNativeAcceptancePerformed": false,
+    "existingFromGuideParameterInspected": true,
+    "fullAtlasClickAcceptance": "open; CUA exposes no native app surfaces",
+    "priorNativeProofScope": "The 14 original context entries have separate documented native checks; not extended to the 55 new entries."
+  },
+  "limitations": [
+    "No proof of numeric coverage for every country or topic",
+    "Official ILO working-time and ITF dashboard search-index references had unsuccessful direct page fetches",
+    "Source review date is not ongoing freshness monitoring",
+    "Paid and restricted source products remain optional research references"
+  ],
+  "evidence": ["topic-route-audit.json", "../TOPIC-RESEARCH.md"]
+}

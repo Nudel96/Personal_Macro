@@ -1,0 +1,461 @@
+{
+  "version": "2026-09-09.1",
+  "datasetId": "jst-macrohistory-r6",
+  "release": "JST R6 · 1870–2020",
+  "url": "https://www.macrohistory.net/app/download/9834512569/JSTdatasetR6.xlsx?t=1763503850",
+  "resolvedUrl": "https://sfff5b3ac9317c4be.jimcontent.com/download/version/1763503850/module/9834512569/name/JSTdatasetR6.xlsx",
+  "sha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+  "recipe": "jst-r6-ratios-real-returns-v1",
+  "sheet": "Sheet1",
+  "firstYear": 1870,
+  "lastYear": 2020,
+  "rowCount": 2718,
+  "headers": [
+    "year",
+    "country",
+    "iso",
+    "ifs",
+    "pop",
+    "rgdpmad",
+    "rgdpbarro",
+    "rconsbarro",
+    "gdp",
+    "iy",
+    "cpi",
+    "ca",
+    "imports",
+    "exports",
+    "narrowm",
+    "money",
+    "stir",
+    "ltrate",
+    "hpnom",
+    "unemp",
+    "wage",
+    "debtgdp",
+    "revenue",
+    "expenditure",
+    "xrusd",
+    "tloans",
+    "tmort",
+    "thh",
+    "tbus",
+    "bdebt",
+    "lev",
+    "ltd",
+    "noncore",
+    "crisisJST",
+    "crisisJST_old",
+    "peg",
+    "peg_strict",
+    "peg_type",
+    "peg_base",
+    "JSTtrilemmaIV",
+    "eq_tr",
+    "housing_tr",
+    "bond_tr",
+    "bill_rate",
+    "rent_ipolated",
+    "housing_capgain_ipolated",
+    "housing_capgain",
+    "housing_rent_rtn",
+    "housing_rent_yd",
+    "eq_capgain",
+    "eq_dp",
+    "eq_capgain_interp",
+    "eq_tr_interp",
+    "eq_dp_interp",
+    "bond_rate",
+    "eq_div_rtn",
+    "capital_tr",
+    "risky_tr",
+    "safe_tr"
+  ],
+  "groups": [
+    {
+      "id": "economy",
+      "label": "Wirtschaft & Lebensbedingungen"
+    },
+    {
+      "id": "credit",
+      "label": "Kredit & Staatsschulden"
+    },
+    {
+      "id": "banking",
+      "label": "Banken & Finanzierung"
+    },
+    {
+      "id": "prices",
+      "label": "Preise & Kaufkraft"
+    },
+    {
+      "id": "interest",
+      "label": "Zinsen"
+    },
+    {
+      "id": "returns",
+      "label": "Märkte & Erträge"
+    }
+  ],
+  "areas": [
+    {
+      "code": "AUS",
+      "providerLabel": "Australia",
+      "ifs": 193,
+      "geographyId": "m49:036",
+      "label": "Australien"
+    },
+    {
+      "code": "BEL",
+      "providerLabel": "Belgium",
+      "ifs": 124,
+      "geographyId": "m49:056",
+      "label": "Belgien"
+    },
+    {
+      "code": "CAN",
+      "providerLabel": "Canada",
+      "ifs": 156,
+      "geographyId": "m49:124",
+      "label": "Kanada"
+    },
+    {
+      "code": "CHE",
+      "providerLabel": "Switzerland",
+      "ifs": 146,
+      "geographyId": "m49:756",
+      "label": "Schweiz"
+    },
+    {
+      "code": "DEU",
+      "providerLabel": "Germany",
+      "ifs": 134,
+      "geographyId": "m49:276",
+      "label": "Deutschland"
+    },
+    {
+      "code": "DNK",
+      "providerLabel": "Denmark",
+      "ifs": 128,
+      "geographyId": "m49:208",
+      "label": "Dänemark"
+    },
+    {
+      "code": "ESP",
+      "providerLabel": "Spain",
+      "ifs": 184,
+      "geographyId": "m49:724",
+      "label": "Spanien"
+    },
+    {
+      "code": "FIN",
+      "providerLabel": "Finland",
+      "ifs": 172,
+      "geographyId": "m49:246",
+      "label": "Finnland"
+    },
+    {
+      "code": "FRA",
+      "providerLabel": "France",
+      "ifs": 132,
+      "geographyId": "m49:250",
+      "label": "Frankreich"
+    },
+    {
+      "code": "GBR",
+      "providerLabel": "UK",
+      "ifs": 112,
+      "geographyId": "m49:826",
+      "label": "Vereinigtes Königreich"
+    },
+    {
+      "code": "IRL",
+      "providerLabel": "Ireland",
+      "ifs": 178,
+      "geographyId": "m49:372",
+      "label": "Irland"
+    },
+    {
+      "code": "ITA",
+      "providerLabel": "Italy",
+      "ifs": 136,
+      "geographyId": "m49:380",
+      "label": "Italien"
+    },
+    {
+      "code": "JPN",
+      "providerLabel": "Japan",
+      "ifs": 158,
+      "geographyId": "m49:392",
+      "label": "Japan"
+    },
+    {
+      "code": "NLD",
+      "providerLabel": "Netherlands",
+      "ifs": 138,
+      "geographyId": "m49:528",
+      "label": "Niederlande"
+    },
+    {
+      "code": "NOR",
+      "providerLabel": "Norway",
+      "ifs": 142,
+      "geographyId": "m49:578",
+      "label": "Norwegen"
+    },
+    {
+      "code": "PRT",
+      "providerLabel": "Portugal",
+      "ifs": 182,
+      "geographyId": "m49:620",
+      "label": "Portugal"
+    },
+    {
+      "code": "SWE",
+      "providerLabel": "Sweden",
+      "ifs": 144,
+      "geographyId": "m49:752",
+      "label": "Schweden"
+    },
+    {
+      "code": "USA",
+      "providerLabel": "USA",
+      "ifs": 111,
+      "geographyId": "m49:840",
+      "label": "Vereinigte Staaten"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "output",
+      "label": "Wirtschaftsleistung je Einwohner",
+      "group": "economy",
+      "field": "rgdpbarro",
+      "unit": "Index · 2005 = 100",
+      "explanation": "Rekonstruktion der realen Wirtschaftsleistung je Einwohner. Die gemeinsame Indexbasis vergleicht Entwicklungen, nicht absolute Wohlstandsniveaus.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "consumption",
+      "label": "Konsum je Einwohner",
+      "group": "economy",
+      "field": "rconsbarro",
+      "unit": "Index · 2006 = 100",
+      "explanation": "Realer Konsum je Einwohner. Historische Teilquellen und Verkettungen gehören zur Rekonstruktion; kein Maß der Einkommensverteilung.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "unemployment",
+      "label": "Arbeitslosigkeit",
+      "group": "economy",
+      "field": "unemp",
+      "unit": "Anteil an den Erwerbspersonen (%)",
+      "explanation": "Frühe Reihen beruhen teilweise nur auf Gewerkschaftsmitgliedern oder Versicherten. Die Erfassung entspricht historisch nicht durchgehend der heutigen Arbeitslosenquote.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "publicDebt",
+      "label": "Staatsschulden",
+      "group": "credit",
+      "field": "debtgdp",
+      "unit": "Verhältnis zur Wirtschaftsleistung (%)",
+      "explanation": "Veröffentlichte Staatsschuldenquote. Staatliche Abgrenzung, Gebietsstand und historische Nenner können wechseln. Eine hohe Quote ist allein keine Krisenprognose.",
+      "method": "percent",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "bankCredit",
+      "label": "Bankkredite",
+      "group": "credit",
+      "field": "tloans",
+      "unit": "Verhältnis zur Wirtschaftsleistung (%)",
+      "explanation": "Bankkredite an den nicht finanziellen Privatsektor, geteilt durch das nominale BIP derselben Quelle. Historische Reihen können abweichende Abgrenzungen wie Zwischenbankkredite enthalten.",
+      "method": "ratio",
+      "denominator": "gdp",
+      "flags": []
+    },
+    {
+      "id": "mortgages",
+      "label": "Hypothekenkredite",
+      "group": "credit",
+      "field": "tmort",
+      "unit": "Verhältnis zur Wirtschaftsleistung (%)",
+      "explanation": "Hypothekarkredite an den nicht finanziellen Privatsektor im Verhältnis zum Quellen-BIP; nicht ausschließlich Kredite für private Wohnhäuser.",
+      "method": "ratio",
+      "denominator": "gdp",
+      "flags": []
+    },
+    {
+      "id": "businessDebt",
+      "label": "Unternehmensschulden",
+      "group": "credit",
+      "field": "bdebt",
+      "unit": "Verhältnis zur Wirtschaftsleistung (%)",
+      "explanation": "Breite historische Unternehmensverschuldung einschließlich Anleihen und weiterer Kreditgeber; je Quelle auch nicht als Kapitalgesellschaft organisierte Unternehmen.",
+      "method": "ratio",
+      "denominator": "gdp",
+      "flags": []
+    },
+    {
+      "id": "bankCapital",
+      "label": "Eigenkapital der Banken",
+      "group": "banking",
+      "field": "lev",
+      "unit": "Anteil an der Bankbilanz (%)",
+      "explanation": "Historische Eigenkapitalquote der erfassten Banken. Dies ist keine heutige regulatorische, risikogewichtete CET1-Quote.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "loanDeposits",
+      "label": "Bankkredite zu Einlagen",
+      "group": "banking",
+      "field": "ltd",
+      "unit": "Verhältnis Kredite zu Einlagen (%)",
+      "explanation": "Kredite relativ zu Einlagen der erfassten Banken. Werte über hundert bleiben möglich; historische Bilanzdefinitionen wechseln.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "noncore",
+      "label": "Weitere Bankfinanzierung",
+      "group": "banking",
+      "field": "noncore",
+      "unit": "Anteil an der Bankfinanzierung (%)",
+      "explanation": "Veröffentlichte Noncore-Finanzierungsquote der Banken. Erfasst die Finanzierung außerhalb der jeweiligen Kerneinlagen-Definition; kein persönliches Kontorisiko.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "housePrices",
+      "label": "Wohnimmobilien · Kaufkraft",
+      "group": "prices",
+      "field": "hpnom",
+      "unit": "Realer Index · 1990 = 100",
+      "explanation": "Nominaler Hauspreisindex geteilt durch den Verbraucherpreisindex, beide aus JST mit Basis 1990. Zeigt die Preisentwicklung nach allgemeiner Geldentwertung, keine Bezahlbarkeit oder faire Bewertung.",
+      "method": "ratio",
+      "denominator": "cpi",
+      "flags": ["housing_capgain_ipolated"]
+    },
+    {
+      "id": "wages",
+      "label": "Löhne · Kaufkraft",
+      "group": "prices",
+      "field": "wage",
+      "unit": "Realer Index · 1990 = 100",
+      "explanation": "Nominaler Lohnindex geteilt durch den Verbraucherpreisindex. Frühe Reihen können einzelne Branchen abbilden; keine durchgehend identische Bevölkerungsgruppe.",
+      "method": "ratio",
+      "denominator": "cpi",
+      "flags": []
+    },
+    {
+      "id": "shortRate",
+      "label": "Kurzfristige Zinsen",
+      "group": "interest",
+      "field": "stir",
+      "unit": "Nominaler Zins pro Jahr (%)",
+      "explanation": "Historische Geldmarkt-, Bank- oder kurzfristige Staatszinssätze aus wechselnden Teilquellen. Dies ist kein einheitlicher Zentralbank-Leitzins.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "longRate",
+      "label": "Langfristige Zinsen",
+      "group": "interest",
+      "field": "ltrate",
+      "unit": "Nominaler Zins pro Jahr (%)",
+      "explanation": "Historische langfristige Zinssätze mit wechselnden Instrumenten und Laufzeiten. Sie unterscheiden sich von der tatsächlich erzielten Anleiherendite.",
+      "method": "direct",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "equityReturn",
+      "label": "Aktien · Jahresrendite",
+      "group": "returns",
+      "field": "eq_tr",
+      "unit": "Jahresrendite (%)",
+      "explanation": "Breite historische Aktienmarktrendite einschließlich Dividenden in Landeswährung. Geldentwertung kann nominale Ergebnisse stark verzerren; keine aktuelle Anlageempfehlung.",
+      "method": "return",
+      "denominator": null,
+      "flags": ["eq_tr_interp"]
+    },
+    {
+      "id": "housingReturn",
+      "label": "Wohnimmobilien · Jahresrendite",
+      "group": "returns",
+      "field": "housing_tr",
+      "unit": "Jahresrendite (%)",
+      "explanation": "Historische Gesamtrendite aus Preisänderung und Mietertrag. Quellenrekonstruktionen und ergänzte Kriegsjahre bleiben gekennzeichnet.",
+      "method": "return",
+      "denominator": null,
+      "flags": ["rent_ipolated", "housing_capgain_ipolated"]
+    },
+    {
+      "id": "bondReturn",
+      "label": "Staatsanleihen · Jahresrendite",
+      "group": "returns",
+      "field": "bond_tr",
+      "unit": "Jahresrendite (%)",
+      "explanation": "Historische Gesamtrendite von Staatsanleihen in Landeswährung. Instrumente, Laufzeiten und Berechnungen wechseln; Zinsniveau und Rendite sind verschiedene Größen.",
+      "method": "return",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "billReturn",
+      "label": "Kurzfristige Anlagen · Jahresrendite",
+      "group": "returns",
+      "field": "bill_rate",
+      "unit": "Jahresrendite (%)",
+      "explanation": "Kurzfristige Staatsanlagen; bei fehlenden Daten verwendet die Quelle teilweise Geldmarkt- oder Bankeinlagensätze.",
+      "method": "return",
+      "denominator": null,
+      "flags": []
+    },
+    {
+      "id": "dividendYield",
+      "label": "Dividenden im Kursvergleich",
+      "group": "returns",
+      "field": "eq_dp",
+      "unit": "Veröffentlichtes Dividenden-Kurs-Verhältnis (%)",
+      "explanation": "Veröffentlichtes Verhältnis von Dividenden zu Aktienkursen. Historische Nenner und Berechnungsmethoden folgen der Quelle; keine automatische Unter- oder Überbewertung.",
+      "method": "percent",
+      "denominator": null,
+      "flags": ["eq_dp_interp"]
+    },
+    {
+      "id": "rentYield",
+      "label": "Mietertrag im Preisvergleich",
+      "group": "returns",
+      "field": "housing_rent_yd",
+      "unit": "Veröffentlichtes Mietertrags-Preis-Verhältnis (%)",
+      "explanation": "Veröffentlichtes Verhältnis von Mietertrag zu Hauspreisen. Die historische Rekonstruktion ist keine individuell erzielbare Mietrendite.",
+      "method": "percent",
+      "denominator": null,
+      "flags": ["rent_ipolated"]
+    }
+  ],
+  "sourcePage": "https://www.macrohistory.net/database/",
+  "documentationUrl": "https://www.macrohistory.net/app/download/9834516169/JST_documentationR6.pdf?t=1676279836",
+  "returnsDocumentationUrl": "https://www.macrohistory.net/app/download/9918957869/JST_RORE_Documentation_R6.pdf?t=1658254098",
+  "crisisDocumentationUrl": "https://www.macrohistory.net/app/download/9844625569/JSTcrisis_chronology.pdf?t=1616702593",
+  "licenseUrl": "https://www.macrohistory.net/database/licence-terms/",
+  "license": "CC BY-NC-SA 4.0",
+  "citations": [
+    "Jordà, Schularick & Taylor (2017), Macrofinancial History and the New Business Cycle Facts.",
+    "Jordà, Knoll, Kuvshinov, Schularick & Taylor (2019), The Rate of Return on Everything, 1870–2015.",
+    "Jordà, Richter, Schularick & Taylor (2021), Bank capital redux: solvency, liquidity, and crisis."
+  ]
+}

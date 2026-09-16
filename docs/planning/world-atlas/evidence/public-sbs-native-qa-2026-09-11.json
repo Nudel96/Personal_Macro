@@ -1,0 +1,109 @@
+{
+  "checkedAt": "2026-09-11T02:34:27.061Z",
+  "status": "passed",
+  "runtime": "Native Tauri WebView2, dedicated QA profile with copied public Atlas cache only",
+  "checks": [
+    {
+      "label": "Aktuelle Unternehmen Deutschland",
+      "metric": "eurostat-business-services:M_ENT_NR",
+      "geography": "m49:276",
+      "points": 4,
+      "last": "2024 · 482.544 Unternehmen (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 1
+    },
+    {
+      "label": "Aktuelle Erwerbstätige Deutschland",
+      "metric": "eurostat-business-services:M_EMP_NR",
+      "geography": "m49:276",
+      "points": 4,
+      "last": "2024 · 2.724.207 Erwerbstätige (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 1
+    },
+    {
+      "label": "Archiv Unternehmen Deutschland",
+      "metric": "eurostat-professional-history:M_V11110",
+      "geography": "m49:276",
+      "points": 13,
+      "last": "2020 · 451.336 Unternehmen (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 2
+    },
+    {
+      "label": "Archiv Erwerbstätige Deutschland",
+      "metric": "eurostat-professional-history:M_V16110",
+      "geography": "m49:276",
+      "points": 13,
+      "last": "2020 · 2.538.446 Erwerbstätige (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 2
+    },
+    {
+      "label": "Deutschland und Belgien",
+      "sharedAxes": true,
+      "chartCount": 2
+    },
+    {
+      "label": "Persönliche Dienste Unternehmen Deutschland",
+      "metric": "eurostat-business-services:S96_ENT_NR",
+      "geography": "m49:276",
+      "points": 4,
+      "last": "2024 · 167.267 Unternehmen (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 1
+    },
+    {
+      "label": "Persönliche Dienste Erwerbstätige Deutschland",
+      "metric": "eurostat-business-services:S96_EMP_NR",
+      "geography": "m49:276",
+      "points": 4,
+      "last": "2024 · 613.349 Erwerbstätige (Anzahl)",
+      "originalTooltipMatch": true,
+      "segments": 1
+    },
+    {
+      "label": "Vertrauliche Zwischenjahre Norwegen",
+      "metric": "eurostat-business-services:S96_EMP_NR",
+      "geography": "m49:578",
+      "points": 2,
+      "last": "2024 · 27.591 Erwerbstätige (Anzahl) · Vorläufig laut Quelle (p)",
+      "originalTooltipMatch": true,
+      "segments": 0
+    },
+    {
+      "label": "Norwegen vertraulich bei ausgeschalteten Zahlen",
+      "periods": [
+        "2022",
+        "2023"
+      ],
+      "points": 2,
+      "lines": 0,
+      "confidentialVisible": true
+    },
+    {
+      "label": "Indien ohne Ersatzgebiet",
+      "chartCount": 0,
+      "explicitUnsupported": true
+    },
+    {
+      "label": "Gespeicherter Quellenkontext",
+      "geography": "m49:578",
+      "metric": "eurostat-business-services:S96_EMP_NR",
+      "since": 2020,
+      "numbers": false,
+      "provenanceMatched": true
+    }
+  ],
+  "minimumWidth": {
+    "window": 1024,
+    "client": 1015,
+    "scroll": 1015
+  },
+  "screenshots": [
+    "atlas-sbs-history-comparison.png",
+    "atlas-sbs-confidential-open.png",
+    "atlas-sbs-minwidth.png"
+  ],
+  "bookmarkContext": "Gemerkte Ansicht\n\nDein Blick auf Länder, Märkte und lange Entwicklungen.\n\nNorwegen · Persönliche Dienstleistungen\n\nGemerkt am 11.09.2026, 04:32. Diagrammstand und Quellen bleiben beim Bearbeiten der Notiz erhalten.\n\nName\nEigene Notiz\nAls Favorit merken\nGespeicherten Diagrammstand ansehen\nGespeicherte Quellenangaben\n\nDer Quellenstand gehört zum Zeitpunkt des Merkens. Die öffentlichen Datensätze werden bei einer späteren Aktualisierung neu eingelesen.\n\nEurostat · Dienstleistungsunternehmen ab 2021 · Norwegen\neurostat-business-services · Quellenstand 2026-09-01\nLokal abgerufen 11.09.2026, 04:26\nBerechnung / Katalog: eurostat-business-services-original-jsonstat-20260911-v1\nDateiprüfsummen\nAnsicht mit aktuellem Datenstand öffnen\n\nÖffnet deine Auswahl mit den aktuell lokal vorhandenen Daten. Der gespeicherte Bildstand bleibt erhalten.\n\nIn den Papierkorb\nSchließen\nNotiz speichern"
+}

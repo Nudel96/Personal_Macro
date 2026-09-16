@@ -1,0 +1,143 @@
+.atlas-notebook {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 12px;
+}
+.atlas-notebook-toolbar,
+.atlas-notebook-filters {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.atlas-notebook-toolbar > span,
+.atlas-notebook-live p {
+  color: var(--text-2);
+  font-size: 12px;
+}
+.atlas-notebook-list {
+  margin-top: 14px;
+}
+.atlas-notebook-filters > label:first-child {
+  display: grid;
+  gap: 5px;
+  min-width: 250px;
+  font-size: 12px;
+}
+.atlas-notebook-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 0;
+  list-style: none;
+}
+.atlas-notebook-cards button {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+  height: 100%;
+  width: 100%;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 14px;
+  color: var(--text);
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+.atlas-notebook-cards button:hover {
+  border-color: var(--primary);
+}
+.atlas-notebook-cards button:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+.atlas-notebook-cards strong {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.atlas-notebook-cards span,
+.atlas-notebook-cards small {
+  color: var(--text-2);
+}
+.atlas-notebook-cards p {
+  white-space: pre-wrap;
+  margin: 0;
+  font-size: 12px;
+}
+.atlas-notebook-cards small {
+  margin-top: auto;
+}
+.atlas-notebook-dialog {
+  max-width: 1000px;
+}
+.atlas-notebook-body {
+  display: grid;
+  gap: 14px;
+}
+.atlas-notebook-body p {
+  margin: 0;
+}
+.atlas-notebook-field {
+  display: grid;
+  gap: 7px;
+}
+.atlas-notebook-field textarea {
+  min-height: 110px;
+  resize: vertical;
+  width: 100%;
+}
+.atlas-notebook-check {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  font-size: 13px;
+}
+.atlas-notebook-context {
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+.atlas-notebook-picture {
+  display: block;
+  height: auto;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 8px;
+}
+.atlas-notebook-sources {
+  display: grid;
+  gap: 10px;
+  padding-left: 20px;
+  font-size: 12px;
+}
+.atlas-notebook-sources li {
+  overflow-wrap: anywhere;
+}
+.atlas-notebook-sources span {
+  display: block;
+}
+.atlas-notebook-sources pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.atlas-notebook-live {
+  display: grid;
+  gap: 7px;
+  justify-items: start;
+}
+.atlas-notebook-discard {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+}
+.atlas-notebook-discard p {
+  margin-bottom: 10px;
+}
+.atlas-notebook-discard button + button {
+  margin-left: 8px;
+}
+.atlas-notebook-footer {
+  flex-wrap: wrap;
+}

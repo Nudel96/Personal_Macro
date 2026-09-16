@@ -13,13 +13,20 @@ import type {
   Account,
   TradeContextInput,
   TradeInput,
+  TradeScreenshotInput,
 } from "../../types/domain";
 import { useJournalAccount } from "../accounts/journal-account-context";
 import { PositionSizeCalculator } from "./position-size-calculator";
+import {
+  TradeScreenshotImport,
+  type ScreenshotReview,
+} from "./trade-screenshot-import";
 
 const DRAFT_KEY = "personal-macro:guided-trade-draft:v1";
 type BoolValue = "" | "true" | "false";
 interface GuidedValues {
+  status?: "draft" | "planned" | "open" | "closed";
+  screenshotReview?: ScreenshotReview;
   instrument: string;
   assetClass: string;
   accountId: string;
@@ -35,7 +42,6 @@ interface GuidedValues {
   takeProfit: string;
   plannedRisk: string;
   riskPercent: string;
-  confidence: string;
   thesis: string;
   invalidation: string;
   preChecklist: string;
@@ -53,10 +59,6 @@ interface GuidedValues {
   deviations: string;
   legs: string;
   grossPnl: string;
-  mae: string;
-  maeR: string;
-  mfe: string;
-  mfeR: string;
   setupQuality: string;
   executionScore: string;
   riskQuality: string;
@@ -68,15 +70,6 @@ interface GuidedValues {
   negativeReview: string;
   lesson: string;
   nextAction: string;
-  emotionBefore: string;
-  emotionDuring: string;
-  emotionAfter: string;
-  focus: string;
-  stress: string;
-  energy: string;
-  emotionalControl: string;
-  processScore: string;
-  satisfaction: string;
 }
 
 const emptyValues: GuidedValues = {
@@ -95,7 +88,6 @@ const emptyValues: GuidedValues = {
   takeProfit: "",
   plannedRisk: "",
   riskPercent: "",
-  confidence: "",
   thesis: "",
   invalidation: "",
   preChecklist: "Macro Bias geprüft\nRisiko berechnet\nNews-Zeit geprüft",
@@ -113,10 +105,6 @@ const emptyValues: GuidedValues = {
   deviations: "",
   legs: "",
   grossPnl: "",
-  mae: "",
-  maeR: "",
-  mfe: "",
-  mfeR: "",
   setupQuality: "",
   executionScore: "",
   riskQuality: "",
@@ -128,15 +116,6 @@ const emptyValues: GuidedValues = {
   negativeReview: "",
   lesson: "",
   nextAction: "",
-  emotionBefore: "",
-  emotionDuring: "",
-  emotionAfter: "",
-  focus: "",
-  stress: "",
-  energy: "",
-  emotionalControl: "",
-  processScore: "",
-  satisfaction: "",
 };
 
 export function resolveGuidedDraft(
@@ -161,7 +140,15 @@ export function GuidedTradeDialog() {
   const [step, setStep] = useState(0);
   const [values, setValues] = useState<GuidedValues>(emptyValues);
   const [savedAt, setSavedAt] = useState<string>();
+  const [screenshot, setScreenshot] = useState<TradeScreenshotInput | null>(
+    null,
+  );
+  const [screenshotBusy, setScreenshotBusy] = useState(false);
+  const [allowRecalculation, setAllowRecalculation] = useState(false);
   useEffect(() => {
+    setScreenshot(null);
+    setScreenshotBusy(false);
+    setAllowRecalculation(false);
     if (!guidedTradeOpen) return;
     try {
       const saved = JSON.parse(
@@ -190,9 +177,10 @@ export function GuidedTradeDialog() {
   );
   const mutation = useMutation({
     mutationFn: async (finalize: boolean) => {
-      const trade = await api.createTrade(
-        toTradeInput(values, finalize, selectedAccount!.id),
-      );
+      const input = toTradeInput(values, finalize, selectedAccount!.id);
+      const trade = screenshot
+        ? await api.createTradeWithScreenshot(input, screenshot)
+        : await api.createTrade(input);
       await api.saveTradeContext(
         selectedAccount!.id,
         toTradeContext(trade.id, values, bootstrap.data),
@@ -204,6 +192,7 @@ export function GuidedTradeDialog() {
         queryClient.invalidateQueries({ queryKey: ["trades"] }),
         queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
         queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),
+        queryClient.invalidateQueries({ queryKey: ["media"] }),
       ]);
       localStorage.removeItem(DRAFT_KEY);
       setValues(emptyValues);
@@ -223,7 +212,12 @@ export function GuidedTradeDialog() {
     [],
   );
   return (
-    <Dialog.Root open={guidedTradeOpen} onOpenChange={setGuidedTradeOpen}>
+    <Dialog.Root
+      open={guidedTradeOpen}
+      onOpenChange={(open) => {
+        if (!mutation.isPending) setGuidedTradeOpen(open);
+      }}
+    >
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content
@@ -275,23 +269,50 @@ export function GuidedTradeDialog() {
             </div>
           </div>
           <div className="dialog-body">
+            <TradeScreenshotImport
+              key={selectedAccount?.id}
+              accountCurrency={selectedAccount?.baseCurrency ?? "EUR"}
+              disabled={mutation.isPending}
+              onImageChange={setScreenshot}
+              onBusyChange={setScreenshotBusy}
+              onApply={(patch, review) => {
+                setAllowRecalculation(false);
+                setValues((current) => ({
+                  ...current,
+                  ...patch,
+                  status: patch.status as GuidedValues["status"],
+                  direction: patch.direction as GuidedValues["direction"],
+                  assetClass:
+                    review.assetClass && patch.instrument
+                      ? review.assetClass
+                      : current.assetClass,
+                  plannedEntry: patch.actualEntry ?? current.plannedEntry,
+                  riskPercent:
+                    patch.riskPercent ??
+                    (patch.plannedRisk ? "" : current.riskPercent),
+                  screenshotReview: review,
+                }));
+              }}
+            />
+            {values.screenshotReview && !screenshot && (
+              <p className="form-section-copy">
+                Die übernommenen Werte sind im Entwurf gespeichert. Den
+                zugehörigen Screenshot bei Bedarf erneut hinzufügen.
+              </p>
+            )}
             {step === 0 && (
               <PlanningStep
                 values={values}
                 set={set}
                 bootstrap={bootstrap.data}
                 selectedAccount={selectedAccount}
+                autoApply={!values.screenshotReview || allowRecalculation}
+                onEnableAutomatic={() => setAllowRecalculation(true)}
               />
             )}
             {step === 1 && <ExecutionStep values={values} set={set} />}
             {step === 2 && <ResultStep values={values} set={set} />}
-            {step === 3 && (
-              <ReviewStep
-                values={values}
-                set={set}
-                bootstrap={bootstrap.data}
-              />
-            )}
+            {step === 3 && <ReviewStep values={values} set={set} />}
           </div>
           <footer className="dialog-footer">
             <div className="page-actions">
@@ -304,7 +325,10 @@ export function GuidedTradeDialog() {
               <Button
                 onClick={() => mutation.mutate(false)}
                 disabled={
-                  !ready || !values.instrument.trim() || mutation.isPending
+                  !ready ||
+                  !values.instrument.trim() ||
+                  mutation.isPending ||
+                  screenshotBusy
                 }
               >
                 <Save size={14} /> Als Entwurf
@@ -322,10 +346,13 @@ export function GuidedTradeDialog() {
                 variant="primary"
                 onClick={() => mutation.mutate(true)}
                 disabled={
-                  !ready || !values.instrument.trim() || mutation.isPending
+                  !ready ||
+                  !values.instrument.trim() ||
+                  mutation.isPending ||
+                  screenshotBusy
                 }
               >
-                <Check size={14} /> Trade abschließen
+                <Check size={14} /> Trade speichern
               </Button>
             )}
           </footer>
@@ -344,16 +371,27 @@ function PlanningStep({
   set,
   bootstrap,
   selectedAccount,
+  autoApply,
+  onEnableAutomatic,
 }: {
   values: GuidedValues;
   set: Setter;
   bootstrap?: Awaited<ReturnType<typeof api.bootstrap>>;
   selectedAccount: Account | null;
+  autoApply: boolean;
+  onEnableAutomatic: () => void;
 }) {
   return (
     <>
       <Section title="Markt & Setup">
         <div className="form-grid cols-3">
+          <Select
+            label="Trade-Status"
+            value={values.status ?? (values.closedAt ? "closed" : "open")}
+            onChange={(value) => set("status", value as GuidedValues["status"])}
+            options={["draft", "planned", "open", "closed"]}
+            labels={["Entwurf", "Geplant", "Offen", "Geschlossen"]}
+          />
           <Input
             label="Instrument"
             value={values.instrument}
@@ -415,7 +453,7 @@ function PlanningStep({
             label="Timeframe"
             value={values.timeframe}
             onChange={(value) => set("timeframe", value)}
-            options={["M5", "M15", "H1", "H4", "D1", "W1"]}
+            options={["M1", "M5", "M15", "M30", "H1", "H4", "D1", "W1"]}
           />
           <Select
             label="Marktumfeld"
@@ -451,6 +489,8 @@ function PlanningStep({
           onRiskPercentChange={(value) => set("riskPercent", value)}
           onRiskAmountChange={(value) => set("plannedRisk", value)}
           onQuantityChange={(value) => set("quantity", value)}
+          autoApply={autoApply}
+          onEnableAutomatic={onEnableAutomatic}
         />
         <div className="form-grid cols-3">
           <Input
@@ -477,12 +517,6 @@ function PlanningStep({
             label="Risiko (%)"
             value={values.riskPercent}
             onChange={(value) => set("riskPercent", value)}
-          />
-          <Input
-            label="Confidence (1–10)"
-            value={values.confidence}
-            onChange={(value) => set("confidence", value)}
-            type="number"
           />
         </div>
         <TextArea
@@ -593,26 +627,6 @@ function ResultStep({ values, set }: { values: GuidedValues; set: Setter }) {
             value={values.grossPnl}
             onChange={(value) => set("grossPnl", value)}
           />
-          <Input
-            label="MAE"
-            value={values.mae}
-            onChange={(value) => set("mae", value)}
-          />
-          <Input
-            label="MAE (R)"
-            value={values.maeR}
-            onChange={(value) => set("maeR", value)}
-          />
-          <Input
-            label="MFE"
-            value={values.mfe}
-            onChange={(value) => set("mfe", value)}
-          />
-          <Input
-            label="MFE (R)"
-            value={values.mfeR}
-            onChange={(value) => set("mfeR", value)}
-          />
         </div>
       </Section>
       <Section title="Qualität & Regelkonformität">
@@ -660,19 +674,7 @@ function ResultStep({ values, set }: { values: GuidedValues; set: Setter }) {
     </>
   );
 }
-function ReviewStep({
-  values,
-  set,
-  bootstrap,
-}: {
-  values: GuidedValues;
-  set: Setter;
-  bootstrap?: Awaited<ReturnType<typeof api.bootstrap>>;
-}) {
-  const emotions = [
-    "",
-    ...(bootstrap?.emotions.map((item) => item.name) ?? []),
-  ];
+function ReviewStep({ values, set }: { values: GuidedValues; set: Setter }) {
   return (
     <>
       <Section title="Reflexion">
@@ -699,64 +701,6 @@ function ReviewStep({
           />
         </div>
       </Section>
-      <Section title="Psychologie & Prozess">
-        <div className="form-grid cols-3">
-          <Select
-            label="Emotion vorher"
-            value={values.emotionBefore}
-            onChange={(value) => set("emotionBefore", value)}
-            options={emotions}
-          />
-          <Select
-            label="Emotion währenddessen"
-            value={values.emotionDuring}
-            onChange={(value) => set("emotionDuring", value)}
-            options={emotions}
-          />
-          <Select
-            label="Emotion danach"
-            value={values.emotionAfter}
-            onChange={(value) => set("emotionAfter", value)}
-            options={emotions}
-          />
-          <Input
-            label="Fokus (1–10)"
-            value={values.focus}
-            onChange={(value) => set("focus", value)}
-            type="number"
-          />
-          <Input
-            label="Stress (1–10)"
-            value={values.stress}
-            onChange={(value) => set("stress", value)}
-            type="number"
-          />
-          <Input
-            label="Energie (1–10)"
-            value={values.energy}
-            onChange={(value) => set("energy", value)}
-            type="number"
-          />
-          <Input
-            label="Emotionskontrolle (1–10)"
-            value={values.emotionalControl}
-            onChange={(value) => set("emotionalControl", value)}
-            type="number"
-          />
-          <Input
-            label="Prozess-Score (1–10)"
-            value={values.processScore}
-            onChange={(value) => set("processScore", value)}
-            type="number"
-          />
-          <Input
-            label="Zufriedenheit (1–10)"
-            value={values.satisfaction}
-            onChange={(value) => set("satisfaction", value)}
-            type="number"
-          />
-        </div>
-      </Section>
     </>
   );
 }
@@ -770,20 +714,6 @@ function toTradeContext(
     .split(",")
     .map((value) => value.trim().toLocaleLowerCase("de-DE"))
     .filter(Boolean);
-  const emotions = (
-    [
-      ["before", values.emotionBefore],
-      ["during", values.emotionDuring],
-      ["after", values.emotionAfter],
-    ] as const
-  ).flatMap(([phase, name]) => {
-    const match = bootstrap?.emotions.find(
-      (emotion) =>
-        emotion.name.toLocaleLowerCase("de-DE") ===
-        name.toLocaleLowerCase("de-DE"),
-    );
-    return match ? [{ emotionId: match.id, phase, intensity: 5 }] : [];
-  });
   const legs = values.legs.split("\n").flatMap((line, index) => {
     const [type, occurredAt, price, quantity, fees, ...note] = line
       .split(";")
@@ -822,7 +752,7 @@ function toTradeContext(
         sortOrder: index,
       }))
       .filter((item) => item.label.length > 0),
-    emotions,
+    emotions: [],
     customValues: [],
   };
 }
@@ -847,6 +777,7 @@ function toTradeInput(
       : undefined;
   };
   const metadata = {
+    screenshotImport: values.screenshotReview,
     version: 1,
     marketCondition: values.marketCondition,
     riskPercent: values.riskPercent,
@@ -856,22 +787,18 @@ function toTradeInput(
     finalStopLoss: values.finalStopLoss,
     deviations: values.deviations,
     tradeLegsText: values.legs,
-    mae: values.mae,
-    mfe: values.mfe,
     riskQuality: score(values.riskQuality),
-    emotionalControl: score(values.emotionalControl),
     positiveReview: values.positiveReview,
     negativeReview: values.negativeReview,
     nextAction: values.nextAction,
-    emotionBefore: values.emotionBefore,
-    emotionDuring: values.emotionDuring,
-    emotionAfter: values.emotionAfter,
   };
   return {
     accountId,
     strategyId: values.strategyId || undefined,
     setupId: values.setupId || undefined,
-    status: finalize ? (values.closedAt ? "closed" : "open") : "draft",
+    status: finalize
+      ? (values.status ?? (values.closedAt ? "closed" : "open"))
+      : "draft",
     instrument: values.instrument,
     assetClass: values.assetClass,
     direction: values.direction,
@@ -894,21 +821,13 @@ function toTradeInput(
     netPnlMinor: undefined,
     rOverride: undefined,
     rOverrideReason: undefined,
-    maeR: values.maeR || undefined,
-    mfeR: values.mfeR || undefined,
     followedPlan: bool(values.followedPlan),
     followedRiskRules: bool(values.followedRiskRules),
     followedEntryRules: bool(values.followedEntryRules),
     followedExitRules: bool(values.followedExitRules),
     impulseTrade: undefined,
-    processScore: score(values.processScore),
     executionScore: score(values.executionScore),
     setupQuality: score(values.setupQuality),
-    confidenceBefore: score(values.confidence),
-    focusBefore: score(values.focus),
-    stressBefore: score(values.stress),
-    energyBefore: score(values.energy),
-    satisfactionAfter: score(values.satisfaction),
     reviewedAt: finalize ? new Date().toISOString() : undefined,
     thesisHtml: values.thesis || undefined,
     executionNotesHtml: values.executionNotes || undefined,

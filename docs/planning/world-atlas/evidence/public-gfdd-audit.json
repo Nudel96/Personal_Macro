@@ -1,0 +1,973 @@
+{
+  "reviewedAt": "2026-09-11",
+  "source": {
+    "id": "worldbank-gfdd-concentration",
+    "label": "Weltbank GFDD · Börsenkonzentration · Archiv 2022",
+    "adapter": "gfdd_concentration",
+    "url": "https://thedocs.worldbank.org/en/doc/5882f2b2117b882d58a78f9c64ea3613-0050062022/original/20220909-global-financial-development-database.xlsx",
+    "documentationUrl": "https://www.worldbank.org/en/publication/gfdr/data/global-financial-development-database",
+    "licenseUrl": "https://datacatalog.worldbank.org/public-licenses",
+    "publishedAt": "2022-09",
+    "reviewedAt": "2026-09-11",
+    "recipe": "gfdd-20220909-original-am01-am02-through2020-v1",
+    "observationKind": "source_statistics",
+    "expectedSha256": "bb86ad8c15da875f094c9b23db69731570e7ffa1e14e22fb2c8ba2aef30884dc",
+    "expectedRows": 13268,
+    "expectedNumeric": 1829,
+    "firstPeriod": "1998",
+    "lastPeriod": "2020",
+    "areas": [
+      {
+        "code": "ARE",
+        "label": "United Arab Emirates",
+        "geographyId": "m49:784",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ARG",
+        "label": "Argentina",
+        "geographyId": "m49:032",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "BGD",
+        "label": "Bangladesh",
+        "geographyId": "m49:050",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "BHR",
+        "label": "Bahrain",
+        "geographyId": "m49:048",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "BWA",
+        "label": "Botswana",
+        "geographyId": "m49:072",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "CHN",
+        "label": "China",
+        "geographyId": "m49:156",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "EGY",
+        "label": "Egypt, Arab Rep.",
+        "geographyId": "m49:818",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "GHA",
+        "label": "Ghana",
+        "geographyId": "m49:288",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "HKG",
+        "label": "Hong Kong SAR, China",
+        "geographyId": "m49:344",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "IDN",
+        "label": "Indonesia",
+        "geographyId": "m49:360",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "IND",
+        "label": "India",
+        "geographyId": "m49:356",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "IRN",
+        "label": "Iran, Islamic Rep.",
+        "geographyId": "m49:364",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "KAZ",
+        "label": "Kazakhstan",
+        "geographyId": "m49:398",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Rep.",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "LKA",
+        "label": "Sri Lanka",
+        "geographyId": "m49:144",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "MAR",
+        "label": "Morocco",
+        "geographyId": "m49:504",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "MYS",
+        "label": "Malaysia",
+        "geographyId": "m49:458",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "NGA",
+        "label": "Nigeria",
+        "geographyId": "m49:566",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "NZL",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "OMN",
+        "label": "Oman",
+        "geographyId": "m49:512",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "PAN",
+        "label": "Panama",
+        "geographyId": "m49:591",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "PER",
+        "label": "Peru",
+        "geographyId": "m49:604",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "PHL",
+        "label": "Philippines",
+        "geographyId": "m49:608",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "QAT",
+        "label": "Qatar",
+        "geographyId": "m49:634",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "SAU",
+        "label": "Saudi Arabia",
+        "geographyId": "m49:682",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "SGP",
+        "label": "Singapore",
+        "geographyId": "m49:702",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "THA",
+        "label": "Thailand",
+        "geographyId": "m49:764",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Turkey",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "TWN",
+        "label": "Taiwan, China",
+        "geographyId": "provider:TWN",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "VNM",
+        "label": "Vietnam",
+        "geographyId": "m49:704",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ZAF",
+        "label": "South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      },
+      {
+        "code": "ZMB",
+        "label": "Zambia",
+        "geographyId": "m49:894",
+        "seriesTitles": {
+          "am01": "Value traded excluding top 10 traded companies to total value traded (%)",
+          "am02": "Market capitalization excluding top 10 companies to total market capitalization (%)"
+        }
+      }
+    ]
+  },
+  "contract": {
+    "sourceId": "worldbank-gfdd-concentration",
+    "file": "worldbank-gfdd-2022.xlsx",
+    "sheetNames": [
+      "Summary",
+      "Metadata",
+      "Data - August 2022",
+      "Metadata - 2021",
+      "Data - November 2021"
+    ],
+    "sheet": "Data - August 2022",
+    "dataXml": "xl/worksheets/sheet3.xml",
+    "header": [
+      "iso3",
+      "iso2",
+      "imfn",
+      "country",
+      "region",
+      "income",
+      "year",
+      "ai01",
+      "ai02",
+      "ai03",
+      "ai04",
+      "ai05",
+      "ai06",
+      "ai07",
+      "ai08",
+      "ai09",
+      "ai10",
+      "ai11",
+      "ai12",
+      "ai13",
+      "ai14",
+      "ai15",
+      "ai16",
+      "ai17",
+      "ai18",
+      "ai19",
+      "ai20",
+      "ai21",
+      "ai22",
+      "ai23",
+      "ai24",
+      "ai25",
+      "ai26",
+      "ai27",
+      "ai28",
+      "ai29",
+      "ai30",
+      "ai31",
+      "ai32",
+      "ai33",
+      "ai34",
+      "ai35",
+      "ai36",
+      "am01",
+      "am02",
+      "am03",
+      "di01",
+      "di02",
+      "di03",
+      "di04",
+      "di05",
+      "di06",
+      "di07",
+      "di08",
+      "di09",
+      "di10",
+      "di11",
+      "di12",
+      "di13",
+      "di14",
+      "dm01",
+      "dm02",
+      "dm03",
+      "dm04",
+      "dm05",
+      "dm06",
+      "dm07",
+      "dm08",
+      "dm09",
+      "dm10",
+      "dm11",
+      "dm12",
+      "dm13",
+      "dm14",
+      "dm15",
+      "dm16",
+      "ei01",
+      "ei02",
+      "ei03",
+      "ei04",
+      "ei05",
+      "ei06",
+      "ei07",
+      "ei08",
+      "ei09",
+      "ei10",
+      "em01",
+      "si01",
+      "si02",
+      "si03",
+      "si04",
+      "si05",
+      "si06",
+      "si07",
+      "sm01",
+      "oi01",
+      "oi02",
+      "oi06",
+      "oi07",
+      "oi08",
+      "oi09",
+      "oi10",
+      "oi11",
+      "oi12",
+      "oi13",
+      "oi14",
+      "oi15",
+      "oi16",
+      "oi16a",
+      "oi17",
+      "oi18",
+      "oi19",
+      "oi20a",
+      "om01",
+      "om02"
+    ],
+    "columns": [
+      {
+        "code": "am02",
+        "column": "AS",
+        "index": 44,
+        "metadataRow": 39,
+        "metadata": [
+          "Access",
+          "GFDD.AM.02",
+          "Market capitalization excluding top 10 companies to total market capitalization (%)",
+          "Value of listed shares outside of the largest ten largest companies to total value of all listed shares.",
+          "Value of listed shares outside of the top ten largest companies to total value of all listed shares. ",
+          "1998-2020",
+          "World Federation of Exchanges",
+          null
+        ],
+        "note": "Marktkapitalisierung außerhalb der zehn größten Unternehmen. Keine historischen Gewichte eines bestimmten Index oder Fonds."
+      },
+      {
+        "code": "am01",
+        "column": "AR",
+        "index": 43,
+        "metadataRow": 38,
+        "metadata": [
+          "Access",
+          "GFDD.AM.01",
+          "Value traded excluding top 10 traded companies to total value traded (%)",
+          "Value of all traded shares outside of the largest ten traded companies as a share of total value of all traded shares in a stock market exchange.",
+          "Value of all traded shares outside of the top ten largest traded companies as a share of total value of all traded shares in a stock market exchange. WFE provides data on the exchange level. This variable is aggregated up to the country level by taking a simple average over exchanges.",
+          "1998-2020",
+          "World Federation of Exchanges",
+          null
+        ],
+        "note": "Handelswert außerhalb der zehn meistgehandelten Unternehmen; die Quelle bildet für mehrere Börsen eines Landes einen einfachen Mittelwert, keinen nach Handelswert gewichteten Gesamtanteil."
+      }
+    ],
+    "sourceCountries": {
+      "ABW": "Aruba",
+      "AFG": "Afghanistan",
+      "AGO": "Angola",
+      "ALB": "Albania",
+      "AND": "Andorra",
+      "ARE": "United Arab Emirates",
+      "ARG": "Argentina",
+      "ARM": "Armenia",
+      "ATG": "Antigua and Barbuda",
+      "AUS": "Australia",
+      "AUT": "Austria",
+      "AZE": "Azerbaijan",
+      "BDI": "Burundi",
+      "BEL": "Belgium",
+      "BEN": "Benin",
+      "BFA": "Burkina Faso",
+      "BGD": "Bangladesh",
+      "BGR": "Bulgaria",
+      "BHR": "Bahrain",
+      "BHS": "Bahamas, The",
+      "BIH": "Bosnia and Herzegovina",
+      "BLR": "Belarus",
+      "BLZ": "Belize",
+      "BMU": "Bermuda",
+      "BOL": "Bolivia",
+      "BRA": "Brazil",
+      "BRB": "Barbados",
+      "BRN": "Brunei Darussalam",
+      "BTN": "Bhutan",
+      "BWA": "Botswana",
+      "CAF": "Central African Republic",
+      "CAN": "Canada",
+      "CHE": "Switzerland",
+      "CHI": "Channel Islands",
+      "CHL": "Chile",
+      "CHN": "China",
+      "CIV": "Côte d'Ivoire",
+      "CMR": "Cameroon",
+      "COD": "Congo, Dem. Rep.",
+      "COG": "Congo, Rep.",
+      "COL": "Colombia",
+      "COM": "Comoros",
+      "CPV": "Cabo Verde",
+      "CRI": "Costa Rica",
+      "CUB": "Cuba",
+      "CUW": "Curaçao",
+      "CYM": "Cayman Islands",
+      "CYP": "Cyprus",
+      "CZE": "Czech Republic",
+      "DEU": "Germany",
+      "DJI": "Djibouti",
+      "DMA": "Dominica",
+      "DNK": "Denmark",
+      "DOM": "Dominican Republic",
+      "DZA": "Algeria",
+      "ECU": "Ecuador",
+      "EGY": "Egypt, Arab Rep.",
+      "ERI": "Eritrea",
+      "ESP": "Spain",
+      "EST": "Estonia",
+      "ETH": "Ethiopia",
+      "FIN": "Finland",
+      "FJI": "Fiji",
+      "FRA": "France",
+      "FRO": "Faroe Islands",
+      "FSM": "Micronesia, Fed. Sts.",
+      "GAB": "Gabon",
+      "GBR": "United Kingdom",
+      "GEO": "Georgia",
+      "GHA": "Ghana",
+      "GIB": "Gibraltar",
+      "GIN": "Guinea",
+      "GMB": "Gambia, The",
+      "GNB": "Guinea-Bissau",
+      "GNQ": "Equatorial Guinea",
+      "GRC": "Greece",
+      "GRD": "Grenada",
+      "GRL": "Greenland",
+      "GTM": "Guatemala",
+      "GUM": "Guam",
+      "GUY": "Guyana",
+      "HKG": "Hong Kong SAR, China",
+      "HND": "Honduras",
+      "HRV": "Croatia",
+      "HTI": "Haiti",
+      "HUN": "Hungary",
+      "IDN": "Indonesia",
+      "IMN": "Isle of Man",
+      "IND": "India",
+      "IRL": "Ireland",
+      "IRN": "Iran, Islamic Rep.",
+      "IRQ": "Iraq",
+      "ISL": "Iceland",
+      "ISR": "Israel",
+      "ITA": "Italy",
+      "JAM": "Jamaica",
+      "JOR": "Jordan",
+      "JPN": "Japan",
+      "KAZ": "Kazakhstan",
+      "KEN": "Kenya",
+      "KGZ": "Kyrgyz Republic",
+      "KHM": "Cambodia",
+      "KIR": "Kiribati",
+      "KNA": "St. Kitts and Nevis",
+      "KOR": "Korea, Rep.",
+      "KWT": "Kuwait",
+      "LAO": "Lao PDR",
+      "LBN": "Lebanon",
+      "LBR": "Liberia",
+      "LBY": "Libya",
+      "LCA": "St. Lucia",
+      "LIE": "Liechtenstein",
+      "LKA": "Sri Lanka",
+      "LSO": "Lesotho",
+      "LTU": "Lithuania",
+      "LUX": "Luxembourg",
+      "LVA": "Latvia",
+      "MAC": "Macao SAR, China",
+      "MAR": "Morocco",
+      "MCO": "Monaco",
+      "MDA": "Moldova",
+      "MDG": "Madagascar",
+      "MDV": "Maldives",
+      "MEX": "Mexico",
+      "MHL": "Marshall Islands",
+      "MKD": "North Macedonia",
+      "MLI": "Mali",
+      "MLT": "Malta",
+      "MMR": "Myanmar",
+      "MNE": "Montenegro",
+      "MNG": "Mongolia",
+      "MOZ": "Mozambique",
+      "MRT": "Mauritania",
+      "MUS": "Mauritius",
+      "MWI": "Malawi",
+      "MYS": "Malaysia",
+      "NAM": "Namibia",
+      "NCL": "New Caledonia",
+      "NER": "Niger",
+      "NGA": "Nigeria",
+      "NIC": "Nicaragua",
+      "NLD": "Netherlands",
+      "NOR": "Norway",
+      "NPL": "Nepal",
+      "NRU": "Nauru",
+      "NZL": "New Zealand",
+      "OMN": "Oman",
+      "PAK": "Pakistan",
+      "PAN": "Panama",
+      "PER": "Peru",
+      "PHL": "Philippines",
+      "PLW": "Palau",
+      "PNG": "Papua New Guinea",
+      "POL": "Poland",
+      "PRI": "Puerto Rico",
+      "PRT": "Portugal",
+      "PRY": "Paraguay",
+      "PSE": "West Bank and Gaza",
+      "PYF": "French Polynesia",
+      "QAT": "Qatar",
+      "ROU": "Romania",
+      "RUS": "Russian Federation",
+      "RWA": "Rwanda",
+      "SAU": "Saudi Arabia",
+      "SDN": "Sudan",
+      "SEN": "Senegal",
+      "SGP": "Singapore",
+      "SLB": "Solomon Islands",
+      "SLE": "Sierra Leone",
+      "SLV": "El Salvador",
+      "SMR": "San Marino",
+      "SOM": "Somalia",
+      "SRB": "Serbia",
+      "SSD": "South Sudan",
+      "STP": "São Tomé and Principe",
+      "SUR": "Suriname",
+      "SVK": "Slovak Republic",
+      "SVN": "Slovenia",
+      "SWE": "Sweden",
+      "SWZ": "Eswatini",
+      "SXM": "Sint Maarten (Dutch part)",
+      "SYC": "Seychelles",
+      "SYR": "Syrian Arab Republic",
+      "TCA": "Turks and Caicos Islands",
+      "TCD": "Chad",
+      "TGO": "Togo",
+      "THA": "Thailand",
+      "TJK": "Tajikistan",
+      "TKM": "Turkmenistan",
+      "TLS": "Timor-Leste",
+      "TON": "Tonga",
+      "TTO": "Trinidad and Tobago",
+      "TUN": "Tunisia",
+      "TUR": "Turkey",
+      "TUV": "Tuvalu",
+      "TWN": "Taiwan, China",
+      "TZA": "Tanzania",
+      "UGA": "Uganda",
+      "UKR": "Ukraine",
+      "URY": "Uruguay",
+      "USA": "United States",
+      "UZB": "Uzbekistan",
+      "VCT": "St. Vincent and the Grenadines",
+      "VEN": "Venezuela, RB",
+      "VGB": "British Virgin Islands",
+      "VIR": "Virgin Islands (U.S.)",
+      "VNM": "Vietnam",
+      "VUT": "Vanuatu",
+      "WSM": "Samoa",
+      "XKX": "Kosovo",
+      "YEM": "Yemen, Rep.",
+      "ZAF": "South Africa",
+      "ZMB": "Zambia",
+      "ZWE": "Zimbabwe"
+    },
+    "zipEntries": 30,
+    "uncompressedBytes": 86973497
+  },
+  "profiles": 120,
+  "numeric": 1829,
+  "missing": 931,
+  "originalDecimalsPreserved": true,
+  "metadataRows": [
+    [
+      "Access",
+      "GFDD.AM.02",
+      "Market capitalization excluding top 10 companies to total market capitalization (%)",
+      "Value of listed shares outside of the largest ten largest companies to total value of all listed shares.",
+      "Value of listed shares outside of the top ten largest companies to total value of all listed shares. ",
+      "1998-2020",
+      "World Federation of Exchanges",
+      null
+    ],
+    [
+      "Access",
+      "GFDD.AM.01",
+      "Value traded excluding top 10 traded companies to total value traded (%)",
+      "Value of all traded shares outside of the largest ten traded companies as a share of total value of all traded shares in a stock market exchange.",
+      "Value of all traded shares outside of the top ten largest traded companies as a share of total value of all traded shares in a stock market exchange. WFE provides data on the exchange level. This variable is aggregated up to the country level by taking a simple average over exchanges.",
+      "1998-2020",
+      "World Federation of Exchanges",
+      null
+    ]
+  ],
+  "excluded": "November 2021 worksheet, all unrelated financial indicators and wholly empty countries. No world/continent aggregation or current-weight backcast."
+}

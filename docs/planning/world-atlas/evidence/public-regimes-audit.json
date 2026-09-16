@@ -1,0 +1,401 @@
+{
+  "reviewedAt": "2026-09-11",
+  "source": {
+    "id": "jst-exchange-regimes",
+    "label": "JST R6 · Historische Wechselkursregime",
+    "adapter": "jst_regimes",
+    "url": "https://sfff5b3ac9317c4be.jimcontent.com/download/version/1763503850/module/9834512569/name/JSTdatasetR6.xlsx",
+    "documentationUrl": "https://www.macrohistory.net/database/",
+    "licenseUrl": "https://creativecommons.org/licenses/by-nc-sa/4.0/",
+    "publishedAt": "2022-07",
+    "reviewedAt": "2026-09-11",
+    "recipe": "jst-r6-original-peg-classifications-v1",
+    "observationKind": "historical_classification",
+    "expectedSha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+    "expectedRows": 2718,
+    "expectedNumeric": 5336,
+    "firstPeriod": "1870",
+    "lastPeriod": "2020",
+    "areas": [
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "UK",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "USA",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "peg": "Peg dummy",
+          "peg_strict": "Strict peg dummy"
+        }
+      }
+    ]
+  },
+  "contract": {
+    "sourceId": "jst-exchange-regimes",
+    "file": "jst-regimes-r6.xlsx",
+    "sheet": "Sheet1",
+    "header": [
+      "year",
+      "country",
+      "iso",
+      "ifs",
+      "pop",
+      "rgdpmad",
+      "rgdpbarro",
+      "rconsbarro",
+      "gdp",
+      "iy",
+      "cpi",
+      "ca",
+      "imports",
+      "exports",
+      "narrowm",
+      "money",
+      "stir",
+      "ltrate",
+      "hpnom",
+      "unemp",
+      "wage",
+      "debtgdp",
+      "revenue",
+      "expenditure",
+      "xrusd",
+      "tloans",
+      "tmort",
+      "thh",
+      "tbus",
+      "bdebt",
+      "lev",
+      "ltd",
+      "noncore",
+      "crisisJST",
+      "crisisJST_old",
+      "peg",
+      "peg_strict",
+      "peg_type",
+      "peg_base",
+      "JSTtrilemmaIV",
+      "eq_tr",
+      "housing_tr",
+      "bond_tr",
+      "bill_rate",
+      "rent_ipolated",
+      "housing_capgain_ipolated",
+      "housing_capgain",
+      "housing_rent_rtn",
+      "housing_rent_yd",
+      "eq_capgain",
+      "eq_dp",
+      "eq_capgain_interp",
+      "eq_tr_interp",
+      "eq_dp_interp",
+      "bond_rate",
+      "eq_div_rtn",
+      "capital_tr",
+      "risky_tr",
+      "safe_tr"
+    ],
+    "columns": [
+      {
+        "code": "peg",
+        "index": 35,
+        "title": "Peg dummy",
+        "note": "Weite Originaldefinition, einschließlich gleitender Bindungen. Jahresklasse 1 bedeutet gebunden, 0 nicht gebunden nach dieser Definition."
+      },
+      {
+        "code": "peg_strict",
+        "index": 36,
+        "title": "Strict peg dummy",
+        "note": "Strenge Originaldefinition, ohne gleitende Bindungen. Jahresklasse 0 bedeutet keine strenge Bindung und kann dennoch eine weite Bindung enthalten."
+      }
+    ],
+    "countries": {
+      "AUS": {
+        "label": "Australia",
+        "ifs": 193,
+        "geographyId": "m49:036"
+      },
+      "BEL": {
+        "label": "Belgium",
+        "ifs": 124,
+        "geographyId": "m49:056"
+      },
+      "CAN": {
+        "label": "Canada",
+        "ifs": 156,
+        "geographyId": "m49:124"
+      },
+      "CHE": {
+        "label": "Switzerland",
+        "ifs": 146,
+        "geographyId": "m49:756"
+      },
+      "DEU": {
+        "label": "Germany",
+        "ifs": 134,
+        "geographyId": "m49:276"
+      },
+      "DNK": {
+        "label": "Denmark",
+        "ifs": 128,
+        "geographyId": "m49:208"
+      },
+      "ESP": {
+        "label": "Spain",
+        "ifs": 184,
+        "geographyId": "m49:724"
+      },
+      "FIN": {
+        "label": "Finland",
+        "ifs": 172,
+        "geographyId": "m49:246"
+      },
+      "FRA": {
+        "label": "France",
+        "ifs": 132,
+        "geographyId": "m49:250"
+      },
+      "GBR": {
+        "label": "UK",
+        "ifs": 112,
+        "geographyId": "m49:826"
+      },
+      "IRL": {
+        "label": "Ireland",
+        "ifs": 178,
+        "geographyId": "m49:372"
+      },
+      "ITA": {
+        "label": "Italy",
+        "ifs": 136,
+        "geographyId": "m49:380"
+      },
+      "JPN": {
+        "label": "Japan",
+        "ifs": 158,
+        "geographyId": "m49:392"
+      },
+      "NLD": {
+        "label": "Netherlands",
+        "ifs": 138,
+        "geographyId": "m49:528"
+      },
+      "NOR": {
+        "label": "Norway",
+        "ifs": 142,
+        "geographyId": "m49:578"
+      },
+      "PRT": {
+        "label": "Portugal",
+        "ifs": 182,
+        "geographyId": "m49:620"
+      },
+      "SWE": {
+        "label": "Sweden",
+        "ifs": 144,
+        "geographyId": "m49:752"
+      },
+      "USA": {
+        "label": "USA",
+        "ifs": 111,
+        "geographyId": "m49:840"
+      }
+    },
+    "typeLabels": {
+      "PEG": "Gebundene Modellrolle (PEG)",
+      "FLOAT": "Schwankende Modellrolle (FLOAT)",
+      "BASE": "Basisland im Modell (BASE)"
+    },
+    "baseLabels": {
+      "GBR": "Vereinigtes Königreich",
+      "USA": "Vereinigte Staaten",
+      "DEU": "Deutschland",
+      "HYBRID": "Gemischte Modellbasis (HYBRID)",
+      "NA": "Keine eigene Bezugsbasis angegeben (NA)"
+    },
+    "distributions": {
+      "peg": {
+        "1": 1658,
+        "0": 1010,
+        "None": 50
+      },
+      "peg_strict": {
+        "1": 1404,
+        "0": 1264,
+        "None": 50
+      },
+      "peg_type": {
+        "PEG": 1582,
+        "FLOAT": 961,
+        "BASE": 125,
+        "": 50
+      },
+      "peg_base": {
+        "GBR": 763,
+        "HYBRID": 364,
+        "USA": 720,
+        "DEU": 618,
+        "NA": 203,
+        "": 50
+      }
+    },
+    "zipEntries": 10,
+    "uncompressedBytes": 4925539,
+    "sourceUrl": "https://www.macrohistory.net/app/download/9834512569/JSTdatasetR6.xlsx?t=1763503850"
+  },
+  "profiles": 36,
+  "numeric": 5336,
+  "missing": 100,
+  "scope": "Historische JST-R6-Klassifikation für 18 entwickelte Volkswirtschaften, 1870–2020. Jahreseinordnungen statt stetiger Messgröße: keine Bewertung, Prognose oder wiederkehrende Sinusphase. Die weite Bindungsdefinition umfasst auch gleitende Bindungen (crawling pegs), die strenge Definition schließt sie aus. Modellrolle und Bezugsbasis sind zusätzliche Originalfelder; auch frei schwankenden Ländern kann im Forschungsmodell eine Bezugsbasis zugeteilt sein. BASE kann in der Bindungsvariable sowohl 0 als auch 1 tragen. NA ist eine Quellenangabe und keine leere Zelle. Die Bindung an ein Bezugsland beweist keine Golddeckung. Historische Staats- und Quellengebietsgrenzen bleiben relevant. Quelle: Òscar Jordà, Moritz Schularick und Alan M. Taylor (2017), Macrofinancial History and the New Business Cycle Facts, NBER Macroeconomics Annual 2016, Band 31. JST Release 6; CC BY-NC-SA 4.0, persönlicher nichtkommerzieller Gebrauch, Quellenstand geprüft am 11.09.2026."
+}

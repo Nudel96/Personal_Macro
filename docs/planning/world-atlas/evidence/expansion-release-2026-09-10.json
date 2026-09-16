@@ -1,0 +1,20 @@
+{
+  "checkedAt": "2026-09-10T21:51:30Z",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "exitCode": 0,
+  "identifier": "com.personal-macro.app",
+  "artifact": "apps/desktop/src-tauri/target/x86_64-pc-windows-msvc/release/personal-macro-desktop.exe",
+  "artifactBytes": 48599552,
+  "artifactWrittenAt": "2026-09-10T21:50:11.2630327Z",
+  "sha256": "3534225a0798d8229d7974cb9301339862418641c075dc0f80b703065f5dc79c",
+  "frontendBuildPassed": true,
+  "atlasFrontendTests": { "files": 40, "passed": 276, "failed": 0 },
+  "sdgNativeTests": { "passed": 3, "failed": 0, "includesFullReviewedReleaseRoundtrip": true },
+  "libraryNativeTests": { "passed": 2, "failed": 0 },
+  "nativeUiProfile": "com.personal-macro.atlas-expansion-20260910",
+  "nativeUiJavaScriptErrorsInFinalRun": 0,
+  "ownedQaProcessesStopped": true,
+  "existingProductionProcessLeftRunning": true,
+  "launcherSelectionVerified": true,
+  "scope": "Atlas source expansion and its recorded build snapshot. Concurrent account/dashboard work can leave newer source files and trigger the launcher's normal rebuild check."
+}

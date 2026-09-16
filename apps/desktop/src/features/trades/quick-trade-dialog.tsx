@@ -1,123 +1,60 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { Save, X } from "lucide-react";
 import {
-  cloneElement,
-  isValidElement,
+  Calculator,
+  Check,
+  ChevronDown,
+  CircleDot,
+  FileText,
+  ImagePlus,
+  Save,
+  SlidersHorizontal,
+  X,
+} from "lucide-react";
+import {
   useCallback,
   useEffect,
   useId,
-  useMemo,
-  type ReactElement,
+  useRef,
+  useState,
+  type ReactNode,
 } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { z } from "zod";
 import { Button } from "../../components/ui/button";
-import { fromInputDateTime } from "../../lib/utils";
+import { formatR, toInputDateTime } from "../../lib/utils";
 import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
-import type { TradeInput } from "../../types/domain";
+import type {
+  Account,
+  TradeInput,
+  TradeScreenshotInput,
+} from "../../types/domain";
 import {
   useJournalAccount,
   type JournalAccountStatus,
 } from "../accounts/journal-account-context";
+import {
+  accountMoney,
+  useAccountJournal,
+} from "../accounts/use-account-journal";
 import { PositionSizeCalculator } from "./position-size-calculator";
-
-const tradeSchema = z
-  .object({
-    instrument: z.string().trim().min(2, "Instrument fehlt").max(32),
-    direction: z.enum(["long", "short"]),
-    status: z.enum(["draft", "planned", "open", "closed"]),
-    assetClass: z.string(),
-    accountId: z.string().optional(),
-    setupId: z.string().optional(),
-    session: z.string().optional(),
-    timeframe: z.string().optional(),
-    openedAt: z.string().optional(),
-    closedAt: z.string().optional(),
-    actualEntry: z.string().optional(),
-    initialStopLoss: z.string().optional(),
-    actualExit: z.string().optional(),
-    takeProfit: z.string().optional(),
-    quantity: z.string().optional(),
-    plannedRisk: z.string().optional(),
-    riskPercent: z.string().optional(),
-    grossPnl: z.string().optional(),
-    fees: z.string().optional(),
-    commission: z.string().optional(),
-    swap: z.string().optional(),
-    processScore: z.string().optional(),
-    executionScore: z.string().optional(),
-    setupQuality: z.string().optional(),
-    followedPlan: z.enum(["", "true", "false"]),
-    followedRiskRules: z.enum(["", "true", "false"]),
-    impulseTrade: z.enum(["", "true", "false"]),
-    thesisHtml: z.string().optional(),
-    reviewNotesHtml: z.string().optional(),
-  })
-  .superRefine((value, context) => {
-    if (value.status === "closed" && !value.closedAt) {
-      context.addIssue({
-        code: "custom",
-        path: ["closedAt"],
-        message: "Ausstiegszeit fehlt",
-      });
-    }
-  });
-
-type TradeFormValues = z.infer<typeof tradeSchema>;
-
-const defaults: TradeFormValues = {
-  instrument: "",
-  direction: "long",
-  status: "closed",
-  assetClass: "forex",
-  accountId: "",
-  setupId: "",
-  session: "London",
-  timeframe: "H1",
-  openedAt: "",
-  closedAt: "",
-  actualEntry: "",
-  initialStopLoss: "",
-  actualExit: "",
-  takeProfit: "",
-  quantity: "",
-  plannedRisk: "",
-  riskPercent: "",
-  grossPnl: "",
-  fees: "0",
-  commission: "0",
-  swap: "0",
-  processScore: "",
-  executionScore: "",
-  setupQuality: "",
-  followedPlan: "",
-  followedRiskRules: "",
-  impulseTrade: "",
-  thesisHtml: "",
-  reviewNotesHtml: "",
-};
-
-function moneyMinor(value?: string) {
-  if (value == null || value.trim() === "") return undefined;
-  const numeric = Number(value.replace(",", "."));
-  return Number.isFinite(numeric) ? Math.round(numeric * 100) : undefined;
-}
-
-function score(value?: string) {
-  if (!value) return undefined;
-  const numeric = Number(value);
-  return Number.isInteger(numeric) && numeric >= 1 && numeric <= 10
-    ? numeric
-    : undefined;
-}
-
-function optionalBoolean(value: "" | "true" | "false") {
-  return value === "" ? undefined : value === "true";
-}
+import {
+  TradeScreenshotImport,
+  type ScreenshotReview,
+} from "./trade-screenshot-import";
+import {
+  captureDefaults,
+  captureDraftKey,
+  captureInput,
+  captureMoney,
+  captureNetPnl,
+  captureSchema,
+  readCaptureDraft,
+  type CaptureValues,
+} from "./trade-capture";
+import "./trade-capture.css";
 
 export function readyTradeAccountId(
   status: JournalAccountStatus,
@@ -127,159 +64,312 @@ export function readyTradeAccountId(
 }
 
 export function QuickTradeDialog() {
-  const { quickTradeOpen, setQuickTradeOpen, setGuidedTradeOpen } =
-    useUiStore();
-  const { status: journalAccountStatus, selectedAccount } = useJournalAccount();
-  const readyAccountId = readyTradeAccountId(
-    journalAccountStatus,
-    selectedAccount?.id ?? null,
-  );
-  const ready = readyAccountId !== null;
+  const { quickTradeOpen, setQuickTradeOpen } = useUiStore();
+  const { status, selectedAccount } = useJournalAccount();
+  const readyId = readyTradeAccountId(status, selectedAccount?.id ?? null);
+  useEffect(() => {
+    if (quickTradeOpen && !readyId) setQuickTradeOpen(false);
+  }, [quickTradeOpen, readyId, setQuickTradeOpen]);
+  return quickTradeOpen && readyId && selectedAccount ? (
+    <QuickTradeForm
+      key={readyId}
+      account={selectedAccount}
+      onClose={() => setQuickTradeOpen(false)}
+    />
+  ) : null;
+}
+
+const statusChoices = [
+  {
+    value: "closed",
+    label: "Abgeschlossen",
+    hint: "Ergebnis eintragen",
+    icon: Check,
+  },
+  {
+    value: "open",
+    label: "Läuft noch",
+    hint: "Später abschließen",
+    icon: CircleDot,
+  },
+  {
+    value: "planned",
+    label: "Geplant",
+    hint: "Trade vorbereiten",
+    icon: FileText,
+  },
+] as const;
+
+function QuickTradeForm({
+  account,
+  onClose,
+}: {
+  account: Account;
+  onClose: () => void;
+}) {
   const queryClient = useQueryClient();
+  const accountJournal = useAccountJournal(account.id);
   const bootstrap = useQuery({
     queryKey: ["bootstrap"],
     queryFn: api.bootstrap,
   });
-  const form = useForm<TradeFormValues>({
-    resolver: zodResolver(tradeSchema),
-    defaultValues: defaults,
+  const [initialDraft] = useState(() => readCaptureDraft(account.id));
+  const form = useForm<CaptureValues>({
+    resolver: zodResolver(captureSchema),
+    defaultValues: initialDraft?.values ?? captureDefaults(),
   });
-  const status = form.watch("status");
-  const instrument = form.watch("instrument");
-  const assetClass = form.watch("assetClass");
-  const actualEntry = form.watch("actualEntry");
-  const initialStopLoss = form.watch("initialStopLoss");
-  const plannedRisk = form.watch("plannedRisk");
-  const riskPercent = form.watch("riskPercent");
+  const values = form.watch();
+  const { status } = values;
+  const [screenshot, setScreenshot] = useState<TradeScreenshotInput | null>(
+    null,
+  );
+  const [screenshotReview, setScreenshotReview] =
+    useState<ScreenshotReview | null>(initialDraft?.screenshotReview ?? null);
+  const [screenshotBusy, setScreenshotBusy] = useState(false);
+  const [imageMissing, setImageMissing] = useState(
+    initialDraft?.hadScreenshot ?? false,
+  );
+  const [screenshotOpen, setScreenshotOpen] = useState(false);
+  const [executionOpen, setExecutionOpen] = useState(false);
+  const [notesOpen, setNotesOpen] = useState(false);
+  const [calculatorOpen, setCalculatorOpen] = useState(false);
+  const [automaticSizing, setAutomaticSizing] = useState(false);
+  const [draftStatus, setDraftStatus] = useState(
+    initialDraft ? "Entwurf wiederhergestellt" : "",
+  );
+  const saved = useRef(false);
+  const saving = useRef(false);
+  const currency = account.baseCurrency;
+  const net = captureNetPnl(values);
+  const risk = captureMoney(values.plannedRisk);
+  const formatAmount = (amount: number) =>
+    new Intl.NumberFormat("de-DE", { style: "currency", currency }).format(
+      amount / 100,
+    );
+
   useEffect(() => {
-    if (quickTradeOpen && !ready) setQuickTradeOpen(false);
-    if (quickTradeOpen && selectedAccount)
-      form.setValue("accountId", selectedAccount.id);
-  }, [form, quickTradeOpen, ready, selectedAccount, setQuickTradeOpen]);
+    const persist = () => {
+      if (saved.current) return;
+      try {
+        localStorage.setItem(
+          captureDraftKey(account.id),
+          JSON.stringify({
+            values: form.getValues(),
+            screenshotReview,
+            hadScreenshot: Boolean(screenshot) || imageMissing,
+          }),
+        );
+        setDraftStatus("Entwurf lokal gesichert");
+      } catch {
+        setDraftStatus(
+          "Zwischenspeichern nicht verfügbar – bitte Trade speichern",
+        );
+      }
+    };
+    const subscription = form.watch(persist);
+    if (screenshot || screenshotReview) persist();
+    return () => subscription.unsubscribe();
+  }, [account.id, form, screenshot, screenshotReview, imageMissing]);
+
   const setRiskPercent = useCallback(
-    (value: string) => form.setValue("riskPercent", value),
+    (value: string) =>
+      form.setValue("riskPercent", value, { shouldDirty: true }),
     [form],
   );
   const setPlannedRisk = useCallback(
-    (value: string) => form.setValue("plannedRisk", value),
+    (value: string) =>
+      form.setValue("plannedRisk", value, { shouldDirty: true }),
     [form],
   );
   const setQuantity = useCallback(
-    (value: string) => form.setValue("quantity", value),
+    (value: string) => form.setValue("quantity", value, { shouldDirty: true }),
     [form],
-  );
-  const title = useMemo(
-    () => (status === "draft" ? "Trade-Entwurf" : "Trade erfassen"),
-    [status],
   );
 
   const mutation = useMutation({
-    mutationFn: api.createTrade,
+    mutationFn: (input: TradeInput) =>
+      screenshot
+        ? api.createTradeWithScreenshot(input, screenshot)
+        : api.createTrade(input),
     onSuccess: (trade) => {
-      toast.success(`${trade.instrument} wurde gespeichert.`);
-      queryClient.invalidateQueries({ queryKey: ["trades"] });
-      queryClient.invalidateQueries({ queryKey: ["dashboard"] });
-      queryClient.invalidateQueries({ queryKey: ["bootstrap"] });
-      form.reset(defaults);
-      setQuickTradeOpen(false);
+      saved.current = true;
+      try {
+        localStorage.removeItem(captureDraftKey(account.id));
+      } catch {
+        /* Saving the trade still succeeded. */
+      }
+      for (const key of [
+        "trades",
+        "dashboard",
+        "bootstrap",
+        "media",
+        "calendar",
+        "analytics",
+      ])
+        queryClient.invalidateQueries({ queryKey: [key] });
+      toast.success(trade.instrument + " wurde gespeichert.", {
+        description:
+          trade.status === "open"
+            ? "Zum Abschließen den Trade in der Liste öffnen."
+            : "Du kannst alle Angaben später im Trade ergänzen.",
+      });
+      onClose();
     },
     onError: (error: { message?: string }) =>
       toast.error(error.message ?? "Trade konnte nicht gespeichert werden."),
+    onSettled: () => {
+      saving.current = false;
+    },
   });
 
-  const submit = form.handleSubmit((values) => {
-    const input: TradeInput = {
-      accountId: readyAccountId!,
-      strategyId: undefined,
-      setupId: values.setupId || undefined,
-      status: values.status,
-      instrument: values.instrument,
-      assetClass: values.assetClass,
-      direction: values.direction,
-      session: values.session || undefined,
-      timeframe: values.timeframe || undefined,
-      openedAt: fromInputDateTime(values.openedAt),
-      closedAt: fromInputDateTime(values.closedAt),
-      displayTimezone: "Europe/Berlin",
-      plannedEntry: undefined,
-      actualEntry: values.actualEntry || undefined,
-      initialStopLoss: values.initialStopLoss || undefined,
-      actualExit: values.actualExit || undefined,
-      takeProfit: values.takeProfit || undefined,
-      quantity: values.quantity || undefined,
-      plannedRiskMinor: moneyMinor(values.plannedRisk),
-      grossPnlMinor: moneyMinor(values.grossPnl),
-      feesMinor: moneyMinor(values.fees) ?? 0,
-      commissionMinor: moneyMinor(values.commission) ?? 0,
-      swapMinor: moneyMinor(values.swap) ?? 0,
-      netPnlMinor: undefined,
-      rOverride: undefined,
-      rOverrideReason: undefined,
-      maeR: undefined,
-      mfeR: undefined,
-      followedPlan: optionalBoolean(values.followedPlan),
-      followedRiskRules: optionalBoolean(values.followedRiskRules),
-      followedEntryRules: undefined,
-      followedExitRules: undefined,
-      impulseTrade: optionalBoolean(values.impulseTrade),
-      processScore: score(values.processScore),
-      executionScore: score(values.executionScore),
-      setupQuality: score(values.setupQuality),
-      confidenceBefore: undefined,
-      focusBefore: undefined,
-      stressBefore: undefined,
-      energyBefore: undefined,
-      satisfactionAfter: undefined,
-      reviewedAt: undefined,
-      thesisHtml: values.thesisHtml || undefined,
-      executionNotesHtml: undefined,
-      reviewNotesHtml: values.reviewNotesHtml || undefined,
-      lessonsHtml: undefined,
-    };
-    mutation.mutate(input);
-  });
+  const submit = form.handleSubmit(
+    (next) => {
+      if (screenshotBusy || saving.current) return;
+      saving.current = true;
+      mutation.mutate(captureInput(next, account.id, screenshotReview));
+    },
+    (errors) => {
+      if (
+        [
+          "actualEntry",
+          "initialStopLoss",
+          "actualExit",
+          "takeProfit",
+          "quantity",
+          "plannedRisk",
+          "openedAt",
+          "fees",
+          "commission",
+          "swap",
+        ].some((key) => key in errors)
+      )
+        setExecutionOpen(true);
+      toast.error("Bitte die markierten Eingaben prüfen.");
+    },
+  );
+
+  const setStatus = (next: CaptureValues["status"]) => {
+    form.setValue("status", next, { shouldDirty: true });
+    if (next === "closed" && !form.getValues("closedAt"))
+      form.setValue("closedAt", toInputDateTime(new Date().toISOString()));
+    if (next === "open" && !form.getValues("openedAt"))
+      form.setValue("openedAt", toInputDateTime(new Date().toISOString()));
+    form.clearErrors("closedAt");
+  };
+
+  const numericField = (
+    key: keyof CaptureValues,
+    label: string,
+    placeholder?: string,
+  ) => (
+    <CaptureField label={label} error={form.formState.errors[key]?.message}>
+      <input
+        className="input"
+        inputMode="decimal"
+        placeholder={placeholder}
+        {...form.register(key, {
+          onChange: () => {
+            if (key === "plannedRisk" || key === "quantity")
+              setAutomaticSizing(false);
+          },
+        })}
+      />
+    </CaptureField>
+  );
 
   return (
-    <Dialog.Root open={quickTradeOpen} onOpenChange={setQuickTradeOpen}>
+    <Dialog.Root
+      open
+      onOpenChange={(open) => {
+        if (!open && !mutation.isPending) onClose();
+      }}
+    >
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content
-          className="dialog-content wide"
-          aria-describedby="quick-trade-description"
+          className="dialog-content trade-capture-dialog"
+          aria-describedby="capture-description"
         >
-          <form onSubmit={submit}>
+          <form onSubmit={submit} noValidate>
             <header className="dialog-header">
               <div>
-                <Dialog.Title className="dialog-title">{title}</Dialog.Title>
+                <Dialog.Title className="dialog-title">
+                  Trade erfassen
+                </Dialog.Title>
                 <Dialog.Description
-                  id="quick-trade-description"
+                  id="capture-description"
                   className="dialog-description"
                 >
-                  Schnellerfassung mit Ergebnis-, Risiko- und Prozessdaten
+                  Die wichtigsten Angaben zuerst. Alles Weitere kannst du später
+                  ergänzen.
                 </Dialog.Description>
               </div>
-              <div className="page-actions">
+              <Dialog.Close asChild>
                 <Button
-                  type="button"
-                  onClick={() => {
-                    setQuickTradeOpen(false);
-                    setGuidedTradeOpen(true);
-                  }}
+                  variant="ghost"
+                  size="icon"
+                  disabled={mutation.isPending}
+                  aria-label="Schließen"
                 >
-                  Geführte Erfassung
+                  <X size={17} />
                 </Button>
-                <Dialog.Close asChild>
-                  <Button variant="ghost" size="icon" aria-label="Schließen">
-                    <X size={17} />
-                  </Button>
-                </Dialog.Close>
-              </div>
+              </Dialog.Close>
             </header>
-            <div className="dialog-body">
-              <section className="form-section">
-                <h3 className="form-section-title">Grunddaten</h3>
+            <div className="dialog-body trade-capture-body">
+              <div className="trade-capture-account">
+                <span>
+                  {account.name}{" "}
+                  <span className="muted">· Konto-P&L gesamt </span>
+                  <strong>
+                    {accountMoney(accountJournal.data?.netPnlMinor, currency)}
+                  </strong>
+                </span>
+                <span className="muted" role="status">
+                  {draftStatus ||
+                    (status === "closed"
+                      ? "Nur Instrument und Abschlusszeit sind Pflicht"
+                      : "Nur das Instrument ist Pflicht")}
+                </span>
+              </div>
+              <fieldset
+                className="trade-capture-status"
+                disabled={mutation.isPending}
+              >
+                <legend>Wo steht dein Trade?</legend>
+                <div>
+                  {statusChoices.map(({ value, label, hint, icon: Icon }) => (
+                    <label
+                      key={value}
+                      className={status === value ? "selected" : ""}
+                    >
+                      <input
+                        type="radio"
+                        value={value}
+                        name="capture-status"
+                        checked={status === value}
+                        onChange={() => setStatus(value)}
+                      />
+                      <Icon size={17} />
+                      <span>
+                        <strong>{label}</strong>
+                        <small>{hint}</small>
+                      </span>
+                    </label>
+                  ))}
+                </div>
+                {status === "draft" && (
+                  <p className="muted">
+                    Dieser Trade ist ein Entwurf. Du kannst ihn direkt speichern
+                    oder oben einen Status wählen.
+                  </p>
+                )}
+              </fieldset>
+              <fieldset
+                className="trade-capture-fields"
+                disabled={mutation.isPending}
+              >
                 <div className="form-grid cols-3">
-                  <Field
+                  <CaptureField
                     label="Instrument"
                     error={form.formState.errors.instrument?.message}
                   >
@@ -288,33 +378,10 @@ export function QuickTradeDialog() {
                       placeholder="z. B. EURUSD"
                       {...form.register("instrument")}
                       autoFocus
+                      autoComplete="off"
                     />
-                  </Field>
-                  <Field label="Richtung">
-                    <select className="select" {...form.register("direction")}>
-                      <option value="long">Long</option>
-                      <option value="short">Short</option>
-                    </select>
-                  </Field>
-                  <Field label="Status">
-                    <select className="select" {...form.register("status")}>
-                      <option value="draft">Entwurf</option>
-                      <option value="planned">Geplant</option>
-                      <option value="open">Offen</option>
-                      <option value="closed">Geschlossen</option>
-                    </select>
-                  </Field>
-                  <Field label="Setup">
-                    <select className="select" {...form.register("setupId")}>
-                      <option value="">Ohne Setup</option>
-                      {bootstrap.data?.setups.map((item) => (
-                        <option key={item.id} value={item.id}>
-                          {item.name}
-                        </option>
-                      ))}
-                    </select>
-                  </Field>
-                  <Field label="Assetklasse">
+                  </CaptureField>
+                  <CaptureField label="Assetklasse">
                     <select className="select" {...form.register("assetClass")}>
                       <option value="forex">Forex</option>
                       <option value="futures">Futures</option>
@@ -323,236 +390,319 @@ export function QuickTradeDialog() {
                       <option value="indices">Indizes</option>
                       <option value="stocks">Aktien</option>
                     </select>
-                  </Field>
-                  <Field label="Session">
-                    <select className="select" {...form.register("session")}>
-                      <option>Asia</option>
-                      <option>London</option>
-                      <option>New York</option>
-                      <option>Overlap</option>
-                      <option>Außerhalb</option>
+                  </CaptureField>
+                  <CaptureField label="Richtung">
+                    <select className="select" {...form.register("direction")}>
+                      <option value="long">Long / Kauf</option>
+                      <option value="short">Short / Verkauf</option>
                     </select>
-                  </Field>
-                  <Field label="Timeframe">
-                    <select className="select" {...form.register("timeframe")}>
-                      <option>M5</option>
-                      <option>M15</option>
-                      <option>H1</option>
-                      <option>H4</option>
-                      <option>D1</option>
-                    </select>
-                  </Field>
-                  <div />
-                  <Field label="Einstieg">
-                    <input
-                      className="input"
-                      type="datetime-local"
-                      {...form.register("openedAt")}
-                    />
-                  </Field>
-                  <Field
-                    label="Ausstieg"
-                    error={form.formState.errors.closedAt?.message}
-                  >
-                    <input
-                      className="input"
-                      type="datetime-local"
-                      {...form.register("closedAt")}
-                    />
-                  </Field>
+                  </CaptureField>
                 </div>
-              </section>
-              <section className="form-section">
-                <h3 className="form-section-title">Ausführung & Risiko</h3>
-                <PositionSizeCalculator
-                  account={selectedAccount ?? undefined}
-                  instrument={instrument}
-                  assetClass={assetClass}
-                  entryPrice={actualEntry ?? ""}
-                  stopPrice={initialStopLoss ?? ""}
-                  riskPercent={riskPercent ?? ""}
-                  riskAmount={plannedRisk ?? ""}
-                  onRiskPercentChange={setRiskPercent}
-                  onRiskAmountChange={setPlannedRisk}
-                  onQuantityChange={setQuantity}
-                />
-                <div className="form-grid cols-3">
-                  <Field label="Entry-Preis">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      placeholder="1,0850"
-                      {...form.register("actualEntry")}
-                    />
-                  </Field>
-                  <Field label="Initialer Stop">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      placeholder="1,0800"
-                      {...form.register("initialStopLoss")}
-                    />
-                  </Field>
-                  <Field label="Take Profit">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("takeProfit")}
-                    />
-                  </Field>
-                  <Field label="Exit-Preis">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("actualExit")}
-                    />
-                  </Field>
-                  <Field label="Positionsgröße">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("quantity")}
-                    />
-                  </Field>
-                  <Field
-                    label={`Geplantes Risiko (${selectedAccount?.baseCurrency ?? "Kontowährung"})`}
-                  >
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      placeholder="100,00"
-                      {...form.register("plannedRisk")}
-                    />
-                  </Field>
-                  <Field label="Brutto-P&L (€)">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      placeholder="250,00"
-                      {...form.register("grossPnl")}
-                    />
-                  </Field>
-                  <Field label="Gebühren (€)">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("fees")}
-                    />
-                  </Field>
-                  <Field label="Kommission (€)">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("commission")}
-                    />
-                  </Field>
-                  <Field label="Swap/Finanzierung (€)">
-                    <input
-                      className="input"
-                      inputMode="decimal"
-                      {...form.register("swap")}
-                    />
-                  </Field>
-                </div>
-              </section>
-              <section className="form-section">
-                <h3 className="form-section-title">Prozess & Psychologie</h3>
-                <p className="form-section-copy">
-                  Nicht bewertete Felder bleiben unbekannt und zählen nicht als
-                  Regelverstoß.
-                </p>
-                <div className="form-grid cols-3">
-                  <Field label="Plan eingehalten">
-                    <select
-                      className="select"
-                      {...form.register("followedPlan")}
-                    >
-                      <option value="">Nicht bewertet</option>
-                      <option value="true">Ja</option>
-                      <option value="false">Nein</option>
-                    </select>
-                  </Field>
-                  <Field label="Risikoregeln eingehalten">
-                    <select
-                      className="select"
-                      {...form.register("followedRiskRules")}
-                    >
-                      <option value="">Nicht bewertet</option>
-                      <option value="true">Ja</option>
-                      <option value="false">Nein</option>
-                    </select>
-                  </Field>
-                  <Field label="Impulstrade">
-                    <select
-                      className="select"
-                      {...form.register("impulseTrade")}
-                    >
-                      <option value="">Nicht bewertet</option>
-                      <option value="false">Nein</option>
-                      <option value="true">Ja</option>
-                    </select>
-                  </Field>
-                  <Field label="Prozess-Score (1–10)">
-                    <input
-                      className="input"
-                      min="1"
-                      max="10"
-                      type="number"
-                      {...form.register("processScore")}
-                    />
-                  </Field>
-                  <Field label="Ausführung (1–10)">
-                    <input
-                      className="input"
-                      min="1"
-                      max="10"
-                      type="number"
-                      {...form.register("executionScore")}
-                    />
-                  </Field>
-                  <Field label="Setup-Qualität (1–10)">
-                    <input
-                      className="input"
-                      min="1"
-                      max="10"
-                      type="number"
-                      {...form.register("setupQuality")}
-                    />
-                  </Field>
-                </div>
-              </section>
-              <section className="form-section">
-                <h3 className="form-section-title">Notizen</h3>
                 <div className="form-grid">
-                  <Field label="These">
-                    <textarea
-                      className="textarea"
-                      placeholder="Warum ist dieser Trade valide?"
-                      {...form.register("thesisHtml")}
-                    />
-                  </Field>
-                  <Field label="Review">
-                    <textarea
-                      className="textarea"
-                      placeholder="Was lief gut, was verbesserst du?"
-                      {...form.register("reviewNotesHtml")}
-                    />
-                  </Field>
+                  {status === "closed" ? (
+                    <CaptureField
+                      label="Ausstieg"
+                      error={form.formState.errors.closedAt?.message}
+                    >
+                      <input
+                        className="input"
+                        type="datetime-local"
+                        {...form.register("closedAt")}
+                      />
+                    </CaptureField>
+                  ) : (
+                    <CaptureField
+                      label={
+                        status === "open" ? "Einstieg" : "Einstieg (optional)"
+                      }
+                      error={form.formState.errors.openedAt?.message}
+                    >
+                      <input
+                        className="input"
+                        type="datetime-local"
+                        {...form.register("openedAt")}
+                      />
+                    </CaptureField>
+                  )}
+                  {status === "closed"
+                    ? numericField(
+                        values.pnlMode === "net" ? "netPnl" : "grossPnl",
+                        (values.pnlMode === "net"
+                          ? "Gewinn / Verlust"
+                          : "Brutto-P&L") +
+                          " (" +
+                          currency +
+                          ")",
+                        "z. B. 125,50 oder -50,00",
+                      )
+                    : numericField(
+                        "actualEntry",
+                        status === "planned"
+                          ? "Geplanter Entry-Preis (optional)"
+                          : "Entry-Preis",
+                        "Optional",
+                      )}
                 </div>
-              </section>
+                {status === "closed" && (
+                  <div className="trade-capture-result-help">
+                    <span>
+                      Gewinn positiv, Verlust mit Minus. Leer bleibt unbekannt.
+                    </span>
+                    <label>
+                      <span className="sr-only">Ergebnisart</span>
+                      <select className="select" {...form.register("pnlMode")}>
+                        <option value="net">
+                          Netto · Kosten bereits enthalten
+                        </option>
+                        <option value="gross">
+                          Brutto · Kosten separat erfassen
+                        </option>
+                      </select>
+                    </label>
+                  </div>
+                )}
+              </fieldset>
+
+              <div className="trade-capture-extras-label">
+                Bei Bedarf ergänzen
+              </div>
+              <CaptureExtra
+                title="Screenshot hinzufügen"
+                hint={
+                  screenshot
+                    ? screenshot.filename
+                    : "Bild auswählen oder aus der Zwischenablage einfügen"
+                }
+                icon={<ImagePlus size={16} />}
+                open={screenshotOpen}
+                onChange={setScreenshotOpen}
+              >
+                <TradeScreenshotImport
+                  accountCurrency={currency}
+                  disabled={mutation.isPending}
+                  onImageChange={(image) => {
+                    setScreenshot(image);
+                    setImageMissing(false);
+                  }}
+                  onBusyChange={setScreenshotBusy}
+                  onApply={(patch, review) => {
+                    setAutomaticSizing(false);
+                    setScreenshotReview(review);
+                    setExecutionOpen(true);
+                    setCalculatorOpen(true);
+                    if (patch.plannedRisk && !patch.riskPercent)
+                      form.setValue("riskPercent", "");
+                    for (const [key, value] of Object.entries(patch))
+                      form.setValue(key as keyof CaptureValues, value, {
+                        shouldDirty: true,
+                        shouldValidate: true,
+                      });
+                    if (patch.status)
+                      setStatus(patch.status as CaptureValues["status"]);
+                    if (review.assetClass && patch.instrument)
+                      form.setValue("assetClass", review.assetClass);
+                  }}
+                />
+              </CaptureExtra>
+              {imageMissing && (
+                <p className="trade-capture-notice">
+                  Die Eingaben wurden wiederhergestellt. Bitte den Screenshot
+                  erneut hinzufügen, wenn du ihn am Trade speichern möchtest.
+                </p>
+              )}
+              <CaptureExtra
+                title="Kurse, Risiko & Kosten"
+                hint="Entry, Stop, Ziel und Positionsgröße"
+                icon={<SlidersHorizontal size={16} />}
+                open={executionOpen}
+                onChange={setExecutionOpen}
+              >
+                <fieldset
+                  className="trade-capture-fields"
+                  disabled={mutation.isPending}
+                >
+                  <div className="form-grid cols-3">
+                    {status === "closed" &&
+                      numericField("actualEntry", "Entry-Preis")}
+                    {numericField("initialStopLoss", "Initialer Stop")}
+                    {numericField("takeProfit", "Take Profit")}
+                    {status === "closed" &&
+                      numericField("actualExit", "Exit-Preis")}
+                    {numericField("quantity", "Positionsgröße")}
+                    {numericField(
+                      "plannedRisk",
+                      "Geplantes Risiko (" + currency + ")",
+                      "Optional, für die R-Berechnung",
+                    )}
+                    {status === "closed" && (
+                      <CaptureField
+                        label="Einstieg (optional)"
+                        error={form.formState.errors.openedAt?.message}
+                      >
+                        <input
+                          className="input"
+                          type="datetime-local"
+                          {...form.register("openedAt")}
+                        />
+                      </CaptureField>
+                    )}
+                  </div>
+                  {status === "closed" && values.pnlMode === "gross" && (
+                    <div className="form-grid cols-3">
+                      {numericField("fees", "Gebühren (" + currency + ")")}
+                      {numericField(
+                        "commission",
+                        "Kommission (" + currency + ")",
+                      )}
+                      {numericField(
+                        "swap",
+                        "Swap-Kosten (" + currency + ")",
+                        "Gutschrift mit Minus",
+                      )}
+                    </div>
+                  )}
+                  {!calculatorOpen ? (
+                    <Button
+                      type="button"
+                      onClick={() => {
+                        setCalculatorOpen(true);
+                        setAutomaticSizing(true);
+                      }}
+                    >
+                      <Calculator size={14} /> Positionsgröße berechnen
+                    </Button>
+                  ) : (
+                    <PositionSizeCalculator
+                      account={account}
+                      instrument={values.instrument}
+                      assetClass={values.assetClass}
+                      entryPrice={values.actualEntry}
+                      stopPrice={values.initialStopLoss}
+                      riskPercent={values.riskPercent}
+                      riskAmount={values.plannedRisk}
+                      onRiskPercentChange={setRiskPercent}
+                      onRiskAmountChange={setPlannedRisk}
+                      onQuantityChange={setQuantity}
+                      autoApply={automaticSizing}
+                      onEnableAutomatic={() => setAutomaticSizing(true)}
+                    />
+                  )}
+                </fieldset>
+              </CaptureExtra>
+              <CaptureExtra
+                title="Setup & Notizen"
+                hint="Strategie festhalten und den Trade später nachvollziehen"
+                icon={<FileText size={16} />}
+                open={notesOpen}
+                onChange={setNotesOpen}
+              >
+                <fieldset
+                  className="trade-capture-fields"
+                  disabled={mutation.isPending}
+                >
+                  <div className="form-grid cols-3">
+                    <CaptureField label="Setup">
+                      <select className="select" {...form.register("setupId")}>
+                        <option value="">Ohne Setup</option>
+                        {bootstrap.data?.setups.map((item) => (
+                          <option key={item.id} value={item.id}>
+                            {item.name}
+                          </option>
+                        ))}
+                      </select>
+                    </CaptureField>
+                    <CaptureField label="Session">
+                      <select className="select" {...form.register("session")}>
+                        <option value="">Nicht gewählt</option>
+                        {[
+                          "Asia",
+                          "London",
+                          "New York",
+                          "Overlap",
+                          "Außerhalb",
+                        ].map((item) => (
+                          <option key={item}>{item}</option>
+                        ))}
+                      </select>
+                    </CaptureField>
+                    <CaptureField label="Timeframe">
+                      <select
+                        className="select"
+                        {...form.register("timeframe")}
+                      >
+                        <option value="">Nicht gewählt</option>
+                        {["M1", "M5", "M15", "M30", "H1", "H4", "D1", "W1"].map(
+                          (item) => (
+                            <option key={item}>{item}</option>
+                          ),
+                        )}
+                      </select>
+                    </CaptureField>
+                  </div>
+                  <div className="form-grid">
+                    <CaptureField label="Trade-Idee / Notiz">
+                      <textarea
+                        className="textarea"
+                        rows={3}
+                        placeholder="Warum dieser Trade?"
+                        {...form.register("thesisHtml")}
+                      />
+                    </CaptureField>
+                    <CaptureField label="Review-Notiz">
+                      <textarea
+                        className="textarea"
+                        rows={3}
+                        placeholder="Was möchtest du beim nächsten Mal beachten?"
+                        {...form.register("reviewNotesHtml")}
+                      />
+                    </CaptureField>
+                  </div>
+                </fieldset>
+              </CaptureExtra>
             </div>
             <footer className="dialog-footer">
-              <span className="muted" style={{ fontSize: 10 }}>
-                R wird aus Netto-P&L ÷ geplantem Risiko berechnet.
-              </span>
+              <div className="trade-capture-summary">
+                {status === "closed" && net != null ? (
+                  <>
+                    <span>Netto-Ergebnis</span>
+                    <strong
+                      className={
+                        net > 0
+                          ? "positive-text"
+                          : net < 0
+                            ? "negative-text"
+                            : ""
+                      }
+                    >
+                      {formatAmount(net)}
+                      {risk != null && risk > 0
+                        ? " · " + formatR(net / risk)
+                        : ""}
+                    </strong>
+                  </>
+                ) : (
+                  <span>
+                    {status === "open"
+                      ? "Abschluss und Ergebnis später ergänzen."
+                      : "Du kannst den Trade jederzeit ergänzen."}
+                  </span>
+                )}
+              </div>
               <div className="page-actions">
-                <Dialog.Close asChild>
-                  <Button type="button">Abbrechen</Button>
-                </Dialog.Close>
+                <Button
+                  type="button"
+                  disabled={mutation.isPending || screenshotBusy}
+                  onClick={() => {
+                    form.setValue("status", "draft", { shouldDirty: true });
+                    void submit();
+                  }}
+                >
+                  Als Entwurf
+                </Button>
                 <Button
                   variant="primary"
                   type="submit"
-                  disabled={!ready || mutation.isPending}
+                  disabled={mutation.isPending || screenshotBusy}
                 >
                   <Save size={15} />{" "}
                   {mutation.isPending ? "Speichert …" : "Trade speichern"}
@@ -566,42 +716,65 @@ export function QuickTradeDialog() {
   );
 }
 
-function Field({
+function CaptureField({
   label,
   error,
   children,
 }: {
   label: string;
   error?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }) {
-  const generatedId = useId();
-  const errorId = `${generatedId}-error`;
-  const control = isValidElement(children)
-    ? cloneElement(
-        children as ReactElement<{
-          id?: string;
-          "aria-invalid"?: boolean;
-          "aria-describedby"?: string;
-        }>,
-        {
-          id: (children.props as { id?: string }).id ?? generatedId,
-          "aria-invalid": Boolean(error),
-          "aria-describedby": error ? errorId : undefined,
-        },
-      )
-    : children;
   return (
-    <div className="field">
-      <div className="field-label-row">
-        <label htmlFor={generatedId}>{label}</label>
+    <label className="field">
+      <span className="field-label-row">
+        <span>{label}</span>
         {error && (
-          <span id={errorId} className="field-error">
+          <span className="field-error" role="alert">
             {error}
           </span>
         )}
+      </span>
+      {children}
+    </label>
+  );
+}
+
+function CaptureExtra({
+  title,
+  hint,
+  icon,
+  open,
+  onChange,
+  children,
+}: {
+  title: string;
+  hint: string;
+  icon: ReactNode;
+  open: boolean;
+  onChange: (open: boolean) => void;
+  children: ReactNode;
+}) {
+  const id = useId();
+  return (
+    <section className={"trade-capture-extra" + (open ? " expanded" : "")}>
+      <button
+        type="button"
+        className="trade-capture-extra-toggle"
+        aria-expanded={open}
+        aria-controls={id}
+        onClick={() => onChange(!open)}
+      >
+        {icon}
+        <span>
+          <strong>{title}</strong>
+          <small>{hint}</small>
+        </span>
+        <ChevronDown size={16} />
+      </button>
+      <div id={id} hidden={!open} className="trade-capture-extra-body">
+        {children}
       </div>
-      {control}
-    </div>
+    </section>
   );
 }

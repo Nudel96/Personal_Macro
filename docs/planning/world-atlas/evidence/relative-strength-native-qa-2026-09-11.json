@@ -1,0 +1,266 @@
+{
+  "checkedAt": "2026-09-11T08:13:02.181Z",
+  "status": "passed",
+  "topicId": "market_context:relative_strength",
+  "native": true,
+  "catalogVersion": "2026-09-11.23",
+  "checks": [
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:SPY.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWG.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:INDA.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2012-02",
+      "last": "2026-08",
+      "values": 175
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:MCHI.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2011-03",
+      "last": "2026-08",
+      "values": 186
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EZA.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWJ.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWA.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWC.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWU.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:EWZ.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-03",
+      "last": "2026-08",
+      "values": 222
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLB.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLC.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2018-06",
+      "last": "2026-08",
+      "values": 99
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLE.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLF.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2016-10",
+      "last": "2026-08",
+      "values": 119
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLI.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLK.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2018-10",
+      "last": "2026-08",
+      "values": 95
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLP.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLRE.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2015-10",
+      "last": "2026-08",
+      "values": 131
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLU.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLV.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2006-09",
+      "last": "2026-08",
+      "values": 240
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:XLY.US",
+      "benchmark": "eodhd:SPY.US",
+      "first": "2018-10",
+      "last": "2026-08",
+      "values": 95
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:HYDR.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2021-07",
+      "last": "2026-08",
+      "values": 62
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:TAN.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2008-04",
+      "last": "2026-08",
+      "values": 221
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:NLR.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2014-04",
+      "last": "2026-08",
+      "values": 149
+    },
+    {
+      "check": "all_original_relative_values",
+      "proxy": "eodhd:URA.US",
+      "benchmark": "eodhd:ACWI.US",
+      "first": "2018-09",
+      "last": "2026-08",
+      "values": 96
+    },
+    {
+      "check": "ten_years_120_closed_months",
+      "passed": true
+    },
+    {
+      "check": "all_history_limited_by_acwi_inception",
+      "passed": true
+    },
+    {
+      "check": "optional_numbers_and_tooltips",
+      "passed": true
+    },
+    {
+      "check": "mismatched_benchmark_not_overlaid",
+      "passed": true
+    },
+    {
+      "check": "germany_india_same_month_and_reference",
+      "firsts": [
+        "Deutschland · MSCI-Aktienmarkt · 2012-02 · 100 · Basis 100",
+        "Indien · MSCI-Aktienmarkt · 2012-02 · 100 · Basis 100"
+      ]
+    },
+    {
+      "check": "france_no_borrowed_country_value",
+      "passed": true
+    },
+    {
+      "check": "hydrogen_genuine_young_history_available_without_wave",
+      "months": 62
+    },
+    {
+      "check": "native_final_catalog_searchable_relative_topic",
+      "passed": true
+    },
+    {
+      "check": "saved_two_source_recipe_snapshot_and_horizon_reopened",
+      "passed": true
+    },
+    {
+      "check": "minimum_width",
+      "width": 1024,
+      "documentWidth": 1015
+    },
+    {
+      "check": "responsive_axes_keep_readable_text",
+      "viewport": 476,
+      "viewBox": 476,
+      "textPixels": 16
+    }
+  ],
+  "pageErrors": [],
+  "screenshots": [
+    "output/atlas-relative-healthcare.png",
+    "output/atlas-relative-comparison.png",
+    "output/atlas-relative-minwidth.png"
+  ],
+  "visualReview": "All three final screenshots reviewed, including responsive axes at 1024 pixels; source scopes, common month and legend remain readable."
+}

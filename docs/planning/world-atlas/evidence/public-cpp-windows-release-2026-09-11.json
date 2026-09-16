@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T04:39:36.630871+00:00",
+  "status": "passed",
+  "command": "pnpm tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "sha256": "1e1c824b3bb42751c70064946f12598f33fa7a16c132245099b1b82c94b4e29e",
+  "bytes": 53593088,
+  "log": "apps\\desktop\\.tmp\\atlas-remaining-40\\cpp-windows-final.log",
+  "includes": [
+    "65 original BIS commercial property series with per-country selectors and independent comparison selection",
+    "Calendar-span validation for mixed source frequencies",
+    "Hollow provisional markers and saved source selections"
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "frontend": "30 public/notebook/coverage tests; 25 public/notebook tests passed after final UI changes; scoped ESLint passed",
+    "native": "2 CPP full-original/mutation tests and temporary SQLite reopen; 2 ND-GAIN and 1 Census regressions passed",
+    "clippy": "all targets -D warnings passed",
+    "nativeUi": "35 checks passed, four screenshots visually reviewed",
+    "nativeStderr": "empty"
+  }
+}

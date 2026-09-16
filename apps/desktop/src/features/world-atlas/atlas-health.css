@@ -1,0 +1,26 @@
+.atlas-health-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.atlas-health-chart text {
+  fill: var(--text-2);
+  font-size: 11px;
+}
+.atlas-health-notes p {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+.atlas-health-notes select {
+  max-width: 100%;
+  text-overflow: ellipsis;
+}
+.atlas-health-notes section {
+  border-top: 1px solid var(--border);
+  margin-top: 16px;
+  padding-top: 10px;
+}
+.atlas-health-notes label {
+  display: grid;
+  gap: 8px;
+}

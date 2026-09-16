@@ -1,0 +1,3678 @@
+{
+  "reviewedOn": "2026-09-09",
+  "catalogVersion": "2026-09-09.3",
+  "fileCount": 195,
+  "files": [
+    {
+      "fileName": "pedata.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pedata.xls",
+      "sha256": "e9b839c046a8ff2786d81faedc603cd91d7c6d8b2bad9f895d821e2d6bd1e04f",
+      "bytes": 61952,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peEurope.xls",
+      "sha256": "547de2d52bf3606734bca8bce34e3d26380461699c80173efca6904a650f955e",
+      "bytes": 61952,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peJapan.xls",
+      "sha256": "3e284d1188ecf4a01c0997396506d1e7948ebb8eadceabf4969660cde5f8342b",
+      "bytes": 62464,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peemerg.xls",
+      "sha256": "6e6e9b505272ca1896550ccde9e1a5321c0272bc3c19c3766ce2c6dd5a32238e",
+      "bytes": 61952,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peChina.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peChina.xls",
+      "sha256": "01ab0fe2c5c466d125e0a8ab22b10e4181f399520ef6fcd7c11aa7fe7ec4cdcd",
+      "bytes": 61440,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-china",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peIndia.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peIndia.xls",
+      "sha256": "e363c3fefb9bc3d225239d5823c18b09586bd91264151c3442d380bbcbbc21f4",
+      "bytes": 64000,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-india",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/peGlobal.xls",
+      "sha256": "762439484f797df8571cce9f5d529a6ab60e40d873cd91801aecdca0bd8276b3",
+      "bytes": 63488,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvdata.xls",
+      "sha256": "e46e0a6e7fb77c7e9df2cce2a887a032ee6a2977b690fd54365b6068a2eaf4a9",
+      "bytes": 52736,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvEurope.xls",
+      "sha256": "dfecae929a6a96e187837ff95b9d1c334933cd339e4267d17fbe304bcf6add05",
+      "bytes": 52736,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvJapan.xls",
+      "sha256": "479ef9a21c7b6b2a9e4d8458fb9cede6cdb810cbdd0210f3ba1b84eb3037e06f",
+      "bytes": 52736,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvRest.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvRest.xls",
+      "sha256": "cc8e371c59f71125afbb848f0b7aca16f8f50e5628c5ff82a25f38b8aa1e4d45",
+      "bytes": 52736,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-rest",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvemerg.xls",
+      "sha256": "ed638bc5f2dd16749fda9021f16c0086fcf21c84a27fc1c16c7c2a7126a5750c",
+      "bytes": 53248,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvChina.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvChina.xls",
+      "sha256": "f6b8eae69eb2f0d7447c0c25b864e1cd7c705c8ff1e31f70b4aa46bacebc5890",
+      "bytes": 53248,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-china",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvIndia.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvIndia.xls",
+      "sha256": "1944f8604552632a2e2470ba36f109e7e3d2ecc7e6d9da2aaf5793c7b004d615",
+      "bytes": 53248,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-india",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/pbvGlobal.xls",
+      "sha256": "1997ab5e96556f1c974289e5809babd6fe17bab108cf1a6da4083079f110774d",
+      "bytes": 53248,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/datasets/countrystats.xls",
+      "sha256": "900b6594f808461f9ce5194abf1a50e66f22854bc998473ad8282037d464829b",
+      "bytes": 94208,
+      "publicationYear": 2026,
+      "workbookDate": "2026-01-05",
+      "headerRow": 8,
+      "sourceSubjects": 127,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata98.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata98.xls",
+      "sha256": "4ae1fb320d6f00bec0a6f972effc95724897afb7ef62b292c3fa33d6e8635e31",
+      "bytes": 40960,
+      "publicationYear": 1999,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 98,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata99.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata99.xls",
+      "sha256": "ed1ccfd5d0c5b9dbf360a5c8bb0c15fddbad49b04ed246885441fe73f9d6a84e",
+      "bytes": 24064,
+      "publicationYear": 2000,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 98,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata00.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata00.xls",
+      "sha256": "fbc5a998d5ad2c80d00b96aa611e68d28bebf9cf2d9b1340d36750df2c101dbf",
+      "bytes": 24064,
+      "publicationYear": 2001,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata01.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata01.xls",
+      "sha256": "24188bdebde81063aaab4bf249b9d5561e6fd49521164cf139a0924abb9ce5f8",
+      "bytes": 24576,
+      "publicationYear": 2002,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata02.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata02.xls",
+      "sha256": "fe69bf2bbe75a8fad4f7ae38ccf719b5865a48563fa6ff536a496b1ef7bdee79",
+      "bytes": 24064,
+      "publicationYear": 2003,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata03.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata03.xls",
+      "sha256": "148d043dda623c296bc9f43ce871841c3607e99d0716e188fa6d8c2a8a0c85e9",
+      "bytes": 45568,
+      "publicationYear": 2004,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata04.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata04.xls",
+      "sha256": "262cd1151cf1841be9549776e800a80019e70d3f1b86dc00402c7e7ad70dba47",
+      "bytes": 27648,
+      "publicationYear": 2005,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata05.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata05.xls",
+      "sha256": "63a8684607b721080c39d7decb7202559f302f3776a7caffc85cfcd978f01876",
+      "bytes": 45056,
+      "publicationYear": 2006,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata06.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata06.xls",
+      "sha256": "22089ee826a83f062a15007643eb9c0dae5658c6a35848df38112d8728695fb9",
+      "bytes": 45568,
+      "publicationYear": 2007,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata07.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata07.xls",
+      "sha256": "887359bb4df1912cfd6851e3f4e048d94cc1ffcc7f18e9ab3d1466837b9ab3c8",
+      "bytes": 45568,
+      "publicationYear": 2008,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata08.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata08.xls",
+      "sha256": "6e56f21e9fcfea954e61273e7587b1a3ba513308c181ba0f2e3505a7408693ba",
+      "bytes": 46080,
+      "publicationYear": 2009,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata09.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata09.xls",
+      "sha256": "5e0c24ff0c1790706b663ba9f224f6c946d1bd1626b43d8a5d58d8aaad138b2e",
+      "bytes": 39936,
+      "publicationYear": 2010,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata10.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata10.xls",
+      "sha256": "0eabde537120176ff5d94dc78bfe50900dd64f29f8d0ec1134691dbfef133bea",
+      "bytes": 45568,
+      "publicationYear": 2011,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_forward_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata11.xls",
+      "sha256": "b78102899d83101cd0019499673231792502a82c6d3ed6ea26e940a3d053a945",
+      "bytes": 54784,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata12.xls",
+      "sha256": "5002c9a2bb4c4637c5dc2a2950e5037757fd7d9a4e3aa2c07809ec8f6a9f6228",
+      "bytes": 54272,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata13.xls",
+      "sha256": "1edde7cfe81e2cc68eed1a8586e8ba0b892eb356f477a772efa4fe7f0483238b",
+      "bytes": 46080,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 97,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata14.xls",
+      "sha256": "b30461b2edca92d6a98cc23682f86912c30995e6d0e0b193481d576e4b1477fb",
+      "bytes": 60928,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata15.xls",
+      "sha256": "1fb41980e734868172f477a24e8b03b7507e991174fd389fa62324960e14bfe8",
+      "bytes": 92160,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata16.xls",
+      "sha256": "4ec09517773f1b3395bc29c16749a1c64d4ecd6c5d75cb47b100735b87d22e96",
+      "bytes": 92672,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata17.xls",
+      "sha256": "4305b036187df0146dacb24430167638a8d5fb2dfbd839bc02531583fe21b558",
+      "bytes": 92672,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata18.xls",
+      "sha256": "6a4060db9524ced03dec5bcaf4695914fa750f64d315631063970134eaf2e6ce",
+      "bytes": 87040,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata19.xls",
+      "sha256": "54d1cf02269f1355f072eb6635bf27c65dcccaed198be59e23a3393bf8859607",
+      "bytes": 49664,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata20.xls",
+      "sha256": "c1f67e617f5fcc37b448ff76ae0ae828f87e9dc11c619c55ec307b8a67d5ee35",
+      "bytes": 59392,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata21.xls",
+      "sha256": "f9bb7303a23b0601580d95c7b0faaf4f79204356d318c0a58ad271147ad1604a",
+      "bytes": 52224,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata22.xls",
+      "sha256": "879cc6710f4c9d545eb7f5f0c190463f637c8c796d1b3909288925f7c655b296",
+      "bytes": 62464,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata23.xls",
+      "sha256": "218bfb8cc2083d47062f868894cb6fb966fa1af9c3e9b92ceb27502f428da263",
+      "bytes": 62464,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pedata24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pedata24.xls",
+      "sha256": "e4e596e7ec125890c53a5d358a45a37e9f22ae27949b8df1314fd06ca180ab20",
+      "bytes": 62464,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope11.xls",
+      "sha256": "95010929061a4c947af66a0e36a78f25a1c83a22b1c05fc865e2ecaa4a3a6217",
+      "bytes": 41984,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope12.xls",
+      "sha256": "069d6c881599d6a9d4e272022923993e27b67d73d4107f0902af2e08e23026a5",
+      "bytes": 41472,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope13.xls",
+      "sha256": "4a2cd2728725023e4c63257a1724677f8d54fbc9987940dbeffb1e04582a411c",
+      "bytes": 54272,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 97,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope14.xls",
+      "sha256": "4fb5f979fdbd2efc0a59d78ec7f2db14900ca9f5f15abbf1180c5896dce00633",
+      "bytes": 59904,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope15.xls",
+      "sha256": "fd6bdfb17a56781382d20d1593fd8b68e085b221a99a202b8df2a4091030e771",
+      "bytes": 91648,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope16.xls",
+      "sha256": "d408a6c7be68bbf05189cb55f1ad8eb51f289061290b05c83da17f6b392db9d2",
+      "bytes": 91648,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope17.xls",
+      "sha256": "aa104ec9b36061e2021cb659f85fead0289a0ca18ababe26157733b1d9c165c4",
+      "bytes": 91648,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope18.xls",
+      "sha256": "9e2ede07aa86a2881046b72c08eb0030fa87ed9567d34785bfec095818d55ce2",
+      "bytes": 86016,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope19.xls",
+      "sha256": "bfc946d8489ca9a5cb46e95ac38166109f0df0f19f3150fc35de8e8e7c339a94",
+      "bytes": 49664,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope20.xls",
+      "sha256": "41b3c182862b291fc4574e19a5f1b7d599dee8008dbea9aadbe7e03b006d2c54",
+      "bytes": 58368,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope21.xls",
+      "sha256": "db7e7824236b6e42c057c1a3c570b9626cc8e29ebf0a65fb585c7261c8ee07e7",
+      "bytes": 58368,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope22.xls",
+      "sha256": "6a058457b58bbe7189bc056ab38b4aeb3fa9135fec8378b88967fd2949b515ec",
+      "bytes": 61952,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope23.xls",
+      "sha256": "71e883973c3abd95854f1c184ec9d2f34ea84324ddc21358998219839b565e92",
+      "bytes": 61952,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peEurope24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope24.xls",
+      "sha256": "6201aa0fae82009319cafa76fd56e99182eb729bdc71545dc4dfdd96dc630e32",
+      "bytes": 61952,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan11.xls",
+      "sha256": "2c046048d588f2e29ee720ab99b1b1452f6e34cbc2600ddd12595b8ed276714c",
+      "bytes": 40960,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 91,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan12.xls",
+      "sha256": "26b51e61720fd7d3190975d51c198e9a0237e45151efdf1bd23c8248d07555c4",
+      "bytes": 40448,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 90,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan13.xls",
+      "sha256": "0200ca6f6b5302c372d9ad294abec2ad77b42035a1ad040aedb6729f34ea9b16",
+      "bytes": 51712,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 91,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan14.xls",
+      "sha256": "efa4eb75376c1fd45233cdfb8cf3bf0231128a1354a1dfe5d81b4a346fdfb283",
+      "bytes": 58880,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 91,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan15.xls",
+      "sha256": "a71ded0f0b2cf64bfe3386811a2363e00a61844191784199caa26a342b16f0e5",
+      "bytes": 90112,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 91,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan16.xls",
+      "sha256": "d5cab084b3eac7e734af134ef4edd1a3322c0101db2ec428714b2bad3ce5d952",
+      "bytes": 91136,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan17.xls",
+      "sha256": "05754465f1e03f15aab8357a6923ddd0e5656e92dde433b022e2d2775b09ed19",
+      "bytes": 91136,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan18.xls",
+      "sha256": "90fb8e1c50f1f220eda6c620feb8df3c35856e6a8eb768bf0bd46e8f0fbf0ebb",
+      "bytes": 86016,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan19.xls",
+      "sha256": "2c40a453f49a3be896a153024750bfb9428c7c4250d9fe05b98dd446b42dfdd5",
+      "bytes": 49152,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan20.xls",
+      "sha256": "962fc2221169beb6a2271d8c850106d2a3e9ce1ab2d7bf547833f4ba41ffd931",
+      "bytes": 58368,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan21.xls",
+      "sha256": "8fb0d5af11999ca3a62406efb36151b8c66ad881d95ddb14ccfb04ce5bcf2cfe",
+      "bytes": 59904,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan22.xls",
+      "sha256": "8e00873ce0295009a9c29ed22b2b06bb22b43f827bf48b43e38703baedc12af7",
+      "bytes": 62464,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan23.xls",
+      "sha256": "5f0106b2b728f826b44e2aa4608723d143b7ded40deb50211a8435989f04ac43",
+      "bytes": 62464,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg11.xls",
+      "sha256": "3e3918eb584782ba72342c520498fcd88269e5a933a1a047e5671cc49e767f9d",
+      "bytes": 41984,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg12.xls",
+      "sha256": "fef98774cdddaf7ecf248dee41308e784d3dd6545574d5622b02359765bded7d",
+      "bytes": 41984,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg13.xls",
+      "sha256": "5860cfb99029ea73c5b84bc9ba790e6260ccc2ed6d4fbed39566625a830dffea",
+      "bytes": 53760,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg14.xls",
+      "sha256": "edc3e6d6958b38faa034e41f4d5b0d2d52dd56b8bf29ddd53ebcec3d8489eb75",
+      "bytes": 59904,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg15.xls",
+      "sha256": "87965465ada963c9b2f1eed81e689d8108356b46071d11926e3f04665b11ad33",
+      "bytes": 91136,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg16.xls",
+      "sha256": "732ffd331c67bc5163ed4cff08424056c6c09f2c83d1df1fb7cbd3b19e9f18a7",
+      "bytes": 91648,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg17.xls",
+      "sha256": "926776baa2005e50c3c6863ab83aa72598f1b3a20253ee463d04e7fd624b6e49",
+      "bytes": 91648,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg18.xls",
+      "sha256": "8546c75da72fad37179b580566872432af37126846119ea739c62531cdd558c0",
+      "bytes": 86016,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg19.xls",
+      "sha256": "a317c07a73b74c4cc1b8c9513fbc5337dbf88c2237c6ef3cc2f4625675b3aa6f",
+      "bytes": 47616,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg20.xls",
+      "sha256": "b019f92289b48d0cf9b38ffb593a3a08865d1469cac9f9b3963dca4bb19c1271",
+      "bytes": 58368,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg21.xls",
+      "sha256": "01752c90ff8278b417a390fe726f78c28fbebfffbb78660037c838f04a459798",
+      "bytes": 58368,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg22.xls",
+      "sha256": "b21c5b1229162c4844f794e3f4e67ad91afc160c238151a81434dd00e0090eab",
+      "bytes": 61952,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg23.xls",
+      "sha256": "988f78135e19feffb98160b73c2b11413cb098a9ad4f3473794076ab094b21ae",
+      "bytes": 61952,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peemerg24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peemerg24.xls",
+      "sha256": "d7b82808df0ad756bed60466decc83dfacf31d6f7e95227b3c58b879f68d6ec6",
+      "bytes": 61952,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal11.xls",
+      "sha256": "cc7689d4fe76217a8ade72a103b3c1cf590a613638a20cb37077ab05bc97fde7",
+      "bytes": 49664,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal12.xls",
+      "sha256": "8072dc41f5425d9a59c406cd1741abca5729deb45af6ce3f85b210668db934d9",
+      "bytes": 42496,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal13.xls",
+      "sha256": "2b8e6b26ffde6aa6324f426f73f627b7fc2fbd352be5359f04178eec61ab6307",
+      "bytes": 54272,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 97,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal14.xls",
+      "sha256": "362da736531d3ddd50f64bc207b86384d52edd0c3ec3ba588fb6d01760d7ea9f",
+      "bytes": 61440,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal15.xls",
+      "sha256": "40491b3815fa493b87243beea0d81f6ca87fb3585a79e13f405c38252fb28800",
+      "bytes": 94720,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal16.xls",
+      "sha256": "b9d37e94c7a9452007a15c39053284be546d828d9ce5dabc25737d93e19ba5cb",
+      "bytes": 92672,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_aggregate_legacy",
+        "industry_pe_trailing_aggregate_legacy"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal17.xls",
+      "sha256": "ae2a6ab2910f7cb5c4cf913835430329f588400359e91099cb50d6b1ec1eaf00",
+      "bytes": 92672,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal18.xls",
+      "sha256": "a058553ac40754d7f1527c7d447c9a38bdc6e2d67f4d11dfed83e9889d043f2a",
+      "bytes": 87040,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal19.xls",
+      "sha256": "88ec83d6b4353913483b3dc366f0c5693b5cff229af00d46818a83bf94b7611e",
+      "bytes": 49664,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal20.xls",
+      "sha256": "10a57523ba449603c0703d66c8f46d05a6363bf36f7c2a63e511525e8b524474",
+      "bytes": 59392,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal21.xls",
+      "sha256": "0d5b1361021b1625d4980db43fbee71a05202df51df35e7b88990e099fb9628f",
+      "bytes": 59904,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal22.xls",
+      "sha256": "079352da51a56fa36e9f03c93f7b58aa3fb73b8c60acd99d7324cf1b8584323d",
+      "bytes": 63488,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal23.xls",
+      "sha256": "dcd6f83df99f0bb92039481f888fdda00092ec26502ca0266b95e7715b3828ac",
+      "bytes": 63488,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peGlobal24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peGlobal24.xls",
+      "sha256": "7d650a15aee6ef8275246c9a535929651a35a63a61f3287f13e5fe8c51534361",
+      "bytes": 63488,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata98.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata98.xls",
+      "sha256": "deeb0c9323b7802f83608858b33480b02d92c374dbbe0b76ef8010d88a8d0803",
+      "bytes": 36864,
+      "publicationYear": 1999,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 98,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata99.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata99.xls",
+      "sha256": "3f40ccaad482bd9983668a27f3a3b6f3725517db357ae05eaa2b1f3f52a6a348",
+      "bytes": 26624,
+      "publicationYear": 2000,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 98,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata00.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata00.xls",
+      "sha256": "9ae04a8298df0161b5e7bf67beeac62b79ee7edb5852eacfe5daf5136fbb7cb9",
+      "bytes": 27648,
+      "publicationYear": 2001,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata01.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata01.xls",
+      "sha256": "e0e5d2aedbf87ddddd5f34b909c13737daed3582f1951a4c983661f8ccb4bf81",
+      "bytes": 28160,
+      "publicationYear": 2002,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata02.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata02.xls",
+      "sha256": "57ebb22e41ac67502975f3fec92d1d4a57093c8fed6641320eefed7b08e07894",
+      "bytes": 27648,
+      "publicationYear": 2003,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata03.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata03.xls",
+      "sha256": "6b430aee4990421e26fe653300a935f968a4ec9de028588686c952546f28a1da",
+      "bytes": 49152,
+      "publicationYear": 2004,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata04.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata04.xls",
+      "sha256": "7f064ea56e6c2a5c77d1d9617046f6b2d14526e9a2e6ab662945d5a7f8bd08d9",
+      "bytes": 27648,
+      "publicationYear": 2005,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata05.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata05.xls",
+      "sha256": "99470680690c72afb0ebd75abe05754d2b391513d54026dbd10bef7a4b9d00d7",
+      "bytes": 49152,
+      "publicationYear": 2006,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata06.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata06.xls",
+      "sha256": "d4361427f8c0a90a08f5d8928e26a60fdd16c9f6c728dd8856dac89e411d0b43",
+      "bytes": 49152,
+      "publicationYear": 2007,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata07.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata07.xls",
+      "sha256": "23d2f0bb37213c8717f6aaff8632d9d9496afda00fe7027176a426512b5a4aa4",
+      "bytes": 49152,
+      "publicationYear": 2008,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata08.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata08.xls",
+      "sha256": "d1b67f58c5fd3c0252026b9cf60a41769bb2cbf349469333cbe5a479fe08ac85",
+      "bytes": 49152,
+      "publicationYear": 2009,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 101,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata09.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata09.xls",
+      "sha256": "eff64527ff34779ef5642f7f6e89602e6d5185d78dd4114038b21b9833160378",
+      "bytes": 49152,
+      "publicationYear": 2010,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata10.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata10.xls",
+      "sha256": "86db8070681c0b14792741687beb69debc3782ad3f92be35b27fd3da4bad3236",
+      "bytes": 48640,
+      "publicationYear": 2011,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata11.xls",
+      "sha256": "5b9f0a1a0c5e56946e0d86f7624f6a9dc9267db88d180faf0d13aa32fcb8147a",
+      "bytes": 49152,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata12.xls",
+      "sha256": "03b709d60b37959c4524d77113e8ae2b2d5e55671613bead8d64022e1a1b3ac0",
+      "bytes": 48640,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 100,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata13.xls",
+      "sha256": "07dd478d4de5392c3c1cf88276d0463479c7a871ac4c74cbea5158e1256c03f2",
+      "bytes": 42496,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata14.xls",
+      "sha256": "a6c5c6d72682a78e4471aa87cd511d16d98baf4d066dac0d06247334c69e8ff3",
+      "bytes": 55808,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata15.xls",
+      "sha256": "d92e42840ebead02ca4e2845ce605a8d522c0ad96c21469214773498c6c2e28f",
+      "bytes": 86016,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata16.xls",
+      "sha256": "482f5a00970b424ada13454ef9689465b490d553d19ceb3e1667d1d372fc93e4",
+      "bytes": 86528,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata17.xls",
+      "sha256": "08e62298b81922a259bdd73c7d185656d1dcb78f31c313394e54d2a1250dfdb0",
+      "bytes": 86528,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata18.xls",
+      "sha256": "1b0b4b603a1629c8e92057068aa8b6c5851a82993ee27b776e42638610bc247f",
+      "bytes": 84992,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata19.xls",
+      "sha256": "9318d869a38af1e4821817a95ccc95f1018afa813408876307ef603f490ecb98",
+      "bytes": 43520,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata20.xls",
+      "sha256": "ffd7e8ec1ea7011fae2d539384b8a6c14fa10c3c654556b77a0fdf7bc54832f7",
+      "bytes": 51200,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata21.xls",
+      "sha256": "6ac4e2aa341ba97538ace0f739c4f2dc036b69fb67cd88a69112debac0a8ab52",
+      "bytes": 51200,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata22.xls",
+      "sha256": "fd7aa5043522ec398870f127055994d8742713b074ed02c024520070f1c61bc2",
+      "bytes": 52736,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata23.xls",
+      "sha256": "2b4bcaaef327808e031e364df0d0198188af6c5cb3d112325f6fbfe260fff68c",
+      "bytes": 52736,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvdata24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvdata24.xls",
+      "sha256": "e60b807897a24b42e20caebff17bcff12d18fa00a23933dcf25d8bc83921b5b9",
+      "bytes": 52736,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-us",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope11.xls",
+      "sha256": "4ab1a26b9e67974f700b58ba77a11db996d57153459c4c7694956145b78ffa2f",
+      "bytes": 40448,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope12.xls",
+      "sha256": "e6f1dc7c9b8379d47cc0827b707e016cdd8cbed8c77d6407842faa1fa65b966d",
+      "bytes": 39936,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope13.xls",
+      "sha256": "3774709e3c17090eb05738e85aa907376aef73f61fadb80d1749d8eb0e4d335f",
+      "bytes": 49152,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope14.xls",
+      "sha256": "292980101f9169eb82046c9ea60be556e5f69d4fd65d409e3f28ce4aafffbd3f",
+      "bytes": 55296,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope15.xls",
+      "sha256": "cd1b3eb1bd07e70c4e8ea4f0bc7c03047ef901637b43fc4e8579789613493a9a",
+      "bytes": 88064,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope16.xls",
+      "sha256": "61086350e97160d4c712a85b729d104656eb5476a37f64a045061ceacf1bb39b",
+      "bytes": 87040,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope17.xls",
+      "sha256": "3e582c2e0913baaabef65ee48261244192effa30605a47f6b953aae7d94790f4",
+      "bytes": 87040,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope18.xls",
+      "sha256": "2764127356994148752972548e627ec8c0cc617dc207c408087c84a21744b1d3",
+      "bytes": 84992,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope19.xls",
+      "sha256": "d944a7e44d0a9f82632cb2e89df8f87caacf519c588a9c8fc0239b5f0e7f705b",
+      "bytes": 43520,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope20.xls",
+      "sha256": "bb9ffd5ed5c438ab3289193d7400a33e776307b7230803ec9c50cc5fdcc4debe",
+      "bytes": 51200,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope21.xls",
+      "sha256": "68338d7d3685101ac18e65700497d207f0ac9613f161a5bc186352711fe0428b",
+      "bytes": 51200,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope22.xls",
+      "sha256": "592a1451c544788b39c5ab9c83b4e5ba52ae05b019627a3a552f021c6a463ed5",
+      "bytes": 53248,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope23.xls",
+      "sha256": "d008bbf28119233d95d4fb73dc8e914c208c2a1bb5f49a1d12c48ab333f37098",
+      "bytes": 53248,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvEurope24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvEurope24.xls",
+      "sha256": "5f203789ef2881b5757b0d70aa681c681b1384bb5defb59c34645b00ce35985b",
+      "bytes": 53248,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-europe",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan11.xls",
+      "sha256": "0eb948a4677ab5276d9d7ef3ccd9ebc9c99196a3054ee3139054c1d10e2cd8b9",
+      "bytes": 39424,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 91,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan12.xls",
+      "sha256": "8abbd29ddae50baf744aa2ec029b460392ae05ee09571d2ceba1edc3f96ecb6a",
+      "bytes": 39424,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 90,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan13.xls",
+      "sha256": "ba90307a5ea7092863b3aa68841021da0ab77954261e688f80657b8a75a9f24f",
+      "bytes": 48640,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 91,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan14.xls",
+      "sha256": "0c76fc88299c00b49fb387f33f306cddce2494606ad12c2c7acd54c73a27944d",
+      "bytes": 54784,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 91,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan15.xls",
+      "sha256": "64c7ae90b8f33ef2ee34fc9c9948030d0eebb1b3b2fa47ad0acd1db00d0a6226",
+      "bytes": 88576,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 91,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan16.xls",
+      "sha256": "afd2540633b4d7365431e85e8b6fa87ca383202a2f5b7fba445a39e041674ed8",
+      "bytes": 87040,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan17.xls",
+      "sha256": "a804335ffbe7c1b3f6c3afe41e0872d170199af8d1d3578011fdeeefc69553ce",
+      "bytes": 87040,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan18.xls",
+      "sha256": "91d24775f5899cd693e07e1836ca284b0005d1cce2042e8e35fb3d2584dc39a5",
+      "bytes": 84992,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan19.xls",
+      "sha256": "11f524cfbf2d22eb40e5630d582a95bd44d027b5f89ea3973f3864cf404da840",
+      "bytes": 43520,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan20.xls",
+      "sha256": "c39d1433ae098a7630cf4f421916b67dfb60c240525e93b60f2f1b25dc665387",
+      "bytes": 51200,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan21.xls",
+      "sha256": "d5e99def799878d4b1d1bea952ec71af5c2c5850fe1f1e69b3b1778fdaa0c372",
+      "bytes": 51200,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan22.xls",
+      "sha256": "01a9f4703123b854c7d51625ae1cd8bc2a6a9be488cf905b66219a7351513acb",
+      "bytes": 53248,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan23.xls",
+      "sha256": "8dbd241111ec98f942acd29196c6992dc519af0e05552ad44c4da685f0832d97",
+      "bytes": 53248,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvJapan24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvJapan24.xls",
+      "sha256": "ee0b8cb167f29afd38ecd4005d28ee21dc0e7ed4bd3f6da592c175f1716c0101",
+      "bytes": 52736,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg11.xls",
+      "sha256": "cc2e64e60bb1580f29a9ddfac92b57b3a9bfe17bee7f85d0ef38fa4ac8d05deb",
+      "bytes": 40448,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg12.xls",
+      "sha256": "df69ac0051588bc0505e255fc76255727aba39fa848e5189653ceda87b569e71",
+      "bytes": 39936,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg13.xls",
+      "sha256": "44aed912904b317d11e5cb3540eca251884009931800fc792c109fdc996357df",
+      "bytes": 49152,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg14.xls",
+      "sha256": "1622ece857dc27f01a56b9ba58bfcdc29ba658e402be6b01414f85adac8aba63",
+      "bytes": 55296,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg15.xls",
+      "sha256": "e9c1d576a9c54e8d3794e10302375cc31296f75af20d4722f71d623e4eafaa0d",
+      "bytes": 88064,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg16.xls",
+      "sha256": "52cf8bced5a840c9e181eee4b07b8f1b5f0a226c4474b44d61bbd7c1aa57184d",
+      "bytes": 87040,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg17.xls",
+      "sha256": "a9843d2889daf5baaad691cb6084a615d9750e93f9da037a32902a476945fcd5",
+      "bytes": 87040,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg18.xls",
+      "sha256": "e70166ed1425a9cdddafbca6a3071421f58fbf8f0497a7857e68c44ccc6fdb92",
+      "bytes": 84992,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg19.xls",
+      "sha256": "09a7688ede145b094f7c96e93b9503dc124169f75f26692304d7e6c564cbe549",
+      "bytes": 43520,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg20.xls",
+      "sha256": "f44c3baf388d80ec008bc6dcb16cb45455df4256561055c9ee8b23ad93469e2f",
+      "bytes": 51712,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg21.xls",
+      "sha256": "3caea2ccd0af8fb8f6cc8d1b4d8b1c08730d5e7752db6d3e38724c8c4efcdc6d",
+      "bytes": 51712,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg22.xls",
+      "sha256": "29a5cd69608ce9c5010c62d485e485fe4c99136db665c8db5f056f51737b5f0e",
+      "bytes": 53248,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg23.xls",
+      "sha256": "8fadf525ecbd5338a109e912090034dcc9a65538e6d84f0919dfdcfdc7eef4b9",
+      "bytes": 53248,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvemerg24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvemerg24.xls",
+      "sha256": "49a2f93a440933d120652f55e78984b70828bc439fb95516e4780f4f42a043c6",
+      "bytes": 53248,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-emerging",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal11.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal11.xls",
+      "sha256": "e921427b1675e6f8ed2bc6c5c8fff9114591deabebb55e4f546d867d752178ef",
+      "bytes": 40960,
+      "publicationYear": 2012,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal12.xls",
+      "sha256": "3ec4d701736396735f9983c1472926225b369ba6c979f65500c29f9cd41d25ee",
+      "bytes": 40960,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal13.xls",
+      "sha256": "f869a55c1f7110a46cfbfdd54edb530c7449da7f6b9d7791fddc3010a996e406",
+      "bytes": 49152,
+      "publicationYear": 2014,
+      "workbookDate": "2014-01-05",
+      "headerRow": 2,
+      "sourceSubjects": 97,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal14.xls",
+      "sha256": "293b0b2fa1b5f33a9c0774546c0cd8dac588b13a363a477e5d00a172c1a09cdd",
+      "bytes": 56832,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal15.xls",
+      "sha256": "3c8462ab6576b658f6e83056dff349fc6f9ed7221b562b09726a42a0d9d37256",
+      "bytes": 89088,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal16.xls",
+      "sha256": "1fe391d1f21881060c7d42d005c13d96185f3313cf7ae81e775789ca71cabbd7",
+      "bytes": 87552,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal17.xls",
+      "sha256": "10dafb82a89a853a868ac80eb10b1ef6c6325bc6d8c248647c2ca1d9a00ca638",
+      "bytes": 86528,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal18.xls",
+      "sha256": "ac3c5383e1af72eddb3456420a597aa335ef36d8dc5a5de5897cb4ceaefa08d8",
+      "bytes": 84992,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal19.xls",
+      "sha256": "7cc1d8297f2e7d1a282ff00241ced23df1f1ddd146eec1560eb9e8a0e552ba13",
+      "bytes": 43520,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal20.xls",
+      "sha256": "470bd86f1a3a84bce6b16123cc98ed50e931274927ebbfa6fc708b476e551759",
+      "bytes": 51712,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal21.xls",
+      "sha256": "f8609dd0c7746fa60a913ce1314695f89e63684348747f56ef60e557310140a2",
+      "bytes": 52736,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal22.xls",
+      "sha256": "0b66c79dc4266b021da153596c8a296a453a13e08719becff2ef82baefec9e29",
+      "bytes": 53248,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal23.xls",
+      "sha256": "d9b36d1dec84ee7f96c7475b37af9b6f9b645cbb2b23b8db74ef5cbea57282bf",
+      "bytes": 53248,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "pbvGlobal24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/pbvGlobal24.xls",
+      "sha256": "be32bc12f478437a9c2b468ec56e110e0b305c3da26de7c030881cb6eb119ce1",
+      "bytes": 53248,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pbv-global",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pbv",
+        "industry_roe"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats12.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats12.xls",
+      "sha256": "dfd9c72f01895de2336f47f1f263216f107b106e9aebd5d288cb7f59ee60f3b7",
+      "bytes": 113152,
+      "publicationYear": 2013,
+      "workbookDate": null,
+      "headerRow": 0,
+      "sourceSubjects": 132,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats13.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats13.xls",
+      "sha256": "d60033ae147e78bef94d11eed886b1625a6b90b5ae9f457ae8403678880df2d2",
+      "bytes": 133632,
+      "publicationYear": 2014,
+      "workbookDate": null,
+      "headerRow": 1,
+      "sourceSubjects": 130,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats14.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats14.xls",
+      "sha256": "415c05b94917329b063446f1f8d26ba1cf3ce62be45d4932924a23672003c52e",
+      "bytes": 261120,
+      "publicationYear": 2015,
+      "workbookDate": "2015-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 133,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats15.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats15.xls",
+      "sha256": "3eb988d2350117cdf98ca51fe91a235a54dcda1b4a14ab2bcd3a49f8d77f2e62",
+      "bytes": 282624,
+      "publicationYear": 2016,
+      "workbookDate": "2016-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 131,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats16.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats16.xls",
+      "sha256": "70fe83a1337e567da208b3c1497f9cd31e80399b979ec392b75939b09f951103",
+      "bytes": 285184,
+      "publicationYear": 2017,
+      "workbookDate": "2017-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 135,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats17.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats17.xls",
+      "sha256": "df47a90a44009cd3848a6a58bda9b8ef45c3b1d08a949c668308cb19408f7d3d",
+      "bytes": 286208,
+      "publicationYear": 2018,
+      "workbookDate": "2018-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 137,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats18.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats18.xls",
+      "sha256": "35fff597df0cbac9908a36c94a6f61ef14ed284d8951c031157a65235a9614a0",
+      "bytes": 257536,
+      "publicationYear": 2019,
+      "workbookDate": "2019-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 140,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats19.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats19.xls",
+      "sha256": "62b921b192df8dfd69c27ea7dc8faa424416e686d81b611c805c71c2bec5af24",
+      "bytes": 256000,
+      "publicationYear": 2020,
+      "workbookDate": "2020-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 137,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_mean_pe_current",
+        "country_mean_pe_trailing",
+        "country_mean_pe_forward",
+        "country_mean_pbv",
+        "country_mean_ps",
+        "country_mean_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats20.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats20.xls",
+      "sha256": "f5bd7f6d231f99d15d813a045f55f3041913870bb26d8f8c4da50991da367671",
+      "bytes": 338432,
+      "publicationYear": 2021,
+      "workbookDate": "2021-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 137,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats21.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats21.xls",
+      "sha256": "e7e021790e3a52dfad0cf7093f34e853a8fb8677f522d37ce132e5952d47ea94",
+      "bytes": 337920,
+      "publicationYear": 2022,
+      "workbookDate": "2022-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 136,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats22.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats22.xls",
+      "sha256": "4095ad5e731e3ca9aa4fa7b9b939e0a73c6e4ed4854c580d5410ed848d1b9f9a",
+      "bytes": 206848,
+      "publicationYear": 2023,
+      "workbookDate": "2023-01-05",
+      "headerRow": 8,
+      "sourceSubjects": 136,
+      "datasetId": "countries",
+      "ambiguousSubjects": [
+        "Zimbabwe"
+      ],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats23.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats23.xls",
+      "sha256": "eb0911f7528961e5a550b18d8247c2018bd7df1bf8cf38088f4fdeb462edf778",
+      "bytes": 373760,
+      "publicationYear": 2024,
+      "workbookDate": "2024-01-05",
+      "headerRow": 8,
+      "sourceSubjects": 135,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "countrystats24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/countrystats24.xls",
+      "sha256": "2a33725ba844f7778b14bf82f5290644d90c610081f2f66fd38cb4b6f5eef029",
+      "bytes": 93696,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 8,
+      "sourceSubjects": 132,
+      "datasetId": "countries",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "country_median_pe_current",
+        "country_median_pe_trailing",
+        "country_median_pe_forward",
+        "country_median_pbv",
+        "country_median_ps",
+        "country_median_ev_ebitda"
+      ],
+      "archiveLinkCorrection": null
+    },
+    {
+      "fileName": "peJapan24.xls",
+      "url": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peJapan24.xls",
+      "sha256": "fffc02a2575cb8962a85b01d945cc8b1151f286dc0898bcf597191c40db20df5",
+      "bytes": 62464,
+      "publicationYear": 2025,
+      "workbookDate": "2025-01-05",
+      "headerRow": 7,
+      "sourceSubjects": 96,
+      "datasetId": "pe-japan",
+      "ambiguousSubjects": [],
+      "metricIds": [
+        "industry_pe_current",
+        "industry_pe_trailing",
+        "industry_pe_forward",
+        "industry_pe_all",
+        "industry_pe_profitable",
+        "industry_loss_share"
+      ],
+      "archiveLinkCorrection": {
+        "publishedTarget": "https://pages.stern.nyu.edu/~adamodar/pc/archives/peEurope24.xls",
+        "verifiedWorkbookDate": "2025-01-05",
+        "verifiedRegion": "Japan",
+        "verifiedSha256": "fffc02a2575cb8962a85b01d945cc8b1151f286dc0898bcf597191c40db20df5"
+      }
+    }
+  ],
+  "countryLabels": 162,
+  "assignedCountryLabels": 160,
+  "distinctAssignedGeographies": 157,
+  "excludedGeographies": [
+    {
+      "providerLabel": "Channel Islands",
+      "reason": "Historisches Sammelgebiet; nicht Jersey oder Guernsey zugeordnet."
+    },
+    {
+      "providerLabel": "Netherlands Antilles",
+      "reason": "Früheres Gebiet; nicht heutigen Nachfolgegebieten zugeordnet."
+    }
+  ],
+  "industryLabels": 226,
+  "activeIndustryLabels": 97,
+  "notes": [
+    "Alle Dateien über öffentliche NYU-Quellen abgerufen und mit xlrd unabhängig eingelesen. Für den falschen Japan-2025-Archivlink ist eine explizit geprüfte Originaldatei dokumentiert.",
+    "Dateinamen tragen vielfach das Vorjahr; Veröffentlichungsjahr stammt aus Tabellenkopf beziehungsweise dem dokumentierten Archivlink.",
+    "Länder-Mittelwerte bis 2020 und Mediane ab 2021 erhalten getrennte Kennzahl-IDs.",
+    "Aktuelle China-KGV-Datei stammt aus Januar 2025; China-Buchwerte aus Januar 2026.",
+    "83 zusätzliche PE-Archive: USA 1999–2025, Europa/Japan/Schwellenländer/Global 2012–2025. Aktuelle Dateien ergänzen 2026.",
+    "Japan 2025: falscher Europalink auf der Archivseite; die erreichbare Originaldatei peJapan24.xls ist anhand Tabellenstempel, Japan-Region und SHA-256 ausdrücklich geprüft.",
+    "Frühe unpräzise Aggregatspalten und Price/Forward PE erhalten eigene Archivdefinitionen. Verlustfirmenanteile beginnen erst 2023.",
+    "Alle Archivdateien sind an den geprüften SHA-256 gebunden; Änderungen benötigen eine erneute Quellenprüfung.",
+    "Frühere Branchenbezeichnungen werden nicht automatisch zusammengeführt. Branchenvergleiche über 2014 hinweg brauchen eine sichtbare Methodengrenze."
+  ]
+}

@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { api } from "../../services/commands";
@@ -16,6 +16,7 @@ vi.mock("../../services/commands", () => ({
     centralBankReport: vi.fn(),
     openCentralBankReportFile: vi.fn(),
     syncCentralBankReports: vi.fn(),
+    summarizeCentralBankReports: vi.fn(),
     markCentralBankReportRead: vi.fn(),
   },
 }));
@@ -109,6 +110,7 @@ function detail(): CentralBankReportDetail {
     extractedText:
       "[Absatz 1]\nThe Committee decided to maintain the target range.",
     summary: {
+      language: "de",
       overview: "Die Federal Reserve beließ das Zielband unverändert.",
       stance: "neutral",
       sections: [
@@ -131,11 +133,12 @@ function renderPage() {
   const client = new QueryClient({
     defaultOptions: { queries: { retry: false } },
   });
-  return render(
+  const view = render(
     <QueryClientProvider client={client}>
       <CentralBankReportsPage />
     </QueryClientProvider>,
   );
+  return { ...view, client };
 }
 
 afterEach(() => {
@@ -144,6 +147,76 @@ afterEach(() => {
 });
 
 describe("CentralBankReportsPage", () => {
+  it("ersetzt englische Extrakte durch ein gezielt erstelltes deutsches Briefing", async () => {
+    const stored = detail();
+    stored.summaryStatus = "local_fallback";
+    stored.summary = {
+      overview: "Original extract",
+      stance: "neutral",
+      sections: [
+        {
+          key: "decision",
+          title: "Entscheidung",
+          points: [
+            {
+              text: "The Committee decided to maintain the target range.",
+              sourceRefs: ["Absatz 1"],
+            },
+          ],
+        },
+      ],
+    };
+    vi.mocked(api.centralBankReports).mockResolvedValue(dashboard());
+    vi.mocked(api.centralBankReport).mockResolvedValue(stored);
+    vi.mocked(api.summarizeCentralBankReports).mockImplementation(async () => {
+      vi.mocked(api.centralBankReport).mockResolvedValue(detail());
+      return { reportsSummarized: 1, reportsPending: 0 };
+    });
+    const user = userEvent.setup();
+    renderPage();
+
+    expect(
+      await screen.findByText("Deutsche Zusammenfassung ausstehend"),
+    ).toBeTruthy();
+    expect(screen.queryByText("Original extract")).toBeNull();
+    expect(
+      screen.getByText("Originaltext in Quellsprache anzeigen"),
+    ).toBeTruthy();
+    await user.click(
+      screen.getByRole("button", { name: "Deutsch zusammenfassen" }),
+    );
+
+    expect(api.summarizeCentralBankReports).toHaveBeenCalledWith("fed-report");
+    expect(
+      await screen.findByText(
+        "Die Federal Reserve beließ das Zielband unverändert.",
+      ),
+    ).toBeTruthy();
+    expect(screen.getByText("Zusammenfassung auf Deutsch")).toBeTruthy();
+    expect(screen.getByText("Absatz 1")).toBeTruthy();
+  });
+
+  it("lädt ein geöffnetes Briefing neu, sobald im Hintergrund eine Übersetzung gespeichert wurde", async () => {
+    vi.mocked(api.centralBankReports).mockResolvedValue(dashboard());
+    vi.mocked(api.centralBankReport).mockResolvedValue(detail());
+    const { client } = renderPage();
+    await screen.findByText(
+      "Die Federal Reserve beließ das Zielband unverändert.",
+    );
+
+    const updated = detail();
+    updated.summary!.overview =
+      "Die aktualisierte deutsche Zusammenfassung ist verfügbar.";
+    vi.mocked(api.centralBankReport).mockResolvedValue(updated);
+    const refreshed = dashboard();
+    refreshed.reports[0].summarizedAt = "2026-09-04T08:10:00Z";
+    act(() => client.setQueryData(["central-bank-reports"], refreshed));
+
+    await waitFor(() =>
+      expect(screen.getByText(updated.summary!.overview)).toBeTruthy(),
+    );
+  });
+
   it("zeigt alle neun Zentralbanken und die bewusst ausgeschlossenen Dokumentarten", async () => {
     vi.mocked(api.centralBankReports).mockResolvedValue(dashboard());
 

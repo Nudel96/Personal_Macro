@@ -1,0 +1,330 @@
+{
+  "sourceId": "eu-advanced-materials",
+  "file": "eu-materials-2026.pdf",
+  "pages": 106,
+  "tablePage": 17,
+  "tableTitle": "Table 1. Number of AM patents in selected AM sectors and share of triadic families per priority jurisdiction.",
+  "period": "2010/2024",
+  "rows": [
+    {
+      "code": "construction",
+      "label": "Bau",
+      "pattern": "Construction",
+      "values": {
+        "EU": {
+          "count": "11779",
+          "triadic": "24.1"
+        },
+        "US": {
+          "count": "9932",
+          "triadic": "18.4"
+        },
+        "China": {
+          "count": "53771",
+          "triadic": "0.7"
+        }
+      }
+    },
+    {
+      "code": "electronics",
+      "label": "Elektronik",
+      "pattern": "Electronics",
+      "values": {
+        "EU": {
+          "count": "20545",
+          "triadic": "25.7"
+        },
+        "US": {
+          "count": "28704",
+          "triadic": "13.5"
+        },
+        "China": {
+          "count": "146096",
+          "triadic": "0.7"
+        }
+      }
+    },
+    {
+      "code": "energy",
+      "label": "Energie",
+      "pattern": "Energy",
+      "values": {
+        "EU": {
+          "count": "4429",
+          "triadic": "27.6"
+        },
+        "US": {
+          "count": "4235",
+          "triadic": "16.6"
+        },
+        "China": {
+          "count": "25357",
+          "triadic": "0.9"
+        }
+      }
+    },
+    {
+      "code": "medical",
+      "label": "Medizintechnik · Tabellenlabel NACE 3250",
+      "pattern": "Medical devices \\(NACE 3250\\)",
+      "values": {
+        "EU": {
+          "count": "2676",
+          "triadic": "34.8"
+        },
+        "US": {
+          "count": "3620",
+          "triadic": "19.4"
+        },
+        "China": {
+          "count": "9366",
+          "triadic": "1.1"
+        }
+      }
+    },
+    {
+      "code": "mobility",
+      "label": "Mobilität",
+      "pattern": "Mobility",
+      "values": {
+        "EU": {
+          "count": "2880",
+          "triadic": "19.2"
+        },
+        "US": {
+          "count": "1807",
+          "triadic": "19.3"
+        },
+        "China": {
+          "count": "3945",
+          "triadic": "0.9"
+        }
+      }
+    },
+    {
+      "code": "total",
+      "label": "Gesamt · eindeutige Patentfamilien",
+      "pattern": "Total of unique patents\\s*11",
+      "values": {
+        "EU": {
+          "count": "28865",
+          "triadic": "24.1"
+        },
+        "US": {
+          "count": "35257",
+          "triadic": "13.7"
+        },
+        "China": {
+          "count": "194216",
+          "triadic": "0.6"
+        }
+      }
+    }
+  ],
+  "geographies": [
+    {
+      "code": "EU",
+      "label": "EU priority jurisdiction",
+      "geographyId": "eu:am_priority",
+      "seriesTitles": {
+        "total_count": "Table 1 · total · Number of AM patent families · Companies · 2010–2024",
+        "total_triadic": "Table 1 · total · Share of triadic families · Companies · 2010–2024",
+        "construction_count": "Table 1 · construction · Number of AM patent families · Companies · 2010–2024",
+        "construction_triadic": "Table 1 · construction · Share of triadic families · Companies · 2010–2024",
+        "electronics_count": "Table 1 · electronics · Number of AM patent families · Companies · 2010–2024",
+        "electronics_triadic": "Table 1 · electronics · Share of triadic families · Companies · 2010–2024",
+        "energy_count": "Table 1 · energy · Number of AM patent families · Companies · 2010–2024",
+        "energy_triadic": "Table 1 · energy · Share of triadic families · Companies · 2010–2024",
+        "medical_count": "Table 1 · medical · Number of AM patent families · Companies · 2010–2024",
+        "medical_triadic": "Table 1 · medical · Share of triadic families · Companies · 2010–2024",
+        "mobility_count": "Table 1 · mobility · Number of AM patent families · Companies · 2010–2024",
+        "mobility_triadic": "Table 1 · mobility · Share of triadic families · Companies · 2010–2024"
+      }
+    },
+    {
+      "code": "US",
+      "label": "US priority jurisdiction",
+      "geographyId": "m49:840",
+      "seriesTitles": {
+        "total_count": "Table 1 · total · Number of AM patent families · Companies · 2010–2024",
+        "total_triadic": "Table 1 · total · Share of triadic families · Companies · 2010–2024",
+        "construction_count": "Table 1 · construction · Number of AM patent families · Companies · 2010–2024",
+        "construction_triadic": "Table 1 · construction · Share of triadic families · Companies · 2010–2024",
+        "electronics_count": "Table 1 · electronics · Number of AM patent families · Companies · 2010–2024",
+        "electronics_triadic": "Table 1 · electronics · Share of triadic families · Companies · 2010–2024",
+        "energy_count": "Table 1 · energy · Number of AM patent families · Companies · 2010–2024",
+        "energy_triadic": "Table 1 · energy · Share of triadic families · Companies · 2010–2024",
+        "medical_count": "Table 1 · medical · Number of AM patent families · Companies · 2010–2024",
+        "medical_triadic": "Table 1 · medical · Share of triadic families · Companies · 2010–2024",
+        "mobility_count": "Table 1 · mobility · Number of AM patent families · Companies · 2010–2024",
+        "mobility_triadic": "Table 1 · mobility · Share of triadic families · Companies · 2010–2024"
+      }
+    },
+    {
+      "code": "China",
+      "label": "China priority jurisdiction",
+      "geographyId": "m49:156",
+      "seriesTitles": {
+        "total_count": "Table 1 · total · Number of AM patent families · Companies · 2010–2024",
+        "total_triadic": "Table 1 · total · Share of triadic families · Companies · 2010–2024",
+        "construction_count": "Table 1 · construction · Number of AM patent families · Companies · 2010–2024",
+        "construction_triadic": "Table 1 · construction · Share of triadic families · Companies · 2010–2024",
+        "electronics_count": "Table 1 · electronics · Number of AM patent families · Companies · 2010–2024",
+        "electronics_triadic": "Table 1 · electronics · Share of triadic families · Companies · 2010–2024",
+        "energy_count": "Table 1 · energy · Number of AM patent families · Companies · 2010–2024",
+        "energy_triadic": "Table 1 · energy · Share of triadic families · Companies · 2010–2024",
+        "medical_count": "Table 1 · medical · Number of AM patent families · Companies · 2010–2024",
+        "medical_triadic": "Table 1 · medical · Share of triadic families · Companies · 2010–2024",
+        "mobility_count": "Table 1 · mobility · Number of AM patent families · Companies · 2010–2024",
+        "mobility_triadic": "Table 1 · mobility · Share of triadic families · Companies · 2010–2024"
+      }
+    }
+  ],
+  "scope": "Europäische Kommission, Patent landscape analysis in the field of advanced materials, 2026, DOI 10.2777/0610738, Tabelle 1 (PDF-Seite 17), PATSTAT-Auswertung. Ein zusammengefasstes Quellenfenster 2010–2024, keine Jahresreihe. Die Studie grenzt fortgeschrittene Werkstoffe über Patentklassen und prioritäre Sektoren ab; keine Gesamtheit aller Chemie- oder Metallurgiepatente. DOCDB-Patentfamilien mit mindestens einem Unternehmensanmelder; keine Umsätze oder nachgewiesene kommerzielle Nutzung. Herkunft bedeutet erste Patentzuständigkeit, nicht Firmensitz oder Wohnort von Erfindern. EU umfasst die 27 nationalen Ämter plus EPA und besitzt deshalb ein eigenes Quellengebiet. US entspricht USPTO, China CNIPA. Familien mit mehrdeutiger Prioritätsregion werden in dieser Tabelle ausgeschlossen. Mehrfachzuordnung zu Sektoren ist möglich; die fünf Sektorwerte dürfen nicht zur veröffentlichten eindeutigen Gesamtsumme addiert werden. Triadische Familien wurden bei EPA, USPTO und JPO angemeldet. Ihr Anteil beschreibt internationale Schutzstrategien, keine allgemeine technische Qualitätsnote. Keine Interpolation, Jahresaufteilung oder Zusammenführung mit den getrennten Tabellen zu Universitäten oder Unternehmensstandorten. Tabellenzahlen unverändert; deutsche Beschriftungen ergänzt. CC BY 4.0, Europäische Union 2026.",
+  "profileNotes": {
+    "eu-advanced-materials:construction_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:construction_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:construction_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:construction_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:construction_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:construction_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:electronics_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:electronics_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:electronics_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:electronics_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:electronics_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:electronics_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:energy_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:energy_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:energy_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:energy_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:energy_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:energy_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:medical_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:medical_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:medical_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:medical_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:medical_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:medical_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:mobility_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:mobility_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:mobility_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:mobility_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:mobility_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:mobility_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:total_count:eu:am_priority": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:total_count:m49:156": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:total_count:m49:840": [
+      "Veröffentlichte Anzahl unterschiedlicher Patentfamilien im gesamten 15-Jahres-Fenster.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:total_triadic:eu:am_priority": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei einem EU27-Patentamt oder beim EPA; keine ausschließliche EU-Erfinderherkunft."
+    ],
+    "eu-advanced-materials:total_triadic:m49:156": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität bei CNIPA; kein Nachweis eines chinesischen Unternehmenssitzes."
+    ],
+    "eu-advanced-materials:total_triadic:m49:840": [
+      "Veröffentlichter Anteil mit Schutz in Europa, USA und Japan, bezogen auf die Patentfamilien dieser Tabellenzelle.",
+      "Priorität beim USPTO; kein Nachweis eines US-Unternehmenssitzes."
+    ]
+  }
+}

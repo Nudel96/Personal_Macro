@@ -1,0 +1,101 @@
+{
+  "reviewedAt": "2026-09-11",
+  "originalUrl": "https://www.census.gov/construction/c30/xlsx/privtime.xlsx",
+  "sha256": "4abbfdca1db6c1611a2a194dd96312449c196752f5036a1e531783905471027d",
+  "sourceRows": 403,
+  "numericValues": 1360,
+  "series": [
+    {
+      "metricId": "census-construction:data_centers",
+      "geographyId": "m49:840",
+      "values": 151,
+      "firstPeriod": "2014-01",
+      "lastPeriod": "2026-07",
+      "firstValue": {
+        "period": "2014-01",
+        "value": "124",
+        "status": ""
+      },
+      "lastValue": {
+        "period": "2026-07",
+        "value": "6551",
+        "status": "p"
+      },
+      "flags": {
+        "p": 1,
+        "r": 2,
+        "": 148
+      }
+    },
+    {
+      "metricId": "census-construction:warehouses",
+      "geographyId": "m49:840",
+      "values": 403,
+      "firstPeriod": "1993-01",
+      "lastPeriod": "2026-07",
+      "firstValue": {
+        "period": "1993-01",
+        "value": "357",
+        "status": ""
+      },
+      "lastValue": {
+        "period": "2026-07",
+        "value": "4520",
+        "status": "p"
+      },
+      "flags": {
+        "p": 1,
+        "r": 2,
+        "": 400
+      }
+    },
+    {
+      "metricId": "census-construction:commercial_warehouses",
+      "geographyId": "m49:840",
+      "values": 403,
+      "firstPeriod": "1993-01",
+      "lastPeriod": "2026-07",
+      "firstValue": {
+        "period": "1993-01",
+        "value": "346",
+        "status": ""
+      },
+      "lastValue": {
+        "period": "2026-07",
+        "value": "3988",
+        "status": "p"
+      },
+      "flags": {
+        "p": 1,
+        "r": 2,
+        "": 400
+      }
+    },
+    {
+      "metricId": "census-construction:self_storage",
+      "geographyId": "m49:840",
+      "values": 403,
+      "firstPeriod": "1993-01",
+      "lastPeriod": "2026-07",
+      "firstValue": {
+        "period": "1993-01",
+        "value": "8",
+        "status": ""
+      },
+      "lastValue": {
+        "period": "2026-07",
+        "value": "528",
+        "status": "p"
+      },
+      "flags": {
+        "p": 1,
+        "r": 2,
+        "": 400
+      }
+    }
+  ],
+  "excludedBeforeDataCenterStart": 252,
+  "scope": "Only United States; private construction ownership; realized nominal monthly value put in place, NSA; no hardware value or property price",
+  "definitions": "https://www.census.gov/construction/c30/definitions.html",
+  "introductionNotice": "https://www.census.gov/construction/c30/pdf/pr202405.pdf"
+}

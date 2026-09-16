@@ -1,0 +1,37 @@
+{
+  "source": {
+    "url": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Annual.xlsx",
+    "finalUrl": "https://thedocs.worldbank.org/en/doc/74e8be41ceb20fa0da750cda2f6b9e4e-0050012026/related/CMO-Historical-Data-Annual.xlsx",
+    "bytes": 3175855,
+    "sha256": "ed4564bca630c9b3198fc093571d58d594b82a7f79c293901e142d1d176c75d6",
+    "lastModified": "Wed, 02 Sep 2026 20:18:07 GMT",
+    "retrievedAt": "2026-09-09T15:47:04.231116+00:00"
+  },
+  "firstYear": 1960,
+  "lastYear": 2025,
+  "metricCount": 85,
+  "numericCells": 10310,
+  "missingCells": 910,
+  "fixedPrecision": "exact source values in hundredths; no float rounding",
+  "comparisonBase": "2010 exists for all 85 metrics; reference only, not fair value",
+  "realReconciliation": {
+    "checked": 5155,
+    "issues": [
+      {
+        "family": "Indices",
+        "year": 2014,
+        "column": 8,
+        "nominal": 106.3,
+        "real": 98.3,
+        "muv": 108.3,
+        "difference": 0.14672206832871654
+      }
+    ]
+  },
+  "limits": [
+    "International reference quotations, not country sector valuations",
+    "Source specification changes and estimates remain visible",
+    "Iron ore before 2009 excluded from comparable picture because the source description mixes quotation units; source values retained",
+    "Workbook cover mentions comparison sheets not included in the published file; cover not used as numerical metadata"
+  ]
+}

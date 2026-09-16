@@ -1,15 +1,11 @@
 import { Scale as PageIcon } from "lucide-react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { openUrl } from "@tauri-apps/plugin-opener";
 import type { EChartsOption } from "echarts";
 import {
   Activity,
-  AlertTriangle,
   ArrowRightLeft,
   BarChart3,
-  Clock3,
   Database,
-  Info,
   RefreshCw,
   TrendingDown,
   TrendingUp,
@@ -33,7 +29,6 @@ import { api, isTauri } from "../../services/commands";
 import type {
   AudChinaCpiBias,
   AudChinaCpiConfidence,
-  AudChinaCpiRegimeForwardMetric,
   AudChinaCpiRegimeResponse,
   AudChinaCpiRegimeState,
   AudChinaCpiRegimeTimeframe,
@@ -433,262 +428,6 @@ function MacroMetricStrip({ data }: { data: AudChinaCpiRegimeResponse }) {
   );
 }
 
-function ForwardMetricRow({
-  label,
-  metric,
-}: {
-  label: string;
-  metric: AudChinaCpiRegimeForwardMetric;
-}) {
-  return (
-    <tr>
-      <td>
-        <strong>{label}</strong>
-        <small>{metric.horizonWeeks} Wochen</small>
-      </td>
-      <td className="num">{signed(metric.medianReturnPct, " %")}</td>
-      <td className="num">{ratio(metric.positiveRatio)}</td>
-      <td className="num">{signed(metric.p25ReturnPct, " %")}</td>
-      <td className="num">{signed(metric.p75ReturnPct, " %")}</td>
-      <td className="num positive-text">
-        {signed(metric.averageMfePct, " %")}
-      </td>
-      <td className="num negative-text">
-        {signed(metric.averageMaePct, " %")}
-      </td>
-      <td className="num">{metric.samples}</td>
-    </tr>
-  );
-}
-
-function HistoricalValidation({ data }: { data: AudChinaCpiRegimeResponse }) {
-  return (
-    <Card className="regime-insights-validation">
-      <CardHeader
-        title="Historische AUDUSD-Reaktion nach Regimebeginn"
-        subtitle="Start am Open des nächsten Handelstags; MFE und MAE verwenden die vollständige OHLC-Spanne des jeweiligen Horizonts."
-      />
-      <CardContent>
-        <div className="regime-insights-state-grids">
-          {data.stateStatistics
-            .filter((state) => state.state !== "transition")
-            .map((state) => (
-              <section
-                className="regime-insights-state-table"
-                data-state={state.state}
-                key={state.state}
-              >
-                <header>
-                  <div>
-                    <RegimeIcon state={state.state} />
-                    <span>
-                      <strong>{state.label}</strong>
-                      <small>{state.episodes} Regimeepisoden</small>
-                    </span>
-                  </div>
-                  <Badge data-tone={biasTone(state.audBias)}>
-                    {biasLabel(state.audBias)}
-                  </Badge>
-                </header>
-                <div className="regime-insights-table-scroll">
-                  <table className="data-table regime-insights-forward-table">
-                    <thead>
-                      <tr>
-                        <th>Horizont</th>
-                        <th className="num">Median</th>
-                        <th className="num">Positiv</th>
-                        <th className="num">P25</th>
-                        <th className="num">P75</th>
-                        <th className="num">MFE</th>
-                        <th className="num">MAE</th>
-                        <th className="num">n</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {state.horizons.map((metric) => (
-                        <ForwardMetricRow
-                          key={metric.horizonWeeks}
-                          label={`${metric.tradingDays} Handelstage`}
-                          metric={metric}
-                        />
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            ))}
-        </div>
-      </CardContent>
-    </Card>
-  );
-}
-
-function EpisodeHistory({ data }: { data: AudChinaCpiRegimeResponse }) {
-  const episodes = [...data.episodes]
-    .filter((episode) => episode.state !== "unavailable")
-    .reverse()
-    .slice(0, 12);
-  return (
-    <Card>
-      <CardHeader
-        title="Historische Regimeepisoden"
-        subtitle="Realisiertes Verhalten vom ersten handelbaren Open bis zum letzten Bar vor dem nächsten Zustandswechsel."
-      />
-      <CardContent className="regime-insights-table-scroll">
-        {episodes.length === 0 ? (
-          <EmptyState
-            compact
-            icon={Clock3}
-            title="Noch keine Episoden verfügbar"
-            description="Nach mindestens vier CPI-Releases und einer überlappenden AUDUSD-Historie erscheinen hier die erkannten Phasen."
-          />
-        ) : (
-          <table className="data-table regime-insights-episode-table">
-            <thead>
-              <tr>
-                <th>Regimebeginn</th>
-                <th>Zustand</th>
-                <th className="num">CPI Δ</th>
-                <th className="num">AUDUSD</th>
-                <th className="num">MFE</th>
-                <th className="num">MAE</th>
-                <th className="num">Releases</th>
-                <th>Status</th>
-              </tr>
-            </thead>
-            <tbody>
-              {episodes.map((episode) => (
-                <tr key={`${episode.state}-${episode.effectiveStartAt}`}>
-                  <td>
-                    <strong>{timestampDate(episode.effectiveStartAt)}</strong>
-                    <small>Release {localDate(episode.startReleaseAt)}</small>
-                  </td>
-                  <td>
-                    <span
-                      className="regime-insights-state-dot"
-                      data-state={episode.state}
-                    />
-                    {stateLabel(episode.state)}
-                  </td>
-                  <td className="num">{signed(episode.cpiChangePp, " PP")}</td>
-                  <td
-                    className={`num ${episode.returnPct > 0 ? "positive-text" : episode.returnPct < 0 ? "negative-text" : ""}`}
-                  >
-                    {signed(episode.returnPct, " %")}
-                  </td>
-                  <td className="num positive-text">
-                    {signed(episode.maxFavorableExcursionPct, " %")}
-                  </td>
-                  <td className="num negative-text">
-                    {signed(episode.maxAdverseExcursionPct, " %")}
-                  </td>
-                  <td className="num">{episode.observations}</td>
-                  <td>{episode.completed ? "Abgeschlossen" : "Aktiv"}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </CardContent>
-    </Card>
-  );
-}
-
-function QualityAndMethodology({ data }: { data: AudChinaCpiRegimeResponse }) {
-  return (
-    <section className="regime-insights-bottom-grid">
-      <Card>
-        <CardHeader
-          title="Datenqualität"
-          subtitle={data.quality.reason}
-          action={
-            <Badge data-status={data.quality.status}>
-              {qualityLabel(data.quality.status)}
-            </Badge>
-          }
-        />
-        <CardContent>
-          <dl className="regime-insights-quality-grid">
-            <div>
-              <dt>CPI-Releases</dt>
-              <dd>{data.quality.cpiObservations}</dd>
-            </div>
-            <div>
-              <dt>AUDUSD D1-Bars</dt>
-              <dd>{data.quality.priceCandles}</dd>
-            </div>
-            <div>
-              <dt>Gerichtete Episoden</dt>
-              <dd>{data.quality.directionalEpisodes}</dd>
-            </div>
-            <div>
-              <dt>Gemeinsamer Zeitraum</dt>
-              <dd>
-                {localDate(data.quality.overlapStart)} –{" "}
-                {localDate(data.quality.overlapEnd)}
-              </dd>
-            </div>
-          </dl>
-          <div className="regime-insights-warnings">
-            {data.quality.warnings.map((warning) => (
-              <div key={warning}>
-                <AlertTriangle size={14} />
-                <span>{warning}</span>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader
-          title="Methodik & Herkunft"
-          subtitle={`Modell ${data.modelVersion}`}
-        />
-        <CardContent className="regime-insights-methodology">
-          <div>
-            <Database size={15} />
-            <span>
-              <strong>Regime</strong>
-              <small>{data.methodology.regimeBasis}</small>
-            </span>
-          </div>
-          <div>
-            <Clock3 size={15} />
-            <span>
-              <strong>No-look-ahead</strong>
-              <small>{data.methodology.effectiveTiming}</small>
-            </span>
-          </div>
-          <div>
-            <BarChart3 size={15} />
-            <span>
-              <strong>Marktvalidierung</strong>
-              <small>{data.methodology.validationBasis}</small>
-            </span>
-          </div>
-          <div className="regime-insights-source-actions">
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => void openUrl(data.macroSourceUrl)}
-            >
-              China CPI · {data.macroSourceName}
-            </Button>
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => void openUrl(data.marketSourceUrl)}
-            >
-              AUDUSD · {data.marketSourceName}
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-    </section>
-  );
-}
-
 export function RegimeInsightsPage() {
   const queryClient = useQueryClient();
   const [timeframe, setTimeframe] = useState<AudChinaCpiRegimeTimeframe>("W1");
@@ -820,25 +559,6 @@ export function RegimeInsightsPage() {
               )}
             </CardContent>
           </Card>
-
-          {regime.data.quality.status !== "unavailable" && (
-            <>
-              <div className="regime-insights-context-note" role="note">
-                <Info size={14} />
-                <span>
-                  Die AUD-Richtung wird aus historischen Outcomes abgeleitet.
-                  Ein fallender China CPI ist daher nicht automatisch bearish;
-                  ohne mindestens{" "}
-                  {regime.data.methodology.minimumDirectionalSamples}{" "}
-                  unabhängige Regimeanfänge bleibt der Kontext nicht belastbar.
-                </span>
-              </div>
-              <HistoricalValidation data={regime.data} />
-              <EpisodeHistory data={regime.data} />
-            </>
-          )}
-
-          <QualityAndMethodology data={regime.data} />
         </>
       ) : null}
     </div>

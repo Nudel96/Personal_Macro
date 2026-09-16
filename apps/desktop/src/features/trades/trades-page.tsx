@@ -17,7 +17,6 @@ import {
   ChevronLeft,
   ChevronRight,
   Columns3,
-  Filter,
   ListFilter,
   Plus,
   Save,
@@ -35,7 +34,8 @@ import { Card } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { JournalPageHeader } from "../../components/ui/journal-page-header";
-import { dateTime, formatMoneyMinor, formatR } from "../../lib/utils";
+import { dateTime, formatR } from "../../lib/utils";
+import { accountMoney } from "../accounts/use-account-journal";
 import { api } from "../../services/commands";
 import { useUiStore } from "../../stores/ui-store";
 import type { TradeStatus, TradeSummary } from "../../types/domain";
@@ -46,6 +46,7 @@ import {
 } from "../accounts/journal-account-context";
 import { TradeDetailDialog } from "./trade-detail-dialog";
 import { TrashDialog } from "./trash-dialog";
+import "./trade-capture.css";
 
 const column = createColumnHelper<TradeSummary>();
 
@@ -81,8 +82,11 @@ export function transitionJournalAccount(
 
 export function TradesPage() {
   const { setQuickTradeOpen, setGuidedTradeOpen } = useUiStore();
-  const { status: journalAccountStatus, selectedAccountId } =
-    useJournalAccount();
+  const {
+    status: journalAccountStatus,
+    selectedAccountId,
+    selectedAccount,
+  } = useJournalAccount();
   const ready = journalAccountStatus === "ready" && selectedAccountId !== null;
   const queryClient = useQueryClient();
   const [searchParams, setSearchParams] = useSearchParams();
@@ -101,7 +105,6 @@ export function TradesPage() {
   ]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({
     session: false,
-    processScore: false,
   });
   const [columnOrder, setColumnOrder] = useState<ColumnOrderState>([]);
   const [rowSelection, setRowSelection] = useState<RowSelectionState>({});
@@ -261,13 +264,12 @@ export function TradesPage() {
               (info.getValue() ?? 0) >= 0 ? "positive-text" : "negative-text"
             }
           >
-            {formatMoneyMinor(info.getValue())}
+            {accountMoney(
+              info.getValue(),
+              selectedAccount?.baseCurrency ?? "EUR",
+            )}
           </strong>
         ),
-      }),
-      column.accessor("processScore", {
-        header: "Prozess",
-        cell: (info) => (info.getValue() ? `${info.getValue()} / 10` : "—"),
       }),
       column.accessor("reviewedAt", {
         header: "Review",
@@ -278,7 +280,7 @@ export function TradesPage() {
         ),
       }),
     ],
-    [],
+    [selectedAccount?.baseCurrency],
   );
   const table = useReactTable({
     data: query.data?.items ?? [],
@@ -375,12 +377,15 @@ export function TradesPage() {
         icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Trades"
-        description="Durchsuche, filtere und bearbeite alle Journal-Einträge."
+        description="Trades festhalten, laufende Positionen abschließen und Ergebnisse nachvollziehen."
         actions={
           <>
             <details className="page-action-menu">
               <summary>Weitere Aktionen</summary>
               <div className="page-action-menu-panel">
+                <Button size="sm" onClick={() => setGuidedTradeOpen(true)}>
+                  Ausführlich erfassen
+                </Button>
                 <Button size="sm" onClick={() => setTrashOpen(true)}>
                   <Trash2 size={14} /> Papierkorb
                 </Button>
@@ -389,12 +394,36 @@ export function TradesPage() {
                 </span>
               </div>
             </details>
-            <Button variant="primary" onClick={() => setGuidedTradeOpen(true)}>
-              <Plus size={15} /> Geführt erfassen
+            <Button variant="primary" onClick={() => setQuickTradeOpen(true)}>
+              <Plus size={15} /> Trade erfassen
             </Button>
           </>
         }
       />
+      <nav className="trade-tracking-filters" aria-label="Trades nach Status">
+        {(
+          [
+            ["all", "Alle Trades"],
+            ["open", "Laufend"],
+            ["planned", "Geplant"],
+            ["closed", "Abgeschlossen"],
+            ["draft", "Entwürfe"],
+          ] as const
+        ).map(([value, label]) => (
+          <button
+            key={value}
+            type="button"
+            aria-pressed={status === value}
+            onClick={() => {
+              setStatus(value);
+              setPage(1);
+            }}
+          >
+            {label}
+          </button>
+        ))}
+        <span>Trade öffnen, um Ergebnis oder Notizen zu ergänzen.</span>
+      </nav>
       <Card>
         <div className="toolbar">
           <div style={{ position: "relative", minWidth: 270 }}>
@@ -416,6 +445,7 @@ export function TradesPage() {
           </div>
           <select
             className="select"
+            aria-label="Trade-Status filtern"
             value={status}
             onChange={(event) => {
               setStatus(event.target.value as typeof status);
@@ -432,6 +462,7 @@ export function TradesPage() {
           </select>
           <select
             className="select"
+            aria-label="Trade-Richtung filtern"
             value={direction}
             onChange={(event) => {
               setDirection(event.target.value as typeof direction);
@@ -443,9 +474,6 @@ export function TradesPage() {
             <option value="long">Long</option>
             <option value="short">Short</option>
           </select>
-          <Button>
-            <Filter size={14} /> Mehr Filter
-          </Button>
           <select
             className="select"
             aria-label="Gespeicherte Ansicht"

@@ -1,0 +1,2162 @@
+{
+  "sourceId": "oecd-housing-stock",
+  "source": {
+    "id": "oecd-housing-stock",
+    "label": "OECD · Wohnungsbestand",
+    "adapter": "oecd_housing_stock",
+    "url": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.xlsx",
+    "documentationUrl": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.pdf",
+    "licenseUrl": "https://www.oecd.org/en/about/terms-conditions.html",
+    "publishedAt": "2024-04-15",
+    "reviewedAt": "2026-09-11",
+    "recipe": "oecd-hm11-a1-original-years-20240415-v1",
+    "observationKind": "source_estimates",
+    "expectedSha256": "9db04f14bb735721aa8e0ea4212f982e04622773042879eebeadddb3b909809d",
+    "expectedRows": 43,
+    "expectedNumeric": 248,
+    "firstPeriod": "2010",
+    "lastPeriod": "2022",
+    "areas": [
+      {
+        "code": "Australia",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Austria",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Belgium",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Brazil",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Bulgaria",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Canada",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Chile",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Colombia",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Costa Rica",
+        "label": "Costa Rica",
+        "geographyId": "m49:188",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Croatia",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Cyprus",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Czechia",
+        "label": "Czechia",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Denmark",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Estonia",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Finland",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "France",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Germany",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Greece",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Hungary",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Iceland",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Ireland",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Italy",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Japan",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Korea",
+        "label": "Korea",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Latvia",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Lithuania",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Luxembourg",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Malta",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Netherlands",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "New Zealand",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Norway",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Poland",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Portugal",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Romania",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Slovak Republic",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Slovenia",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "South Africa",
+        "label": "South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Spain",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Sweden",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Switzerland",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "Türkiye",
+        "label": "Türkiye",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "UK (England)",
+        "label": "UK (England)",
+        "geographyId": "oecd:england",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      },
+      {
+        "code": "United States",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "total": "Total number of dwellings",
+          "per_1000": "Dwellings per 1000 inhabitants"
+        }
+      }
+    ]
+  },
+  "checkedAt": "2026-09-11",
+  "url": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.xlsx",
+  "documentationUrl": "https://webfs.oecd.org/Els-com/Affordable_Housing_Database/HM1-1-Housing-stock-and-construction.pdf",
+  "sha256": "9db04f14bb735721aa8e0ea4212f982e04622773042879eebeadddb3b909809d",
+  "numericValues": 248,
+  "profiles": 86,
+  "areaCount": 43,
+  "undatedBlocks": 10,
+  "originalWorksheet": "HM1.1.A1",
+  "xmlCellCrosscheck": true,
+  "rows": [
+    {
+      "geographyId": "m49:036",
+      "metric": "total",
+      "cell": "B6",
+      "year": 2011,
+      "xmlValue": "9002700"
+    },
+    {
+      "geographyId": "m49:036",
+      "metric": "total",
+      "cell": "C6",
+      "year": 2018,
+      "xmlValue": "10264400"
+    },
+    {
+      "geographyId": "m49:036",
+      "metric": "total",
+      "cell": "D6",
+      "year": 2022,
+      "xmlValue": "10911000"
+    },
+    {
+      "geographyId": "m49:036",
+      "metric": "per_1000",
+      "cell": "H6",
+      "year": 2011,
+      "xmlValue": "402.98524298810059"
+    },
+    {
+      "geographyId": "m49:036",
+      "metric": "per_1000",
+      "cell": "I6",
+      "year": 2018,
+      "xmlValue": "411.12455527160779"
+    },
+    {
+      "geographyId": "m49:036",
+      "metric": "per_1000",
+      "cell": "J6",
+      "year": 2022,
+      "xmlValue": "419.99412216089689"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "total",
+      "cell": "B7",
+      "year": 2011,
+      "xmlValue": "4441408"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "total",
+      "cell": "C7",
+      "year": 2018,
+      "xmlValue": "4756000"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "total",
+      "cell": "D7",
+      "year": 2021,
+      "xmlValue": "4996085"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "per_1000",
+      "cell": "H7",
+      "year": 2011,
+      "xmlValue": "529.46176292544089"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "per_1000",
+      "cell": "I7",
+      "year": 2018,
+      "xmlValue": "538.14863968674229"
+    },
+    {
+      "geographyId": "m49:040",
+      "metric": "per_1000",
+      "cell": "J7",
+      "year": 2021,
+      "xmlValue": "558.12699966039281"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "total",
+      "cell": "B8",
+      "year": 2010,
+      "xmlValue": "4766552"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "total",
+      "cell": "C8",
+      "year": 2018,
+      "xmlValue": "5153019"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "total",
+      "cell": "D8",
+      "year": 2020,
+      "xmlValue": "5577016"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "per_1000",
+      "cell": "H8",
+      "year": 2010,
+      "xmlValue": "437.47530537811116"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "per_1000",
+      "cell": "I8",
+      "year": 2018,
+      "xmlValue": "451.87096513950689"
+    },
+    {
+      "geographyId": "m49:056",
+      "metric": "per_1000",
+      "cell": "J8",
+      "year": 2020,
+      "xmlValue": "484.66551223270693"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "total",
+      "cell": "B9",
+      "year": 2010,
+      "xmlValue": "57324185"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "total",
+      "cell": "C9",
+      "year": 2018,
+      "xmlValue": "71015000"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "total",
+      "cell": "D9",
+      "year": 2019,
+      "xmlValue": "72395000"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "per_1000",
+      "cell": "H9",
+      "year": 2010,
+      "xmlValue": "294.13507311755416"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "per_1000",
+      "cell": "I9",
+      "year": 2018,
+      "xmlValue": "340.60785179877303"
+    },
+    {
+      "geographyId": "m49:076",
+      "metric": "per_1000",
+      "cell": "J9",
+      "year": 2019,
+      "xmlValue": "344.49674246078791"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "total",
+      "cell": "B10",
+      "year": 2011,
+      "xmlValue": "3887076"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "total",
+      "cell": "C10",
+      "year": 2017,
+      "xmlValue": "3951806"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "total",
+      "cell": "D10",
+      "year": 2021,
+      "xmlValue": "4261454"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "per_1000",
+      "cell": "H10",
+      "year": 2011,
+      "xmlValue": "528.97424618050843"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "per_1000",
+      "cell": "I10",
+      "year": 2017,
+      "xmlValue": "558.48443738233459"
+    },
+    {
+      "geographyId": "m49:100",
+      "metric": "per_1000",
+      "cell": "J10",
+      "year": 2021,
+      "xmlValue": "619.60069019740126"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "total",
+      "cell": "B11",
+      "year": 2011,
+      "xmlValue": "14569633"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "total",
+      "cell": "C11",
+      "year": 2016,
+      "xmlValue": "15412443"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "total",
+      "cell": "D11",
+      "year": 2021,
+      "xmlValue": "16284235"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "per_1000",
+      "cell": "H11",
+      "year": 2011,
+      "xmlValue": "424.28416187992963"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "per_1000",
+      "cell": "I11",
+      "year": 2016,
+      "xmlValue": "426.82531047865621"
+    },
+    {
+      "geographyId": "m49:124",
+      "metric": "per_1000",
+      "cell": "J11",
+      "year": 2021,
+      "xmlValue": "425.99337768267446"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "total",
+      "cell": "B12",
+      "year": 2011,
+      "xmlValue": "5584015"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "total",
+      "cell": "C12",
+      "year": 2017,
+      "xmlValue": "6486533"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "total",
+      "cell": "D12",
+      "year": 2020,
+      "xmlValue": "6540229"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "per_1000",
+      "cell": "H12",
+      "year": 2011,
+      "xmlValue": "323.63298611076902"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "per_1000",
+      "cell": "I12",
+      "year": 2017,
+      "xmlValue": "352.16164748160509"
+    },
+    {
+      "geographyId": "m49:152",
+      "metric": "per_1000",
+      "cell": "J12",
+      "year": 2020,
+      "xmlValue": "336.11495551258048"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "total",
+      "cell": "B13",
+      "year": 2015,
+      "xmlValue": "13407206"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "total",
+      "cell": "C13",
+      "year": 2018,
+      "xmlValue": "16813692"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "total",
+      "cell": "D13",
+      "year": 2022,
+      "xmlValue": "19092849"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "per_1000",
+      "cell": "H13",
+      "year": 2015,
+      "xmlValue": "289.48558810575605"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "per_1000",
+      "cell": "I13",
+      "year": 2018,
+      "xmlValue": "348.408966098279"
+    },
+    {
+      "geographyId": "m49:170",
+      "metric": "per_1000",
+      "cell": "J13",
+      "year": 2022,
+      "xmlValue": "369.42442936215474"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "total",
+      "cell": "B14",
+      "year": 2010,
+      "xmlValue": "1267597"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "total",
+      "cell": "C14",
+      "year": 2018,
+      "xmlValue": "1540029"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "total",
+      "cell": "D14",
+      "year": 2022,
+      "xmlValue": "1722602"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "per_1000",
+      "cell": "H14",
+      "year": 2010,
+      "xmlValue": "279.58240752871592"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "per_1000",
+      "cell": "I14",
+      "year": 2018,
+      "xmlValue": "307.79637795011575"
+    },
+    {
+      "geographyId": "m49:188",
+      "metric": "per_1000",
+      "cell": "J14",
+      "year": 2022,
+      "xmlValue": "330.41982193724175"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "total",
+      "cell": "B15",
+      "year": 2013,
+      "xmlValue": "2208580"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "total",
+      "cell": "C15",
+      "year": 2016,
+      "xmlValue": "2231040"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "total",
+      "cell": "D15",
+      "year": 2021,
+      "xmlValue": "2350444"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "per_1000",
+      "cell": "H15",
+      "year": 2013,
+      "xmlValue": "518.97119361870659"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "per_1000",
+      "cell": "I15",
+      "year": 2016,
+      "xmlValue": "534.4641763302493"
+    },
+    {
+      "geographyId": "m49:191",
+      "metric": "per_1000",
+      "cell": "J15",
+      "year": 2021,
+      "xmlValue": "605.9436743825247"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "total",
+      "cell": "B16",
+      "year": 2010,
+      "xmlValue": "421386"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "total",
+      "cell": "C16",
+      "year": 2018,
+      "xmlValue": "455410"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "total",
+      "cell": "D16",
+      "year": 2020,
+      "xmlValue": "465842"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "per_1000",
+      "cell": "H16",
+      "year": 2010,
+      "xmlValue": "508.03429767410461"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "per_1000",
+      "cell": "I16",
+      "year": 2018,
+      "xmlValue": "523.41705447026732"
+    },
+    {
+      "geographyId": "m49:196",
+      "metric": "per_1000",
+      "cell": "J16",
+      "year": 2020,
+      "xmlValue": "522.24088178779073"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "total",
+      "cell": "B17",
+      "year": 2011,
+      "xmlValue": "4756572"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "total",
+      "cell": "C17",
+      "year": 2015,
+      "xmlValue": "4990230"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "total",
+      "cell": "D17",
+      "year": 2021,
+      "xmlValue": "5340033"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "per_1000",
+      "cell": "H17",
+      "year": 2011,
+      "xmlValue": "453.15048426777554"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "per_1000",
+      "cell": "I17",
+      "year": 2015,
+      "xmlValue": "473.32423909758779"
+    },
+    {
+      "geographyId": "m49:203",
+      "metric": "per_1000",
+      "cell": "J17",
+      "year": 2021,
+      "xmlValue": "508.53340443868825"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "total",
+      "cell": "B18",
+      "year": 2010,
+      "xmlValue": "2700000"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "total",
+      "cell": "C18",
+      "year": 2018,
+      "xmlValue": "2900000"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "total",
+      "cell": "D18",
+      "year": 2022,
+      "xmlValue": "3000000"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "per_1000",
+      "cell": "H18",
+      "year": 2010,
+      "xmlValue": "487.02888748712752"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "per_1000",
+      "cell": "I18",
+      "year": 2018,
+      "xmlValue": "500.86727759808923"
+    },
+    {
+      "geographyId": "m49:208",
+      "metric": "per_1000",
+      "cell": "J18",
+      "year": 2022,
+      "xmlValue": "507.56465908489133"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "total",
+      "cell": "B19",
+      "year": 2011,
+      "xmlValue": "657791"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "total",
+      "cell": "C19",
+      "year": 2017,
+      "xmlValue": "700512"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "total",
+      "cell": "D19",
+      "year": 2019,
+      "xmlValue": "714000"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "per_1000",
+      "cell": "H19",
+      "year": 2011,
+      "xmlValue": "495.53388140622656"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "per_1000",
+      "cell": "I19",
+      "year": 2017,
+      "xmlValue": "531.74473046583228"
+    },
+    {
+      "geographyId": "m49:233",
+      "metric": "per_1000",
+      "cell": "J19",
+      "year": 2019,
+      "xmlValue": "538.11456413850794"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "total",
+      "cell": "B20",
+      "year": 2010,
+      "xmlValue": "2807505"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "total",
+      "cell": "C20",
+      "year": 2017,
+      "xmlValue": "3002665"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "total",
+      "cell": "D20",
+      "year": 2022,
+      "xmlValue": "3187210"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "per_1000",
+      "cell": "H20",
+      "year": 2010,
+      "xmlValue": "523.46196149004879"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "per_1000",
+      "cell": "I20",
+      "year": 2017,
+      "xmlValue": "545.12546637210028"
+    },
+    {
+      "geographyId": "m49:246",
+      "metric": "per_1000",
+      "cell": "J20",
+      "year": 2022,
+      "xmlValue": "573.64075716310765"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "total",
+      "cell": "B21",
+      "year": 2011,
+      "xmlValue": "33672000"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "total",
+      "cell": "C21",
+      "year": 2018,
+      "xmlValue": "36330000"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "total",
+      "cell": "D21",
+      "year": 2019,
+      "xmlValue": "39806000"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "per_1000",
+      "cell": "H21",
+      "year": 2011,
+      "xmlValue": "517.33581213679463"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "per_1000",
+      "cell": "I21",
+      "year": 2018,
+      "xmlValue": "541.22847780674977"
+    },
+    {
+      "geographyId": "m49:250",
+      "metric": "per_1000",
+      "cell": "J21",
+      "year": 2019,
+      "xmlValue": "591.0326072834946"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "total",
+      "cell": "B22",
+      "year": 2011,
+      "xmlValue": "40545317"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "total",
+      "cell": "C22",
+      "year": 2018,
+      "xmlValue": "42235402"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "total",
+      "cell": "D22",
+      "year": 2021,
+      "xmlValue": "43084122"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "per_1000",
+      "cell": "H22",
+      "year": 2011,
+      "xmlValue": "505.0803686892184"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "per_1000",
+      "cell": "I22",
+      "year": 2018,
+      "xmlValue": "509.43852074598215"
+    },
+    {
+      "geographyId": "m49:276",
+      "metric": "per_1000",
+      "cell": "J22",
+      "year": 2021,
+      "xmlValue": "517.86242899244428"
+    },
+    {
+      "geographyId": "m49:300",
+      "metric": "total",
+      "cell": "B23",
+      "year": 2011,
+      "xmlValue": "6371901"
+    },
+    {
+      "geographyId": "m49:300",
+      "metric": "total",
+      "cell": "C23",
+      "year": 2015,
+      "xmlValue": "6433801"
+    },
+    {
+      "geographyId": "m49:300",
+      "metric": "per_1000",
+      "cell": "H23",
+      "year": 2011,
+      "xmlValue": "573.79183963835783"
+    },
+    {
+      "geographyId": "m49:300",
+      "metric": "per_1000",
+      "cell": "I23",
+      "year": 2015,
+      "xmlValue": "594.57264254682354"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "total",
+      "cell": "B24",
+      "year": 2011,
+      "xmlValue": "4408050"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "total",
+      "cell": "C24",
+      "year": 2018,
+      "xmlValue": "4455491"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "total",
+      "cell": "D24",
+      "year": 2022,
+      "xmlValue": "4538000"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "per_1000",
+      "cell": "H24",
+      "year": 2011,
+      "xmlValue": "442.6275632544565"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "per_1000",
+      "cell": "I24",
+      "year": 2018,
+      "xmlValue": "455.77831503567154"
+    },
+    {
+      "geographyId": "m49:348",
+      "metric": "per_1000",
+      "cell": "J24",
+      "year": 2022,
+      "xmlValue": "470.59809305107677"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "total",
+      "cell": "B25",
+      "year": 2010,
+      "xmlValue": "130855"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "total",
+      "cell": "C25",
+      "year": 2018,
+      "xmlValue": "140600"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "total",
+      "cell": "D25",
+      "year": 2022,
+      "xmlValue": "152351"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "per_1000",
+      "cell": "H25",
+      "year": 2010,
+      "xmlValue": "411.43678233200438"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "per_1000",
+      "cell": "I25",
+      "year": 2018,
+      "xmlValue": "398.61420608864773"
+    },
+    {
+      "geographyId": "m49:352",
+      "metric": "per_1000",
+      "cell": "J25",
+      "year": 2022,
+      "xmlValue": "398.81938718079607"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "total",
+      "cell": "B26",
+      "year": 2011,
+      "xmlValue": "1994845"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "total",
+      "cell": "C26",
+      "year": 2016,
+      "xmlValue": "2003645"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "total",
+      "cell": "D26",
+      "year": 2022,
+      "xmlValue": "2124590"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "per_1000",
+      "cell": "H26",
+      "year": 2011,
+      "xmlValue": "436.04236868749575"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "per_1000",
+      "cell": "I26",
+      "year": 2016,
+      "xmlValue": "422.74585792842726"
+    },
+    {
+      "geographyId": "m49:372",
+      "metric": "per_1000",
+      "cell": "J26",
+      "year": 2022,
+      "xmlValue": "416.5675698091203"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "total",
+      "cell": "B27",
+      "year": 2011,
+      "xmlValue": "33429400"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "total",
+      "cell": "C27",
+      "year": 2018,
+      "xmlValue": "35088870"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "total",
+      "cell": "D27",
+      "year": 2021,
+      "xmlValue": "35379680"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "per_1000",
+      "cell": "H27",
+      "year": 2011,
+      "xmlValue": "556.90750624837119"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "per_1000",
+      "cell": "I27",
+      "year": 2018,
+      "xmlValue": "586.01371847348412"
+    },
+    {
+      "geographyId": "m49:380",
+      "metric": "per_1000",
+      "cell": "J27",
+      "year": 2021,
+      "xmlValue": "598.30511716325452"
+    },
+    {
+      "geographyId": "m49:392",
+      "metric": "total",
+      "cell": "B28",
+      "year": 2013,
+      "xmlValue": "60628600"
+    },
+    {
+      "geographyId": "m49:392",
+      "metric": "total",
+      "cell": "C28",
+      "year": 2018,
+      "xmlValue": "62420000"
+    },
+    {
+      "geographyId": "m49:392",
+      "metric": "per_1000",
+      "cell": "H28",
+      "year": 2013,
+      "xmlValue": "475.83980798074379"
+    },
+    {
+      "geographyId": "m49:392",
+      "metric": "per_1000",
+      "cell": "I28",
+      "year": 2018,
+      "xmlValue": "492.47128798504343"
+    },
+    {
+      "geographyId": "m49:410",
+      "metric": "total",
+      "cell": "B29",
+      "year": 2013,
+      "xmlValue": "15628135"
+    },
+    {
+      "geographyId": "m49:410",
+      "metric": "per_1000",
+      "cell": "H29",
+      "year": 2013,
+      "xmlValue": "309.90438358422824"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "total",
+      "cell": "B30",
+      "year": 2010,
+      "xmlValue": "1018532"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "total",
+      "cell": "C30",
+      "year": 2017,
+      "xmlValue": "1067470"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "total",
+      "cell": "D30",
+      "year": 2021,
+      "xmlValue": "1063939"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "per_1000",
+      "cell": "H30",
+      "year": 2010,
+      "xmlValue": "485.58105563959532"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "per_1000",
+      "cell": "I30",
+      "year": 2017,
+      "xmlValue": "549.60568866884591"
+    },
+    {
+      "geographyId": "m49:428",
+      "metric": "per_1000",
+      "cell": "J30",
+      "year": 2021,
+      "xmlValue": "564.57722203590572"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "total",
+      "cell": "B31",
+      "year": 2010,
+      "xmlValue": "1352852"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "total",
+      "cell": "C31",
+      "year": 2018,
+      "xmlValue": "1472623"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "total",
+      "cell": "D31",
+      "year": 2019,
+      "xmlValue": "1483041"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "per_1000",
+      "cell": "H31",
+      "year": 2010,
+      "xmlValue": "436.78683439221868"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "per_1000",
+      "cell": "I31",
+      "year": 2018,
+      "xmlValue": "525.64711660681269"
+    },
+    {
+      "geographyId": "m49:440",
+      "metric": "per_1000",
+      "cell": "J31",
+      "year": 2019,
+      "xmlValue": "530.76889214809432"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "total",
+      "cell": "B32",
+      "year": 2011,
+      "xmlValue": "207959"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "total",
+      "cell": "C32",
+      "year": 2017,
+      "xmlValue": "233675"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "total",
+      "cell": "D32",
+      "year": 2020,
+      "xmlValue": "244320"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "per_1000",
+      "cell": "H32",
+      "year": 2011,
+      "xmlValue": "401.19339983910515"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "per_1000",
+      "cell": "I32",
+      "year": 2017,
+      "xmlValue": "391.85058113113894"
+    },
+    {
+      "geographyId": "m49:442",
+      "metric": "per_1000",
+      "cell": "J32",
+      "year": 2020,
+      "xmlValue": "387.55545967484807"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "total",
+      "cell": "B33",
+      "year": 2011,
+      "xmlValue": "223850"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "total",
+      "cell": "C33",
+      "year": 2018,
+      "xmlValue": "262580"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "total",
+      "cell": "D33",
+      "year": 2021,
+      "xmlValue": "284860"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "per_1000",
+      "cell": "H33",
+      "year": 2011,
+      "xmlValue": "537.75969096534891"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "per_1000",
+      "cell": "I33",
+      "year": 2018,
+      "xmlValue": "541.81093361175647"
+    },
+    {
+      "geographyId": "m49:470",
+      "metric": "per_1000",
+      "cell": "J33",
+      "year": 2021,
+      "xmlValue": "549.35221719526817"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "total",
+      "cell": "B34",
+      "year": 2012,
+      "xmlValue": "7386743"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "total",
+      "cell": "C34",
+      "year": 2018,
+      "xmlValue": "7740984"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "total",
+      "cell": "D34",
+      "year": 2021,
+      "xmlValue": "7966331"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "per_1000",
+      "cell": "H34",
+      "year": 2012,
+      "xmlValue": "440.8689532767097"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "per_1000",
+      "cell": "I34",
+      "year": 2018,
+      "xmlValue": "449.23130277579213"
+    },
+    {
+      "geographyId": "m49:528",
+      "metric": "per_1000",
+      "cell": "J34",
+      "year": 2021,
+      "xmlValue": "454.36087324919208"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "total",
+      "cell": "B35",
+      "year": 2010,
+      "xmlValue": "1719200"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "total",
+      "cell": "C35",
+      "year": 2018,
+      "xmlValue": "1884300"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "total",
+      "cell": "D35",
+      "year": 2022,
+      "xmlValue": "2029400"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "per_1000",
+      "cell": "H35",
+      "year": 2010,
+      "xmlValue": "395.15480267543154"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "per_1000",
+      "cell": "I35",
+      "year": 2018,
+      "xmlValue": "384.50393829327021"
+    },
+    {
+      "geographyId": "m49:554",
+      "metric": "per_1000",
+      "cell": "J35",
+      "year": 2022,
+      "xmlValue": "396.05003805546335"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "total",
+      "cell": "B36",
+      "year": 2011,
+      "xmlValue": "2205191"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "total",
+      "cell": "C36",
+      "year": 2018,
+      "xmlValue": "2581155"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "total",
+      "cell": "D36",
+      "year": 2022,
+      "xmlValue": "2694301"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "per_1000",
+      "cell": "H36",
+      "year": 2011,
+      "xmlValue": "445.2152989780721"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "per_1000",
+      "cell": "I36",
+      "year": 2018,
+      "xmlValue": "485.91788725574725"
+    },
+    {
+      "geographyId": "m49:578",
+      "metric": "per_1000",
+      "cell": "J36",
+      "year": 2022,
+      "xmlValue": "493.72133222432529"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "total",
+      "cell": "B37",
+      "year": 2010,
+      "xmlValue": "13470428"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "total",
+      "cell": "C37",
+      "year": 2018,
+      "xmlValue": "14615112"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "total",
+      "cell": "D37",
+      "year": 2021,
+      "xmlValue": "15359507"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "per_1000",
+      "cell": "H37",
+      "year": 2010,
+      "xmlValue": "349.72964576472293"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "per_1000",
+      "cell": "I37",
+      "year": 2018,
+      "xmlValue": "380.47169225092483"
+    },
+    {
+      "geographyId": "m49:616",
+      "metric": "per_1000",
+      "cell": "J37",
+      "year": 2021,
+      "xmlValue": "402.47934711561879"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "total",
+      "cell": "B38",
+      "year": 2011,
+      "xmlValue": "5859540"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "total",
+      "cell": "C38",
+      "year": 2017,
+      "xmlValue": "5944466"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "total",
+      "cell": "D38",
+      "year": 2021,
+      "xmlValue": "5970677"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "per_1000",
+      "cell": "H38",
+      "year": 2011,
+      "xmlValue": "554.11795629226458"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "per_1000",
+      "cell": "I38",
+      "year": 2017,
+      "xmlValue": "574.89310573064699"
+    },
+    {
+      "geographyId": "m49:620",
+      "metric": "per_1000",
+      "cell": "J38",
+      "year": 2021,
+      "xmlValue": "573.67842887967538"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "total",
+      "cell": "B39",
+      "year": 2010,
+      "xmlValue": "8427941"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "total",
+      "cell": "C39",
+      "year": 2018,
+      "xmlValue": "9031317"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "total",
+      "cell": "D39",
+      "year": 2021,
+      "xmlValue": "9587153"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "per_1000",
+      "cell": "H39",
+      "year": 2010,
+      "xmlValue": "416.26043782330424"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "per_1000",
+      "cell": "I39",
+      "year": 2018,
+      "xmlValue": "463.52859600571549"
+    },
+    {
+      "geographyId": "m49:642",
+      "metric": "per_1000",
+      "cell": "J39",
+      "year": 2021,
+      "xmlValue": "501.31365926933609"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "total",
+      "cell": "B40",
+      "year": 2011,
+      "xmlValue": "1994897"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "total",
+      "cell": "C40",
+      "year": 2016,
+      "xmlValue": "2007300"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "total",
+      "cell": "D40",
+      "year": 2021,
+      "xmlValue": "2235586"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "per_1000",
+      "cell": "H40",
+      "year": 2011,
+      "xmlValue": "369.53595742725969"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "per_1000",
+      "cell": "I40",
+      "year": 2016,
+      "xmlValue": "369.61422332539559"
+    },
+    {
+      "geographyId": "m49:703",
+      "metric": "per_1000",
+      "cell": "J40",
+      "year": 2021,
+      "xmlValue": "410.80295796152546"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "total",
+      "cell": "B41",
+      "year": 2011,
+      "xmlValue": "844656"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "total",
+      "cell": "C41",
+      "year": 2018,
+      "xmlValue": "852181"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "total",
+      "cell": "D41",
+      "year": 2021,
+      "xmlValue": "864323"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "per_1000",
+      "cell": "H41",
+      "year": 2011,
+      "xmlValue": "411.52625876006579"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "per_1000",
+      "cell": "I41",
+      "year": 2018,
+      "xmlValue": "411.67169875123784"
+    },
+    {
+      "geographyId": "m49:705",
+      "metric": "per_1000",
+      "cell": "J41",
+      "year": 2021,
+      "xmlValue": "410.21363479096175"
+    },
+    {
+      "geographyId": "m49:710",
+      "metric": "total",
+      "cell": "B42",
+      "year": 2011,
+      "xmlValue": "14449663"
+    },
+    {
+      "geographyId": "m49:710",
+      "metric": "total",
+      "cell": "C42",
+      "year": 2016,
+      "xmlValue": "15743677"
+    },
+    {
+      "geographyId": "m49:710",
+      "metric": "per_1000",
+      "cell": "H42",
+      "year": 2011,
+      "xmlValue": "278.47311921084003"
+    },
+    {
+      "geographyId": "m49:710",
+      "metric": "per_1000",
+      "cell": "I42",
+      "year": 2016,
+      "xmlValue": "281.03597655614902"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "total",
+      "cell": "B43",
+      "year": 2010,
+      "xmlValue": "25106251"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "total",
+      "cell": "C43",
+      "year": 2017,
+      "xmlValue": "26175034"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "total",
+      "cell": "D43",
+      "year": 2022,
+      "xmlValue": "26811833"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "per_1000",
+      "cell": "H43",
+      "year": 2010,
+      "xmlValue": "539.19484920939465"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "per_1000",
+      "cell": "I43",
+      "year": 2017,
+      "xmlValue": "562.50634363421693"
+    },
+    {
+      "geographyId": "m49:724",
+      "metric": "per_1000",
+      "cell": "J43",
+      "year": 2022,
+      "xmlValue": "563.09595410558779"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "total",
+      "cell": "B44",
+      "year": 2017,
+      "xmlValue": "4633678"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "total",
+      "cell": "C44",
+      "year": 2018,
+      "xmlValue": "4924792"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "total",
+      "cell": "D44",
+      "year": 2022,
+      "xmlValue": "5158699"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "per_1000",
+      "cell": "H44",
+      "year": 2017,
+      "xmlValue": "460.70973518286252"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "per_1000",
+      "cell": "I44",
+      "year": 2018,
+      "xmlValue": "483.99881476705895"
+    },
+    {
+      "geographyId": "m49:752",
+      "metric": "per_1000",
+      "cell": "J44",
+      "year": 2022,
+      "xmlValue": "491.91647020804254"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "total",
+      "cell": "B45",
+      "year": 2013,
+      "xmlValue": "4234906"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "total",
+      "cell": "C45",
+      "year": 2017,
+      "xmlValue": "4469498"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "total",
+      "cell": "D45",
+      "year": 2022,
+      "xmlValue": "4688288"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "per_1000",
+      "cell": "H45",
+      "year": 2013,
+      "xmlValue": "523.51648699412783"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "per_1000",
+      "cell": "I45",
+      "year": 2017,
+      "xmlValue": "528.81989873440477"
+    },
+    {
+      "geographyId": "m49:756",
+      "metric": "per_1000",
+      "cell": "J45",
+      "year": 2022,
+      "xmlValue": "534.23174775691723"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "total",
+      "cell": "B46",
+      "year": 2010,
+      "xmlValue": "28945931"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "total",
+      "cell": "C46",
+      "year": 2018,
+      "xmlValue": "37812959"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "total",
+      "cell": "D46",
+      "year": 2021,
+      "xmlValue": "40200000"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "per_1000",
+      "cell": "H46",
+      "year": 2010,
+      "xmlValue": "395.74891155117894"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "per_1000",
+      "cell": "I46",
+      "year": 2018,
+      "xmlValue": "464.49151783372116"
+    },
+    {
+      "geographyId": "m49:792",
+      "metric": "per_1000",
+      "cell": "J46",
+      "year": 2021,
+      "xmlValue": "477.73354081388158"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "total",
+      "cell": "B47",
+      "year": 2010,
+      "xmlValue": "22838672"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "total",
+      "cell": "C47",
+      "year": 2018,
+      "xmlValue": "24213477"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "total",
+      "cell": "D47",
+      "year": 2021,
+      "xmlValue": "24927588"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "per_1000",
+      "cell": "H47",
+      "year": 2010,
+      "xmlValue": "430.04850566401547"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "per_1000",
+      "cell": "I47",
+      "year": 2018,
+      "xmlValue": "432.55963142136443"
+    },
+    {
+      "geographyId": "oecd:england",
+      "metric": "per_1000",
+      "cell": "J47",
+      "year": 2021,
+      "xmlValue": "440.91219108397422"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "total",
+      "cell": "B48",
+      "year": 2011,
+      "xmlValue": "132428000"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "total",
+      "cell": "C48",
+      "year": 2017,
+      "xmlValue": "137400000"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "total",
+      "cell": "D48",
+      "year": 2021,
+      "xmlValue": "142153000"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "per_1000",
+      "cell": "H48",
+      "year": 2011,
+      "xmlValue": "425.01611309747193"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "per_1000",
+      "cell": "I48",
+      "year": 2017,
+      "xmlValue": "422.61042287469274"
+    },
+    {
+      "geographyId": "m49:840",
+      "metric": "per_1000",
+      "cell": "J48",
+      "year": 2021,
+      "xmlValue": "428.13099624862764"
+    }
+  ],
+  "limits": [
+    "Only the published HM1.1.A1 table, no old working-sheet observations.",
+    "England is a separate source geography; no UK substitution.",
+    "Actual years; sparse observations; no interpolation or own population denominator."
+  ]
+}

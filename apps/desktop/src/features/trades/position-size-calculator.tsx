@@ -1,6 +1,7 @@
 import { Calculator, CircleAlert } from "lucide-react";
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import type { Account } from "../../types/domain";
+import { Button } from "../../components/ui/button";
 import {
   calculatePositionSize,
   formatPositionQuantity,
@@ -9,6 +10,8 @@ import {
 } from "./position-sizing";
 
 interface PositionSizeCalculatorProps {
+  autoApply?: boolean;
+  onEnableAutomatic?: () => void;
   account?: Account;
   instrument: string;
   assetClass: string;
@@ -22,6 +25,8 @@ interface PositionSizeCalculatorProps {
 }
 
 export function PositionSizeCalculator({
+  autoApply = true,
+  onEnableAutomatic,
   account,
   instrument,
   assetClass,
@@ -84,12 +89,12 @@ export function PositionSizeCalculator({
   }, [account, entryPrice, inferred.baseCurrency, inferred.quoteCurrency]);
 
   useEffect(() => {
-    if (account && !riskPercent.trim()) {
+    if (autoApply && account && !riskPercent.trim()) {
       callbacks.current.onRiskPercentChange(
         String(account.defaultRiskPercent).replace(".", ","),
       );
     }
-  }, [account, riskPercent]);
+  }, [account, riskPercent, autoApply]);
 
   const capital = (account?.currentBalanceMinor ?? 0) / 100;
   const riskPercentNumber = parseTradeNumber(riskPercent);
@@ -99,12 +104,12 @@ export function PositionSizeCalculator({
       : 0;
 
   useEffect(() => {
-    if (automaticRisk > 0) {
+    if (autoApply && automaticRisk > 0) {
       callbacks.current.onRiskAmountChange(
         automaticRisk.toFixed(2).replace(".", ","),
       );
     }
-  }, [automaticRisk]);
+  }, [automaticRisk, autoApply]);
 
   const spec = {
     ...inferred,
@@ -123,12 +128,12 @@ export function PositionSizeCalculator({
   });
 
   useEffect(() => {
-    if (result?.quantity) {
+    if (autoApply && result?.quantity) {
       callbacks.current.onQuantityChange(
         formatPositionQuantity(result.quantity, spec.quantityStep),
       );
     }
-  }, [result?.quantity, spec.quantityStep]);
+  }, [result?.quantity, spec.quantityStep, autoApply]);
 
   const conversionMissing = Boolean(
     account &&
@@ -138,6 +143,16 @@ export function PositionSizeCalculator({
 
   return (
     <div className="position-calculator">
+      {!autoApply && (
+        <div className="position-calculator-heading">
+          <span className="muted">
+            Übernommene Risiko- und Mengenwerte bleiben erhalten.
+          </span>
+          <Button type="button" onClick={onEnableAutomatic}>
+            Automatische Berechnung aktivieren
+          </Button>
+        </div>
+      )}
       <div className="position-calculator-heading">
         <div>
           <span className="page-eyebrow">Automatische Positionsgröße</span>

@@ -1,0 +1,1434 @@
+{
+  "areas": [
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:004",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 79,
+      "gdpYears": 79,
+      "id": "m49:008",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:012",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:024",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:031",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 153,
+      "gdpYears": 127,
+      "id": "m49:032",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 203,
+      "gdpYears": 203,
+      "id": "m49:036",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 158,
+      "gdpYears": 158,
+      "id": "m49:040",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:048",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:050",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:051",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:052",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 186,
+      "gdpYears": 182,
+      "id": "m49:056",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1846,
+      "gdpPerCapitaYears": 134,
+      "gdpYears": 123,
+      "id": "m49:068",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:070",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:072",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 175,
+      "gdpYears": 155,
+      "id": "m49:076",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 105,
+      "gdpYears": 101,
+      "id": "m49:100",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 85,
+      "gdpYears": 85,
+      "id": "m49:104",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:108",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:112",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:116",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:120",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 158,
+      "gdpYears": 158,
+      "id": "m49:124",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:132",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:140",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 155,
+      "gdpYears": 155,
+      "id": "m49:144",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:148",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 214,
+      "gdpYears": 203,
+      "id": "m49:152",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1000,
+      "gdpPerCapitaYears": 136,
+      "gdpYears": 97,
+      "id": "m49:156",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 157,
+      "gdpYears": 127,
+      "id": "m49:170",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:174",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:178",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:180",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1920,
+      "gdpPerCapitaYears": 103,
+      "gdpYears": 103,
+      "id": "m49:188",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:191",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1690,
+      "gdpPerCapitaYears": 131,
+      "gdpYears": 122,
+      "id": "m49:192",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:196",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1970,
+      "gdpPerCapitaYears": 53,
+      "gdpYears": 53,
+      "id": "m49:203",
+      "lastYear": 2022,
+      "worldShareYears": 13
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:204",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 203,
+      "gdpYears": 203,
+      "id": "m49:208",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:212",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:214",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 126,
+      "gdpYears": 124,
+      "id": "m49:218",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1920,
+      "gdpPerCapitaYears": 103,
+      "gdpYears": 103,
+      "id": "m49:222",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:226",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:231",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1855,
+      "gdpPerCapitaYears": 45,
+      "gdpYears": 44,
+      "id": "m49:233",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1600,
+      "gdpPerCapitaYears": 170,
+      "gdpYears": 167,
+      "id": "m49:246",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 748,
+      "gdpYears": 207,
+      "id": "m49:250",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:262",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:266",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:268",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:270",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 75,
+      "gdpYears": 75,
+      "id": "m49:275",
+      "lastYear": 2022,
+      "worldShareYears": 16
+    },
+    {
+      "firstYear": 1500,
+      "gdpPerCapitaYears": 523,
+      "gdpYears": 206,
+      "id": "m49:276",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1885,
+      "gdpPerCapitaYears": 126,
+      "gdpYears": 73,
+      "id": "m49:288",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 191,
+      "gdpYears": 191,
+      "id": "m49:300",
+      "lastYear": 2022,
+      "worldShareYears": 20
+    },
+    {
+      "firstYear": 1920,
+      "gdpPerCapitaYears": 103,
+      "gdpYears": 103,
+      "id": "m49:320",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:324",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1945,
+      "gdpPerCapitaYears": 78,
+      "gdpYears": 78,
+      "id": "m49:332",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1920,
+      "gdpPerCapitaYears": 103,
+      "gdpYears": 103,
+      "id": "m49:340",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:344",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 102,
+      "gdpYears": 102,
+      "id": "m49:348",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 153,
+      "gdpYears": 73,
+      "id": "m49:352",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1600,
+      "gdpPerCapitaYears": 152,
+      "gdpYears": 148,
+      "id": "m49:356",
+      "lastYear": 2022,
+      "worldShareYears": 20
+    },
+    {
+      "firstYear": 1815,
+      "gdpPerCapitaYears": 201,
+      "gdpYears": 196,
+      "id": "m49:360",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 77,
+      "gdpYears": 77,
+      "id": "m49:364",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 80,
+      "gdpYears": 78,
+      "id": "m49:368",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 105,
+      "gdpYears": 105,
+      "id": "m49:372",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 74,
+      "gdpYears": 73,
+      "id": "m49:376",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 230,
+      "gdpYears": 204,
+      "id": "m49:380",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1887,
+      "gdpPerCapitaYears": 75,
+      "gdpYears": 73,
+      "id": "m49:384",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 89,
+      "gdpYears": 86,
+      "id": "m49:388",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 730,
+      "gdpPerCapitaYears": 154,
+      "gdpYears": 146,
+      "id": "m49:392",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:398",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 77,
+      "gdpYears": 76,
+      "id": "m49:400",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1904,
+      "gdpPerCapitaYears": 101,
+      "gdpYears": 73,
+      "id": "m49:404",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 68,
+      "gdpYears": 36,
+      "id": "m49:408",
+      "lastYear": 2022,
+      "worldShareYears": 13
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 112,
+      "gdpYears": 112,
+      "id": "m49:410",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:414",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:417",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:418",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:422",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:426",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:428",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1845,
+      "gdpPerCapitaYears": 178,
+      "gdpYears": 73,
+      "id": "m49:430",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:434",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:440",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:442",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:450",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1904,
+      "gdpPerCapitaYears": 111,
+      "gdpYears": 73,
+      "id": "m49:454",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 121,
+      "gdpYears": 121,
+      "id": "m49:458",
+      "lastYear": 2022,
+      "worldShareYears": 20
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:466",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:470",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:478",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:480",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1550,
+      "gdpPerCapitaYears": 352,
+      "gdpYears": 134,
+      "id": "m49:484",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:496",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:498",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:499",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:504",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:508",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:512",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:516",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:524",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1348,
+      "gdpPerCapitaYears": 669,
+      "gdpYears": 206,
+      "id": "m49:528",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 156,
+      "gdpYears": 156,
+      "id": "m49:554",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1920,
+      "gdpPerCapitaYears": 103,
+      "gdpYears": 103,
+      "id": "m49:558",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:562",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1885,
+      "gdpPerCapitaYears": 126,
+      "gdpYears": 73,
+      "id": "m49:566",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 194,
+      "gdpYears": 194,
+      "id": "m49:578",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:586",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1906,
+      "gdpPerCapitaYears": 117,
+      "gdpYears": 117,
+      "id": "m49:591",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1939,
+      "gdpPerCapitaYears": 84,
+      "gdpYears": 84,
+      "id": "m49:600",
+      "lastYear": 2022,
+      "worldShareYears": 16
+    },
+    {
+      "firstYear": 1595,
+      "gdpPerCapitaYears": 428,
+      "gdpYears": 133,
+      "id": "m49:604",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 118,
+      "gdpYears": 118,
+      "id": "m49:608",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1400,
+      "gdpPerCapitaYears": 571,
+      "gdpYears": 96,
+      "id": "m49:616",
+      "lastYear": 2022,
+      "worldShareYears": 20
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 482,
+      "gdpYears": 194,
+      "id": "m49:620",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:624",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:630",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:634",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1862,
+      "gdpPerCapitaYears": 161,
+      "gdpYears": 108,
+      "id": "m49:642",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1860,
+      "gdpPerCapitaYears": 163,
+      "gdpYears": 73,
+      "id": "m49:643",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:646",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:662",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:678",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:682",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:686",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:688",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:690",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:694",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1870,
+      "gdpPerCapitaYears": 114,
+      "gdpYears": 102,
+      "id": "m49:702",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1985,
+      "gdpPerCapitaYears": 38,
+      "gdpYears": 38,
+      "id": "m49:703",
+      "lastYear": 2022,
+      "worldShareYears": 11
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:704",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:705",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1700,
+      "gdpPerCapitaYears": 281,
+      "gdpYears": 76,
+      "id": "m49:710",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1914,
+      "gdpPerCapitaYears": 101,
+      "gdpYears": 73,
+      "id": "m49:716",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 747,
+      "gdpYears": 207,
+      "id": "m49:724",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:748",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1300,
+      "gdpPerCapitaYears": 723,
+      "gdpYears": 206,
+      "id": "m49:752",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 173,
+      "gdpYears": 173,
+      "id": "m49:756",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 76,
+      "gdpYears": 76,
+      "id": "m49:760",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:762",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 79,
+      "gdpYears": 79,
+      "id": "m49:764",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:768",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:780",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:784",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 77,
+      "gdpYears": 77,
+      "id": "m49:788",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 113,
+      "gdpYears": 107,
+      "id": "m49:792",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:795",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1906,
+      "gdpPerCapitaYears": 99,
+      "gdpYears": 73,
+      "id": "m49:800",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:804",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1952,
+      "gdpPerCapitaYears": 71,
+      "gdpYears": 71,
+      "id": "m49:807",
+      "lastYear": 2022,
+      "worldShareYears": 14
+    },
+    {
+      "firstYear": 1,
+      "gdpPerCapitaYears": 84,
+      "gdpYears": 79,
+      "id": "m49:818",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1000,
+      "gdpPerCapitaYears": 772,
+      "gdpYears": 207,
+      "id": "m49:826",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:834",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1650,
+      "gdpPerCapitaYears": 226,
+      "gdpYears": 203,
+      "id": "m49:840",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:854",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 157,
+      "gdpYears": 155,
+      "id": "m49:858",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1973,
+      "gdpPerCapitaYears": 44,
+      "gdpYears": 44,
+      "id": "m49:860",
+      "lastYear": 2022,
+      "worldShareYears": 12
+    },
+    {
+      "firstYear": 1800,
+      "gdpPerCapitaYears": 195,
+      "gdpYears": 155,
+      "id": "m49:862",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1950,
+      "gdpPerCapitaYears": 73,
+      "gdpYears": 73,
+      "id": "m49:887",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1906,
+      "gdpPerCapitaYears": 112,
+      "gdpYears": 73,
+      "id": "m49:894",
+      "lastYear": 2022,
+      "worldShareYears": 15
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 26,
+      "gdpYears": 21,
+      "id": "maddison:east_asia",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 24,
+      "gdpYears": 21,
+      "id": "maddison:eastern_europe",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 28,
+      "gdpYears": 21,
+      "id": "maddison:latin_america",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 19,
+      "gdpYears": 18,
+      "id": "maddison:mena",
+      "lastYear": 2022,
+      "worldShareYears": 18
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 28,
+      "gdpYears": 21,
+      "id": "maddison:south_southeast_asia",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 18,
+      "gdpYears": 17,
+      "id": "maddison:sub_saharan_africa",
+      "lastYear": 2022,
+      "worldShareYears": 17
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 28,
+      "gdpYears": 21,
+      "id": "maddison:western_europe",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 28,
+      "gdpYears": 21,
+      "id": "maddison:western_offshoots",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 115,
+      "gdpYears": 115,
+      "id": "provider:TWN",
+      "lastYear": 2022,
+      "worldShareYears": 19
+    },
+    {
+      "firstYear": 1820,
+      "gdpPerCapitaYears": 21,
+      "gdpYears": 21,
+      "id": "world",
+      "lastYear": 2022,
+      "worldShareYears": 21
+    }
+  ],
+  "provenance": {
+    "areaCount": 174,
+    "excludedAreas": [
+      "Czechoslovakia",
+      "Sudan (former)",
+      "USSR",
+      "Yugoslavia"
+    ],
+    "pages": [
+      {
+        "sha256": "c684b905ca612d9d2af176ca6ecc2007b77bd80b4b8995ffb9b49cdf8c6326fa",
+        "url": "https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database.metadata.json?v=1&csvType=full&useColumnShortNames=false"
+      },
+      {
+        "sha256": "0545ad6ca37529206af49f9f964f17af927e8c154c1fe8d3813c523e0d2f43f8",
+        "url": "https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database.csv?v=1&csvType=full&useColumnShortNames=false"
+      },
+      {
+        "sha256": "c684b905ca612d9d2af176ca6ecc2007b77bd80b4b8995ffb9b49cdf8c6326fa",
+        "url": "https://ourworldindata.org/grapher/gdp-per-capita-maddison-project-database.metadata.json?v=1&csvType=full&useColumnShortNames=false"
+      },
+      {
+        "sha256": "0e8cb65696ab0e24b412debd429db02297436f4a7d13a56d36a18806e4dbf14e",
+        "url": "https://ourworldindata.org/grapher/gdp-maddison-project-database.metadata.json?v=1&csvType=full&useColumnShortNames=false"
+      },
+      {
+        "sha256": "86b1fae7e6219f258613367599f659cf15d752be3aef13231c9d814ac444fbd7",
+        "url": "https://ourworldindata.org/grapher/gdp-maddison-project-database.csv?v=1&csvType=full&useColumnShortNames=false"
+      },
+      {
+        "sha256": "0e8cb65696ab0e24b412debd429db02297436f4a7d13a56d36a18806e4dbf14e",
+        "url": "https://ourworldindata.org/grapher/gdp-maddison-project-database.metadata.json?v=1&csvType=full&useColumnShortNames=false"
+      }
+    ],
+    "retrievedAt": "2026-09-08T21:15:15.283884500+00:00",
+    "revision": "Maddison Project Database 2023 · OWID 26.04.2024",
+    "sourceRowCount": 37729
+  }
+}

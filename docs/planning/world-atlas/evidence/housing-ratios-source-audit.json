@@ -1,0 +1,1064 @@
+{
+  "checkedAt": "2026-09-09T06:03:01.492335+00:00",
+  "sourceUrl": "https://sdmx.oecd.org/public/rest/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.Q.HPI_RPI+HPI_RPI_AVG+HPI_YDH+HPI_YDH_AVG.?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+  "csvSha256": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622",
+  "csvBytes": 6918278,
+  "sourceRowCount": 23535,
+  "numericCount": 23535,
+  "structureSha256": "6b25cd50f0ca7325540e83e33139e63caa833595ad448aad6a2f8b080a3c48de",
+  "geographyCount": 45,
+  "coverage": {
+    "m49:036": {
+      "providerCode": "AUS",
+      "providerLabel": "Australia",
+      "metrics": {
+        "income": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 213,
+          "first": "1972-Q3",
+          "last": "2025-Q3"
+        },
+        "incomeRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 213,
+          "first": "1972-Q3",
+          "last": "2025-Q3"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:040": {
+      "providerCode": "AUT",
+      "providerLabel": "Austria",
+      "metrics": {
+        "income": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 104,
+          "first": "2000-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 105,
+          "first": "2000-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 104,
+          "first": "2000-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:056": {
+      "providerCode": "BEL",
+      "providerLabel": "Belgium",
+      "metrics": {
+        "income": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 200,
+          "first": "1976-Q2",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 200,
+          "first": "1976-Q2",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:100": {
+      "providerCode": "BGR",
+      "providerLabel": "Bulgaria",
+      "metrics": {
+        "income": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 84,
+          "first": "2005-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:124": {
+      "providerCode": "CAN",
+      "providerLabel": "Canada",
+      "metrics": {
+        "income": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        },
+        "rent": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        },
+        "incomeRelative": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        },
+        "rentRelative": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:756": {
+      "providerCode": "CHE",
+      "providerLabel": "Switzerland",
+      "metrics": {
+        "income": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:152": {
+      "providerCode": "CHL",
+      "providerLabel": "Chile",
+      "metrics": {
+        "income": {
+          "quarters": 96,
+          "first": "2002-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 88,
+          "first": "2002-Q1",
+          "last": "2023-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:170": {
+      "providerCode": "COL",
+      "providerLabel": "Colombia",
+      "metrics": {
+        "income": {
+          "quarters": 100,
+          "first": "2000-Q1",
+          "last": "2024-Q4"
+        },
+        "rent": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 100,
+          "first": "2000-Q1",
+          "last": "2024-Q4"
+        },
+        "rentRelative": {
+          "quarters": 109,
+          "first": "1999-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:203": {
+      "providerCode": "CZE",
+      "providerLabel": "Czechia",
+      "metrics": {
+        "income": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 73,
+          "first": "2008-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:276": {
+      "providerCode": "DEU",
+      "providerLabel": "Germany",
+      "metrics": {
+        "income": {
+          "quarters": 185,
+          "first": "1980-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 185,
+          "first": "1980-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:208": {
+      "providerCode": "DNK",
+      "providerLabel": "Denmark",
+      "metrics": {
+        "income": {
+          "quarters": 181,
+          "first": "1981-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 181,
+          "first": "1981-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "oecd:housing_euro_area": {
+      "providerCode": "EA",
+      "providerLabel": "Euro area",
+      "metrics": {
+        "income": {
+          "quarters": 184,
+          "first": "1980-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 120,
+          "first": "1996-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 184,
+          "first": "1980-Q1",
+          "last": "2025-Q4"
+        },
+        "rentRelative": {
+          "quarters": 120,
+          "first": "1996-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "oecd:housing_euro_area_17": {
+      "providerCode": "EA17",
+      "providerLabel": "Euro area (17 countries)",
+      "metrics": {
+        "income": {
+          "quarters": 186,
+          "first": "1979-Q4",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 186,
+          "first": "1979-Q4",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1980-Q1"
+        }
+      ]
+    },
+    "m49:724": {
+      "providerCode": "ESP",
+      "providerLabel": "Spain",
+      "metrics": {
+        "income": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 221,
+          "first": "1971-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1985-Q1"
+        }
+      ]
+    },
+    "m49:233": {
+      "providerCode": "EST",
+      "providerLabel": "Estonia",
+      "metrics": {
+        "income": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:246": {
+      "providerCode": "FIN",
+      "providerLabel": "Finland",
+      "metrics": {
+        "income": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 205,
+          "first": "1975-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:250": {
+      "providerCode": "FRA",
+      "providerLabel": "France",
+      "metrics": {
+        "income": {
+          "quarters": 193,
+          "first": "1978-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 193,
+          "first": "1978-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:826": {
+      "providerCode": "GBR",
+      "providerLabel": "United Kingdom",
+      "metrics": {
+        "income": {
+          "quarters": 157,
+          "first": "1987-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 232,
+          "first": "1968-Q2",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 157,
+          "first": "1987-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 232,
+          "first": "1968-Q2",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:300": {
+      "providerCode": "GRC",
+      "providerLabel": "Greece",
+      "metrics": {
+        "income": {
+          "quarters": 116,
+          "first": "1997-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 116,
+          "first": "1997-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 116,
+          "first": "1997-Q1",
+          "last": "2025-Q4"
+        },
+        "rentRelative": {
+          "quarters": 116,
+          "first": "1997-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:191": {
+      "providerCode": "HRV",
+      "providerLabel": "Croatia",
+      "metrics": {
+        "income": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 81,
+          "first": "2005-Q1",
+          "last": "2025-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:348": {
+      "providerCode": "HUN",
+      "providerLabel": "Hungary",
+      "metrics": {
+        "income": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:372": {
+      "providerCode": "IRL",
+      "providerLabel": "Ireland",
+      "metrics": {
+        "income": {
+          "quarters": 197,
+          "first": "1977-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 197,
+          "first": "1977-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:352": {
+      "providerCode": "ISL",
+      "providerLabel": "Iceland",
+      "metrics": {
+        "income": {
+          "quarters": 79,
+          "first": "2000-Q2",
+          "last": "2019-Q4"
+        },
+        "rent": {
+          "quarters": 103,
+          "first": "2000-Q2",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:376": {
+      "providerCode": "ISR",
+      "providerLabel": "Israel",
+      "metrics": {
+        "income": {
+          "quarters": 88,
+          "first": "1995-Q1",
+          "last": "2016-Q4"
+        },
+        "rent": {
+          "quarters": 129,
+          "first": "1994-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 88,
+          "first": "1995-Q1",
+          "last": "2016-Q4"
+        },
+        "rentRelative": {
+          "quarters": 129,
+          "first": "1994-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:380": {
+      "providerCode": "ITA",
+      "providerLabel": "Italy",
+      "metrics": {
+        "income": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:392": {
+      "providerCode": "JPN",
+      "providerLabel": "Japan",
+      "metrics": {
+        "income": {
+          "quarters": 264,
+          "first": "1960-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 264,
+          "first": "1960-Q1",
+          "last": "2025-Q4"
+        },
+        "rentRelative": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:410": {
+      "providerCode": "KOR",
+      "providerLabel": "Korea",
+      "metrics": {
+        "income": {
+          "quarters": 157,
+          "first": "1986-Q1",
+          "last": "2025-Q1"
+        },
+        "rent": {
+          "quarters": 157,
+          "first": "1986-Q1",
+          "last": "2025-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 157,
+          "first": "1986-Q1",
+          "last": "2025-Q1"
+        },
+        "rentRelative": {
+          "quarters": 157,
+          "first": "1986-Q1",
+          "last": "2025-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:440": {
+      "providerCode": "LTU",
+      "providerLabel": "Lithuania",
+      "metrics": {
+        "income": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:442": {
+      "providerCode": "LUX",
+      "providerLabel": "Luxembourg",
+      "metrics": {
+        "income": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:428": {
+      "providerCode": "LVA",
+      "providerLabel": "Latvia",
+      "metrics": {
+        "income": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 81,
+          "first": "2006-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:484": {
+      "providerCode": "MEX",
+      "providerLabel": "Mexico",
+      "metrics": {
+        "rent": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:528": {
+      "providerCode": "NLD",
+      "providerLabel": "Netherlands",
+      "metrics": {
+        "income": {
+          "quarters": 184,
+          "first": "1980-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 184,
+          "first": "1980-Q1",
+          "last": "2025-Q4"
+        },
+        "rentRelative": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:578": {
+      "providerCode": "NOR",
+      "providerLabel": "Norway",
+      "metrics": {
+        "income": {
+          "quarters": 194,
+          "first": "1978-Q1",
+          "last": "2026-Q2"
+        },
+        "rent": {
+          "quarters": 190,
+          "first": "1979-Q1",
+          "last": "2026-Q2"
+        },
+        "incomeRelative": {
+          "quarters": 194,
+          "first": "1978-Q1",
+          "last": "2026-Q2"
+        },
+        "rentRelative": {
+          "quarters": 190,
+          "first": "1979-Q1",
+          "last": "2026-Q2"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:554": {
+      "providerCode": "NZL",
+      "providerLabel": "New Zealand",
+      "metrics": {
+        "income": {
+          "quarters": 160,
+          "first": "1986-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 160,
+          "first": "1986-Q1",
+          "last": "2025-Q4"
+        },
+        "rentRelative": {
+          "quarters": 224,
+          "first": "1970-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "oecd:housing_members": {
+      "providerCode": "OECD",
+      "providerLabel": "OECD",
+      "metrics": {
+        "income": {
+          "quarters": 222,
+          "first": "1970-Q4",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 223,
+          "first": "1970-Q1",
+          "last": "2025-Q3"
+        },
+        "incomeRelative": {
+          "quarters": 222,
+          "first": "1970-Q4",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 223,
+          "first": "1970-Q1",
+          "last": "2025-Q3"
+        }
+      },
+      "observedComparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1977-Q4"
+        },
+        {
+          "basis": "income",
+          "period": "1978-Q1"
+        }
+      ]
+    },
+    "m49:616": {
+      "providerCode": "POL",
+      "providerLabel": "Poland",
+      "metrics": {
+        "income": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 84,
+          "first": "2005-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:620": {
+      "providerCode": "PRT",
+      "providerLabel": "Portugal",
+      "metrics": {
+        "income": {
+          "quarters": 125,
+          "first": "1995-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 125,
+          "first": "1995-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 153,
+          "first": "1988-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:642": {
+      "providerCode": "ROU",
+      "providerLabel": "Romania",
+      "metrics": {
+        "income": {
+          "quarters": 69,
+          "first": "2009-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 65,
+          "first": "2009-Q1",
+          "last": "2025-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:643": {
+      "providerCode": "RUS",
+      "providerLabel": "Russia",
+      "metrics": {
+        "income": {
+          "quarters": 72,
+          "first": "2002-Q1",
+          "last": "2019-Q4"
+        },
+        "rent": {
+          "quarters": 73,
+          "first": "2004-Q1",
+          "last": "2022-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:703": {
+      "providerCode": "SVK",
+      "providerLabel": "Slovak Republic",
+      "metrics": {
+        "income": {
+          "quarters": 85,
+          "first": "2005-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 84,
+          "first": "2005-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:705": {
+      "providerCode": "SVN",
+      "providerLabel": "Slovenia",
+      "metrics": {
+        "income": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 77,
+          "first": "2007-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:752": {
+      "providerCode": "SWE",
+      "providerLabel": "Sweden",
+      "metrics": {
+        "income": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rent": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "incomeRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        },
+        "rentRelative": {
+          "quarters": 225,
+          "first": "1970-Q1",
+          "last": "2026-Q1"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:792": {
+      "providerCode": "TUR",
+      "providerLabel": "Türkiye",
+      "metrics": {
+        "rent": {
+          "quarters": 66,
+          "first": "2010-Q1",
+          "last": "2026-Q2"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:840": {
+      "providerCode": "USA",
+      "providerLabel": "United States",
+      "metrics": {
+        "income": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        },
+        "rent": {
+          "quarters": 220,
+          "first": "1970-Q1",
+          "last": "2024-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 226,
+          "first": "1970-Q1",
+          "last": "2026-Q2"
+        },
+        "rentRelative": {
+          "quarters": 220,
+          "first": "1970-Q1",
+          "last": "2024-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    },
+    "m49:710": {
+      "providerCode": "ZAF",
+      "providerLabel": "South Africa",
+      "metrics": {
+        "income": {
+          "quarters": 124,
+          "first": "1995-Q1",
+          "last": "2025-Q4"
+        },
+        "rent": {
+          "quarters": 96,
+          "first": "2002-Q1",
+          "last": "2025-Q4"
+        },
+        "incomeRelative": {
+          "quarters": 124,
+          "first": "1995-Q1",
+          "last": "2025-Q4"
+        }
+      },
+      "observedComparabilityBreaks": []
+    }
+  },
+  "referencePeriod": "Source unit is percentage of long-term average; the file supplies no common reference dates. Published standardised values are not recomputed.",
+  "comparability": "Observed changes in index/standardised-value scaling are recorded as comparison boundaries, not claimed to be provider-dated methodological breaks.",
+  "sourceFlowAnnotation": "NonProductionDataflow=true is present in the structure of the flow linked by the official OECD indicator page; not interpreted as a forecast or revised data flag."
+}

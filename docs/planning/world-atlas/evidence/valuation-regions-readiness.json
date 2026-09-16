@@ -1,0 +1,106 @@
+{
+  "checkedOn": "2026-09-09",
+  "status": "implemented_with_verified_public_snapshots_and_documented_acceptance_limits",
+  "catalogVersion": "2026-09-09.3",
+  "additionalPaidApi": false,
+  "newDataProvider": false,
+  "newSourceDownload": false,
+  "sourceAudit": "valuation-source-audit.json",
+  "sourceEarningsAudit": "valuation-earnings-readiness.json",
+  "native": {
+    "first": {
+      "phase": "first",
+      "status": "passed",
+      "runAt": "2026-09-09T13:06:00.397Z",
+      "identifier": "com.personal-macro.atlas-valuation-regions-20260909",
+      "sourceMode": "Reused previously audited native public NYU responses; no new provider or download",
+      "publicSnapshotSha256": "eaeec9bf64b6f036ee795d9a4213c4c691e56bc19b52b2a29817193feaa750c8",
+      "matrix": {
+        "checked": 41710,
+        "statuses": {
+          "available": 36114,
+          "missing_definition": 2616,
+          "missing_industry": 226,
+          "no_common_years": 2754
+        },
+        "unexpected": []
+      },
+      "jobs": 0,
+      "twoSavedSourcePackages": true,
+      "pictureSha256": "11bae8fc5158a29da200860b3619900f5ba46ef3ed1e189dfe55e4f32715e34a",
+      "savedPictureSha256": "11bae8fc5158a29da200860b3619900f5ba46ef3ed1e189dfe55e4f32715e34a",
+      "exactNoteAndPictureAfterProcessRestart": false,
+      "productionDataAccessed": false
+    },
+    "restart": {
+      "phase": "restart",
+      "status": "passed",
+      "runAt": "2026-09-09T13:07:12.85Z",
+      "identifier": "com.personal-macro.atlas-valuation-regions-20260909",
+      "sourceMode": "Reused previously audited native public NYU responses; no new provider or download",
+      "publicSnapshotSha256": "eaeec9bf64b6f036ee795d9a4213c4c691e56bc19b52b2a29817193feaa750c8",
+      "matrix": {
+        "checked": 41710,
+        "statuses": {
+          "available": 36114,
+          "missing_definition": 2616,
+          "missing_industry": 226,
+          "no_common_years": 2754
+        },
+        "unexpected": []
+      },
+      "jobs": 0,
+      "twoSavedSourcePackages": true,
+      "pictureSha256": "11bae8fc5158a29da200860b3619900f5ba46ef3ed1e189dfe55e4f32715e34a",
+      "savedPictureSha256": "11bae8fc5158a29da200860b3619900f5ba46ef3ed1e189dfe55e4f32715e34a",
+      "exactNoteAndPictureAfterProcessRestart": true,
+      "productionDataAccessed": false
+    }
+  },
+  "checks": {
+    "atlasFrontendTests": 219,
+    "atlasFrontendFiles": 32,
+    "rustNotebookReopenTest": "passed",
+    "clippyAllTargetsWarningsDenied": "passed",
+    "rustFmt": "passed",
+    "typecheck": "passed",
+    "build": "passed",
+    "targetedEslint": "passed",
+    "prettier": "passed",
+    "rapidBasisAndRegionChanges": "passed",
+    "staleComparisonResponse": "passed",
+    "positiveFiniteCommonPublicationYears": "passed",
+    "sameDefinitionAndSourceProvenance": "passed",
+    "browserConsoleWarningsAndErrors": 0
+  },
+  "visual": {
+    "driver": "CUA in-app browser",
+    "data": "Previously audited real native NYU responses",
+    "widths": [
+      1024,
+      1440
+    ],
+    "horizontalOverflow": false,
+    "scenarios": [
+      "India / US education PBV: one Indian dot and preserved US history",
+      "India 2026 / China 2025 earnings: explicit reason, only primary picture",
+      "US / Europe education earnings: shared years 2015-2026, shared axes, separate sample status",
+      "Quick comparison-region then basis selection retains the newest region",
+      "Switching between another industry and another region clears the alternative comparison",
+      "Optional original-value table has both regional headers; 24 point tooltips and 46 source links in US/Europe detail",
+      "US / Japan comparison retains the same industry",
+      "Native saved PNG inspected with both regional labels"
+    ]
+  },
+  "limits": [
+    "No new annual observations; India and China still have only their catalogued snapshots",
+    "No separate Africa-solar, hydrogen or nuclear valuation and no substitution with global data",
+    "Relative levels reflect different company samples; they do not establish fair value or forecasts",
+    "Native commands/render/notebook/restart tested in an isolated profile; full native click acceptance remains open",
+    "Initial native run logged a slow preference upsert (3.08 s), without lost context or failed note",
+    "Restart logged existing unrelated Technicals and central-bank sync warnings",
+    "Production build retains existing large-chunk warnings"
+  ],
+  "productionDataAccessed": false,
+  "overallGoalComplete": false
+}

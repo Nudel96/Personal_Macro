@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T05:39:40.502527+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "sha256": "0d0de239c28598e4ede22697e15f9bbd8731c5697374c5f1b5226bc7289a2ab4",
+  "bytes": 54058496,
+  "log": "apps\\desktop\\.tmp\\atlas-remaining-40\\epo-windows-final.log",
+  "includes": [
+    "Seven EPO quantum-sensing and cosmonautics perspectives, exact original workbooks through 2017",
+    "No invented country/aggregate substitution or late publication backfill"
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "frontend": "24 public and coverage tests; scoped ESLint passed",
+    "native": "2 original/mutation tests; all profiles equal independent chart/XLSX oracle, temporary SQLite reopen",
+    "clippy": "all targets -D warnings passed",
+    "nativeUi": "22 checks passed; three screenshots visually reviewed",
+    "nativeStderr": "empty",
+    "catalogVersionInFinalBundle": "2026-09-11.17"
+  }
+}

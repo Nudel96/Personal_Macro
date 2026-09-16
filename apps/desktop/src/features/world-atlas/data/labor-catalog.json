@@ -1,0 +1,1996 @@
+{
+  "datasetId": "ilo-sector-employment",
+  "recipe": "ilo-sector-employment-v1",
+  "release": "ILOSTAT · Modellschätzungen November 2025",
+  "sourceRelease": "Employment by sex and economic activity -- ILO modelled estimates, Nov. 2025 (thousands)",
+  "sourceUrl": "https://ilostat.ilo.org/topics/employment/",
+  "methodologyUrl": "https://webapps.ilo.org/ilostat-files/Documents/TEM.pdf",
+  "url": "https://rplumber.ilo.org/data/indicator?id=EMP_2EMP_SEX_ECO_NB_A&sex=SEX_T&classif1=ECO_ISIC4_TOTAL+ECO_ISIC4_A+ECO_ISIC4_B+ECO_ISIC4_C+ECO_ISIC4_DE+ECO_ISIC4_F+ECO_ISIC4_G+ECO_ISIC4_HJ+ECO_ISIC4_I+ECO_ISIC4_K+ECO_ISIC4_LMN+ECO_ISIC4_O+ECO_ISIC4_P+ECO_ISIC4_Q+ECO_ISIC4_RSTU&format=.csv&type=both&timefrom=1991&timeto=2024",
+  "bytes": 40896725,
+  "sha256": "862cada9beaa7a011f5af38c9b9a46042a361e9e29cd212cb3763f4f51f7a8f7",
+  "firstYear": 1991,
+  "lastYear": 2024,
+  "expectedRows": 140625,
+  "expectedNumericCells": 140625,
+  "expectedCurrentNumericCells": 96765,
+  "groups": [
+    {
+      "id": "production",
+      "label": "Produktion & Versorgung"
+    },
+    {
+      "id": "services",
+      "label": "Handel & Dienstleistungen"
+    },
+    {
+      "id": "society",
+      "label": "Bildung, Gesundheit & Gesellschaft"
+    }
+  ],
+  "metrics": [
+    {
+      "id": "A",
+      "field": "ECO_ISIC4_A",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): A. Agriculture; forestry and fishing",
+      "label": "Landwirtschaft, Forst & Fischerei",
+      "group": "production",
+      "note": "Landwirtschaft, Forstwirtschaft und Fischerei zusammen."
+    },
+    {
+      "id": "B",
+      "field": "ECO_ISIC4_B",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): B. Mining and quarrying",
+      "label": "Bergbau & Gewinnung",
+      "group": "production",
+      "note": "Bergbau und Gewinnung von Steinen und Erden; keine einzelne Rohstoffart."
+    },
+    {
+      "id": "C",
+      "field": "ECO_ISIC4_C",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): C. Manufacturing",
+      "label": "Industrie & Herstellung",
+      "group": "production",
+      "note": "Verarbeitendes Gewerbe; kein einzelner Industriezweig."
+    },
+    {
+      "id": "DE",
+      "field": "ECO_ISIC4_DE",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): D,E. Utilities",
+      "label": "Strom, Wasser & Entsorgung",
+      "group": "production",
+      "note": "ILO-Sammelbereich D/E: Energie- und Wasserversorgung einschließlich Abwasser, Abfall und Umweltsanierung. Keine getrennte Solar- oder Kernenergiereihe."
+    },
+    {
+      "id": "F",
+      "field": "ECO_ISIC4_F",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): F. Construction",
+      "label": "Bau",
+      "group": "production",
+      "note": "Baugewerbe insgesamt."
+    },
+    {
+      "id": "G",
+      "field": "ECO_ISIC4_G",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): G. Wholesale and retail trade; repair of motor vehicles and motorcycles",
+      "label": "Handel & Fahrzeugreparatur",
+      "group": "services",
+      "note": "Groß- und Einzelhandel sowie Reparatur von Kraftfahrzeugen und Motorrädern."
+    },
+    {
+      "id": "HJ",
+      "field": "ECO_ISIC4_HJ",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): H,J. Transport; storage and communication",
+      "label": "Transport & Kommunikation",
+      "group": "services",
+      "note": "ILO-Sammelbereich H/J: Verkehr, Lagerung sowie Information und Kommunikation."
+    },
+    {
+      "id": "I",
+      "field": "ECO_ISIC4_I",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): I. Accommodation and food service activities",
+      "label": "Gastgewerbe",
+      "group": "services",
+      "note": "Beherbergung und Gastronomie; kein vollständiger Tourismussektor."
+    },
+    {
+      "id": "K",
+      "field": "ECO_ISIC4_K",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): K. Financial and insurance activities",
+      "label": "Finanzen & Versicherungen",
+      "group": "services",
+      "note": "Finanz- und Versicherungsdienstleistungen zusammen."
+    },
+    {
+      "id": "LMN",
+      "field": "ECO_ISIC4_LMN",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): L,M,N. Real estate; business and administrative activities",
+      "label": "Immobilien & Unternehmensdienste",
+      "group": "services",
+      "note": "ILO-Sammelbereich L/M/N: Immobilien, freiberufliche, wissenschaftliche, technische und weitere wirtschaftliche Dienstleistungen."
+    },
+    {
+      "id": "O",
+      "field": "ECO_ISIC4_O",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): O. Public administration and defence; compulsory social security",
+      "label": "Verwaltung & Sozialversicherung",
+      "group": "society",
+      "note": "Öffentliche Verwaltung, Verteidigung und Sozialversicherung. Nicht alle öffentlich beschäftigten Personen."
+    },
+    {
+      "id": "P",
+      "field": "ECO_ISIC4_P",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): P. Education",
+      "label": "Bildung",
+      "group": "society",
+      "note": "Bildungswesen insgesamt, öffentliche und private Anbieter zusammen. Keine getrennte private Bildungswirtschaft."
+    },
+    {
+      "id": "Q",
+      "field": "ECO_ISIC4_Q",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): Q. Human health and social work activities",
+      "label": "Gesundheit & Sozialarbeit",
+      "group": "society",
+      "note": "Gesundheits- und Sozialwesen einschließlich Pflege; keine getrennte Krankenhaus- oder Pharmareihe."
+    },
+    {
+      "id": "RSTU",
+      "field": "ECO_ISIC4_RSTU",
+      "sourceLabel": "Economic activity (ISIC-Rev.4): R,S,T,U. Other services",
+      "label": "Weitere Dienste & Haushalte",
+      "group": "society",
+      "note": "ILO-Sammelbereich R/S/T/U: Kunst, Unterhaltung, sonstige Dienste, private Haushalte und exterritoriale Organisationen."
+    }
+  ],
+  "totalField": "ECO_ISIC4_TOTAL",
+  "totalLabel": "Economic activity (ISIC-Rev.4): Total",
+  "areas": [
+    {
+      "code": "AFG",
+      "label": "Afghanistan",
+      "source": "XA:2198",
+      "geographyId": "m49:004",
+      "iso3": "AFG"
+    },
+    {
+      "code": "AGO",
+      "label": "Angola",
+      "source": "XA:2010",
+      "geographyId": "m49:024",
+      "iso3": "AGO"
+    },
+    {
+      "code": "ALB",
+      "label": "Albania",
+      "source": "XA:2137",
+      "geographyId": "m49:008",
+      "iso3": "ALB"
+    },
+    {
+      "code": "ARE",
+      "label": "United Arab Emirates",
+      "source": "XA:1978",
+      "geographyId": "m49:784",
+      "iso3": "ARE"
+    },
+    {
+      "code": "ARG",
+      "label": "Argentina",
+      "source": "XA:1868",
+      "geographyId": "m49:032",
+      "iso3": "ARG"
+    },
+    {
+      "code": "ARM",
+      "label": "Armenia",
+      "source": "XA:1931",
+      "geographyId": "m49:051",
+      "iso3": "ARM"
+    },
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "source": "XA:2202",
+      "geographyId": "m49:036",
+      "iso3": "AUS"
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "source": "XA:2089",
+      "geographyId": "m49:040",
+      "iso3": "AUT"
+    },
+    {
+      "code": "AZE",
+      "label": "Azerbaijan",
+      "source": "XA:2121",
+      "geographyId": "m49:031",
+      "iso3": "AZE"
+    },
+    {
+      "code": "BDI",
+      "label": "Burundi",
+      "source": "XA:2153",
+      "geographyId": "m49:108",
+      "iso3": "BDI"
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "source": "XA:2185",
+      "geographyId": "m49:056",
+      "iso3": "BEL"
+    },
+    {
+      "code": "BEN",
+      "label": "Benin",
+      "source": "XA:2018",
+      "geographyId": "m49:204",
+      "iso3": "BEN"
+    },
+    {
+      "code": "BFA",
+      "label": "Burkina Faso",
+      "source": "XA:2034",
+      "geographyId": "m49:854",
+      "iso3": "BFA"
+    },
+    {
+      "code": "BGD",
+      "label": "Bangladesh",
+      "source": "XA:1939",
+      "geographyId": "m49:050",
+      "iso3": "BGD"
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "source": "XA:2203",
+      "geographyId": "m49:100",
+      "iso3": "BGR"
+    },
+    {
+      "code": "BHR",
+      "label": "Bahrain",
+      "source": "XA:2081",
+      "geographyId": "m49:048",
+      "iso3": "BHR"
+    },
+    {
+      "code": "BHS",
+      "label": "Bahamas",
+      "source": "XA:2097",
+      "geographyId": "m49:044",
+      "iso3": "BHS"
+    },
+    {
+      "code": "BIH",
+      "label": "Bosnia and Herzegovina",
+      "source": "XA:2113",
+      "geographyId": "m49:070",
+      "iso3": "BIH"
+    },
+    {
+      "code": "BLR",
+      "label": "Belarus",
+      "source": "XA:2129",
+      "geographyId": "m49:112",
+      "iso3": "BLR"
+    },
+    {
+      "code": "BLZ",
+      "label": "Belize",
+      "source": "XA:2145",
+      "geographyId": "m49:084",
+      "iso3": "BLZ"
+    },
+    {
+      "code": "BOL",
+      "label": "Bolivia, Plurinational State of",
+      "source": "XA:1907",
+      "geographyId": "m49:068",
+      "iso3": "BOL"
+    },
+    {
+      "code": "BRA",
+      "label": "Brazil",
+      "source": "XA:2002",
+      "geographyId": "m49:076",
+      "iso3": "BRA"
+    },
+    {
+      "code": "BRB",
+      "label": "Barbados",
+      "source": "XA:2193",
+      "geographyId": "m49:052",
+      "iso3": "BRB"
+    },
+    {
+      "code": "BRN",
+      "label": "Brunei Darussalam",
+      "source": "XA:2014",
+      "geographyId": "m49:096",
+      "iso3": "BRN"
+    },
+    {
+      "code": "BTN",
+      "label": "Bhutan",
+      "source": "XA:1872",
+      "geographyId": "m49:064",
+      "iso3": "BTN"
+    },
+    {
+      "code": "BWA",
+      "label": "Botswana",
+      "source": "XA:2030",
+      "geographyId": "m49:072",
+      "iso3": "BWA"
+    },
+    {
+      "code": "CAF",
+      "label": "Central African Republic",
+      "source": "XA:1849",
+      "geographyId": "m49:140",
+      "iso3": "CAF"
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "source": "XA:1935",
+      "geographyId": "m49:124",
+      "iso3": "CAN"
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "source": "XA:2054",
+      "geographyId": "m49:756",
+      "iso3": "CHE"
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "source": "XA:1943",
+      "geographyId": "m49:152",
+      "iso3": "CHL"
+    },
+    {
+      "code": "CHN",
+      "label": "China",
+      "source": "XA:2070",
+      "geographyId": "m49:156",
+      "iso3": "CHN"
+    },
+    {
+      "code": "CIV",
+      "label": "Côte d'Ivoire",
+      "source": "XA:1950",
+      "geographyId": "m49:384",
+      "iso3": "CIV"
+    },
+    {
+      "code": "CMR",
+      "label": "Cameroon",
+      "source": "XA:2085",
+      "geographyId": "m49:120",
+      "iso3": "CMR"
+    },
+    {
+      "code": "COD",
+      "label": "Congo, Democratic Republic of the",
+      "source": "XA:2093",
+      "geographyId": "m49:180",
+      "iso3": "COD"
+    },
+    {
+      "code": "COG",
+      "label": "Congo",
+      "source": "XA:2101",
+      "geographyId": "m49:178",
+      "iso3": "COG"
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "source": "XA:2109",
+      "geographyId": "m49:170",
+      "iso3": "COL"
+    },
+    {
+      "code": "COM",
+      "label": "Comoros",
+      "source": "XA:2117",
+      "geographyId": "m49:174",
+      "iso3": "COM"
+    },
+    {
+      "code": "CPV",
+      "label": "Cape Verde",
+      "source": "XA:2125",
+      "geographyId": "m49:132",
+      "iso3": "CPV"
+    },
+    {
+      "code": "CRI",
+      "label": "Costa Rica",
+      "source": "XA:2133",
+      "geographyId": "m49:188",
+      "iso3": "CRI"
+    },
+    {
+      "code": "CUB",
+      "label": "Cuba",
+      "source": "XA:1982",
+      "geographyId": "m49:192",
+      "iso3": "CUB"
+    },
+    {
+      "code": "CYP",
+      "label": "Cyprus",
+      "source": "XA:2149",
+      "geographyId": "m49:196",
+      "iso3": "CYP"
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "source": "XA:1990",
+      "geographyId": "m49:203",
+      "iso3": "CZE"
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "source": "XA:2165",
+      "geographyId": "m49:276",
+      "iso3": "DEU"
+    },
+    {
+      "code": "DJI",
+      "label": "Djibouti",
+      "source": "XA:2173",
+      "geographyId": "m49:262",
+      "iso3": "DJI"
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "source": "XA:2181",
+      "geographyId": "m49:208",
+      "iso3": "DNK"
+    },
+    {
+      "code": "DOM",
+      "label": "Dominican Republic",
+      "source": "XA:2189",
+      "geographyId": "m49:214",
+      "iso3": "DOM"
+    },
+    {
+      "code": "DZA",
+      "label": "Algeria",
+      "source": "XA:1829",
+      "geographyId": "m49:012",
+      "iso3": "DZA"
+    },
+    {
+      "code": "ECU",
+      "label": "Ecuador",
+      "source": "XA:2012",
+      "geographyId": "m49:218",
+      "iso3": "ECU"
+    },
+    {
+      "code": "EGY",
+      "label": "Egypt",
+      "source": "XA:2016",
+      "geographyId": "m49:818",
+      "iso3": "EGY"
+    },
+    {
+      "code": "ERI",
+      "label": "Eritrea",
+      "source": "XA:1921",
+      "geographyId": "m49:232",
+      "iso3": "ERI"
+    },
+    {
+      "code": "ESH",
+      "label": "Western Sahara",
+      "source": "XA:2024",
+      "geographyId": "m49:732",
+      "iso3": "ESH"
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "source": "XA:2028",
+      "geographyId": "m49:724",
+      "iso3": "ESP"
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "source": "XA:1874",
+      "geographyId": "m49:233",
+      "iso3": "EST"
+    },
+    {
+      "code": "ETH",
+      "label": "Ethiopia",
+      "source": "XA:2036",
+      "geographyId": "m49:231",
+      "iso3": "ETH"
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "source": "XA:1836",
+      "geographyId": "m49:246",
+      "iso3": "FIN"
+    },
+    {
+      "code": "FJI",
+      "label": "Fiji",
+      "source": "XA:2044",
+      "geographyId": "m49:242",
+      "iso3": "FJI"
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "source": "XA:2048",
+      "geographyId": "m49:250",
+      "iso3": "FRA"
+    },
+    {
+      "code": "GAB",
+      "label": "Gabon",
+      "source": "XA:1937",
+      "geographyId": "m49:266",
+      "iso3": "GAB"
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom of Great Britain and Northern Ireland",
+      "source": "XA:2056",
+      "geographyId": "m49:826",
+      "iso3": "GBR"
+    },
+    {
+      "code": "GEO",
+      "label": "Georgia",
+      "source": "XA:2060",
+      "geographyId": "m49:268",
+      "iso3": "GEO"
+    },
+    {
+      "code": "GHA",
+      "label": "Ghana",
+      "source": "XA:2064",
+      "geographyId": "m49:288",
+      "iso3": "GHA"
+    },
+    {
+      "code": "GIN",
+      "label": "Guinea",
+      "source": "XA:2068",
+      "geographyId": "m49:324",
+      "iso3": "GIN"
+    },
+    {
+      "code": "GMB",
+      "label": "Gambia",
+      "source": "XA:2075",
+      "geographyId": "m49:270",
+      "iso3": "GMB"
+    },
+    {
+      "code": "GNB",
+      "label": "Guinea-Bissau",
+      "source": "XA:1885",
+      "geographyId": "m49:624",
+      "iso3": "GNB"
+    },
+    {
+      "code": "GNQ",
+      "label": "Equatorial Guinea",
+      "source": "XA:2083",
+      "geographyId": "m49:226",
+      "iso3": "GNQ"
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "source": "XA:1854",
+      "geographyId": "m49:300",
+      "iso3": "GRC"
+    },
+    {
+      "code": "GTM",
+      "label": "Guatemala",
+      "source": "XA:1956",
+      "geographyId": "m49:320",
+      "iso3": "GTM"
+    },
+    {
+      "code": "GUM",
+      "label": "Guam",
+      "source": "XA:1960",
+      "geographyId": "m49:316",
+      "iso3": "GUM"
+    },
+    {
+      "code": "GUY",
+      "label": "Guyana",
+      "source": "XA:1839",
+      "geographyId": "m49:328",
+      "iso3": "GUY"
+    },
+    {
+      "code": "HKG",
+      "label": "Hong Kong, China",
+      "source": "XA:1964",
+      "geographyId": "m49:344",
+      "iso3": "HKG"
+    },
+    {
+      "code": "HND",
+      "label": "Honduras",
+      "source": "XA:1893",
+      "geographyId": "m49:340",
+      "iso3": "HND"
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "source": "XA:2115",
+      "geographyId": "m49:191",
+      "iso3": "HRV"
+    },
+    {
+      "code": "HTI",
+      "label": "Haiti",
+      "source": "XA:1858",
+      "geographyId": "m49:332",
+      "iso3": "HTI"
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "source": "XA:1972",
+      "geographyId": "m49:348",
+      "iso3": "HUN"
+    },
+    {
+      "code": "IDN",
+      "label": "Indonesia",
+      "source": "XA:1897",
+      "geographyId": "m49:360",
+      "iso3": "IDN"
+    },
+    {
+      "code": "IND",
+      "label": "India",
+      "source": "XA:1976",
+      "geographyId": "m49:356",
+      "iso3": "IND"
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "source": "XA:1832",
+      "geographyId": "m49:372",
+      "iso3": "IRL"
+    },
+    {
+      "code": "IRN",
+      "label": "Iran, Islamic Republic of",
+      "source": "XA:1980",
+      "geographyId": "m49:364",
+      "iso3": "IRN"
+    },
+    {
+      "code": "IRQ",
+      "label": "Iraq",
+      "source": "XA:1901",
+      "geographyId": "m49:368",
+      "iso3": "IRQ"
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "source": "XA:1984",
+      "geographyId": "m49:352",
+      "iso3": "ISL"
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "source": "XA:1862",
+      "geographyId": "m49:376",
+      "iso3": "ISR"
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "source": "XA:1988",
+      "geographyId": "m49:380",
+      "iso3": "ITA"
+    },
+    {
+      "code": "JAM",
+      "label": "Jamaica",
+      "source": "XA:1905",
+      "geographyId": "m49:388",
+      "iso3": "JAM"
+    },
+    {
+      "code": "JOR",
+      "label": "Jordan",
+      "source": "XA:1992",
+      "geographyId": "m49:400",
+      "iso3": "JOR"
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "source": "XA:1843",
+      "geographyId": "m49:392",
+      "iso3": "JPN"
+    },
+    {
+      "code": "KAZ",
+      "label": "Kazakhstan",
+      "source": "XA:1996",
+      "geographyId": "m49:398",
+      "iso3": "KAZ"
+    },
+    {
+      "code": "KEN",
+      "label": "Kenya",
+      "source": "XA:1909",
+      "geographyId": "m49:404",
+      "iso3": "KEN"
+    },
+    {
+      "code": "KGZ",
+      "label": "Kyrgyzstan",
+      "source": "XA:2000",
+      "geographyId": "m49:417",
+      "iso3": "KGZ"
+    },
+    {
+      "code": "KHM",
+      "label": "Cambodia",
+      "source": "XA:1866",
+      "geographyId": "m49:116",
+      "iso3": "KHM"
+    },
+    {
+      "code": "KOR",
+      "label": "Republic of Korea",
+      "source": "XA:2004",
+      "geographyId": "m49:410",
+      "iso3": "KOR"
+    },
+    {
+      "code": "KWT",
+      "label": "Kuwait",
+      "source": "XA:1913",
+      "geographyId": "m49:414",
+      "iso3": "KWT"
+    },
+    {
+      "code": "LAO",
+      "label": "Lao People's Democratic Republic",
+      "source": "XA:2008",
+      "geographyId": "m49:418",
+      "iso3": "LAO"
+    },
+    {
+      "code": "LBN",
+      "label": "Lebanon",
+      "source": "XA:2009",
+      "geographyId": "m49:422",
+      "iso3": "LBN"
+    },
+    {
+      "code": "LBR",
+      "label": "Liberia",
+      "source": "XA:1916",
+      "geographyId": "m49:430",
+      "iso3": "LBR"
+    },
+    {
+      "code": "LBY",
+      "label": "Libya",
+      "source": "XA:1869",
+      "geographyId": "m49:434",
+      "iso3": "LBY"
+    },
+    {
+      "code": "LCA",
+      "label": "Saint Lucia",
+      "source": "XA:2015",
+      "geographyId": "m49:662",
+      "iso3": "LCA"
+    },
+    {
+      "code": "LKA",
+      "label": "Sri Lanka",
+      "source": "XA:2017",
+      "geographyId": "m49:144",
+      "iso3": "LKA"
+    },
+    {
+      "code": "LSO",
+      "label": "Lesotho",
+      "source": "XA:1920",
+      "geographyId": "m49:426",
+      "iso3": "LSO"
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "source": "XA:1871",
+      "geographyId": "m49:440",
+      "iso3": "LTU"
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "source": "XA:1922",
+      "geographyId": "m49:442",
+      "iso3": "LUX"
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "source": "XA:1835",
+      "geographyId": "m49:428",
+      "iso3": "LVA"
+    },
+    {
+      "code": "MAC",
+      "label": "Macau, China",
+      "source": "XA:1924",
+      "geographyId": "m49:446",
+      "iso3": "MAC"
+    },
+    {
+      "code": "MAR",
+      "label": "Morocco",
+      "source": "XA:2029",
+      "geographyId": "m49:504",
+      "iso3": "MAR"
+    },
+    {
+      "code": "MDA",
+      "label": "Republic of Moldova",
+      "source": "XA:2031",
+      "geographyId": "m49:498",
+      "iso3": "MDA"
+    },
+    {
+      "code": "MDG",
+      "label": "Madagascar",
+      "source": "XA:1848",
+      "geographyId": "m49:450",
+      "iso3": "MDG"
+    },
+    {
+      "code": "MDV",
+      "label": "Maldives",
+      "source": "XA:1928",
+      "geographyId": "m49:462",
+      "iso3": "MDV"
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "source": "XA:1875",
+      "geographyId": "m49:484",
+      "iso3": "MEX"
+    },
+    {
+      "code": "MKD",
+      "label": "North Macedonia",
+      "source": "XA:2039",
+      "geographyId": "m49:807",
+      "iso3": "MKD"
+    },
+    {
+      "code": "MLI",
+      "label": "Mali",
+      "source": "XA:1830",
+      "geographyId": "m49:466",
+      "iso3": "MLI"
+    },
+    {
+      "code": "MLT",
+      "label": "Malta",
+      "source": "XA:1932",
+      "geographyId": "m49:470",
+      "iso3": "MLT"
+    },
+    {
+      "code": "MMR",
+      "label": "Myanmar",
+      "source": "XA:1877",
+      "geographyId": "m49:104",
+      "iso3": "MMR"
+    },
+    {
+      "code": "MNE",
+      "label": "Montenegro",
+      "source": "XA:2234",
+      "geographyId": "m49:499",
+      "iso3": "MNE"
+    },
+    {
+      "code": "MNG",
+      "label": "Mongolia",
+      "source": "XA:1934",
+      "geographyId": "m49:496",
+      "iso3": "MNG"
+    },
+    {
+      "code": "MOZ",
+      "label": "Mozambique",
+      "source": "XA:1850",
+      "geographyId": "m49:508",
+      "iso3": "MOZ"
+    },
+    {
+      "code": "MRT",
+      "label": "Mauritania",
+      "source": "XA:1936",
+      "geographyId": "m49:478",
+      "iso3": "MRT"
+    },
+    {
+      "code": "MUS",
+      "label": "Mauritius",
+      "source": "XA:1938",
+      "geographyId": "m49:480",
+      "iso3": "MUS"
+    },
+    {
+      "code": "MWI",
+      "label": "Malawi",
+      "source": "XA:1837",
+      "geographyId": "m49:454",
+      "iso3": "MWI"
+    },
+    {
+      "code": "MYS",
+      "label": "Malaysia",
+      "source": "XA:1940",
+      "geographyId": "m49:458",
+      "iso3": "MYS"
+    },
+    {
+      "code": "NAM",
+      "label": "Namibia",
+      "source": "XA:1881",
+      "geographyId": "m49:516",
+      "iso3": "NAM"
+    },
+    {
+      "code": "NCL",
+      "label": "New Caledonia",
+      "source": "XA:1942",
+      "geographyId": "m49:540",
+      "iso3": "NCL"
+    },
+    {
+      "code": "NER",
+      "label": "Niger",
+      "source": "XA:1852",
+      "geographyId": "m49:562",
+      "iso3": "NER"
+    },
+    {
+      "code": "NGA",
+      "label": "Nigeria",
+      "source": "XA:1944",
+      "geographyId": "m49:566",
+      "iso3": "NGA"
+    },
+    {
+      "code": "NIC",
+      "label": "Nicaragua",
+      "source": "XA:1883",
+      "geographyId": "m49:558",
+      "iso3": "NIC"
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands",
+      "source": "XA:1946",
+      "geographyId": "m49:528",
+      "iso3": "NLD"
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "source": "XA:2206",
+      "geographyId": "m49:578",
+      "iso3": "NOR"
+    },
+    {
+      "code": "NPL",
+      "label": "Nepal",
+      "source": "XA:1947",
+      "geographyId": "m49:524",
+      "iso3": "NPL"
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "source": "XA:1884",
+      "geographyId": "m49:554",
+      "iso3": "NZL"
+    },
+    {
+      "code": "OMN",
+      "label": "Oman",
+      "source": "XA:1949",
+      "geographyId": "m49:512",
+      "iso3": "OMN"
+    },
+    {
+      "code": "PAK",
+      "label": "Pakistan",
+      "source": "XA:2080",
+      "geographyId": "m49:586",
+      "iso3": "PAK"
+    },
+    {
+      "code": "PAN",
+      "label": "Panama",
+      "source": "XA:2082",
+      "geographyId": "m49:591",
+      "iso3": "PAN"
+    },
+    {
+      "code": "PER",
+      "label": "Peru",
+      "source": "XA:2084",
+      "geographyId": "m49:604",
+      "iso3": "PER"
+    },
+    {
+      "code": "PHL",
+      "label": "Philippines",
+      "source": "XA:2086",
+      "geographyId": "m49:608",
+      "iso3": "PHL"
+    },
+    {
+      "code": "PNG",
+      "label": "Papua New Guinea",
+      "source": "XA:2088",
+      "geographyId": "m49:598",
+      "iso3": "PNG"
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "source": "XA:2090",
+      "geographyId": "m49:616",
+      "iso3": "POL"
+    },
+    {
+      "code": "PRI",
+      "label": "Puerto Rico",
+      "source": "XA:2092",
+      "geographyId": "m49:630",
+      "iso3": "PRI"
+    },
+    {
+      "code": "PRK",
+      "label": "Korea, Democratic People&#x27;s Republic of",
+      "source": "XA:1957",
+      "geographyId": "m49:408",
+      "iso3": "PRK"
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "source": "XA:2096",
+      "geographyId": "m49:620",
+      "iso3": "PRT"
+    },
+    {
+      "code": "PRY",
+      "label": "Paraguay",
+      "source": "XA:2098",
+      "geographyId": "m49:600",
+      "iso3": "PRY"
+    },
+    {
+      "code": "PSE",
+      "label": "Palestine, State of",
+      "source": "XA:2100",
+      "geographyId": "m49:275",
+      "iso3": "PSE"
+    },
+    {
+      "code": "PYF",
+      "label": "French Polynesia",
+      "source": "XA:2102",
+      "geographyId": "m49:258",
+      "iso3": "PYF"
+    },
+    {
+      "code": "QAT",
+      "label": "Qatar",
+      "source": "XA:2104",
+      "geographyId": "m49:634",
+      "iso3": "QAT"
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "source": "XA:2108",
+      "geographyId": "m49:642",
+      "iso3": "ROU"
+    },
+    {
+      "code": "RUS",
+      "label": "Russian Federation",
+      "source": "XA:2110",
+      "geographyId": "m49:643",
+      "iso3": "RUS"
+    },
+    {
+      "code": "RWA",
+      "label": "Rwanda",
+      "source": "XA:2112",
+      "geographyId": "m49:646",
+      "iso3": "RWA"
+    },
+    {
+      "code": "SAU",
+      "label": "Saudi Arabia",
+      "source": "XA:2114",
+      "geographyId": "m49:682",
+      "iso3": "SAU"
+    },
+    {
+      "code": "SDN",
+      "label": "Sudan",
+      "source": "XA:2116",
+      "geographyId": "m49:729",
+      "iso3": "SDN"
+    },
+    {
+      "code": "SEN",
+      "label": "Senegal",
+      "source": "XA:2118",
+      "geographyId": "m49:686",
+      "iso3": "SEN"
+    },
+    {
+      "code": "SGP",
+      "label": "Singapore",
+      "source": "XA:2120",
+      "geographyId": "m49:702",
+      "iso3": "SGP"
+    },
+    {
+      "code": "SLB",
+      "label": "Solomon Islands",
+      "source": "XA:2122",
+      "geographyId": "m49:090",
+      "iso3": "SLB"
+    },
+    {
+      "code": "SLE",
+      "label": "Sierra Leone",
+      "source": "XA:2124",
+      "geographyId": "m49:694",
+      "iso3": "SLE"
+    },
+    {
+      "code": "SLV",
+      "label": "El Salvador",
+      "source": "XA:2126",
+      "geographyId": "m49:222",
+      "iso3": "SLV"
+    },
+    {
+      "code": "SOM",
+      "label": "Somalia",
+      "source": "XA:2128",
+      "geographyId": "m49:706",
+      "iso3": "SOM"
+    },
+    {
+      "code": "SRB",
+      "label": "Serbia",
+      "source": "XA:2130",
+      "geographyId": "m49:688",
+      "iso3": "SRB"
+    },
+    {
+      "code": "SSD",
+      "label": "South Sudan",
+      "source": "XA:8371",
+      "geographyId": "m49:728",
+      "iso3": "SSD"
+    },
+    {
+      "code": "STP",
+      "label": "Sao Tome and Principe",
+      "source": "XA:2132",
+      "geographyId": "m49:678",
+      "iso3": "STP"
+    },
+    {
+      "code": "SUR",
+      "label": "Suriname",
+      "source": "XA:2134",
+      "geographyId": "m49:740",
+      "iso3": "SUR"
+    },
+    {
+      "code": "SVK",
+      "label": "Slovakia",
+      "source": "XA:2136",
+      "geographyId": "m49:703",
+      "iso3": "SVK"
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "source": "XA:2138",
+      "geographyId": "m49:705",
+      "iso3": "SVN"
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "source": "XA:2140",
+      "geographyId": "m49:752",
+      "iso3": "SWE"
+    },
+    {
+      "code": "SWZ",
+      "label": "Eswatini",
+      "source": "XA:2142",
+      "geographyId": "m49:748",
+      "iso3": "SWZ"
+    },
+    {
+      "code": "SYR",
+      "label": "Syrian Arab Republic",
+      "source": "XA:2144",
+      "geographyId": "m49:760",
+      "iso3": "SYR"
+    },
+    {
+      "code": "TCD",
+      "label": "Chad",
+      "source": "XA:2146",
+      "geographyId": "m49:148",
+      "iso3": "TCD"
+    },
+    {
+      "code": "TGO",
+      "label": "Togo",
+      "source": "XA:2148",
+      "geographyId": "m49:768",
+      "iso3": "TGO"
+    },
+    {
+      "code": "THA",
+      "label": "Thailand",
+      "source": "XA:2150",
+      "geographyId": "m49:764",
+      "iso3": "THA"
+    },
+    {
+      "code": "TJK",
+      "label": "Tajikistan",
+      "source": "XA:2152",
+      "geographyId": "m49:762",
+      "iso3": "TJK"
+    },
+    {
+      "code": "TKM",
+      "label": "Turkmenistan",
+      "source": "XA:1987",
+      "geographyId": "m49:795",
+      "iso3": "TKM"
+    },
+    {
+      "code": "TLS",
+      "label": "Timor-Leste",
+      "source": "XA:2156",
+      "geographyId": "m49:626",
+      "iso3": "TLS"
+    },
+    {
+      "code": "TON",
+      "label": "Tonga",
+      "source": "XA:2158",
+      "geographyId": "m49:776",
+      "iso3": "TON"
+    },
+    {
+      "code": "TTO",
+      "label": "Trinidad and Tobago",
+      "source": "XA:2160",
+      "geographyId": "m49:780",
+      "iso3": "TTO"
+    },
+    {
+      "code": "TUN",
+      "label": "Tunisia",
+      "source": "XA:2162",
+      "geographyId": "m49:788",
+      "iso3": "TUN"
+    },
+    {
+      "code": "TUR",
+      "label": "Türkiye",
+      "source": "XA:2164",
+      "geographyId": "m49:792",
+      "iso3": "TUR"
+    },
+    {
+      "code": "TWN",
+      "label": "Taiwan, China",
+      "source": "XA:8368",
+      "geographyId": "provider:TWN",
+      "iso3": "TWN"
+    },
+    {
+      "code": "TZA",
+      "label": "Tanzania, United Republic of",
+      "source": "XA:2166",
+      "geographyId": "m49:834",
+      "iso3": "TZA"
+    },
+    {
+      "code": "UGA",
+      "label": "Uganda",
+      "source": "XA:2168",
+      "geographyId": "m49:800",
+      "iso3": "UGA"
+    },
+    {
+      "code": "UKR",
+      "label": "Ukraine",
+      "source": "XA:2170",
+      "geographyId": "m49:804",
+      "iso3": "UKR"
+    },
+    {
+      "code": "URY",
+      "label": "Uruguay",
+      "source": "XA:2172",
+      "geographyId": "m49:858",
+      "iso3": "URY"
+    },
+    {
+      "code": "USA",
+      "label": "United States of America",
+      "source": "XA:2174",
+      "geographyId": "m49:840",
+      "iso3": "USA"
+    },
+    {
+      "code": "UZB",
+      "label": "Uzbekistan",
+      "source": "XA:2176",
+      "geographyId": "m49:860",
+      "iso3": "UZB"
+    },
+    {
+      "code": "VCT",
+      "label": "Saint Vincent and the Grenadines",
+      "source": "XA:2178",
+      "geographyId": "m49:670",
+      "iso3": "VCT"
+    },
+    {
+      "code": "VEN",
+      "label": "Venezuela, Bolivarian Republic of",
+      "source": "XA:2180",
+      "geographyId": "m49:862",
+      "iso3": "VEN"
+    },
+    {
+      "code": "VIR",
+      "label": "United States Virgin Islands",
+      "source": "XA:2182",
+      "geographyId": "m49:850",
+      "iso3": "VIR"
+    },
+    {
+      "code": "VNM",
+      "label": "Viet Nam",
+      "source": "XA:2184",
+      "geographyId": "m49:704",
+      "iso3": "VNM"
+    },
+    {
+      "code": "VUT",
+      "label": "Vanuatu",
+      "source": "XA:2186",
+      "geographyId": "m49:548",
+      "iso3": "VUT"
+    },
+    {
+      "code": "WSM",
+      "label": "Samoa",
+      "source": "XA:2188",
+      "geographyId": "m49:882",
+      "iso3": "WSM"
+    },
+    {
+      "code": "X01",
+      "label": "World",
+      "source": "XA:8405",
+      "geographyId": "world",
+      "iso3": "WLD"
+    },
+    {
+      "code": "X06",
+      "label": "Africa",
+      "source": "XA:8372",
+      "geographyId": "ilo:africa",
+      "iso3": ""
+    },
+    {
+      "code": "YEM",
+      "label": "Yemen",
+      "source": "XA:2190",
+      "geographyId": "m49:887",
+      "iso3": "YEM"
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "source": "XA:2192",
+      "geographyId": "m49:710",
+      "iso3": "ZAF"
+    },
+    {
+      "code": "ZMB",
+      "label": "Zambia",
+      "source": "XA:2007",
+      "geographyId": "m49:894",
+      "iso3": "ZMB"
+    },
+    {
+      "code": "ZWE",
+      "label": "Zimbabwe",
+      "source": "XA:1914",
+      "geographyId": "m49:716",
+      "iso3": "ZWE"
+    }
+  ],
+  "excludedAreas": [
+    {
+      "code": "CHA",
+      "label": "Channel Islands",
+      "source": "XA:2232",
+      "reason": "Kanalinseln gemeinsam; nicht Jersey oder Guernsey einzeln zugeordnet."
+    },
+    {
+      "code": "X02",
+      "label": "World: Low income",
+      "source": "XA:8402",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X03",
+      "label": "World: Lower-middle income",
+      "source": "XA:8403",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X04",
+      "label": "World: Upper-middle income",
+      "source": "XA:8401",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X05",
+      "label": "World: High income",
+      "source": "XA:8404",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X07",
+      "label": "Africa: Low income",
+      "source": "XA:8406",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X08",
+      "label": "Africa: Lower-middle income",
+      "source": "XA:8407",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X09",
+      "label": "Africa: Upper-middle income",
+      "source": "XA:8408",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X10",
+      "label": "Northern Africa",
+      "source": "XA:8373",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X11",
+      "label": "Northern Africa: Lower-middle income",
+      "source": "XA:8409",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X12",
+      "label": "Northern Africa: Upper-middle income",
+      "source": "XA:8410",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X13",
+      "label": "Sub-Saharan Africa",
+      "source": "XA:8374",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X14",
+      "label": "Sub-Saharan Africa: Low income",
+      "source": "XA:8411",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X15",
+      "label": "Sub-Saharan Africa: Lower-middle income",
+      "source": "XA:8412",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X16",
+      "label": "Sub-Saharan Africa: Upper-middle income",
+      "source": "XA:8413",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X17",
+      "label": "Central Africa",
+      "source": "XA:8392",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X18",
+      "label": "Eastern Africa",
+      "source": "XA:8375",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X19",
+      "label": "Southern Africa",
+      "source": "XA:8376",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X20",
+      "label": "Western Africa",
+      "source": "XA:8387",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X21",
+      "label": "Americas",
+      "source": "XA:8377",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X23",
+      "label": "Americas: Lower-middle income",
+      "source": "XA:8415",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X24",
+      "label": "Americas: Upper-middle income",
+      "source": "XA:8416",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X25",
+      "label": "Americas: High income",
+      "source": "XA:8417",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X26",
+      "label": "Latin America and the Caribbean",
+      "source": "XA:8378",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X28",
+      "label": "Latin America and the Caribbean: Lower-middle income",
+      "source": "XA:8419",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X29",
+      "label": "Latin America and the Caribbean: Upper-middle income",
+      "source": "XA:8420",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X30",
+      "label": "Latin America and the Caribbean: High income",
+      "source": "XA:8421",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X31",
+      "label": "Caribbean",
+      "source": "XA:8379",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X32",
+      "label": "Central America",
+      "source": "XA:8380",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X33",
+      "label": "South America",
+      "source": "XA:8381",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X34",
+      "label": "Northern America",
+      "source": "XA:8382",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X35",
+      "label": "Northern America: High income",
+      "source": "XA:8422",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X36",
+      "label": "Arab States",
+      "source": "XA:8384",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X37",
+      "label": "Arab States: Lower-middle income",
+      "source": "XA:8423",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X39",
+      "label": "Arab States: High income",
+      "source": "XA:8425",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X40",
+      "label": "Asia and the Pacific",
+      "source": "XA:8385",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X41",
+      "label": "Asia and the Pacific: Low income",
+      "source": "XA:8426",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X42",
+      "label": "Asia and the Pacific: Lower-middle income",
+      "source": "XA:8427",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X43",
+      "label": "Asia and the Pacific: Upper-middle income",
+      "source": "XA:8428",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X44",
+      "label": "Asia and the Pacific: High income",
+      "source": "XA:8429",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X45",
+      "label": "Eastern Asia",
+      "source": "XA:8386",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X47",
+      "label": "Eastern Asia: Upper-middle income",
+      "source": "XA:8431",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X48",
+      "label": "Eastern Asia: High income",
+      "source": "XA:8432",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X49",
+      "label": "South-Eastern Asia and the Pacific",
+      "source": "XA:8388",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X51",
+      "label": "South-Eastern Asia and the Pacific: Lower-middle income",
+      "source": "XA:8434",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X52",
+      "label": "South-Eastern Asia and the Pacific: Upper-middle income",
+      "source": "XA:8435",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X53",
+      "label": "South-Eastern Asia and the Pacific: High income",
+      "source": "XA:8436",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X54",
+      "label": "South-Eastern Asia",
+      "source": "XA:8389",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X55",
+      "label": "Pacific Islands",
+      "source": "XA:8390",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X56",
+      "label": "Southern Asia",
+      "source": "XA:8391",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X58",
+      "label": "Southern Asia: Lower-middle income",
+      "source": "XA:8438",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X59",
+      "label": "Southern Asia: Upper-middle income",
+      "source": "XA:8439",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X60",
+      "label": "Europe and Central Asia",
+      "source": "XA:8393",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X61",
+      "label": "Europe and Central Asia: Lower-middle income",
+      "source": "XA:8440",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X62",
+      "label": "Europe and Central Asia: Upper-middle income",
+      "source": "XA:8441",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X63",
+      "label": "Europe and Central Asia: High income",
+      "source": "XA:8442",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X64",
+      "label": "Northern, Southern and Western Europe",
+      "source": "XA:8394",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X65",
+      "label": "Northern, Southern and Western Europe: Upper-middle income",
+      "source": "XA:8443",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X66",
+      "label": "Northern, Southern and Western Europe: High income",
+      "source": "XA:8444",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X67",
+      "label": "Northern Europe",
+      "source": "XA:8395",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X68",
+      "label": "Southern Europe",
+      "source": "XA:8396",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X69",
+      "label": "Western Europe",
+      "source": "XA:8383",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X70",
+      "label": "Eastern Europe",
+      "source": "XA:8397",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X72",
+      "label": "Eastern Europe: Upper-middle income",
+      "source": "XA:8446",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X73",
+      "label": "Eastern Europe: High income",
+      "source": "XA:8447",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X74",
+      "label": "Central Asia",
+      "source": "XA:8398",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X75",
+      "label": "Central and Western Asia: Lower-middle income",
+      "source": "XA:8448",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X76",
+      "label": "Central and Western Asia: Upper-middle income",
+      "source": "XA:8449",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X77",
+      "label": "Central and Western Asia: High income",
+      "source": "XA:8450",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X78",
+      "label": "Central and Western Asia",
+      "source": "XA:8399",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X79",
+      "label": "Western Asia",
+      "source": "XA:8400",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X82",
+      "label": "European Union 28",
+      "source": "XA:12988",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X83",
+      "label": "G20",
+      "source": "XA:12989",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X84",
+      "label": "ASEAN",
+      "source": "XA:12987",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X85",
+      "label": "BRICS",
+      "source": "XA:12990",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X87",
+      "label": "World excluding BRICS",
+      "source": "XA:13329",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X88",
+      "label": "G7",
+      "source": "XA:14065",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X89",
+      "label": "MENA",
+      "source": "XA:14066",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X90",
+      "label": "Arab League",
+      "source": "XA:15672",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X91",
+      "label": "CARICOM",
+      "source": "XA:15716",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X92",
+      "label": "European Union 27",
+      "source": "XA:15724",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X94",
+      "label": "Arab States: Low income",
+      "source": "XA:15736",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X97",
+      "label": "APEC",
+      "source": "XA:16111",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X98",
+      "label": "World excluding India and China",
+      "source": "XA:16212",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "X99",
+      "label": "World: Lower-middle income excluding India",
+      "source": "XA:16213",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    },
+    {
+      "code": "XA1",
+      "label": "World: Upper-middle income excluding China",
+      "source": "XA:16214",
+      "reason": "Eigenständige ILO-Ländergruppe; nicht mit anderen Quellenregionen gleichgesetzt."
+    }
+  ]
+}

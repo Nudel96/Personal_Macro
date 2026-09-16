@@ -1,0 +1,219 @@
+.atlas-cycle-intro {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  padding: 18px;
+  margin: 20px 0 14px;
+}
+.atlas-cycle-intro > svg {
+  color: var(--atlas-violet);
+  flex-shrink: 0;
+}
+.atlas-cycle-intro p,
+.atlas-cycle-step-copy p,
+.atlas-cycle-evidence p,
+.atlas-cycle-context p,
+.atlas-cycle-sources p {
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 7px 0 0;
+}
+.atlas-cycle-chevron {
+  transition: none;
+}
+.atlas-cycle-chevron.is-open {
+  transform: rotate(180deg);
+}
+.atlas-cycle-content {
+  margin-top: 22px;
+  scroll-margin-top: 88px;
+}
+.atlas-cycle-figure {
+  margin: 0;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.atlas-cycle-caption {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 8px 20px;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.atlas-cycle-caption strong {
+  color: var(--atlas-violet);
+  font-weight: 500;
+}
+.atlas-cycle-caption span,
+.atlas-cycle-figure figcaption {
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.atlas-cycle-figure svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  margin: 10px 0;
+  overflow: visible;
+}
+.atlas-cycle-line {
+  stroke: var(--atlas-blue);
+  fill: none;
+  stroke-width: 4;
+  stroke-linecap: round;
+}
+.atlas-cycle-line.is-hypothesis {
+  stroke: var(--atlas-violet);
+  stroke-dasharray: 10 7;
+}
+.atlas-cycle-guide {
+  stroke: var(--border);
+  stroke-width: 1;
+}
+.atlas-cycle-marker-halo {
+  fill: var(--atlas-violet);
+  opacity: 0.15;
+}
+.atlas-cycle-marker {
+  fill: var(--surface);
+  stroke: var(--atlas-violet);
+  stroke-width: 4;
+}
+.atlas-cycle-alternatives {
+  fill: none;
+  stroke: var(--atlas-violet);
+  stroke-width: 3;
+  stroke-dasharray: 6 5;
+}
+.atlas-cycle-steps {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+}
+.atlas-cycle-steps button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text-2);
+  font: inherit;
+  font-size: 12px;
+  padding: 12px 5px;
+  cursor: pointer;
+}
+.atlas-cycle-steps button[aria-pressed="true"] {
+  border-color: var(--atlas-violet);
+  color: var(--text);
+  background: color-mix(in srgb, var(--atlas-violet) 10%, var(--surface));
+}
+.atlas-cycle-step-copy {
+  border-left: 3px solid var(--atlas-violet);
+  padding: 12px 16px;
+  min-height: 93px;
+}
+.atlas-cycle-step-copy strong {
+  font-size: 14px;
+}
+.atlas-cycle-evidence {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  margin: 25px 0;
+}
+.atlas-cycle-evidence h3,
+.atlas-cycle-context h3 {
+  font-size: 13px;
+  margin: 0;
+}
+.atlas-cycle-evidence small,
+.atlas-cycle-sources small {
+  display: block;
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+.atlas-cycle-sources > section {
+  margin: 18px 0;
+}
+.atlas-cycle-sources h4 {
+  font-size: 13px;
+  margin: 0 0 6px;
+}
+.atlas-cycle-sources a {
+  color: var(--atlas-blue);
+  font-size: 13px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  overflow-wrap: anywhere;
+}
+.atlas-cycle-sources summary {
+  cursor: pointer;
+}
+.atlas-cycle-context {
+  margin-top: 28px;
+  padding-top: 22px;
+  border-top: 1px solid var(--border);
+}
+.atlas-cycle-context p.atlas-cycle-context-label {
+  font-size: 12px;
+}
+.atlas-cycle-context > div {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 15px;
+}
+.atlas-cycle-context button,
+.atlas-cycle-return,
+.atlas-coverage-theory-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--atlas-blue);
+  border-radius: 8px;
+  padding: 13px 14px;
+  text-align: left;
+  font: inherit;
+  font-size: 12px;
+  line-height: 1.6;
+  cursor: pointer;
+}
+.atlas-cycle-return {
+  margin: 0 0 20px;
+  justify-content: flex-start;
+}
+.atlas-cycle-context button svg {
+  flex-shrink: 0;
+}
+.atlas-cycle-steps button:focus-visible,
+.atlas-cycle-context button:focus-visible,
+.atlas-cycle-return:focus-visible,
+.atlas-coverage-theory-link:focus-visible,
+.atlas-cycle-sources summary:focus-visible,
+.atlas-cycle-sources a:focus-visible {
+  outline: 2px solid var(--atlas-blue);
+  outline-offset: 4px;
+}
+@media (max-width: 1150px) {
+  .atlas-cycle-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .atlas-cycle-evidence,
+  .atlas-cycle-context > div {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 15px;
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "status": "passed_with_native_interaction_limit",
+  "checkedOn": "2026-09-09",
+  "profile": "com.personal-macro.atlas-households-20260909",
+  "firstRun": "2026-09-09T12:01:52.483Z",
+  "restartRun": "2026-09-09T12:10:17.101Z",
+  "source": {
+    "url": "https://population.un.org/household/assets/UNDESA_PD_2026_hh-size-composition.xlsx",
+    "sha256": "fde0eedd2d3e7f32ad5d8bd8f9ba694dae7f4046190e9adb12175adcce0fb63c",
+    "bytes": 399250,
+    "methodologyUrl": "https://www.un.org/development/desa/pd/sites/www.un.org.development.desa.pd/files/undesa_pd_2026_methodology-report_hh-size-composition.pdf",
+    "methodologySha256": "a0235739117d56a37aa0daf57ed206b89590d4db3c854038044a168577e993d2",
+    "methodologyDefinitionPagesVisuallyChecked": [6, 7]
+  },
+  "coverage": {
+    "countriesAndTerritories": 200,
+    "observations": 1129,
+    "metrics": 39,
+    "groups": 7,
+    "firstSourceYear": 1959,
+    "lastSourceYear": 2025,
+    "numericCellsExactlyCompared": 36142,
+    "missingCellsExactlyCompared": 7889,
+    "realZeros": 462,
+    "unweightedMicsObservations": 8,
+    "multipleSourceCountryYears": 76,
+    "exactComparison": "Independent openpyxl and Decimal read of the official workbook against the isolated native cache; all values, missing values, source identities, years and area mappings match."
+  },
+  "native": {
+    "atlasMigrations": 15,
+    "responsesPerRun": 202,
+    "unsupportedProfilesChecked": ["world", "un-wpp:903"],
+    "downloadJobsOnFirstRun": 1,
+    "downloadJobsOnRestart": 0,
+    "identicalResponsesAfterRealProcessRestart": true,
+    "identicalOriginalNoteContextSourcesAndPictureAfterRestart": true,
+    "savedOriginalPictureSha256": "ea69060d9e89845ac32c77632fe7c2d31e53ad834de9efd74ce9157a0832a68c",
+    "currentLayoutPreviewSha256": "4dea479bcf3a1c76c4fd7e4298ccc4b2cd9b8a74327f0fb2cbb0b3f8cffb6cd5",
+    "pictureDifference": "The saved original note was preserved byte-for-byte. The separate current preview was rendered after arranging the history above the selected country charts.",
+    "proofChecker": "check_households_native.py",
+    "productionDataAccessed": false,
+    "ownedTestProcessesStopped": true,
+    "testPort5188Closed": true,
+    "browserTestTabClosedAndViewportReset": true
+  },
+  "checks": {
+    "atlasFrontendTests": 193,
+    "atlasFrontendTestFiles": 30,
+    "newHouseholdRustTestsIncludingOfficialDownload": 3,
+    "householdNavigationRegressionRerun": "passed",
+    "typescriptViaProductionBuild": "passed",
+    "productionBuild": "passed; existing large-chunk warning remains",
+    "targetedEslint": "passed",
+    "targetedPrettier": "passed",
+    "cargoFmt": "passed",
+    "cargoClippyAllTargetsDenyWarnings": "passed",
+    "gitDiffCheck": "passed; repository line-ending notices only"
+  },
+  "browser": {
+    "surface": "CUA in-app browser; original React page supplied with native public-source responses",
+    "freshTabWarningsAndErrors": 0,
+    "checks": [
+      "Germany and USA with separate source years on shared time and value scales",
+      "Rapid India, China and generation-group selection remains stable",
+      "Explicit China 2020 source stays selected with an unavailable nuclear-household value",
+      "Default source record IDs are resolved for saving without mutating navigation",
+      "Coverage search for grandparents opens the exact skip-generation perspective and preserves country comparison",
+      "World shows an explicit unavailable profile and four country entry buttons",
+      "Azerbaijan 2000 MICS selection retains unweighted notices and the open-diamond legend",
+      "Since-2000 selection works via Enter with a visible focus indicator",
+      "1024- and 1440-pixel layouts keep the two country observations side by side"
+    ]
+  },
+  "limits": [
+    "This evidence covers the household extension, not the complete World Atlas objective.",
+    "Native commands, persistence and actual process restart were exercised, but native-window clicks were unavailable because CUA exposes browsers only.",
+    "Original source years are sparse and differ by country and metric; no continuous 1959-2025 history or world and continent averages are claimed.",
+    "The initial native startup logged successful slow SQL writes and existing Technicals and pdf-extract background errors outside the household pipeline.",
+    "The final restart logged existing Technicals and central-bank background messages; a globally warning-free application startup is not established.",
+    "At the existing 1024-pixel application minimum, a scrollbar can reduce the viewport by a few pixels; the final captured page had equal 1024-pixel client and scroll widths."
+  ]
+}

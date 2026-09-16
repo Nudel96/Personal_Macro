@@ -1,0 +1,821 @@
+{
+  "checkedAt": "2026-09-11T08:17:00.659628+00:00",
+  "status": "passed",
+  "catalogVersion": "2026-09-11.23",
+  "originalTopics": 40,
+  "topicsWithRealLocalValues": 40,
+  "publicPerspectives": 265,
+  "publicPackages": 34,
+  "publicNumericValues": 344399,
+  "readOnlyCache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "journalRead": false,
+  "topics": [
+    {
+      "topicId": "labor:wages",
+      "label": "Reallöhne",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 1298,
+      "sourceAreas": 38,
+      "first": "1990",
+      "last": "2025",
+      "evidence": {
+        "local": "public-local-fill-2026-09-11.json",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "labor:working_hours",
+      "label": "Arbeitszeit",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 3722,
+      "sourceAreas": 45,
+      "first": "1950",
+      "last": "2025",
+      "evidence": {
+        "local": "public-local-fill-2026-09-11.json",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "macro:purchasing_power",
+      "label": "Kaufkraftvergleiche",
+      "publicPerspectives": 0,
+      "statisticalPerspectives": 2,
+      "localValues": 13346,
+      "sourceAreas": 209,
+      "first": "1990",
+      "last": "2025",
+      "evidence": {
+        "local": "public-second-local-fill-2026-09-11.json",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "finance:debt_service",
+      "label": "Schuldendienst",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 7116,
+      "sourceAreas": 32,
+      "first": "1999-Q1",
+      "last": "2025-Q4",
+      "evidence": {
+        "local": "public-local-fill-2026-09-11.json",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "market_context:relative_strength",
+      "label": "Relative Stärke · Länder & Sektoren",
+      "publicPerspectives": 0,
+      "statisticalPerspectives": 0,
+      "localValues": 5202,
+      "sourceAreas": 11,
+      "first": "1998-12",
+      "last": "2026-08",
+      "evidence": {
+        "local": "relative-strength-local-data-2026-09-11.json",
+        "nativeUi": "relative-strength-native-qa-2026-09-11.json",
+        "windowsRelease": "relative-strength-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "market_context:market_concentration",
+      "label": "Marktkonzentration",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 1829,
+      "sourceAreas": 60,
+      "first": "1998",
+      "last": "2020",
+      "evidence": {
+        "local": "public-gfdd-local-fill-2026-09-11.json",
+        "nativeUi": "public-gfdd-native-qa-2026-09-11.json",
+        "windowsRelease": "public-gfdd-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "fuels:bioenergy",
+      "label": "Bioenergie",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 2307,
+      "sourceAreas": 42,
+      "first": "1990",
+      "last": "2025",
+      "evidence": {
+        "local": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "fuels:synthetic_fuels",
+      "label": "Synthetische Kraftstoffe",
+      "publicPerspectives": 4,
+      "statisticalPerspectives": 0,
+      "localValues": 36,
+      "sourceAreas": 2,
+      "first": "2014",
+      "last": "2026",
+      "evidence": {
+        "local": "public-synfuels-local-fill-2026-09-11.json",
+        "nativeUi": "public-synfuels-native-qa-2026-09-11.json",
+        "windowsRelease": "public-synfuels-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "energy_systems:battery_storage",
+      "label": "Batteriespeicher",
+      "publicPerspectives": 5,
+      "statisticalPerspectives": 0,
+      "localValues": 69,
+      "sourceAreas": 1,
+      "first": "2003",
+      "last": "2023",
+      "evidence": {
+        "local": "public-eia-storage-local-fill-2026-09-11.json",
+        "nativeUi": "public-eia-storage-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eia-storage-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "energy_systems:heat_pumps",
+      "label": "Wärmepumpen",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 803,
+      "sourceAreas": 32,
+      "first": "2004",
+      "last": "2024",
+      "evidence": {
+        "local": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "energy_systems:district_heating",
+      "label": "Wärmenetze",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 32,
+      "sourceAreas": 32,
+      "first": "2023",
+      "last": "2023",
+      "evidence": {
+        "local": "public-energy-local-fill-2026-09-11.json",
+        "nativeUi": "public-energy-native-qa-2026-09-11.json",
+        "windowsRelease": "public-energy-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "industry:cement",
+      "label": "Zement",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 1434,
+      "sourceAreas": 33,
+      "first": "1990",
+      "last": "2024",
+      "evidence": {
+        "local": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "materials:lithium",
+      "label": "Lithium",
+      "publicPerspectives": 10,
+      "statisticalPerspectives": 0,
+      "localValues": 532,
+      "sourceAreas": 14,
+      "first": "1974",
+      "last": "2024",
+      "evidence": {
+        "local": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "materials:rare_earths",
+      "label": "Seltene Erden",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 272,
+      "sourceAreas": 15,
+      "first": "1992",
+      "last": "2024",
+      "evidence": {
+        "local": "public-bgs-local-fill-2026-09-11.json",
+        "nativeUi": "public-bgs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-bgs-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "digital:cloud",
+      "label": "Cloud und Rechenzentren",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 428,
+      "sourceAreas": 38,
+      "first": "2014",
+      "last": "2026-07",
+      "evidence": {
+        "local": "public-second-local-fill-2026-09-11.json",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "digital:cybersecurity",
+      "label": "Cybersicherheit",
+      "publicPerspectives": 4,
+      "statisticalPerspectives": 0,
+      "localValues": 337,
+      "sourceAreas": 36,
+      "first": "2019",
+      "last": "2024",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "digital:digital_platforms",
+      "label": "Digitale Plattformen",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 299,
+      "sourceAreas": 37,
+      "first": "2016",
+      "last": "2024",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "innovation:artificial_intelligence",
+      "label": "Künstliche Intelligenz",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 401,
+      "sourceAreas": 35,
+      "first": "2021",
+      "last": "2025",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "innovation:robotics",
+      "label": "Robotik",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 278,
+      "sourceAreas": 36,
+      "first": "2018",
+      "last": "2022",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "innovation:quantum",
+      "label": "Quantentechnologien",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 72,
+      "sourceAreas": 4,
+      "first": "2000",
+      "last": "2017",
+      "evidence": {
+        "local": "public-epo-local-fill-2026-09-11.json",
+        "nativeUi": "public-epo-native-qa-2026-09-11.json",
+        "windowsRelease": "public-epo-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "innovation:space_technology",
+      "label": "Raumfahrttechnologie",
+      "publicPerspectives": 5,
+      "statisticalPerspectives": 0,
+      "localValues": 370,
+      "sourceAreas": 25,
+      "first": "1990",
+      "last": "2017",
+      "evidence": {
+        "local": "public-epo-local-fill-2026-09-11.json",
+        "nativeUi": "public-epo-native-qa-2026-09-11.json",
+        "windowsRelease": "public-epo-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "innovation:advanced_materials",
+      "label": "Neue Materialien",
+      "publicPerspectives": 12,
+      "statisticalPerspectives": 0,
+      "localValues": 36,
+      "sourceAreas": 3,
+      "first": "2010/2024",
+      "last": "2010/2024",
+      "evidence": {
+        "local": "public-materials-local-fill-2026-09-11.json",
+        "nativeUi": "public-materials-native-qa-2026-09-11.json",
+        "windowsRelease": "public-materials-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "housing:rents",
+      "label": "Mieten",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 973,
+      "sourceAreas": 38,
+      "first": "1996",
+      "last": "2025",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "housing:housing_supply",
+      "label": "Wohnungsangebot",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 248,
+      "sourceAreas": 43,
+      "first": "2010",
+      "last": "2022",
+      "evidence": {
+        "local": "public-housing-stock-local-fill-2026-09-11.json",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "housing:commercial_property",
+      "label": "Gewerbeimmobilien",
+      "publicPerspectives": 65,
+      "statisticalPerspectives": 0,
+      "localValues": 5586,
+      "sourceAreas": 25,
+      "first": "1945-Q4",
+      "last": "2026-Q2",
+      "evidence": {
+        "local": "public-cpp-local-fill-2026-09-11.json",
+        "nativeUi": "public-cpp-native-qa-2026-09-11.json",
+        "windowsRelease": "public-cpp-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "housing:logistics_property",
+      "label": "Logistikimmobilien",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 1209,
+      "sourceAreas": 1,
+      "first": "1993-01",
+      "last": "2026-07",
+      "evidence": {
+        "local": "public-second-local-fill-2026-09-11.json",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "consumer_services:ecommerce",
+      "label": "Onlinehandel",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 1024,
+      "sourceAreas": 37,
+      "first": "2009",
+      "last": "2024",
+      "evidence": {
+        "local": "public-eurostat-local-fill-2026-09-11.json",
+        "nativeUi": "public-eurostat-native-qa-2026-09-11.json",
+        "windowsRelease": "public-eurostat-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "consumer_services:professional_services",
+      "label": "Unternehmensdienstleistungen",
+      "publicPerspectives": 4,
+      "statisticalPerspectives": 0,
+      "localValues": 1208,
+      "sourceAreas": 38,
+      "first": "2005",
+      "last": "2024",
+      "evidence": {
+        "local": "public-sbs-local-fill-2026-09-11.json",
+        "nativeUi": "public-sbs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-sbs-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "consumer_services:personal_services",
+      "label": "Persönliche Dienstleistungen",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 274,
+      "sourceAreas": 35,
+      "first": "2021",
+      "last": "2024",
+      "evidence": {
+        "local": "public-sbs-local-fill-2026-09-11.json",
+        "nativeUi": "public-sbs-native-qa-2026-09-11.json",
+        "windowsRelease": "public-sbs-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "transport:public_transport",
+      "label": "Öffentlicher Verkehr",
+      "publicPerspectives": 0,
+      "statisticalPerspectives": 1,
+      "localValues": 71,
+      "sourceAreas": 29,
+      "first": "2000",
+      "last": "2025",
+      "evidence": {
+        "local": "sdg-services-local-fill-2026-09-11.json",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "transport:electric_vehicles",
+      "label": "Elektromobilität",
+      "publicPerspectives": 10,
+      "statisticalPerspectives": 0,
+      "localValues": 7246,
+      "sourceAreas": 71,
+      "first": "2010",
+      "last": "2025",
+      "evidence": {
+        "local": "public-second-local-fill-2026-09-11.json",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "transport:charging",
+      "label": "Ladeinfrastruktur",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 1403,
+      "sourceAreas": 53,
+      "first": "2010",
+      "last": "2025",
+      "evidence": {
+        "local": "public-second-local-fill-2026-09-11.json",
+        "nativeUi": "public-second-native-qa-2026-09-11.json",
+        "windowsRelease": "public-second-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "trade:trade_partners",
+      "label": "Handelspartner",
+      "publicPerspectives": 81,
+      "statisticalPerspectives": 0,
+      "localValues": 179200,
+      "sourceAreas": 80,
+      "first": "1995",
+      "last": "2022",
+      "evidence": {
+        "local": "public-tiva-local-fill-2026-09-11.json",
+        "nativeUi": "public-tiva-native-qa-2026-09-11.json",
+        "windowsRelease": "public-tiva-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "trade:supply_chains",
+      "label": "Lieferketten",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 4480,
+      "sourceAreas": 80,
+      "first": "1995",
+      "last": "2022",
+      "evidence": {
+        "local": "public-tiva-local-fill-2026-09-11.json",
+        "nativeUi": "public-tiva-native-qa-2026-09-11.json",
+        "windowsRelease": "public-tiva-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "trade:export_concentration",
+      "label": "Exportkonzentration",
+      "publicPerspectives": 1,
+      "statisticalPerspectives": 0,
+      "localValues": 7739,
+      "sourceAreas": 239,
+      "first": "1988",
+      "last": "2022",
+      "evidence": {
+        "local": "public-wits-local-fill-2026-09-11.json",
+        "nativeUi": "public-wits-native-qa-2026-09-11.json",
+        "windowsRelease": "public-wits-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "institutions:public_services",
+      "label": "Öffentliche Versorgung",
+      "publicPerspectives": 0,
+      "statisticalPerspectives": 4,
+      "localValues": 659,
+      "sourceAreas": 151,
+      "first": "2015",
+      "last": "2025",
+      "evidence": {
+        "local": "sdg-services-local-fill-2026-09-11.json",
+        "nativeUi": "services-housing-native-qa-2026-09-11.json",
+        "windowsRelease": "services-housing-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "institutions:institutional_indicators",
+      "label": "Institutionelle Indikatoren",
+      "publicPerspectives": 6,
+      "statisticalPerspectives": 0,
+      "localValues": 32319,
+      "sourceAreas": 215,
+      "first": "1996",
+      "last": "2024",
+      "evidence": {
+        "local": "public-local-fill-2026-09-11.json",
+        "nativeUi": "public-native-qa-2026-09-11.json",
+        "windowsRelease": "public-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "institutions:economic_policy_regimes",
+      "label": "Wirtschaftspolitische Regime",
+      "publicPerspectives": 3,
+      "statisticalPerspectives": 0,
+      "localValues": 24641,
+      "sourceAreas": 183,
+      "first": "1960",
+      "last": "2020",
+      "evidence": {
+        "local": "public-trilemma-local-fill-2026-09-11.json",
+        "nativeUi": "public-trilemma-native-qa-2026-09-11.json",
+        "windowsRelease": "public-trilemma-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "environment:climate_exposure",
+      "label": "Klimatische Belastung",
+      "publicPerspectives": 10,
+      "statisticalPerspectives": 0,
+      "localValues": 49842,
+      "sourceAreas": 192,
+      "first": "1995",
+      "last": "2024",
+      "evidence": {
+        "local": "public-ndgain-local-fill-2026-09-11.json",
+        "nativeUi": "public-ndgain-native-qa-2026-09-11.json",
+        "windowsRelease": "public-ndgain-windows-release-2026-09-11.json"
+      }
+    },
+    {
+      "topicId": "long_history:monetary_systems",
+      "label": "Geld- und Währungssysteme",
+      "publicPerspectives": 2,
+      "statisticalPerspectives": 0,
+      "localValues": 5336,
+      "sourceAreas": 18,
+      "first": "1870",
+      "last": "2020",
+      "evidence": {
+        "local": "public-regimes-local-fill-2026-09-11.json",
+        "nativeUi": "public-regimes-native-qa-2026-09-11.json",
+        "windowsRelease": "public-regimes-windows-release-2026-09-11.json"
+      }
+    }
+  ],
+  "packages": [
+    {
+      "sourceId": "bis-dsr",
+      "numericValues": 7116,
+      "sha256": "8e01278e540ffde3b97c6f34593a7c2607cb3c9d08d8415a084cd9d4e1c93e5d",
+      "recipe": "bis-dsr-original-quarterly-2026-06-v1"
+    },
+    {
+      "sourceId": "oecd-wages",
+      "numericValues": 1298,
+      "sha256": "d6b83b419e9cf91bf41e3ba5d4207b0e4b7d2d2180e8b2aa265e1cbc29912a5e",
+      "recipe": "oecd-wages-2025-source-20260911-v1"
+    },
+    {
+      "sourceId": "oecd-hours",
+      "numericValues": 3722,
+      "sha256": "af224daff675ff3637940c25d70e266efe5e00fa84dd897eae049b7e4f001629",
+      "recipe": "oecd-hours-2025-source-20260911-v1"
+    },
+    {
+      "sourceId": "worldbank-wgi",
+      "numericValues": 32319,
+      "sha256": "25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8",
+      "recipe": "wgi-2025-revision-absolute-score-v1"
+    },
+    {
+      "sourceId": "census-construction",
+      "numericValues": 1360,
+      "sha256": "4abbfdca1db6c1611a2a194dd96312449c196752f5036a1e531783905471027d",
+      "recipe": "census-private-nsa-2026-09-v1"
+    },
+    {
+      "sourceId": "iea-ev",
+      "numericValues": 8649,
+      "sha256": "4448cf9d8e2485351c35b5cb6db07a4b10c0d648d94a9ee22c927efed642729c",
+      "recipe": "iea-geo2026-historical-cars-charging-v1"
+    },
+    {
+      "sourceId": "eurostat-ai",
+      "numericValues": 401,
+      "sha256": "4b3e164a0d9226f905f553efbb65267e2a48cc53a8485b4ae768011c8f708f28",
+      "recipe": "eurostat-ai-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-robotics",
+      "numericValues": 278,
+      "sha256": "e3df56cf44bcf8d68feb452b72ab0036f41657a1944115a6a9e64c5f74afb975",
+      "recipe": "eurostat-robotics-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-cybersecurity",
+      "numericValues": 337,
+      "sha256": "53b6e54ca675937ad124dac12132b413a9b4705d46db1a08385f4ae40dc61653",
+      "recipe": "eurostat-cybersecurity-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-ecommerce",
+      "numericValues": 1323,
+      "sha256": "b4e7e801ce51665e7e90f8d4a6f5bb0351d17df60096d329286edd684292f9b5",
+      "recipe": "eurostat-ecommerce-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-cloud",
+      "numericValues": 277,
+      "sha256": "9de2a9d87aa17753b8da3c10bc548fe3ddafe4a887ec28e76c16ebc6c5b4de3a",
+      "recipe": "eurostat-cloud-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-rents",
+      "numericValues": 973,
+      "sha256": "40fe8f7fba847104b130689a38e0cca34578cb1573fa711f4c4ad4109542ce86",
+      "recipe": "eurostat-rents-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "bgs-cement",
+      "numericValues": 1434,
+      "sha256": "eece23e2defb602ce8a69079d74b3808d51dc702af868f92468de45376c2dd82",
+      "recipe": "bgs-cement-original-csv-20260911-v1"
+    },
+    {
+      "sourceId": "bgs-lithium",
+      "numericValues": 532,
+      "sha256": "9e3a869b0dd849db51565142b6d0487da57e2bf20fa8b6fa355323425ef00240",
+      "recipe": "bgs-lithium-original-csv-20260911-v1"
+    },
+    {
+      "sourceId": "bgs-rare-earths",
+      "numericValues": 272,
+      "sha256": "8592ca9de4759212f4db9400245a54b04a444715d34e5fac77ccb38debded181",
+      "recipe": "bgs-rare-earths-original-csv-20260911-v1"
+    },
+    {
+      "sourceId": "oecd-housing-stock",
+      "numericValues": 248,
+      "sha256": "9db04f14bb735721aa8e0ea4212f982e04622773042879eebeadddb3b909809d",
+      "recipe": "oecd-hm11-a1-original-years-20240415-v1"
+    },
+    {
+      "sourceId": "eurostat-bioenergy",
+      "numericValues": 2307,
+      "sha256": "dbc18cef2ced71904f9fa78dd8b371f3964ea73c972fed0a8f13278a6607408a",
+      "recipe": "eurostat-bioenergy-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-heat-pumps",
+      "numericValues": 803,
+      "sha256": "2375ae23ad5c93be57ace189d52299e842d28740c6d1f563df1b3e2433a2c397",
+      "recipe": "eurostat-heat-pumps-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-district-heating",
+      "numericValues": 32,
+      "sha256": "6e3759ed3a6f7cdfdcc020933ba65c7ba5d36a531192b50e26e934cc73935d1e",
+      "recipe": "eurostat-district-heating-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-business-services",
+      "numericValues": 558,
+      "sha256": "c222c221d379ce03c9e532b5000bfa0bfa1594d9ae531748486e96430fd49249",
+      "recipe": "eurostat-business-services-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "eurostat-professional-history",
+      "numericValues": 924,
+      "sha256": "1412bc2fdb73037f35f940da31da65a308c75bb661d986a3bccc5c4a54db5c23",
+      "recipe": "eurostat-professional-history-original-jsonstat-20260911-v1"
+    },
+    {
+      "sourceId": "oecd-tiva-supply",
+      "numericValues": 4480,
+      "sha256": "00222138f46de9efc0799e6eebb50d7846e6d09b5b0401dde373d6932b0a64b2",
+      "recipe": "oecd-tiva-supply-2025-january2026-v1"
+    },
+    {
+      "sourceId": "oecd-tiva-partners",
+      "numericValues": 179200,
+      "sha256": "6092910f6387f5ea67f6b74d8ea9d6c663e70ff265d477b3ecc00ad502447685",
+      "recipe": "oecd-tiva-partners-2025-january2026-v1"
+    },
+    {
+      "sourceId": "wits-export-concentration",
+      "numericValues": 7739,
+      "sha256": "afed92d5442572e9471b982e5af844e4b0550bc39b476bd61aada0aec8445ea1",
+      "recipe": "wits-hhpci-mirrored-1988-2022-original-zips-v1"
+    },
+    {
+      "sourceId": "ndgain-climate",
+      "numericValues": 49842,
+      "sha256": "e854c7fe6ccef8c5d24a5ef7f370b7f61d1b8c6816da19fda4cd892ca6cdf0de",
+      "recipe": "ndgain-2026-original-indices-and-static-exposure-v1"
+    },
+    {
+      "sourceId": "bis-commercial-property",
+      "numericValues": 5586,
+      "sha256": "e53082ec2eaf548b76a7e519cf1ab7608dc5d77a24a10cf5f15d98090165a94d",
+      "recipe": "bis-cpp-original-national-city-prices-20260827-v1"
+    },
+    {
+      "sourceId": "eia-battery-storage",
+      "numericValues": 69,
+      "sha256": "4d280371504ce00f5e9477c49848c23106e6baebdf9a44da31bc3ac45f960f91",
+      "recipe": "eia-battery-original-2023-final-20260317-v1"
+    },
+    {
+      "sourceId": "epo-quantum-sensing",
+      "numericValues": 72,
+      "sha256": "20a2e002014b0b109f3e301b68191ff589429f11caaa72508eb420d762e4ec20",
+      "recipe": "epo-quantum-sensing-original-chart-workbooks-through2017-v1"
+    },
+    {
+      "sourceId": "epo-cosmonautics",
+      "numericValues": 370,
+      "sha256": "cdcbb3f57c5bb910d624811822e341e9a43e46bf48e7ebb2097c522f8b3f1217",
+      "recipe": "epo-cosmonautics-original-chart-workbooks-through2017-v1"
+    },
+    {
+      "sourceId": "worldbank-gfdd-concentration",
+      "numericValues": 1829,
+      "sha256": "bb86ad8c15da875f094c9b23db69731570e7ffa1e14e22fb2c8ba2aef30884dc",
+      "recipe": "gfdd-20220909-original-am01-am02-through2020-v1"
+    },
+    {
+      "sourceId": "aci-trilemma",
+      "numericValues": 24641,
+      "sha256": "3091a6f2de4656d3f07155de1b7a96b5b6680ffb1a7a3d77ca1acd4fdd2f7107",
+      "recipe": "aci-2020-original-three-dimensions-v1"
+    },
+    {
+      "sourceId": "jst-exchange-regimes",
+      "numericValues": 5336,
+      "sha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+      "recipe": "jst-r6-original-peg-classifications-v1"
+    },
+    {
+      "sourceId": "eu-advanced-materials",
+      "numericValues": 36,
+      "sha256": "6f49dcb308e07e5abeb0e01bd3f9ce7d8d2e474896b74b6b34b2e6e4aca1d057",
+      "recipe": "eu-am-2026-table1-companies-priority-period2010to2024-v1"
+    },
+    {
+      "sourceId": "sasol-synthetic-fuels",
+      "numericValues": 36,
+      "sha256": "25ac6d46ed1a36880ff2c47f85935aadd69d2157fcc61e8adb526f369efa0ca7",
+      "recipe": "sasol-six-original-reports-fy2014to2026-v1"
+    }
+  ],
+  "finalWindowsSha256": "7ee1de592dd14eb8d8927315419446126b423e9451d6c6206f28d88e7bae0622"
+}

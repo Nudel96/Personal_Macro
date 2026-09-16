@@ -1,0 +1,31 @@
+{
+  "checkedAt": "2026-09-11T00:06:54.091959+00:00",
+  "scope": [
+    "macro:purchasing_power",
+    "digital:cloud",
+    "housing:logistics_property",
+    "transport:electric_vehicles",
+    "transport:charging"
+  ],
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "checks": [
+    "Both WDI price perspectives Germany/India; common unit, model label, 1990–2025; USA household price level is 100 in all 36 visible table rows",
+    "Numbers on/off: values table and numeric tooltips disappear; world price level remains empty without synthetic average",
+    "Census unsupported World offers actual USA; data centers 2014-01–2026-07; all 3 warehouse perspectives 1993-01–2026-07; 2020 horizon works",
+    "Census final source tooltips retain May/June revised and July preliminary flags; fresh download button disabled",
+    "All 10 IEA car perspectives switched through actual native UI with World 2010–2025; source stock remains 75,000,000",
+    "India EV stock and all 3 chargepoint classes; own IEA Africa aggregate; no projection years",
+    "All 5 topics searched in coverage and real locally available perspective opened",
+    "IEA Africa ultraschnell ab 2020 saved and restored after navigating to USA; source release, recipe, retrieved time and hashes retained",
+    "Visual pass: price comparison, monthly data center construction, India EV stock, IEA Africa minimum 1024x850; no horizontal overflow",
+    "Coverage date formatter corrected to support full audit timestamp and verified as 11.9.2026"
+  ],
+  "screenshots": [
+    "output/atlas-public-second-pricelevel.png",
+    "output/atlas-public-second-census.png",
+    "output/atlas-public-second-iea-india.png",
+    "output/atlas-public-second-minwidth.png"
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "eurostat-ai": {
+    "provenance": {
+      "sourceId": "eurostat-ai",
+      "retrievedAt": "2026-09-11T00:21:44.033009100+00:00",
+      "publishedAt": "2026-06-15",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_ai?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_AI_TANY&indic_is=E_AI_TTM&indic_is=E_AI_TML",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "sha256": "4b3e164a0d9226f905f553efbb65267e2a48cc53a8485b4ae768011c8f708f28",
+      "recipe": "eurostat-ai-original-jsonstat-20260911-v1",
+      "sourceRows": 413,
+      "numericValues": 401,
+      "areaCount": 35
+    },
+    "profiles": 104,
+    "numericValues": 401,
+    "missingValues": 15
+  },
+  "eurostat-robotics": {
+    "provenance": {
+      "sourceId": "eurostat-robotics",
+      "retrievedAt": "2026-09-11T00:21:45.027976900+00:00",
+      "publishedAt": "2025-07-17",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_eb_p3d?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_RBT&indic_is=E_RBTI&indic_is=E_RBTS",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "sha256": "e3df56cf44bcf8d68feb452b72ab0036f41657a1944115a6a9e64c5f74afb975",
+      "recipe": "eurostat-robotics-original-jsonstat-20260911-v1",
+      "sourceRows": 296,
+      "numericValues": 278,
+      "areaCount": 36
+    },
+    "profiles": 107,
+    "numericValues": 278,
+    "missingValues": 43
+  },
+  "eurostat-cybersecurity": {
+    "provenance": {
+      "sourceId": "eurostat-cybersecurity",
+      "retrievedAt": "2026-09-11T00:21:46.114550+00:00",
+      "publishedAt": "2026-06-15",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_cisce_ra?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_SECMGE1&indic_is=E_SECMGE5&indic_is=E_SECMOSBU&indic_is=E_SECMTST",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "sha256": "53b6e54ca675937ad124dac12132b413a9b4705d46db1a08385f4ae40dc61653",
+      "recipe": "eurostat-cybersecurity-original-jsonstat-20260911-v1",
+      "sourceRows": 349,
+      "numericValues": 337,
+      "areaCount": 36
+    },
+    "profiles": 141,
+    "numericValues": 337,
+    "missingValues": 227
+  },
+  "eurostat-ecommerce": {
+    "provenance": {
+      "sourceId": "eurostat-ecommerce",
+      "retrievedAt": "2026-09-11T00:21:47.150069200+00:00",
+      "publishedAt": "2026-06-15",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_ec_esels?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_AESELL&indic_is=E_AWSELL&indic_is=E_AWS_CMP",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "sha256": "b4e7e801ce51665e7e90f8d4a6f5bb0351d17df60096d329286edd684292f9b5",
+      "recipe": "eurostat-ecommerce-original-jsonstat-20260911-v1",
+      "sourceRows": 1424,
+      "numericValues": 1323,
+      "areaCount": 37
+    },
+    "profiles": 111,
+    "numericValues": 1323,
+    "missingValues": 453
+  },
+  "eurostat-cloud": {
+    "provenance": {
+      "sourceId": "eurostat-cloud",
+      "retrievedAt": "2026-09-11T00:21:48.083956900+00:00",
+      "publishedAt": "2026-02-27",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/isoc_cicce_use?lang=EN&freq=A&size_emp=GE10&nace_r2=C10-S951_X_K&unit=PC_ENT&indic_is=E_CC",
+      "documentationUrl": "https://ec.europa.eu/eurostat/cache/metadata/en/isoc_e_esms.htm",
+      "sha256": "9de2a9d87aa17753b8da3c10bc548fe3ddafe4a887ec28e76c16ebc6c5b4de3a",
+      "recipe": "eurostat-cloud-original-jsonstat-20260911-v1",
+      "sourceRows": 293,
+      "numericValues": 277,
+      "areaCount": 37
+    },
+    "profiles": 37,
+    "numericValues": 277,
+    "missingValues": 93
+  },
+  "eurostat-rents": {
+    "provenance": {
+      "sourceId": "eurostat-rents",
+      "retrievedAt": "2026-09-11T00:21:49.139543600+00:00",
+      "publishedAt": "2026-09-01",
+      "url": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/prc_hicp_ainr?lang=EN&freq=A&unit=INX_A_AVG&coicop18=CP041",
+      "documentationUrl": "https://ec.europa.eu/eurostat/web/hicp/information-data",
+      "sha256": "40fe8f7fba847104b130689a38e0cca34578cb1573fa711f4c4ad4109542ce86",
+      "recipe": "eurostat-rents-original-jsonstat-20260911-v1",
+      "sourceRows": 1094,
+      "numericValues": 973,
+      "areaCount": 38
+    },
+    "profiles": 38,
+    "numericValues": 973,
+    "missingValues": 167
+  }
+}

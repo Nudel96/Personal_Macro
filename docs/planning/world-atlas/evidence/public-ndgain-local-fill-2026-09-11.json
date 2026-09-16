@@ -1,0 +1,21 @@
+{
+  "checkedAt": "2026-09-11T03:55:25.375776+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sourceId": "ndgain-climate",
+  "provenance": {
+    "sourceId": "ndgain-climate",
+    "retrievedAt": "2026-09-11T03:53:05.804453300+00:00",
+    "publishedAt": "2026",
+    "url": "https://gain.nd.edu/assets/647440/ndgain_countryindex_2026.zip",
+    "documentationUrl": "https://gain.nd.edu/assets/581554/nd_gain_countryindex_technicalreport_2024.pdf",
+    "sha256": "e854c7fe6ccef8c5d24a5ef7f370b7f61d1b8c6816da19fda4cd892ca6cdf0de",
+    "recipe": "ndgain-2026-original-indices-and-static-exposure-v1",
+    "sourceRows": 1920,
+    "numericValues": 49842,
+    "areaCount": 192
+  },
+  "profiles": 1847,
+  "numeric": 49842,
+  "fullOriginalAuditEquality": true
+}

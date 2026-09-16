@@ -2,6 +2,7 @@ fn main() {
     // SQLx embeds migrations at compile time, so adding a migration must
     // invalidate the build even when no Rust source file changed.
     println!("cargo:rerun-if-changed=migrations");
+    println!("cargo:rerun-if-changed=bond-migrations");
     // Re-embed the Windows application icon whenever branding assets change.
     println!("cargo:rerun-if-changed=icons/icon.ico");
     println!("cargo:rerun-if-changed=icons/32x32.png");

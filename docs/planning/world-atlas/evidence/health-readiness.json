@@ -1,0 +1,121 @@
+{
+  "classification": "progress",
+  "overallGoalComplete": false,
+  "feature": "WHO GHED health finance",
+  "sourceAudit": "health-source-audit.json",
+  "nativeFirst": {
+    "profiles": 195,
+    "numericCellsChecked": 81762,
+    "numericCellsExact": 81762,
+    "protocolCellsWithinOneUlp": 0,
+    "missingCellsExact": 93494,
+    "metadataRowsExact": 32667,
+    "countryNotesExact": 195,
+    "phase": "first",
+    "status": "passed",
+    "runAt": "2026-09-09T13:41:54.088Z",
+    "identifier": "com.personal-macro.atlas-health-finance-20260909",
+    "nativeResponses": 197,
+    "jobs": 1,
+    "atlasMigrations": 17,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "4080298a9754df9994aa21b2b47151c6900375ee8e7b5ec690a61778ebc37a4e",
+    "exactResponsesAndNoteAfterRestart": false,
+    "productionDataAccessed": false
+  },
+  "nativeRestart": {
+    "profiles": 195,
+    "numericCellsChecked": 81762,
+    "numericCellsExact": 81762,
+    "protocolCellsWithinOneUlp": 0,
+    "missingCellsExact": 93494,
+    "metadataRowsExact": 32667,
+    "countryNotesExact": 195,
+    "phase": "restart",
+    "status": "passed",
+    "runAt": "2026-09-09T13:44:15.645Z",
+    "identifier": "com.personal-macro.atlas-health-finance-20260909",
+    "nativeResponses": 197,
+    "jobs": 0,
+    "atlasMigrations": 17,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "4080298a9754df9994aa21b2b47151c6900375ee8e7b5ec690a61778ebc37a4e",
+    "exactResponsesAndNoteAfterRestart": true,
+    "productionDataAccessed": false
+  },
+  "originalCommandCheck": {
+    "profiles": 195,
+    "numericCellsChecked": 81762,
+    "numericCellsExact": 72813,
+    "protocolCellsWithinOneUlp": 8949,
+    "missingCellsExact": 93494,
+    "metadataRowsExact": 32667,
+    "countryNotesExact": 195
+  },
+  "tests": {
+    "atlasFrontend": {
+      "files": 33,
+      "passed": 228
+    },
+    "healthRust": {
+      "passed": 3,
+      "includesOriginalWorkbookRoundtrip": true
+    },
+    "coverageAndHealthAfterMapping": {
+      "passed": 14
+    },
+    "healthCoverageAndNotebookAfterFinalUiChanges": {
+      "files": 3,
+      "passed": 19
+    },
+    "typecheck": "passed",
+    "eslint": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "build": "passed after final UI changes; existing large-chunk advisory remains",
+    "format": "cargo fmt check and targeted Prettier check passed after final UI changes"
+  },
+  "visual": {
+    "surface": "CUA in-app browser with public snapshots from the real Tauri download",
+    "widths": [
+      1024,
+      1440
+    ],
+    "checks": [
+      "Germany and USA",
+      "India and China",
+      "shared scales",
+      "keyboard Enter opens detail",
+      "optional numbers",
+      "group and period selection",
+      "missing investment subgroups",
+      "unsupported world profile",
+      "Austria 2024 hollow preliminary point",
+      "exact WHO coverage search and link",
+      "South Africa and USA hospital spending",
+      "WHO to World Bank hospital-bed perspective and back to WHO"
+    ],
+    "nativeClickAcceptance": false
+  },
+  "runtime": {
+    "isolatedIdentifier": "com.personal-macro.atlas-health-finance-20260909",
+    "sourceDownloadJobs": 1,
+    "restartDownloadJobs": 0,
+    "newAtlasInitializationWarnings": false,
+    "knownOtherWarnings": [
+      "EODHD Intraday provider access",
+      "Central-bank report update already running"
+    ],
+    "productionJournalAccessed": false
+  },
+  "limits": [
+    "WHO spending is not market valuation, treatment effectiveness, or disease prevalence",
+    "Historical observations begin no earlier than 2000",
+    "2024 preliminary and incomplete",
+    "No derived world or continent profiles",
+    "No lines across potentially changing methodologies",
+    "Current dollars include price and exchange-rate effects",
+    "JSON command parser has documented one-ULP rounding; raw cache independently matches every original number",
+    "Native interaction regression remains open"
+  ],
+  "postNativeUiAdjustment": "Move explanatory country notes below the charts and use filled historical markers in legend; saved original PNG stays unchanged"
+}

@@ -1,0 +1,1949 @@
+{
+  "checkedAt": "2026-09-08T18:04:40.161331+00:00",
+  "purpose": "Planning evidence; no production adapter or complete global coverage is claimed.",
+  "checks": [
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "EG.ELC.ACCS.ZS",
+      "labelDe": "Zugang zu Elektrizität",
+      "providerName": "Access to electricity (% of population)",
+      "providerUnit": "",
+      "sourceNote": "Access to electricity is the percentage of population with access to electricity. Electrification data are collected from industry, national surveys and international sources.",
+      "sourceOrganization": "SDG 7.1.1 Electrification Dataset, World Bank (WB), uri: https://trackingsdg7.esmap.org/downloads, note: Data is downloaded from ESMAP website. Data is released when a new Tracking SDG7 report is released., publisher: World Bank (WB), date accessed: 2024-05-16, date published: 2023",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/EG.ELC.ACCS.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:39.433331+00:00",
+        "httpStatus": 200,
+        "bytes": 172849,
+        "sha256": "eb538ea1d061e3ad17005f4dc8e865992565d756d554169aa12f279d0bbe99cf",
+        "elapsedSeconds": 0.52,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/EG.ELC.ACCS.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.917332+00:00",
+        "httpStatus": 200,
+        "bytes": 814,
+        "sha256": "a61e84800d104a4a64cad5123479ea35beab06a59119bc656713d6cac6800f78",
+        "elapsedSeconds": 0.33,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 32,
+          "firstYear": 1993,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 25,
+          "firstYear": 2000,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 29,
+          "firstYear": 1996,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 33,
+          "firstYear": 1992,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 34,
+          "firstYear": 1991,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "IT.NET.USER.ZS",
+      "labelDe": "Internetnutzung",
+      "providerName": "Individuals using the Internet (% of population)",
+      "providerUnit": "",
+      "sourceNote": "Internet users are individuals who have used the Internet (from any location) in the last 3 months. The Internet can be used via a computer, mobile phone, personal digital assistant, games machine, digital TV etc.",
+      "sourceOrganization": "World Telecommunication/ICT Indicators Database, International Telecommunication Union (ITU), uri: https://datahub.itu.int/",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/IT.NET.USER.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:40.157328+00:00",
+        "httpStatus": 200,
+        "bytes": 181930,
+        "sha256": "0445711ac6ada910a5c64f4e447a6e78444a7707c499ee6193831d33ef5f9a86",
+        "elapsedSeconds": 0.44,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/IT.NET.USER.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:39.716333+00:00",
+        "httpStatus": 200,
+        "bytes": 631,
+        "sha256": "fa4764c0f2357afb79b6e25273da809ac7b373d0b61a1fe3a53bac61a953b3ea",
+        "elapsedSeconds": 0.34,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2025,
+          "internalMissingYears": [
+            1991
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 34,
+          "firstYear": 1990,
+          "lastYear": 2025,
+          "internalMissingYears": [
+            1991,
+            1992
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 30,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            1991,
+            1992,
+            1993,
+            1994,
+            1995
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 31,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            1991,
+            1992,
+            1993,
+            1994
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 32,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            2002,
+            2003,
+            2004
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 32,
+          "firstYear": 1990,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            1991,
+            1992,
+            1993
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "NV.IND.MANF.ZS",
+      "labelDe": "Anteil verarbeitendes Gewerbe",
+      "providerName": "Manufacturing, value added (% of GDP)",
+      "providerUnit": "",
+      "sourceNote": "Manufacturing includes industries classified in ISIC (Rev. 3) major division C and is defined as the physical or chemical transformation of materials or components into new products. Value added is the contribution to the economy by a producer or an industry or an institutional sector, which is estimated by the total value of output produced and deducting the total value of intermediate consumption of goods and services used to produce that output. This indicator is expressed as a percentage of Gross Domestic Product (GDP) which is the total income earned through the production of goods and services in an economic territory during an accounting period.",
+      "sourceOrganization": "Country official statistics, National Statistical Offices (NSOs);\nNational Accounts data files, Central Banks;\nStaff estimates, World Bank (WB)",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/NV.IND.MANF.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:39.763333+00:00",
+        "httpStatus": 200,
+        "bytes": 177464,
+        "sha256": "fa31514b5d1056570e7bc23a81c561299dd149e3a33a13d51e7379e4b350fdc7",
+        "elapsedSeconds": 0.45,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/NV.IND.MANF.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:39.310329+00:00",
+        "httpStatus": 200,
+        "bytes": 1094,
+        "sha256": "8128fa4aada1b3d3588cd1572f7e4be5999e1f87254e79b8b68cb4e42fef7460",
+        "elapsedSeconds": 0.34,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 25,
+          "firstYear": 1997,
+          "lastYear": 2021,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 22,
+          "firstYear": 2004,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 45,
+          "firstYear": 1981,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 58,
+          "firstYear": 1968,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 36,
+          "firstYear": 1990,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 31,
+          "firstYear": 1994,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 61,
+          "firstYear": 1965,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 43,
+          "firstYear": 1983,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "NY.GDP.PCAP.KD",
+      "labelDe": "Reales BIP je Einwohner",
+      "providerName": "GDP per capita (constant 2015 US$)",
+      "providerUnit": "",
+      "sourceNote": "Gross domestic product is the total income earned through the production of goods and services in an economic territory during an accounting period. It can be measured in three different ways: using either the expenditure approach, the income approach, or the production approach. The core indicator has been divided by the general population to achieve a per capita estimate.This indicator is expressed in constant prices, meaning the series has been adjusted to account for price changes over time. The reference year for this adjustment is 2015. This indicator is expressed in United States dollars.",
+      "sourceOrganization": "Country official statistics, National Statistical Organizations and/or Central Banks;\nNational Accounts data files, Organisation for Economic Co-operation and Development (OECD);\nStaff estimates, World Bank (WB)",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/NY.GDP.PCAP.KD?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.534307+00:00",
+        "httpStatus": 200,
+        "bytes": 178178,
+        "sha256": "ff5e68a6f088274816968c6921fc596c04ad071155d3976224c54a8dd146e7b3",
+        "elapsedSeconds": 0.59,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/NY.GDP.PCAP.KD?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:37.941279+00:00",
+        "httpStatus": 200,
+        "bytes": 1102,
+        "sha256": "a0f3fbf2ade9676eca920e06180142cde3949714d473e43c200f656dd130a297",
+        "elapsedSeconds": 0.34,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SE.SEC.ENRR",
+      "labelDe": "Bruttoeinschulungsquote Sekundarstufe",
+      "providerName": "School enrollment, secondary (% gross)",
+      "providerUnit": "",
+      "sourceNote": "Gross enrollment ratio is the ratio of total enrollment, regardless of age, to the population of the age group that officially corresponds to the level of education shown. Secondary education completes the provision of basic education that began at the primary level, and aims at laying the foundations for lifelong learning and human development, by offering more subject- or skill-oriented instruction using more specialized teachers.",
+      "sourceOrganization": "Data API, UN Educational, Scientific and Cultural Organization (UNESCO), uri: https://databrowser.uis.unesco.org/resources, note: The data are obtained through the UIS API.  Detailed documentation is available at: https://api.uis.unesco.org/api/public/documentation/, publisher: UNESCO Institute for Statistics (UIS), type: Bulk file (csv), date accessed: 2026-03-19, date published: 2026-02",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SE.SEC.ENRR?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:39.383334+00:00",
+        "httpStatus": 200,
+        "bytes": 173630,
+        "sha256": "1eda6b73800dc4a3b49438caaba8370bb3eae655bf446f2f0b81dc01b9c8f1f1",
+        "elapsedSeconds": 0.5,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SE.SEC.ENRR?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.876340+00:00",
+        "httpStatus": 200,
+        "bytes": 1109,
+        "sha256": "ec850d2ca1b8926869801a3f03af8aad3c4851298aa53d1352141d1895b776c0",
+        "elapsedSeconds": 0.34,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 24,
+          "firstYear": 2001,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1971,
+          "lastYear": 2022,
+          "internalMissingYears": [
+            1973,
+            1988,
+            1989,
+            1992,
+            1997,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2006,
+            2007,
+            2008,
+            2009,
+            2010,
+            2011,
+            2012
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 48,
+          "firstYear": 1971,
+          "lastYear": 2025,
+          "internalMissingYears": [
+            1974,
+            1979,
+            1985,
+            1990,
+            1991,
+            1992,
+            1998
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 40,
+          "firstYear": 1970,
+          "lastYear": 2012,
+          "internalMissingYears": [
+            1998,
+            2004,
+            2005
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 12,
+          "firstYear": 2012,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            2023
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 38,
+          "firstYear": 1970,
+          "lastYear": 2023,
+          "internalMissingYears": [
+            1974,
+            1975,
+            1976,
+            1988,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            2003,
+            2017,
+            2019,
+            2022
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 29,
+          "firstYear": 1989,
+          "lastYear": 2023,
+          "internalMissingYears": [
+            1992,
+            1993,
+            1995,
+            1996,
+            1997,
+            2013
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 15,
+          "firstYear": 1979,
+          "lastYear": 2024,
+          "internalMissingYears": [
+            1980,
+            1981,
+            1982,
+            1983,
+            1984,
+            1985,
+            1986,
+            1987,
+            1988,
+            1989,
+            1990,
+            1991,
+            1992,
+            1993,
+            1994,
+            1995,
+            1996,
+            1997,
+            1998,
+            1999,
+            2000,
+            2001,
+            2002,
+            2003,
+            2004,
+            2006,
+            2008,
+            2010,
+            2011,
+            2012,
+            2023
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 10,
+          "firstYear": 2015,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 11,
+          "firstYear": 2013,
+          "lastYear": 2023,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 25,
+          "firstYear": 2000,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 53,
+          "firstYear": 1970,
+          "lastYear": 2025,
+          "internalMissingYears": [
+            1979,
+            1980,
+            1985
+          ],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SL.UEM.TOTL.ZS",
+      "labelDe": "Arbeitslosigkeit, ILO-Modellschätzung",
+      "providerName": "Unemployment, total (% of total labor force) (modeled ILO estimate)",
+      "providerUnit": "",
+      "sourceNote": "Unemployment refers to the share of the labor force that is without work but available for and seeking employment.",
+      "sourceOrganization": "ILO Modelled Estimates database (ILOEST), International Labour Organization (ILO), uri: https://ilostat.ilo.org/data/bulk/, publisher: ILOSTAT, type: external database, date accessed: January 17, 2026",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SL.UEM.TOTL.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.976330+00:00",
+        "httpStatus": 200,
+        "bytes": 195295,
+        "sha256": "ac713e6f1b19a5584e7267108080d23aadf6cdd4f4ad6ed45964787208ded99b",
+        "elapsedSeconds": 0.47,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SL.UEM.TOTL.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.512302+00:00",
+        "httpStatus": 200,
+        "bytes": 672,
+        "sha256": "c88f9bd9286ee22e1a3ce6de0a187fc5d30b89491445f4193cc47c952f7ddcf5",
+        "elapsedSeconds": 0.39,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 35,
+          "firstYear": 1991,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SP.DYN.TFRT.IN",
+      "labelDe": "Fertilität",
+      "providerName": "Fertility rate, total (births per woman)",
+      "providerUnit": "",
+      "sourceNote": "Total fertility rate represents the number of children that would be born to a woman if she were to live to the end of her childbearing years and bear children in accordance with age-specific fertility rates of the specified year.",
+      "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs);\nDemographic Statistics, Eurostat (ESTAT)",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SP.DYN.TFRT.IN?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.105286+00:00",
+        "httpStatus": 200,
+        "bytes": 174114,
+        "sha256": "2c93369bcb2a8bd42e7dc5f9fcc63b98a662e59125de7177ceb80ce02d25c93e",
+        "elapsedSeconds": 0.62,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SP.DYN.TFRT.IN?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:37.481270+00:00",
+        "httpStatus": 200,
+        "bytes": 779,
+        "sha256": "b2e9d2227af4ea59771bd70b42a55ec5dba3e4b80db9a5579c46577e4b1c3240",
+        "elapsedSeconds": 0.38,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 65,
+          "firstYear": 1960,
+          "lastYear": 2024,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SP.POP.65UP.TO.ZS",
+      "labelDe": "Anteil ab 65 Jahren",
+      "providerName": "Population ages 65 and above (% of total population)",
+      "providerUnit": "",
+      "sourceNote": "Population ages 65 and above as a percentage of the total population. Population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship.",
+      "sourceOrganization": "World Population Prospects, United Nations (UN), publisher: UN Population Division",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SP.POP.65UP.TO.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:37.594267+00:00",
+        "httpStatus": 200,
+        "bytes": 194834,
+        "sha256": "8e4c4baf6687b9ea410855e19585cfb031a073b1702f78f474d95f70a5020ecb",
+        "elapsedSeconds": 9.69,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SP.POP.65UP.TO.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:27.910098+00:00",
+        "httpStatus": 200,
+        "bytes": 573,
+        "sha256": "0712587f265a3775dcfedfd3235e6a3d61a0930025853299c366c82d920f53b1",
+        "elapsedSeconds": 0.38,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SP.POP.TOTL",
+      "labelDe": "Bevölkerung",
+      "providerName": "Population, total",
+      "providerUnit": "",
+      "sourceNote": "Total population is based on the de facto definition of population, which counts all residents regardless of legal status or citizenship. The values shown are midyear estimates.",
+      "sourceOrganization": "World Population Prospects, United Nations (UN), uri: https://population.un.org/wpp/, publisher: UN Population Division;\nStatistical databases and publications from national statistical offices, National Statistical Offices (NSOs), uri: https://unstats.un.org/home/nso_sites/, publisher: National Statistical Offices;\nEurostat: Demographic Statistics, Eurostat (ESTAT), uri: https://ec.europa.eu/eurostat/data/database?node_code=earn_ses_monthly, publisher: Eurostat;\nPopulation and Vital Statistics Report (various years), United Nations (UN), uri: https://unstats.un.org, publisher: UN Statistics Division",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SP.POP.TOTL?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:37.094273+00:00",
+        "httpStatus": 200,
+        "bytes": 156591,
+        "sha256": "4e78a3f5b73e66cc6e1b0bb6881d842fc74e7cf2e8e4e74c8d3a1d55bb68cbc6",
+        "elapsedSeconds": 10.38,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SP.POP.TOTL?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:26.720124+00:00",
+        "httpStatus": 200,
+        "bytes": 1101,
+        "sha256": "32b59f8dc303ec26d2dfd32b6217b856d983d7b38622c5dbca6124001a11cb75",
+        "elapsedSeconds": 0.62,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "worldbank_indicator_sample",
+      "status": "passed",
+      "indicator": "SP.URB.TOTL.IN.ZS",
+      "labelDe": "Urbanisierung",
+      "providerName": "Urban population (% of total population)",
+      "providerUnit": "",
+      "sourceNote": "Urban population refers to people living in urban areas as defined by national statistical offices. The data are collected and smoothed by United Nations Population Division.",
+      "sourceOrganization": "World Urbanization Prospects, United Nations (UN), uri: https://population.un.org/wup/, note: United Nations Population Division's World Urbanization Prospects, National definitions, publisher: UN Population Division",
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;SAU;AUS;JPN;MEX;IDN/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=2000&date=1960%3A2025&source=2",
+        "retrievedAt": "2026-09-08T18:04:38.586315+00:00",
+        "httpStatus": 200,
+        "bytes": 185324,
+        "sha256": "68479572bdf8fdb9c12b01e0a20c4a411610acb661f95dabb12a18e95908a466",
+        "elapsedSeconds": 0.59,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 792,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "metadataProvenance": {
+        "url": "https://api.worldbank.org/v2/indicator/SP.URB.TOTL.IN.ZS?format=json&per_page=2000&source=2",
+        "retrievedAt": "2026-09-08T18:04:37.990267+00:00",
+        "httpStatus": 200,
+        "bytes": 721,
+        "sha256": "3d7f4beef93260333a3ee56c777e070ea72de7bc1c4a44bd0c99543cdd56502e",
+        "elapsedSeconds": 0.62,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 1
+        }
+      },
+      "countries": [
+        {
+          "iso3": "DEU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "USA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IND",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "CHN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "BRA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "NGA",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "ZAF",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "SAU",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "AUS",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "JPN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "MEX",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        },
+        {
+          "iso3": "IDN",
+          "returnedRows": 66,
+          "nonNullRows": 66,
+          "firstYear": 1960,
+          "lastYear": 2025,
+          "internalMissingYears": [],
+          "duplicateYearCount": 0,
+          "negativeValueCount": 0,
+          "status": "sample_observed"
+        }
+      ],
+      "interpretation": "Published numeric values were inspected for coverage only; publication does not establish observed rather than modeled status. Gross enrollment may exceed 100%; no upper-bound error is inferred."
+    },
+    {
+      "check": "un_m49_geography_catalog",
+      "status": "passed",
+      "provenance": {
+        "url": "https://unstats.un.org/unsd/methodology/m49/overview/",
+        "retrievedAt": "2026-09-08T18:04:27.187103+00:00",
+        "httpStatus": 200,
+        "bytes": 1721575,
+        "sha256": "b9048114f6e7f2abda83bf03d4263c9d7cd1bd7230e3d0461025ee7839a7a1fb",
+        "elapsedSeconds": 1.09
+      },
+      "areas": 248,
+      "duplicateIds": [],
+      "duplicateIso3": [],
+      "regions": {
+        "Africa": 60,
+        "Americas": 57,
+        "Unassigned": 1,
+        "Asia": 50,
+        "Europe": 51,
+        "Oceania": 29
+      },
+      "requestedCountriesPresent": {
+        "DEU": true,
+        "USA": true,
+        "IND": true,
+        "CHN": true
+      }
+    },
+    {
+      "check": "worldbank_global_population_2023",
+      "status": "passed",
+      "year": 2023,
+      "provenance": {
+        "url": "https://api.worldbank.org/v2/country/all/indicator/SP.POP.TOTL?format=json&per_page=2000&source=2&date=2023",
+        "retrievedAt": "2026-09-08T18:04:37.355277+00:00",
+        "httpStatus": 200,
+        "bytes": 53369,
+        "sha256": "5b9bd8751029c0b7cabe1dd1b540ac9db701e7e9d02e543d255b541dd2d625a6",
+        "elapsedSeconds": 9.81,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": 2000,
+          "total": 265,
+          "sourceid": "2",
+          "lastupdated": "2026-07-13"
+        }
+      },
+      "countryProvenance": {
+        "url": "https://api.worldbank.org/v2/country?format=json&per_page=2000",
+        "retrievedAt": "2026-09-08T18:04:27.533096+00:00",
+        "httpStatus": 200,
+        "bytes": 113591,
+        "sha256": "dd88451471bb2daa5a000c27d32d7c77860ce48b8aad0efdddf87237acf30035",
+        "elapsedSeconds": 1.44,
+        "providerMetadata": {
+          "page": 1,
+          "pages": 1,
+          "per_page": "2000",
+          "total": 295
+        }
+      },
+      "providerNonAggregateAreas": 217,
+      "areasWithValues": 217,
+      "areasWithoutValue": [],
+      "regionsWithValues": {
+        "Middle East, North Africa, Afghanistan & Pakistan": 23,
+        "Europe & Central Asia": 58,
+        "East Asia & Pacific": 37,
+        "Sub-Saharan Africa ": 48,
+        "Latin America & Caribbean ": 42,
+        "South Asia": 6,
+        "North America": 3
+      },
+      "note": "World Bank regions differ from UN M49. These counts prove coverage for one indicator and year only, never all themes or all historical periods."
+    }
+  ]
+}

@@ -1,0 +1,1612 @@
+{
+  "sourceSha256": "dce89f60a9aceaf60a7be62b56b6a52e4d47405ee48fe2e2227da60f2a9d51cd",
+  "glossarySha256": "8eb99754e6e18d6831c133cc743d8207cc657baedc3447588a574fd3d935f923",
+  "profiles": 174,
+  "countries": 162,
+  "aggregates": 12,
+  "metrics": 42,
+  "groups": 7,
+  "populations": 5,
+  "rows": 8577,
+  "selectedRows": 3766,
+  "numericCells": 59471,
+  "missingCells": 98701,
+  "trueZeros": 273,
+  "scientificValuesPreserved": 10,
+  "delayed2022Countries": [
+    "AZE",
+    "BWA",
+    "COD",
+    "COM",
+    "ETH",
+    "GMB",
+    "GTM",
+    "LSO",
+    "MDG",
+    "MEX",
+    "MRT",
+    "NER",
+    "SWZ",
+    "TCD",
+    "VNM",
+    "YEM"
+  ],
+  "sourceYears": [
+    2011,
+    2014,
+    2017,
+    2021,
+    2022,
+    2024
+  ],
+  "mapping": [
+    {
+      "code": "AFG",
+      "label": "Afghanistan",
+      "geographyId": "m49:004",
+      "iso3": "AFG",
+      "title": "Afghanistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "AGO",
+      "label": "Angola",
+      "geographyId": "m49:024",
+      "iso3": "AGO",
+      "title": "Angola",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "ALB",
+      "label": "Albania",
+      "geographyId": "m49:008",
+      "iso3": "ALB",
+      "title": "Albanien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "ARE",
+      "label": "United Arab Emirates",
+      "geographyId": "m49:784",
+      "iso3": "ARE",
+      "title": "Vereinigte Arabische Emirate",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "ARG",
+      "label": "Argentina",
+      "geographyId": "m49:032",
+      "iso3": "ARG",
+      "title": "Argentinien",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "ARM",
+      "label": "Armenia",
+      "geographyId": "m49:051",
+      "iso3": "ARM",
+      "title": "Armenien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "iso3": "AUS",
+      "title": "Australien",
+      "regionId": "Oceania",
+      "aggregate": false
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "iso3": "AUT",
+      "title": "Österreich",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "AZE",
+      "label": "Azerbaijan",
+      "geographyId": "m49:031",
+      "iso3": "AZE",
+      "title": "Aserbaidschan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "BDI",
+      "label": "Burundi",
+      "geographyId": "m49:108",
+      "iso3": "BDI",
+      "title": "Burundi",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "iso3": "BEL",
+      "title": "Belgien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "BEN",
+      "label": "Benin",
+      "geographyId": "m49:204",
+      "iso3": "BEN",
+      "title": "Benin",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "BFA",
+      "label": "Burkina Faso",
+      "geographyId": "m49:854",
+      "iso3": "BFA",
+      "title": "Burkina Faso",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "BGD",
+      "label": "Bangladesh",
+      "geographyId": "m49:050",
+      "iso3": "BGD",
+      "title": "Bangladesch",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "geographyId": "m49:100",
+      "iso3": "BGR",
+      "title": "Bulgarien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "BHR",
+      "label": "Bahrain",
+      "geographyId": "m49:048",
+      "iso3": "BHR",
+      "title": "Bahrain",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "BIH",
+      "label": "Bosnia and Herzegovina",
+      "geographyId": "m49:070",
+      "iso3": "BIH",
+      "title": "Bosnien und Herzegowina",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "BLR",
+      "label": "Belarus",
+      "geographyId": "m49:112",
+      "iso3": "BLR",
+      "title": "Belarus",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "BLZ",
+      "label": "Belize",
+      "geographyId": "m49:084",
+      "iso3": "BLZ",
+      "title": "Belize",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "BOL",
+      "label": "Bolivia",
+      "geographyId": "m49:068",
+      "iso3": "BOL",
+      "title": "Bolivien",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "BRA",
+      "label": "Brazil",
+      "geographyId": "m49:076",
+      "iso3": "BRA",
+      "title": "Brasilien",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "BTN",
+      "label": "Bhutan",
+      "geographyId": "m49:064",
+      "iso3": "BTN",
+      "title": "Bhutan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "BWA",
+      "label": "Botswana",
+      "geographyId": "m49:072",
+      "iso3": "BWA",
+      "title": "Botsuana",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "CAF",
+      "label": "Central African Republic",
+      "geographyId": "m49:140",
+      "iso3": "CAF",
+      "title": "Zentralafrikanische Republik",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "iso3": "CAN",
+      "title": "Kanada",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "iso3": "CHE",
+      "title": "Schweiz",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "iso3": "CHL",
+      "title": "Chile",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "CHN",
+      "label": "China",
+      "geographyId": "m49:156",
+      "iso3": "CHN",
+      "title": "China",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "CIV",
+      "label": "Cote d'Ivoire",
+      "geographyId": "m49:384",
+      "iso3": "CIV",
+      "title": "Côte d’Ivoire",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "CMR",
+      "label": "Cameroon",
+      "geographyId": "m49:120",
+      "iso3": "CMR",
+      "title": "Kamerun",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "COD",
+      "label": "Congo, Dem. Rep.",
+      "geographyId": "m49:180",
+      "iso3": "COD",
+      "title": "Kongo-Kinshasa",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "COG",
+      "label": "Congo, Rep.",
+      "geographyId": "m49:178",
+      "iso3": "COG",
+      "title": "Kongo-Brazzaville",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "iso3": "COL",
+      "title": "Kolumbien",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "COM",
+      "label": "Comoros",
+      "geographyId": "m49:174",
+      "iso3": "COM",
+      "title": "Komoren",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "CRI",
+      "label": "Costa Rica",
+      "geographyId": "m49:188",
+      "iso3": "CRI",
+      "title": "Costa Rica",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "CYP",
+      "label": "Cyprus",
+      "geographyId": "m49:196",
+      "iso3": "CYP",
+      "title": "Zypern",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "geographyId": "m49:203",
+      "iso3": "CZE",
+      "title": "Tschechien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "iso3": "DEU",
+      "title": "Deutschland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "DJI",
+      "label": "Djibouti",
+      "geographyId": "m49:262",
+      "iso3": "DJI",
+      "title": "Dschibuti",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "iso3": "DNK",
+      "title": "Dänemark",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "DOM",
+      "label": "Dominican Republic",
+      "geographyId": "m49:214",
+      "iso3": "DOM",
+      "title": "Dominikanische Republik",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "DZA",
+      "label": "Algeria",
+      "geographyId": "m49:012",
+      "iso3": "DZA",
+      "title": "Algerien",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "EAP",
+      "label": "East Asia & Pacific (excluding high income)",
+      "geographyId": "findex:east_asia_pacific",
+      "iso3": "",
+      "title": "Ostasien & Pazifik ohne hohe Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "ECA",
+      "label": "Europe & Central Asia (excluding high income)",
+      "geographyId": "findex:europe_central_asia",
+      "iso3": "",
+      "title": "Europa & Zentralasien ohne hohe Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "ECU",
+      "label": "Ecuador",
+      "geographyId": "m49:218",
+      "iso3": "ECU",
+      "title": "Ecuador",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "EGY",
+      "label": "Egypt, Arab Rep.",
+      "geographyId": "m49:818",
+      "iso3": "EGY",
+      "title": "Ägypten",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "iso3": "ESP",
+      "title": "Spanien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "geographyId": "m49:233",
+      "iso3": "EST",
+      "title": "Estland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "ETH",
+      "label": "Ethiopia",
+      "geographyId": "m49:231",
+      "iso3": "ETH",
+      "title": "Äthiopien",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "iso3": "FIN",
+      "title": "Finnland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "geographyId": "m49:250",
+      "iso3": "FRA",
+      "title": "Frankreich",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "GAB",
+      "label": "Gabon",
+      "geographyId": "m49:266",
+      "iso3": "GAB",
+      "title": "Gabun",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom",
+      "geographyId": "m49:826",
+      "iso3": "GBR",
+      "title": "Vereinigtes Königreich",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "GEO",
+      "label": "Georgia",
+      "geographyId": "m49:268",
+      "iso3": "GEO",
+      "title": "Georgien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "GHA",
+      "label": "Ghana",
+      "geographyId": "m49:288",
+      "iso3": "GHA",
+      "title": "Ghana",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "GIN",
+      "label": "Guinea",
+      "geographyId": "m49:324",
+      "iso3": "GIN",
+      "title": "Guinea",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "GMB",
+      "label": "Gambia, The",
+      "geographyId": "m49:270",
+      "iso3": "GMB",
+      "title": "Gambia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "iso3": "GRC",
+      "title": "Griechenland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "GTM",
+      "label": "Guatemala",
+      "geographyId": "m49:320",
+      "iso3": "GTM",
+      "title": "Guatemala",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "HIC",
+      "label": "High income",
+      "geographyId": "findex:high_income",
+      "iso3": "",
+      "title": "Hohe Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "HKG",
+      "label": "Hong Kong SAR, China",
+      "geographyId": "m49:344",
+      "iso3": "HKG",
+      "title": "Sonderverwaltungsregion Hongkong",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "HND",
+      "label": "Honduras",
+      "geographyId": "m49:340",
+      "iso3": "HND",
+      "title": "Honduras",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "geographyId": "m49:191",
+      "iso3": "HRV",
+      "title": "Kroatien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "HTI",
+      "label": "Haiti",
+      "geographyId": "m49:332",
+      "iso3": "HTI",
+      "title": "Haiti",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "iso3": "HUN",
+      "title": "Ungarn",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "IDN",
+      "label": "Indonesia",
+      "geographyId": "m49:360",
+      "iso3": "IDN",
+      "title": "Indonesien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "IND",
+      "label": "India",
+      "geographyId": "m49:356",
+      "iso3": "IND",
+      "title": "Indien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "iso3": "IRL",
+      "title": "Irland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "IRN",
+      "label": "Iran, Islamic Rep.",
+      "geographyId": "m49:364",
+      "iso3": "IRN",
+      "title": "Iran",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "IRQ",
+      "label": "Iraq",
+      "geographyId": "m49:368",
+      "iso3": "IRQ",
+      "title": "Irak",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "geographyId": "m49:352",
+      "iso3": "ISL",
+      "title": "Island",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "geographyId": "m49:376",
+      "iso3": "ISR",
+      "title": "Israel",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "iso3": "ITA",
+      "title": "Italien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "JAM",
+      "label": "Jamaica",
+      "geographyId": "m49:388",
+      "iso3": "JAM",
+      "title": "Jamaika",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "JOR",
+      "label": "Jordan",
+      "geographyId": "m49:400",
+      "iso3": "JOR",
+      "title": "Jordanien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "iso3": "JPN",
+      "title": "Japan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "KAZ",
+      "label": "Kazakhstan",
+      "geographyId": "m49:398",
+      "iso3": "KAZ",
+      "title": "Kasachstan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "KEN",
+      "label": "Kenya",
+      "geographyId": "m49:404",
+      "iso3": "KEN",
+      "title": "Kenia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "KGZ",
+      "label": "Kyrgyz Republic",
+      "geographyId": "m49:417",
+      "iso3": "KGZ",
+      "title": "Kirgisistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "KHM",
+      "label": "Cambodia",
+      "geographyId": "m49:116",
+      "iso3": "KHM",
+      "title": "Kambodscha",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "KOR",
+      "label": "Korea, Rep.",
+      "geographyId": "m49:410",
+      "iso3": "KOR",
+      "title": "Südkorea",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "KWT",
+      "label": "Kuwait",
+      "geographyId": "m49:414",
+      "iso3": "KWT",
+      "title": "Kuwait",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "LAC",
+      "label": "Latin America & Caribbean (excluding high income)",
+      "geographyId": "findex:latin_america_caribbean",
+      "iso3": "",
+      "title": "Lateinamerika & Karibik ohne hohe Einkommen · Findex",
+      "regionId": "Americas",
+      "aggregate": true
+    },
+    {
+      "code": "LAO",
+      "label": "Lao PDR",
+      "geographyId": "m49:418",
+      "iso3": "LAO",
+      "title": "Laos",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "LBN",
+      "label": "Lebanon",
+      "geographyId": "m49:422",
+      "iso3": "LBN",
+      "title": "Libanon",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "LBR",
+      "label": "Liberia",
+      "geographyId": "m49:430",
+      "iso3": "LBR",
+      "title": "Liberia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "LBY",
+      "label": "Libya",
+      "geographyId": "m49:434",
+      "iso3": "LBY",
+      "title": "Libyen",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "LIC",
+      "label": "Low income",
+      "geographyId": "findex:low_income",
+      "iso3": "",
+      "title": "Niedrige Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "LKA",
+      "label": "Sri Lanka",
+      "geographyId": "m49:144",
+      "iso3": "LKA",
+      "title": "Sri Lanka",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "LMC",
+      "label": "Lower middle income",
+      "geographyId": "findex:lower_middle_income",
+      "iso3": "",
+      "title": "Untere mittlere Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "LMY",
+      "label": "Developing economies",
+      "geographyId": "findex:developing",
+      "iso3": "",
+      "title": "Entwicklungsländer · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "LSO",
+      "label": "Lesotho",
+      "geographyId": "m49:426",
+      "iso3": "LSO",
+      "title": "Lesotho",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "geographyId": "m49:440",
+      "iso3": "LTU",
+      "title": "Litauen",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "iso3": "LUX",
+      "title": "Luxemburg",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "geographyId": "m49:428",
+      "iso3": "LVA",
+      "title": "Lettland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "MAR",
+      "label": "Morocco",
+      "geographyId": "m49:504",
+      "iso3": "MAR",
+      "title": "Marokko",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MDA",
+      "label": "Moldova",
+      "geographyId": "m49:498",
+      "iso3": "MDA",
+      "title": "Republik Moldau",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "MDG",
+      "label": "Madagascar",
+      "geographyId": "m49:450",
+      "iso3": "MDG",
+      "title": "Madagaskar",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MDV",
+      "label": "Maldives",
+      "geographyId": "m49:462",
+      "iso3": "MDV",
+      "title": "Malediven",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "geographyId": "m49:484",
+      "iso3": "MEX",
+      "title": "Mexiko",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "MKD",
+      "label": "North Macedonia",
+      "geographyId": "m49:807",
+      "iso3": "MKD",
+      "title": "Nordmazedonien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "MLI",
+      "label": "Mali",
+      "geographyId": "m49:466",
+      "iso3": "MLI",
+      "title": "Mali",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MLT",
+      "label": "Malta",
+      "geographyId": "m49:470",
+      "iso3": "MLT",
+      "title": "Malta",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "MMR",
+      "label": "Myanmar",
+      "geographyId": "m49:104",
+      "iso3": "MMR",
+      "title": "Myanmar",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "MNA",
+      "label": "Middle East & North Africa (excluding high income)",
+      "geographyId": "findex:middle_east_north_africa",
+      "iso3": "",
+      "title": "Nahost & Nordafrika ohne hohe Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "MNE",
+      "label": "Montenegro",
+      "geographyId": "m49:499",
+      "iso3": "MNE",
+      "title": "Montenegro",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "MNG",
+      "label": "Mongolia",
+      "geographyId": "m49:496",
+      "iso3": "MNG",
+      "title": "Mongolei",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "MOZ",
+      "label": "Mozambique",
+      "geographyId": "m49:508",
+      "iso3": "MOZ",
+      "title": "Mosambik",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MRT",
+      "label": "Mauritania",
+      "geographyId": "m49:478",
+      "iso3": "MRT",
+      "title": "Mauretanien",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MUS",
+      "label": "Mauritius",
+      "geographyId": "m49:480",
+      "iso3": "MUS",
+      "title": "Mauritius",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MWI",
+      "label": "Malawi",
+      "geographyId": "m49:454",
+      "iso3": "MWI",
+      "title": "Malawi",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "MYS",
+      "label": "Malaysia",
+      "geographyId": "m49:458",
+      "iso3": "MYS",
+      "title": "Malaysia",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "NAM",
+      "label": "Namibia",
+      "geographyId": "m49:516",
+      "iso3": "NAM",
+      "title": "Namibia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "NER",
+      "label": "Niger",
+      "geographyId": "m49:562",
+      "iso3": "NER",
+      "title": "Niger",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "NGA",
+      "label": "Nigeria",
+      "geographyId": "m49:566",
+      "iso3": "NGA",
+      "title": "Nigeria",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "NIC",
+      "label": "Nicaragua",
+      "geographyId": "m49:558",
+      "iso3": "NIC",
+      "title": "Nicaragua",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands",
+      "geographyId": "m49:528",
+      "iso3": "NLD",
+      "title": "Niederlande",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "iso3": "NOR",
+      "title": "Norwegen",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "NPL",
+      "label": "Nepal",
+      "geographyId": "m49:524",
+      "iso3": "NPL",
+      "title": "Nepal",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "iso3": "NZL",
+      "title": "Neuseeland",
+      "regionId": "Oceania",
+      "aggregate": false
+    },
+    {
+      "code": "OMN",
+      "label": "Oman",
+      "geographyId": "m49:512",
+      "iso3": "OMN",
+      "title": "Oman",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "PAK",
+      "label": "Pakistan",
+      "geographyId": "m49:586",
+      "iso3": "PAK",
+      "title": "Pakistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "PAN",
+      "label": "Panama",
+      "geographyId": "m49:591",
+      "iso3": "PAN",
+      "title": "Panama",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "PER",
+      "label": "Peru",
+      "geographyId": "m49:604",
+      "iso3": "PER",
+      "title": "Peru",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "PHL",
+      "label": "Philippines",
+      "geographyId": "m49:608",
+      "iso3": "PHL",
+      "title": "Philippinen",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "iso3": "POL",
+      "title": "Polen",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "PRI",
+      "label": "Puerto Rico",
+      "geographyId": "m49:630",
+      "iso3": "PRI",
+      "title": "Puerto Rico",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "iso3": "PRT",
+      "title": "Portugal",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "PRY",
+      "label": "Paraguay",
+      "geographyId": "m49:600",
+      "iso3": "PRY",
+      "title": "Paraguay",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "PSE",
+      "label": "West Bank and Gaza",
+      "geographyId": "m49:275",
+      "iso3": "PSE",
+      "title": "Palästinensische Autonomiegebiete",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "QAT",
+      "label": "Qatar",
+      "geographyId": "m49:634",
+      "iso3": "QAT",
+      "title": "Katar",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "geographyId": "m49:642",
+      "iso3": "ROU",
+      "title": "Rumänien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "RUS",
+      "label": "Russian Federation",
+      "geographyId": "m49:643",
+      "iso3": "RUS",
+      "title": "Russland",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "RWA",
+      "label": "Rwanda",
+      "geographyId": "m49:646",
+      "iso3": "RWA",
+      "title": "Ruanda",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SAS",
+      "label": "South Asia",
+      "geographyId": "findex:south_asia",
+      "iso3": "",
+      "title": "Südasien · Findex",
+      "regionId": "Asia",
+      "aggregate": true
+    },
+    {
+      "code": "SAU",
+      "label": "Saudi Arabia",
+      "geographyId": "m49:682",
+      "iso3": "SAU",
+      "title": "Saudi-Arabien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "SDN",
+      "label": "Sudan",
+      "geographyId": "m49:729",
+      "iso3": "SDN",
+      "title": "Sudan",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SEN",
+      "label": "Senegal",
+      "geographyId": "m49:686",
+      "iso3": "SEN",
+      "title": "Senegal",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SGP",
+      "label": "Singapore",
+      "geographyId": "m49:702",
+      "iso3": "SGP",
+      "title": "Singapur",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "SLE",
+      "label": "Sierra Leone",
+      "geographyId": "m49:694",
+      "iso3": "SLE",
+      "title": "Sierra Leone",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SLV",
+      "label": "El Salvador",
+      "geographyId": "m49:222",
+      "iso3": "SLV",
+      "title": "El Salvador",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "SOM",
+      "label": "Somalia",
+      "geographyId": "m49:706",
+      "iso3": "SOM",
+      "title": "Somalia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SRB",
+      "label": "Serbia",
+      "geographyId": "m49:688",
+      "iso3": "SRB",
+      "title": "Serbien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "SSA",
+      "label": "Sub-Saharan Africa (excluding high income)",
+      "geographyId": "findex:sub_saharan_africa",
+      "iso3": "",
+      "title": "Afrika südlich der Sahara ohne hohe Einkommen · Findex",
+      "regionId": "Africa",
+      "aggregate": true
+    },
+    {
+      "code": "SSD",
+      "label": "South Sudan",
+      "geographyId": "m49:728",
+      "iso3": "SSD",
+      "title": "Südsudan",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SVK",
+      "label": "Slovak Republic",
+      "geographyId": "m49:703",
+      "iso3": "SVK",
+      "title": "Slowakei",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "geographyId": "m49:705",
+      "iso3": "SVN",
+      "title": "Slowenien",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "iso3": "SWE",
+      "title": "Schweden",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "SWZ",
+      "label": "Eswatini",
+      "geographyId": "m49:748",
+      "iso3": "SWZ",
+      "title": "Eswatini",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "SYR",
+      "label": "Syrian Arab Republic",
+      "geographyId": "m49:760",
+      "iso3": "SYR",
+      "title": "Syrien",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TCD",
+      "label": "Chad",
+      "geographyId": "m49:148",
+      "iso3": "TCD",
+      "title": "Tschad",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "TGO",
+      "label": "Togo",
+      "geographyId": "m49:768",
+      "iso3": "TGO",
+      "title": "Togo",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "THA",
+      "label": "Thailand",
+      "geographyId": "m49:764",
+      "iso3": "THA",
+      "title": "Thailand",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TJK",
+      "label": "Tajikistan",
+      "geographyId": "m49:762",
+      "iso3": "TJK",
+      "title": "Tadschikistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TKM",
+      "label": "Turkmenistan",
+      "geographyId": "m49:795",
+      "iso3": "TKM",
+      "title": "Turkmenistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TTO",
+      "label": "Trinidad and Tobago",
+      "geographyId": "m49:780",
+      "iso3": "TTO",
+      "title": "Trinidad und Tobago",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "TUN",
+      "label": "Tunisia",
+      "geographyId": "m49:788",
+      "iso3": "TUN",
+      "title": "Tunesien",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "TUR",
+      "label": "Turkiye",
+      "geographyId": "m49:792",
+      "iso3": "TUR",
+      "title": "Türkei",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TWN",
+      "label": "Taiwan, China",
+      "geographyId": "provider:TWN",
+      "iso3": "TWN",
+      "title": "Taiwan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "TZA",
+      "label": "Tanzania",
+      "geographyId": "m49:834",
+      "iso3": "TZA",
+      "title": "Tansania",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "UGA",
+      "label": "Uganda",
+      "geographyId": "m49:800",
+      "iso3": "UGA",
+      "title": "Uganda",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "UKR",
+      "label": "Ukraine",
+      "geographyId": "m49:804",
+      "iso3": "UKR",
+      "title": "Ukraine",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "UMC",
+      "label": "Upper middle income",
+      "geographyId": "findex:upper_middle_income",
+      "iso3": "",
+      "title": "Obere mittlere Einkommen · Findex",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "URY",
+      "label": "Uruguay",
+      "geographyId": "m49:858",
+      "iso3": "URY",
+      "title": "Uruguay",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "USA",
+      "label": "United States",
+      "geographyId": "m49:840",
+      "iso3": "USA",
+      "title": "Vereinigte Staaten",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "UZB",
+      "label": "Uzbekistan",
+      "geographyId": "m49:860",
+      "iso3": "UZB",
+      "title": "Usbekistan",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "VEN",
+      "label": "Venezuela, RB",
+      "geographyId": "m49:862",
+      "iso3": "VEN",
+      "title": "Venezuela",
+      "regionId": "Americas",
+      "aggregate": false
+    },
+    {
+      "code": "VNM",
+      "label": "Viet Nam",
+      "geographyId": "m49:704",
+      "iso3": "VNM",
+      "title": "Vietnam",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "WLD",
+      "label": "world",
+      "geographyId": "world",
+      "iso3": "WLD",
+      "title": "Welt",
+      "regionId": "world",
+      "aggregate": true
+    },
+    {
+      "code": "XKX",
+      "label": "Kosovo",
+      "geographyId": "provider:XKX",
+      "iso3": "XKX",
+      "title": "Kosovo",
+      "regionId": "Europe",
+      "aggregate": false
+    },
+    {
+      "code": "YEM",
+      "label": "Yemen, Rep.",
+      "geographyId": "m49:887",
+      "iso3": "YEM",
+      "title": "Jemen",
+      "regionId": "Asia",
+      "aggregate": false
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "iso3": "ZAF",
+      "title": "Südafrika",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "ZMB",
+      "label": "Zambia",
+      "geographyId": "m49:894",
+      "iso3": "ZMB",
+      "title": "Sambia",
+      "regionId": "Africa",
+      "aggregate": false
+    },
+    {
+      "code": "ZWE",
+      "label": "Zimbabwe",
+      "geographyId": "m49:716",
+      "iso3": "ZWE",
+      "title": "Simbabwe",
+      "regionId": "Africa",
+      "aggregate": false
+    }
+  ],
+  "originalFileRoundtrip": "all_raw_cells_equal_after_sqlite_reopen",
+  "scope": "Published survey fractions, demographics and source geography; not confidence intervals or market valuation."
+}

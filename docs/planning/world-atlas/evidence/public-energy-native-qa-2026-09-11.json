@@ -1,0 +1,187 @@
+{
+  "checkedAt": "2026-09-11T02:00:19.639Z",
+  "status": "passed",
+  "profile": "com.personal-macro.atlas-public-20260911",
+  "publicCacheCopyOnly": true,
+  "checks": [
+    {
+      "label": "Feste Biobrennstoffe",
+      "metric": "eurostat-bioenergy:R5110-5150_W6000RI",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Feste Biobrennstoffe · Primärerzeugung, 1990 bis 2025. Energieinhalt (TJ). Lücken und Brüche bleiben offen.",
+          "points": 36,
+          "lines": 1,
+          "last": "2025 · 576.212 Energieinhalt (TJ) · Vorläufig laut Quelle (p)"
+        }
+      ]
+    },
+    {
+      "label": "Biogas",
+      "metric": "eurostat-bioenergy:R5300",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Biogas · Primärerzeugung, 1990 bis 2025. Energieinhalt (TJ). Lücken und Brüche bleiben offen.",
+          "points": 36,
+          "lines": 1,
+          "last": "2025 · 321.438 Energieinhalt (TJ) · Vorläufig laut Quelle (p)"
+        }
+      ]
+    },
+    {
+      "label": "Biogas · DE/DK · Zahlen aus",
+      "metric": "eurostat-bioenergy:R5300",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Biogas · Primärerzeugung, 1990 bis 2025. Energieinhalt (TJ). Lücken und Brüche bleiben offen.",
+          "points": 36,
+          "lines": 1,
+          "last": "2025 · Vorläufig laut Quelle (p)"
+        },
+        {
+          "label": "Biogas · Primärerzeugung, 1990 bis 2025. Energieinhalt (TJ). Lücken und Brüche bleiben offen.",
+          "points": 36,
+          "lines": 1,
+          "last": "2025 · Vorläufig laut Quelle (p)"
+        }
+      ]
+    },
+    {
+      "label": "Luftwärme",
+      "metric": "eurostat-heat-pumps:ATH",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Wärmepumpen · Luftwärme, 2004 bis 2024. Thermische Leistung (MW). Lücken und Brüche bleiben offen.",
+          "points": 21,
+          "lines": 1,
+          "last": "2024 · 12.631,98 Thermische Leistung (MW)"
+        }
+      ]
+    },
+    {
+      "label": "Erdwärme",
+      "metric": "eurostat-heat-pumps:GTH",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Wärmepumpen · Erdwärme, 2004 bis 2024. Thermische Leistung (MW). Lücken und Brüche bleiben offen.",
+          "points": 21,
+          "lines": 1,
+          "last": "2024 · 3.268,33 Thermische Leistung (MW)"
+        }
+      ]
+    },
+    {
+      "label": "Wasserwärme",
+      "metric": "eurostat-heat-pumps:HTH",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Wärmepumpen · Wasserwärme, 2004 bis 2024. Thermische Leistung (MW). Lücken und Brüche bleiben offen.",
+          "points": 21,
+          "lines": 1,
+          "last": "2024 · 640,62 Thermische Leistung (MW)"
+        }
+      ]
+    },
+    {
+      "label": "Albanien · Wasserwärme · Quellen-Nullen",
+      "area": "m49:008",
+      "numericChartCount": 0,
+      "numbers": false,
+      "firstMarker": "2004 · kein Zahlenwert · Quellen-Null · Bedeutung nicht eindeutig · Originalwert 0: Das jährliche Energie-Meldesystem trennt echte Null, sehr kleine Mengen, fehlende und vertrauliche Angaben nicht sicher. Ohne weitere Quellenkennzeichnung bleibt die Zahl im Bild offen."
+    },
+    {
+      "label": "Indien unterstützt dieses Quellengebiet nicht",
+      "chartCount": 0,
+      "message": "Diese Quellenreihe enthält kein eigenes Bild für Indien."
+    },
+    {
+      "label": "EU27 · Luftwärme ab 2010 · Quellenwechsel",
+      "metric": "eurostat-heat-pumps:ATH",
+      "area": "eurostat:eu27_2020",
+      "charts": [
+        {
+          "label": "Wärmepumpen · Luftwärme, 2010 bis 2024. Thermische Leistung (MW). Lücken und Brüche bleiben offen.",
+          "points": 15,
+          "lines": 1,
+          "last": "2024"
+        }
+      ]
+    },
+    {
+      "label": "Fernwärme · DE 2023",
+      "metric": "eurostat-district-heating:DHEAT",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Fernwärme · Bevölkerung mit Netzheizung, 2023 bis 2023. Personen in Privathaushalten (%). Lücken und Brüche bleiben offen.",
+          "points": 1,
+          "lines": 0,
+          "last": "2023 · 13,7 Personen in Privathaushalten (%) · Erhebungsjahr 2023 · Personen in Privathaushalten."
+        }
+      ]
+    },
+    {
+      "label": "Fernwärme · DE/DK · feste Prozentskala",
+      "metric": "eurostat-district-heating:DHEAT",
+      "area": "m49:276",
+      "charts": [
+        {
+          "label": "Fernwärme · Bevölkerung mit Netzheizung, 2023 bis 2023. Personen in Privathaushalten (%). Lücken und Brüche bleiben offen.",
+          "points": 1,
+          "lines": 0,
+          "last": "2023 · 13,7 Personen in Privathaushalten (%) · Erhebungsjahr 2023 · Personen in Privathaushalten."
+        },
+        {
+          "label": "Fernwärme · Bevölkerung mit Netzheizung, 2023 bis 2023. Personen in Privathaushalten (%). Lücken und Brüche bleiben offen.",
+          "points": 1,
+          "lines": 0,
+          "last": "2023 · 64,9 Personen in Privathaushalten (%) · Erhebungsjahr 2023 · Personen in Privathaushalten."
+        }
+      ]
+    },
+    {
+      "label": "Gemerkte EU-Wärmepumpenansicht wiederhergestellt",
+      "metric": "eurostat-heat-pumps:ATH",
+      "area": "eurostat:eu27_2020",
+      "charts": [
+        {
+          "label": "Wärmepumpen · Luftwärme, 2010 bis 2024. Thermische Leistung (MW). Lücken und Brüche bleiben offen.",
+          "points": 15,
+          "lines": 1,
+          "last": "2024"
+        }
+      ]
+    }
+  ],
+  "bookmark": {
+    "name": "QA Energie · EU Wärmepumpen ab 2010",
+    "source": "eurostat-heat-pumps",
+    "recipe": "eurostat-heat-pumps-original-jsonstat-20260911-v1",
+    "restored": true,
+    "numbers": false
+  },
+  "minimumWidth": {
+    "client": 1015,
+    "scroll": 1015
+  },
+  "fixedDistrictScale": [
+    0,
+    100
+  ],
+  "screenshots": [
+    "atlas-energy-initial-native.png",
+    "atlas-bioenergy-comparison.png",
+    "atlas-energy-source-zero.png",
+    "atlas-heatpumps-minwidth.png",
+    "atlas-district-heating-minwidth.png",
+    "atlas-district-heating-denmark.png",
+    "atlas-heatpumps-restored-minwidth.png"
+  ],
+  "visualReview": "inspected; no chart overflow at 1024 px; source markers, points, labels, units and shared scale remain readable"
+}

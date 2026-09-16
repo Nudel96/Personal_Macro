@@ -109,9 +109,18 @@ pub async fn save_account(
     state: State<'_, AppState>,
     input: AccountInput,
 ) -> CommandResult<Account> {
-    if input.name.trim().is_empty() || input.base_currency.trim().len() != 3 {
+    if input.name.trim().is_empty()
+        || input.base_currency.trim().len() != 3
+        || !input
+            .base_currency
+            .trim()
+            .bytes()
+            .all(|c| c.is_ascii_alphabetic())
+        || input.initial_balance_minor < 0
+        || input.initial_balance_minor > 9_007_199_254_740_991
+    {
         return Err(crate::errors::CommandError::validation(
-            "Kontoname und dreistellige Basiswährung sind erforderlich.",
+            "Kontoname, dreistellige Basiswährung und ein gültiges Startkapital ab 0 sind erforderlich.",
         ));
     }
     if !input.default_risk_percent.is_finite()
@@ -121,6 +130,19 @@ pub async fn save_account(
         return Err(crate::errors::CommandError::validation(
             "Das Standardrisiko muss zwischen 0 und 25 Prozent liegen.",
         ));
+    }
+    if let Some(id) = &input.id {
+        super::journal_scope::require_active_account(&state.db, id).await?;
+        let currency: String =
+            sqlx::query_scalar("SELECT base_currency FROM accounts WHERE id = ?")
+                .bind(id)
+                .fetch_one(&state.db)
+                .await?;
+        if currency != input.base_currency.trim().to_uppercase() {
+            return Err(crate::errors::CommandError::validation(
+                "Die Währung eines bestehenden Kontos bleibt erhalten.",
+            ));
+        }
     }
     let id = input.id.unwrap_or_else(|| Uuid::new_v4().to_string());
     let now = Utc::now().to_rfc3339();
@@ -189,18 +211,66 @@ pub async fn add_account_cashflow(
     state: State<'_, AppState>,
     input: AccountCashflowInput,
 ) -> CommandResult<AccountCashflow> {
-    if !matches!(input.kind.as_str(), "deposit" | "withdrawal" | "adjustment") {
-        return Err(crate::errors::CommandError::validation(
-            "Ungültiger Cashflow-Typ.",
-        ));
-    }
+    validate_cashflow(&input)?;
+    super::journal_scope::require_active_account(&state.db, &input.account_id).await?;
+    let occurred_at = chrono::DateTime::parse_from_rfc3339(&input.occurred_at)
+        .map_err(|_| crate::errors::CommandError::validation("Bitte das Buchungsdatum prüfen."))?
+        .with_timezone(&Utc)
+        .to_rfc3339();
     let id = Uuid::new_v4().to_string();
     let now = Utc::now().to_rfc3339();
     sqlx::query("INSERT INTO account_cashflows (id, account_id, occurred_at, amount_minor, kind, note, created_at) VALUES (?, ?, ?, ?, ?, ?, ?)")
-        .bind(&id).bind(&input.account_id).bind(&input.occurred_at).bind(input.amount_minor).bind(&input.kind).bind(&input.note).bind(&now)
+        .bind(&id).bind(&input.account_id).bind(&occurred_at).bind(input.amount_minor).bind(&input.kind).bind(&input.note).bind(&now)
         .execute(&state.db).await.map_err(AppError::from)?;
     sqlx::query_as::<_, AccountCashflow>("SELECT id, account_id, occurred_at, amount_minor, kind, note, created_at FROM account_cashflows WHERE id = ?")
         .bind(id).fetch_one(&state.db).await.map_err(AppError::from).map_err(Into::into)
+}
+
+fn validate_cashflow(input: &AccountCashflowInput) -> CommandResult<()> {
+    let valid_amount = match input.kind.as_str() {
+        "deposit" => input.amount_minor > 0,
+        "withdrawal" => input.amount_minor < 0,
+        "adjustment" => input.amount_minor != 0,
+        _ => false,
+    };
+    if !valid_amount
+        || input.amount_minor.unsigned_abs() > 9_007_199_254_740_991
+        || chrono::DateTime::parse_from_rfc3339(&input.occurred_at).is_err()
+    {
+        return Err(crate::errors::CommandError::validation(
+            "Bitte Buchungsart, Datum und Betrag prüfen.",
+        ));
+    }
+    Ok(())
+}
+
+#[cfg(test)]
+mod account_cashflow_tests {
+    use super::*;
+    #[test]
+    fn cashflow_signs_dates_and_zero_are_validated() {
+        let mut input = AccountCashflowInput {
+            account_id: "a".into(),
+            occurred_at: "2026-09-10T12:00:00Z".into(),
+            amount_minor: 10000,
+            kind: "deposit".into(),
+            note: None,
+        };
+        assert!(validate_cashflow(&input).is_ok());
+        input.kind = "withdrawal".into();
+        assert!(validate_cashflow(&input).is_err());
+        input.amount_minor = -10000;
+        assert!(validate_cashflow(&input).is_ok());
+        input.kind = "deposit".into();
+        assert!(validate_cashflow(&input).is_err());
+        input.kind = "adjustment".into();
+        assert!(validate_cashflow(&input).is_ok());
+        input.amount_minor = 0;
+        assert!(validate_cashflow(&input).is_err());
+        input.amount_minor = 10000;
+        input.occurred_at = "not a date".into();
+        assert!(validate_cashflow(&input).is_err());
+    }
 }
 
 async fn create_taxonomy(

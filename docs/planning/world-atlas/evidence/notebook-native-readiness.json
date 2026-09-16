@@ -1,0 +1,42 @@
+{
+  "identifier": "com.personal-macro.atlas-notebook-validation",
+  "mainMigration": 47,
+  "imageBytes": 168060,
+  "imageDimensions": [
+    960,
+    2170
+  ],
+  "imageSha256": "183af7cbeb8a5b1bcb6753466c587550ff491fd19760a704b2b827fd838d4b4e",
+  "sourceCount": 18,
+  "context": {
+    "version": 1,
+    "params": {
+      "area": "m49:356",
+      "compare": "m49:156",
+      "region": "Asia",
+      "statDomain": "people",
+      "statGroup": "education",
+      "view": "statistics"
+    }
+  },
+  "nativeChecks": {
+    "identifier": "com.personal-macro.atlas-notebook-validation",
+    "imageRetained": true,
+    "lastContext": "m49:356",
+    "ok": true,
+    "restart": true,
+    "runAt": "2026-09-09T04:21:02.185Z"
+  },
+  "nativeCreateChecks": {
+    "runAt": "2026-09-09T04:17:38.133Z",
+    "created": true,
+    "imageUnchanged": true,
+    "conflictRejected": true,
+    "trash": true,
+    "restored": true,
+    "lastContext": "m49:356",
+    "ok": true
+  },
+  "atlasMigration": 6,
+  "backupVerified": true
+}

@@ -1,0 +1,1135 @@
+{
+  "reviewedAt": "2026-09-11",
+  "source": {
+    "id": "oecd-wages",
+    "label": "OECD · Reallöhne",
+    "adapter": "oecd_wages",
+    "url": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+    "documentationUrl": "https://www.oecd.org/en/data/indicators/average-annual-wages.html",
+    "licenseUrl": "https://www.oecd.org/en/about/terms-conditions.html",
+    "publishedAt": "nicht angegeben",
+    "reviewedAt": "2026-09-11",
+    "recipe": "oecd-wages-2025-source-20260911-v1",
+    "observationKind": "source_statistics",
+    "expectedSha256": "d6b83b419e9cf91bf41e3ba5d4207b0e4b7d2d2180e8b2aa265e1cbc29912a5e",
+    "expectedRows": 4049,
+    "expectedNumeric": 1298,
+    "firstPeriod": "1990",
+    "lastPeriod": "2025",
+    "areas": [
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "CRI",
+        "label": "Costa Rica",
+        "geographyId": "m49:188",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czechia",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "NZL",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "real_ppp": "Average annual wages · USD_PPP · Constant prices · 2025"
+        }
+      }
+    ]
+  },
+  "headers": [
+    "STRUCTURE",
+    "STRUCTURE_ID",
+    "STRUCTURE_NAME",
+    "ACTION",
+    "REF_AREA",
+    "Reference area",
+    "MEASURE",
+    "Measure",
+    "UNIT_MEASURE",
+    "Unit of measure",
+    "PAY_PERIOD",
+    "Pay period",
+    "PRICE_BASE",
+    "Price base",
+    "AGGREGATION_OPERATION",
+    "Aggregation operation",
+    "SEX",
+    "Sex",
+    "TIME_PERIOD",
+    "Time period",
+    "OBS_VALUE",
+    "Observation value",
+    "BASE_PER",
+    "Base period",
+    "OBS_STATUS",
+    "Observation status",
+    "UNIT_MULT",
+    "Unit multiplier",
+    "DECIMALS",
+    "Decimals"
+  ],
+  "fixedFields": {
+    "STRUCTURE": "DATAFLOW",
+    "STRUCTURE_ID": "OECD.ELS.SAE:DSD_EARNINGS@AV_AN_WAGE(1.0)",
+    "STRUCTURE_NAME": "Average annual wages",
+    "ACTION": "I",
+    "MEASURE": "WG",
+    "Measure": "Wages",
+    "PAY_PERIOD": "A",
+    "Pay period": "Annual",
+    "AGGREGATION_OPERATION": "MEAN",
+    "Aggregation operation": "Mean",
+    "SEX": "_Z",
+    "Sex": "Not applicable",
+    "Base period": "",
+    "OBS_STATUS": "A",
+    "Observation status": "Normal value",
+    "UNIT_MULT": "0",
+    "Unit multiplier": "Units",
+    "DECIMALS": "0",
+    "Decimals": "Zero"
+  },
+  "sourceAreaLabels": {
+    "AUS": "Australia",
+    "AUT": "Austria",
+    "BEL": "Belgium",
+    "CAN": "Canada",
+    "CHL": "Chile",
+    "COL": "Colombia",
+    "CRI": "Costa Rica",
+    "CZE": "Czechia",
+    "DNK": "Denmark",
+    "EST": "Estonia",
+    "FIN": "Finland",
+    "FRA": "France",
+    "DEU": "Germany",
+    "GRC": "Greece",
+    "HUN": "Hungary",
+    "ISL": "Iceland",
+    "IRL": "Ireland",
+    "ISR": "Israel",
+    "ITA": "Italy",
+    "JPN": "Japan",
+    "KOR": "Korea",
+    "LVA": "Latvia",
+    "LTU": "Lithuania",
+    "LUX": "Luxembourg",
+    "MEX": "Mexico",
+    "NLD": "Netherlands",
+    "NZL": "New Zealand",
+    "NOR": "Norway",
+    "POL": "Poland",
+    "PRT": "Portugal",
+    "SVK": "Slovak Republic",
+    "SVN": "Slovenia",
+    "ESP": "Spain",
+    "SWE": "Sweden",
+    "CHE": "Switzerland",
+    "TUR": "Türkiye",
+    "GBR": "United Kingdom",
+    "USA": "United States",
+    "OECD": "OECD",
+    "BGR": "Bulgaria",
+    "ROU": "Romania",
+    "HRV": "Croatia"
+  },
+  "dimensions": {
+    "STRUCTURE": [
+      "DATAFLOW"
+    ],
+    "STRUCTURE_ID": [
+      "OECD.ELS.SAE:DSD_EARNINGS@AV_AN_WAGE(1.0)"
+    ],
+    "STRUCTURE_NAME": [
+      "Average annual wages"
+    ],
+    "ACTION": [
+      "I"
+    ],
+    "REF_AREA": [
+      "AUS",
+      "AUT",
+      "BEL",
+      "BGR",
+      "CAN",
+      "CHE",
+      "CHL",
+      "COL",
+      "CRI",
+      "CZE",
+      "DEU",
+      "DNK",
+      "ESP",
+      "EST",
+      "FIN",
+      "FRA",
+      "GBR",
+      "GRC",
+      "HRV",
+      "HUN",
+      "IRL",
+      "ISL",
+      "ISR",
+      "ITA",
+      "JPN",
+      "KOR",
+      "LTU",
+      "LUX",
+      "LVA",
+      "MEX",
+      "NLD",
+      "NOR",
+      "NZL",
+      "OECD",
+      "POL",
+      "PRT",
+      "ROU",
+      "SVK",
+      "SVN",
+      "SWE",
+      "TUR",
+      "USA"
+    ],
+    "Reference area": [
+      "Australia",
+      "Austria",
+      "Belgium",
+      "Bulgaria",
+      "Canada",
+      "Chile",
+      "Colombia",
+      "Costa Rica",
+      "Croatia",
+      "Czechia",
+      "Denmark",
+      "Estonia",
+      "Finland",
+      "France",
+      "Germany",
+      "Greece",
+      "Hungary",
+      "Iceland",
+      "Ireland",
+      "Israel",
+      "Italy",
+      "Japan",
+      "Korea",
+      "Latvia",
+      "Lithuania",
+      "Luxembourg",
+      "Mexico",
+      "Netherlands",
+      "New Zealand",
+      "Norway",
+      "OECD",
+      "Poland",
+      "Portugal",
+      "Romania",
+      "Slovak Republic",
+      "Slovenia",
+      "Spain",
+      "Sweden",
+      "Switzerland",
+      "Türkiye",
+      "United Kingdom",
+      "United States"
+    ],
+    "MEASURE": [
+      "WG"
+    ],
+    "Measure": [
+      "Wages"
+    ],
+    "UNIT_MEASURE": [
+      "AUD",
+      "BGN",
+      "CAD",
+      "CHF",
+      "CLP",
+      "COP",
+      "CRC",
+      "CZK",
+      "DKK",
+      "EUR",
+      "GBP",
+      "HUF",
+      "ILS",
+      "ISK",
+      "JPY",
+      "KRW",
+      "MXN",
+      "NOK",
+      "NZD",
+      "PLN",
+      "RON",
+      "SEK",
+      "TRY",
+      "USD",
+      "USD_PPP"
+    ],
+    "Unit of measure": [
+      "Australian dollar",
+      "Bulgarian lev",
+      "Canadian dollar",
+      "Chilean peso",
+      "Colombian peso",
+      "Costa Rican colon",
+      "Czech koruna",
+      "Danish krone",
+      "Euro",
+      "Forint",
+      "Iceland krona",
+      "Mexican peso",
+      "New Israeli sheqel",
+      "New Zealand dollar",
+      "Norwegian krone",
+      "Pound sterling",
+      "Romanian leu",
+      "Swedish krona",
+      "Swiss franc",
+      "Turkish lira",
+      "US dollar",
+      "US dollars, PPP converted",
+      "Won",
+      "Yen",
+      "Zloty"
+    ],
+    "PAY_PERIOD": [
+      "A"
+    ],
+    "Pay period": [
+      "Annual"
+    ],
+    "PRICE_BASE": [
+      "Q",
+      "V"
+    ],
+    "Price base": [
+      "Constant prices",
+      "Current prices"
+    ],
+    "AGGREGATION_OPERATION": [
+      "MEAN"
+    ],
+    "Aggregation operation": [
+      "Mean"
+    ],
+    "SEX": [
+      "_Z"
+    ],
+    "Sex": [
+      "Not applicable"
+    ],
+    "BASE_PER": [
+      "",
+      "2025"
+    ],
+    "Base period": [
+      ""
+    ],
+    "OBS_STATUS": [
+      "A"
+    ],
+    "Observation status": [
+      "Normal value"
+    ],
+    "UNIT_MULT": [
+      "0"
+    ],
+    "Unit multiplier": [
+      "Units"
+    ],
+    "DECIMALS": [
+      "0"
+    ],
+    "Decimals": [
+      "Zero"
+    ]
+  },
+  "excludedAreas": {
+    "OECD": 36
+  },
+  "profiles": [
+    {
+      "providerArea": "AUS",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "51711.294"
+      ],
+      "last": [
+        "2025",
+        "72018.439"
+      ]
+    },
+    {
+      "providerArea": "AUT",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "59942.899"
+      ],
+      "last": [
+        "2025",
+        "78301.337"
+      ]
+    },
+    {
+      "providerArea": "BEL",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "59719.089"
+      ],
+      "last": [
+        "2025",
+        "80008.652"
+      ]
+    },
+    {
+      "providerArea": "CAN",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "49252.332"
+      ],
+      "last": [
+        "2025",
+        "67900.601"
+      ]
+    },
+    {
+      "providerArea": "CHL",
+      "metric": "real_ppp",
+      "count": 29,
+      "first": [
+        "1995",
+        "17383"
+      ],
+      "last": [
+        "2023",
+        "40626.111"
+      ]
+    },
+    {
+      "providerArea": "COL",
+      "metric": "real_ppp",
+      "count": 21,
+      "first": [
+        "1995",
+        "16614"
+      ],
+      "last": [
+        "2024",
+        "30133.361"
+      ]
+    },
+    {
+      "providerArea": "CRI",
+      "metric": "real_ppp",
+      "count": 34,
+      "first": [
+        "1991",
+        "22489.713"
+      ],
+      "last": [
+        "2024",
+        "44430.678"
+      ]
+    },
+    {
+      "providerArea": "CZE",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "20331.9"
+      ],
+      "last": [
+        "2025",
+        "43607.144"
+      ]
+    },
+    {
+      "providerArea": "DNK",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "54442.147"
+      ],
+      "last": [
+        "2025",
+        "78090.445"
+      ]
+    },
+    {
+      "providerArea": "EST",
+      "metric": "real_ppp",
+      "count": 35,
+      "first": [
+        "1991",
+        "10671.3012112055"
+      ],
+      "last": [
+        "2025",
+        "41019.039"
+      ]
+    },
+    {
+      "providerArea": "FIN",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "47108.291"
+      ],
+      "last": [
+        "2025",
+        "63053.422"
+      ]
+    },
+    {
+      "providerArea": "FRA",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "44931.497"
+      ],
+      "last": [
+        "2025",
+        "60483.173"
+      ]
+    },
+    {
+      "providerArea": "DEU",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "56518.095"
+      ],
+      "last": [
+        "2025",
+        "76284.517"
+      ]
+    },
+    {
+      "providerArea": "GRC",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "25815.759"
+      ],
+      "last": [
+        "2025",
+        "32412.152"
+      ]
+    },
+    {
+      "providerArea": "HUN",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "18442.174"
+      ],
+      "last": [
+        "2025",
+        "39144.852"
+      ]
+    },
+    {
+      "providerArea": "ISL",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "52803.859"
+      ],
+      "last": [
+        "2025",
+        "100605.43"
+      ]
+    },
+    {
+      "providerArea": "IRL",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "33757.093"
+      ],
+      "last": [
+        "2025",
+        "70112.825"
+      ]
+    },
+    {
+      "providerArea": "ISR",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "42689.876"
+      ],
+      "last": [
+        "2025",
+        "57425.877"
+      ]
+    },
+    {
+      "providerArea": "ITA",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "54994.691"
+      ],
+      "last": [
+        "2025",
+        "53864.157"
+      ]
+    },
+    {
+      "providerArea": "JPN",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "50786.825"
+      ],
+      "last": [
+        "2025",
+        "50182.646"
+      ]
+    },
+    {
+      "providerArea": "KOR",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "29498.107"
+      ],
+      "last": [
+        "2025",
+        "61259.161"
+      ]
+    },
+    {
+      "providerArea": "LVA",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "11340"
+      ],
+      "last": [
+        "2025",
+        "44708.836"
+      ]
+    },
+    {
+      "providerArea": "LTU",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "13353.35"
+      ],
+      "last": [
+        "2025",
+        "58111.602"
+      ]
+    },
+    {
+      "providerArea": "LUX",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "64782.19"
+      ],
+      "last": [
+        "2025",
+        "98529.748"
+      ]
+    },
+    {
+      "providerArea": "MEX",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "22429.48"
+      ],
+      "last": [
+        "2025",
+        "24463.122"
+      ]
+    },
+    {
+      "providerArea": "NLD",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "72715.176"
+      ],
+      "last": [
+        "2025",
+        "80136.33"
+      ]
+    },
+    {
+      "providerArea": "NZL",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "39514.408"
+      ],
+      "last": [
+        "2025",
+        "60896.229"
+      ]
+    },
+    {
+      "providerArea": "NOR",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "38399.533"
+      ],
+      "last": [
+        "2025",
+        "73461.545"
+      ]
+    },
+    {
+      "providerArea": "POL",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "21872.086"
+      ],
+      "last": [
+        "2025",
+        "49074.08"
+      ]
+    },
+    {
+      "providerArea": "PRT",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "34209.207"
+      ],
+      "last": [
+        "2025",
+        "44937.011"
+      ]
+    },
+    {
+      "providerArea": "SVK",
+      "metric": "real_ppp",
+      "count": 32,
+      "first": [
+        "1994",
+        "16042.254"
+      ],
+      "last": [
+        "2025",
+        "37831.713"
+      ]
+    },
+    {
+      "providerArea": "SVN",
+      "metric": "real_ppp",
+      "count": 31,
+      "first": [
+        "1995",
+        "32381.861"
+      ],
+      "last": [
+        "2025",
+        "63375.61"
+      ]
+    },
+    {
+      "providerArea": "ESP",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "49766.124"
+      ],
+      "last": [
+        "2025",
+        "57778.662"
+      ]
+    },
+    {
+      "providerArea": "SWE",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "38220.442"
+      ],
+      "last": [
+        "2025",
+        "61443.422"
+      ]
+    },
+    {
+      "providerArea": "CHE",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "68064.792"
+      ],
+      "last": [
+        "2025",
+        "92285.059"
+      ]
+    },
+    {
+      "providerArea": "TUR",
+      "metric": "real_ppp",
+      "count": 35,
+      "first": [
+        "1990",
+        "24979.461"
+      ],
+      "last": [
+        "2024",
+        "57274.919"
+      ]
+    },
+    {
+      "providerArea": "GBR",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "45034.836"
+      ],
+      "last": [
+        "2025",
+        "66299.139"
+      ]
+    },
+    {
+      "providerArea": "USA",
+      "metric": "real_ppp",
+      "count": 36,
+      "first": [
+        "1990",
+        "56693.84"
+      ],
+      "last": [
+        "2025",
+        "86977.138"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,288 @@
+.seasonal-opportunities {
+  margin: 0 0 20px;
+}
+.seasonal-opportunities .card-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+.seasonal-source-label {
+  padding: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--text-2);
+  font-size: 11px;
+  white-space: nowrap;
+}
+.seasonal-scan-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: end;
+}
+.seasonal-scan-controls label {
+  display: grid;
+  gap: 6px;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.seasonal-scan-controls select,
+.seasonal-scan-controls input {
+  min-height: 35px;
+  padding: 7px 10px;
+  color: var(--text);
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  font: inherit;
+}
+.seasonal-scan-controls input {
+  width: 145px;
+}
+.seasonal-scan-settings {
+  margin: 15px 0;
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 14px;
+}
+.seasonal-scan-settings summary,
+.seasonal-scan-method summary,
+.seasonal-observations summary {
+  cursor: pointer;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.seasonal-scan-settings summary span {
+  margin-left: 12px;
+  color: var(--text-3);
+}
+.seasonal-scan-settings form {
+  padding-top: 14px;
+}
+.seasonal-scan-settings-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-2);
+}
+.seasonal-scan-settings-actions label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.seasonal-opportunities [role="tab"] {
+  display: inline-flex;
+  gap: 7px;
+  align-items: center;
+}
+.seasonal-scan-result {
+  color: var(--text-3);
+  margin: 15px 0 10px;
+  font-size: 11px;
+}
+.seasonal-opportunity-layout {
+  display: grid;
+  grid-template-columns: minmax(330px, 0.95fr) minmax(380px, 1.05fr);
+  gap: 16px;
+  align-items: start;
+}
+.seasonal-ranked-list {
+  display: grid;
+  gap: 7px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.seasonal-ranked-window {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 26px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 11px;
+  border: 1px solid var(--border);
+  background: var(--surface-2);
+  border-radius: 9px;
+  font: inherit;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+}
+.seasonal-ranked-window:hover,
+.seasonal-ranked-window.selected {
+  border-color: var(--primary, #6590ff);
+  background: color-mix(in srgb, var(--surface-2) 90%, #52c5ff 10%);
+}
+.seasonal-rank {
+  color: var(--text-3);
+  font-size: 16px;
+  font-variant-numeric: tabular-nums;
+}
+.seasonal-window-name,
+.seasonal-window-values {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+}
+.seasonal-window-name strong {
+  font-size: 12px;
+}
+.seasonal-window-name span,
+.seasonal-window-values span {
+  color: var(--text-2);
+}
+.seasonal-window-name small,
+.seasonal-window-values small {
+  font-size: 10px;
+  color: var(--text-3);
+}
+.seasonal-window-values {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.seasonal-window-values strong {
+  font-size: 15px;
+}
+.seasonal-opportunity-detail {
+  min-width: 0;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+  background: var(--surface-2);
+}
+.seasonal-opportunity-detail header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text-2);
+}
+.seasonal-opportunity-detail header span {
+  font-size: 10px;
+  color: var(--text-3);
+}
+.seasonal-opportunity-detail h3 {
+  font-size: 20px;
+  color: var(--text);
+  margin: 5px 0 0;
+}
+.seasonal-opportunity-detail > p {
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.seasonal-evidence-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 13px 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+.seasonal-evidence-metrics > div {
+  display: grid;
+  gap: 5px;
+}
+.seasonal-evidence-metrics span {
+  font-size: 10px;
+  color: var(--text-3);
+}
+.seasonal-evidence-metrics strong {
+  font-size: 17px;
+  font-variant-numeric: tabular-nums;
+}
+.seasonal-divergence-legs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 14px 0 0;
+  font-size: 11px;
+}
+.seasonal-opportunities .positive-text {
+  color: var(--positive);
+}
+.seasonal-opportunities .negative-text {
+  color: var(--negative);
+}
+.seasonal-opportunity-detail .seasonal-source-note {
+  font-size: 10px;
+  color: var(--text-3);
+  overflow-wrap: anywhere;
+}
+.seasonal-observation-scroll {
+  overflow-x: auto;
+  max-height: 275px;
+  margin-top: 10px;
+}
+.seasonal-observation-scroll table {
+  width: 100%;
+  font-size: 10px;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.seasonal-observation-scroll td,
+.seasonal-observation-scroll th {
+  padding: 7px;
+  border-bottom: 1px solid var(--border);
+  text-align: right;
+}
+.seasonal-observation-scroll caption {
+  color: var(--text-3);
+  padding: 7px 0;
+  text-align: left;
+}
+.seasonal-scan-method {
+  padding-top: 14px;
+  margin-top: 16px;
+  border-top: 1px solid var(--border);
+}
+.seasonal-scan-method p {
+  color: var(--text-3);
+  font-size: 11px;
+  line-height: 1.65;
+  max-width: 1100px;
+}
+.seasonal-scan-empty {
+  padding: 20px 0;
+  text-align: center;
+}
+.seasonal-scan-empty p {
+  color: var(--text-3);
+  font-size: 12px;
+  max-width: 850px;
+  margin: 14px auto;
+  line-height: 1.65;
+}
+.seasonal-futures-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+.seasonal-futures-catalog span {
+  font-size: 11px;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 6px 9px;
+}
+.seasonal-opportunities button:focus-visible,
+.seasonal-opportunities summary:focus-visible,
+.seasonal-opportunities input:focus-visible,
+.seasonal-opportunities select:focus-visible {
+  outline: 2px solid #52c5ff;
+  outline-offset: 3px;
+}
+@media (max-width: 1150px) {
+  .seasonal-opportunity-layout {
+    grid-template-columns: 1fr;
+  }
+  .seasonal-scan-settings summary span {
+    display: block;
+    margin: 6px 0 0 15px;
+  }
+}

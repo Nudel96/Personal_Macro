@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-09-11T02:15:34.210969+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "bytes": 50286592,
+  "sha256": "817c98b929e099036a7ef62bb3f9c51c7d5d9353679985accfcbe0a54c983a1b",
+  "log": "apps/desktop/.tmp/atlas-remaining-40/energy-final-windows-release.log",
+  "scope": "Original 21 verified topics plus bioenergy, heat pumps and district heating; final district heating scale fixed at 0–100 percent.",
+  "tests": "15 scoped frontend tests passed; TypeScript, scoped ESLint, Clippy and two native tests including complete independent original-data comparison and temporary SQLite reopen passed. Native QA and actual public-cache equality checks passed."
+}

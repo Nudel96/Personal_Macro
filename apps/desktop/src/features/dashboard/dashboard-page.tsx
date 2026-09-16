@@ -28,7 +28,6 @@ import {
   Info,
   Plus,
   Target,
-  TrendingUp,
   X,
 } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -38,7 +37,6 @@ import {
   BaseChart,
   axisLabel,
   axisLine,
-  chartGrid,
   splitLine,
   tooltip,
 } from "../../charts/base-chart";
@@ -51,6 +49,7 @@ import { JournalPageHeader } from "../../components/ui/journal-page-header";
 import { OnboardingChecklist } from "../../components/ui/onboarding-checklist";
 import { JournalAccountGate } from "../accounts/journal-account-gate";
 import { useJournalAccount } from "../accounts/journal-account-context";
+import { AccountCapitalChart } from "../accounts/account-capital-chart";
 import {
   dateTime,
   formatMoneyMinor,
@@ -110,7 +109,6 @@ export function DashboardPage() {
     globalDatePreset,
     setGlobalDatePreset,
     setQuickTradeOpen,
-    setGuidedTradeOpen,
     onboardingCollapsed,
     onboardingDismissed,
     setOnboardingCollapsed,
@@ -134,10 +132,10 @@ export function DashboardPage() {
         localStorage.getItem("personal-macro:dashboard-kpi-order:v1") ?? "null",
       ) as string[] | null;
       return saved?.length === 6
-        ? saved
-        : ["net", "pf", "win", "r", "process", "expectancy"];
+        ? saved.map((id) => (id === "process" ? "costs" : id))
+        : ["net", "pf", "win", "r", "costs", "expectancy"];
     } catch {
-      return ["net", "pf", "win", "r", "process", "expectancy"];
+      return ["net", "pf", "win", "r", "costs", "expectancy"];
     }
   });
   const [dashboardView, setDashboardView] = useState("balanced");
@@ -203,7 +201,7 @@ export function DashboardPage() {
           icon={PageIcon}
           eyebrow="Tradingjournal"
           title="Performance-Übersicht"
-          description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
+          description="Dein Konto im Blick. Die Auswertung darunter folgt dem gewählten Zeitraum."
         />
         <PageLoading />
       </div>
@@ -215,7 +213,7 @@ export function DashboardPage() {
           icon={PageIcon}
           eyebrow="Tradingjournal"
           title="Performance-Übersicht"
-          description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
+          description="Dein Konto im Blick. Die Auswertung darunter folgt dem gewählten Zeitraum."
         />
         <ErrorState
           message={
@@ -240,7 +238,7 @@ export function DashboardPage() {
         "Kontowährung, Startkapital und Risikolimit bilden die Basis deiner Auswertung.",
       complete: journalAccounts.length > 0,
       action: (
-        <Link className="button primary sm" to="/settings">
+        <Link className="button primary sm" to="/settings?section=accounts">
           Konten öffnen
         </Link>
       ),
@@ -255,7 +253,7 @@ export function DashboardPage() {
         <Button
           size="sm"
           variant="primary"
-          onClick={() => setGuidedTradeOpen(true)}
+          onClick={() => setQuickTradeOpen(true)}
         >
           <Plus size={13} /> Trade erfassen
         </Button>
@@ -327,12 +325,12 @@ export function DashboardPage() {
         meta={`n = ${metrics.averageR.n} mit gültigem Risiko`}
       />
     ),
-    process: (
+    costs: (
       <KpiCard
-        label="Prozess-Score"
-        value={metricText(metrics.averageProcessScore, "score")}
+        label="Erfasste Handelskosten"
+        value={formatMoneyMinor(metrics.totalCostsMinor)}
         tone="cyan"
-        meta={`n = ${metrics.averageProcessScore.n} Bewertungen`}
+        meta="Gebühren, Kommission & Swap"
       />
     ),
     expectancy: (
@@ -365,9 +363,9 @@ export function DashboardPage() {
   };
   const applyDashboardView = (view: string) => {
     const layouts: Record<string, string[]> = {
-      balanced: ["net", "pf", "win", "r", "process", "expectancy"],
-      performance: ["net", "expectancy", "pf", "win", "r", "process"],
-      process: ["process", "win", "r", "pf", "net", "expectancy"],
+      balanced: ["net", "pf", "win", "r", "costs", "expectancy"],
+      performance: ["net", "expectancy", "pf", "win", "r", "costs"],
+      costs: ["costs", "r", "net", "expectancy", "win", "pf"],
     };
     const next = layouts[view] ?? layouts.balanced;
     setDashboardView(view);
@@ -383,7 +381,7 @@ export function DashboardPage() {
         icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Performance-Übersicht"
-        description="Ergebnis, Risiko und Prozessqualität aus derselben gefilterten Trade-Population."
+        description="Dein Konto im Blick. Die Auswertung darunter folgt dem gewählten Zeitraum."
         actions={
           <>
             <select
@@ -395,7 +393,7 @@ export function DashboardPage() {
             >
               <option value="balanced">Ausgewogen</option>
               <option value="performance">Performance</option>
-              <option value="process">Prozessfokus</option>
+              <option value="costs">Kosten & Risiko</option>
             </select>
             <div className="segmented">
               {(["all", "month", "quarter", "year"] as const).map((preset) => (
@@ -423,24 +421,6 @@ export function DashboardPage() {
           </>
         }
       />
-      {onboardingIncomplete && !onboardingDismissed && (
-        <OnboardingChecklist
-          steps={onboardingSteps}
-          collapsed={onboardingCollapsed}
-          onCollapsedChange={setOnboardingCollapsed}
-          onDismiss={() => setOnboardingDismissed(true)}
-        />
-      )}
-      {onboardingIncomplete && onboardingDismissed && (
-        <Button
-          className="onboarding-restore"
-          size="sm"
-          variant="ghost"
-          onClick={() => setOnboardingDismissed(false)}
-        >
-          Erste Schritte einblenden
-        </Button>
-      )}
       {metrics.totalTrades > 0 && (
         <DndContext
           sensors={sensors}
@@ -463,32 +443,7 @@ export function DashboardPage() {
       )}
 
       <div className="grid dashboard-main-grid" style={{ marginBottom: 14 }}>
-        <Card>
-          <CardHeader
-            title="PnL-Kurve"
-            subtitle="Kumuliertes Netto-P&L; ohne Startbalance keine Equity-Kurve"
-            action={<Badge className="primary">Kumuliert</Badge>}
-          />
-          <CardContent>
-            {metrics.equityCurve.length ? (
-              <BaseChart option={equityOption(metrics)} height={295} />
-            ) : (
-              <EmptyState
-                icon={TrendingUp}
-                title="Noch keine Performance-Kurve"
-                description="Sobald du geschlossene Trades mit Ergebnis erfasst, erscheint hier dein kumulierter Verlauf."
-                action={
-                  <Button
-                    variant="primary"
-                    onClick={() => setQuickTradeOpen(true)}
-                  >
-                    <Plus size={14} /> Ersten Trade erfassen
-                  </Button>
-                }
-              />
-            )}
-          </CardContent>
-        </Card>
+        <AccountCapitalChart accountId={selectedAccountId!} />
         <Card>
           <CardHeader
             title="Performance-Kalender"
@@ -741,9 +696,27 @@ export function DashboardPage() {
         className="muted"
         style={{ marginTop: 13, fontSize: 9, textAlign: "right" }}
       >
-        Zuletzt berechnet: {dateTime(generatedAt)} · Alle Karten verwenden
-        denselben Zeitraum.
+        Zuletzt berechnet: {dateTime(generatedAt)} · Kennzahlen folgen dem
+        Filter. Konto-P&L und Kontokapital zeigen immer den gesamten Verlauf.
       </div>
+      {onboardingIncomplete && !onboardingDismissed && (
+        <OnboardingChecklist
+          steps={onboardingSteps}
+          collapsed={onboardingCollapsed}
+          onCollapsedChange={setOnboardingCollapsed}
+          onDismiss={() => setOnboardingDismissed(true)}
+        />
+      )}
+      {onboardingIncomplete && onboardingDismissed && (
+        <Button
+          className="onboarding-restore"
+          size="sm"
+          variant="ghost"
+          onClick={() => setOnboardingDismissed(false)}
+        >
+          Erste Schritte einblenden
+        </Button>
+      )}
       <DashboardFilterDialog open={filterOpen} onOpenChange={setFilterOpen} />
     </div>
   );
@@ -786,8 +759,8 @@ function DashboardFilterDialog({
                 id="dashboard-filter-description"
                 className="dialog-description"
               >
-                Alle Kennzahlen, Charts und Kalenderkarten verwenden dieselbe
-                Trade-Population.
+                Kennzahlen und Kalender folgen diesen Filtern. Konto-P&L und
+                Kapitalentwicklung zeigen weiterhin das gesamte Konto.
               </Dialog.Description>
             </div>
             <Dialog.Close asChild>
@@ -1140,55 +1113,6 @@ function Stat({
   );
 }
 
-function equityOption(metrics: DashboardMetrics): EChartsOption {
-  return {
-    tooltip: { ...tooltip, trigger: "axis" },
-    grid: chartGrid,
-    xAxis: {
-      type: "category",
-      data: metrics.equityCurve.map((point) =>
-        new Date(point.date).toLocaleDateString("de-DE", {
-          day: "2-digit",
-          month: "2-digit",
-        }),
-      ),
-      axisLabel,
-      axisLine,
-      axisTick: { show: false },
-    },
-    yAxis: {
-      type: "value",
-      axisLabel: {
-        ...axisLabel,
-        formatter: (value: number) => `${number.format(value / 100)} €`,
-      },
-      splitLine,
-      axisLine: { show: false },
-    },
-    series: [
-      {
-        type: "line",
-        data: metrics.equityCurve.map((point) => point.cumulativePnlMinor),
-        smooth: 0.28,
-        showSymbol: false,
-        lineStyle: { color: "#5b68ff", width: 2 },
-        areaStyle: {
-          color: {
-            type: "linear",
-            x: 0,
-            y: 0,
-            x2: 0,
-            y2: 1,
-            colorStops: [
-              { offset: 0, color: "rgba(84,91,255,.48)" },
-              { offset: 1, color: "rgba(84,91,255,.015)" },
-            ],
-          },
-        },
-      },
-    ],
-  };
-}
 function donutOption(metrics: DashboardMetrics): EChartsOption {
   return {
     tooltip,

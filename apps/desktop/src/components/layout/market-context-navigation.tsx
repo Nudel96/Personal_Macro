@@ -6,6 +6,7 @@ import {
   CirclePercent,
   Landmark,
   Grid3X3,
+  Globe,
   Scale,
   Sparkles,
   type LucideIcon,
@@ -21,6 +22,13 @@ type MarketContextItem = {
 };
 
 const analysisItems: MarketContextItem[] = [
+  {
+    label: "Weltatlas",
+    description: "Länder & lange Entwicklungen",
+    path: "/world-atlas",
+    icon: Globe,
+    accent: "violet",
+  },
   {
     label: "Macro Heatmap",
     description: "Pair-Matrix",
@@ -72,6 +80,13 @@ const dataItems: MarketContextItem[] = [
     path: "/rates",
     icon: CirclePercent,
     accent: "amber",
+  },
+  {
+    label: "Staatsanleihen & Yields",
+    description: "Länder, Renditen & Zinskurven",
+    path: "/government-bonds",
+    icon: Landmark,
+    accent: "cyan",
   },
   {
     label: "Zentralbank-Briefings",
@@ -145,10 +160,10 @@ export function MarketContextNavigation() {
         </span>
         <span
           className="market-context-nav-count"
-          title="8 verknüpfte Ansichten"
+          title={`${analysisItems.length + dataItems.length} verknüpfte Ansichten`}
           aria-hidden="true"
         >
-          8
+          {analysisItems.length + dataItems.length}
         </span>
       </div>
 
@@ -160,7 +175,7 @@ export function MarketContextNavigation() {
 
       <div className="market-context-nav-divider" aria-hidden="true">
         <span>Datenmodule</span>
-        <small>6 Quellenmodule</small>
+        <small>{dataItems.length} Quellenmodule</small>
       </div>
 
       <div className="market-context-nav-modules" aria-label="Datenmodule">

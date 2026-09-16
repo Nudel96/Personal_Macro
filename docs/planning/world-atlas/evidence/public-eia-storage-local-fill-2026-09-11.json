@@ -1,0 +1,19 @@
+{
+  "checkedAt": "2026-09-11T04:55:11.130670+00:00",
+  "status": "passed",
+  "profiles": 5,
+  "originalValues": 69,
+  "comparison": "Every original decimal string and all profile metadata equal the independent XML oracle.",
+  "provenance": {
+    "sourceId": "eia-battery-storage",
+    "retrievedAt": "2026-09-11T04:52:31.998806700+00:00",
+    "publishedAt": "2026-03-17",
+    "url": "https://www.eia.gov/analysis/studies/electricity/batterystorage/xls/2024%20Battery%20Storage%20Figures.xlsx",
+    "documentationUrl": "https://www.eia.gov/analysis/studies/electricity/batterystorage/",
+    "sha256": "4d280371504ce00f5e9477c49848c23106e6baebdf9a44da31bc3ac45f960f91",
+    "recipe": "eia-battery-original-2023-final-20260317-v1",
+    "sourceRows": 30,
+    "numericValues": 69,
+    "areaCount": 1
+  }
+}

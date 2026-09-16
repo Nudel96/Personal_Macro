@@ -1,0 +1,102 @@
+.atlas-context-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+.atlas-context-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 20px;
+  color: var(--text-2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+.atlas-context-link:hover {
+  border-color: var(--atlas-blue);
+}
+.atlas-context-link:focus-visible {
+  outline: 2px solid var(--atlas-blue);
+  outline-offset: 4px;
+}
+.atlas-context-link > svg,
+.atlas-context-icon {
+  flex-shrink: 0;
+  color: var(--atlas-blue);
+}
+.atlas-context-copy {
+  display: flex;
+  flex: 1;
+  min-width: 0;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+.atlas-context-copy strong {
+  color: var(--text);
+  font-size: 15px;
+}
+.atlas-context-copy small,
+.atlas-context-footnote {
+  font-size: 12px;
+  color: var(--text-3);
+}
+.atlas-context-copy .atlas-context-missing {
+  color: var(--warning);
+  font-size: 12px;
+}
+.atlas-context-boundary {
+  padding-left: 14px;
+  border-left: 2px solid var(--border);
+  color: var(--text-2);
+  font-size: 13px;
+  line-height: 1.7;
+}
+.atlas-context-footnote {
+  line-height: 1.7;
+  margin-top: 16px;
+}
+.atlas-research-finding {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  color: var(--text-2);
+  padding: 16px;
+  font-size: 13px;
+  line-height: 1.7;
+}
+.atlas-research-finding strong {
+  color: var(--text);
+}
+.atlas-research-finding p {
+  margin-bottom: 0;
+}
+.atlas-research-sources {
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.atlas-research-sources section + section {
+  margin-top: 18px;
+}
+.atlas-research-sources a {
+  color: var(--atlas-blue);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.atlas-research-sources a:focus-visible {
+  outline: 2px solid var(--atlas-blue);
+  outline-offset: 4px;
+}
+@media (max-width: 1250px) {
+  .atlas-context-links {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

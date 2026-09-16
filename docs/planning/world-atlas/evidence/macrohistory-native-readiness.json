@@ -1,0 +1,102 @@
+{
+  "status": "passed",
+  "first": {
+    "phase": "first",
+    "status": "passed",
+    "runAt": "2026-09-09T09:11:14.934Z",
+    "identifier": "com.personal-macro.atlas-jst-20260909",
+    "nativeProfilesRead": 21,
+    "availableCountries": 18,
+    "unsupported": [
+      "m49:356",
+      "m49:156",
+      "world"
+    ],
+    "sourceSha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+    "sourceYears": [
+      1870,
+      2020
+    ],
+    "observations": 111546,
+    "jobs": 1,
+    "atlasMigrations": 13,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "b1bd794dff80992619c0e729c8d407c87c3f712076be9aece7b04be069bc0d85",
+    "unchangedAfterRestart": false
+  },
+  "restart": {
+    "phase": "restart",
+    "status": "passed",
+    "runAt": "2026-09-09T09:16:07.920Z",
+    "identifier": "com.personal-macro.atlas-jst-20260909",
+    "nativeProfilesRead": 21,
+    "availableCountries": 18,
+    "unsupported": [
+      "m49:356",
+      "m49:156",
+      "world"
+    ],
+    "sourceSha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+    "sourceYears": [
+      1870,
+      2020
+    ],
+    "observations": 111546,
+    "jobs": 0,
+    "atlasMigrations": 13,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "b1bd794dff80992619c0e729c8d407c87c3f712076be9aece7b04be069bc0d85",
+    "unchangedAfterRestart": true
+  },
+  "cacheAudit": {
+    "file": "macrohistory-native-cache.json",
+    "sha256": "d8a96581d0762ad8cdc3972f182f2323c97363404651222a233b7213c50689e9",
+    "counts": {
+      "rawNumbers": 111546,
+      "rawMissing": 32508,
+      "rawZeros": 8190,
+      "derivedNumbers": 45854,
+      "derivedMissing": 8506,
+      "nominalReturns": 8818,
+      "sourceInterpolationFlags": 81,
+      "crisisStarts": 88,
+      "comparedNumericCells": 166218,
+      "exactDecimalMatches": 143771
+    },
+    "maximumRelativeRepresentationDifference": "2.6779897315100E-14"
+  },
+  "proofComparison": "All 21 persisted command snapshots and the saved note/image are exactly equal after independent JSON parsing. No new source job on restart.",
+  "protocolObservation": "The extra get_settings JSON parse can shift individual floating-point values by a few representation units. The runtime harness allows at most four machine-epsilon units; the independent persisted-proof comparison remains exact.",
+  "recordedBrowserReview": {
+    "reviewedAt": "2026-09-09",
+    "method": "Separately observed via CUA; not rerun by this Python checker",
+    "surface": "Actual WorldAtlasPage with public snapshots from the native command run",
+    "viewports": [
+      [
+        1440,
+        900
+      ],
+      [
+        1024,
+        720
+      ]
+    ],
+    "horizontalOverflow": false,
+    "checked": [
+      "Credit comparison and detail",
+      "Keyboard opening of equity return",
+      "Optional numbers/table and real/nominal switch",
+      "Unclipped German 1923 nominal return",
+      "Main picture survives unsupported India comparison",
+      "India has an explicit empty state",
+      "JST coverage card reports locally available data"
+    ],
+    "consoleWarnings": 0,
+    "consoleErrors": 0
+  },
+  "limits": [
+    "Full native click regression remains open; native source commands, persistence and chart capture were exercised through an isolated app harness.",
+    "Existing unrelated EODHD intraday entitlement and central-bank update-busy warnings recur in the native background.",
+    "JST ends in 2020 and contains 18 countries; no India, China or World profile and no automatic cycle/fair-value inference."
+  ]
+}

@@ -1,0 +1,5340 @@
+{
+  "imf-gdd-pvd_ls": {
+    "code": "PVD_LS",
+    "metadata": {
+      "label": "Private debt, loans and debt securities",
+      "description": "Total stock of loans and debt securities issued by households and nonfinancial corporations as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:28"
+    },
+    "areas": [
+      {
+        "code": "AFG",
+        "label": "Afghanistan",
+        "geographyId": "m49:004",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ALB",
+        "label": "Albania",
+        "geographyId": "m49:008",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARE",
+        "label": "United Arab Emirates",
+        "geographyId": "m49:784",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARG",
+        "label": "Argentina",
+        "geographyId": "m49:032",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AZE",
+        "label": "Azerbaijan",
+        "geographyId": "m49:031",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BDI",
+        "label": "Burundi",
+        "geographyId": "m49:108",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BEN",
+        "label": "Benin",
+        "geographyId": "m49:204",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BFA",
+        "label": "Burkina Faso",
+        "geographyId": "m49:854",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGD",
+        "label": "Bangladesh",
+        "geographyId": "m49:050",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BHR",
+        "label": "Bahrain",
+        "geographyId": "m49:048",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BHS",
+        "label": "Bahamas, The",
+        "geographyId": "m49:044",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BRB",
+        "label": "Barbados",
+        "geographyId": "m49:052",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BTN",
+        "label": "Bhutan",
+        "geographyId": "m49:064",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BWA",
+        "label": "Botswana",
+        "geographyId": "m49:072",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAF",
+        "label": "Central African Republic",
+        "geographyId": "m49:140",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHN",
+        "label": "China, People's Republic of",
+        "geographyId": "m49:156",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CIV",
+        "label": "Côte d'Ivoire",
+        "geographyId": "m49:384",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CMR",
+        "label": "Cameroon",
+        "geographyId": "m49:120",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COD",
+        "label": "Congo, Dem. Rep. of the",
+        "geographyId": "m49:180",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COG",
+        "label": "Congo, Republic of ",
+        "geographyId": "m49:178",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COM",
+        "label": "Comoros",
+        "geographyId": "m49:174",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CPV",
+        "label": "Cabo Verde",
+        "geographyId": "m49:132",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CRI",
+        "label": "Costa Rica",
+        "geographyId": "m49:188",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DJI",
+        "label": "Djibouti",
+        "geographyId": "m49:262",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DMA",
+        "label": "Dominica",
+        "geographyId": "m49:212",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DOM",
+        "label": "Dominican Republic",
+        "geographyId": "m49:214",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DZA",
+        "label": "Algeria",
+        "geographyId": "m49:012",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ECU",
+        "label": "Ecuador",
+        "geographyId": "m49:218",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "EGY",
+        "label": "Egypt",
+        "geographyId": "m49:818",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ERI",
+        "label": "Eritrea",
+        "geographyId": "m49:232",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ETH",
+        "label": "Ethiopia",
+        "geographyId": "m49:231",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FSM",
+        "label": "Micronesia, Fed. States of",
+        "geographyId": "m49:583",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GEO",
+        "label": "Georgia",
+        "geographyId": "m49:268",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GHA",
+        "label": "Ghana",
+        "geographyId": "m49:288",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GIN",
+        "label": "Guinea",
+        "geographyId": "m49:324",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GMB",
+        "label": "Gambia, The",
+        "geographyId": "m49:270",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GNB",
+        "label": "Guinea-Bissau",
+        "geographyId": "m49:624",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GRD",
+        "label": "Grenada",
+        "geographyId": "m49:308",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GTM",
+        "label": "Guatemala",
+        "geographyId": "m49:320",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GUY",
+        "label": "Guyana",
+        "geographyId": "m49:328",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HKG",
+        "label": "Hong Kong SAR",
+        "geographyId": "m49:344",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HND",
+        "label": "Honduras",
+        "geographyId": "m49:340",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HTI",
+        "label": "Haiti",
+        "geographyId": "m49:332",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IDN",
+        "label": "Indonesia",
+        "geographyId": "m49:360",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IND",
+        "label": "India",
+        "geographyId": "m49:356",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IRN",
+        "label": "Iran",
+        "geographyId": "m49:364",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IRQ",
+        "label": "Iraq",
+        "geographyId": "m49:368",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JAM",
+        "label": "Jamaica",
+        "geographyId": "m49:388",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KAZ",
+        "label": "Kazakhstan",
+        "geographyId": "m49:398",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KEN",
+        "label": "Kenya",
+        "geographyId": "m49:404",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KGZ",
+        "label": "Kyrgyz Republic",
+        "geographyId": "m49:417",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KHM",
+        "label": "Cambodia",
+        "geographyId": "m49:116",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KWT",
+        "label": "Kuwait",
+        "geographyId": "m49:414",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LAO",
+        "label": "Lao P.D.R.",
+        "geographyId": "m49:418",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LBN",
+        "label": "Lebanon",
+        "geographyId": "m49:422",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LBR",
+        "label": "Liberia",
+        "geographyId": "m49:430",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LCA",
+        "label": "Saint Lucia",
+        "geographyId": "m49:662",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LKA",
+        "label": "Sri Lanka",
+        "geographyId": "m49:144",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LSO",
+        "label": "Lesotho",
+        "geographyId": "m49:426",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MAR",
+        "label": "Morocco",
+        "geographyId": "m49:504",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MDA",
+        "label": "Moldova",
+        "geographyId": "m49:498",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MDG",
+        "label": "Madagascar",
+        "geographyId": "m49:450",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MDV",
+        "label": "Maldives",
+        "geographyId": "m49:462",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MKD",
+        "label": "North Macedonia ",
+        "geographyId": "m49:807",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MLI",
+        "label": "Mali",
+        "geographyId": "m49:466",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MMR",
+        "label": "Myanmar",
+        "geographyId": "m49:104",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MNG",
+        "label": "Mongolia",
+        "geographyId": "m49:496",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MOZ",
+        "label": "Mozambique",
+        "geographyId": "m49:508",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MRT",
+        "label": "Mauritania",
+        "geographyId": "m49:478",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MWI",
+        "label": "Malawi",
+        "geographyId": "m49:454",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MYS",
+        "label": "Malaysia",
+        "geographyId": "m49:458",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NER",
+        "label": "Niger",
+        "geographyId": "m49:562",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NGA",
+        "label": "Nigeria",
+        "geographyId": "m49:566",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NIC",
+        "label": "Nicaragua",
+        "geographyId": "m49:558",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NPL",
+        "label": "Nepal",
+        "geographyId": "m49:524",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NZL",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "OMN",
+        "label": "Oman",
+        "geographyId": "m49:512",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PAK",
+        "label": "Pakistan",
+        "geographyId": "m49:586",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PER",
+        "label": "Peru",
+        "geographyId": "m49:604",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PHL",
+        "label": "Philippines",
+        "geographyId": "m49:608",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PNG",
+        "label": "Papua New Guinea",
+        "geographyId": "m49:598",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRY",
+        "label": "Paraguay",
+        "geographyId": "m49:600",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "QAT",
+        "label": "Qatar",
+        "geographyId": "m49:634",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "RWA",
+        "label": "Rwanda",
+        "geographyId": "m49:646",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SAU",
+        "label": "Saudi Arabia",
+        "geographyId": "m49:682",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SDN",
+        "label": "Sudan",
+        "geographyId": "m49:729",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SEN",
+        "label": "Senegal",
+        "geographyId": "m49:686",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SGP",
+        "label": "Singapore",
+        "geographyId": "m49:702",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLB",
+        "label": "Solomon Islands",
+        "geographyId": "m49:090",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLE",
+        "label": "Sierra Leone",
+        "geographyId": "m49:694",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLV",
+        "label": "El Salvador",
+        "geographyId": "m49:222",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SRB",
+        "label": "Serbia",
+        "geographyId": "m49:688",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SSD",
+        "label": "South Sudan, Republic of",
+        "geographyId": "m49:728",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "STP",
+        "label": "São Tomé and Príncipe",
+        "geographyId": "m49:678",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SUR",
+        "label": "Suriname",
+        "geographyId": "m49:740",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TCD",
+        "label": "Chad",
+        "geographyId": "m49:148",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TGO",
+        "label": "Togo",
+        "geographyId": "m49:768",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "THA",
+        "label": "Thailand",
+        "geographyId": "m49:764",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TJK",
+        "label": "Tajikistan",
+        "geographyId": "m49:762",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TLS",
+        "label": "Timor-Leste",
+        "geographyId": "m49:626",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TON",
+        "label": "Tonga",
+        "geographyId": "m49:776",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TTO",
+        "label": "Trinidad and Tobago",
+        "geographyId": "m49:780",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TZA",
+        "label": "Tanzania",
+        "geographyId": "m49:834",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "UGA",
+        "label": "Uganda",
+        "geographyId": "m49:800",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "UKR",
+        "label": "Ukraine",
+        "geographyId": "m49:804",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "URY",
+        "label": "Uruguay",
+        "geographyId": "m49:858",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VCT",
+        "label": "Saint Vincent and the Grenadines",
+        "geographyId": "m49:670",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VEN",
+        "label": "Venezuela",
+        "geographyId": "m49:862",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VNM",
+        "label": "Vietnam",
+        "geographyId": "m49:704",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VUT",
+        "label": "Vanuatu",
+        "geographyId": "m49:548",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "WSM",
+        "label": "Samoa",
+        "geographyId": "m49:882",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "YEM",
+        "label": "Yemen",
+        "geographyId": "m49:887",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ZAF",
+        "label": "South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ZMB",
+        "label": "Zambia",
+        "geographyId": "m49:894",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ZWE",
+        "label": "Zimbabwe",
+        "geographyId": "m49:716",
+        "seriesTitles": {
+          "PVD_LS": "Private debt, loans and debt securities"
+        }
+      }
+    ]
+  },
+  "imf-gdd-hh_ls": {
+    "code": "HH_LS",
+    "metadata": {
+      "label": "Household debt, loans and debt securities",
+      "description": "Total stock of loans and debt securities issued by households as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:28"
+    },
+    "areas": [
+      {
+        "code": "AFG",
+        "label": "Afghanistan",
+        "geographyId": "m49:004",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ALB",
+        "label": "Albania",
+        "geographyId": "m49:008",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARE",
+        "label": "United Arab Emirates",
+        "geographyId": "m49:784",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARG",
+        "label": "Argentina",
+        "geographyId": "m49:032",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGD",
+        "label": "Bangladesh",
+        "geographyId": "m49:050",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAF",
+        "label": "Central African Republic",
+        "geographyId": "m49:140",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHN",
+        "label": "China, People's Republic of",
+        "geographyId": "m49:156",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CMR",
+        "label": "Cameroon",
+        "geographyId": "m49:120",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COG",
+        "label": "Congo, Republic of ",
+        "geographyId": "m49:178",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CRI",
+        "label": "Costa Rica",
+        "geographyId": "m49:188",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HKG",
+        "label": "Hong Kong SAR",
+        "geographyId": "m49:344",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HND",
+        "label": "Honduras",
+        "geographyId": "m49:340",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IDN",
+        "label": "Indonesia",
+        "geographyId": "m49:360",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IND",
+        "label": "India",
+        "geographyId": "m49:356",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KAZ",
+        "label": "Kazakhstan",
+        "geographyId": "m49:398",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LKA",
+        "label": "Sri Lanka",
+        "geographyId": "m49:144",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LSO",
+        "label": "Lesotho",
+        "geographyId": "m49:426",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MAR",
+        "label": "Morocco",
+        "geographyId": "m49:504",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MKD",
+        "label": "North Macedonia ",
+        "geographyId": "m49:807",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MMR",
+        "label": "Myanmar",
+        "geographyId": "m49:104",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MYS",
+        "label": "Malaysia",
+        "geographyId": "m49:458",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NIC",
+        "label": "Nicaragua",
+        "geographyId": "m49:558",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NPL",
+        "label": "Nepal",
+        "geographyId": "m49:524",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NZL",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PAK",
+        "label": "Pakistan",
+        "geographyId": "m49:586",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PER",
+        "label": "Peru",
+        "geographyId": "m49:604",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRY",
+        "label": "Paraguay",
+        "geographyId": "m49:600",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SAU",
+        "label": "Saudi Arabia",
+        "geographyId": "m49:682",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SGP",
+        "label": "Singapore",
+        "geographyId": "m49:702",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLB",
+        "label": "Solomon Islands",
+        "geographyId": "m49:090",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLE",
+        "label": "Sierra Leone",
+        "geographyId": "m49:694",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLV",
+        "label": "El Salvador",
+        "geographyId": "m49:222",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "STP",
+        "label": "São Tomé and Príncipe",
+        "geographyId": "m49:678",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SUR",
+        "label": "Suriname",
+        "geographyId": "m49:740",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TCD",
+        "label": "Chad",
+        "geographyId": "m49:148",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "THA",
+        "label": "Thailand",
+        "geographyId": "m49:764",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TJK",
+        "label": "Tajikistan",
+        "geographyId": "m49:762",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "UKR",
+        "label": "Ukraine",
+        "geographyId": "m49:804",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VUT",
+        "label": "Vanuatu",
+        "geographyId": "m49:548",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "WSM",
+        "label": "Samoa",
+        "geographyId": "m49:882",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ZAF",
+        "label": "South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "HH_LS": "Household debt, loans and debt securities"
+        }
+      }
+    ]
+  },
+  "imf-gdd-nfc_ls": {
+    "code": "NFC_LS",
+    "metadata": {
+      "label": "Nonfinancial corporate debt, loans and debt securities",
+      "description": "Total stock of loans and debt securities issued by nonfinancial corporations as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:28"
+    },
+    "areas": [
+      {
+        "code": "AFG",
+        "label": "Afghanistan",
+        "geographyId": "m49:004",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ALB",
+        "label": "Albania",
+        "geographyId": "m49:008",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARE",
+        "label": "United Arab Emirates",
+        "geographyId": "m49:784",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ARG",
+        "label": "Argentina",
+        "geographyId": "m49:032",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUS",
+        "label": "Australia",
+        "geographyId": "m49:036",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGD",
+        "label": "Bangladesh",
+        "geographyId": "m49:050",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAF",
+        "label": "Central African Republic",
+        "geographyId": "m49:140",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CHN",
+        "label": "China, People's Republic of",
+        "geographyId": "m49:156",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CMR",
+        "label": "Cameroon",
+        "geographyId": "m49:120",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COG",
+        "label": "Congo, Republic of ",
+        "geographyId": "m49:178",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CRI",
+        "label": "Costa Rica",
+        "geographyId": "m49:188",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HKG",
+        "label": "Hong Kong SAR",
+        "geographyId": "m49:344",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HND",
+        "label": "Honduras",
+        "geographyId": "m49:340",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IDN",
+        "label": "Indonesia",
+        "geographyId": "m49:360",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IND",
+        "label": "India",
+        "geographyId": "m49:356",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KAZ",
+        "label": "Kazakhstan",
+        "geographyId": "m49:398",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LKA",
+        "label": "Sri Lanka",
+        "geographyId": "m49:144",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LSO",
+        "label": "Lesotho",
+        "geographyId": "m49:426",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MAR",
+        "label": "Morocco",
+        "geographyId": "m49:504",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MKD",
+        "label": "North Macedonia ",
+        "geographyId": "m49:807",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MMR",
+        "label": "Myanmar",
+        "geographyId": "m49:104",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "MYS",
+        "label": "Malaysia",
+        "geographyId": "m49:458",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NIC",
+        "label": "Nicaragua",
+        "geographyId": "m49:558",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NPL",
+        "label": "Nepal",
+        "geographyId": "m49:524",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "NZL",
+        "label": "New Zealand",
+        "geographyId": "m49:554",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PAK",
+        "label": "Pakistan",
+        "geographyId": "m49:586",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PER",
+        "label": "Peru",
+        "geographyId": "m49:604",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "PRY",
+        "label": "Paraguay",
+        "geographyId": "m49:600",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SAU",
+        "label": "Saudi Arabia",
+        "geographyId": "m49:682",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SGP",
+        "label": "Singapore",
+        "geographyId": "m49:702",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLB",
+        "label": "Solomon Islands",
+        "geographyId": "m49:090",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLE",
+        "label": "Sierra Leone",
+        "geographyId": "m49:694",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SLV",
+        "label": "El Salvador",
+        "geographyId": "m49:222",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "STP",
+        "label": "São Tomé and Príncipe",
+        "geographyId": "m49:678",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SUR",
+        "label": "Suriname",
+        "geographyId": "m49:740",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TCD",
+        "label": "Chad",
+        "geographyId": "m49:148",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "THA",
+        "label": "Thailand",
+        "geographyId": "m49:764",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TJK",
+        "label": "Tajikistan",
+        "geographyId": "m49:762",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "UKR",
+        "label": "Ukraine",
+        "geographyId": "m49:804",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "VUT",
+        "label": "Vanuatu",
+        "geographyId": "m49:548",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "WSM",
+        "label": "Samoa",
+        "geographyId": "m49:882",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      },
+      {
+        "code": "ZAF",
+        "label": "South Africa",
+        "geographyId": "m49:710",
+        "seriesTitles": {
+          "NFC_LS": "Nonfinancial corporate debt, loans and debt securities"
+        }
+      }
+    ]
+  },
+  "imf-gdd-privatedebt_all": {
+    "code": "Privatedebt_all",
+    "metadata": {
+      "label": "Private debt, all instruments",
+      "description": "Total stock of debt liabilities issued by households and nonfinancial corporations, including all debt instruments, as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:27"
+    },
+    "areas": [
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "Privatedebt_all": "Private debt, all instruments"
+        }
+      }
+    ]
+  },
+  "imf-gdd-hh_all": {
+    "code": "HH_ALL",
+    "metadata": {
+      "label": "Household debt, all instruments",
+      "description": "Total stock of debt liabilities issued by households, including all debt instruments, as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:27"
+    },
+    "areas": [
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "HH_ALL": "Household debt, all instruments"
+        }
+      }
+    ]
+  },
+  "imf-gdd-nfc_all": {
+    "code": "NFC_ALL",
+    "metadata": {
+      "label": "Nonfinancial corporate debt, all instruments",
+      "description": "Total stock of debt liabilities issued by nonfinancial corporations, including all debt instruments, as a share of GDP.",
+      "source": "Global Debt Database (Sep 2025)",
+      "unit": "Percent of GDP",
+      "dataset": "GDD",
+      "last-modified": "2025-09-16 01:34:27"
+    },
+    "areas": [
+      {
+        "code": "AUT",
+        "label": "Austria",
+        "geographyId": "m49:040",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "BEL",
+        "label": "Belgium",
+        "geographyId": "m49:056",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "BGR",
+        "label": "Bulgaria",
+        "geographyId": "m49:100",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "BRA",
+        "label": "Brazil",
+        "geographyId": "m49:076",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "CAN",
+        "label": "Canada",
+        "geographyId": "m49:124",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "CHE",
+        "label": "Switzerland",
+        "geographyId": "m49:756",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "CHL",
+        "label": "Chile",
+        "geographyId": "m49:152",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "COL",
+        "label": "Colombia",
+        "geographyId": "m49:170",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "CYP",
+        "label": "Cyprus",
+        "geographyId": "m49:196",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "CZE",
+        "label": "Czech Republic",
+        "geographyId": "m49:203",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "DEU",
+        "label": "Germany",
+        "geographyId": "m49:276",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "DNK",
+        "label": "Denmark",
+        "geographyId": "m49:208",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "ESP",
+        "label": "Spain",
+        "geographyId": "m49:724",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "EST",
+        "label": "Estonia",
+        "geographyId": "m49:233",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "FIN",
+        "label": "Finland",
+        "geographyId": "m49:246",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "FRA",
+        "label": "France",
+        "geographyId": "m49:250",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "GBR",
+        "label": "United Kingdom",
+        "geographyId": "m49:826",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "GRC",
+        "label": "Greece",
+        "geographyId": "m49:300",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "HRV",
+        "label": "Croatia",
+        "geographyId": "m49:191",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "HUN",
+        "label": "Hungary",
+        "geographyId": "m49:348",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "IRL",
+        "label": "Ireland",
+        "geographyId": "m49:372",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "ISL",
+        "label": "Iceland",
+        "geographyId": "m49:352",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "ISR",
+        "label": "Israel",
+        "geographyId": "m49:376",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "ITA",
+        "label": "Italy",
+        "geographyId": "m49:380",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "JOR",
+        "label": "Jordan",
+        "geographyId": "m49:400",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "JPN",
+        "label": "Japan",
+        "geographyId": "m49:392",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "KOR",
+        "label": "Korea, Republic of",
+        "geographyId": "m49:410",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "LTU",
+        "label": "Lithuania",
+        "geographyId": "m49:440",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "LUX",
+        "label": "Luxembourg",
+        "geographyId": "m49:442",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "LVA",
+        "label": "Latvia",
+        "geographyId": "m49:428",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "MEX",
+        "label": "Mexico",
+        "geographyId": "m49:484",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "MLT",
+        "label": "Malta",
+        "geographyId": "m49:470",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "MUS",
+        "label": "Mauritius",
+        "geographyId": "m49:480",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "NLD",
+        "label": "Netherlands",
+        "geographyId": "m49:528",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "NOR",
+        "label": "Norway",
+        "geographyId": "m49:578",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "POL",
+        "label": "Poland",
+        "geographyId": "m49:616",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "PRT",
+        "label": "Portugal",
+        "geographyId": "m49:620",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "ROU",
+        "label": "Romania",
+        "geographyId": "m49:642",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "RUS",
+        "label": "Russian Federation",
+        "geographyId": "m49:643",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "SVK",
+        "label": "Slovak Republic",
+        "geographyId": "m49:703",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "SVN",
+        "label": "Slovenia",
+        "geographyId": "m49:705",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "SWE",
+        "label": "Sweden",
+        "geographyId": "m49:752",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "TUR",
+        "label": "Türkiye, Republic of",
+        "geographyId": "m49:792",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      },
+      {
+        "code": "USA",
+        "label": "United States",
+        "geographyId": "m49:840",
+        "seriesTitles": {
+          "NFC_ALL": "Nonfinancial corporate debt, all instruments"
+        }
+      }
+    ]
+  },
+  "ilo-real-wage-growth": {
+    "sheetNames": ["Real wage growth", "Nominal wage"],
+    "header": [
+      "id",
+      "VLOOKUP2",
+      "Count",
+      "SEQUENCE",
+      "country_name",
+      "ISO",
+      "Region",
+      "Subregion - broad",
+      "Subregion - detailed",
+      "Income group",
+      "IMF",
+      2000,
+      2001,
+      2002,
+      2003,
+      2004,
+      2005,
+      2006,
+      2007,
+      2008,
+      2009,
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "rows": [
+      {
+        "row": 2,
+        "code": "DZA",
+        "label": "Algeria"
+      },
+      {
+        "row": 3,
+        "code": "AGO",
+        "label": "Angola"
+      },
+      {
+        "row": 4,
+        "code": "BEN",
+        "label": "Benin"
+      },
+      {
+        "row": 5,
+        "code": "BWA",
+        "label": "Botswana"
+      },
+      {
+        "row": 6,
+        "code": "BFA",
+        "label": "Burkina Faso"
+      },
+      {
+        "row": 7,
+        "code": "BDI",
+        "label": "Burundi"
+      },
+      {
+        "row": 8,
+        "code": "CAF",
+        "label": "Central African Republic"
+      },
+      {
+        "row": 9,
+        "code": "TCD",
+        "label": "Chad"
+      },
+      {
+        "row": 10,
+        "code": "COM",
+        "label": "Comoros"
+      },
+      {
+        "row": 11,
+        "code": "COG",
+        "label": "Congo"
+      },
+      {
+        "row": 12,
+        "code": "CIV",
+        "label": "Côte d'Ivoire"
+      },
+      {
+        "row": 13,
+        "code": "COD",
+        "label": "Democratic Republic of the Congo"
+      },
+      {
+        "row": 14,
+        "code": "EGY",
+        "label": "Egypt"
+      },
+      {
+        "row": 15,
+        "code": "ETH",
+        "label": "Ethiopia"
+      },
+      {
+        "row": 16,
+        "code": "GAB",
+        "label": "Gabon"
+      },
+      {
+        "row": 17,
+        "code": "GMB",
+        "label": "Gambia, the"
+      },
+      {
+        "row": 18,
+        "code": "GHA",
+        "label": "Ghana"
+      },
+      {
+        "row": 19,
+        "code": "GIN",
+        "label": "Guinea"
+      },
+      {
+        "row": 20,
+        "code": "KEN",
+        "label": "Kenya"
+      },
+      {
+        "row": 21,
+        "code": "LSO",
+        "label": "Lesotho"
+      },
+      {
+        "row": 22,
+        "code": "LBR",
+        "label": "Liberia"
+      },
+      {
+        "row": 23,
+        "code": "MDG",
+        "label": "Madagascar"
+      },
+      {
+        "row": 24,
+        "code": "MWI",
+        "label": "Malawi"
+      },
+      {
+        "row": 25,
+        "code": "MLI",
+        "label": "Mali"
+      },
+      {
+        "row": 26,
+        "code": "MUS",
+        "label": "Mauritius"
+      },
+      {
+        "row": 27,
+        "code": "MAR",
+        "label": "Morocco"
+      },
+      {
+        "row": 28,
+        "code": "MOZ",
+        "label": "Mozambique"
+      },
+      {
+        "row": 29,
+        "code": "NAM",
+        "label": "Namibia"
+      },
+      {
+        "row": 30,
+        "code": "NGA",
+        "label": "Nigeria"
+      },
+      {
+        "row": 31,
+        "code": "REU",
+        "label": "Reunion"
+      },
+      {
+        "row": 32,
+        "code": "RWA",
+        "label": "Rwanda"
+      },
+      {
+        "row": 33,
+        "code": "SEN",
+        "label": "Senegal"
+      },
+      {
+        "row": 34,
+        "code": "SYC",
+        "label": "Seychelles"
+      },
+      {
+        "row": 35,
+        "code": "ZAF",
+        "label": "South Africa"
+      },
+      {
+        "row": 36,
+        "code": "SWZ",
+        "label": "Eswatini"
+      },
+      {
+        "row": 37,
+        "code": "TZA",
+        "label": "Tanzania, United Republic of"
+      },
+      {
+        "row": 38,
+        "code": "TGO",
+        "label": "Togo"
+      },
+      {
+        "row": 39,
+        "code": "TUN",
+        "label": "Tunisia"
+      },
+      {
+        "row": 40,
+        "code": "UGA",
+        "label": "Uganda"
+      },
+      {
+        "row": 41,
+        "code": "ZMB",
+        "label": "Zambia"
+      },
+      {
+        "row": 42,
+        "code": "ZWE",
+        "label": "Zimbabwe"
+      },
+      {
+        "row": 43,
+        "code": "BGD",
+        "label": "Bangladesh"
+      },
+      {
+        "row": 44,
+        "code": "BTN",
+        "label": "Bhutan"
+      },
+      {
+        "row": 45,
+        "code": "BRN",
+        "label": "Brunei Darussalam"
+      },
+      {
+        "row": 46,
+        "code": "KHM",
+        "label": "Cambodia"
+      },
+      {
+        "row": 47,
+        "code": "CHN",
+        "label": "China"
+      },
+      {
+        "row": 48,
+        "code": "FJI",
+        "label": "Fiji"
+      },
+      {
+        "row": 49,
+        "code": "HKG",
+        "label": "Hong Kong (China)"
+      },
+      {
+        "row": 50,
+        "code": "IND",
+        "label": "India"
+      },
+      {
+        "row": 51,
+        "code": "IDN",
+        "label": "Indonesia"
+      },
+      {
+        "row": 52,
+        "code": "IRN",
+        "label": "Iran, Islamic Republic of"
+      },
+      {
+        "row": 53,
+        "code": "KOR",
+        "label": "Korea, Republic of"
+      },
+      {
+        "row": 54,
+        "code": "LAO",
+        "label": "Lao People's Democratic Republic"
+      },
+      {
+        "row": 55,
+        "code": "MAC",
+        "label": "Macau (China)"
+      },
+      {
+        "row": 56,
+        "code": "MYS",
+        "label": "Malaysia"
+      },
+      {
+        "row": 57,
+        "code": "MDV",
+        "label": "Maldives, Republic of"
+      },
+      {
+        "row": 58,
+        "code": "MNG",
+        "label": "Mongolia"
+      },
+      {
+        "row": 59,
+        "code": "MMR",
+        "label": "Myanmar"
+      },
+      {
+        "row": 60,
+        "code": "NPL",
+        "label": "Nepal"
+      },
+      {
+        "row": 61,
+        "code": "PAK",
+        "label": "Pakistan"
+      },
+      {
+        "row": 62,
+        "code": "PHL",
+        "label": "Philippines"
+      },
+      {
+        "row": 63,
+        "code": "SGP",
+        "label": "Singapore"
+      },
+      {
+        "row": 64,
+        "code": "LKA",
+        "label": "Sri Lanka"
+      },
+      {
+        "row": 65,
+        "code": "TWN",
+        "label": "Taiwan (China)"
+      },
+      {
+        "row": 66,
+        "code": "THA",
+        "label": "Thailand"
+      },
+      {
+        "row": 67,
+        "code": "TLS",
+        "label": "Timor-Leste"
+      },
+      {
+        "row": 68,
+        "code": "VNM",
+        "label": "Viet Nam"
+      },
+      {
+        "row": 69,
+        "code": "AUS",
+        "label": "Australia"
+      },
+      {
+        "row": 70,
+        "code": "AUT",
+        "label": "Austria"
+      },
+      {
+        "row": 71,
+        "code": "BEL",
+        "label": "Belgium"
+      },
+      {
+        "row": 72,
+        "code": "BGR",
+        "label": "Bulgaria"
+      },
+      {
+        "row": 73,
+        "code": "CAN",
+        "label": "Canada"
+      },
+      {
+        "row": 74,
+        "code": "CYP",
+        "label": "Cyprus"
+      },
+      {
+        "row": 75,
+        "code": "CZE",
+        "label": "Czech Republic"
+      },
+      {
+        "row": 76,
+        "code": "DNK",
+        "label": "Denmark"
+      },
+      {
+        "row": 77,
+        "code": "EST",
+        "label": "Estonia"
+      },
+      {
+        "row": 78,
+        "code": "FIN",
+        "label": "Finland"
+      },
+      {
+        "row": 79,
+        "code": "FRA",
+        "label": "France"
+      },
+      {
+        "row": 80,
+        "code": "DEU",
+        "label": "Germany"
+      },
+      {
+        "row": 81,
+        "code": "GRC",
+        "label": "Greece"
+      },
+      {
+        "row": 82,
+        "code": "HUN",
+        "label": "Hungary"
+      },
+      {
+        "row": 83,
+        "code": "ISL",
+        "label": "Iceland"
+      },
+      {
+        "row": 84,
+        "code": "IRL",
+        "label": "Ireland"
+      },
+      {
+        "row": 85,
+        "code": "ISR",
+        "label": "Israel"
+      },
+      {
+        "row": 86,
+        "code": "ITA",
+        "label": "Italy"
+      },
+      {
+        "row": 87,
+        "code": "JPN",
+        "label": "Japan"
+      },
+      {
+        "row": 88,
+        "code": "LVA",
+        "label": "Latvia"
+      },
+      {
+        "row": 89,
+        "code": "LTU",
+        "label": "Lithuania"
+      },
+      {
+        "row": 90,
+        "code": "LUX",
+        "label": "Luxembourg"
+      },
+      {
+        "row": 91,
+        "code": "MLT",
+        "label": "Malta"
+      },
+      {
+        "row": 92,
+        "code": "NLD",
+        "label": "Netherlands"
+      },
+      {
+        "row": 93,
+        "code": "NZL",
+        "label": "New Zealand"
+      },
+      {
+        "row": 94,
+        "code": "NOR",
+        "label": "Norway"
+      },
+      {
+        "row": 95,
+        "code": "POL",
+        "label": "Poland"
+      },
+      {
+        "row": 96,
+        "code": "PRT",
+        "label": "Portugal"
+      },
+      {
+        "row": 97,
+        "code": "ROU",
+        "label": "Romania"
+      },
+      {
+        "row": 98,
+        "code": "SVK",
+        "label": "Slovakia"
+      },
+      {
+        "row": 99,
+        "code": "SVN",
+        "label": "Slovenia"
+      },
+      {
+        "row": 100,
+        "code": "ESP",
+        "label": "Spain"
+      },
+      {
+        "row": 101,
+        "code": "SWE",
+        "label": "Sweden"
+      },
+      {
+        "row": 102,
+        "code": "CHE",
+        "label": "Switzerland"
+      },
+      {
+        "row": 103,
+        "code": "GBR",
+        "label": "United Kingdom"
+      },
+      {
+        "row": 104,
+        "code": "USA",
+        "label": "United States"
+      },
+      {
+        "row": 105,
+        "code": "ALB",
+        "label": "Albania"
+      },
+      {
+        "row": 106,
+        "code": "ARM",
+        "label": "Armenia"
+      },
+      {
+        "row": 107,
+        "code": "AZE",
+        "label": "Azerbaijan"
+      },
+      {
+        "row": 108,
+        "code": "BLR",
+        "label": "Belarus"
+      },
+      {
+        "row": 109,
+        "code": "BIH",
+        "label": "Bosnia and Herzegovina"
+      },
+      {
+        "row": 110,
+        "code": "HRV",
+        "label": "Croatia"
+      },
+      {
+        "row": 111,
+        "code": "GEO",
+        "label": "Georgia"
+      },
+      {
+        "row": 112,
+        "code": "KAZ",
+        "label": "Kazakhstan"
+      },
+      {
+        "row": 113,
+        "code": "KGZ",
+        "label": "Kyrgyzstan Republic"
+      },
+      {
+        "row": 114,
+        "code": "MDA",
+        "label": "Moldova, Republic of"
+      },
+      {
+        "row": 115,
+        "code": "MNE",
+        "label": "Montenegro"
+      },
+      {
+        "row": 116,
+        "code": "RUS",
+        "label": "Russian Federation"
+      },
+      {
+        "row": 117,
+        "code": "SRB",
+        "label": "Serbia"
+      },
+      {
+        "row": 118,
+        "code": "TJK",
+        "label": "Tajikistan"
+      },
+      {
+        "row": 119,
+        "code": "MKD",
+        "label": "North Macedonia"
+      },
+      {
+        "row": 120,
+        "code": "TUR",
+        "label": "Türkiye"
+      },
+      {
+        "row": 121,
+        "code": "TKM",
+        "label": "Turkmenistan"
+      },
+      {
+        "row": 122,
+        "code": "UKR",
+        "label": "Ukraine"
+      },
+      {
+        "row": 123,
+        "code": "UZB",
+        "label": "Uzbekistan"
+      },
+      {
+        "row": 124,
+        "code": "ARG",
+        "label": "Argentina"
+      },
+      {
+        "row": 125,
+        "code": "BHS",
+        "label": "Bahamas (The)"
+      },
+      {
+        "row": 126,
+        "code": "BLZ",
+        "label": "Belize"
+      },
+      {
+        "row": 127,
+        "code": "BOL",
+        "label": "Bolivia, Plurinational State of"
+      },
+      {
+        "row": 128,
+        "code": "BRA",
+        "label": "Brazil"
+      },
+      {
+        "row": 129,
+        "code": "CHL",
+        "label": "Chile"
+      },
+      {
+        "row": 130,
+        "code": "COL",
+        "label": "Colombia"
+      },
+      {
+        "row": 131,
+        "code": "CRI",
+        "label": "Costa Rica"
+      },
+      {
+        "row": 132,
+        "code": "DOM",
+        "label": "Dominican Republic"
+      },
+      {
+        "row": 133,
+        "code": "ECU",
+        "label": "Ecuador"
+      },
+      {
+        "row": 134,
+        "code": "SLV",
+        "label": "El Salvador"
+      },
+      {
+        "row": 135,
+        "code": "GLP",
+        "label": "Guadeloupe"
+      },
+      {
+        "row": 136,
+        "code": "GTM",
+        "label": "Guatemala"
+      },
+      {
+        "row": 137,
+        "code": "GUY",
+        "label": "Guyana"
+      },
+      {
+        "row": 138,
+        "code": "HND",
+        "label": "Honduras"
+      },
+      {
+        "row": 139,
+        "code": "JAM",
+        "label": "Jamaica"
+      },
+      {
+        "row": 140,
+        "code": "MTQ",
+        "label": "Martinique"
+      },
+      {
+        "row": 141,
+        "code": "MEX",
+        "label": "Mexico"
+      },
+      {
+        "row": 142,
+        "code": "NIC",
+        "label": "Nicaragua"
+      },
+      {
+        "row": 143,
+        "code": "PAN",
+        "label": "Panama"
+      },
+      {
+        "row": 144,
+        "code": "PRY",
+        "label": "Paraguay"
+      },
+      {
+        "row": 145,
+        "code": "PER",
+        "label": "Peru"
+      },
+      {
+        "row": 146,
+        "code": "PRI",
+        "label": "Puerto Rico"
+      },
+      {
+        "row": 147,
+        "code": "TTO",
+        "label": "Trinidad and Tobago"
+      },
+      {
+        "row": 148,
+        "code": "URY",
+        "label": "Uruguay"
+      },
+      {
+        "row": 149,
+        "code": "BHR",
+        "label": "Bahrain"
+      },
+      {
+        "row": 150,
+        "code": "JOR",
+        "label": "Jordan"
+      },
+      {
+        "row": 151,
+        "code": "KWT",
+        "label": "Kuwait"
+      },
+      {
+        "row": 152,
+        "code": "LBN",
+        "label": "Lebanon"
+      },
+      {
+        "row": 153,
+        "code": "OMN",
+        "label": "Oman"
+      },
+      {
+        "row": 154,
+        "code": "QAT",
+        "label": "Qatar"
+      },
+      {
+        "row": 155,
+        "code": "SAU",
+        "label": "Saudi Arabia"
+      },
+      {
+        "row": 156,
+        "code": "ARE",
+        "label": "United Arab Emirates"
+      },
+      {
+        "row": 157,
+        "code": "PSE",
+        "label": "Occupied Palestinian Territory"
+      },
+      {
+        "row": 158,
+        "code": "YEM",
+        "label": "Yemen"
+      }
+    ],
+    "firstYear": 2000,
+    "lastYear": 2023
+  },
+  "ilo-weekly-hours": {
+    "headers": [
+      "ref_area",
+      "ref_area.label",
+      "source",
+      "source.label",
+      "indicator",
+      "indicator.label",
+      "sex",
+      "sex.label",
+      "time",
+      "obs_value",
+      "obs_status",
+      "obs_status.label",
+      "note_indicator",
+      "note_indicator.label",
+      "note_source",
+      "note_source.label"
+    ],
+    "allAreas": {
+      "AFG": "Afghanistan",
+      "AGO": "Angola",
+      "ALB": "Albania",
+      "ARE": "United Arab Emirates",
+      "ARG": "Argentina",
+      "ARM": "Armenia",
+      "ATG": "Antigua and Barbuda",
+      "AUT": "Austria",
+      "BDI": "Burundi",
+      "BEL": "Belgium",
+      "BEN": "Benin",
+      "BFA": "Burkina Faso",
+      "BGD": "Bangladesh",
+      "BGR": "Bulgaria",
+      "BHS": "Bahamas",
+      "BIH": "Bosnia and Herzegovina",
+      "BLR": "Belarus",
+      "BLZ": "Belize",
+      "BOL": "Bolivia, Plurinational State of",
+      "BRA": "Brazil",
+      "BRN": "Brunei Darussalam",
+      "BTN": "Bhutan",
+      "BWA": "Botswana",
+      "CAN": "Canada",
+      "CHE": "Switzerland",
+      "CHL": "Chile",
+      "CIV": "Côte d'Ivoire",
+      "COD": "Congo, Democratic Republic of the",
+      "COG": "Congo",
+      "COK": "Cook Islands",
+      "COL": "Colombia",
+      "COM": "Comoros",
+      "CPV": "Cape Verde",
+      "CRI": "Costa Rica",
+      "CYP": "Cyprus",
+      "CZE": "Czechia",
+      "DEU": "Germany",
+      "DNK": "Denmark",
+      "DOM": "Dominican Republic",
+      "ECU": "Ecuador",
+      "EGY": "Egypt",
+      "ESP": "Spain",
+      "EST": "Estonia",
+      "ETH": "Ethiopia",
+      "FIN": "Finland",
+      "FJI": "Fiji",
+      "FRA": "France",
+      "FSM": "Micronesia, Federated States of",
+      "GAB": "Gabon",
+      "GBR": "United Kingdom of Great Britain and Northern Ireland",
+      "GEO": "Georgia",
+      "GHA": "Ghana",
+      "GMB": "Gambia",
+      "GNB": "Guinea-Bissau",
+      "GNQ": "Equatorial Guinea",
+      "GRC": "Greece",
+      "GRD": "Grenada",
+      "GTM": "Guatemala",
+      "GUY": "Guyana",
+      "HND": "Honduras",
+      "HRV": "Croatia",
+      "HTI": "Haiti",
+      "HUN": "Hungary",
+      "IDN": "Indonesia",
+      "IND": "India",
+      "IRL": "Ireland",
+      "IRN": "Iran, Islamic Republic of",
+      "IRQ": "Iraq",
+      "ISL": "Iceland",
+      "ISR": "Israel",
+      "ITA": "Italy",
+      "JAM": "Jamaica",
+      "JOR": "Jordan",
+      "KEN": "Kenya",
+      "KGZ": "Kyrgyzstan",
+      "KHM": "Cambodia",
+      "KIR": "Kiribati",
+      "KOR": "Republic of Korea",
+      "KOS": "Kosovo",
+      "LAO": "Lao People's Democratic Republic",
+      "LBN": "Lebanon",
+      "LBR": "Liberia",
+      "LCA": "Saint Lucia",
+      "LKA": "Sri Lanka",
+      "LSO": "Lesotho",
+      "LTU": "Lithuania",
+      "LUX": "Luxembourg",
+      "LVA": "Latvia",
+      "MDA": "Republic of Moldova",
+      "MDG": "Madagascar",
+      "MDV": "Maldives",
+      "MEX": "Mexico",
+      "MHL": "Marshall Islands",
+      "MKD": "North Macedonia",
+      "MLI": "Mali",
+      "MLT": "Malta",
+      "MMR": "Myanmar",
+      "MNE": "Montenegro",
+      "MNG": "Mongolia",
+      "MOZ": "Mozambique",
+      "MRT": "Mauritania",
+      "MSR": "Montserrat",
+      "MUS": "Mauritius",
+      "MWI": "Malawi",
+      "NAM": "Namibia",
+      "NCL": "New Caledonia",
+      "NER": "Niger",
+      "NGA": "Nigeria",
+      "NIC": "Nicaragua",
+      "NIU": "Niue",
+      "NLD": "Netherlands",
+      "NOR": "Norway",
+      "NPL": "Nepal",
+      "NRU": "Naoero",
+      "PAK": "Pakistan",
+      "PAN": "Panama",
+      "PER": "Peru",
+      "PHL": "Philippines",
+      "PLW": "Palau",
+      "POL": "Poland",
+      "PRI": "Puerto Rico",
+      "PRT": "Portugal",
+      "PRY": "Paraguay",
+      "PSE": "Palestine, State of",
+      "ROU": "Romania",
+      "RUS": "Russian Federation",
+      "RWA": "Rwanda",
+      "SDN": "Sudan",
+      "SEN": "Senegal",
+      "SLB": "Solomon Islands",
+      "SLE": "Sierra Leone",
+      "SLV": "El Salvador",
+      "SOM": "Somalia",
+      "SRB": "Serbia",
+      "SVK": "Slovakia",
+      "SVN": "Slovenia",
+      "SWE": "Sweden",
+      "SWZ": "Eswatini",
+      "SYC": "Seychelles",
+      "THA": "Thailand",
+      "TJK": "Tajikistan",
+      "TKL": "Tokelau",
+      "TLS": "Timor-Leste",
+      "TON": "Tonga",
+      "TUN": "Tunisia",
+      "TUR": "Türkiye",
+      "TUV": "Tuvalu",
+      "TZA": "Tanzania, United Republic of",
+      "UGA": "Uganda",
+      "URY": "Uruguay",
+      "USA": "United States of America",
+      "VEN": "Venezuela, Bolivarian Republic of",
+      "VNM": "Viet Nam",
+      "VUT": "Vanuatu",
+      "WLF": "Wallis and Futuna",
+      "WSM": "Samoa",
+      "X01": "World",
+      "X02": "World: Low income",
+      "X03": "World: Lower-middle income",
+      "X04": "World: Upper-middle income",
+      "X05": "World: High income",
+      "X06": "Africa",
+      "X07": "Africa: Low income",
+      "X08": "Africa: Lower-middle income",
+      "X09": "Africa: Upper-middle income",
+      "X10": "Northern Africa",
+      "X11": "Northern Africa: Lower-middle income",
+      "X12": "Northern Africa: Upper-middle income",
+      "X13": "Sub-Saharan Africa",
+      "X14": "Sub-Saharan Africa: Low income",
+      "X15": "Sub-Saharan Africa: Lower-middle income",
+      "X16": "Sub-Saharan Africa: Upper-middle income",
+      "X17": "Central Africa",
+      "X18": "Eastern Africa",
+      "X19": "Southern Africa",
+      "X20": "Western Africa",
+      "X21": "Americas",
+      "X23": "Americas: Lower-middle income",
+      "X24": "Americas: Upper-middle income",
+      "X25": "Americas: High income",
+      "X26": "Latin America and the Caribbean",
+      "X28": "Latin America and the Caribbean: Lower-middle income",
+      "X29": "Latin America and the Caribbean: Upper-middle income",
+      "X30": "Latin America and the Caribbean: High income",
+      "X31": "Caribbean",
+      "X32": "Central America",
+      "X33": "South America",
+      "X34": "Northern America",
+      "X35": "Northern America: High income",
+      "X36": "Arab States",
+      "X37": "Arab States: Lower-middle income",
+      "X39": "Arab States: High income",
+      "X40": "Asia and the Pacific",
+      "X41": "Asia and the Pacific: Low income",
+      "X42": "Asia and the Pacific: Lower-middle income",
+      "X43": "Asia and the Pacific: Upper-middle income",
+      "X44": "Asia and the Pacific: High income",
+      "X45": "Eastern Asia",
+      "X47": "Eastern Asia: Upper-middle income",
+      "X48": "Eastern Asia: High income",
+      "X49": "South-Eastern Asia and the Pacific",
+      "X51": "South-Eastern Asia and the Pacific: Lower-middle income",
+      "X52": "South-Eastern Asia and the Pacific: Upper-middle income",
+      "X53": "South-Eastern Asia and the Pacific: High income",
+      "X54": "South-Eastern Asia",
+      "X55": "Pacific Islands",
+      "X56": "Southern Asia",
+      "X58": "Southern Asia: Lower-middle income",
+      "X59": "Southern Asia: Upper-middle income",
+      "X60": "Europe and Central Asia",
+      "X61": "Europe and Central Asia: Lower-middle income",
+      "X62": "Europe and Central Asia: Upper-middle income",
+      "X63": "Europe and Central Asia: High income",
+      "X64": "Northern, Southern and Western Europe",
+      "X65": "Northern, Southern and Western Europe: Upper-middle income",
+      "X66": "Northern, Southern and Western Europe: High income",
+      "X67": "Northern Europe",
+      "X68": "Southern Europe",
+      "X69": "Western Europe",
+      "X70": "Eastern Europe",
+      "X72": "Eastern Europe: Upper-middle income",
+      "X73": "Eastern Europe: High income",
+      "X74": "Central Asia",
+      "X75": "Central and Western Asia: Lower-middle income",
+      "X76": "Central and Western Asia: Upper-middle income",
+      "X77": "Central and Western Asia: High income",
+      "X78": "Central and Western Asia",
+      "X79": "Western Asia",
+      "X82": "European Union 28",
+      "X83": "G20",
+      "X84": "ASEAN",
+      "X85": "BRICS",
+      "X87": "World excluding BRICS",
+      "X88": "G7",
+      "X89": "MENA",
+      "X90": "Arab League",
+      "X91": "CARICOM",
+      "X92": "European Union 27",
+      "X94": "Arab States: Low income",
+      "X97": "APEC",
+      "X98": "World excluding India and China",
+      "X99": "World: Lower-middle income excluding India",
+      "XA1": "World: Upper-middle income excluding China",
+      "YEM": "Yemen",
+      "ZAF": "South Africa",
+      "ZMB": "Zambia",
+      "ZWE": "Zimbabwe"
+    },
+    "excludedAreas": {
+      "X01": "World",
+      "X02": "World: Low income",
+      "X03": "World: Lower-middle income",
+      "X04": "World: Upper-middle income",
+      "X05": "World: High income",
+      "X06": "Africa",
+      "X07": "Africa: Low income",
+      "X08": "Africa: Lower-middle income",
+      "X09": "Africa: Upper-middle income",
+      "X10": "Northern Africa",
+      "X11": "Northern Africa: Lower-middle income",
+      "X12": "Northern Africa: Upper-middle income",
+      "X13": "Sub-Saharan Africa",
+      "X14": "Sub-Saharan Africa: Low income",
+      "X15": "Sub-Saharan Africa: Lower-middle income",
+      "X16": "Sub-Saharan Africa: Upper-middle income",
+      "X17": "Central Africa",
+      "X18": "Eastern Africa",
+      "X19": "Southern Africa",
+      "X20": "Western Africa",
+      "X21": "Americas",
+      "X23": "Americas: Lower-middle income",
+      "X24": "Americas: Upper-middle income",
+      "X25": "Americas: High income",
+      "X26": "Latin America and the Caribbean",
+      "X28": "Latin America and the Caribbean: Lower-middle income",
+      "X29": "Latin America and the Caribbean: Upper-middle income",
+      "X30": "Latin America and the Caribbean: High income",
+      "X31": "Caribbean",
+      "X32": "Central America",
+      "X33": "South America",
+      "X34": "Northern America",
+      "X35": "Northern America: High income",
+      "X36": "Arab States",
+      "X37": "Arab States: Lower-middle income",
+      "X39": "Arab States: High income",
+      "X40": "Asia and the Pacific",
+      "X41": "Asia and the Pacific: Low income",
+      "X42": "Asia and the Pacific: Lower-middle income",
+      "X43": "Asia and the Pacific: Upper-middle income",
+      "X44": "Asia and the Pacific: High income",
+      "X45": "Eastern Asia",
+      "X47": "Eastern Asia: Upper-middle income",
+      "X48": "Eastern Asia: High income",
+      "X49": "South-Eastern Asia and the Pacific",
+      "X51": "South-Eastern Asia and the Pacific: Lower-middle income",
+      "X52": "South-Eastern Asia and the Pacific: Upper-middle income",
+      "X53": "South-Eastern Asia and the Pacific: High income",
+      "X54": "South-Eastern Asia",
+      "X55": "Pacific Islands",
+      "X56": "Southern Asia",
+      "X58": "Southern Asia: Lower-middle income",
+      "X59": "Southern Asia: Upper-middle income",
+      "X60": "Europe and Central Asia",
+      "X61": "Europe and Central Asia: Lower-middle income",
+      "X62": "Europe and Central Asia: Upper-middle income",
+      "X63": "Europe and Central Asia: High income",
+      "X64": "Northern, Southern and Western Europe",
+      "X65": "Northern, Southern and Western Europe: Upper-middle income",
+      "X66": "Northern, Southern and Western Europe: High income",
+      "X67": "Northern Europe",
+      "X68": "Southern Europe",
+      "X69": "Western Europe",
+      "X70": "Eastern Europe",
+      "X72": "Eastern Europe: Upper-middle income",
+      "X73": "Eastern Europe: High income",
+      "X74": "Central Asia",
+      "X75": "Central and Western Asia: Lower-middle income",
+      "X76": "Central and Western Asia: Upper-middle income",
+      "X77": "Central and Western Asia: High income",
+      "X78": "Central and Western Asia",
+      "X79": "Western Asia",
+      "X82": "European Union 28",
+      "X83": "G20",
+      "X84": "ASEAN",
+      "X85": "BRICS",
+      "X87": "World excluding BRICS",
+      "X88": "G7",
+      "X89": "MENA",
+      "X90": "Arab League",
+      "X91": "CARICOM",
+      "X92": "European Union 27",
+      "X94": "Arab States: Low income",
+      "X97": "APEC",
+      "X98": "World excluding India and China",
+      "X99": "World: Lower-middle income excluding India",
+      "XA1": "World: Upper-middle income excluding China"
+    },
+    "indicator": "Average weekly hours actually worked per employed person by sex"
+  },
+  "worldbank-icp-housing": {
+    "seriesId": "9060000",
+    "seriesTitle": "9060000:ACTUAL HOUSING, WATER, ELECTRICITY, GAS AND OTHER FUELS",
+    "lastUpdated": "2024-08-04",
+    "classifications": {
+      "PCAP.PP": "Expenditure per capita, PPP-based (US$)",
+      "ZS": "Expenditure component share of GDP (GDP = 100%)",
+      "AICZS": "Expenditure component share of AIC (AIC = 100%)",
+      "PX.WL": "Price level index (World = 100)"
+    }
+  },
+  "wto-merchandise": {
+    "headers": [
+      "IndicatorCategory",
+      "IndicatorCode",
+      "Indicator",
+      "ReporterCode",
+      "ReporterISO3A",
+      "Reporter",
+      "PartnerCode",
+      "PartnerISO3A",
+      "Partner",
+      "ProductClassificationCode",
+      "ProductClassification",
+      "ProductCode",
+      "Product",
+      "PeriodCode",
+      "Period",
+      "FrequencyCode",
+      "Frequency",
+      "UnitCode",
+      "Unit",
+      "Year",
+      "ValueFlagCode",
+      "ValueFlag",
+      "Value"
+    ],
+    "reporters": {
+      "140": ["CAF", "Central African Republic"],
+      "918": ["EEC", "European Union"],
+      "120": ["CMR", "Cameroon"],
+      "184": ["COK", "Cook Islands"],
+      "132": ["CPV", "Cabo Verde"],
+      "196": ["CYP", "Cyprus"],
+      "104": ["MMR", "Myanmar"],
+      "012": ["DZA", "Algeria"],
+      "116": ["KHM", "Cambodia"],
+      "174": ["COM", "Comoros"],
+      "024": ["AGO", "Angola"],
+      "051": ["ARM", "Armenia"],
+      "004": ["AFG", "Afghanistan"],
+      "028": ["ATG", "Antigua and Barbuda"],
+      "040": ["AUT", "Austria"],
+      "032": ["ARG", "Argentina"],
+      "008": ["ALB", "Albania"],
+      "108": ["BDI", "Burundi"],
+      "036": ["AUS", "Australia"],
+      "052": ["BRB", "Barbados"],
+      "031": ["AZE", "Azerbaijan"],
+      "070": ["BIH", "Bosnia and Herzegovina"],
+      "204": ["BEN", "Benin"],
+      "100": ["BGR", "Bulgaria"],
+      "050": ["BGD", "Bangladesh"],
+      "068": ["BOL", "Bolivia, Plurinational State of"],
+      "096": ["BRN", "Brunei Darussalam"],
+      "058": ["BLX", "Belgium-Luxembourg"],
+      "084": ["BLZ", "Belize"],
+      "144": ["LKA", "Sri Lanka"],
+      "180": ["COD", "Democratic Republic of the Congo"],
+      "076": ["BRA", "Brazil"],
+      "112": ["BLR", "Belarus"],
+      "072": ["BWA", "Botswana"],
+      "056": ["BEL", "Belgium"],
+      "178": ["COG", "Congo"],
+      "060": ["BMU", "Bermuda"],
+      "201": ["", "Czech and Slovak Federal Republic"],
+      "048": ["BHR", "Bahrain, Kingdom of"],
+      "188": ["CRI", "Costa Rica"],
+      "152": ["CHL", "Chile"],
+      "192": ["CUB", "Cuba"],
+      "170": ["COL", "Colombia"],
+      "044": ["BHS", "Bahamas"],
+      "156": ["CHN", "China"],
+      "064": ["BTN", "Bhutan"],
+      "124": ["CAN", "Canada"],
+      "203": ["CZE", "Czech Republic"],
+      "208": ["DNK", "Denmark"],
+      "158": ["CHT", "Chinese Taipei"],
+      "136": ["CYM", "Cayman Islands"],
+      "191": ["HRV", "Croatia"],
+      "090": ["SLB", "Solomon Islands"],
+      "000": ["", "World"],
+      "148": ["TCD", "Chad"],
+      "598": ["PNG", "Papua New Guinea"],
+      "591": ["PAN", "Panama"],
+      "428": ["LVA", "Latvia"],
+      "498": ["MDA", "Moldova, Republic of"],
+      "246": ["FIN", "Finland"],
+      "218": ["ECU", "Ecuador"],
+      "230": ["", "Ethiopia (+ Eritrea)"],
+      "320": ["GTM", "Guatemala"],
+      "324": ["GIN", "Guinea"],
+      "583": ["FSM", "Micronesia, Federated States of"],
+      "268": ["GEO", "Georgia"],
+      "304": ["GRL", "Greenland"],
+      "392": ["JPN", "Japan"],
+      "242": ["FJI", "Fiji"],
+      "450": ["MDG", "Madagascar"],
+      "500": ["MSR", "Montserrat"],
+      "446": ["MAC", "Macao, China"],
+      "214": ["DOM", "Dominican Republic"],
+      "234": ["FRO", "Faroe Islands"],
+      "308": ["GRD", "Grenada"],
+      "276": ["DEU", "Germany"],
+      "254": ["", "French Guiana"],
+      "348": ["HUN", "Hungary"],
+      "340": ["HND", "Honduras"],
+      "524": ["NPL", "Nepal"],
+      "288": ["GHA", "Ghana"],
+      "332": ["HTI", "Haiti"],
+      "372": ["IRL", "Ireland"],
+      "232": ["ERI", "Eritrea"],
+      "231": ["ETH", "Ethiopia"],
+      "270": ["GMB", "The Gambia"],
+      "266": ["GAB", "Gabon"],
+      "296": ["KIR", "Kiribati"],
+      "312": ["", "Guadeloupe"],
+      "496": ["MNG", "Mongolia"],
+      "434": ["LBY", "Libya"],
+      "570": ["NIU", "Niue"],
+      "300": ["GRC", "Greece"],
+      "376": ["ISR", "Israel"],
+      "508": ["MOZ", "Mozambique"],
+      "328": ["GUY", "Guyana"],
+      "356": ["IND", "India"],
+      "418": ["LAO", "Lao People's Democratic Republic"],
+      "478": ["MRT", "Mauritania"],
+      "533": ["ABW", "Netherlands, Kingdom of, with respect to Aruba"],
+      "562": ["NER", "Niger"],
+      "480": ["MUS", "Mauritius"],
+      "454": ["MWI", "Malawi"],
+      "638": ["", "Reunion"],
+      "642": ["ROM", "Romania"],
+      "532": ["", "Netherlands Antilles (incl. Aruba)"],
+      "530": ["ANT", "Netherlands Antilles"],
+      "380": ["ITA", "Italy"],
+      "462": ["MDV", "Maldives"],
+      "540": ["NCL", "New Caledonia"],
+      "634": ["QAT", "Qatar"],
+      "442": ["LUX", "Luxembourg"],
+      "388": ["JAM", "Jamaica"],
+      "466": ["MLI", "Mali"],
+      "384": ["CIV", "Côte d'Ivoire"],
+      "233": ["EST", "Estonia"],
+      "212": ["DMA", "Dominica"],
+      "512": ["OMN", "Oman"],
+      "558": ["NIC", "Nicaragua"],
+      "262": ["DJI", "Djibouti"],
+      "250": ["FRA", "France"],
+      "278": ["DDR", "German Democratic Republic"],
+      "344": ["HKG", "Hong Kong, China"],
+      "400": ["JOR", "Jordan"],
+      "528": ["NLD", "Netherlands"],
+      "624": ["GNB", "Guinea-Bissau"],
+      "368": ["IRQ", "Iraq"],
+      "410": ["KOR", "Korea, Republic of"],
+      "586": ["PAK", "Pakistan"],
+      "404": ["KEN", "Kenya"],
+      "566": ["NGA", "Nigeria"],
+      "643": ["RUS", "Russian Federation"],
+      "548": ["VUT", "Vanuatu"],
+      "578": ["NOR", "Norway"],
+      "414": ["KWT", "Kuwait, the State of"],
+      "360": ["IDN", "Indonesia"],
+      "417": ["KGZ", "Kyrgyz Republic"],
+      "422": ["LBN", "Lebanese Republic"],
+      "430": ["LBR", "Liberia"],
+      "504": ["MAR", "Morocco"],
+      "364": ["IRN", "Iran"],
+      "426": ["LSO", "Lesotho"],
+      "458": ["MYS", "Malaysia"],
+      "516": ["NAM", "Namibia"],
+      "608": ["PHL", "Philippines"],
+      "484": ["MEX", "Mexico"],
+      "258": ["PYF", "French Polynesia"],
+      "222": ["SLV", "El Salvador"],
+      "626": ["TLS", "Timor-Leste"],
+      "398": ["KAZ", "Kazakhstan"],
+      "470": ["MLT", "Malta"],
+      "616": ["POL", "Poland"],
+      "352": ["ISL", "Iceland"],
+      "554": ["NZL", "New Zealand"],
+      "620": ["PRT", "Portugal"],
+      "600": ["PRY", "Paraguay"],
+      "604": ["PER", "Peru"],
+      "585": ["PLW", "Palau"],
+      "440": ["LTU", "Lithuania"],
+      "474": ["", "Martinique"],
+      "724": ["ESP", "Spain"],
+      "784": ["ARE", "United Arab Emirates"],
+      "646": ["RWA", "Rwanda"],
+      "854": ["BFA", "Burkina Faso"],
+      "756": ["CHE", "Switzerland"],
+      "818": ["EGY", "Egypt"],
+      "893": ["MNE", "Montenegro"],
+      "826": ["GBR", "United Kingdom"],
+      "892": ["SRB", "Serbia"],
+      "662": ["LCA", "Saint Lucia"],
+      "659": ["KNA", "Saint Kitts and Nevis"],
+      "788": ["TUN", "Tunisia"],
+      "776": ["TON", "Tonga"],
+      "752": ["SWE", "Sweden"],
+      "740": ["SUR", "Suriname"],
+      "764": ["THA", "Thailand"],
+      "706": ["SOM", "Somalia"],
+      "670": ["VCT", "Saint Vincent and the Grenadines"],
+      "860": ["UZB", "Uzbekistan"],
+      "800": ["UGA", "Uganda"],
+      "834": ["TZA", "Tanzania"],
+      "678": ["STP", "Sao Tomé and Principe"],
+      "882": ["WSM", "Samoa"],
+      "704": ["VNM", "Viet Nam"],
+      "762": ["TJK", "Tajikistan"],
+      "780": ["TTO", "Trinidad and Tobago"],
+      "720": ["", "Yemen, People's Democratic Republic"],
+      "792": ["TUR", "Türkiye"],
+      "840": ["USA", "United States of America"],
+      "862": ["VEN", "Venezuela, Bolivarian Republic of"],
+      "886": ["", "Yemen, Arab Republic of"],
+      "887": ["YEM", "Yemen"],
+      "716": ["ZWE", "Zimbabwe"],
+      "891": ["SCG", "Serbia and Montenegro"],
+      "890": ["YUG", "Yugoslavia, Socialist Federal Republic of"],
+      "807": ["MKD", "North Macedonia"],
+      "702": ["SGP", "Singapore"],
+      "694": ["SLE", "Sierra Leone"],
+      "760": ["SYR", "Syrian Arab Republic"],
+      "682": ["SAU", "Saudi Arabia, Kingdom of"],
+      "686": ["SEN", "Senegal"],
+      "795": ["TKM", "Turkmenistan"],
+      "768": ["TGO", "Togo"],
+      "690": ["SYC", "Seychelles"],
+      "666": ["SPM", "Saint Pierre and Miquelon"],
+      "798": ["TUV", "Tuvalu"],
+      "804": ["UKR", "Ukraine"],
+      "703": ["SVK", "Slovak Republic"],
+      "710": ["ZAF", "South Africa"],
+      "858": ["URY", "Uruguay"],
+      "894": ["ZMB", "Zambia"],
+      "748": ["SWZ", "Eswatini"],
+      "736": ["SDN", "Sudan"],
+      "705": ["SVN", "Slovenia"],
+      "280": ["", "Germany, Federal Republic of"],
+      "260": ["ATF", "French Southern Territories"],
+      "810": ["SUN", "U.S.S.R."],
+      "584": ["MHL", "Marshall Islands"],
+      "292": ["GIB", "Gibraltar"],
+      "535": ["", "Bonaire, Sint Eustatius and Saba"],
+      "226": ["GNQ", "Equatorial Guinea"],
+      "316": ["GUM", "Guam"],
+      "580": ["MNP", "Northern Mariana Islands"],
+      "534": ["SXM", "Sint Maarten"],
+      "531": ["CUW", "Curaçao"],
+      "408": ["PRK", "Korea, Democratic People's Republic of"],
+      "520": ["NRU", "Nauru"],
+      "020": ["AND", "Andorra"],
+      "016": ["ASM", "American Samoa"],
+      "983": ["", "Australia and New Zealand"],
+      "966": ["", "Gulf Cooperation Council (GCC)"],
+      "965": ["", "Middle East"],
+      "948": ["", "Four East Asian traders"],
+      "950": ["", "Africa"],
+      "OWE": ["", "Non-EU western Europe"],
+      "OCI": ["", "Other CIS"],
+      "997": ["", "Least-developed countries"],
+      "947": ["", "OIC (Organisation of Islamic Cooperation)"],
+      "946": ["", "G-7 (Group of Seven)"],
+      "932": ["", "South and Central America and the Caribbean"],
+      "949": ["", "Six East Asian traders"],
+      "981": ["", "BRIC members"],
+      "982": ["", "BRICS members"],
+      "OAS": ["", "Other Asia"],
+      "OSE": ["", "Non-EU south-eastern Europe"],
+      "OAF": ["", "Other Africa"],
+      "945": ["", "OPEC (Organization of the Petroleum Exporting Countries)"],
+      "942": ["", "Pacific Alliance"],
+      "900": ["", "WTO Members"],
+      "LOX": ["", "LDC oil exporters"],
+      "943": ["", "ECCAS (Economic Community of Central African States)"],
+      "927": ["", "Euro Area (21)"],
+      "980": ["", "Asia-Pacific Economic Cooperation (APEC)"],
+      "985": ["", "G-20"],
+      "977": ["", "South Asian Association for Regional Cooperation (SAARC)"],
+      "970": ["", "Asia"],
+      "959": ["", "West African Economic Community (ECOWAS)"],
+      "986": ["", "Africa, CIS and Middle East"],
+      "944": [
+        "",
+        "Southern Common Market (MERCOSUR) excluding Venezuela, Bolivarian Republic of"
+      ],
+      "937": ["", "Andean Community (ANDEAN)"],
+      "962": ["", "African, Caribbean and Pacific States (ACP)"],
+      "876": ["WLF", "Wallis and Futuna Islands"],
+      "660": ["AIA", "Anguilla"],
+      "910": [
+        "",
+        "Commonwealth of Independent States (CIS), including certain associate and former member States"
+      ],
+      "961": ["", "Southern African Development Community (SADC)"],
+      "772": ["TKL", "Tokelau"],
+      "941": ["", "Caribbean Community (CARICOM)"],
+      "957": ["", "West African Economic and Monetary Union (WAEMU)"],
+      "975": ["", "Association of Southeast Asian Nations (ASEAN)"],
+      "LAX": ["", "LDC exporters of agriculture"],
+      "LFX": ["", "LDC non-fuel mineral exporters"],
+      "992": ["", "Landlocked developing countries"],
+      "LMX": ["", "LDC exporters of manufactures"],
+      "905": ["", "Europe"],
+      "958": ["", "Common Market for Eastern and Southern Africa (COMESA)"],
+      "938": ["", "Central American Common Market (CACM)"],
+      "940": ["", "United States-Mexico-Canada Agreement (USMCA/CUSMA/T-MEC)"],
+      "923": ["", "European Free Trade Association (EFTA)"],
+      "728": ["SSD", "South Sudan"],
+      "902": ["", "WTO Observer governments"],
+      "796": ["TCA", "Turks and Caicos Islands"],
+      "964": ["CEM", "Central African Economic and Monetary Community (CAEMC)"],
+      "931": ["", "North America"]
+    },
+    "products": {
+      "AG": "Agricultural products",
+      "AGFO": "Food",
+      "MA": "Manufactures",
+      "MACH": "Chemicals",
+      "MACHPH": "Pharmaceuticals",
+      "MACL": "Clothing",
+      "MAIS": "Iron and steel",
+      "MAMT": "Machinery and transport equipment",
+      "MAMTAU": "Automotive products",
+      "MAMTOF": "Office and telecom equipment",
+      "MAMTOTEP": "Electronic data processing and office equipment",
+      "MAMTOTIC": "Integrated circuits and electronic components",
+      "MAMTOTTL": "Telecommunications equipment",
+      "MAMTTE": "Transport equipment",
+      "MATE": "Textiles",
+      "MI": "Fuels and mining products",
+      "MIFU": "Fuels",
+      "TO": "Total merchandise"
+    },
+    "flags": {
+      "": "",
+      "E": "Estimate",
+      "B": "Break in series"
+    },
+    "partners": {
+      "000": ["", "World"],
+      "EUT": ["", "Extra EU Trade"],
+      "918": ["EEC", "European Union"]
+    }
+  }
+}

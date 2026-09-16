@@ -1,0 +1,2992 @@
+{
+  "checkedAt": "2026-09-08T23:35:47.145176+00:00",
+  "status": "passed",
+  "method": "Independent Python Decimal comparison of nine-country raw WDI responses with the native global download and SQLite readback. Annual gaps and source flags compared; no personal database used.",
+  "statisticsCompared": 56,
+  "nativeStatisticsDownloaded": 66,
+  "profilesCompared": 504,
+  "valuesCompared": 20464,
+  "exactDecimalMatches": 20464,
+  "nullsCompared": 12800,
+  "zeroValues": 192,
+  "negativeValues": 397,
+  "sourceFlagsCompared": 33264,
+  "maximumRelativeRepresentationDifference": "0",
+  "coverage": {
+    "SE.PRE.ENRR": {
+      "DEU": {
+        "n": 13,
+        "first": 1993,
+        "last": 2020
+      },
+      "USA": {
+        "n": 30,
+        "first": 1971,
+        "last": 2020
+      },
+      "IND": {
+        "n": 29,
+        "first": 1971,
+        "last": 2021
+      },
+      "CHN": {
+        "n": 46,
+        "first": 1974,
+        "last": 2021
+      },
+      "BRA": {
+        "n": 13,
+        "first": 2007,
+        "last": 2020
+      },
+      "NGA": {
+        "n": 13,
+        "first": 2001,
+        "last": 2018
+      },
+      "ZAF": {
+        "n": 15,
+        "first": 1994,
+        "last": 2020
+      },
+      "JPN": {
+        "n": 32,
+        "first": 1971,
+        "last": 2015
+      },
+      "WLD": {
+        "n": 51,
+        "first": 1970,
+        "last": 2020
+      }
+    },
+    "SE.PRM.ENRR": {
+      "DEU": {
+        "n": 24,
+        "first": 2001,
+        "last": 2024
+      },
+      "USA": {
+        "n": 36,
+        "first": 1971,
+        "last": 2022
+      },
+      "IND": {
+        "n": 52,
+        "first": 1971,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 49,
+        "first": 1970,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 12,
+        "first": 2012,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 47,
+        "first": 1970,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 42,
+        "first": 1970,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 11,
+        "first": 2013,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "SE.PRM.CMPT.ZS": {
+      "DEU": {
+        "n": 24,
+        "first": 2001,
+        "last": 2024
+      },
+      "USA": {
+        "n": 6,
+        "first": 2017,
+        "last": 2022
+      },
+      "IND": {
+        "n": 24,
+        "first": 1971,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 14,
+        "first": 1989,
+        "last": 2010
+      },
+      "BRA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "NGA": {
+        "n": 8,
+        "first": 2000,
+        "last": 2010
+      },
+      "ZAF": {
+        "n": 15,
+        "first": 1991,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "WLD": {
+        "n": 37,
+        "first": 1988,
+        "last": 2024
+      }
+    },
+    "SE.SEC.CMPT.LO.ZS": {
+      "DEU": {
+        "n": 4,
+        "first": 2021,
+        "last": 2024
+      },
+      "USA": {
+        "n": 6,
+        "first": 2017,
+        "last": 2022
+      },
+      "IND": {
+        "n": 20,
+        "first": 1987,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 14,
+        "first": 1990,
+        "last": 2012
+      },
+      "BRA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "NGA": {
+        "n": 4,
+        "first": 2000,
+        "last": 2010
+      },
+      "ZAF": {
+        "n": 13,
+        "first": 1991,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "WLD": {
+        "n": 36,
+        "first": 1989,
+        "last": 2024
+      }
+    },
+    "SE.TER.ENRR": {
+      "DEU": {
+        "n": 12,
+        "first": 2013,
+        "last": 2024
+      },
+      "USA": {
+        "n": 39,
+        "first": 1971,
+        "last": 2022
+      },
+      "IND": {
+        "n": 47,
+        "first": 1971,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 51,
+        "first": 1970,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 12,
+        "first": 2012,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 21,
+        "first": 1975,
+        "last": 2011
+      },
+      "ZAF": {
+        "n": 21,
+        "first": 1970,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 11,
+        "first": 2013,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "SE.ADT.LITR.ZS": {
+      "DEU": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "USA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "IND": {
+        "n": 14,
+        "first": 1981,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 5,
+        "first": 1982,
+        "last": 2020
+      },
+      "BRA": {
+        "n": 22,
+        "first": 1980,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 6,
+        "first": 1991,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 13,
+        "first": 1980,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "WLD": {
+        "n": 50,
+        "first": 1975,
+        "last": 2024
+      }
+    },
+    "SE.XPD.TOTL.GD.ZS": {
+      "DEU": {
+        "n": 19,
+        "first": 1993,
+        "last": 2022
+      },
+      "USA": {
+        "n": 7,
+        "first": 2015,
+        "last": 2021
+      },
+      "IND": {
+        "n": 22,
+        "first": 1997,
+        "last": 2022
+      },
+      "CHN": {
+        "n": 26,
+        "first": 1971,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 25,
+        "first": 1995,
+        "last": 2022
+      },
+      "NGA": {
+        "n": 14,
+        "first": 1974,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 34,
+        "first": 1987,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 42,
+        "first": 1971,
+        "last": 2021
+      },
+      "WLD": {
+        "n": 25,
+        "first": 1999,
+        "last": 2023
+      }
+    },
+    "SE.PRM.ENRL.TC.ZS": {
+      "DEU": {
+        "n": 25,
+        "first": 1993,
+        "last": 2017
+      },
+      "USA": {
+        "n": 3,
+        "first": 2014,
+        "last": 2017
+      },
+      "IND": {
+        "n": 18,
+        "first": 1971,
+        "last": 2017
+      },
+      "CHN": {
+        "n": 43,
+        "first": 1970,
+        "last": 2018
+      },
+      "BRA": {
+        "n": 19,
+        "first": 1970,
+        "last": 2017
+      },
+      "NGA": {
+        "n": 35,
+        "first": 1970,
+        "last": 2010
+      },
+      "ZAF": {
+        "n": 24,
+        "first": 1977,
+        "last": 2015
+      },
+      "JPN": {
+        "n": 5,
+        "first": 2013,
+        "last": 2017
+      },
+      "WLD": {
+        "n": 49,
+        "first": 1970,
+        "last": 2018
+      }
+    },
+    "SH.MED.PHYS.ZS": {
+      "DEU": {
+        "n": 32,
+        "first": 1991,
+        "last": 2022
+      },
+      "USA": {
+        "n": 28,
+        "first": 1960,
+        "last": 2022
+      },
+      "IND": {
+        "n": 16,
+        "first": 1960,
+        "last": 2020
+      },
+      "CHN": {
+        "n": 51,
+        "first": 1965,
+        "last": 2022
+      },
+      "BRA": {
+        "n": 23,
+        "first": 1960,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 25,
+        "first": 1960,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 22,
+        "first": 1965,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 39,
+        "first": 1960,
+        "last": 2022
+      },
+      "WLD": {
+        "n": 4,
+        "first": 1990,
+        "last": 2022
+      }
+    },
+    "SH.XPD.CHEX.GD.ZS": {
+      "DEU": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "USA": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "IND": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "CHN": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      }
+    },
+    "SH.MED.BEDS.ZS": {
+      "DEU": {
+        "n": 38,
+        "first": 1960,
+        "last": 2023
+      },
+      "USA": {
+        "n": 55,
+        "first": 1960,
+        "last": 2022
+      },
+      "IND": {
+        "n": 30,
+        "first": 1960,
+        "last": 2021
+      },
+      "CHN": {
+        "n": 59,
+        "first": 1965,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 28,
+        "first": 1960,
+        "last": 2021
+      },
+      "NGA": {
+        "n": 7,
+        "first": 1960,
+        "last": 2004
+      },
+      "ZAF": {
+        "n": 5,
+        "first": 2002,
+        "last": 2010
+      },
+      "JPN": {
+        "n": 34,
+        "first": 1960,
+        "last": 2022
+      },
+      "WLD": {
+        "n": 28,
+        "first": 1970,
+        "last": 2021
+      }
+    },
+    "SH.IMM.IDPT": {
+      "DEU": {
+        "n": 44,
+        "first": 1981,
+        "last": 2024
+      },
+      "USA": {
+        "n": 45,
+        "first": 1980,
+        "last": 2024
+      },
+      "IND": {
+        "n": 45,
+        "first": 1980,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 42,
+        "first": 1983,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 45,
+        "first": 1980,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 41,
+        "first": 1984,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 42,
+        "first": 1983,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 45,
+        "first": 1980,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 45,
+        "first": 1980,
+        "last": 2024
+      }
+    },
+    "SP.DYN.LE00.IN": {
+      "DEU": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "USA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "IND": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      }
+    },
+    "SH.DYN.MORT": {
+      "DEU": {
+        "n": 57,
+        "first": 1968,
+        "last": 2024
+      },
+      "USA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "IND": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 56,
+        "first": 1969,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 61,
+        "first": 1964,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 51,
+        "first": 1974,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 35,
+        "first": 1990,
+        "last": 2024
+      }
+    },
+    "SP.POP.GROW": {
+      "DEU": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "USA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "IND": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      }
+    },
+    "SL.EMP.TOTL.SP.ZS": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "IND": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      }
+    },
+    "SL.UEM.1524.ZS": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "IND": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      }
+    },
+    "SL.TLF.CACT.ZS": {
+      "DEU": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "USA": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "IND": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 36,
+        "first": 1990,
+        "last": 2025
+      }
+    },
+    "SL.GDP.PCAP.EM.KD": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "IND": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      }
+    },
+    "SI.POV.GINI": {
+      "DEU": {
+        "n": 32,
+        "first": 1991,
+        "last": 2022
+      },
+      "USA": {
+        "n": 62,
+        "first": 1963,
+        "last": 2024
+      },
+      "IND": {
+        "n": 8,
+        "first": 1977,
+        "last": 2022
+      },
+      "CHN": {
+        "n": 23,
+        "first": 1981,
+        "last": 2022
+      },
+      "BRA": {
+        "n": 40,
+        "first": 1981,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 9,
+        "first": 1985,
+        "last": 2022
+      },
+      "ZAF": {
+        "n": 7,
+        "first": 1993,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 13,
+        "first": 2008,
+        "last": 2020
+      },
+      "WLD": {
+        "n": 0,
+        "first": null,
+        "last": null
+      }
+    },
+    "NY.GDP.MKTP.KD": {
+      "DEU": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "USA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      }
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "DEU": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "USA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "IND": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 65,
+        "first": 1961,
+        "last": 2025
+      }
+    },
+    "FP.CPI.TOTL.ZG": {
+      "DEU": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "USA": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 39,
+        "first": 1987,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      }
+    },
+    "NE.GDI.TOTL.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "NE.CON.PRVT.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 65,
+        "first": 1960,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "NY.GNS.ICTR.ZS": {
+      "DEU": {
+        "n": 47,
+        "first": 1971,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 43,
+        "first": 1982,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 29,
+        "first": 1996,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 44,
+        "first": 1981,
+        "last": 2024
+      }
+    },
+    "NV.IND.TOTL.ZS": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 25,
+        "first": 1997,
+        "last": 2021
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 31,
+        "first": 1994,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      }
+    },
+    "NV.SRV.TOTL.ZS": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 25,
+        "first": 1997,
+        "last": 2021
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 31,
+        "first": 1994,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 30,
+        "first": 1995,
+        "last": 2024
+      }
+    },
+    "NV.AGR.TOTL.ZS": {
+      "DEU": {
+        "n": 35,
+        "first": 1991,
+        "last": 2025
+      },
+      "USA": {
+        "n": 25,
+        "first": 1997,
+        "last": 2021
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 31,
+        "first": 1994,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 45,
+        "first": 1981,
+        "last": 2025
+      }
+    },
+    "AG.PRD.CROP.XD": {
+      "DEU": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "USA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "IND": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "CHN": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "BRA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "NGA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "ZAF": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "WLD": {
+        "n": 60,
+        "first": 1961,
+        "last": 2020
+      }
+    },
+    "AG.PRD.LVSK.XD": {
+      "DEU": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "USA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "IND": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "CHN": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "BRA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "NGA": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "ZAF": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 62,
+        "first": 1961,
+        "last": 2022
+      },
+      "WLD": {
+        "n": 60,
+        "first": 1961,
+        "last": 2020
+      }
+    },
+    "AG.YLD.CREL.KG": {
+      "DEU": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "USA": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      },
+      "IND": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 64,
+        "first": 1961,
+        "last": 2024
+      }
+    },
+    "AG.LND.AGRI.ZS": {
+      "DEU": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "USA": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "IND": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "CHN": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 63,
+        "first": 1961,
+        "last": 2023
+      }
+    },
+    "SH.H2O.SMDW.ZS": {
+      "DEU": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "USA": {
+        "n": 20,
+        "first": 2005,
+        "last": 2024
+      },
+      "IND": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 0,
+        "first": null,
+        "last": null
+      },
+      "BRA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      }
+    },
+    "SH.H2O.BASW.ZS": {
+      "DEU": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "USA": {
+        "n": 20,
+        "first": 2005,
+        "last": 2024
+      },
+      "IND": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      }
+    },
+    "SH.STA.SMSS.ZS": {
+      "DEU": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "USA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "IND": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      }
+    },
+    "ER.H2O.FWST.ZS": {
+      "DEU": {
+        "n": 32,
+        "first": 1991,
+        "last": 2022
+      },
+      "USA": {
+        "n": 43,
+        "first": 1980,
+        "last": 2022
+      },
+      "IND": {
+        "n": 48,
+        "first": 1975,
+        "last": 2022
+      },
+      "CHN": {
+        "n": 43,
+        "first": 1980,
+        "last": 2022
+      },
+      "BRA": {
+        "n": 36,
+        "first": 1987,
+        "last": 2022
+      },
+      "NGA": {
+        "n": 36,
+        "first": 1987,
+        "last": 2022
+      },
+      "ZAF": {
+        "n": 33,
+        "first": 1990,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 43,
+        "first": 1980,
+        "last": 2022
+      },
+      "WLD": {
+        "n": 0,
+        "first": null,
+        "last": null
+      }
+    },
+    "IT.NET.BBND.P2": {
+      "DEU": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "USA": {
+        "n": 27,
+        "first": 1998,
+        "last": 2024
+      },
+      "IND": {
+        "n": 24,
+        "first": 2001,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 25,
+        "first": 2000,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 27,
+        "first": 1998,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 18,
+        "first": 2005,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 23,
+        "first": 2002,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 26,
+        "first": 1998,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 21,
+        "first": 2005,
+        "last": 2025
+      }
+    },
+    "IT.CEL.SETS.P2": {
+      "DEU": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "USA": {
+        "n": 50,
+        "first": 1960,
+        "last": 2024
+      },
+      "IND": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 53,
+        "first": 1960,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 52,
+        "first": 1960,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 49,
+        "first": 1960,
+        "last": 2025
+      }
+    },
+    "GB.XPD.RSDV.GD.ZS": {
+      "DEU": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "USA": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "IND": {
+        "n": 25,
+        "first": 1996,
+        "last": 2020
+      },
+      "CHN": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 24,
+        "first": 2000,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 2,
+        "first": 2007,
+        "last": 2019
+      },
+      "ZAF": {
+        "n": 22,
+        "first": 1997,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      }
+    },
+    "SP.POP.SCIE.RD.P6": {
+      "DEU": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "USA": {
+        "n": 27,
+        "first": 1996,
+        "last": 2022
+      },
+      "IND": {
+        "n": 8,
+        "first": 1996,
+        "last": 2020
+      },
+      "CHN": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 15,
+        "first": 2000,
+        "last": 2014
+      },
+      "NGA": {
+        "n": 2,
+        "first": 2007,
+        "last": 2019
+      },
+      "ZAF": {
+        "n": 22,
+        "first": 1997,
+        "last": 2022
+      },
+      "JPN": {
+        "n": 28,
+        "first": 1996,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 6,
+        "first": 2000,
+        "last": 2020
+      }
+    },
+    "IP.PAT.RESD": {
+      "DEU": {
+        "n": 42,
+        "first": 1980,
+        "last": 2021
+      },
+      "USA": {
+        "n": 42,
+        "first": 1980,
+        "last": 2021
+      },
+      "IND": {
+        "n": 41,
+        "first": 1980,
+        "last": 2021
+      },
+      "CHN": {
+        "n": 37,
+        "first": 1985,
+        "last": 2021
+      },
+      "BRA": {
+        "n": 42,
+        "first": 1980,
+        "last": 2021
+      },
+      "NGA": {
+        "n": 10,
+        "first": 1985,
+        "last": 2020
+      },
+      "ZAF": {
+        "n": 42,
+        "first": 1980,
+        "last": 2021
+      },
+      "JPN": {
+        "n": 40,
+        "first": 1980,
+        "last": 2021
+      },
+      "WLD": {
+        "n": 37,
+        "first": 1985,
+        "last": 2021
+      }
+    },
+    "NE.EXP.GNFS.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 1,
+        "first": 1960,
+        "last": 1960
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      }
+    },
+    "NE.IMP.GNFS.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 1,
+        "first": 1960,
+        "last": 1960
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      }
+    },
+    "NE.RSB.GNFS.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 1,
+        "first": 1960,
+        "last": 1960
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      }
+    },
+    "BX.KLT.DINV.WD.GD.ZS": {
+      "DEU": {
+        "n": 55,
+        "first": 1971,
+        "last": 2025
+      },
+      "USA": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "IND": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 47,
+        "first": 1979,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      }
+    },
+    "BX.TRF.PWKR.DT.GD.ZS": {
+      "DEU": {
+        "n": 55,
+        "first": 1971,
+        "last": 2025
+      },
+      "USA": {
+        "n": 49,
+        "first": 1977,
+        "last": 2025
+      },
+      "IND": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 44,
+        "first": 1982,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 49,
+        "first": 1977,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 43,
+        "first": 1977,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 49,
+        "first": 1977,
+        "last": 2025
+      }
+    },
+    "NE.TRD.GNFS.ZS": {
+      "DEU": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 1,
+        "first": 1960,
+        "last": 1960
+      },
+      "ZAF": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      }
+    },
+    "AG.LND.FRST.ZS": {
+      "DEU": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "USA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "IND": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "CHN": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 32,
+        "first": 1992,
+        "last": 2023
+      }
+    },
+    "EN.ATM.PM25.MC.M3": {
+      "DEU": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "USA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "IND": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "CHN": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 34,
+        "first": 1990,
+        "last": 2023
+      }
+    },
+    "EN.GHG.CO2.PC.CE.AR5": {
+      "DEU": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "USA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "IND": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "ZAF": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 55,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "IS.AIR.PSGR": {
+      "DEU": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "USA": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "IND": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "CHN": {
+        "n": 50,
+        "first": 1974,
+        "last": 2023
+      },
+      "BRA": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "NGA": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "JPN": {
+        "n": 54,
+        "first": 1970,
+        "last": 2023
+      },
+      "WLD": {
+        "n": 53,
+        "first": 1970,
+        "last": 2023
+      }
+    },
+    "IS.SHP.GOOD.TU": {
+      "DEU": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "USA": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "IND": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "CHN": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "NGA": {
+        "n": 14,
+        "first": 2010,
+        "last": 2023
+      },
+      "ZAF": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      },
+      "WLD": {
+        "n": 15,
+        "first": 2010,
+        "last": 2024
+      }
+    },
+    "IS.RRS.TOTL.KM": {
+      "DEU": {
+        "n": 27,
+        "first": 1995,
+        "last": 2021
+      },
+      "USA": {
+        "n": 27,
+        "first": 1995,
+        "last": 2021
+      },
+      "IND": {
+        "n": 27,
+        "first": 1995,
+        "last": 2021
+      },
+      "CHN": {
+        "n": 27,
+        "first": 1995,
+        "last": 2021
+      },
+      "BRA": {
+        "n": 2,
+        "first": 2004,
+        "last": 2007
+      },
+      "NGA": {
+        "n": 21,
+        "first": 1995,
+        "last": 2015
+      },
+      "ZAF": {
+        "n": 7,
+        "first": 2015,
+        "last": 2021
+      },
+      "JPN": {
+        "n": 2,
+        "first": 2010,
+        "last": 2011
+      },
+      "WLD": {
+        "n": 0,
+        "first": null,
+        "last": null
+      }
+    },
+    "FS.AST.PRVT.GD.ZS": {
+      "DEU": {
+        "n": 23,
+        "first": 2001,
+        "last": 2023
+      },
+      "USA": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "IND": {
+        "n": 66,
+        "first": 1960,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 48,
+        "first": 1977,
+        "last": 2024
+      },
+      "BRA": {
+        "n": 64,
+        "first": 1960,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 63,
+        "first": 1960,
+        "last": 2022
+      },
+      "ZAF": {
+        "n": 59,
+        "first": 1965,
+        "last": 2024
+      },
+      "JPN": {
+        "n": 56,
+        "first": 1970,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 45,
+        "first": 1970,
+        "last": 2024
+      }
+    },
+    "CM.MKT.LCAP.GD.ZS": {
+      "DEU": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "USA": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "IND": {
+        "n": 26,
+        "first": 2000,
+        "last": 2025
+      },
+      "CHN": {
+        "n": 23,
+        "first": 2003,
+        "last": 2025
+      },
+      "BRA": {
+        "n": 26,
+        "first": 2000,
+        "last": 2025
+      },
+      "NGA": {
+        "n": 30,
+        "first": 1993,
+        "last": 2025
+      },
+      "ZAF": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "JPN": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      },
+      "WLD": {
+        "n": 51,
+        "first": 1975,
+        "last": 2025
+      }
+    }
+  },
+  "independentSources": {
+    "SE.PRE.ENRR": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.PRE.ENRR?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "794a18b8f87cc8c83c422f9f55257d9d9ca5c7adc84d6f6722a29fa44cc4d3a6",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.PRE.ENRR?source=2&format=json",
+      "metadataSha256": "c5e5f3a200b45eabf1e1e74d2445aa5cf2055ab782f6b2b4f5946591ba2300ac"
+    },
+    "SE.PRM.ENRR": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.PRM.ENRR?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "53bf26426aeecec44a50ac2856ec8c6b769b9d57f46ce18f532a5042a3358e4b",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.PRM.ENRR?source=2&format=json",
+      "metadataSha256": "980f33c14c3b9ec694a793ad9fb54eb0f4367be4eec5de0d21ff36ef3b88326d"
+    },
+    "SE.PRM.CMPT.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.PRM.CMPT.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "308f9578b27ed4f70be6347c56f290a99a8485dd8682781f77c402382c9f5a1b",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.PRM.CMPT.ZS?source=2&format=json",
+      "metadataSha256": "c244029e9879052a234377e7e25eed4a2febbd7036bbc1157c6a173701f2c64f"
+    },
+    "SE.SEC.CMPT.LO.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.SEC.CMPT.LO.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "b9ce16dd82deaa28de33b15a34d306f692405c881e72e0c15ba56ffb10a7a0c3",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.SEC.CMPT.LO.ZS?source=2&format=json",
+      "metadataSha256": "76a260533f7cbe4ad349a9e9f53a81881b97c7d563b57252faa6f3a7ae056a26"
+    },
+    "SE.TER.ENRR": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.TER.ENRR?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "7df524bd2d6c6c381e7b054a2367a3738fed5bcce8033887e18a7911ca18bd0b",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.TER.ENRR?source=2&format=json",
+      "metadataSha256": "39dc6d7475cb76cbf8862c283aad1b51ba7f58fca4055e1ed14fbccae7341386"
+    },
+    "SE.ADT.LITR.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.ADT.LITR.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "97a47c6e38c28ea1e77f98ae2fbb9697c0cb4f4d70303c1de865c906a75a3d1e",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.ADT.LITR.ZS?source=2&format=json",
+      "metadataSha256": "1d14ffeda10a9189e2dd257422fca00d6f09a6217205e83ad44516c470c71518"
+    },
+    "SE.XPD.TOTL.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.XPD.TOTL.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "685c5d06fbb4575f6b85f69b90d3a9c237be471c19ac85724d28576c8674ebe0",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.XPD.TOTL.GD.ZS?source=2&format=json",
+      "metadataSha256": "b6fc4e9721511a5bace96a4befdaac2f00630ff7af63184956571027ea22f4f7"
+    },
+    "SE.PRM.ENRL.TC.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SE.PRM.ENRL.TC.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "5c78e3b4a0256ac13c335b165f7204b46c4a0e391538eab361cc798a8a936373",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SE.PRM.ENRL.TC.ZS?source=2&format=json",
+      "metadataSha256": "167ba0b5cf4b80cdd943743647f3a29829513de63b9ab69f973b9b5fe0ebee8b"
+    },
+    "SH.MED.PHYS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.MED.PHYS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "2ba41949eea283fbead9a3438cf72e46360e0b37dc611acd79da6c74f89474ce",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.MED.PHYS.ZS?source=2&format=json",
+      "metadataSha256": "22cea85f8a0b5944d14beaa3f9b5e97d343ddc4be758689187681ec7a9fe3ea0"
+    },
+    "SH.XPD.CHEX.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.XPD.CHEX.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "7f1301b340746b142868045be924020824dca6e37475694a5ba6eb4e372c3234",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.XPD.CHEX.GD.ZS?source=2&format=json",
+      "metadataSha256": "cb5e886f95a04557929a38257085e6a03e98006e38e78c2e33d872ab84fc0f05"
+    },
+    "SH.MED.BEDS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.MED.BEDS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "0eac4dbb77e53d59b0a2644961f6aea690e6f6853439ec4a4e30c7452c687f1d",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.MED.BEDS.ZS?source=2&format=json",
+      "metadataSha256": "7739f9616144297442cdfb76a4bd55210f8ad1789f6f16a28995f05c30368517"
+    },
+    "SH.IMM.IDPT": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.IMM.IDPT?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "dcd751c611dcb4a2bf6f8d92ca9a70e6bf2341f7d8f09e66f38fbedf2efa8f52",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.IMM.IDPT?source=2&format=json",
+      "metadataSha256": "e8a50eec8d0c96325fa783118ec3435e91f93a64c755a8485a530680ec65b7e2"
+    },
+    "SP.DYN.LE00.IN": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SP.DYN.LE00.IN?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "2f381bced92ab420102f20628dc8c81a70763cf8d7b1c1155a42bd3053d5de34",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SP.DYN.LE00.IN?source=2&format=json",
+      "metadataSha256": "a39cb6fddfbbb953053690366243dffe77a266c4deae79c46ce5a06da9f5fc31"
+    },
+    "SH.DYN.MORT": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.DYN.MORT?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "d64610b3277c3ffd9e649d5bc23053cd77da8afba0a090661f99a9ad18e87c58",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.DYN.MORT?source=2&format=json",
+      "metadataSha256": "d6b4f172d2c2b36198d3a0977b21c17740566801f9fd75dda99c82a517f1e3c4"
+    },
+    "SP.POP.GROW": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SP.POP.GROW?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "263c589d917e3cb90b8c286d51ead46d0839a34c616488110e60b1014fec9129",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SP.POP.GROW?source=2&format=json",
+      "metadataSha256": "410c9806e450f67653b837ced0851741d45763284d7621f94f29e930ee817c65"
+    },
+    "SL.EMP.TOTL.SP.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SL.EMP.TOTL.SP.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "074149914401063e5778b711925b57a9137d3431a10a3388edc02cb67f4cd594",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SL.EMP.TOTL.SP.ZS?source=2&format=json",
+      "metadataSha256": "58f353c396c59d469e58a67486a5e91d5fd3821c8b7d68e0757b43a5faf7bef8"
+    },
+    "SL.UEM.1524.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SL.UEM.1524.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "d53756dc9808079f68ead7bae9c6df587d8cf61d13f0b1706dbb3f596ad44506",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SL.UEM.1524.ZS?source=2&format=json",
+      "metadataSha256": "591afae475788a26e1c53db79754212fcdea0489065f49cb963ad23478ac5804"
+    },
+    "SL.TLF.CACT.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SL.TLF.CACT.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "bb8a6eb3325ccb94b2858c2ba23861585686ad570fb9986a8eadc5b389fae4d6",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SL.TLF.CACT.ZS?source=2&format=json",
+      "metadataSha256": "10154473c4d75dd636f728baf231162ddd5a12c910084f832a3b93fe55038fe7"
+    },
+    "SL.GDP.PCAP.EM.KD": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SL.GDP.PCAP.EM.KD?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "19d816862e58f54c53851ed1ce0cdf737b06b2ec917930ccc0e2de5da9c75568",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SL.GDP.PCAP.EM.KD?source=2&format=json",
+      "metadataSha256": "3da99ea8c5e123bfbf9c16dcfdf092608b9c0118916cde7a4ef744353cc09f62"
+    },
+    "SI.POV.GINI": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SI.POV.GINI?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "5f8fd7c216758410a15f38e849d0bd71d4de6b4e6c37117e04278891686160b2",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SI.POV.GINI?source=2&format=json",
+      "metadataSha256": "e377bf82b38024748153880ff90c0106a0ef0fd8cb04761146cc60a2609cab3d"
+    },
+    "NY.GDP.MKTP.KD": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NY.GDP.MKTP.KD?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "c5349bd616663377d2af2fef697592cff85bcca9b9764056aa8f27013dcae5eb",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.KD?source=2&format=json",
+      "metadataSha256": "bc4bc0ffec1755410f52b1091c6b1f46917c7417977102350d3d1102b4659216"
+    },
+    "NY.GDP.MKTP.KD.ZG": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NY.GDP.MKTP.KD.ZG?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "e09f9e86085867bab2a76f4eee1664fc8dae5b6f22b716eb474ba61f24d1a264",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NY.GDP.MKTP.KD.ZG?source=2&format=json",
+      "metadataSha256": "ed7703d841d4dde2d1cb858f0dd53229fe3e841f72abb17dbc8c950ad20c88ce"
+    },
+    "FP.CPI.TOTL.ZG": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/FP.CPI.TOTL.ZG?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "6e767557d2039e8485841d7f78e458a26c5b0c99bab477e7ae6b2053bc30f97c",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/FP.CPI.TOTL.ZG?source=2&format=json",
+      "metadataSha256": "df9371a3b6c01e55a3f28991e62e1b1ebbe0cd2a7da94456be9938c7a2962233"
+    },
+    "NE.GDI.TOTL.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.GDI.TOTL.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "52cbfedb128d130bb1ad515fe1666cec5f227b2239d6352fd0b3f476d0132c82",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.GDI.TOTL.ZS?source=2&format=json",
+      "metadataSha256": "ca424dd8dac40839e4c48353ba5b9bb3d0344a44ba22edac002762b49f1cc82b"
+    },
+    "NE.CON.PRVT.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.CON.PRVT.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "750e476713802ea0e92ec70dfee06406946154b2aa6344383c05721ec8098100",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.CON.PRVT.ZS?source=2&format=json",
+      "metadataSha256": "bb52c237259c1b92922b2456c8d96174e0533342960610940e1683988a5bff72"
+    },
+    "NY.GNS.ICTR.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NY.GNS.ICTR.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "e7fa95858555a68eb24be378be29df8f496f35ecd72aa29bfdbac1d57d0b9695",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NY.GNS.ICTR.ZS?source=2&format=json",
+      "metadataSha256": "411bfde8124e2ea43836ffbdb34890efcc198317b925f308b49bd974c954fc0a"
+    },
+    "NV.IND.TOTL.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NV.IND.TOTL.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "29ef62145dabd1780cb546d9ef04b35543fd8acf6d96a6b51752738b1d875714",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NV.IND.TOTL.ZS?source=2&format=json",
+      "metadataSha256": "989dfa43e4289f3b70735cd07f08fbbba8b2c76e89a6f0d19ded866027736c9b"
+    },
+    "NV.SRV.TOTL.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NV.SRV.TOTL.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "5cf4c8d132cfb5b000011c60e0423fca747432f6770b21be12716a343ba40a06",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NV.SRV.TOTL.ZS?source=2&format=json",
+      "metadataSha256": "55d203ff83eb44bd8a39d3fd48042f3473c75f3ce2c6364cfb44da0454661fb6"
+    },
+    "NV.AGR.TOTL.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NV.AGR.TOTL.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "331dd522da5d9e4ec3310320cfcf53eb71d867712b1bf46f8afd942f1beef230",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NV.AGR.TOTL.ZS?source=2&format=json",
+      "metadataSha256": "fe7405bdb44e1600d98e44cc0edb61a4cc77b9d8d2ce534bed46309ac173a117"
+    },
+    "AG.PRD.CROP.XD": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/AG.PRD.CROP.XD?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "6a540ab44823871b4e1bd7e7f7b31ae5648d2fa1cdbdeef91b4e37ed035e43f1",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/AG.PRD.CROP.XD?source=2&format=json",
+      "metadataSha256": "c671be7d7f659759621b502c59b673efc3d3f168f4161d914d39ce35eb8c2adb"
+    },
+    "AG.PRD.LVSK.XD": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/AG.PRD.LVSK.XD?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "a1b549a382a2fb07acd0f436ab8cac2d7a4421538e52ebad3e846c6bd596bb70",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/AG.PRD.LVSK.XD?source=2&format=json",
+      "metadataSha256": "189430ad7b012ae620e32fe4eadddbf391a762ba45120244bc119cf7255cb1e5"
+    },
+    "AG.YLD.CREL.KG": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/AG.YLD.CREL.KG?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "eafbba99109f78b8b32d2eeb6414dfd036d3b360d0f9258b2ea75fd91bb88f61",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/AG.YLD.CREL.KG?source=2&format=json",
+      "metadataSha256": "7db73e3ce4522b5a91050ee4243b129d332e444cf38709b7ca5443cae45d9f2c"
+    },
+    "AG.LND.AGRI.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/AG.LND.AGRI.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "63b6a14838dae2dc9b765b554f0194aa4d908e3fb0cea60d8a52ff2b9545cdc2",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/AG.LND.AGRI.ZS?source=2&format=json",
+      "metadataSha256": "cf374ff9762fd9559c918fe788e6072f4ae45a18d8d05f912e162dcc36fba51b"
+    },
+    "SH.H2O.SMDW.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.H2O.SMDW.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "f36c9c2aba3e97439b98c1dab30794748d15455c15930aa1ae8c19093acffe23",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.H2O.SMDW.ZS?source=2&format=json",
+      "metadataSha256": "0fa2202365ca61608303356763ee484c4ef228807364f14fdfd77107c4221526"
+    },
+    "SH.H2O.BASW.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.H2O.BASW.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "7976209a7d131b7960c414ea8e4d1718b5f321975d815924e97b646d84454473",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.H2O.BASW.ZS?source=2&format=json",
+      "metadataSha256": "41c3627f1979d7347fc12ed8f67bf2bddb25df38ecf7d9cef0ece39f0bbe6591"
+    },
+    "SH.STA.SMSS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SH.STA.SMSS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "2c9a74291b4433403e8c0aca2ee6d20369df3160e4b0fe29278414b5e6dc48ca",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SH.STA.SMSS.ZS?source=2&format=json",
+      "metadataSha256": "9b186aa72504764172407ff5016666414e0794d3cd2c2fdd370ddb79386d7acf"
+    },
+    "ER.H2O.FWST.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/ER.H2O.FWST.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "537b8823f113eb84d47e80874cd2d39b0f119f793981bda3267d6d7aa815d3aa",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/ER.H2O.FWST.ZS?source=2&format=json",
+      "metadataSha256": "93f80a0eaba7806ea1727788513110db3ca8b12978bae13ac311a37ddd1ccbe9"
+    },
+    "IT.NET.BBND.P2": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IT.NET.BBND.P2?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "adda83757de469df6453456d722566c86c998d9a7f01f8fe1eb735a865e8e32d",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IT.NET.BBND.P2?source=2&format=json",
+      "metadataSha256": "60cc834eefb84a39625796fd1709d7cce852dca105004eb913f15e6a11e2888c"
+    },
+    "IT.CEL.SETS.P2": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IT.CEL.SETS.P2?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "7111673e35f0b45529b135bbf1de134527011667f29c48573af1e7950abd0d0c",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IT.CEL.SETS.P2?source=2&format=json",
+      "metadataSha256": "f624bcfad4bd1b64f7791bddece4bef2f0a9024b048badd90f76048453804ea4"
+    },
+    "GB.XPD.RSDV.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/GB.XPD.RSDV.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "d379370b5fd5434e0ffd9a78d64737d542a9b204b1bc5385ae4e5a3b97222290",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/GB.XPD.RSDV.GD.ZS?source=2&format=json",
+      "metadataSha256": "8b86f8208807c1ba1fa83a27f753bc5e59e7fbec115a22aabf574d2449fe22ae"
+    },
+    "SP.POP.SCIE.RD.P6": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/SP.POP.SCIE.RD.P6?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "e968643448ee1d22b3114750809e437601052040a72355345bcac9e75526eee6",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/SP.POP.SCIE.RD.P6?source=2&format=json",
+      "metadataSha256": "08eb4cad05cde99e4cfe51d15023abd82e6f096c8f5b70eb8c141d6c59ea3f25"
+    },
+    "IP.PAT.RESD": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IP.PAT.RESD?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "e06604eac8aec0c0c1fbc562fa6393c7cee9a787f4007a6673b00e89a9b44c16",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IP.PAT.RESD?source=2&format=json",
+      "metadataSha256": "9232b94c638bd64284deaa06e543bec5b9624045b47a9cbc9e396a02ae9c94e0"
+    },
+    "NE.EXP.GNFS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.EXP.GNFS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "b656bd7f44ffe93df497047f43d4db24dba59b2f5c5f0ee2da549f9843546f7a",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.EXP.GNFS.ZS?source=2&format=json",
+      "metadataSha256": "2324e64be12297b7dd655312acf3581dff838c732d6c989cdfc75653956bd542"
+    },
+    "NE.IMP.GNFS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.IMP.GNFS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "6c9cc19893db4e9ec42d748f02a956b354331058009cb5bf998cfd97a3895785",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.IMP.GNFS.ZS?source=2&format=json",
+      "metadataSha256": "7b4d9cbb46f5e6baca7dd719e96f2dc355bd8cd6959dccd11fa48e64ea1f15f3"
+    },
+    "NE.RSB.GNFS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.RSB.GNFS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "0b7aea35d5c99aa3ec0173970470d32d65ce1ddb3e60f64c68d54683df9b634a",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.RSB.GNFS.ZS?source=2&format=json",
+      "metadataSha256": "9f27b4c4cd6676a4720057088646a1279151b44b2d6addd7104c82f747f45c67"
+    },
+    "BX.KLT.DINV.WD.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/BX.KLT.DINV.WD.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "8d107377de5b4280d0ab5cd12a8dcf75c9019a764ca7eac359122f80d38f22c2",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/BX.KLT.DINV.WD.GD.ZS?source=2&format=json",
+      "metadataSha256": "fd15df0dd9de59dd6537c0c76dbcf5656ff19af8445370700ad6b7931f192819"
+    },
+    "BX.TRF.PWKR.DT.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/BX.TRF.PWKR.DT.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "591441a6479671b3bef6443889d551a92c3edb387cfb61796eef9f8b3a1503e7",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/BX.TRF.PWKR.DT.GD.ZS?source=2&format=json",
+      "metadataSha256": "6acbc3feaaf54a04593cfbeda6412fa789099bdfa10f7397d66f4457ef8fb94c"
+    },
+    "NE.TRD.GNFS.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/NE.TRD.GNFS.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "c0d78eeb44886e76c2f5e1f9a3e5535cb9f452250ad79f32a22aed82760d04f2",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/NE.TRD.GNFS.ZS?source=2&format=json",
+      "metadataSha256": "9d62a99289a9f6dad8827991e27354173795ea0ae71a7952d24db22a41e4f442"
+    },
+    "AG.LND.FRST.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/AG.LND.FRST.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "691c256113fa5b7c74bac963c6096f5f93faad41c10cce26885f1e5bf1a1958f",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/AG.LND.FRST.ZS?source=2&format=json",
+      "metadataSha256": "706587ee22b05b930a1e745e4f104d6c895f46b827f5209655405764b85c7145"
+    },
+    "EN.ATM.PM25.MC.M3": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/EN.ATM.PM25.MC.M3?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "db9a9f5acf097cd76e756ba5c605d32a02edca3b607d0db518459c225b912e59",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/EN.ATM.PM25.MC.M3?source=2&format=json",
+      "metadataSha256": "c6a8abe3aa5bbdaa57df11d1375b4d98d82cfc5f3ee02af04f1e9e3f8d2651aa"
+    },
+    "EN.GHG.CO2.PC.CE.AR5": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/EN.GHG.CO2.PC.CE.AR5?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "8c891a62c4a96bccbb79d42d04811d0bb88377e502654e45e68fa81680bda85e",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/EN.GHG.CO2.PC.CE.AR5?source=2&format=json",
+      "metadataSha256": "53014d01bf92914b341953a5c2b0d3ff2790624d279f8040b29c4d9715ec4415"
+    },
+    "IS.AIR.PSGR": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IS.AIR.PSGR?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "300c69e9ae96ebe711c28ee66ecaa383e148025b279b3bd0dfcd1152d0a4cd60",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IS.AIR.PSGR?source=2&format=json",
+      "metadataSha256": "ba6f61d3e41cab23948e6db21d27a0eeebaa5c54e72cf6d67b6086a21663f36e"
+    },
+    "IS.SHP.GOOD.TU": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IS.SHP.GOOD.TU?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "6a9d6ea114bfee7ab06d1c27403f0a188ca501b670a72aedf769b9a0cefcf986",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IS.SHP.GOOD.TU?source=2&format=json",
+      "metadataSha256": "a2bdca05f0eda757df987e5a88f898ba310d6c808ade82da4e53801509c4de2c"
+    },
+    "IS.RRS.TOTL.KM": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/IS.RRS.TOTL.KM?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "c6cf51bb3b3a08e36f398c89ac64622baf9d71632bc89799cc0537c31d83ee89",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/IS.RRS.TOTL.KM?source=2&format=json",
+      "metadataSha256": "801503f7e323029ee5208da70be93d156dc61fc033cfa8b0d6a859cbcfc198b9"
+    },
+    "FS.AST.PRVT.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/FS.AST.PRVT.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "3f9038861174ec3cb222660ff8898e8f3993df091e25107f1f5e4a38b39a39e9",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/FS.AST.PRVT.GD.ZS?source=2&format=json",
+      "metadataSha256": "5d3c92c214008fdce2095fd80bb6bb5636e254292e866a21fab92bccf5fcbd05"
+    },
+    "CM.MKT.LCAP.GD.ZS": {
+      "numericUrl": "https://api.worldbank.org/v2/country/DEU;USA;IND;CHN;BRA;NGA;ZAF;JPN;WLD/indicator/CM.MKT.LCAP.GD.ZS?source=2&format=json&date=1960:2026&per_page=2000",
+      "numericSha256": "cb6403e95717cc50b952e6537a929453f062bf7e62be48f15c53b558083daa31",
+      "metadataUrl": "https://api.worldbank.org/v2/indicator/CM.MKT.LCAP.GD.ZS?source=2&format=json",
+      "metadataSha256": "a16569cd58a4fb883d8a396d26636017b07efb6b0f150d2f142522be6582d39c"
+    }
+  },
+  "limits": [
+    "Nine-country independent numerical sample; it does not certify every worldwide value.",
+    "Global coverage summaries count non-null values, not complete comparable time series.",
+    "An available historical value is not proof of current data or a sector valuation."
+  ]
+}

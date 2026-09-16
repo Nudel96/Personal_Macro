@@ -1,0 +1,1445 @@
+{
+  "schemaVersion": 1,
+  "status": "planning_catalog_not_implemented",
+  "note": "Themenumfang des weltweiten Atlas. Ein Katalogeintrag belegt keine Datenabdeckung. Länder und Themen sind unabhängige Dimensionen. Quellen sind Kandidaten; konkrete Reihen benötigen geprüfte Zuordnungen.",
+  "domains": [
+    {
+      "id": "people",
+      "labelDe": "Menschen",
+      "order": 1,
+      "icon": "users"
+    },
+    {
+      "id": "economy",
+      "labelDe": "Wirtschaft & Kapital",
+      "order": 2,
+      "icon": "landmark"
+    },
+    {
+      "id": "energy",
+      "labelDe": "Energie",
+      "order": 3,
+      "icon": "zap"
+    },
+    {
+      "id": "production",
+      "labelDe": "Produktion & Ressourcen",
+      "order": 4,
+      "icon": "factory"
+    },
+    {
+      "id": "technology",
+      "labelDe": "Technologie & Wissen",
+      "order": 5,
+      "icon": "cpu"
+    },
+    {
+      "id": "living",
+      "labelDe": "Leben & Versorgung",
+      "order": 6,
+      "icon": "house"
+    },
+    {
+      "id": "connections",
+      "labelDe": "Weltverbindungen & Umwelt",
+      "order": 7,
+      "icon": "globe"
+    },
+    {
+      "id": "history",
+      "labelDe": "Lange Entwicklungen",
+      "order": 8,
+      "icon": "history"
+    }
+  ],
+  "groups": [
+    {
+      "id": "demography",
+      "domainId": "people",
+      "labelDe": "Demografie",
+      "views": [
+        "structure",
+        "development",
+        "projection"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "un_wpp"
+      ],
+      "topics": [
+        [
+          "population",
+          "Bevölkerung"
+        ],
+        [
+          "population_growth",
+          "Bevölkerungswachstum"
+        ],
+        [
+          "fertility",
+          "Geburten und Fertilität"
+        ],
+        [
+          "mortality",
+          "Sterblichkeit"
+        ],
+        [
+          "life_expectancy",
+          "Lebenserwartung"
+        ],
+        [
+          "age_structure",
+          "Altersstruktur"
+        ],
+        [
+          "working_age",
+          "Bevölkerung im Erwerbsalter"
+        ],
+        [
+          "dependency",
+          "Jugend- und Altenquotient"
+        ],
+        [
+          "migration",
+          "Zu- und Abwanderung"
+        ],
+        [
+          "urbanization",
+          "Stadt und Land"
+        ],
+        [
+          "households",
+          "Haushalte und Haushaltsgrößen"
+        ],
+        [
+          "population_projection",
+          "Bevölkerungsszenarien"
+        ]
+      ]
+    },
+    {
+      "id": "education",
+      "domainId": "people",
+      "labelDe": "Bildung",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "unesco_uis",
+        "worldbank_wdi",
+        "damodaran",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "early_learning",
+          "Frühkindliche Bildung"
+        ],
+        [
+          "primary_school",
+          "Grundbildung"
+        ],
+        [
+          "secondary_school",
+          "Weiterführende Bildung"
+        ],
+        [
+          "higher_education",
+          "Hochschulen"
+        ],
+        [
+          "vocational_training",
+          "Berufliche Bildung"
+        ],
+        [
+          "adult_learning",
+          "Weiterbildung"
+        ],
+        [
+          "literacy",
+          "Alphabetisierung"
+        ],
+        [
+          "learning_outcomes",
+          "Lernergebnisse"
+        ],
+        [
+          "education_spending",
+          "Bildungsausgaben"
+        ],
+        [
+          "teachers",
+          "Lehrkräfte"
+        ],
+        [
+          "education_business",
+          "Private Bildungswirtschaft"
+        ],
+        [
+          "education_technology",
+          "Digitale Bildung"
+        ]
+      ]
+    },
+    {
+      "id": "health",
+      "domainId": "people",
+      "labelDe": "Gesundheit & Pflege",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "who",
+        "worldbank_wdi",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "healthcare_access",
+          "Gesundheitsversorgung"
+        ],
+        [
+          "healthcare_spending",
+          "Gesundheitsausgaben"
+        ],
+        [
+          "hospitals",
+          "Krankenhäuser"
+        ],
+        [
+          "medical_equipment",
+          "Medizintechnik"
+        ],
+        [
+          "pharmaceuticals",
+          "Pharma"
+        ],
+        [
+          "biotechnology",
+          "Biotechnologie"
+        ],
+        [
+          "elderly_care",
+          "Pflege"
+        ],
+        [
+          "health_insurance",
+          "Krankenversicherung"
+        ],
+        [
+          "prevention",
+          "Prävention"
+        ],
+        [
+          "digital_health",
+          "Digitale Gesundheit"
+        ]
+      ]
+    },
+    {
+      "id": "labor",
+      "domainId": "people",
+      "labelDe": "Arbeit & Einkommen",
+      "views": [
+        "structure",
+        "development",
+        "cycle"
+      ],
+      "sourceCandidates": [
+        "ilostat",
+        "worldbank_wdi",
+        "oecd",
+        "eurostat"
+      ],
+      "topics": [
+        [
+          "employment",
+          "Beschäftigung"
+        ],
+        [
+          "sector_structure",
+          "Beschäftigung nach Wirtschaftsbereichen"
+        ],
+        [
+          "unemployment",
+          "Arbeitslosigkeit"
+        ],
+        [
+          "youth_employment",
+          "Jugend und Arbeit"
+        ],
+        [
+          "participation",
+          "Erwerbsbeteiligung"
+        ],
+        [
+          "wages",
+          "Reallöhne"
+        ],
+        [
+          "labor_productivity",
+          "Arbeitsproduktivität"
+        ],
+        [
+          "informal_work",
+          "Informelle Beschäftigung"
+        ],
+        [
+          "skills",
+          "Qualifikation und Fachkräfte"
+        ],
+        [
+          "working_hours",
+          "Arbeitszeit"
+        ],
+        [
+          "income_distribution",
+          "Einkommensverteilung"
+        ]
+      ]
+    },
+    {
+      "id": "macro",
+      "domainId": "economy",
+      "labelDe": "Wirtschaft & Wohlstand",
+      "views": [
+        "development",
+        "cycle",
+        "structure"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "oecd",
+        "eurostat",
+        "maddison",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "real_output",
+          "Reale Wirtschaftsleistung"
+        ],
+        [
+          "output_per_capita",
+          "Wohlstand je Einwohner"
+        ],
+        [
+          "growth",
+          "Wirtschaftswachstum"
+        ],
+        [
+          "inflation",
+          "Inflation und Kaufkraft"
+        ],
+        [
+          "productivity",
+          "Gesamtproduktivität"
+        ],
+        [
+          "investment",
+          "Investitionen"
+        ],
+        [
+          "consumption",
+          "Privater Konsum"
+        ],
+        [
+          "savings",
+          "Sparen"
+        ],
+        [
+          "industrial_share",
+          "Industrieanteil"
+        ],
+        [
+          "manufacturing_share",
+          "Anteil verarbeitendes Gewerbe"
+        ],
+        [
+          "service_share",
+          "Dienstleistungsanteil"
+        ],
+        [
+          "agricultural_share",
+          "Landwirtschaftsanteil"
+        ],
+        [
+          "purchasing_power",
+          "Kaufkraftvergleiche"
+        ]
+      ]
+    },
+    {
+      "id": "finance",
+      "domainId": "economy",
+      "labelDe": "Finanzsystem & Verschuldung",
+      "views": [
+        "development",
+        "cycle",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "bis_context",
+        "jst",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "banks",
+          "Banken"
+        ],
+        [
+          "insurance",
+          "Versicherungen"
+        ],
+        [
+          "asset_management",
+          "Vermögensverwaltung"
+        ],
+        [
+          "payments",
+          "Zahlungsverkehr"
+        ],
+        [
+          "household_debt",
+          "Haushaltsverschuldung"
+        ],
+        [
+          "corporate_debt",
+          "Unternehmensverschuldung"
+        ],
+        [
+          "public_debt",
+          "Staatsverschuldung"
+        ],
+        [
+          "credit_growth",
+          "Kreditvergabe"
+        ],
+        [
+          "debt_service",
+          "Schuldendienst"
+        ],
+        [
+          "financial_access",
+          "Finanzielle Teilhabe"
+        ],
+        [
+          "capital_markets",
+          "Kapitalmärkte"
+        ],
+        [
+          "financial_stress",
+          "Finanzielle Anspannung"
+        ]
+      ]
+    },
+    {
+      "id": "market_context",
+      "domainId": "economy",
+      "labelDe": "Marktlage & Bewertung",
+      "views": [
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "eodhd",
+        "damodaran",
+        "nifty"
+      ],
+      "topics": [
+        [
+          "country_equities",
+          "Länderaktienmärkte"
+        ],
+        [
+          "regional_equities",
+          "Regionale Aktienmärkte"
+        ],
+        [
+          "sector_equities",
+          "Sektormärkte"
+        ],
+        [
+          "theme_equities",
+          "Themenmärkte"
+        ],
+        [
+          "relative_strength",
+          "Sektoren im Marktvergleich"
+        ],
+        [
+          "historical_valuation",
+          "Historische Bewertung"
+        ],
+        [
+          "earnings_quality",
+          "Gewinne und Bewertungsqualität"
+        ],
+        [
+          "market_concentration",
+          "Marktkonzentration"
+        ]
+      ]
+    },
+    {
+      "id": "electricity",
+      "domainId": "energy",
+      "labelDe": "Strom & Erzeugung",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "irena",
+        "worldbank_wdi",
+        "national_statistics",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "electricity_access",
+          "Stromzugang"
+        ],
+        [
+          "electricity_demand",
+          "Stromnachfrage"
+        ],
+        [
+          "generation_mix",
+          "Strommix"
+        ],
+        [
+          "solar",
+          "Solarenergie"
+        ],
+        [
+          "wind_onshore",
+          "Windenergie an Land"
+        ],
+        [
+          "wind_offshore",
+          "Windenergie auf See"
+        ],
+        [
+          "hydropower",
+          "Wasserkraft"
+        ],
+        [
+          "geothermal",
+          "Geothermie"
+        ],
+        [
+          "nuclear",
+          "Kernenergie"
+        ],
+        [
+          "coal_power",
+          "Kohleverstromung"
+        ],
+        [
+          "gas_power",
+          "Gasverstromung"
+        ],
+        [
+          "utilities",
+          "Versorgungsunternehmen"
+        ]
+      ]
+    },
+    {
+      "id": "fuels",
+      "domainId": "energy",
+      "labelDe": "Brennstoffe & Energieträger",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "national_statistics",
+        "worldbank_wdi",
+        "eodhd",
+        "damodaran",
+        "worldbank_commodities"
+      ],
+      "topics": [
+        [
+          "oil",
+          "Erdöl"
+        ],
+        [
+          "natural_gas",
+          "Erdgas"
+        ],
+        [
+          "lng",
+          "Flüssigerdgas"
+        ],
+        [
+          "coal",
+          "Kohle"
+        ],
+        [
+          "uranium",
+          "Uran"
+        ],
+        [
+          "hydrogen",
+          "Wasserstoff"
+        ],
+        [
+          "bioenergy",
+          "Bioenergie"
+        ],
+        [
+          "synthetic_fuels",
+          "Synthetische Kraftstoffe"
+        ]
+      ]
+    },
+    {
+      "id": "energy_systems",
+      "domainId": "energy",
+      "labelDe": "Netze, Speicher & Energiewende",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "irena",
+        "worldbank_wdi",
+        "national_statistics",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "power_grids",
+          "Stromnetze"
+        ],
+        [
+          "battery_storage",
+          "Batteriespeicher"
+        ],
+        [
+          "long_duration_storage",
+          "Langzeitspeicher"
+        ],
+        [
+          "energy_efficiency",
+          "Energieeffizienz"
+        ],
+        [
+          "heat_pumps",
+          "Wärmepumpen"
+        ],
+        [
+          "district_heating",
+          "Wärmenetze"
+        ],
+        [
+          "energy_imports",
+          "Energieimportabhängigkeit"
+        ],
+        [
+          "energy_investment",
+          "Energieinvestitionen"
+        ]
+      ]
+    },
+    {
+      "id": "industry",
+      "domainId": "production",
+      "labelDe": "Industrie & Herstellung",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "oecd",
+        "national_statistics",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "machinery",
+          "Maschinenbau"
+        ],
+        [
+          "automotive",
+          "Automobilindustrie"
+        ],
+        [
+          "chemicals",
+          "Chemie"
+        ],
+        [
+          "steel",
+          "Stahl"
+        ],
+        [
+          "cement",
+          "Zement"
+        ],
+        [
+          "aerospace",
+          "Luft- und Raumfahrt"
+        ],
+        [
+          "defense_industry",
+          "Verteidigungsindustrie"
+        ],
+        [
+          "electrical_equipment",
+          "Elektrotechnik"
+        ],
+        [
+          "textiles",
+          "Textilindustrie"
+        ],
+        [
+          "packaging",
+          "Verpackungen"
+        ],
+        [
+          "shipbuilding",
+          "Schiffbau"
+        ],
+        [
+          "industrial_automation",
+          "Industrieautomation"
+        ]
+      ]
+    },
+    {
+      "id": "materials",
+      "domainId": "production",
+      "labelDe": "Rohstoffe & Kreislaufwirtschaft",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "national_statistics",
+        "eodhd",
+        "damodaran",
+        "worldbank_commodities"
+      ],
+      "topics": [
+        [
+          "commodity_prices",
+          "Internationale Rohstoffpreise"
+        ],
+        [
+          "copper",
+          "Kupfer"
+        ],
+        [
+          "aluminium",
+          "Aluminium"
+        ],
+        [
+          "lithium",
+          "Lithium"
+        ],
+        [
+          "nickel",
+          "Nickel"
+        ],
+        [
+          "rare_earths",
+          "Seltene Erden"
+        ],
+        [
+          "precious_metals",
+          "Edelmetalle"
+        ],
+        [
+          "mining",
+          "Bergbau"
+        ],
+        [
+          "fertilizers",
+          "Düngemittel"
+        ],
+        [
+          "recycling",
+          "Recycling"
+        ],
+        [
+          "forestry",
+          "Forstwirtschaft"
+        ]
+      ]
+    },
+    {
+      "id": "food_water",
+      "domainId": "production",
+      "labelDe": "Ernährung, Landwirtschaft & Wasser",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "faostat",
+        "worldbank_wdi",
+        "who",
+        "eodhd",
+        "damodaran",
+        "worldbank_commodities"
+      ],
+      "topics": [
+        [
+          "crop_production",
+          "Pflanzenbau"
+        ],
+        [
+          "livestock",
+          "Tierhaltung"
+        ],
+        [
+          "fisheries",
+          "Fischerei und Aquakultur"
+        ],
+        [
+          "food_processing",
+          "Lebensmittelverarbeitung"
+        ],
+        [
+          "food_security",
+          "Ernährungssicherheit"
+        ],
+        [
+          "agricultural_yields",
+          "Agrarproduktivität"
+        ],
+        [
+          "agricultural_land",
+          "Landnutzung"
+        ],
+        [
+          "drinking_water",
+          "Trinkwasser"
+        ],
+        [
+          "sanitation",
+          "Abwasser und Sanitärversorgung"
+        ],
+        [
+          "water_stress",
+          "Wasserknappheit"
+        ]
+      ]
+    },
+    {
+      "id": "digital",
+      "domainId": "technology",
+      "labelDe": "Digitalisierung & Kommunikation",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "unesco_uis",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "internet",
+          "Internetzugang"
+        ],
+        [
+          "broadband",
+          "Breitband"
+        ],
+        [
+          "mobile_networks",
+          "Mobilfunk"
+        ],
+        [
+          "telecom",
+          "Telekommunikation"
+        ],
+        [
+          "software",
+          "Software"
+        ],
+        [
+          "cloud",
+          "Cloud und Rechenzentren"
+        ],
+        [
+          "cybersecurity",
+          "Cybersicherheit"
+        ],
+        [
+          "semiconductors",
+          "Halbleiter"
+        ],
+        [
+          "digital_platforms",
+          "Digitale Plattformen"
+        ],
+        [
+          "digital_payments",
+          "Digitale Zahlungen"
+        ]
+      ]
+    },
+    {
+      "id": "innovation",
+      "domainId": "technology",
+      "labelDe": "Forschung & Neue Technologien",
+      "views": [
+        "development",
+        "structure",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "wipo",
+        "unesco_uis",
+        "worldbank_wdi",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "research_spending",
+          "Forschungsausgaben"
+        ],
+        [
+          "researchers",
+          "Forschende"
+        ],
+        [
+          "patents",
+          "Patente"
+        ],
+        [
+          "artificial_intelligence",
+          "Künstliche Intelligenz"
+        ],
+        [
+          "robotics",
+          "Robotik"
+        ],
+        [
+          "quantum",
+          "Quantentechnologien"
+        ],
+        [
+          "space_technology",
+          "Raumfahrttechnologie"
+        ],
+        [
+          "advanced_materials",
+          "Neue Materialien"
+        ],
+        [
+          "technology_adoption",
+          "Technologieverbreitung"
+        ],
+        [
+          "entrepreneurship",
+          "Unternehmensgründungen"
+        ]
+      ]
+    },
+    {
+      "id": "housing",
+      "domainId": "living",
+      "labelDe": "Wohnen & Immobilien",
+      "views": [
+        "structure",
+        "development",
+        "cycle",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "bis_context",
+        "jst",
+        "oecd",
+        "eurostat",
+        "national_statistics",
+        "eodhd"
+      ],
+      "topics": [
+        [
+          "house_prices",
+          "Wohnimmobilienpreise"
+        ],
+        [
+          "affordability",
+          "Bezahlbarkeit von Wohnen"
+        ],
+        [
+          "price_rent",
+          "Kaufpreise im Mietvergleich"
+        ],
+        [
+          "rents",
+          "Mieten"
+        ],
+        [
+          "construction",
+          "Wohnungsbau"
+        ],
+        [
+          "housing_supply",
+          "Wohnungsangebot"
+        ],
+        [
+          "commercial_property",
+          "Gewerbeimmobilien"
+        ],
+        [
+          "logistics_property",
+          "Logistikimmobilien"
+        ],
+        [
+          "real_estate_companies",
+          "Immobilienunternehmen"
+        ]
+      ]
+    },
+    {
+      "id": "consumer_services",
+      "domainId": "living",
+      "labelDe": "Konsum & Dienstleistungen",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "oecd",
+        "national_statistics",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "consumer_staples",
+          "Basiskonsumgüter"
+        ],
+        [
+          "consumer_discretionary",
+          "Zyklischer Konsum"
+        ],
+        [
+          "retail",
+          "Einzelhandel"
+        ],
+        [
+          "ecommerce",
+          "Onlinehandel"
+        ],
+        [
+          "tourism",
+          "Tourismus"
+        ],
+        [
+          "hospitality",
+          "Hotels und Gastronomie"
+        ],
+        [
+          "media",
+          "Medien"
+        ],
+        [
+          "entertainment",
+          "Unterhaltung"
+        ],
+        [
+          "professional_services",
+          "Unternehmensdienstleistungen"
+        ],
+        [
+          "personal_services",
+          "Persönliche Dienstleistungen"
+        ]
+      ]
+    },
+    {
+      "id": "transport",
+      "domainId": "living",
+      "labelDe": "Mobilität & Infrastruktur",
+      "views": [
+        "structure",
+        "development",
+        "market_cycle",
+        "valuation"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "national_statistics",
+        "eodhd",
+        "damodaran"
+      ],
+      "topics": [
+        [
+          "roads",
+          "Straßen"
+        ],
+        [
+          "rail",
+          "Schienenverkehr"
+        ],
+        [
+          "public_transport",
+          "Öffentlicher Verkehr"
+        ],
+        [
+          "shipping_ports",
+          "Schifffahrt und Häfen"
+        ],
+        [
+          "aviation",
+          "Luftverkehr"
+        ],
+        [
+          "logistics",
+          "Logistik"
+        ],
+        [
+          "electric_vehicles",
+          "Elektromobilität"
+        ],
+        [
+          "charging",
+          "Ladeinfrastruktur"
+        ],
+        [
+          "infrastructure_spending",
+          "Infrastrukturinvestitionen"
+        ],
+        [
+          "connectivity",
+          "Erreichbarkeit"
+        ]
+      ]
+    },
+    {
+      "id": "trade",
+      "domainId": "connections",
+      "labelDe": "Handel & Globale Verflechtung",
+      "views": [
+        "structure",
+        "development",
+        "cycle"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "oecd",
+        "national_statistics"
+      ],
+      "topics": [
+        [
+          "exports",
+          "Exporte"
+        ],
+        [
+          "imports",
+          "Importe"
+        ],
+        [
+          "trade_balance",
+          "Handelsbilanz"
+        ],
+        [
+          "trade_partners",
+          "Handelspartner"
+        ],
+        [
+          "supply_chains",
+          "Lieferketten"
+        ],
+        [
+          "foreign_investment",
+          "Direktinvestitionen"
+        ],
+        [
+          "remittances",
+          "Rücküberweisungen"
+        ],
+        [
+          "export_concentration",
+          "Exportkonzentration"
+        ],
+        [
+          "terms_of_trade",
+          "Austauschverhältnisse"
+        ],
+        [
+          "trade_openness",
+          "Handelsverflechtung"
+        ]
+      ]
+    },
+    {
+      "id": "institutions",
+      "domainId": "connections",
+      "labelDe": "Institutionen & Gesellschaft",
+      "views": [
+        "development",
+        "structure",
+        "history"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "national_statistics",
+        "historical_research"
+      ],
+      "topics": [
+        [
+          "public_finances",
+          "Staatsfinanzen"
+        ],
+        [
+          "tax_structure",
+          "Steuerstruktur"
+        ],
+        [
+          "public_services",
+          "Öffentliche Versorgung"
+        ],
+        [
+          "institutional_indicators",
+          "Institutionelle Indikatoren"
+        ],
+        [
+          "poverty",
+          "Armut"
+        ],
+        [
+          "inequality",
+          "Ungleichheit"
+        ],
+        [
+          "conflict_context",
+          "Konflikte als historischer Kontext"
+        ],
+        [
+          "economic_policy_regimes",
+          "Wirtschaftspolitische Regime"
+        ]
+      ]
+    },
+    {
+      "id": "environment",
+      "domainId": "connections",
+      "labelDe": "Umwelt & Natürliche Grundlagen",
+      "views": [
+        "development",
+        "structure",
+        "projection"
+      ],
+      "sourceCandidates": [
+        "worldbank_wdi",
+        "faostat",
+        "irena",
+        "national_statistics"
+      ],
+      "topics": [
+        [
+          "emissions",
+          "Emissionen"
+        ],
+        [
+          "emission_intensity",
+          "Emissionsintensität"
+        ],
+        [
+          "air_quality",
+          "Luftqualität"
+        ],
+        [
+          "forest_cover",
+          "Waldflächen"
+        ],
+        [
+          "biodiversity_context",
+          "Biodiversität"
+        ],
+        [
+          "resource_use",
+          "Ressourcenverbrauch"
+        ],
+        [
+          "climate_exposure",
+          "Klimatische Belastung"
+        ],
+        [
+          "adaptation",
+          "Anpassung und Widerstandsfähigkeit"
+        ]
+      ]
+    },
+    {
+      "id": "structural_change",
+      "domainId": "history",
+      "labelDe": "Strukturwandel & Generationen",
+      "views": [
+        "history",
+        "development",
+        "projection"
+      ],
+      "sourceCandidates": [
+        "maddison",
+        "un_wpp",
+        "worldbank_wdi",
+        "historical_research"
+      ],
+      "topics": [
+        [
+          "demographic_transition",
+          "Demografischer Übergang"
+        ],
+        [
+          "industrialization",
+          "Industrialisierung"
+        ],
+        [
+          "service_transition",
+          "Wandel zur Dienstleistungswirtschaft"
+        ],
+        [
+          "urban_transition",
+          "Urbaner Wandel"
+        ],
+        [
+          "energy_transitions",
+          "Historische Energiewenden"
+        ],
+        [
+          "education_expansion",
+          "Bildungsexpansion"
+        ],
+        [
+          "productivity_regimes",
+          "Produktivitätsphasen"
+        ],
+        [
+          "global_economic_weights",
+          "Verschiebung wirtschaftlicher Gewichte"
+        ]
+      ]
+    },
+    {
+      "id": "long_history",
+      "domainId": "history",
+      "labelDe": "Jahrhundertperspektiven",
+      "views": [
+        "history"
+      ],
+      "sourceCandidates": [
+        "maddison",
+        "jst",
+        "historical_research"
+      ],
+      "topics": [
+        [
+          "long_run_prosperity",
+          "Wohlstand über Jahrhunderte"
+        ],
+        [
+          "long_run_population",
+          "Langfristige Bevölkerungsentwicklung"
+        ],
+        [
+          "long_run_credit",
+          "Lange Kredit- und Schuldenentwicklung"
+        ],
+        [
+          "long_run_housing",
+          "Lange Immobiliengeschichte"
+        ],
+        [
+          "long_run_inflation",
+          "Historische Inflationsphasen"
+        ],
+        [
+          "long_run_rates",
+          "Historische Zinsentwicklung"
+        ],
+        [
+          "monetary_systems",
+          "Geld- und Währungssysteme"
+        ],
+        [
+          "crises_recoveries",
+          "Krisen und Erholungen"
+        ]
+      ]
+    },
+    {
+      "id": "cycle_hypotheses",
+      "domainId": "history",
+      "labelDe": "Zyklusthesen untersuchen",
+      "views": [
+        "hypothesis"
+      ],
+      "sourceCandidates": [
+        "historical_research"
+      ],
+      "defaultVisible": false,
+      "topics": [
+        [
+          "business_cycles",
+          "Konjunkturelle Schwankungen"
+        ],
+        [
+          "financial_cycles",
+          "Mehrjährige Kredit- und Immobilienzyklen"
+        ],
+        [
+          "investment_waves",
+          "Investitions- und Infrastrukturwellen"
+        ],
+        [
+          "innovation_waves",
+          "Innovationswellen"
+        ],
+        [
+          "kondratiev",
+          "Kondratjew-Hypothesen"
+        ],
+        [
+          "secular_cycles",
+          "Säkulare und Jahrhundertzyklus-Hypothesen"
+        ]
+      ]
+    }
+  ]
+}

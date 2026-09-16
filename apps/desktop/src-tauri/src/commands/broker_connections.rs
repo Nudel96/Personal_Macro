@@ -828,6 +828,7 @@ async fn request_ctrader_token(
     extra: &[(&str, &str)],
 ) -> CommandResult<StoredCTraderToken> {
     let client = reqwest::Client::builder()
+        .tls_backend_rustls()
         .timeout(Duration::from_secs(15))
         .build()
         .map_err(|_| {

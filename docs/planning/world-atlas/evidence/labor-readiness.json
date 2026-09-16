@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "native": {
+    "first": {
+      "profiles": 190,
+      "numericCellsExact": 96765,
+      "missingCellsExact": 135,
+      "sourceSha256": "862cada9beaa7a011f5af38c9b9a46042a361e9e29cd212cb3763f4f51f7a8f7",
+      "identifier": "com.personal-macro.atlas-labor-20260909",
+      "nativeResponses": 192,
+      "jobs": 1,
+      "atlasMigrations": 19,
+      "savedNoteAndPicture": true,
+      "pictureSha256": "1fc54533f32505fb1128eda15aafdc35031daac728b8fb55448b8bccdc874e06",
+      "exactResponsesAndNoteAfterRestart": false,
+      "productionDataAccessed": false,
+      "phase": "first",
+      "status": "passed"
+    },
+    "restart": {
+      "profiles": 190,
+      "numericCellsExact": 96765,
+      "missingCellsExact": 135,
+      "sourceSha256": "862cada9beaa7a011f5af38c9b9a46042a361e9e29cd212cb3763f4f51f7a8f7",
+      "identifier": "com.personal-macro.atlas-labor-20260909",
+      "nativeResponses": 192,
+      "jobs": 0,
+      "atlasMigrations": 19,
+      "savedNoteAndPicture": true,
+      "pictureSha256": "1fc54533f32505fb1128eda15aafdc35031daac728b8fb55448b8bccdc874e06",
+      "exactResponsesAndNoteAfterRestart": true,
+      "productionDataAccessed": false,
+      "phase": "restart",
+      "status": "passed"
+    }
+  },
+  "frontend": {
+    "atlasTests": 242,
+    "files": 35,
+    "finalRelevantTests": 59,
+    "typecheck": true,
+    "eslint": true,
+    "productionBuild": true,
+    "formatCheck": true
+  },
+  "rust": {
+    "tests": 3,
+    "originalFileRoundtrip": true,
+    "clippyAllTargetsWarningsDenied": true,
+    "formatCheck": true
+  },
+  "visual": {
+    "widths": [
+      1280,
+      1024
+    ],
+    "countries": [
+      "Germany",
+      "United States",
+      "India",
+      "China"
+    ],
+    "regions": [
+      "ILO Africa",
+      "World"
+    ],
+    "groups": 3,
+    "keyboardDetail": true,
+    "optionalPercentages": true,
+    "sourceSwitch": true,
+    "exactCoverageTarget": true,
+    "unavailableComparisonKeepsPrimary": true,
+    "horizontalOverflow": false,
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "nativeClickAutomation": false
+  },
+  "limitations": [
+    "ILO modelled employment shares are not valuation",
+    "2025 excluded from historical product window",
+    "ISIC composite sectors remain composite",
+    "Full Atlas requirement matrix remains open"
+  ],
+  "productionDataAccessed": false
+}

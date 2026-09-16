@@ -1,0 +1,532 @@
+{
+  "checkedAt": "2026-09-09T06:13:19.509971+00:00",
+  "method": "Independent Python CSV and Decimal comparison against all native Rust HTTP / SQLite responses; every numeric source cell and unprovided metric checked.",
+  "sourceSha256": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622",
+  "nativeNumericCells": 23535,
+  "missingMetricCells": 4381,
+  "areaCount": 45,
+  "maxAbsoluteDifference": "0",
+  "unsupportedAreas": [
+    "world",
+    "m49:356",
+    "m49:156"
+  ],
+  "areas": [
+    {
+      "id": "m49:036",
+      "code": "AUS",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:040",
+      "code": "AUT",
+      "quarters": 105,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:056",
+      "code": "BEL",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:100",
+      "code": "BGR",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:124",
+      "code": "CAN",
+      "quarters": 226,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:756",
+      "code": "CHE",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:152",
+      "code": "CHL",
+      "quarters": 96,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:170",
+      "code": "COL",
+      "quarters": 109,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:203",
+      "code": "CZE",
+      "quarters": 73,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:276",
+      "code": "DEU",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:208",
+      "code": "DNK",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "oecd:housing_euro_area",
+      "code": "EA",
+      "quarters": 184,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "oecd:housing_euro_area_17",
+      "code": "EA17",
+      "quarters": 225,
+      "comparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1980-Q1"
+        }
+      ]
+    },
+    {
+      "id": "m49:724",
+      "code": "ESP",
+      "quarters": 221,
+      "comparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1985-Q1"
+        }
+      ]
+    },
+    {
+      "id": "m49:233",
+      "code": "EST",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:246",
+      "code": "FIN",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:250",
+      "code": "FRA",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:826",
+      "code": "GBR",
+      "quarters": 232,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:300",
+      "code": "GRC",
+      "quarters": 116,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:191",
+      "code": "HRV",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:348",
+      "code": "HUN",
+      "quarters": 77,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:372",
+      "code": "IRL",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:352",
+      "code": "ISL",
+      "quarters": 103,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:376",
+      "code": "ISR",
+      "quarters": 129,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:380",
+      "code": "ITA",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:392",
+      "code": "JPN",
+      "quarters": 264,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:410",
+      "code": "KOR",
+      "quarters": 157,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:440",
+      "code": "LTU",
+      "quarters": 81,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:442",
+      "code": "LUX",
+      "quarters": 77,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:428",
+      "code": "LVA",
+      "quarters": 81,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:484",
+      "code": "MEX",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:528",
+      "code": "NLD",
+      "quarters": 224,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:578",
+      "code": "NOR",
+      "quarters": 194,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:554",
+      "code": "NZL",
+      "quarters": 224,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "oecd:housing_members",
+      "code": "OECD",
+      "quarters": 225,
+      "comparabilityBreaks": [
+        {
+          "basis": "income",
+          "period": "1977-Q4"
+        },
+        {
+          "basis": "income",
+          "period": "1978-Q1"
+        }
+      ]
+    },
+    {
+      "id": "m49:616",
+      "code": "POL",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:620",
+      "code": "PRT",
+      "quarters": 153,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:642",
+      "code": "ROU",
+      "quarters": 69,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:643",
+      "code": "RUS",
+      "quarters": 81,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:703",
+      "code": "SVK",
+      "quarters": 85,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:705",
+      "code": "SVN",
+      "quarters": 77,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:752",
+      "code": "SWE",
+      "quarters": 225,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:792",
+      "code": "TUR",
+      "quarters": 66,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:840",
+      "code": "USA",
+      "quarters": 226,
+      "comparabilityBreaks": []
+    },
+    {
+      "id": "m49:710",
+      "code": "ZAF",
+      "quarters": 124,
+      "comparabilityBreaks": []
+    }
+  ],
+  "initialNative": {
+    "areas": [
+      {
+        "id": "oecd:housing_members",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "oecd:housing_euro_area",
+        "quarters": 184,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "oecd:housing_euro_area_17",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 226,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 124,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:724",
+        "quarters": 221,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:484",
+        "quarters": 85,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: Kaufpreise zu Einkommen; % gegenüber dem OECD-Langfristdurchschnitt. Mittellinie: OECD-Langfristdurchschnitt, kein fairer Preis. Lücken und eingeschränkt vergleichbare Abschnitte bleiben getrennt.",
+    "identifier": "com.personal-macro.atlas-housing-ratios-validation",
+    "job": {
+      "finishedAt": "2026-09-09T06:15:43.618725800+00:00",
+      "id": "beae9790-f5b2-4e12-b875-adea570b8df4",
+      "message": "Die OECD-Wohnvergleichsbilder sind lokal verfügbar.",
+      "observations": 23535,
+      "page": 2,
+      "pages": 2,
+      "seriesId": "oecd-housing-ratios",
+      "startedAt": "2026-09-09T06:15:41.640335300+00:00",
+      "status": "complete"
+    },
+    "jobId": "beae9790-f5b2-4e12-b875-adea570b8df4",
+    "ok": true,
+    "restart": false,
+    "runAt": "2026-09-09T06:15:41.487Z",
+    "source": {
+      "areaCount": 45,
+      "fileModifiedAt": "Wed, 09 Sep 2026 06:10:49 GMT",
+      "numericCellCount": 23535,
+      "recipe": "oecd-published-housing-ratios-v1",
+      "retrievedAt": "2026-09-09T06:15:43.146133100+00:00",
+      "sha256": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622",
+      "sourceRowCount": 23535,
+      "url": "https://sdmx.oecd.org/public/rest/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.Q.HPI_RPI+HPI_RPI_AVG+HPI_YDH+HPI_YDH_AVG.?dimensionAtObservation=AllDimensions&format=csvfilewithlabels"
+    },
+    "unsupportedAreas": [
+      "world",
+      "m49:356",
+      "m49:156"
+    ],
+    "pictureDimensions": [
+      960,
+      758
+    ],
+    "cacheMigrations": 10,
+    "all45ProfilesMatchIndependentHttpAudit": true
+  },
+  "nativeRestart": {
+    "areas": [
+      {
+        "id": "oecd:housing_members",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "oecd:housing_euro_area",
+        "quarters": 184,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "oecd:housing_euro_area_17",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:276",
+        "quarters": 225,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:840",
+        "quarters": 226,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:710",
+        "quarters": 124,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:724",
+        "quarters": 221,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      },
+      {
+        "id": "m49:484",
+        "quarters": 85,
+        "source": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622"
+      }
+    ],
+    "chart": "Deutschland im Vergleich mit Vereinigte Staaten: Kaufpreise zu Einkommen; % gegenüber dem OECD-Langfristdurchschnitt. Mittellinie: OECD-Langfristdurchschnitt, kein fairer Preis. Lücken und eingeschränkt vergleichbare Abschnitte bleiben getrennt.",
+    "identifier": "com.personal-macro.atlas-housing-ratios-validation",
+    "ok": true,
+    "restart": true,
+    "runAt": "2026-09-09T06:17:30.814Z",
+    "source": {
+      "areaCount": 45,
+      "fileModifiedAt": "Wed, 09 Sep 2026 06:10:49 GMT",
+      "numericCellCount": 23535,
+      "recipe": "oecd-published-housing-ratios-v1",
+      "retrievedAt": "2026-09-09T06:15:43.146133100+00:00",
+      "sha256": "bb8bbbbcdc70520ab065cc012db61711bd00a35eebfdbea8263b4db3883b2622",
+      "sourceRowCount": 23535,
+      "url": "https://sdmx.oecd.org/public/rest/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.Q.HPI_RPI+HPI_RPI_AVG+HPI_YDH+HPI_YDH_AVG.?dimensionAtObservation=AllDimensions&format=csvfilewithlabels"
+    },
+    "unsupportedAreas": [
+      "world",
+      "m49:356",
+      "m49:156"
+    ],
+    "pictureDimensions": [
+      960,
+      758
+    ],
+    "cacheMigrations": 10,
+    "all45ProfilesMatchIndependentHttpAudit": true
+  },
+  "validation": {
+    "checkedAt": "2026-09-09T06:23:26.569033+00:00",
+    "frontend": {
+      "scope": "all world-atlas tests",
+      "passed": 129,
+      "files": 21,
+      "finalChangedScopeRerun": {
+        "passed": 46,
+        "files": 2
+      }
+    },
+    "rustLibrary": {
+      "passed": 218,
+      "ignoredExternalOrManual": 18
+    },
+    "newDeterministicRustTests": 3,
+    "newExplicitHttpTest": "passed",
+    "typecheck": "passed",
+    "productionBuild": "passed; existing shared/chart/document chunks remain large",
+    "eslintAtlasAndTouchedServices": "passed",
+    "prettierAtlasAndTouchedServices": "passed",
+    "rustfmt": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "nativeStartup": "passed in explicitly isolated housing-ratios-validation profile",
+    "nativeRestart": "passed; same stored source and all 45 profiles, no new OECD download",
+    "picture": {
+      "origin": "real Tauri WebView after process restart",
+      "size": [
+        960,
+        758
+      ],
+      "basisAndReferenceIncluded": true
+    },
+    "browserReview": {
+      "source": "actual public native responses",
+      "areas": [
+        "Germany/United States",
+        "South Africa",
+        "India/China unavailable",
+        "Spain",
+        "OECD euro area 17"
+      ],
+      "checks": [
+        "numbers initially hidden",
+        "two bases and index versus reference",
+        "different source ending quarters",
+        "missing reference offers explicit index switch",
+        "missing countries have no curve",
+        "historical scaling boundaries segmented",
+        "source aggregates labelled",
+        "source card preserves chosen country",
+        "topic change selects income or rent",
+        "optional table opens with keyboard",
+        "German axis labels with one decimal maximum"
+      ],
+      "widths": [
+        1024,
+        1440
+      ],
+      "persistentHorizontalOverflow": false,
+      "consoleErrorsOrWarnings": []
+    },
+    "nativeBackgroundWarnings": [
+      "EODHD already-running synchronization conflict",
+      "Existing Technicals intraday entitlement failure"
+    ],
+    "otherObservedNativeError": {
+      "scope": "outside Atlas pipeline",
+      "component": "pdf-extract 0.12.0",
+      "error": "tokio worker panic: Parse(InvalidContentStream)",
+      "status": "not fixed in this Atlas section; process remained alive and OECD restart evidence succeeded"
+    },
+    "newAtlasInitializationWarnings": [],
+    "remaining": "Complete native click regression and remaining overall Atlas requirements remain open."
+  }
+}

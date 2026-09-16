@@ -26,7 +26,7 @@ import type {
 } from "../../types/domain";
 
 type CalendarSort = "time" | "country" | "category";
-type CalendarView = "future" | "history";
+type CalendarView = "currentWeek" | "future" | "history";
 
 const categoryOptions: Array<{
   key: EconomicCalendarCategory;
@@ -154,7 +154,7 @@ function countryLabel(event: EconomicCalendarEvent) {
 export function EconomicCalendarPage() {
   const queryClient = useQueryClient();
   const [range, setRange] =
-    useState<EconomicCalendarInput["range"]>("future30");
+    useState<EconomicCalendarInput["range"]>("currentWeek");
   const [country, setCountry] = useState("all");
   const [category, setCategory] = useState<EconomicCalendarCategory | "all">(
     "all",
@@ -162,13 +162,21 @@ export function EconomicCalendarPage() {
   const [asset, setAsset] = useState("all");
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<CalendarSort>("time");
-  const view: CalendarView = range.startsWith("future") ? "future" : "history";
+  const view: CalendarView =
+    range === "currentWeek"
+      ? "currentWeek"
+      : range.startsWith("future")
+        ? "future"
+        : "history";
   const timezoneOffsetMinutes = new Date().getTimezoneOffset();
+  const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
   const calendar = useQuery({
-    queryKey: ["economic-calendar", range, timezoneOffsetMinutes],
-    queryFn: () => api.economicCalendar({ range, timezoneOffsetMinutes }),
+    queryKey: ["economic-calendar", range, timezoneOffsetMinutes, timezone],
+    queryFn: () =>
+      api.economicCalendar({ range, timezoneOffsetMinutes, timezone }),
     retry: false,
+    refetchInterval: 60_000,
   });
   const feedStatus = useQuery({
     queryKey: ["macro", "eodhd-status"],
@@ -222,21 +230,30 @@ export function EconomicCalendarPage() {
       }),
     [asset, category, country, events, search, sort, view],
   );
+  const asOf = calendar.data?.asOf;
   const focusEvent = useMemo(
     () =>
       visibleEvents.reduce<EconomicCalendarEvent | undefined>(
-        (current, event) =>
-          !current ||
-          (view === "history"
-            ? new Date(event.scheduledAt).getTime() >
-              new Date(current.scheduledAt).getTime()
-            : new Date(event.scheduledAt).getTime() <
-              new Date(current.scheduledAt).getTime())
+        (current, event) => {
+          if (
+            view !== "history" &&
+            asOf &&
+            new Date(event.scheduledAt).getTime() < new Date(asOf).getTime()
+          ) {
+            return current;
+          }
+          return !current ||
+            (view === "history"
+              ? new Date(event.scheduledAt).getTime() >
+                new Date(current.scheduledAt).getTime()
+              : new Date(event.scheduledAt).getTime() <
+                new Date(current.scheduledAt).getTime())
             ? event
-            : current,
+            : current;
+        },
         undefined,
       ),
-    [view, visibleEvents],
+    [asOf, view, visibleEvents],
   );
   const activeFilters =
     Number(country !== "all") +
@@ -259,16 +276,31 @@ export function EconomicCalendarPage() {
         eyebrow="Marktkontext"
         title="Wirtschaftskalender"
         description={
-          view === "history"
-            ? "Vergangene EODHD-Wirtschaftsdaten des heutigen Tages, der laufenden Woche oder des laufenden Monats – einschließlich Actual, Forecast und Previous."
-            : "Alle lokal geladenen, zukünftigen EODHD-Macro-Termine – mit Länder-, Kategorien- und Marktfilter."
+          view === "currentWeek"
+            ? "Die laufende Woche von Montag bis Sonntag – vergangene und kommende Termine mit Actual, Forecast und Previous."
+            : view === "history"
+              ? "Vergangene EODHD-Wirtschaftsdaten des heutigen Tages, der laufenden Woche oder des laufenden Monats – einschließlich Actual, Forecast und Previous."
+              : "Alle lokal geladenen, zukünftigen EODHD-Macro-Termine – mit Länder-, Kategorien- und Marktfilter."
         }
         actions={
           <>
-            <div className="segmented" aria-label="Kalenderansicht">
+            <div
+              className="segmented"
+              role="group"
+              aria-label="Kalenderansicht"
+            >
+              <button
+                type="button"
+                className={view === "currentWeek" ? "active" : ""}
+                aria-pressed={view === "currentWeek"}
+                onClick={() => setRange("currentWeek")}
+              >
+                Diese Woche
+              </button>
               <button
                 type="button"
                 className={view === "future" ? "active" : ""}
+                aria-pressed={view === "future"}
                 onClick={() => setRange("future30")}
               >
                 Kommend
@@ -276,43 +308,52 @@ export function EconomicCalendarPage() {
               <button
                 type="button"
                 className={view === "history" ? "active" : ""}
+                aria-pressed={view === "history"}
                 onClick={() => setRange("today")}
               >
                 Verlauf
               </button>
             </div>
-            <div className="segmented" aria-label="Kalenderzeitraum">
-              {view === "future"
-                ? ([7, 30, 90] as const).map((days) => {
-                    const value = `future${days}` as const;
-                    return (
+            {view !== "currentWeek" && (
+              <div
+                className="segmented"
+                role="group"
+                aria-label="Kalenderzeitraum"
+              >
+                {view === "future"
+                  ? ([7, 30, 90] as const).map((days) => {
+                      const value = `future${days}` as const;
+                      return (
+                        <button
+                          type="button"
+                          className={range === value ? "active" : ""}
+                          aria-pressed={range === value}
+                          onClick={() => setRange(value)}
+                          key={value}
+                        >
+                          {days} Tage
+                        </button>
+                      );
+                    })
+                  : (
+                      [
+                        ["today", "Heute"],
+                        ["week", "Seit Wochenbeginn"],
+                        ["month", "Dieser Monat"],
+                      ] as const
+                    ).map(([value, label]) => (
                       <button
                         type="button"
                         className={range === value ? "active" : ""}
+                        aria-pressed={range === value}
                         onClick={() => setRange(value)}
                         key={value}
                       >
-                        {days} Tage
+                        {label}
                       </button>
-                    );
-                  })
-                : (
-                    [
-                      ["today", "Heute"],
-                      ["week", "Diese Woche"],
-                      ["month", "Dieser Monat"],
-                    ] as const
-                  ).map(([value, label]) => (
-                    <button
-                      type="button"
-                      className={range === value ? "active" : ""}
-                      onClick={() => setRange(value)}
-                      key={value}
-                    >
-                      {label}
-                    </button>
-                  ))}
-            </div>
+                    ))}
+              </div>
+            )}
             <Button
               onClick={() => refresh.mutate()}
               disabled={
@@ -361,7 +402,12 @@ export function EconomicCalendarPage() {
               : "Nächster gefilterter Termin"}
           </span>
           <strong>{focusEvent ? dateTime(focusEvent.scheduledAt) : "—"}</strong>
-          <small>{focusEvent?.title ?? "Keine passenden Termine"}</small>
+          <small>
+            {focusEvent?.title ??
+              (view === "currentWeek"
+                ? "Keine weiteren passenden Termine diese Woche"
+                : "Keine passenden Termine")}
+          </small>
         </div>
       </div>
 
@@ -475,13 +521,19 @@ export function EconomicCalendarPage() {
       <Card className="economic-calendar-results">
         <CardHeader
           title={
-            view === "history"
-              ? "Vergangene Wirtschaftsdaten"
-              : "Kommende Macro-Termine"
+            view === "currentWeek"
+              ? "Wirtschaftsdaten dieser Woche"
+              : view === "history"
+                ? "Vergangene Wirtschaftsdaten"
+                : "Kommende Macro-Termine"
           }
           subtitle={
             calendar.data
-              ? `${calendar.data.sourceName} · Stand ${dateTime(calendar.data.asOf)}`
+              ? `${
+                  view === "currentWeek" && isTauri()
+                    ? `${new Date(calendar.data.from).toLocaleDateString("de-DE")} – ${new Date(new Date(calendar.data.to).getTime() - 1).toLocaleDateString("de-DE")} · `
+                    : ""
+                }${calendar.data.sourceName} · Stand ${dateTime(calendar.data.asOf)}`
               : "EODHD Economic Events API"
           }
           action={<Badge>{visibleEvents.length} Termine</Badge>}
@@ -512,6 +564,14 @@ export function EconomicCalendarPage() {
                       <small className="economic-calendar-time">
                         {calendarTime(event.scheduledAt)} Uhr
                       </small>
+                      {view === "currentWeek" && asOf && (
+                        <small className="economic-calendar-time">
+                          {new Date(event.scheduledAt).getTime() <
+                          new Date(asOf).getTime()
+                            ? "Vergangen"
+                            : "Kommend"}
+                        </small>
+                      )}
                     </td>
                     <td>
                       <span className="economic-calendar-country">

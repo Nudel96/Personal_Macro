@@ -1,0 +1,1882 @@
+{
+  "checkedAt": "2026-09-09T08:59:58.961687+00:00",
+  "status": "native_check_passed",
+  "sourceUrl": "https://www.macrohistory.net/app/download/9834512569/JSTdatasetR6.xlsx?t=1763503850",
+  "resolvedUrl": "https://sfff5b3ac9317c4be.jimcontent.com/download/version/1763503850/module/9834512569/name/JSTdatasetR6.xlsx",
+  "sha256": "c1bb91fe56ea50d4f27af5c0fc897d481e89ae38ce41eaecab62134c9354981d",
+  "sourceRows": 2718,
+  "areas": 18,
+  "perspectives": 20,
+  "counts": {
+    "rawNumbers": 111546,
+    "rawMissing": 32508,
+    "rawZeros": 8190,
+    "derivedNumbers": 45854,
+    "derivedMissing": 8506,
+    "nominalReturns": 8818,
+    "sourceInterpolationFlags": 81,
+    "crisisStarts": 88,
+    "comparedNumericCells": 166218,
+    "exactDecimalMatches": 134593
+  },
+  "maximumRelativeRepresentationDifference": "2.6839897315100E-14",
+  "coverage": {
+    "AUS": {
+      "geographyId": "m49:036",
+      "providerLabel": "Australia",
+      "ifs": 193,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 146,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 147,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 146,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 148,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 149,
+          "first": 1870,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 147,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        }
+      }
+    },
+    "BEL": {
+      "geographyId": "m49:056",
+      "providerLabel": "Belgium",
+      "ifs": 124,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 146,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 144,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 137,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 146,
+          "first": 1870,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 144,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 146,
+          "first": 1871,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 138,
+          "first": 1878,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 121,
+          "first": 1885,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 120,
+          "first": 1885,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 120,
+          "first": 1890,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 120,
+          "first": 1890,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 108,
+          "first": 1913,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 100,
+          "first": 1920,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 100,
+          "first": 1920,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 100,
+          "first": 1920,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 95,
+          "first": 1921,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 71,
+          "first": 1950,
+          "last": 2020
+        }
+      }
+    },
+    "CAN": {
+      "geographyId": "m49:124",
+      "providerLabel": "Canada",
+      "ifs": 156,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 147,
+          "first": 1874,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 105,
+          "first": 1916,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 94,
+          "first": 1921,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 87,
+          "first": 1934,
+          "last": 2020
+        }
+      }
+    },
+    "CHE": {
+      "geographyId": "m49:756",
+      "providerLabel": "Switzerland",
+      "ifs": 146,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 87,
+          "first": 1900,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 120,
+          "first": 1900,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 119,
+          "first": 1902,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 108,
+          "first": 1913,
+          "last": 2020
+        }
+      }
+    },
+    "DEU": {
+      "geographyId": "m49:276",
+      "providerLabel": "Germany",
+      "ifs": 134,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 139,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 141,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 139,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 119,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 143,
+          "first": 1870,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 127,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 150,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 131,
+          "first": 1871,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 116,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 145,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 144,
+          "first": 1871,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 126,
+          "first": 1883,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 131,
+          "first": 1883,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 128,
+          "first": 1887,
+          "last": 2020
+        }
+      }
+    },
+    "DNK": {
+      "geographyId": "m49:208",
+      "providerLabel": "Denmark",
+      "ifs": 128,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 149,
+          "first": 1871,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 149,
+          "first": 1872,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 148,
+          "first": 1873,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 147,
+          "first": 1874,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 145,
+          "first": 1876,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 131,
+          "first": 1880,
+          "last": 2020
+        }
+      }
+    },
+    "ESP": {
+      "geographyId": "m49:724",
+      "providerLabel": "Spain",
+      "ifs": 184,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 148,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 144,
+          "first": 1870,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 146,
+          "first": 1871,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 141,
+          "first": 1874,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 141,
+          "first": 1874,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 141,
+          "first": 1874,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 137,
+          "first": 1880,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 122,
+          "first": 1899,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 111,
+          "first": 1900,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 117,
+          "first": 1900,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 120,
+          "first": 1901,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 103,
+          "first": 1904,
+          "last": 2016
+        },
+        "businessDebt": {
+          "n": 107,
+          "first": 1904,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 85,
+          "first": 1933,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 50,
+          "first": 1971,
+          "last": 2020
+        }
+      }
+    },
+    "FIN": {
+      "geographyId": "m49:246",
+      "providerLabel": "Finland",
+      "ifs": 172,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 142,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 148,
+          "first": 1873,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 148,
+          "first": 1873,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 148,
+          "first": 1873,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 125,
+          "first": 1896,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 116,
+          "first": 1905,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 109,
+          "first": 1912,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 107,
+          "first": 1914,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 90,
+          "first": 1920,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 99,
+          "first": 1920,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 99,
+          "first": 1920,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 94,
+          "first": 1927,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        }
+      }
+    },
+    "FRA": {
+      "geographyId": "m49:250",
+      "providerLabel": "France",
+      "ifs": 132,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 144,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 139,
+          "first": 1870,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 143,
+          "first": 1871,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 125,
+          "first": 1880,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 131,
+          "first": 1890,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 109,
+          "first": 1895,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 114,
+          "first": 1900,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 97,
+          "first": 1900,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 75,
+          "first": 1946,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 75,
+          "first": 1946,
+          "last": 2020
+        }
+      }
+    },
+    "GBR": {
+      "geographyId": "m49:826",
+      "providerLabel": "UK",
+      "ifs": 112,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 120,
+          "first": 1895,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 118,
+          "first": 1896,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 115,
+          "first": 1899,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 75,
+          "first": 1946,
+          "last": 2020
+        }
+      }
+    },
+    "IRL": {
+      "geographyId": "m49:372",
+      "providerLabel": "Ireland",
+      "ifs": 178,
+      "metrics": {
+        "shortRate": {
+          "n": 101,
+          "first": 1920,
+          "last": 2020
+        },
+        "output": {
+          "n": 97,
+          "first": 1922,
+          "last": 2018
+        },
+        "longRate": {
+          "n": 99,
+          "first": 1922,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 99,
+          "first": 1922,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 89,
+          "first": 1932,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 83,
+          "first": 1938,
+          "last": 2020
+        },
+        "wages": {
+          "n": 78,
+          "first": 1943,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 76,
+          "first": 1945,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 62,
+          "first": 1959,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 61,
+          "first": 1960,
+          "last": 2020
+        }
+      }
+    },
+    "ITA": {
+      "geographyId": "m49:380",
+      "providerLabel": "Italy",
+      "ifs": 136,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 131,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 149,
+          "first": 1871,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 130,
+          "first": 1871,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 95,
+          "first": 1919,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 87,
+          "first": 1927,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 86,
+          "first": 1928,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 51,
+          "first": 1970,
+          "last": 2020
+        }
+      }
+    },
+    "JPN": {
+      "geographyId": "m49:392",
+      "providerLabel": "Japan",
+      "ifs": 158,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 146,
+          "first": 1874,
+          "last": 2019
+        },
+        "publicDebt": {
+          "n": 145,
+          "first": 1875,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 142,
+          "first": 1875,
+          "last": 2017
+        },
+        "billReturn": {
+          "n": 145,
+          "first": 1876,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 124,
+          "first": 1879,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 140,
+          "first": 1881,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 133,
+          "first": 1886,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 133,
+          "first": 1886,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 128,
+          "first": 1893,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 128,
+          "first": 1893,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 128,
+          "first": 1893,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 123,
+          "first": 1893,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 103,
+          "first": 1913,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 82,
+          "first": 1930,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 75,
+          "first": 1931,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 75,
+          "first": 1931,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        }
+      }
+    },
+    "NLD": {
+      "geographyId": "m49:528",
+      "providerLabel": "Netherlands",
+      "ifs": 138,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 150,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 89,
+          "first": 1900,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 109,
+          "first": 1900,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 109,
+          "first": 1900,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 121,
+          "first": 1900,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 75,
+          "first": 1946,
+          "last": 2020
+        }
+      }
+    },
+    "NOR": {
+      "geographyId": "m49:578",
+      "providerLabel": "Norway",
+      "ifs": 142,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 150,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 145,
+          "first": 1870,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 134,
+          "first": 1880,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 140,
+          "first": 1881,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 113,
+          "first": 1904,
+          "last": 2020
+        }
+      }
+    },
+    "PRT": {
+      "geographyId": "m49:620",
+      "providerLabel": "Portugal",
+      "ifs": 182,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 134,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 135,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 111,
+          "first": 1910,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 101,
+          "first": 1920,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 101,
+          "first": 1920,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 101,
+          "first": 1920,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 101,
+          "first": 1920,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 74,
+          "first": 1947,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 73,
+          "first": 1948,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 68,
+          "first": 1953,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 33,
+          "first": 1988,
+          "last": 2020
+        }
+      }
+    },
+    "SWE": {
+      "geographyId": "m49:752",
+      "providerLabel": "Sweden",
+      "ifs": 144,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 116,
+          "first": 1871,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 146,
+          "first": 1875,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 138,
+          "first": 1883,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 138,
+          "first": 1883,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 110,
+          "first": 1911,
+          "last": 2020
+        }
+      }
+    },
+    "USA": {
+      "geographyId": "m49:840",
+      "providerLabel": "USA",
+      "ifs": 111,
+      "metrics": {
+        "output": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "consumption": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "bankCapital": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "loanDeposits": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "noncore": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "shortRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "longRate": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "publicDebt": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "wages": {
+          "n": 151,
+          "first": 1870,
+          "last": 2020
+        },
+        "dividendYield": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "bondReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "billReturn": {
+          "n": 150,
+          "first": 1871,
+          "last": 2020
+        },
+        "equityReturn": {
+          "n": 149,
+          "first": 1872,
+          "last": 2020
+        },
+        "bankCredit": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "mortgages": {
+          "n": 141,
+          "first": 1880,
+          "last": 2020
+        },
+        "unemployment": {
+          "n": 131,
+          "first": 1890,
+          "last": 2020
+        },
+        "rentYield": {
+          "n": 131,
+          "first": 1890,
+          "last": 2020
+        },
+        "housePrices": {
+          "n": 131,
+          "first": 1890,
+          "last": 2020
+        },
+        "housingReturn": {
+          "n": 130,
+          "first": 1891,
+          "last": 2020
+        },
+        "businessDebt": {
+          "n": 99,
+          "first": 1916,
+          "last": 2020
+        }
+      }
+    }
+  },
+  "limits": [
+    "JST historical reconstructions end in 2020 and cover 18 countries, not the world.",
+    "Source definitions and territorial boundaries change; no complete observation-level break list is available.",
+    "Real returns require a previous-year CPI value; source nominal returns and interpolation flags are retained.",
+    "The audit verifies transcription and stated formulas, not every historical source study or a natural cycle."
+  ]
+}

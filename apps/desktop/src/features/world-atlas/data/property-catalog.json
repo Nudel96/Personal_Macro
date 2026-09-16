@@ -1,0 +1,438 @@
+{
+  "datasetId": "bis-residential-property",
+  "version": "2026-09-09.1",
+  "sourceUrl": "https://data.bis.org/static/bulk/WS_SPP_csv_flat.zip",
+  "documentationUrl": "https://www.bis.org/statistics/pp_selected_documentation.pdf",
+  "sourceInstitutionsUrl": "https://www.bis.org/statistics/pp/disclaimer.htm",
+  "sourceInstitutionsAsOf": "2026-07-31",
+  "topicIds": ["housing:house_prices", "long_history:long_run_housing"],
+  "areas": [
+    {
+      "code": "4T",
+      "label": "Emerging market economies (aggregate)",
+      "geographyId": "bis:emerging_economies",
+      "sourceInstitutions": "BIS, veröffentlichte Gruppe ausgewählter Schwellenländer",
+      "historicalBackcast": false
+    },
+    {
+      "code": "5R",
+      "label": "Advanced economies",
+      "geographyId": "bis:advanced_economies",
+      "sourceInstitutions": "BIS, veröffentlichte Gruppe ausgewählter fortgeschrittener Volkswirtschaften",
+      "historicalBackcast": false
+    },
+    {
+      "code": "AT",
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "sourceInstitutions": "Austrian National Bank",
+      "historicalBackcast": false
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "sourceInstitutions": "Australian Bureau of Statistics; CoreLogic",
+      "historicalBackcast": true
+    },
+    {
+      "code": "BE",
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "sourceInstitutions": "Federal Public Service, Directorate General Statistics and Economic Information; STADIM; Statistics Belgium",
+      "historicalBackcast": true
+    },
+    {
+      "code": "BG",
+      "label": "Bulgaria",
+      "geographyId": "m49:100",
+      "sourceInstitutions": "National Statistical Institute",
+      "historicalBackcast": false
+    },
+    {
+      "code": "BR",
+      "label": "Brazil",
+      "geographyId": "m49:076",
+      "sourceInstitutions": "Banco Central do Brasil; Getúlio Vargas Foundation; Fipezap",
+      "historicalBackcast": false
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "sourceInstitutions": "Statistics Canada; The Canadian Real Estate Association",
+      "historicalBackcast": true
+    },
+    {
+      "code": "CH",
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "sourceInstitutions": "Swiss National Bank, Wüest und Partner; Federal Statistical Office",
+      "historicalBackcast": true
+    },
+    {
+      "code": "CL",
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "sourceInstitutions": "Banco Central de Chile",
+      "historicalBackcast": false
+    },
+    {
+      "code": "CN",
+      "label": "China",
+      "geographyId": "m49:156",
+      "sourceInstitutions": "National Bureau of Statistics of China",
+      "historicalBackcast": false
+    },
+    {
+      "code": "CO",
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "sourceInstitutions": "Banco Central de Colombia; National Administrative Department of Statistics",
+      "historicalBackcast": false
+    },
+    {
+      "code": "CY",
+      "label": "Cyprus",
+      "geographyId": "m49:196",
+      "sourceInstitutions": "Central Bank of Cyprus",
+      "historicalBackcast": false
+    },
+    {
+      "code": "CZ",
+      "label": "Czechia",
+      "geographyId": "m49:203",
+      "sourceInstitutions": "Czech Statistical Office",
+      "historicalBackcast": false
+    },
+    {
+      "code": "DE",
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "sourceInstitutions": "Deutsche Bundesbank, BulwienGesa AG, Statistisches Bundesamt, VDPResearch",
+      "historicalBackcast": true
+    },
+    {
+      "code": "DK",
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "sourceInstitutions": "Statistics Denmark",
+      "historicalBackcast": true
+    },
+    {
+      "code": "EE",
+      "label": "Estonia",
+      "geographyId": "m49:233",
+      "sourceInstitutions": "Statistics Estonia",
+      "historicalBackcast": false
+    },
+    {
+      "code": "ES",
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "sourceInstitutions": "Ministerio de Fomento; Instituto Nacional de Estadistica; Bank of Spain",
+      "historicalBackcast": true
+    },
+    {
+      "code": "FI",
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "sourceInstitutions": "Statistics Finland",
+      "historicalBackcast": true
+    },
+    {
+      "code": "FR",
+      "label": "France",
+      "geographyId": "m49:250",
+      "sourceInstitutions": "National Institute of Statistics and Economic Studies; Ministère de l’Équipement; Fédération Nationale de l’Immobilier; Banque de France",
+      "historicalBackcast": true
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "geographyId": "m49:826",
+      "sourceInstitutions": "Halifax; Office for National Statistics",
+      "historicalBackcast": true
+    },
+    {
+      "code": "GR",
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "sourceInstitutions": "Bank of Greece",
+      "historicalBackcast": false
+    },
+    {
+      "code": "HK",
+      "label": "Hong Kong SAR",
+      "geographyId": "m49:344",
+      "sourceInstitutions": "Census and Statistics Department",
+      "historicalBackcast": true
+    },
+    {
+      "code": "HR",
+      "label": "Croatia",
+      "geographyId": "m49:191",
+      "sourceInstitutions": "Croatian Bureau of Statistics",
+      "historicalBackcast": false
+    },
+    {
+      "code": "HU",
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "sourceInstitutions": "Hungarian Central Statistical Office",
+      "historicalBackcast": false
+    },
+    {
+      "code": "ID",
+      "label": "Indonesia",
+      "geographyId": "m49:360",
+      "sourceInstitutions": "Bank Indonesia",
+      "historicalBackcast": false
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "sourceInstitutions": "Department of the Environment, Heritage and Local Government; Central Statistics Office",
+      "historicalBackcast": true
+    },
+    {
+      "code": "IL",
+      "label": "Israel",
+      "geographyId": "m49:376",
+      "sourceInstitutions": "The Central Bureau of Statistics",
+      "historicalBackcast": false
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "geographyId": "m49:356",
+      "sourceInstitutions": "Reserve Bank of India",
+      "historicalBackcast": false
+    },
+    {
+      "code": "IS",
+      "label": "Iceland",
+      "geographyId": "m49:352",
+      "sourceInstitutions": "Central Bank of Iceland; Statistics Iceland",
+      "historicalBackcast": false
+    },
+    {
+      "code": "IT",
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "sourceInstitutions": "Bank of Italy, Consulente Immobiliare; Istat",
+      "historicalBackcast": true
+    },
+    {
+      "code": "JP",
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "sourceInstitutions": "Japan Real Estate Institute; Ministry of Land Infrastructure, Transport, Tourism",
+      "historicalBackcast": true
+    },
+    {
+      "code": "KR",
+      "label": "Korea",
+      "geographyId": "m49:410",
+      "sourceInstitutions": "Kookmin Bank in Korea; Korea Appraisal Board",
+      "historicalBackcast": true
+    },
+    {
+      "code": "LT",
+      "label": "Lithuania",
+      "geographyId": "m49:440",
+      "sourceInstitutions": "Centre of Registers; Statistics Lithuania; Eurostat",
+      "historicalBackcast": false
+    },
+    {
+      "code": "LU",
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "sourceInstitutions": "Statistics Portal of Luxembourg",
+      "historicalBackcast": false
+    },
+    {
+      "code": "LV",
+      "label": "Latvia",
+      "geographyId": "m49:428",
+      "sourceInstitutions": "Latvijas Statistika",
+      "historicalBackcast": false
+    },
+    {
+      "code": "MA",
+      "label": "Morocco",
+      "geographyId": "m49:504",
+      "sourceInstitutions": "BANK AL-MAGHRIB",
+      "historicalBackcast": false
+    },
+    {
+      "code": "MK",
+      "label": "North Macedonia",
+      "geographyId": "m49:807",
+      "sourceInstitutions": "National Bank of the Republic of North Macedonia",
+      "historicalBackcast": false
+    },
+    {
+      "code": "MT",
+      "label": "Malta",
+      "geographyId": "m49:470",
+      "sourceInstitutions": "Central Bank of Malta; National Statistics Office Malta",
+      "historicalBackcast": false
+    },
+    {
+      "code": "MX",
+      "label": "Mexico",
+      "geographyId": "m49:484",
+      "sourceInstitutions": "Sociedad Hipotecaria Federal, Valuation Databases",
+      "historicalBackcast": false
+    },
+    {
+      "code": "MY",
+      "label": "Malaysia",
+      "geographyId": "m49:458",
+      "sourceInstitutions": "Central Bank of Malaysia; National Property Information Centre",
+      "historicalBackcast": true
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands",
+      "geographyId": "m49:528",
+      "sourceInstitutions": "CBS StatLine",
+      "historicalBackcast": true
+    },
+    {
+      "code": "NO",
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "sourceInstitutions": "Statistics Norway; Norges Bank",
+      "historicalBackcast": true
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "sourceInstitutions": "Reserve Bank of New Zealand, Quotable Value Limited",
+      "historicalBackcast": true
+    },
+    {
+      "code": "PE",
+      "label": "Peru",
+      "geographyId": "m49:604",
+      "sourceInstitutions": "Banco Central de Reserva",
+      "historicalBackcast": false
+    },
+    {
+      "code": "PH",
+      "label": "Philippines",
+      "geographyId": "m49:608",
+      "sourceInstitutions": "Bangko Sentral ng Pilipinas Statistics; Colliers International Philippines",
+      "historicalBackcast": false
+    },
+    {
+      "code": "PL",
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "sourceInstitutions": "Central Statistical Office of Poland; National Bank of Poland",
+      "historicalBackcast": false
+    },
+    {
+      "code": "PT",
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "sourceInstitutions": "Confidencial Imobiliário; Statistics Portugal",
+      "historicalBackcast": false
+    },
+    {
+      "code": "RO",
+      "label": "Romania",
+      "geographyId": "m49:642",
+      "sourceInstitutions": "Romania National Institute of Statistics",
+      "historicalBackcast": false
+    },
+    {
+      "code": "RS",
+      "label": "Serbia",
+      "geographyId": "m49:688",
+      "sourceInstitutions": "Statistical Office of the Republic of Serbia; Republic Geodetic Authority",
+      "historicalBackcast": false
+    },
+    {
+      "code": "RU",
+      "label": "Russia",
+      "geographyId": "m49:643",
+      "sourceInstitutions": "Federal State Statistics Service",
+      "historicalBackcast": false
+    },
+    {
+      "code": "SE",
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "sourceInstitutions": "Statistics Sweden",
+      "historicalBackcast": true
+    },
+    {
+      "code": "SG",
+      "label": "Singapore",
+      "geographyId": "m49:702",
+      "sourceInstitutions": "Urban Redevelopment Authority; Statistics Singapore",
+      "historicalBackcast": false
+    },
+    {
+      "code": "SI",
+      "label": "Slovenia",
+      "geographyId": "m49:705",
+      "sourceInstitutions": "Statistical Office of the Republic of Slovenia",
+      "historicalBackcast": false
+    },
+    {
+      "code": "SK",
+      "label": "Slovakia",
+      "geographyId": "m49:703",
+      "sourceInstitutions": "National Bank of Slovakia; Statistical Office of the Slovak Republic",
+      "historicalBackcast": false
+    },
+    {
+      "code": "TH",
+      "label": "Thailand",
+      "geographyId": "m49:764",
+      "sourceInstitutions": "Bank of Thailand",
+      "historicalBackcast": true
+    },
+    {
+      "code": "TR",
+      "label": "Türkiye",
+      "geographyId": "m49:792",
+      "sourceInstitutions": "Central Bank of the Republic of Türkiye",
+      "historicalBackcast": false
+    },
+    {
+      "code": "US",
+      "label": "United States",
+      "geographyId": "m49:840",
+      "sourceInstitutions": "US Census Bureau; Federal Housing Finance Agency; Federal Reserve Board, CoreLogic; Haver Analytics",
+      "historicalBackcast": true
+    },
+    {
+      "code": "XM",
+      "label": "Euro area",
+      "geographyId": "bis:euro_area",
+      "sourceInstitutions": "European Central Bank; BIS estimation",
+      "historicalBackcast": false
+    },
+    {
+      "code": "XW",
+      "label": "World",
+      "geographyId": "bis:property_world",
+      "sourceInstitutions": "BIS, veröffentlichtes Aggregat ausgewählter Volkswirtschaften",
+      "historicalBackcast": false
+    },
+    {
+      "code": "ZA",
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "sourceInstitutions": "First National Bank; Department Statistics South Africa",
+      "historicalBackcast": true
+    }
+  ]
+}

@@ -1,0 +1,1345 @@
+{
+  "sourceSha256": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72",
+  "sourceRows": 1995192,
+  "numericValues": 1995192,
+  "sourceMissingValues": 0,
+  "zeroValues": 426,
+  "areas": 234,
+  "items": 196,
+  "maximumAbsoluteDifference": 0,
+  "provenanceEqualAcrossProfiles": true,
+  "selectedHistory": [
+    {
+      "area": "79",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "79",
+      "item": "15",
+      "lastYear": 2017
+    },
+    {
+      "area": "79",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "100",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "100",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "100",
+      "item": "661",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "41",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "231",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "231",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "231",
+      "item": "661",
+      "lastYear": null
+    },
+    {
+      "area": "5100",
+      "item": "2051",
+      "lastYear": 2024
+    },
+    {
+      "area": "5100",
+      "item": "15",
+      "lastYear": 2024
+    },
+    {
+      "area": "5100",
+      "item": "661",
+      "lastYear": 2024
+    }
+  ],
+  "native": {
+    "identifier": "com.personal-macro.atlas-agriculture-validation",
+    "jobs": [],
+    "ok": true,
+    "profiles": [
+      {
+        "id": "m49:004",
+        "items": 62,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:008",
+        "items": 84,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:012",
+        "items": 86,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:024",
+        "items": 55,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:028",
+        "items": 38,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:032",
+        "items": 101,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:051",
+        "items": 64,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:036",
+        "items": 102,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:040",
+        "items": 89,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:031",
+        "items": 87,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:044",
+        "items": 42,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:048",
+        "items": 38,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:050",
+        "items": 85,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:052",
+        "items": 45,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:112",
+        "items": 62,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:056",
+        "items": 70,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:084",
+        "items": 59,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:204",
+        "items": 60,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:064",
+        "items": 76,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:068",
+        "items": 95,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:070",
+        "items": 78,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:072",
+        "items": 37,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:076",
+        "items": 100,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:096",
+        "items": 46,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:100",
+        "items": 107,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:854",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:108",
+        "items": 48,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:132",
+        "items": 45,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:116",
+        "items": 51,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:120",
+        "items": 92,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:124",
+        "items": 81,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:140",
+        "items": 55,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:148",
+        "items": 48,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:152",
+        "items": 95,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:351",
+        "items": 158,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:344",
+        "items": 32,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:446",
+        "items": 14,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:156",
+        "items": 151,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "provider:TWN",
+        "items": 93,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:170",
+        "items": 93,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:174",
+        "items": 37,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:178",
+        "items": 62,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:184",
+        "items": 32,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:188",
+        "items": 75,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:384",
+        "items": 76,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:191",
+        "items": 87,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:192",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:196",
+        "items": 90,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:203",
+        "items": 85,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:408",
+        "items": 55,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:180",
+        "items": 73,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:208",
+        "items": 65,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:262",
+        "items": 39,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:212",
+        "items": 57,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:214",
+        "items": 74,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:218",
+        "items": 107,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:818",
+        "items": 108,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:222",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:226",
+        "items": 24,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:232",
+        "items": 43,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:233",
+        "items": 52,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:748",
+        "items": 46,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:231",
+        "items": 98,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:234",
+        "items": 11,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:242",
+        "items": 56,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:246",
+        "items": 56,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:250",
+        "items": 113,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:258",
+        "items": 51,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:266",
+        "items": 45,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:270",
+        "items": 33,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:268",
+        "items": 70,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:276",
+        "items": 81,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:288",
+        "items": 68,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:300",
+        "items": 115,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:308",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:320",
+        "items": 81,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:324",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:624",
+        "items": 47,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:328",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:332",
+        "items": 71,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:340",
+        "items": 71,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:348",
+        "items": 107,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:352",
+        "items": 27,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:356",
+        "items": 112,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:360",
+        "items": 88,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:364",
+        "items": 112,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:368",
+        "items": 90,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:372",
+        "items": 54,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:376",
+        "items": 96,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:380",
+        "items": 115,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:388",
+        "items": 74,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:392",
+        "items": 94,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:400",
+        "items": 79,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:398",
+        "items": 93,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:404",
+        "items": 111,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:296",
+        "items": 16,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:414",
+        "items": 50,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:417",
+        "items": 93,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:418",
+        "items": 57,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:428",
+        "items": 65,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:422",
+        "items": 84,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:426",
+        "items": 31,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:430",
+        "items": 44,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:434",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:440",
+        "items": 80,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:442",
+        "items": 56,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:450",
+        "items": 100,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:454",
+        "items": 74,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:458",
+        "items": 66,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:462",
+        "items": 29,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:466",
+        "items": 85,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:470",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:584",
+        "items": 4,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:478",
+        "items": 40,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:480",
+        "items": 59,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:484",
+        "items": 133,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:583",
+        "items": 24,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:496",
+        "items": 41,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:499",
+        "items": 56,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:504",
+        "items": 120,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:508",
+        "items": 64,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:104",
+        "items": 71,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:516",
+        "items": 45,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:520",
+        "items": 12,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:524",
+        "items": 80,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:528",
+        "items": 70,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:540",
+        "items": 37,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:554",
+        "items": 87,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:558",
+        "items": 53,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:562",
+        "items": 71,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:566",
+        "items": 68,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:570",
+        "items": 24,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:807",
+        "items": 87,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:578",
+        "items": 54,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:512",
+        "items": 45,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:586",
+        "items": 104,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:275",
+        "items": 85,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:591",
+        "items": 53,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:598",
+        "items": 59,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:600",
+        "items": 76,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:604",
+        "items": 120,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:608",
+        "items": 95,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:616",
+        "items": 90,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:620",
+        "items": 96,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:630",
+        "items": 59,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:634",
+        "items": 47,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:410",
+        "items": 83,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:498",
+        "items": 79,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:642",
+        "items": 92,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:643",
+        "items": 95,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:646",
+        "items": 64,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:659",
+        "items": 31,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:662",
+        "items": 46,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:670",
+        "items": 44,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:882",
+        "items": 38,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:678",
+        "items": 38,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:682",
+        "items": 47,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:686",
+        "items": 65,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:688",
+        "items": 81,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:690",
+        "items": 30,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:694",
+        "items": 53,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:702",
+        "items": 26,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:703",
+        "items": 97,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:705",
+        "items": 79,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:090",
+        "items": 32,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:706",
+        "items": 46,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:710",
+        "items": 97,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:728",
+        "items": 41,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:724",
+        "items": 132,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:144",
+        "items": 72,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:729",
+        "items": 67,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:740",
+        "items": 49,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:752",
+        "items": 54,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:756",
+        "items": 87,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:760",
+        "items": 98,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:762",
+        "items": 64,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:764",
+        "items": 94,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:626",
+        "items": 48,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:768",
+        "items": 53,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:772",
+        "items": 14,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:776",
+        "items": 35,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:780",
+        "items": 57,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:788",
+        "items": 105,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:792",
+        "items": 124,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:795",
+        "items": 49,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:798",
+        "items": 16,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:800",
+        "items": 56,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:804",
+        "items": 107,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:784",
+        "items": 48,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:826",
+        "items": 66,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:834",
+        "items": 94,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:840",
+        "items": 113,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:858",
+        "items": 65,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:860",
+        "items": 99,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:548",
+        "items": 27,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:862",
+        "items": 79,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:704",
+        "items": 66,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:887",
+        "items": 74,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:894",
+        "items": 53,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "m49:716",
+        "items": 97,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5000",
+        "items": 196,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5100",
+        "items": 176,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5101",
+        "items": 149,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5102",
+        "items": 116,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5103",
+        "items": 142,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5104",
+        "items": 109,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5105",
+        "items": 122,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5200",
+        "items": 178,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5203",
+        "items": 123,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5204",
+        "items": 145,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5206",
+        "items": 107,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5207",
+        "items": 166,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5300",
+        "items": 185,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5301",
+        "items": 117,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5302",
+        "items": 162,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5303",
+        "items": 149,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5304",
+        "items": 134,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5305",
+        "items": 152,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5400",
+        "items": 159,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5401",
+        "items": 135,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5402",
+        "items": 91,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5403",
+        "items": 150,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5404",
+        "items": 120,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5500",
+        "items": 141,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5501",
+        "items": 116,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5502",
+        "items": 75,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5503",
+        "items": 27,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5504",
+        "items": 63,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5707",
+        "items": 155,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5801",
+        "items": 162,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5802",
+        "items": 179,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5803",
+        "items": 127,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5815",
+        "items": 181,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      },
+      {
+        "id": "fao:5817",
+        "items": 187,
+        "source": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72"
+      }
+    ],
+    "provenance": {
+      "areaCount": 234,
+      "fileModifiedAt": "Mon, 11 May 2026 12:58:12 GMT",
+      "numericCellCount": 1995192,
+      "recipe": "fao-qi-gross-2014-2016-v1",
+      "release": "2026-05-11T00:00:00",
+      "retrievedAt": "2026-09-09T07:43:05.217463300+00:00",
+      "sha256": "04c58034493d91f02e2495570d3864212ac870ec7f829a5f22577d143a6a8a72",
+      "sourceRowCount": 1995192,
+      "url": "https://bulks-faostat.fao.org/production/Production_Indices_E_All_Data_(Normalized).zip"
+    },
+    "runAt": "2026-09-09T07:50:10.595Z"
+  },
+  "scope": "All original numeric keys, published zeroes, provider labels, and native cached source identity.",
+  "processRestart": {
+    "originalDownloadJobCount": 1,
+    "firstProcessStopped": true,
+    "restartProcessId": 21400,
+    "firstRunAt": "2026-09-09T07:42:36.282Z",
+    "scope": "Real process restart using a separate named Tauri validation profile; no new FAO download.",
+    "sameSha256": true,
+    "jobsAfterRestart": 0,
+    "sameRetrievedAt": true,
+    "firstProcessId": 34752,
+    "sameRelease": true,
+    "restartRunAt": "2026-09-09T07:50:10.595Z",
+    "profilesAfterRestart": 234
+  },
+  "checks": {
+    "originalSourceRustAudit": "passed separately",
+    "gitDiffCheck": "passed",
+    "productionBuild": "passed, existing chunk-size warning",
+    "clippyAllTargets": "passed with -D warnings",
+    "rustLibraryIgnored": 20,
+    "eslint": "passed targeted Atlas and integration files",
+    "prettier": "passed targeted Atlas and integration files",
+    "atlasFrontendTests": 144,
+    "independentSourceAudit": "all 1995192 original values, maximum difference 0",
+    "rustLibraryPassed": 226,
+    "typecheck": "passed",
+    "atlasFrontendFiles": 23,
+    "rustfmt": "passed"
+  },
+  "uiReview": {
+    "horizontalOverflowAt1024": false,
+    "browserWarningsAndErrors": 0,
+    "checks": [
+      "Six pictures per page",
+      "Search across product groups",
+      "Large coffee picture",
+      "Optional numbers and published per-capita index",
+      "Germany and United States wheat comparison ends 2017",
+      "Missing German coffee remains unavailable",
+      "FAO Africa and world comparison",
+      "Coverage group lazy contents and Enter key toggle",
+      "Coverage search and direct product link preserve area",
+      "Native exported PNG includes country legend and own-base description"
+    ],
+    "limitations": [
+      "No native click automation available; browser interaction plus real Tauri commands and PNG are separate evidence.",
+      "One bulk automation sequence required selecting the world comparison again after the UI rendered; separate selection succeeded. Native rapid-navigation validation remains part of the open overall acceptance."
+    ],
+    "data": "Public cached responses from actual native download",
+    "viewportWidths": [
+      1024,
+      1440
+    ]
+  },
+  "runtimeNotes": [
+    "First FAO-profile startup repeated previously observed SQLITE_BUSY while saving last-view journal preferences; FAO download/cache succeeded.",
+    "Restart last-view write succeeded after about 1.35 seconds with slow-query warning; cause remains open.",
+    "Existing EODHD intraday entitlement and overlapping central-bank sync warnings were observed.",
+    "No production personal database was used or inspected."
+  ],
+  "cleanup": {
+    "vitePort5188Stopped": true,
+    "originalNativeProcessStopped": true,
+    "temporaryBrowserTabClosed": true,
+    "restartNativeProcessStopped": true,
+    "browserViewportReset": true
+  }
+}

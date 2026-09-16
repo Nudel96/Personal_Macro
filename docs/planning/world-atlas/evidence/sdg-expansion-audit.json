@@ -1,0 +1,2198 @@
+{
+  "results": [
+    {
+      "id": "unsdg:DC_TOF_INFRAL",
+      "requestedRows": 4471,
+      "selectedRows": 3630,
+      "numericRows": 3630,
+      "areaCount": 157,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "df61504ce67d8eeaf0cf8ae47cf70ed8429240532a2b2b5831aad3b8d5bb6690",
+        "84726f08a9193c48133506dc1a5f42be62d17be35da8b06effd39a441bf9031f",
+        "3f4ab04e9b6d24e835ce745897e3ab37e3db008c500cc4e2bb92cda1e3b1b8bf",
+        "8555e6fdf827132e2cc03ec6767740716e1916cc8047f75a63d9d7690f362290",
+        "12df848f87f724f6b32a806ffcc7c60d53e13afae8b1b6365576c5fe92d710d7"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=DC_TOF_INFRAL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=DC_TOF_INFRAL&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=DC_TOF_INFRAL&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=DC_TOF_INFRAL&releaseCode=2026.Q2.G.02&page=4&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=DC_TOF_INFRAL&releaseCode=2026.Q2.G.02&page=5&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.a"
+        ],
+        "indicator": [
+          "9.a.1"
+        ],
+        "series": "DC_TOF_INFRAL",
+        "seriesDescription": "Total official flows for infrastructure, by recipient countries (millions of constant 2024 United States dollars)",
+        "seriesCount": "4471",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0.454171",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2024",
+        "source": "The Organisation for Economic Co-operation and Development (OECD).",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments, Based on OECD, CRS database, 2026, Constant 2024 USD million"
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_FEC_RNEW",
+      "requestedRows": 9343,
+      "selectedRows": 7944,
+      "numericRows": 7707,
+      "areaCount": 231,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "0ccbcce043b4ee753a3ab3587d3da3c5f6b2b70437e86ced29feb14a39cf837a",
+        "c4478126802fc2e3ebfc1d58ea444372c16823909e87d2bc1d055d88d6aa69b4",
+        "72e6d9cfd138c1900daadb4698b4a2cc9dd0059d877fc5f59b92cc4ab7b65b94",
+        "6247ba83f0cb6f103b2cf2340997907e5b4e4afe2ad1bb8fa68eec06b12a5ffc",
+        "ffa9eb98f940066f9d5ae41d1286d7260b86ff2b189ced0674246a38397d84d1",
+        "832d8987f7d51afffc8f31c9baf04988a486af8711a63e63a44edeb4c65f0e28",
+        "40e7ce3f34c4af7ebf2df7ff7f16bb9708c27f68c71eefbb0f3870f45e2463d7",
+        "3df4e99dc52a80a4732d2564fa262de2f431d755b8893a7f996c3b6d44b09df0",
+        "78db07e5bfd0129655c81b0b190990dc33568b7d6bfc111b452af946f4a40c63",
+        "d95e76d842d4a49cf8ef830a486cd8af33d8732b6b99acad152e48239c83a6f5"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=4&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=5&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=6&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=7&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=8&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=9&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_FEC_RNEW&releaseCode=2026.Q2.G.02&page=10&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.2"
+        ],
+        "indicator": [
+          "7.2.1"
+        ],
+        "series": "EG_FEC_RNEW",
+        "seriesDescription": "Renewable energy share in the total final energy consumption (%)",
+        "seriesCount": "9343",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 1990.0,
+        "value": "2.1",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "IEA (2025), World Energy Balances",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:ALL",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "c5b9600d610e55db9b34e3bd3843501601103904d4a5aa134ccf0c17a57bba20",
+        "5db9648f1a9026b51fce239e10a742845c3737d994000f3ec03c591611efb94d",
+        "818a14581ce1a8814cdf4b28f43eb2f170637c9c2d17cb04b417a16c22b292bb",
+        "1f6ea5fa8579ee6275e250b8c28f35f19d01e62923e5f490eb00b0cddbcfa5be",
+        "ede409eacdf78280abf57c3be40f5692a26fa2214ba3bf9ee803398eea1c34ea"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22ALL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22ALL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22ALL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22ALL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22ALL%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0.03",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "ALL"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:BIOENERGY",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "8c9f9a165616ba1e219eb548f4ecdf71f75f6d0bf265fcbfcd8c7df55b7c3e6b",
+        "5808fe8262467bb0a5d5b52b6134a8defcde76b28b66fc77a553ae75ac0b8edf",
+        "64fddb3dbed20ba73adec3d0703a993a9854e34bcf21025c6789e28e3b9d1c8a",
+        "974263272058261d389c847b590c30c5b01da5a09d8985282af20971e785ab60",
+        "cb680fef5e5db6f7b25486edcadab52c4c2f83b80fa39cb4785a6fb208860aef"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22BIOENERGY%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22BIOENERGY%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22BIOENERGY%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22BIOENERGY%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22BIOENERGY%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "BIOENERGY"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:GEOTHERMAL",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "00312f3967a372f30739759963407c3d6bb47bd8b18ec03d2732f5c86874e9d4",
+        "e693ab1b2431decab294094b20f783fc05719b25be9cbcaf0a420b712399a043",
+        "75a1b71c74cf8ca7ea427afbdb40105cf565269725a40aa8cd3180011ea1aa1b",
+        "b67d4ce50b81e59f7fb5f67c7d83a894ee63ca215c4c52ba25134aefed1b4dba",
+        "30a6ba78b7886be34b5a863ed66ff910238e955ac4cf2f0ea2e8d7712c9298ad"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22GEOTHERMAL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22GEOTHERMAL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22GEOTHERMAL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22GEOTHERMAL%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22GEOTHERMAL%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "GEOTHERMAL"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:HYDROPOWER",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "0ae7390c90e3299e709ed0ce4ee4a7a4ba585b6dd4e71c692348f9fa42034fec",
+        "8fdf4268255e5e6d6ab4b33785a707d494de5a01748420f93648b9c1a88eb5c6",
+        "e79f3fca3a73be197fbdf19b609a0bc1abfeb37c9b95f71ea811b64cf8dee138",
+        "8f5387ce1f2aacb4d5687642302e1b8c73c5fda6fdf827835c78d0258d419a05",
+        "1c2afcbb1d850d885dd9b642472dfb87315e8eaab81ca98973e60875176e605a"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22HYDROPOWER%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22HYDROPOWER%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22HYDROPOWER%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22HYDROPOWER%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22HYDROPOWER%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0.03",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "HYDROPOWER"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:SOLAR",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "cd030b9872bd880357c813f227dc09c561583e9a2cde644d05a2acf90d0119c2",
+        "9819b8792a0798d2dda06d5dab7962877de8e9f86e0be73bb309da7553e248e8",
+        "4ddd44a3cadd36dea23b6d3d5a7c627a6eb48a9d6fd56f49833ce134ce14a957",
+        "6031cdd80300f36d32ab02c075a2eb0ae92434573af613272639979c85ff5989",
+        "da9e3b2ce764794d398e5e19a7f08037ba69862338b03ebe12f85f97ffef98ae"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22SOLAR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22SOLAR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22SOLAR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22SOLAR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22SOLAR%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "SOLAR"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EG_IFF_RANDN:WIND",
+      "requestedRows": 4525,
+      "selectedRows": 3825,
+      "numericRows": 3825,
+      "areaCount": 153,
+      "through": 2024.0,
+      "units": [
+        "CON_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "44af6d664c871eb68ceabc23e07cf858b33a2b9d0227a65fa4632ef92c5f42be",
+        "c40e97f4b37ed6401ee6a42230c6a939622c5bc5fd8de7933d09a6429626eb81",
+        "e4f2396ab2a9e84b4007fc50e12e0c353a60a5ddbf158456c0ca780c049ada35",
+        "627a0c68ff5fa9f3736859582bfa4b4792d0badc5f90ec81a902340572dc75c8",
+        "662df54a8762733e3afdd96fc8640036e8ec59621db866e1ce29b2ca900c5a4b"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22WIND%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22WIND%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22WIND%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22WIND%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EG_IFF_RANDN&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Type+of+renewable+technology%22%2C%22values%22%3A%5B%22WIND%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "7"
+        ],
+        "target": [
+          "7.a"
+        ],
+        "indicator": [
+          "7.a.1"
+        ],
+        "series": "EG_IFF_RANDN",
+        "seriesDescription": "International financial flows to developing countries in support of clean energy research and development and renewable energy production, including in hybrid systems (millions of constant 2023 United States dollars)",
+        "seriesCount": "36200",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2023",
+        "source": "DAC Statistics database, 2025, The Organisation for Economic Co-operation and Development (OECD) and IRENA Public Finance Database, 2026, The international Renewable Energy Agency (IRENA)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Commitments by recipient country, in million USD at 2023 prices and exchange rates (using donor country deflators). The aggregated figures only include the historical list of developing countries with a few modifications to account for the shifting nature of international public finance."
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "CON_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G",
+          "Type of renewable technology": "WIND"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EN_ATM_CO2GDP",
+      "requestedRows": 4536,
+      "selectedRows": 3576,
+      "numericRows": 3535,
+      "areaCount": 148,
+      "through": 2023.0,
+      "units": [
+        "KG_PER_CON_USD"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "4fd2fea30ce16b56b41f539bfaef5a77e5417ea7c95dad8e3c5633896de451bb",
+        "36942d946fe214e02349323d1bf48663c84a20492cb456acf3d445bc452bbb82",
+        "f07da085aa5f2afc09abccd053b277182392f408bfc1e76c99a5898a288837a3",
+        "4bfce70fcdd8eabcee5624109bee05d322ef4f71481ff1f28176c67f680bfbfa",
+        "f9eac7eeb1ec310ce1f41bad4e5c5a3f8b9cc8dec250021452f4c83f2af5bf8b"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_ATM_CO2GDP&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_ATM_CO2GDP&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_ATM_CO2GDP&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_ATM_CO2GDP&releaseCode=2026.Q2.G.02&page=4&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_ATM_CO2GDP&releaseCode=2026.Q2.G.02&page=5&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.4"
+        ],
+        "indicator": [
+          "9.4.1"
+        ],
+        "series": "EN_ATM_CO2GDP",
+        "seriesDescription": "Carbon dioxide emissions per unit of GDP PPP (kilogrammes of CO2 per constant 2021 United States dollars)",
+        "seriesCount": "4536",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "0.19648",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2021",
+        "source": "IEA (2025), Greenhouse gas emissions from energy. https://www.iea.org/data-and-statistics",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "KG_PER_CON_USD"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EN_EWT_RCYR",
+      "requestedRows": 813,
+      "selectedRows": 475,
+      "numericRows": 475,
+      "areaCount": 51,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "bdb81fb9d1a11d2098102ef6d367caad0714173b1c2c4319e716ddc7b1e4da94"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_EWT_RCYR&releaseCode=2026.Q2.G.02&page=1&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "12"
+        ],
+        "target": [
+          "12.5"
+        ],
+        "indicator": [
+          "12.5.1"
+        ],
+        "series": "EN_EWT_RCYR",
+        "seriesDescription": "Proportion of electronic waste recycled (%)",
+        "seriesCount": "813",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2006.0,
+        "value": "79.6",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Eurostat",
+        "geoInfoUrl": null,
+        "footnotes": [],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT",
+          "Observation Status": "A"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:EN_MWT_RCYR",
+      "requestedRows": 1328,
+      "selectedRows": 1328,
+      "numericRows": 1328,
+      "areaCount": 96,
+      "through": 2022.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "7a0c1d2a75423a5e3367270dd5039e1b3acee62a0953ba52b13b2ff159809041",
+        "0e722124cf15806ea4d705696dac39e00dcb68d0cd5e5cac8b9ceb8e3433d29d"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_MWT_RCYR&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=EN_MWT_RCYR&releaseCode=2026.Q2.G.02&page=2&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "12"
+        ],
+        "target": [
+          "12.5"
+        ],
+        "indicator": [
+          "12.5.1"
+        ],
+        "series": "EN_MWT_RCYR",
+        "seriesDescription": "Proportion of municipal waste recycled (%)",
+        "seriesCount": "1328",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "52.51278",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Eurostat",
+        "geoInfoUrl": null,
+        "footnotes": [],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT",
+          "Observation Status": "A"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:ER_RSK_LST",
+      "requestedRows": 12322,
+      "selectedRows": 11441,
+      "numericRows": 11441,
+      "areaCount": 249,
+      "through": 2025.0,
+      "units": [
+        "INDEX"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "087db274d818ae9e375ae36ef87a1bbd8d3062dd47bbea4ffe3c0899e4fd2bb1",
+        "9c373031ee0de38eb3436cff0d59f4eabaa1c0fc673140b15b777b24d771e1b7",
+        "69ae52fa6ae571540b8aaa23f0bd326469e608da102e230285d9092b03314632",
+        "34d93ff38dd4c25cf46fb22b8e9e5c705f4296a7f7cea340f8c3960d5a41e161",
+        "da6188fb747fe6697b6a1dbfbb7b60c324f50fe58cd1b0faaa4ee9cd9d2938ac",
+        "14d6630198132f1d322d0d74075f1d8ca54a01ca4b77d48e5dca20ac09b9346f",
+        "82212a56b948d53c0d289339af268c57000821fc412a1f4abc0bd897d826d51d",
+        "f2348ecadb5dbfce30acbae80559c9028b03c9b49d0071ae1033716e945ad37d",
+        "ed7cd4b22480aa56e39dce817c11d64c857ba0a35b1212b5dd7d3c9f4e5c9472",
+        "e76676a4f45124b85407aa1b15d2b5e05c5522c9f1753f10688c179b7b7bc7e6",
+        "b95c2071399641c9529b8e2487bf10ddf81d712e49437d422214b887b1d79297",
+        "1911a2e11a6335ff1a91726251e60eef738bc15ed09b4f3eb874547cf58c2d15",
+        "5d354908d44a35a07189c4f367ebe75fbc79e5c5b2f06a1b6caccfb9b2540108"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=4&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=5&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=6&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=7&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=8&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=9&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=10&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=11&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=12&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ER_RSK_LST&releaseCode=2026.Q2.G.02&page=13&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "15"
+        ],
+        "target": [
+          "15.5"
+        ],
+        "indicator": [
+          "15.5.1"
+        ],
+        "series": "ER_RSK_LST",
+        "seriesDescription": "Red List Index",
+        "seriesCount": "12322",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 1980.0,
+        "value": "0.97783",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": "0.97873",
+        "lowerBound": "0.97686",
+        "basePeriod": null,
+        "source": "BirdLife International and IUCN (2020), based on global estimates of the extinction risk (IUCN Red List categories) of all mammals, birds, amphibians, corals and cycads, derived from local and national data, disaggregated to the national scale and weighted by the proportion of each species's distribution in the country or region.",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "INDEX"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:GC_GOB_TAXD",
+      "requestedRows": 3319,
+      "selectedRows": 3306,
+      "numericRows": 3306,
+      "areaCount": 182,
+      "through": 2023.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "156d2f913bf08a96877127aa9ae4787f89e8838d560b5fe842ddbdd2506eecc3",
+        "f02dff74dd3a2f5d4bce26f7cc08bca3e388e025a3c323ee5375c55754d0264a",
+        "816d0ee7bf6bba98be4088dd390f7fc1366cccd7933436f963f47775a694c325",
+        "e57a7a7230c6924d91fed76920603fa938360e579f9d08663e4fa8b4c1dc86b6"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_GOB_TAXD&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_GOB_TAXD&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_GOB_TAXD&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_GOB_TAXD&releaseCode=2026.Q2.G.02&page=4&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "17"
+        ],
+        "target": [
+          "17.1"
+        ],
+        "indicator": [
+          "17.1.2"
+        ],
+        "series": "GC_GOB_TAXD",
+        "seriesDescription": "Proportion of domestic budget funded by domestic taxes (%)",
+        "seriesCount": "3319",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "49.98021417",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "IMF",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "General Government Sector"
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT",
+          "Observation Status": "A"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:GC_TAX_TOTL_GD_ZS",
+      "requestedRows": 3476,
+      "selectedRows": 2959,
+      "numericRows": 2959,
+      "areaCount": 156,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "aabc6a36e7c421e63dbe738eaadb54dd9b306e35c93a7d9d36ddae850ed24124",
+        "13d88123d8e6d293f0a71f489b0aa9ac51946d3cf86d929a27bab605403761e7",
+        "056ddcf3f5c52dce5a1a2bcd5e600f832e84d9b06cee6dc63443c380db45fcd8",
+        "6cba1b30cfe816b37a82c2c80b4b33e543c4253cb9768c9977db4e8674713c9d"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_TAX_TOTL_GD_ZS&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_TAX_TOTL_GD_ZS&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_TAX_TOTL_GD_ZS&releaseCode=2026.Q2.G.02&page=3&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GC_TAX_TOTL_GD_ZS&releaseCode=2026.Q2.G.02&page=4&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "17"
+        ],
+        "target": [
+          "17.13"
+        ],
+        "indicator": [
+          "17.13.1"
+        ],
+        "series": "GC_TAX_TOTL_GD_ZS",
+        "seriesDescription": "Tax revenue as a proportion of GDP (%)",
+        "seriesCount": "3476",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "11.65871548",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "International Monetary Fund, Government Finance Statistics Yearbook and data files, and World Bank and OECD GDP estimates.",
+        "geoInfoUrl": null,
+        "footnotes": [],
+        "attributes": {
+          "Nature": "G",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:GF_COM_PPPI",
+      "requestedRows": 2704,
+      "selectedRows": 2683,
+      "numericRows": 2683,
+      "areaCount": 128,
+      "through": 2020.0,
+      "units": [
+        "CU_USD_M"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "99c71537240f8d9faa5dbcb287372229f7d9255b4340de1b509c2c292c2dff94",
+        "b528702b1489fe87a301d3d1be44a744d3c898ce50e773140e4f59d4a8424bbe",
+        "16735ea480820e2855a1c00a15f8d2371ceccd29b5388136262cca7b18636488"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GF_COM_PPPI&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GF_COM_PPPI&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=GF_COM_PPPI&releaseCode=2026.Q2.G.02&page=3&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "17"
+        ],
+        "target": [
+          "17.17"
+        ],
+        "indicator": [
+          "17.17.1"
+        ],
+        "series": "GF_COM_PPPI",
+        "seriesDescription": "Amount of United States dollars committed to public-private partnerships for infrastructure, million USD nominal",
+        "seriesCount": "2704",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2000.0,
+        "value": "0.0000",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "World Bank, Private Participation in Infrastructure (PPI) Database.",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Zero means there is no PPI investment captured in the year"
+        ],
+        "attributes": {
+          "Nature": "G",
+          "Units": "CU_USD_M"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:AIR",
+      "requestedRows": 1476,
+      "selectedRows": 1175,
+      "numericRows": 1175,
+      "areaCount": 248,
+      "through": 2024.0,
+      "units": [
+        "T_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "8f47098439c9e5acf23fb508ba04c1ce9005947844fae5d28806061b5eb7dcf1",
+        "c5fc71a2b69aaca80100e3c3c3d6b4abcf30af5f6ceca6bfc0422ea26c08ff65"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_FRGVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22AIR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_FRGVOL&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22AIR%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_FRGVOL",
+        "seriesDescription": "Freight volume, by mode of transport (tonne kilometres)",
+        "seriesCount": "2006",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2017.0,
+        "value": "7901652344",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "ICAO",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "T_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "AIR",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:RAI",
+      "requestedRows": 180,
+      "selectedRows": 5,
+      "numericRows": 5,
+      "areaCount": 1,
+      "through": 2025.0,
+      "units": [
+        "T_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "b86039fd81a0fa39075186a796963da6dcca3cca555861f962b9137e804d4de2"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_FRGVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22RAI%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_FRGVOL",
+        "seriesDescription": "Freight volume, by mode of transport (tonne kilometres)",
+        "seriesCount": "2006",
+        "geoAreaCode": "1",
+        "geoAreaName": "World",
+        "timePeriodStart": 2015.0,
+        "value": "9688644529253.76",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "the International Transport Forum at the OECD (ITF-OECD)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "N",
+          "Units": "T_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "RAI",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_FRGVOL:ROA",
+      "requestedRows": 200,
+      "selectedRows": 5,
+      "numericRows": 5,
+      "areaCount": 1,
+      "through": 2025.0,
+      "units": [
+        "T_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "45e65044129f9d3bb81372c40253f68644f734eb080bbb1f23ba47cbb17d4b39"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_FRGVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22ROA%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_FRGVOL",
+        "seriesDescription": "Freight volume, by mode of transport (tonne kilometres)",
+        "seriesCount": "2006",
+        "geoAreaCode": "1",
+        "geoAreaName": "World",
+        "timePeriodStart": 2015.0,
+        "value": "20982625184258.9",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "the International Transport Forum at the OECD (ITF-OECD)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "N",
+          "Units": "T_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "ROA",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:AIR",
+      "requestedRows": 1502,
+      "selectedRows": 1200,
+      "numericRows": 1200,
+      "areaCount": 248,
+      "through": 2024.0,
+      "units": [
+        "P_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "d16966eff798dcfdefe6ca4b125108533ef1fa4223610006f9ec14d25fc5b57f",
+        "b958eb9d24ba84fb1e57af8e08c833a7d3590368eb81ae1871434fb43475b348"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_PFVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22AIR%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_PFVOL&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22AIR%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_PFVOL",
+        "seriesDescription": "Passenger volume (passenger kilometres), by mode of transport",
+        "seriesCount": "1892",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2017.0,
+        "value": "248023598072",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "ICAO",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "P_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "AIR",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:RAI",
+      "requestedRows": 190,
+      "selectedRows": 5,
+      "numericRows": 5,
+      "areaCount": 1,
+      "through": 2025.0,
+      "units": [
+        "P_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "911f75d5f9376e659dc4a558d4f3aa6702e25acfaae3b385aac72dcae0d8dc45"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_PFVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22RAI%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_PFVOL",
+        "seriesDescription": "Passenger volume (passenger kilometres), by mode of transport",
+        "seriesCount": "1892",
+        "geoAreaCode": "1",
+        "geoAreaName": "World",
+        "timePeriodStart": 2015.0,
+        "value": "3115143684686",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "the International Transport Forum at the OECD (ITF-OECD)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "N",
+          "Units": "P_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "RAI",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:IS_RDP_PFVOL:ROA",
+      "requestedRows": 200,
+      "selectedRows": 5,
+      "numericRows": 5,
+      "areaCount": 1,
+      "through": 2025.0,
+      "units": [
+        "P_KM"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "b9271b280b9102fe307556084f275f0191c79bec732f649ff87f97b8a0025a5f"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=IS_RDP_PFVOL&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Mode+of+transportation%22%2C%22values%22%3A%5B%22ROA%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.2"
+        ],
+        "series": "IS_RDP_PFVOL",
+        "seriesDescription": "Passenger volume (passenger kilometres), by mode of transport",
+        "seriesCount": "1892",
+        "geoAreaCode": "1",
+        "geoAreaName": "World",
+        "timePeriodStart": 2015.0,
+        "value": "26541868962372.4",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "the International Transport Forum at the OECD (ITF-OECD)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "N",
+          "Units": "P_KM"
+        },
+        "dimensions": {
+          "Mode of transportation": "ROA",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SG_DSR_LGRGSR",
+      "requestedRows": 2370,
+      "selectedRows": 790,
+      "numericRows": 790,
+      "areaCount": 141,
+      "through": 2025.0,
+      "units": [
+        "INDEX"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "14fb91719ac78dcf8393a87ac1d17de7d401ac3899ef4a67715c2cfd864f0601",
+        "81a23c29f51816deebf996e6e0934f377ff3d704b2073b6be86f9f0619a78214",
+        "f8c5b13d6d6df91954cd4eff309017426851be7bb6f4a585a35ac247aa252be6"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_LGRGSR&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_LGRGSR&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_LGRGSR&releaseCode=2026.Q2.G.02&page=3&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "1"
+        ],
+        "target": [
+          "1.5"
+        ],
+        "indicator": [
+          "1.5.3"
+        ],
+        "series": "SG_DSR_LGRGSR",
+        "seriesDescription": "Score of adoption and implementation of national DRR strategies in line with the Sendai Framework",
+        "seriesCount": "790",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2015.0,
+        "value": "0.575",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "United Nations Office for Disaster Risk Reduction (2026)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Disclaimer: The data being submitted by UNDRR has been extracted from the Sendai Framework Monitoring System as provided by designated national focal points. Some of the data has not followed an official validation process and may be subject to revision at a later date."
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "INDEX"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SG_DSR_SILS",
+      "requestedRows": 2637,
+      "selectedRows": 879,
+      "numericRows": 879,
+      "areaCount": 129,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "2be18acb861ec1654c4550f5dc7c08b925cf07b2f5a111dd563ee7ffa2c6496e",
+        "b6141426da56c31260dba64c5286ae93b2806a3849b4cb1e333cec839fd6c979",
+        "8babfec9a8d06798f8efab1588107dcd1ca48c50754e92dff663113bcacfb9a5"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_SILS&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_SILS&releaseCode=2026.Q2.G.02&page=2&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SG_DSR_SILS&releaseCode=2026.Q2.G.02&page=3&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "1"
+        ],
+        "target": [
+          "1.5"
+        ],
+        "indicator": [
+          "1.5.4"
+        ],
+        "series": "SG_DSR_SILS",
+        "seriesDescription": "Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies (%)",
+        "seriesCount": "879",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2015.0,
+        "value": "100",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "United Nations Office for Disaster Risk Reduction (2026)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Disclaimer: The data being submitted by UNDRR has been extracted from the Sendai Framework Monitoring System as provided by designated national focal points. Some of the data has not followed an official validation process and may be subject to revision at a later date."
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SH_H2O_SAFE",
+      "requestedRows": 4761,
+      "selectedRows": 4016,
+      "numericRows": 4016,
+      "areaCount": 164,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "6a95b430626b978d8500fd5d74484746d3ed44fa709aca49720c44a55d2e8eb0",
+        "3c4d70db159f449364aa290f47365d4bda9688cd1f31ea66198da6408c8de961",
+        "539f7e6cccf9b8efed4eedd2afa737ff8137c225b3ae2034e293c4d0f69b85dc",
+        "b3f0acbd76302adc18bfb3d525d5e7947761fa455c4e63d9d7dfcb1982e120dc",
+        "7bd5e1332fa2b2d1a46a4366e5daa8fa080c58b7fe94d8b911817cf86b933f61"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_H2O_SAFE&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_H2O_SAFE&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_H2O_SAFE&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_H2O_SAFE&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_H2O_SAFE&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "6"
+        ],
+        "target": [
+          "6.1"
+        ],
+        "indicator": [
+          "6.1.1"
+        ],
+        "series": "SH_H2O_SAFE",
+        "seriesDescription": "Proportion of population using safely managed drinking water services, by urban/rural (%)",
+        "seriesCount": "10780",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "99.84290314",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (2025)",
+        "geoInfoUrl": null,
+        "footnotes": [],
+        "attributes": {
+          "Nature": "E",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Location": "ALLAREA",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SH_SAN_SAFE",
+      "requestedRows": 4542,
+      "selectedRows": 3692,
+      "numericRows": 3692,
+      "areaCount": 151,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "c3eb87a2c7eecce84e775e9e973a93ba00010c0997adaabbfbf49e440ad0acdf",
+        "6c45e716d64ed0bad0a5f3011b7c1c34b5b2397f4f988c46f9ff3fba67c8314c",
+        "88fd0d00ce0877683c6a7c28dc49f428a4103a79c66bac979e60341f7a30b97c",
+        "4dc1bd15a2199deef3ae37bde5a67fd5229dbbb50926069a9eb127d3fda0a432",
+        "49af1d05a46610ccfab7b456b8cebdd5316042842d970aa03864d148a00572af"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_SAN_SAFE&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_SAN_SAFE&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_SAN_SAFE&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_SAN_SAFE&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SH_SAN_SAFE&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "6"
+        ],
+        "target": [
+          "6.2"
+        ],
+        "indicator": [
+          "6.2.1"
+        ],
+        "series": "SH_SAN_SAFE",
+        "seriesDescription": "Proportion of population using safely managed sanitation services, by urban/rural (%)",
+        "seriesCount": "11594",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2000.0,
+        "value": "96.05604553",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "WHO/UNICEF Joint Monitoring Programme for Water Supply, Sanitation and Hygiene (2025)",
+        "geoInfoUrl": null,
+        "footnotes": [],
+        "attributes": {
+          "Nature": "E",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Location": "ALLAREA",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SI_POV_DAY1",
+      "requestedRows": 9208,
+      "selectedRows": 2456,
+      "numericRows": 2456,
+      "areaCount": 171,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "b9207524f4637086543cbb555d96ae68a571cf072dd2ab18b11e2fe68da824a8",
+        "808adcd9332ba656133ac96b6d91923dfc44c3d93920f113287b593db0483681",
+        "a6cf9ead73e4d4a5bee0a7dcdeb110e09484f99a182fd5d2931d97ffd9f8a57f",
+        "491cb40c2553526ee860d3aaa1a80c438c8fe1fd1679c7449d19c571ba4afda2",
+        "b9f03e1d9506bd4edf5c900edba24f94a3907578986c5d7ba40cc5fe34361108",
+        "e9477f6a6874b85fe31f26883fe8aaabfbac8b73a5c8884d8381bb57021a33ad",
+        "43aab028b3e0afcf941060956884b1082840b190b8a08a5dbbbdbde76bbdf326",
+        "bcbf9fd28de685440733c8497acb2347a1bcbe9642d366a8c973da678f69c1c3",
+        "864fad613191bb9255138e278ba7a215bae3f5e5b56ba23c994e47445a5e98bd",
+        "df0dcf16f8504bd11394c8d7db43b6b8a5a1d4614efeaa28af978ce1754a75a0"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=6&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=7&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=8&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=9&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_DAY1&releaseCode=2026.Q2.G.02&page=10&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "1"
+        ],
+        "target": [
+          "1.1"
+        ],
+        "indicator": [
+          "1.1.1"
+        ],
+        "series": "SI_POV_DAY1",
+        "seriesDescription": "Proportion of population below international poverty line (%)",
+        "seriesCount": "11407",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 1991.0,
+        "value": "0.1",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": "2021",
+        "source": "Poverty and Inequality Portal, World Bank",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Accessed March 24, 2026. Based on data from GSOEP-LIS. Estimated from unit-record income data.  Defined as the percentage of the population living on less than $3.00 a day at 2021 international prices. "
+        ],
+        "attributes": {
+          "Nature": "G",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Location": "ALLAREA",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SI_POV_NAHC",
+      "requestedRows": 1159,
+      "selectedRows": 1159,
+      "numericRows": 1159,
+      "areaCount": 158,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "a31ad94d07e2527109892ad4b38c424b756a72c3c50e4f775d189122ac09d562",
+        "de45094b89bfbf16266b3f4a303c83205e2a9c63db7c8345d498a787dff0a813"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_NAHC&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SI_POV_NAHC&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22ALLAREA%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "1"
+        ],
+        "target": [
+          "1.2"
+        ],
+        "indicator": [
+          "1.2.1"
+        ],
+        "series": "SI_POV_NAHC",
+        "seriesDescription": "Proportion of population living below the national poverty line (%)",
+        "seriesCount": "1168",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2019.0,
+        "value": "16.1",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Poverty and Inequality Platform, World Bank",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Source: EUROSTAT, At risk of poverty rate (cut-off point: 60% of median equivalised income after social transfers), reported year is income reference year. Poverty line is relative. Government estimate."
+        ],
+        "attributes": {
+          "Nature": "CA",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Location": "ALLAREA",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SL_ISV_IFEM",
+      "requestedRows": 4667,
+      "selectedRows": 1328,
+      "numericRows": 1328,
+      "areaCount": 146,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "8512c8536bcec9ca4080e49468c9a321fbf6f01d672fb2e626917a9a0a4b6bc7",
+        "46cafe02b4e0d07ce9ece673e3a54128d8a8b58c659810998cfd4e7ad7edb9f2",
+        "c5e512823e2361e5b5897b1fbd24682feafe1107fb5fa74e7ebe23d623b1925e",
+        "5a65f3523c37e12718d2e88f25d81825ede7e5f5af0ba2fc8cfcb2b606f2e5d5",
+        "52a614263c436d3e21b174c53297c498646433e62985a9b0c297a52d49e41180"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM&releaseCode=2026.Q2.G.02&page=3&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM&releaseCode=2026.Q2.G.02&page=4&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM&releaseCode=2026.Q2.G.02&page=5&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "8"
+        ],
+        "target": [
+          "8.3"
+        ],
+        "indicator": [
+          "8.3.1"
+        ],
+        "series": "SL_ISV_IFEM",
+        "seriesDescription": "Proportion of informal employment, by sector and sex - 13th ICLS (%)",
+        "seriesCount": "13838",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2020.0,
+        "value": "4.01",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "HIES - EU Statistics on Income and Living Conditions",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Repository: ILO-STATISTICS - Micro data processing | Age coverage - minimum age: 16 years old"
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT",
+          "Observation Status": "A"
+        },
+        "dimensions": {
+          "Age": "15+",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Activity": "TOTAL"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SL_ISV_IFEM_19ICLS",
+      "requestedRows": 1471,
+      "selectedRows": 512,
+      "numericRows": 512,
+      "areaCount": 95,
+      "through": 2025.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "ec935ebacb891c131e212cd30bae1caae166ac1dd1d0f08113c086cf04e273d3",
+        "0acb5ea675198b60554243530c644fe110b45d3b15af5b778105f1de5db0ffed"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM_19ICLS&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SL_ISV_IFEM_19ICLS&releaseCode=2026.Q2.G.02&page=2&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "8"
+        ],
+        "target": [
+          "8.3"
+        ],
+        "indicator": [
+          "8.3.1"
+        ],
+        "series": "SL_ISV_IFEM_19ICLS",
+        "seriesDescription": "Proportion of informal employment, by sector and sex - 19th ICLS (%)",
+        "seriesCount": "4320",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2020.0,
+        "value": "4.01",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "HIES - EU Statistics on Income and Living Conditions",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "Repository: ILO-STATISTICS - Micro data processing | Age coverage - minimum age: 16 years old"
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "PERCENT",
+          "Observation Status": "A"
+        },
+        "dimensions": {
+          "Age": "15+",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Activity": "TOTAL"
+        }
+      }
+    },
+    {
+      "id": "unsdg:SP_ROD_R2KM",
+      "requestedRows": 26,
+      "selectedRows": 26,
+      "numericRows": 26,
+      "areaCount": 25,
+      "through": 2021.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "34d6f10edeb8f6c95fab0eb2ce033522e128505e3c9a185614d91441664f261d"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=SP_ROD_R2KM&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Location%22%2C%22values%22%3A%5B%22RURAL%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "9"
+        ],
+        "target": [
+          "9.1"
+        ],
+        "indicator": [
+          "9.1.1"
+        ],
+        "series": "SP_ROD_R2KM",
+        "seriesDescription": "Proportion of the rural population who live within 2 km of an all-season road",
+        "seriesCount": "26",
+        "geoAreaCode": "51",
+        "geoAreaName": "Armenia",
+        "timePeriodStart": 2017.0,
+        "value": "66",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "World Bank. 2019. Measuring Rural Access: Update 2017/2018. Washington, DC: World Bank Group. http://documents.worldbank.org/curated/en/543621569435525309/World-Measuring-Rural-Access-Update-2017-18",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "E",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Location": "RURAL",
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:ST_EMP_TRSMN",
+      "requestedRows": 1472,
+      "selectedRows": 1132,
+      "numericRows": 1132,
+      "areaCount": 145,
+      "through": 2024.0,
+      "units": [
+        "NUMBER"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "f8d2240b17be0cc9bf3e4893aac33e929a55e1531a4a857e3eb48ba56bc38722",
+        "7cbc4e63f9af48f77b5dad2c2b6c9094e8b34d32fa5e4bd038619a6120bb4740"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ST_EMP_TRSMN&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ST_EMP_TRSMN&releaseCode=2026.Q2.G.02&page=2&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "8"
+        ],
+        "target": [
+          "8.9"
+        ],
+        "indicator": [
+          "8.9.2"
+        ],
+        "series": "ST_EMP_TRSMN",
+        "seriesDescription": "Employed persons in the tourism industries (number)",
+        "seriesCount": "1472",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2022.0,
+        "value": "3517214",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Federal Statistical Office Germany",
+        "geoInfoUrl": null,
+        "footnotes": [
+          ""
+        ],
+        "attributes": {
+          "Nature": "C",
+          "Units": "NUMBER"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:ST_GDP_ZS",
+      "requestedRows": 1669,
+      "selectedRows": 1329,
+      "numericRows": 1329,
+      "areaCount": 129,
+      "through": 2024.0,
+      "units": [
+        "PERCENT"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "25541207a16aa4b22f1d62b5ab968f853a70c5317eadabe814b4c632c2d0c705",
+        "9029c2459ba861d3f708bfb3ab2f0be51dc700d6df595f1c93d7e48970edc414"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ST_GDP_ZS&releaseCode=2026.Q2.G.02&page=1&pageSize=1000",
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=ST_GDP_ZS&releaseCode=2026.Q2.G.02&page=2&pageSize=1000"
+      ],
+      "sample": {
+        "goal": [
+          "8"
+        ],
+        "target": [
+          "8.9"
+        ],
+        "indicator": [
+          "8.9.1"
+        ],
+        "series": "ST_GDP_ZS",
+        "seriesDescription": "Tourism direct GDP as a proportion of total GDP (%)",
+        "seriesCount": "1669",
+        "geoAreaCode": "276",
+        "geoAreaName": "Germany",
+        "timePeriodStart": 2010.0,
+        "value": "4.20699",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Federal Statistical Office of Germany",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "TDGVA used as proxy"
+        ],
+        "attributes": {
+          "Nature": "CA",
+          "Units": "PERCENT"
+        },
+        "dimensions": {
+          "Reporting Type": "G"
+        }
+      }
+    },
+    {
+      "id": "unsdg:VC_DTH_TOTR",
+      "requestedRows": 183,
+      "selectedRows": 183,
+      "numericRows": 183,
+      "areaCount": 21,
+      "through": 2025.0,
+      "units": [
+        "PER_100000_POP"
+      ],
+      "multipliers": [
+        ""
+      ],
+      "types": [
+        "Float"
+      ],
+      "conflicts": [],
+      "hashes": [
+        "8a243b6b0adc8e7b8cb637e048dd180e3b746f2a4eb8ad63e54f49c250cc87d3"
+      ],
+      "urls": [
+        "https://unstats.un.org/SDGAPI/v1/sdg/Series/Data?seriesCode=VC_DTH_TOTR&releaseCode=2026.Q2.G.02&page=1&pageSize=1000&dimensions=%5B%7B%22name%22%3A%22Sex%22%2C%22values%22%3A%5B%22BOTHSEX%22%5D%7D%5D"
+      ],
+      "sample": {
+        "goal": [
+          "16"
+        ],
+        "target": [
+          "16.1"
+        ],
+        "indicator": [
+          "16.1.2"
+        ],
+        "series": "VC_DTH_TOTR",
+        "seriesDescription": "Number of total conflict-related deaths per 100,000 population (Per 100,000 population)",
+        "seriesCount": "183",
+        "geoAreaCode": "4",
+        "geoAreaName": "Afghanistan",
+        "timePeriodStart": 2015.0,
+        "value": "10.53743",
+        "valueType": "Float",
+        "time_detail": null,
+        "timeCoverage": null,
+        "upperBound": null,
+        "lowerBound": null,
+        "basePeriod": null,
+        "source": "Office of the High Commissioner for Human Rights (OHCHR)",
+        "geoInfoUrl": null,
+        "footnotes": [
+          "The death rate was calculated including civilians and persons whose status is unknown. Non-civilians were not considered for this calculation. Population data consist of estimates and medium variant of 'Total Population, as of 1 July' from the World Population Prospects 2024, Online Edition from United Nations, Department of Economic and Social Affairs, Population Division (2024). Figures include direct conflict-related deaths recorded by the United Nations, applying casualty recording methodology and integrating consistent data collected by other sources, when applicable. Previous data may be updated as new data becomes available."
+        ],
+        "attributes": {
+          "Nature": "G",
+          "Units": "PER_100000_POP"
+        },
+        "dimensions": {
+          "Age": "ALLAGE",
+          "Sex": "BOTHSEX",
+          "Reporting Type": "G",
+          "Cause of death": "_T"
+        }
+      }
+    }
+  ],
+  "failures": [],
+  "reviewedAt": "2026-09-10",
+  "release": "2026.Q2.G.02",
+  "numericTotal": 79911,
+  "sourceMissingMarkers": 278
+}

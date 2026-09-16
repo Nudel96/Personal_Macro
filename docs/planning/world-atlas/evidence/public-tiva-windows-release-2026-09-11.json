@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-09-11T03:10:52.534959+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "bytes": 51994624,
+  "sha256": "dfce730b4df54edb773cb08f502bb017000a0c43f3feef7499bec81ca393500a",
+  "log": "apps/desktop/.tmp/atlas-remaining-40/tiva-windows-release.log",
+  "scope": "Original 26 accepted topics plus trade partners and supply chains; 83 OECD TiVA perspectives.",
+  "tests": "17 scoped frontend tests before precision polish; 12 public tests after polish; TypeScript, scoped ESLint, Clippy, route and geography audits passed. Two native tests compare all 6560 original profiles and temporary SQLite reopen. Twelve native UI checks and full local cache equality passed. Native QA stderr empty."
+}

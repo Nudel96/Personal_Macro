@@ -1,0 +1,456 @@
+{
+  "checkedAt": "2026-09-15T15:38:45.920646+00:00",
+  "publicCacheOnly": true,
+  "catalogVersion": "2026-09-15.1",
+  "countries": {
+    "numericObservations": 195744,
+    "geographies": [
+      {
+        "id": "m49:012",
+        "label": "Algerien",
+        "iso3": "DZA",
+        "numericObservations": 4158,
+        "seriesWithValues": 116
+      },
+      {
+        "id": "m49:818",
+        "label": "Ägypten",
+        "iso3": "EGY",
+        "numericObservations": 4549,
+        "seriesWithValues": 119
+      },
+      {
+        "id": "m49:434",
+        "label": "Libyen",
+        "iso3": "LBY",
+        "numericObservations": 3201,
+        "seriesWithValues": 99
+      },
+      {
+        "id": "m49:504",
+        "label": "Marokko",
+        "iso3": "MAR",
+        "numericObservations": 4373,
+        "seriesWithValues": 115
+      },
+      {
+        "id": "m49:729",
+        "label": "Sudan",
+        "iso3": "SDN",
+        "numericObservations": 3439,
+        "seriesWithValues": 109
+      },
+      {
+        "id": "m49:788",
+        "label": "Tunesien",
+        "iso3": "TUN",
+        "numericObservations": 4401,
+        "seriesWithValues": 121
+      },
+      {
+        "id": "m49:732",
+        "label": "Westsahara",
+        "iso3": "ESH",
+        "numericObservations": 48,
+        "seriesWithValues": 3
+      },
+      {
+        "id": "m49:086",
+        "label": "Britisches Territorium im Indischen Ozean",
+        "iso3": "IOT",
+        "numericObservations": 48,
+        "seriesWithValues": 3
+      },
+      {
+        "id": "m49:108",
+        "label": "Burundi",
+        "iso3": "BDI",
+        "numericObservations": 3432,
+        "seriesWithValues": 101
+      },
+      {
+        "id": "m49:174",
+        "label": "Komoren",
+        "iso3": "COM",
+        "numericObservations": 3118,
+        "seriesWithValues": 100
+      },
+      {
+        "id": "m49:262",
+        "label": "Dschibuti",
+        "iso3": "DJI",
+        "numericObservations": 2588,
+        "seriesWithValues": 95
+      },
+      {
+        "id": "m49:232",
+        "label": "Eritrea",
+        "iso3": "ERI",
+        "numericObservations": 2391,
+        "seriesWithValues": 92
+      },
+      {
+        "id": "m49:231",
+        "label": "Äthiopien",
+        "iso3": "ETH",
+        "numericObservations": 3509,
+        "seriesWithValues": 117
+      },
+      {
+        "id": "m49:260",
+        "label": "Französische Süd- und Antarktisgebiete",
+        "iso3": "ATF",
+        "numericObservations": 48,
+        "seriesWithValues": 3
+      },
+      {
+        "id": "m49:404",
+        "label": "Kenia",
+        "iso3": "KEN",
+        "numericObservations": 4215,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:450",
+        "label": "Madagaskar",
+        "iso3": "MDG",
+        "numericObservations": 4122,
+        "seriesWithValues": 117
+      },
+      {
+        "id": "m49:454",
+        "label": "Malawi",
+        "iso3": "MWI",
+        "numericObservations": 3533,
+        "seriesWithValues": 113
+      },
+      {
+        "id": "m49:480",
+        "label": "Mauritius",
+        "iso3": "MUS",
+        "numericObservations": 4215,
+        "seriesWithValues": 114
+      },
+      {
+        "id": "m49:175",
+        "label": "Mayotte",
+        "iso3": "MYT",
+        "numericObservations": 96,
+        "seriesWithValues": 6
+      },
+      {
+        "id": "m49:508",
+        "label": "Mosambik",
+        "iso3": "MOZ",
+        "numericObservations": 3378,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:638",
+        "label": "Réunion",
+        "iso3": "REU",
+        "numericObservations": 138,
+        "seriesWithValues": 8
+      },
+      {
+        "id": "m49:646",
+        "label": "Ruanda",
+        "iso3": "RWA",
+        "numericObservations": 3825,
+        "seriesWithValues": 110
+      },
+      {
+        "id": "m49:690",
+        "label": "Seychellen",
+        "iso3": "SYC",
+        "numericObservations": 3278,
+        "seriesWithValues": 93
+      },
+      {
+        "id": "m49:706",
+        "label": "Somalia",
+        "iso3": "SOM",
+        "numericObservations": 2901,
+        "seriesWithValues": 103
+      },
+      {
+        "id": "m49:728",
+        "label": "Südsudan",
+        "iso3": "SSD",
+        "numericObservations": 1487,
+        "seriesWithValues": 89
+      },
+      {
+        "id": "m49:800",
+        "label": "Uganda",
+        "iso3": "UGA",
+        "numericObservations": 3847,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:834",
+        "label": "Tansania",
+        "iso3": "TZA",
+        "numericObservations": 3827,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:894",
+        "label": "Sambia",
+        "iso3": "ZMB",
+        "numericObservations": 3674,
+        "seriesWithValues": 112
+      },
+      {
+        "id": "m49:716",
+        "label": "Simbabwe",
+        "iso3": "ZWE",
+        "numericObservations": 3722,
+        "seriesWithValues": 116
+      },
+      {
+        "id": "m49:024",
+        "label": "Angola",
+        "iso3": "AGO",
+        "numericObservations": 3044,
+        "seriesWithValues": 106
+      },
+      {
+        "id": "m49:120",
+        "label": "Kamerun",
+        "iso3": "CMR",
+        "numericObservations": 4066,
+        "seriesWithValues": 109
+      },
+      {
+        "id": "m49:140",
+        "label": "Zentralafrikanische Republik",
+        "iso3": "CAF",
+        "numericObservations": 3497,
+        "seriesWithValues": 103
+      },
+      {
+        "id": "m49:148",
+        "label": "Tschad",
+        "iso3": "TCD",
+        "numericObservations": 3651,
+        "seriesWithValues": 102
+      },
+      {
+        "id": "m49:178",
+        "label": "Kongo-Brazzaville",
+        "iso3": "COG",
+        "numericObservations": 3944,
+        "seriesWithValues": 110
+      },
+      {
+        "id": "m49:180",
+        "label": "Kongo-Kinshasa",
+        "iso3": "COD",
+        "numericObservations": 3635,
+        "seriesWithValues": 115
+      },
+      {
+        "id": "m49:226",
+        "label": "Äquatorialguinea",
+        "iso3": "GNQ",
+        "numericObservations": 2754,
+        "seriesWithValues": 94
+      },
+      {
+        "id": "m49:266",
+        "label": "Gabun",
+        "iso3": "GAB",
+        "numericObservations": 3765,
+        "seriesWithValues": 105
+      },
+      {
+        "id": "m49:678",
+        "label": "São Tomé und Príncipe",
+        "iso3": "STP",
+        "numericObservations": 2866,
+        "seriesWithValues": 99
+      },
+      {
+        "id": "m49:072",
+        "label": "Botsuana",
+        "iso3": "BWA",
+        "numericObservations": 4114,
+        "seriesWithValues": 115
+      },
+      {
+        "id": "m49:748",
+        "label": "Eswatini",
+        "iso3": "SWZ",
+        "numericObservations": 3653,
+        "seriesWithValues": 115
+      },
+      {
+        "id": "m49:426",
+        "label": "Lesotho",
+        "iso3": "LSO",
+        "numericObservations": 3689,
+        "seriesWithValues": 108
+      },
+      {
+        "id": "m49:516",
+        "label": "Namibia",
+        "iso3": "NAM",
+        "numericObservations": 3432,
+        "seriesWithValues": 113
+      },
+      {
+        "id": "m49:710",
+        "label": "Südafrika",
+        "iso3": "ZAF",
+        "numericObservations": 4440,
+        "seriesWithValues": 122
+      },
+      {
+        "id": "m49:204",
+        "label": "Benin",
+        "iso3": "BEN",
+        "numericObservations": 4001,
+        "seriesWithValues": 112
+      },
+      {
+        "id": "m49:854",
+        "label": "Burkina Faso",
+        "iso3": "BFA",
+        "numericObservations": 4018,
+        "seriesWithValues": 110
+      },
+      {
+        "id": "m49:132",
+        "label": "Cabo Verde",
+        "iso3": "CPV",
+        "numericObservations": 3306,
+        "seriesWithValues": 107
+      },
+      {
+        "id": "m49:384",
+        "label": "Côte d’Ivoire",
+        "iso3": "CIV",
+        "numericObservations": 4267,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:270",
+        "label": "Gambia",
+        "iso3": "GMB",
+        "numericObservations": 3709,
+        "seriesWithValues": 114
+      },
+      {
+        "id": "m49:288",
+        "label": "Ghana",
+        "iso3": "GHA",
+        "numericObservations": 4268,
+        "seriesWithValues": 118
+      },
+      {
+        "id": "m49:324",
+        "label": "Guinea",
+        "iso3": "GIN",
+        "numericObservations": 3180,
+        "seriesWithValues": 97
+      },
+      {
+        "id": "m49:624",
+        "label": "Guinea-Bissau",
+        "iso3": "GNB",
+        "numericObservations": 3351,
+        "seriesWithValues": 103
+      },
+      {
+        "id": "m49:430",
+        "label": "Liberia",
+        "iso3": "LBR",
+        "numericObservations": 2610,
+        "seriesWithValues": 94
+      },
+      {
+        "id": "m49:466",
+        "label": "Mali",
+        "iso3": "MLI",
+        "numericObservations": 3780,
+        "seriesWithValues": 111
+      },
+      {
+        "id": "m49:478",
+        "label": "Mauretanien",
+        "iso3": "MRT",
+        "numericObservations": 3591,
+        "seriesWithValues": 98
+      },
+      {
+        "id": "m49:562",
+        "label": "Niger",
+        "iso3": "NER",
+        "numericObservations": 3996,
+        "seriesWithValues": 108
+      },
+      {
+        "id": "m49:566",
+        "label": "Nigeria",
+        "iso3": "NGA",
+        "numericObservations": 3559,
+        "seriesWithValues": 116
+      },
+      {
+        "id": "m49:654",
+        "label": "St. Helena",
+        "iso3": "SHN",
+        "numericObservations": 281,
+        "seriesWithValues": 12
+      },
+      {
+        "id": "m49:686",
+        "label": "Senegal",
+        "iso3": "SEN",
+        "numericObservations": 4233,
+        "seriesWithValues": 115
+      },
+      {
+        "id": "m49:694",
+        "label": "Sierra Leone",
+        "iso3": "SLE",
+        "numericObservations": 3492,
+        "seriesWithValues": 106
+      },
+      {
+        "id": "m49:768",
+        "label": "Togo",
+        "iso3": "TGO",
+        "numericObservations": 3991,
+        "seriesWithValues": 113
+      }
+    ]
+  },
+  "regions": {
+    "numericObservations": 0,
+    "geographies": [
+      {
+        "id": "worldbank:SSF",
+        "label": "Afrika südlich der Sahara · Weltbank",
+        "iso3": "",
+        "numericObservations": 0,
+        "seriesWithValues": 0
+      },
+      {
+        "id": "worldbank:AFE",
+        "label": "Östliches und südliches Afrika · Weltbank",
+        "iso3": "",
+        "numericObservations": 0,
+        "seriesWithValues": 0
+      },
+      {
+        "id": "worldbank:AFW",
+        "label": "Westliches und zentrales Afrika · Weltbank",
+        "iso3": "",
+        "numericObservations": 0,
+        "seriesWithValues": 0
+      }
+    ]
+  }
+}

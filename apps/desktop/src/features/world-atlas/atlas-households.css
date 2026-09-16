@@ -1,0 +1,119 @@
+.atlas-household-controls,
+.atlas-household-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin: 18px 0;
+}
+.atlas-household-controls label,
+.atlas-household-card label {
+  display: grid;
+  gap: 8px;
+  color: var(--text-2);
+  font-size: 12px;
+  min-width: 0;
+}
+.atlas-household-controls select,
+.atlas-household-card select {
+  width: 100%;
+  min-width: 0;
+  text-overflow: ellipsis;
+}
+.atlas-household-card {
+  min-width: 0;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.atlas-household-card strong {
+  font-size: 14px;
+}
+.atlas-household-card svg {
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+.atlas-household-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  font-size: 12px;
+}
+.atlas-household-card small,
+.atlas-household-source {
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.5;
+}
+.atlas-household-source {
+  overflow-wrap: anywhere;
+  margin: 0;
+}
+.atlas-household-track {
+  height: 22px;
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  background: var(--surface-2);
+  position: relative;
+}
+.atlas-household-track > span {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+}
+.atlas-household-track em {
+  color: var(--text-2);
+  font-size: 10px;
+  padding: 0 6px;
+  font-style: normal;
+}
+.atlas-household-value {
+  margin: 0;
+  font-size: 20px;
+  font-variant-numeric: tabular-nums;
+}
+.atlas-household-sizes {
+  display: grid;
+  gap: 10px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.atlas-household-sizes > div {
+  display: grid;
+  gap: 5px;
+  font-size: 11px;
+}
+.atlas-household-sizes .atlas-household-track {
+  height: 16px;
+}
+.atlas-household-table {
+  max-height: 350px;
+  overflow: auto;
+}
+.atlas-household-table table {
+  width: 100%;
+  font-size: 12px;
+  border-collapse: collapse;
+}
+.atlas-household-table th,
+.atlas-household-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 8px;
+  border-bottom: 1px solid var(--border);
+}
+.atlas-household-table small {
+  display: block;
+  color: var(--text-2);
+  overflow-wrap: anywhere;
+}
+.atlas-household-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 12px 0;
+}

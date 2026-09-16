@@ -1,0 +1,224 @@
+{
+  "checkedOn": "2026-09-09",
+  "independentParsers": [
+    "xlrd 2.0.2",
+    "calamine 0.36.1"
+  ],
+  "checkedCells": 32744,
+  "datasets": [
+    {
+      "id": "pe-us",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 562,
+      "missingCells": 14,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-europe",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 564,
+      "missingCells": 12,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-japan",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 556,
+      "missingCells": 20,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-emerging",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 572,
+      "missingCells": 4,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-china",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 548,
+      "missingCells": 28,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-india",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 554,
+      "missingCells": 22,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pe-global",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 576,
+      "numericCells": 573,
+      "missingCells": 3,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-us",
+      "sourceFiles": 28,
+      "subjectsAcrossHistory": 222,
+      "currentSourceRows": 96,
+      "cells": 5498,
+      "numericCells": 5456,
+      "missingCells": 42,
+      "currentHistoricalPositions": 60,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-europe",
+      "sourceFiles": 15,
+      "subjectsAcrossHistory": 123,
+      "currentSourceRows": 96,
+      "cells": 2882,
+      "numericCells": 2882,
+      "missingCells": 0,
+      "currentHistoricalPositions": 68,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-japan",
+      "sourceFiles": 15,
+      "subjectsAcrossHistory": 122,
+      "currentSourceRows": 96,
+      "cells": 2828,
+      "numericCells": 2750,
+      "missingCells": 78,
+      "currentHistoricalPositions": 50,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-rest",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 192,
+      "numericCells": 181,
+      "missingCells": 11,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-emerging",
+      "sourceFiles": 15,
+      "subjectsAcrossHistory": 123,
+      "currentSourceRows": 96,
+      "cells": 2882,
+      "numericCells": 2882,
+      "missingCells": 0,
+      "currentHistoricalPositions": 89,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-china",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 192,
+      "numericCells": 187,
+      "missingCells": 5,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-india",
+      "sourceFiles": 1,
+      "subjectsAcrossHistory": 96,
+      "currentSourceRows": 96,
+      "cells": 192,
+      "numericCells": 185,
+      "missingCells": 7,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": []
+    },
+    {
+      "id": "pbv-global",
+      "sourceFiles": 15,
+      "subjectsAcrossHistory": 124,
+      "currentSourceRows": 96,
+      "cells": 2886,
+      "numericCells": 2886,
+      "missingCells": 0,
+      "currentHistoricalPositions": 93,
+      "excludedSubjects": []
+    },
+    {
+      "id": "countries",
+      "sourceFiles": 14,
+      "subjectsAcrossHistory": 157,
+      "currentSourceRows": 127,
+      "cells": 11160,
+      "numericCells": 9909,
+      "missingCells": 1251,
+      "currentHistoricalPositions": 0,
+      "excludedSubjects": [
+        "Channel Islands",
+        "Netherlands Antilles",
+        "Zimbabwe · 2023: Mehrere abweichende Quellenzeilen; kein Wert übernommen."
+      ]
+    }
+  ],
+  "nativeInitialization": {
+    "profile": "com.personal-macro.atlas-valuation-validation",
+    "migrations": [
+      [
+        1,
+        1
+      ],
+      [
+        2,
+        1
+      ],
+      [
+        3,
+        1
+      ],
+      [
+        4,
+        1
+      ],
+      [
+        5,
+        1
+      ],
+      [
+        6,
+        1
+      ]
+    ],
+    "valuationTable": [
+      [
+        "atlas_valuation_datasets"
+      ]
+    ]
+  }
+}

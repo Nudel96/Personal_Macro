@@ -1,0 +1,116 @@
+{
+  "status": "passed",
+  "scope": "Independent original CSV/Decimal comparison with 15 native Rust profiles",
+  "retrievedAt": "2026-09-08T22:29:00.260522300+00:00",
+  "source": {
+    "url": "https://files.ember-energy.org/public-downloads/yearly_full_release_long_format.csv",
+    "sha256": "259e1095ee8ffeaf0aff37ad557916ae1823a2da13312da50ba4cec6b4574c3b"
+  },
+  "sourceUpdatedAt": "Tue, 23 Jun 2026 10:58:24 GMT",
+  "sourceBytes": 49079981,
+  "sourceRows": 370784,
+  "sourceAreas": 227,
+  "sourceAreaTypes": {
+    "Region": 13,
+    "Country or economy": 214
+  },
+  "counts": {
+    "absentKeys": 348,
+    "exactValues": 11338,
+    "nullCells": 404,
+    "zeroValues": 1024,
+    "negativeNetImports": 96
+  },
+  "reviewedAreas": [
+    {
+      "geographyId": "world",
+      "providerLabel": "World",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:276",
+      "providerLabel": "Germany",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:840",
+      "providerLabel": "United States of America",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:356",
+      "providerLabel": "India",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:156",
+      "providerLabel": "China",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:africa",
+      "providerLabel": "Africa",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:asia",
+      "providerLabel": "Asia",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:europe",
+      "providerLabel": "Europe",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:north_america",
+      "providerLabel": "North America",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:latin_america_caribbean",
+      "providerLabel": "Latin America and Caribbean",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "ember:oceania",
+      "providerLabel": "Oceania",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:566",
+      "providerLabel": "Nigeria",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "m49:710",
+      "providerLabel": "South Africa",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "provider:TWN",
+      "providerLabel": "Taiwan",
+      "first": 2000,
+      "last": 2025
+    },
+    {
+      "geographyId": "provider:XKX",
+      "providerLabel": "Kosovo",
+      "first": 2000,
+      "last": 2025
+    }
+  ]
+}

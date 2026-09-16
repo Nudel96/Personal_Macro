@@ -1,0 +1,24 @@
+{
+  "checkedAt": "2026-09-11T08:16:58.312694+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "sha256": "7ee1de592dd14eb8d8927315419446126b423e9451d6c6206f28d88e7bae0622",
+  "bytes": 54691328,
+  "log": "apps\\desktop\\.tmp\\atlas-remaining-40\\relative-windows-final.log",
+  "verification": {
+    "typecheck": "passed",
+    "frontend": "60 relevant cases across eight test files; 11 renderer tests rerun after responsive change; scoped ESLint passed",
+    "originalData": "25 pairs in three horizons: 12692 monthly points; independent Decimal oracle passed",
+    "native": "Temporary SQLite save/reopen and last context passed",
+    "clippy": "all targets -D warnings passed",
+    "nativeUi": "36 checks, all 25 pairs and three visually reviewed final screenshots passed",
+    "nativeStderr": "empty",
+    "catalogVersionInFinalBundle": "2026-09-11.23"
+  },
+  "sourceCodeHashes": {
+    "apps/desktop/src/features/world-atlas/atlas-relative.ts": "495e070ca364ec2a7bff31ac6a055ef4ec9e391560928312afa3d2d40e5d7a81",
+    "apps/desktop/src/features/world-atlas/atlas-relative-panel.tsx": "eeff86ea3d9c3369cec639ba2f41e5fec7240faede9df0fc7e6e08971f4bdda8",
+    "apps/desktop/src-tauri/src/world_atlas/notebook.rs": "d9bc8fdc88badb5fbbba12feed0bccb159cfff6298f750bca2009c1967d1e5de"
+  }
+}

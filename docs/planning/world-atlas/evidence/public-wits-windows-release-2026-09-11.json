@@ -1,0 +1,22 @@
+{
+  "checkedAt": "2026-09-11T04:07:35.756370+00:00",
+  "status": "passed",
+  "command": "pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle",
+  "artifact": "D:\\Macrotool\\apps\\desktop\\src-tauri\\target\\x86_64-pc-windows-msvc\\release\\personal-macro-desktop.exe",
+  "sha256": "769173dc2d66cfcb0ac04c3ec1a75bf501744ebf4a7970af41ad17bef4d21183",
+  "bytes": 52892160,
+  "log": "apps/desktop/.tmp/atlas-remaining-40/ndgain-wits-windows-final.log",
+  "includes": [
+    "WITS mirrored export concentration, final common-scale caption and missing-value disclosure",
+    "ND-GAIN ten climate perspectives, static projection comparison and concise model caption"
+  ],
+  "verification": {
+    "typecheck": "passed",
+    "publicAndCoverageTests": "20 passed",
+    "postCaptionPublicTests": "15 passed",
+    "ndgainNativeOriginalTests": "2 passed including complete originals and temporary SQLite reopen",
+    "clippy": "passed all targets with -D warnings",
+    "nativeUi": "23 ND-GAIN and 12 WITS checks passed; screenshots reviewed",
+    "nativeStderr": "empty"
+  }
+}

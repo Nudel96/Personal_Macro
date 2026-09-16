@@ -1,0 +1,45 @@
+{
+  "checkedAt": "2026-09-11T05:27:09.609540+00:00",
+  "status": "passed",
+  "cache": "C:\\Users\\schmi\\AppData\\Roaming\\com.personal-macro.app\\PersonalMacro\\atlas\\cache.sqlite",
+  "sources": [
+    {
+      "sourceId": "epo-quantum-sensing",
+      "profiles": 4,
+      "numeric": 72,
+      "missing": 0,
+      "allOriginalProfilesExact": true,
+      "provenance": {
+        "sourceId": "epo-quantum-sensing",
+        "retrievedAt": "2026-09-11T05:25:17.135336700+00:00",
+        "publishedAt": "2019-09",
+        "url": "https://link.epo.org/web/insights-quantum_metrology_and_sensing_en.pptx",
+        "documentationUrl": "https://link.epo.org/web/patent_insight_report-quantum_metrology_and_sensing_en.pdf",
+        "sha256": "20a2e002014b0b109f3e301b68191ff589429f11caaa72508eb420d762e4ec20",
+        "recipe": "epo-quantum-sensing-original-chart-workbooks-through2017-v1",
+        "sourceRows": 72,
+        "numericValues": 72,
+        "areaCount": 4
+      }
+    },
+    {
+      "sourceId": "epo-cosmonautics",
+      "profiles": 28,
+      "numeric": 370,
+      "missing": 414,
+      "allOriginalProfilesExact": true,
+      "provenance": {
+        "sourceId": "epo-cosmonautics",
+        "retrievedAt": "2026-09-11T05:25:18.923597500+00:00",
+        "publishedAt": "2021-07",
+        "url": "https://link.epo.org/web/data_mapping_of_cosmonautics_graphs_and_datasets_en.pptx",
+        "documentationUrl": "https://link.epo.org/web/patent_insight_report-cosmonautics_en.pdf",
+        "sha256": "cdcbb3f57c5bb910d624811822e341e9a43e46bf48e7ebb2097c522f8b3f1217",
+        "recipe": "epo-cosmonautics-original-chart-workbooks-through2017-v1",
+        "sourceRows": 784,
+        "numericValues": 370,
+        "areaCount": 25
+      }
+    }
+  ]
+}

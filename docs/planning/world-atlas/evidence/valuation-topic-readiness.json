@@ -1,0 +1,70 @@
+{
+  "checkedOn": "2026-09-09",
+  "status": "topic_navigation_and_native_note_restart_passed_native_click_review_open",
+  "testIdentifier": "com.personal-macro.atlas-sector-links-20260909",
+  "native": {
+    "firstRunAt": "2026-09-09T10:22:35.442Z",
+    "restartRunAt": "2026-09-09T10:23:27.916Z",
+    "topic": "industry:chemicals",
+    "selectedArea": "m49:276",
+    "actualSourceRegion": "global",
+    "separateIndustryPictures": [
+      "Breit aufgestellte Chemie",
+      "Grundchemie",
+      "Spezialchemie"
+    ],
+    "noteContextSourcesAndPngEqualAfterProcessRestart": true,
+    "pngBytes": 75919,
+    "pngSha256": "0d5c5989c5d718e3a9d6a518deef7cec492f0d4a051009c1cae25e511d926acd",
+    "dataOrigin": "Previously independently audited public NYU snapshots; no new source download",
+    "initialAttempt": "An automatic note write immediately after fresh-profile startup hit a SQLite busy error while unrelated startup jobs wrote data. No note was inserted. After startup settled, the save and subsequent process restart passed; no retry success was fabricated.",
+    "otherModuleWarnings": "Existing Technicals/provider and central-bank-report startup warnings appeared; the Atlas cache initialized.",
+    "fullNativeClickReview": "Still unavailable: native interaction helper has no usable coordinate geometry/screenshots. This evidence proves native commands and storage, not native clicking."
+  },
+  "frontend": {
+    "testsPassed": 172,
+    "files": 25,
+    "meaningfulCases": [
+      "Exact topic subsets and matching current identities",
+      "Search cannot escape the selected topic",
+      "Explicit clearing of topic/search/page",
+      "A stale unrelated detail falls back to topic gallery",
+      "Missing requested source rows stay visible",
+      "Large subsets use six-card pages",
+      "Source-region and basis changes preserve topic",
+      "Single-year book-value datasets labelled as snapshots",
+      "Saved context retains topic and actual source scope"
+    ]
+  },
+  "browserReview": {
+    "tool": "CUA in-app browser; original WorldAtlasPage with clearly labelled, previously audited native public NYU snapshots",
+    "cases": [
+      "German chemistry topic explicitly opens the global sample and three chemistry cards",
+      "Bank topic shows only Money Center and Regional Banks",
+      "Search for Bank inside chemistry returns no cards",
+      "Keyboard-cleared search restores the three chemistry cards",
+      "Detail/source-region/back navigation retains the topic",
+      "All industries clears topic and search",
+      "India renders two bank snapshot points without lines or numerical tables"
+    ],
+    "measuredViewports": [
+      {
+        "width": 1024,
+        "scrollWidth": 1024,
+        "topic": "finance:banks"
+      },
+      {
+        "width": 1440,
+        "scrollWidth": 1431,
+        "topic": "industry:chemicals"
+      }
+    ],
+    "consoleWarningsOrErrors": 0,
+    "visualReview": "No horizontal overflow, clipped controls or overlapping cards at either measured width. Source and topic remain visible; values stay optional."
+  },
+  "qualityGates": {
+    "frontend": "172 Atlas tests, TypeScript check, production build, targeted ESLint and Prettier passed.",
+    "rust": "Five relevant notebook tests, cargo clippy --all-targets -- -D warnings and cargo fmt --all -- --check passed.",
+    "knownBuildNotice": "Vite still reports existing large chunks; no additional dependency was introduced."
+  }
+}

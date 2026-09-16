@@ -1,0 +1,1722 @@
+{
+  "reviewedAt": "2026-09-11",
+  "releaseNote": "https://datatopics.worldbank.org/world-development-indicators/release-note/apr-2026.html",
+  "methodology": "https://www.worldbank.org/en/programs/icp/faq",
+  "license": "https://datacatalog.worldbank.org/public-licenses#cc-by",
+  "series": [
+    {
+      "id": "worldbank:2:PA.NUS.GDP.PLI",
+      "providerMetadata": {
+        "id": "PA.NUS.GDP.PLI",
+        "name": "Price level index (GDP)",
+        "unit": "",
+        "source": {
+          "id": "2",
+          "value": "World Development Indicators"
+        },
+        "sourceNote": "The price level index (PLI) is the ratio of a purchasing power parity (PPP) conversion factor to the corresponding market exchange rate between two countries, expressed relative to a base country that is set equal to 100. For this series the base country is the United States. It provides a measure of the differences in price level between the country and the United States by indicating the number of units of the common currency (US dollars) needed to buy the same volume of the aggregation level in each country. At the level of GDP, the price level ratio provides a measure of the differences in the general price levels of countries.",
+        "sourceOrganization": "World Development Indicators, World Bank (WB), uri: https://databank.worldbank.org/source/world-development-indicators, publisher: World Development Indicators",
+        "topics": []
+      },
+      "responseMetadata": {
+        "page": 1,
+        "pages": 1,
+        "per_page": 20000,
+        "total": 17490,
+        "sourceid": "2",
+        "lastupdated": "2026-07-13"
+      },
+      "originalUrl": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.GDP.PLI?format=json&source=2&per_page=20000",
+      "sha256": "750d2c9a0e32cb0830e1fdfa54b034e57cfeff01ceda7f839f027188815bd8dc",
+      "numericValues": 7023,
+      "sourceAreaCount": 204,
+      "mappedAreas": [
+        {
+          "code": "ABW",
+          "geographyId": "m49:533"
+        },
+        {
+          "code": "AFG",
+          "geographyId": "m49:004"
+        },
+        {
+          "code": "AGO",
+          "geographyId": "m49:024"
+        },
+        {
+          "code": "ALB",
+          "geographyId": "m49:008"
+        },
+        {
+          "code": "AND",
+          "geographyId": "m49:020"
+        },
+        {
+          "code": "ARE",
+          "geographyId": "m49:784"
+        },
+        {
+          "code": "ARG",
+          "geographyId": "m49:032"
+        },
+        {
+          "code": "ARM",
+          "geographyId": "m49:051"
+        },
+        {
+          "code": "ATG",
+          "geographyId": "m49:028"
+        },
+        {
+          "code": "AUS",
+          "geographyId": "m49:036"
+        },
+        {
+          "code": "AUT",
+          "geographyId": "m49:040"
+        },
+        {
+          "code": "AZE",
+          "geographyId": "m49:031"
+        },
+        {
+          "code": "BDI",
+          "geographyId": "m49:108"
+        },
+        {
+          "code": "BEL",
+          "geographyId": "m49:056"
+        },
+        {
+          "code": "BEN",
+          "geographyId": "m49:204"
+        },
+        {
+          "code": "BFA",
+          "geographyId": "m49:854"
+        },
+        {
+          "code": "BGD",
+          "geographyId": "m49:050"
+        },
+        {
+          "code": "BGR",
+          "geographyId": "m49:100"
+        },
+        {
+          "code": "BHR",
+          "geographyId": "m49:048"
+        },
+        {
+          "code": "BHS",
+          "geographyId": "m49:044"
+        },
+        {
+          "code": "BIH",
+          "geographyId": "m49:070"
+        },
+        {
+          "code": "BLR",
+          "geographyId": "m49:112"
+        },
+        {
+          "code": "BLZ",
+          "geographyId": "m49:084"
+        },
+        {
+          "code": "BMU",
+          "geographyId": "m49:060"
+        },
+        {
+          "code": "BOL",
+          "geographyId": "m49:068"
+        },
+        {
+          "code": "BRA",
+          "geographyId": "m49:076"
+        },
+        {
+          "code": "BRB",
+          "geographyId": "m49:052"
+        },
+        {
+          "code": "BRN",
+          "geographyId": "m49:096"
+        },
+        {
+          "code": "BTN",
+          "geographyId": "m49:064"
+        },
+        {
+          "code": "BWA",
+          "geographyId": "m49:072"
+        },
+        {
+          "code": "CAF",
+          "geographyId": "m49:140"
+        },
+        {
+          "code": "CAN",
+          "geographyId": "m49:124"
+        },
+        {
+          "code": "CHE",
+          "geographyId": "m49:756"
+        },
+        {
+          "code": "CHL",
+          "geographyId": "m49:152"
+        },
+        {
+          "code": "CHN",
+          "geographyId": "m49:156"
+        },
+        {
+          "code": "CIV",
+          "geographyId": "m49:384"
+        },
+        {
+          "code": "CMR",
+          "geographyId": "m49:120"
+        },
+        {
+          "code": "COD",
+          "geographyId": "m49:180"
+        },
+        {
+          "code": "COG",
+          "geographyId": "m49:178"
+        },
+        {
+          "code": "COL",
+          "geographyId": "m49:170"
+        },
+        {
+          "code": "COM",
+          "geographyId": "m49:174"
+        },
+        {
+          "code": "CPV",
+          "geographyId": "m49:132"
+        },
+        {
+          "code": "CRI",
+          "geographyId": "m49:188"
+        },
+        {
+          "code": "CUB",
+          "geographyId": "m49:192"
+        },
+        {
+          "code": "CUW",
+          "geographyId": "m49:531"
+        },
+        {
+          "code": "CYM",
+          "geographyId": "m49:136"
+        },
+        {
+          "code": "CYP",
+          "geographyId": "m49:196"
+        },
+        {
+          "code": "CZE",
+          "geographyId": "m49:203"
+        },
+        {
+          "code": "DEU",
+          "geographyId": "m49:276"
+        },
+        {
+          "code": "DJI",
+          "geographyId": "m49:262"
+        },
+        {
+          "code": "DMA",
+          "geographyId": "m49:212"
+        },
+        {
+          "code": "DNK",
+          "geographyId": "m49:208"
+        },
+        {
+          "code": "DOM",
+          "geographyId": "m49:214"
+        },
+        {
+          "code": "DZA",
+          "geographyId": "m49:012"
+        },
+        {
+          "code": "ECU",
+          "geographyId": "m49:218"
+        },
+        {
+          "code": "EGY",
+          "geographyId": "m49:818"
+        },
+        {
+          "code": "ERI",
+          "geographyId": "m49:232"
+        },
+        {
+          "code": "ESP",
+          "geographyId": "m49:724"
+        },
+        {
+          "code": "EST",
+          "geographyId": "m49:233"
+        },
+        {
+          "code": "ETH",
+          "geographyId": "m49:231"
+        },
+        {
+          "code": "FIN",
+          "geographyId": "m49:246"
+        },
+        {
+          "code": "FJI",
+          "geographyId": "m49:242"
+        },
+        {
+          "code": "FRA",
+          "geographyId": "m49:250"
+        },
+        {
+          "code": "FRO",
+          "geographyId": "m49:234"
+        },
+        {
+          "code": "FSM",
+          "geographyId": "m49:583"
+        },
+        {
+          "code": "GAB",
+          "geographyId": "m49:266"
+        },
+        {
+          "code": "GBR",
+          "geographyId": "m49:826"
+        },
+        {
+          "code": "GEO",
+          "geographyId": "m49:268"
+        },
+        {
+          "code": "GHA",
+          "geographyId": "m49:288"
+        },
+        {
+          "code": "GIN",
+          "geographyId": "m49:324"
+        },
+        {
+          "code": "GMB",
+          "geographyId": "m49:270"
+        },
+        {
+          "code": "GNB",
+          "geographyId": "m49:624"
+        },
+        {
+          "code": "GNQ",
+          "geographyId": "m49:226"
+        },
+        {
+          "code": "GRC",
+          "geographyId": "m49:300"
+        },
+        {
+          "code": "GRD",
+          "geographyId": "m49:308"
+        },
+        {
+          "code": "GRL",
+          "geographyId": "m49:304"
+        },
+        {
+          "code": "GTM",
+          "geographyId": "m49:320"
+        },
+        {
+          "code": "GUY",
+          "geographyId": "m49:328"
+        },
+        {
+          "code": "HKG",
+          "geographyId": "m49:344"
+        },
+        {
+          "code": "HND",
+          "geographyId": "m49:340"
+        },
+        {
+          "code": "HRV",
+          "geographyId": "m49:191"
+        },
+        {
+          "code": "HTI",
+          "geographyId": "m49:332"
+        },
+        {
+          "code": "HUN",
+          "geographyId": "m49:348"
+        },
+        {
+          "code": "IDN",
+          "geographyId": "m49:360"
+        },
+        {
+          "code": "IND",
+          "geographyId": "m49:356"
+        },
+        {
+          "code": "IRL",
+          "geographyId": "m49:372"
+        },
+        {
+          "code": "IRN",
+          "geographyId": "m49:364"
+        },
+        {
+          "code": "IRQ",
+          "geographyId": "m49:368"
+        },
+        {
+          "code": "ISL",
+          "geographyId": "m49:352"
+        },
+        {
+          "code": "ISR",
+          "geographyId": "m49:376"
+        },
+        {
+          "code": "ITA",
+          "geographyId": "m49:380"
+        },
+        {
+          "code": "JAM",
+          "geographyId": "m49:388"
+        },
+        {
+          "code": "JOR",
+          "geographyId": "m49:400"
+        },
+        {
+          "code": "JPN",
+          "geographyId": "m49:392"
+        },
+        {
+          "code": "KAZ",
+          "geographyId": "m49:398"
+        },
+        {
+          "code": "KEN",
+          "geographyId": "m49:404"
+        },
+        {
+          "code": "KGZ",
+          "geographyId": "m49:417"
+        },
+        {
+          "code": "KHM",
+          "geographyId": "m49:116"
+        },
+        {
+          "code": "KIR",
+          "geographyId": "m49:296"
+        },
+        {
+          "code": "KNA",
+          "geographyId": "m49:659"
+        },
+        {
+          "code": "KOR",
+          "geographyId": "m49:410"
+        },
+        {
+          "code": "KWT",
+          "geographyId": "m49:414"
+        },
+        {
+          "code": "LAO",
+          "geographyId": "m49:418"
+        },
+        {
+          "code": "LBN",
+          "geographyId": "m49:422"
+        },
+        {
+          "code": "LBR",
+          "geographyId": "m49:430"
+        },
+        {
+          "code": "LBY",
+          "geographyId": "m49:434"
+        },
+        {
+          "code": "LCA",
+          "geographyId": "m49:662"
+        },
+        {
+          "code": "LKA",
+          "geographyId": "m49:144"
+        },
+        {
+          "code": "LSO",
+          "geographyId": "m49:426"
+        },
+        {
+          "code": "LTU",
+          "geographyId": "m49:440"
+        },
+        {
+          "code": "LUX",
+          "geographyId": "m49:442"
+        },
+        {
+          "code": "LVA",
+          "geographyId": "m49:428"
+        },
+        {
+          "code": "MAC",
+          "geographyId": "m49:446"
+        },
+        {
+          "code": "MAR",
+          "geographyId": "m49:504"
+        },
+        {
+          "code": "MDA",
+          "geographyId": "m49:498"
+        },
+        {
+          "code": "MDG",
+          "geographyId": "m49:450"
+        },
+        {
+          "code": "MDV",
+          "geographyId": "m49:462"
+        },
+        {
+          "code": "MEX",
+          "geographyId": "m49:484"
+        },
+        {
+          "code": "MHL",
+          "geographyId": "m49:584"
+        },
+        {
+          "code": "MKD",
+          "geographyId": "m49:807"
+        },
+        {
+          "code": "MLI",
+          "geographyId": "m49:466"
+        },
+        {
+          "code": "MLT",
+          "geographyId": "m49:470"
+        },
+        {
+          "code": "MMR",
+          "geographyId": "m49:104"
+        },
+        {
+          "code": "MNE",
+          "geographyId": "m49:499"
+        },
+        {
+          "code": "MNG",
+          "geographyId": "m49:496"
+        },
+        {
+          "code": "MOZ",
+          "geographyId": "m49:508"
+        },
+        {
+          "code": "MRT",
+          "geographyId": "m49:478"
+        },
+        {
+          "code": "MUS",
+          "geographyId": "m49:480"
+        },
+        {
+          "code": "MWI",
+          "geographyId": "m49:454"
+        },
+        {
+          "code": "MYS",
+          "geographyId": "m49:458"
+        },
+        {
+          "code": "NAM",
+          "geographyId": "m49:516"
+        },
+        {
+          "code": "NER",
+          "geographyId": "m49:562"
+        },
+        {
+          "code": "NGA",
+          "geographyId": "m49:566"
+        },
+        {
+          "code": "NIC",
+          "geographyId": "m49:558"
+        },
+        {
+          "code": "NLD",
+          "geographyId": "m49:528"
+        },
+        {
+          "code": "NOR",
+          "geographyId": "m49:578"
+        },
+        {
+          "code": "NPL",
+          "geographyId": "m49:524"
+        },
+        {
+          "code": "NRU",
+          "geographyId": "m49:520"
+        },
+        {
+          "code": "NZL",
+          "geographyId": "m49:554"
+        },
+        {
+          "code": "OMN",
+          "geographyId": "m49:512"
+        },
+        {
+          "code": "PAK",
+          "geographyId": "m49:586"
+        },
+        {
+          "code": "PAN",
+          "geographyId": "m49:591"
+        },
+        {
+          "code": "PER",
+          "geographyId": "m49:604"
+        },
+        {
+          "code": "PHL",
+          "geographyId": "m49:608"
+        },
+        {
+          "code": "PLW",
+          "geographyId": "m49:585"
+        },
+        {
+          "code": "PNG",
+          "geographyId": "m49:598"
+        },
+        {
+          "code": "POL",
+          "geographyId": "m49:616"
+        },
+        {
+          "code": "PRI",
+          "geographyId": "m49:630"
+        },
+        {
+          "code": "PRT",
+          "geographyId": "m49:620"
+        },
+        {
+          "code": "PRY",
+          "geographyId": "m49:600"
+        },
+        {
+          "code": "PSE",
+          "geographyId": "m49:275"
+        },
+        {
+          "code": "QAT",
+          "geographyId": "m49:634"
+        },
+        {
+          "code": "ROU",
+          "geographyId": "m49:642"
+        },
+        {
+          "code": "RUS",
+          "geographyId": "m49:643"
+        },
+        {
+          "code": "RWA",
+          "geographyId": "m49:646"
+        },
+        {
+          "code": "SAU",
+          "geographyId": "m49:682"
+        },
+        {
+          "code": "SDN",
+          "geographyId": "m49:729"
+        },
+        {
+          "code": "SEN",
+          "geographyId": "m49:686"
+        },
+        {
+          "code": "SGP",
+          "geographyId": "m49:702"
+        },
+        {
+          "code": "SLB",
+          "geographyId": "m49:090"
+        },
+        {
+          "code": "SLE",
+          "geographyId": "m49:694"
+        },
+        {
+          "code": "SLV",
+          "geographyId": "m49:222"
+        },
+        {
+          "code": "SMR",
+          "geographyId": "m49:674"
+        },
+        {
+          "code": "SOM",
+          "geographyId": "m49:706"
+        },
+        {
+          "code": "SRB",
+          "geographyId": "m49:688"
+        },
+        {
+          "code": "SSD",
+          "geographyId": "m49:728"
+        },
+        {
+          "code": "STP",
+          "geographyId": "m49:678"
+        },
+        {
+          "code": "SUR",
+          "geographyId": "m49:740"
+        },
+        {
+          "code": "SVK",
+          "geographyId": "m49:703"
+        },
+        {
+          "code": "SVN",
+          "geographyId": "m49:705"
+        },
+        {
+          "code": "SWE",
+          "geographyId": "m49:752"
+        },
+        {
+          "code": "SWZ",
+          "geographyId": "m49:748"
+        },
+        {
+          "code": "SXM",
+          "geographyId": "m49:534"
+        },
+        {
+          "code": "SYC",
+          "geographyId": "m49:690"
+        },
+        {
+          "code": "SYR",
+          "geographyId": "m49:760"
+        },
+        {
+          "code": "TCA",
+          "geographyId": "m49:796"
+        },
+        {
+          "code": "TCD",
+          "geographyId": "m49:148"
+        },
+        {
+          "code": "TGO",
+          "geographyId": "m49:768"
+        },
+        {
+          "code": "THA",
+          "geographyId": "m49:764"
+        },
+        {
+          "code": "TJK",
+          "geographyId": "m49:762"
+        },
+        {
+          "code": "TKM",
+          "geographyId": "m49:795"
+        },
+        {
+          "code": "TLS",
+          "geographyId": "m49:626"
+        },
+        {
+          "code": "TON",
+          "geographyId": "m49:776"
+        },
+        {
+          "code": "TTO",
+          "geographyId": "m49:780"
+        },
+        {
+          "code": "TUN",
+          "geographyId": "m49:788"
+        },
+        {
+          "code": "TUR",
+          "geographyId": "m49:792"
+        },
+        {
+          "code": "TUV",
+          "geographyId": "m49:798"
+        },
+        {
+          "code": "TZA",
+          "geographyId": "m49:834"
+        },
+        {
+          "code": "UGA",
+          "geographyId": "m49:800"
+        },
+        {
+          "code": "UKR",
+          "geographyId": "m49:804"
+        },
+        {
+          "code": "URY",
+          "geographyId": "m49:858"
+        },
+        {
+          "code": "USA",
+          "geographyId": "m49:840"
+        },
+        {
+          "code": "UZB",
+          "geographyId": "m49:860"
+        },
+        {
+          "code": "VCT",
+          "geographyId": "m49:670"
+        },
+        {
+          "code": "VEN",
+          "geographyId": "m49:862"
+        },
+        {
+          "code": "VIR",
+          "geographyId": "m49:850"
+        },
+        {
+          "code": "VNM",
+          "geographyId": "m49:704"
+        },
+        {
+          "code": "VUT",
+          "geographyId": "m49:548"
+        },
+        {
+          "code": "WSM",
+          "geographyId": "m49:882"
+        },
+        {
+          "code": "XKX",
+          "geographyId": "provider:XKX"
+        },
+        {
+          "code": "YEM",
+          "geographyId": "m49:887"
+        },
+        {
+          "code": "ZAF",
+          "geographyId": "m49:710"
+        },
+        {
+          "code": "ZMB",
+          "geographyId": "m49:894"
+        },
+        {
+          "code": "ZWE",
+          "geographyId": "m49:716"
+        }
+      ],
+      "unmappedAreas": [],
+      "firstYear": 1990,
+      "lastYear": 2025,
+      "usaReference": "Every numeric United States value is exactly 100; no world value is supplied."
+    },
+    {
+      "id": "worldbank:2:PA.NUS.PRVT.PLI",
+      "providerMetadata": {
+        "id": "PA.NUS.PRVT.PLI",
+        "name": "Price level index (Households and NPISHs Final consumption expenditure)",
+        "unit": "",
+        "source": {
+          "id": "2",
+          "value": "World Development Indicators"
+        },
+        "sourceNote": "The price level index (PLI) is the ratio of a purchasing power parity (PPP) conversion factor to the corresponding market exchange rate between two countries, expressed relative to a base country that is set equal to 100. For this series the base country is the United States. It provides a measure of the differences in price level between the country and the United States by indicating the number of units of the common currency (US dollars) needed to buy the same volume of the aggregation level in each country. This indicator provides a measure of the differences in the price levels of countries at the level of Households and NPISHs final consumption expenditure.",
+        "sourceOrganization": "World Development Indicators, World Bank (WB), uri: https://databank.worldbank.org/source/world-development-indicators, publisher: World Development Indicators",
+        "topics": []
+      },
+      "responseMetadata": {
+        "page": 1,
+        "pages": 1,
+        "per_page": 20000,
+        "total": 17490,
+        "sourceid": "2",
+        "lastupdated": "2026-07-13"
+      },
+      "originalUrl": "https://api.worldbank.org/v2/country/all/indicator/PA.NUS.PRVT.PLI?format=json&source=2&per_page=20000",
+      "sha256": "bd298d15e1cf1212d3fc5513c04e5f8a93a6ee8fcdc9981383ad635f5a9dd070",
+      "numericValues": 6323,
+      "sourceAreaCount": 208,
+      "mappedAreas": [
+        {
+          "code": "ABW",
+          "geographyId": "m49:533"
+        },
+        {
+          "code": "AFG",
+          "geographyId": "m49:004"
+        },
+        {
+          "code": "AGO",
+          "geographyId": "m49:024"
+        },
+        {
+          "code": "ALB",
+          "geographyId": "m49:008"
+        },
+        {
+          "code": "AND",
+          "geographyId": "m49:020"
+        },
+        {
+          "code": "ARE",
+          "geographyId": "m49:784"
+        },
+        {
+          "code": "ARG",
+          "geographyId": "m49:032"
+        },
+        {
+          "code": "ARM",
+          "geographyId": "m49:051"
+        },
+        {
+          "code": "ASM",
+          "geographyId": "m49:016"
+        },
+        {
+          "code": "ATG",
+          "geographyId": "m49:028"
+        },
+        {
+          "code": "AUS",
+          "geographyId": "m49:036"
+        },
+        {
+          "code": "AUT",
+          "geographyId": "m49:040"
+        },
+        {
+          "code": "AZE",
+          "geographyId": "m49:031"
+        },
+        {
+          "code": "BDI",
+          "geographyId": "m49:108"
+        },
+        {
+          "code": "BEL",
+          "geographyId": "m49:056"
+        },
+        {
+          "code": "BEN",
+          "geographyId": "m49:204"
+        },
+        {
+          "code": "BFA",
+          "geographyId": "m49:854"
+        },
+        {
+          "code": "BGD",
+          "geographyId": "m49:050"
+        },
+        {
+          "code": "BGR",
+          "geographyId": "m49:100"
+        },
+        {
+          "code": "BHR",
+          "geographyId": "m49:048"
+        },
+        {
+          "code": "BHS",
+          "geographyId": "m49:044"
+        },
+        {
+          "code": "BIH",
+          "geographyId": "m49:070"
+        },
+        {
+          "code": "BLR",
+          "geographyId": "m49:112"
+        },
+        {
+          "code": "BLZ",
+          "geographyId": "m49:084"
+        },
+        {
+          "code": "BMU",
+          "geographyId": "m49:060"
+        },
+        {
+          "code": "BOL",
+          "geographyId": "m49:068"
+        },
+        {
+          "code": "BRA",
+          "geographyId": "m49:076"
+        },
+        {
+          "code": "BRB",
+          "geographyId": "m49:052"
+        },
+        {
+          "code": "BRN",
+          "geographyId": "m49:096"
+        },
+        {
+          "code": "BTN",
+          "geographyId": "m49:064"
+        },
+        {
+          "code": "BWA",
+          "geographyId": "m49:072"
+        },
+        {
+          "code": "CAF",
+          "geographyId": "m49:140"
+        },
+        {
+          "code": "CAN",
+          "geographyId": "m49:124"
+        },
+        {
+          "code": "CHE",
+          "geographyId": "m49:756"
+        },
+        {
+          "code": "CHL",
+          "geographyId": "m49:152"
+        },
+        {
+          "code": "CHN",
+          "geographyId": "m49:156"
+        },
+        {
+          "code": "CIV",
+          "geographyId": "m49:384"
+        },
+        {
+          "code": "CMR",
+          "geographyId": "m49:120"
+        },
+        {
+          "code": "COD",
+          "geographyId": "m49:180"
+        },
+        {
+          "code": "COG",
+          "geographyId": "m49:178"
+        },
+        {
+          "code": "COL",
+          "geographyId": "m49:170"
+        },
+        {
+          "code": "COM",
+          "geographyId": "m49:174"
+        },
+        {
+          "code": "CPV",
+          "geographyId": "m49:132"
+        },
+        {
+          "code": "CRI",
+          "geographyId": "m49:188"
+        },
+        {
+          "code": "CUW",
+          "geographyId": "m49:531"
+        },
+        {
+          "code": "CYM",
+          "geographyId": "m49:136"
+        },
+        {
+          "code": "CYP",
+          "geographyId": "m49:196"
+        },
+        {
+          "code": "CZE",
+          "geographyId": "m49:203"
+        },
+        {
+          "code": "DEU",
+          "geographyId": "m49:276"
+        },
+        {
+          "code": "DJI",
+          "geographyId": "m49:262"
+        },
+        {
+          "code": "DMA",
+          "geographyId": "m49:212"
+        },
+        {
+          "code": "DNK",
+          "geographyId": "m49:208"
+        },
+        {
+          "code": "DOM",
+          "geographyId": "m49:214"
+        },
+        {
+          "code": "DZA",
+          "geographyId": "m49:012"
+        },
+        {
+          "code": "ECU",
+          "geographyId": "m49:218"
+        },
+        {
+          "code": "EGY",
+          "geographyId": "m49:818"
+        },
+        {
+          "code": "ERI",
+          "geographyId": "m49:232"
+        },
+        {
+          "code": "ESP",
+          "geographyId": "m49:724"
+        },
+        {
+          "code": "EST",
+          "geographyId": "m49:233"
+        },
+        {
+          "code": "ETH",
+          "geographyId": "m49:231"
+        },
+        {
+          "code": "FIN",
+          "geographyId": "m49:246"
+        },
+        {
+          "code": "FJI",
+          "geographyId": "m49:242"
+        },
+        {
+          "code": "FRA",
+          "geographyId": "m49:250"
+        },
+        {
+          "code": "FRO",
+          "geographyId": "m49:234"
+        },
+        {
+          "code": "FSM",
+          "geographyId": "m49:583"
+        },
+        {
+          "code": "GAB",
+          "geographyId": "m49:266"
+        },
+        {
+          "code": "GBR",
+          "geographyId": "m49:826"
+        },
+        {
+          "code": "GEO",
+          "geographyId": "m49:268"
+        },
+        {
+          "code": "GHA",
+          "geographyId": "m49:288"
+        },
+        {
+          "code": "GIN",
+          "geographyId": "m49:324"
+        },
+        {
+          "code": "GMB",
+          "geographyId": "m49:270"
+        },
+        {
+          "code": "GNB",
+          "geographyId": "m49:624"
+        },
+        {
+          "code": "GNQ",
+          "geographyId": "m49:226"
+        },
+        {
+          "code": "GRC",
+          "geographyId": "m49:300"
+        },
+        {
+          "code": "GRD",
+          "geographyId": "m49:308"
+        },
+        {
+          "code": "GRL",
+          "geographyId": "m49:304"
+        },
+        {
+          "code": "GTM",
+          "geographyId": "m49:320"
+        },
+        {
+          "code": "GUM",
+          "geographyId": "m49:316"
+        },
+        {
+          "code": "GUY",
+          "geographyId": "m49:328"
+        },
+        {
+          "code": "HKG",
+          "geographyId": "m49:344"
+        },
+        {
+          "code": "HND",
+          "geographyId": "m49:340"
+        },
+        {
+          "code": "HRV",
+          "geographyId": "m49:191"
+        },
+        {
+          "code": "HTI",
+          "geographyId": "m49:332"
+        },
+        {
+          "code": "HUN",
+          "geographyId": "m49:348"
+        },
+        {
+          "code": "IDN",
+          "geographyId": "m49:360"
+        },
+        {
+          "code": "IND",
+          "geographyId": "m49:356"
+        },
+        {
+          "code": "IRL",
+          "geographyId": "m49:372"
+        },
+        {
+          "code": "IRN",
+          "geographyId": "m49:364"
+        },
+        {
+          "code": "IRQ",
+          "geographyId": "m49:368"
+        },
+        {
+          "code": "ISL",
+          "geographyId": "m49:352"
+        },
+        {
+          "code": "ISR",
+          "geographyId": "m49:376"
+        },
+        {
+          "code": "ITA",
+          "geographyId": "m49:380"
+        },
+        {
+          "code": "JAM",
+          "geographyId": "m49:388"
+        },
+        {
+          "code": "JOR",
+          "geographyId": "m49:400"
+        },
+        {
+          "code": "JPN",
+          "geographyId": "m49:392"
+        },
+        {
+          "code": "KAZ",
+          "geographyId": "m49:398"
+        },
+        {
+          "code": "KEN",
+          "geographyId": "m49:404"
+        },
+        {
+          "code": "KGZ",
+          "geographyId": "m49:417"
+        },
+        {
+          "code": "KHM",
+          "geographyId": "m49:116"
+        },
+        {
+          "code": "KIR",
+          "geographyId": "m49:296"
+        },
+        {
+          "code": "KNA",
+          "geographyId": "m49:659"
+        },
+        {
+          "code": "KOR",
+          "geographyId": "m49:410"
+        },
+        {
+          "code": "KWT",
+          "geographyId": "m49:414"
+        },
+        {
+          "code": "LAO",
+          "geographyId": "m49:418"
+        },
+        {
+          "code": "LBN",
+          "geographyId": "m49:422"
+        },
+        {
+          "code": "LBR",
+          "geographyId": "m49:430"
+        },
+        {
+          "code": "LBY",
+          "geographyId": "m49:434"
+        },
+        {
+          "code": "LCA",
+          "geographyId": "m49:662"
+        },
+        {
+          "code": "LKA",
+          "geographyId": "m49:144"
+        },
+        {
+          "code": "LSO",
+          "geographyId": "m49:426"
+        },
+        {
+          "code": "LTU",
+          "geographyId": "m49:440"
+        },
+        {
+          "code": "LUX",
+          "geographyId": "m49:442"
+        },
+        {
+          "code": "LVA",
+          "geographyId": "m49:428"
+        },
+        {
+          "code": "MAC",
+          "geographyId": "m49:446"
+        },
+        {
+          "code": "MAR",
+          "geographyId": "m49:504"
+        },
+        {
+          "code": "MDA",
+          "geographyId": "m49:498"
+        },
+        {
+          "code": "MDG",
+          "geographyId": "m49:450"
+        },
+        {
+          "code": "MDV",
+          "geographyId": "m49:462"
+        },
+        {
+          "code": "MEX",
+          "geographyId": "m49:484"
+        },
+        {
+          "code": "MHL",
+          "geographyId": "m49:584"
+        },
+        {
+          "code": "MKD",
+          "geographyId": "m49:807"
+        },
+        {
+          "code": "MLI",
+          "geographyId": "m49:466"
+        },
+        {
+          "code": "MLT",
+          "geographyId": "m49:470"
+        },
+        {
+          "code": "MMR",
+          "geographyId": "m49:104"
+        },
+        {
+          "code": "MNE",
+          "geographyId": "m49:499"
+        },
+        {
+          "code": "MNG",
+          "geographyId": "m49:496"
+        },
+        {
+          "code": "MNP",
+          "geographyId": "m49:580"
+        },
+        {
+          "code": "MOZ",
+          "geographyId": "m49:508"
+        },
+        {
+          "code": "MRT",
+          "geographyId": "m49:478"
+        },
+        {
+          "code": "MUS",
+          "geographyId": "m49:480"
+        },
+        {
+          "code": "MWI",
+          "geographyId": "m49:454"
+        },
+        {
+          "code": "MYS",
+          "geographyId": "m49:458"
+        },
+        {
+          "code": "NAM",
+          "geographyId": "m49:516"
+        },
+        {
+          "code": "NCL",
+          "geographyId": "m49:540"
+        },
+        {
+          "code": "NER",
+          "geographyId": "m49:562"
+        },
+        {
+          "code": "NGA",
+          "geographyId": "m49:566"
+        },
+        {
+          "code": "NIC",
+          "geographyId": "m49:558"
+        },
+        {
+          "code": "NLD",
+          "geographyId": "m49:528"
+        },
+        {
+          "code": "NOR",
+          "geographyId": "m49:578"
+        },
+        {
+          "code": "NPL",
+          "geographyId": "m49:524"
+        },
+        {
+          "code": "NRU",
+          "geographyId": "m49:520"
+        },
+        {
+          "code": "NZL",
+          "geographyId": "m49:554"
+        },
+        {
+          "code": "OMN",
+          "geographyId": "m49:512"
+        },
+        {
+          "code": "PAK",
+          "geographyId": "m49:586"
+        },
+        {
+          "code": "PAN",
+          "geographyId": "m49:591"
+        },
+        {
+          "code": "PER",
+          "geographyId": "m49:604"
+        },
+        {
+          "code": "PHL",
+          "geographyId": "m49:608"
+        },
+        {
+          "code": "PLW",
+          "geographyId": "m49:585"
+        },
+        {
+          "code": "PNG",
+          "geographyId": "m49:598"
+        },
+        {
+          "code": "POL",
+          "geographyId": "m49:616"
+        },
+        {
+          "code": "PRI",
+          "geographyId": "m49:630"
+        },
+        {
+          "code": "PRT",
+          "geographyId": "m49:620"
+        },
+        {
+          "code": "PRY",
+          "geographyId": "m49:600"
+        },
+        {
+          "code": "PSE",
+          "geographyId": "m49:275"
+        },
+        {
+          "code": "PYF",
+          "geographyId": "m49:258"
+        },
+        {
+          "code": "QAT",
+          "geographyId": "m49:634"
+        },
+        {
+          "code": "ROU",
+          "geographyId": "m49:642"
+        },
+        {
+          "code": "RUS",
+          "geographyId": "m49:643"
+        },
+        {
+          "code": "RWA",
+          "geographyId": "m49:646"
+        },
+        {
+          "code": "SAU",
+          "geographyId": "m49:682"
+        },
+        {
+          "code": "SDN",
+          "geographyId": "m49:729"
+        },
+        {
+          "code": "SEN",
+          "geographyId": "m49:686"
+        },
+        {
+          "code": "SGP",
+          "geographyId": "m49:702"
+        },
+        {
+          "code": "SLB",
+          "geographyId": "m49:090"
+        },
+        {
+          "code": "SLE",
+          "geographyId": "m49:694"
+        },
+        {
+          "code": "SLV",
+          "geographyId": "m49:222"
+        },
+        {
+          "code": "SMR",
+          "geographyId": "m49:674"
+        },
+        {
+          "code": "SOM",
+          "geographyId": "m49:706"
+        },
+        {
+          "code": "SRB",
+          "geographyId": "m49:688"
+        },
+        {
+          "code": "SSD",
+          "geographyId": "m49:728"
+        },
+        {
+          "code": "STP",
+          "geographyId": "m49:678"
+        },
+        {
+          "code": "SUR",
+          "geographyId": "m49:740"
+        },
+        {
+          "code": "SVK",
+          "geographyId": "m49:703"
+        },
+        {
+          "code": "SVN",
+          "geographyId": "m49:705"
+        },
+        {
+          "code": "SWE",
+          "geographyId": "m49:752"
+        },
+        {
+          "code": "SWZ",
+          "geographyId": "m49:748"
+        },
+        {
+          "code": "SXM",
+          "geographyId": "m49:534"
+        },
+        {
+          "code": "SYC",
+          "geographyId": "m49:690"
+        },
+        {
+          "code": "SYR",
+          "geographyId": "m49:760"
+        },
+        {
+          "code": "TCA",
+          "geographyId": "m49:796"
+        },
+        {
+          "code": "TCD",
+          "geographyId": "m49:148"
+        },
+        {
+          "code": "TGO",
+          "geographyId": "m49:768"
+        },
+        {
+          "code": "THA",
+          "geographyId": "m49:764"
+        },
+        {
+          "code": "TJK",
+          "geographyId": "m49:762"
+        },
+        {
+          "code": "TKM",
+          "geographyId": "m49:795"
+        },
+        {
+          "code": "TLS",
+          "geographyId": "m49:626"
+        },
+        {
+          "code": "TON",
+          "geographyId": "m49:776"
+        },
+        {
+          "code": "TTO",
+          "geographyId": "m49:780"
+        },
+        {
+          "code": "TUN",
+          "geographyId": "m49:788"
+        },
+        {
+          "code": "TUR",
+          "geographyId": "m49:792"
+        },
+        {
+          "code": "TUV",
+          "geographyId": "m49:798"
+        },
+        {
+          "code": "TZA",
+          "geographyId": "m49:834"
+        },
+        {
+          "code": "UGA",
+          "geographyId": "m49:800"
+        },
+        {
+          "code": "UKR",
+          "geographyId": "m49:804"
+        },
+        {
+          "code": "URY",
+          "geographyId": "m49:858"
+        },
+        {
+          "code": "USA",
+          "geographyId": "m49:840"
+        },
+        {
+          "code": "UZB",
+          "geographyId": "m49:860"
+        },
+        {
+          "code": "VCT",
+          "geographyId": "m49:670"
+        },
+        {
+          "code": "VEN",
+          "geographyId": "m49:862"
+        },
+        {
+          "code": "VIR",
+          "geographyId": "m49:850"
+        },
+        {
+          "code": "VNM",
+          "geographyId": "m49:704"
+        },
+        {
+          "code": "VUT",
+          "geographyId": "m49:548"
+        },
+        {
+          "code": "WSM",
+          "geographyId": "m49:882"
+        },
+        {
+          "code": "XKX",
+          "geographyId": "provider:XKX"
+        },
+        {
+          "code": "YEM",
+          "geographyId": "m49:887"
+        },
+        {
+          "code": "ZAF",
+          "geographyId": "m49:710"
+        },
+        {
+          "code": "ZMB",
+          "geographyId": "m49:894"
+        },
+        {
+          "code": "ZWE",
+          "geographyId": "m49:716"
+        }
+      ],
+      "unmappedAreas": [],
+      "firstYear": 1990,
+      "lastYear": 2025,
+      "usaReference": "Every numeric United States value is exactly 100; no world value is supplied."
+    }
+  ]
+}

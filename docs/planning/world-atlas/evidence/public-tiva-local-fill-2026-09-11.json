@@ -1,0 +1,43 @@
+{
+  "checkedAt": "2026-09-11T03:03:44.602060+00:00",
+  "status": "passed",
+  "databaseScope": "Only public Atlas cache; read-only verification",
+  "sources": [
+    {
+      "sourceId": "oecd-tiva-supply",
+      "provenance": {
+        "sourceId": "oecd-tiva-supply",
+        "retrievedAt": "2026-09-11T02:46:54.269482900+00:00",
+        "publishedAt": "2026-01",
+        "url": "https://sdmx.oecd.org/sti-public/rest/v1/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_FVA+EXGR_DVA.._T.W.PT_EXGR.A?startPeriod=1995&endPeriod=2022&format=csvfile",
+        "documentationUrl": "https://stats.oecd.org/wbos/fileview2.aspx?IDFile=2143f34e-6feb-41a9-abaf-cb52132608c4",
+        "sha256": "00222138f46de9efc0799e6eebb50d7846e6d09b5b0401dde373d6932b0a64b2",
+        "recipe": "oecd-tiva-supply-2025-january2026-v1",
+        "sourceRows": 5488,
+        "numericValues": 4480,
+        "areaCount": 80
+      },
+      "profiles": 160,
+      "numeric": 4480,
+      "fullOriginalAuditEquality": true
+    },
+    {
+      "sourceId": "oecd-tiva-partners",
+      "provenance": {
+        "sourceId": "oecd-tiva-partners",
+        "retrievedAt": "2026-09-11T02:47:04.148122+00:00",
+        "publishedAt": "2026-01",
+        "url": "https://sdmx.oecd.org/sti-public/rest/v1/data/OECD.STI.PIE,DSD_TIVA_MAINSH@DF_MAINSH,1.1/EXGR_PSH.._T..PT_EXGR.A?startPeriod=1995&endPeriod=2022&format=csvfile",
+        "documentationUrl": "https://stats.oecd.org/wbos/fileview2.aspx?IDFile=2143f34e-6feb-41a9-abaf-cb52132608c4",
+        "sha256": "6092910f6387f5ea67f6b74d8ea9d6c663e70ff265d477b3ecc00ad502447685",
+        "recipe": "oecd-tiva-partners-2025-january2026-v1",
+        "sourceRows": 271656,
+        "numericValues": 179200,
+        "areaCount": 80
+      },
+      "profiles": 6400,
+      "numeric": 179200,
+      "fullOriginalAuditEquality": true
+    }
+  ]
+}

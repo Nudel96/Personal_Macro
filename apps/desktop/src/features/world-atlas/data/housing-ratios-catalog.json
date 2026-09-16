@@ -1,0 +1,323 @@
+{
+  "datasetId": "oecd-housing-ratios",
+  "version": "2026-09-09.1",
+  "sourceUrl": "https://sdmx.oecd.org/public/rest/data/OECD.ECO.MPD,DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES,1.0/.Q.HPI_RPI+HPI_RPI_AVG+HPI_YDH+HPI_YDH_AVG.?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+  "structureUrl": "https://sdmx.oecd.org/public/rest/dataflow/OECD.ECO.MPD/DSD_AN_HOUSE_PRICES@DF_HOUSE_PRICES/1.0?references=all",
+  "documentationUrl": "https://www.oecd.org/en/data/indicators/housing-prices.html",
+  "termsUrl": "https://www.oecd.org/en/about/terms-conditions.html",
+  "topicIds": ["housing:affordability", "housing:price_rent"],
+  "regions": [
+    {
+      "code": "OECD",
+      "label": "OECD",
+      "geographyId": "oecd:housing_members",
+      "title": "OECD-Länder · Immobiliengruppe",
+      "regionId": "world"
+    },
+    {
+      "code": "EA",
+      "label": "Euro area",
+      "geographyId": "oecd:housing_euro_area",
+      "title": "Euroraum · OECD-Immobiliengruppe",
+      "regionId": "Europe"
+    },
+    {
+      "code": "EA17",
+      "label": "Euro area (17 countries)",
+      "geographyId": "oecd:housing_euro_area_17",
+      "title": "Euroraum mit 17 Ländern · OECD-Gruppe",
+      "regionId": "Europe"
+    }
+  ],
+  "areas": [
+    {
+      "code": "AUS",
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "AUT",
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "BEL",
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "BGR",
+      "label": "Bulgaria",
+      "geographyId": "m49:100",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "CAN",
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "CHE",
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "CHL",
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "COL",
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "CZE",
+      "label": "Czechia",
+      "geographyId": "m49:203",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "DEU",
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "DNK",
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "EA",
+      "label": "Euro area",
+      "geographyId": "oecd:housing_euro_area",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "EA17",
+      "label": "Euro area (17 countries)",
+      "geographyId": "oecd:housing_euro_area_17",
+      "reviewedBreaks": [
+        {
+          "basis": "income",
+          "period": "1980-Q1"
+        }
+      ]
+    },
+    {
+      "code": "ESP",
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "reviewedBreaks": [
+        {
+          "basis": "income",
+          "period": "1985-Q1"
+        }
+      ]
+    },
+    {
+      "code": "EST",
+      "label": "Estonia",
+      "geographyId": "m49:233",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "FIN",
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "FRA",
+      "label": "France",
+      "geographyId": "m49:250",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "GBR",
+      "label": "United Kingdom",
+      "geographyId": "m49:826",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "GRC",
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "HRV",
+      "label": "Croatia",
+      "geographyId": "m49:191",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "HUN",
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "IRL",
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "ISL",
+      "label": "Iceland",
+      "geographyId": "m49:352",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "ISR",
+      "label": "Israel",
+      "geographyId": "m49:376",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "ITA",
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "JPN",
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "KOR",
+      "label": "Korea",
+      "geographyId": "m49:410",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "LTU",
+      "label": "Lithuania",
+      "geographyId": "m49:440",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "LUX",
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "LVA",
+      "label": "Latvia",
+      "geographyId": "m49:428",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "MEX",
+      "label": "Mexico",
+      "geographyId": "m49:484",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "NLD",
+      "label": "Netherlands",
+      "geographyId": "m49:528",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "NOR",
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "NZL",
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "OECD",
+      "label": "OECD",
+      "geographyId": "oecd:housing_members",
+      "reviewedBreaks": [
+        {
+          "basis": "income",
+          "period": "1977-Q4"
+        },
+        {
+          "basis": "income",
+          "period": "1978-Q1"
+        }
+      ]
+    },
+    {
+      "code": "POL",
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "PRT",
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "ROU",
+      "label": "Romania",
+      "geographyId": "m49:642",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "RUS",
+      "label": "Russia",
+      "geographyId": "m49:643",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "SVK",
+      "label": "Slovak Republic",
+      "geographyId": "m49:703",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "SVN",
+      "label": "Slovenia",
+      "geographyId": "m49:705",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "SWE",
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "TUR",
+      "label": "Türkiye",
+      "geographyId": "m49:792",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "USA",
+      "label": "United States",
+      "geographyId": "m49:840",
+      "reviewedBreaks": []
+    },
+    {
+      "code": "ZAF",
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "reviewedBreaks": []
+    }
+  ]
+}

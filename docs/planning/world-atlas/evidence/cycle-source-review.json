@@ -1,0 +1,74 @@
+{
+  "reviewedOn": "2026-09-09",
+  "purpose": "Quellenprüfung redaktioneller Modelle; keine neu importierten Beobachtungsdaten oder verifizierten aktuellen Länderphasen.",
+  "sources": [
+    {
+      "id": "nber",
+      "url": "https://www.nber.org/research/business-cycle-dating/business-cycle-dating-procedure-frequently-asked-questions",
+      "reviewMethod": "Verlagsinhalt und gezielte Suchauszüge der offiziellen NBER-Seiten zu Definition, Indikatoren und rückblickender Datierung; keine übernommene Zeitreihe.",
+      "scope": "US-Konjunkturdatierung",
+      "limitation": "Keine Datierung anderer Länder und kein fester Rhythmus aus einem einzelnen Indikator."
+    },
+    {
+      "id": "bis",
+      "url": "https://www.bis.org/publ/work380.pdf",
+      "reviewMethod": "Offizieller PDF-Volltext, insbesondere Abschnitte 1–3 und PDF-Seiten 7–10 zu Stichprobe, Filterband und Kalibrierung.",
+      "scope": "Australien, Deutschland, Japan, Norwegen, Schweden, Vereinigtes Königreich und USA, Quartalsdaten 1960–2011.",
+      "limitation": "Filterband 8–30 Jahre ist keine gemessene universelle Naturperiode."
+    },
+    {
+      "id": "bernanke",
+      "url": "https://www.nber.org/papers/w0502",
+      "reviewMethod": "Vollständiger offizieller Abstract und bibliografische Angaben des NBER; keine vollständige Replikation des Modells.",
+      "scope": "Working Paper 502, Juli 1980; Veröffentlichung 1983. Theoretisches Investitionsmodell.",
+      "limitation": "Kein empirisch geschätzter globaler Infrastrukturzyklus. Uneindeutige Bandangaben aus den Metadaten wurden nicht übernommen."
+    },
+    {
+      "id": "hall",
+      "url": "https://www.nber.org/papers/w9730",
+      "additionalPrimaryUrl": "https://eml.berkeley.edu/~bhhall/papers/HallKhan03%20diffusion.pdf",
+      "reviewMethod": "Vollständiger NBER-Abstract und Autorenfassung der UC Berkeley, insbesondere Abschnitt II, Seiten 4–7 zur S-Form und unterschiedlichen Diffusionsmodellen.",
+      "scope": "NBER-Veröffentlichung Mai 2003; zusätzlich gelesene Autorenfassung November 2002. Literaturüberblick ohne einheitliche Länderstichprobe.",
+      "limitation": "Technologienutzung wird nicht mit Gewinnen oder Börsenbewertung gleichgesetzt."
+    },
+    {
+      "id": "kondratieff",
+      "url": "https://www.jstor.org/stable/1928486",
+      "readCopyUrl": "https://dl.icdst.org/pdfs/files3/69723f24bbd925871f6abd315185823a.pdf",
+      "reviewMethod": "Originalscan visuell gelesen: Journal-Seiten 105–106 und 115; PDF-Seiten 3, 4 und 13 bei einsbasierter Zählung.",
+      "copySha256": "0f8f59f1b19b9075e5852e509fddb5c7103b89df5294062d64ddbfa3c9f0c370",
+      "scope": "Historischer Aufsatz von 1935, Übersetzung eines früheren Textes. Vor allem England/Frankreich, ergänzende US-Reihen.",
+      "limitation": "Begrenzte frühe Daten, Trendbereinigung und Glättung; keine aktuelle Länderprognose. Keine Daten aus den abgebildeten Kurven extrahiert."
+    },
+    {
+      "id": "turchin",
+      "url": "https://assets.press.princeton.edu/chapters/s8904.pdf",
+      "reviewMethod": "Offizielles Verlagskapitel, insbesondere Seiten 3–4, 12 und 21–22 zu Gegenargumenten, unterschiedlichen Verläufen, Entscheidungen und fehlender strikter Periodizität.",
+      "scope": "Theorie historischer Agrargesellschaften; Einführung des Buches von 2009, keine vollständige Prüfung aller Fallstudien.",
+      "limitation": "Mehrere Ausgänge und nichtperiodische Verläufe bleiben möglich; keine heutige globale Länderprognose."
+    },
+    {
+      "id": "hamilton",
+      "url": "https://www.nber.org/papers/w23429",
+      "reviewMethod": "Vollständiger offizieller Abstract und bibliografische Angaben des NBER.",
+      "scope": "Methodische Kritik am HP-Filter, Working Paper 2017, Veröffentlichung 2018.",
+      "limitation": "Warnung vor künstlicher Dynamik und Randproblemen, kein direkter empirischer Gegenbeweis gegen alle vorgestellten Zyklusthesen."
+    }
+  ],
+  "pendingData": {
+    "id": "jst_r6",
+    "pageUrl": "https://www.macrohistory.net/database/",
+    "downloadUrl": "https://www.macrohistory.net/app/download/9834512569/JSTdatasetR6.xlsx?t=1763503850",
+    "documentationUrl": "https://www.macrohistory.net/app/download/9834516169/JST_documentationR6.pdf?t=1676279836",
+    "returnsDocumentationUrl": "https://www.macrohistory.net/app/download/9918957869/JST_RORE_Documentation_R6.pdf?t=1658254098",
+    "licenseUrl": "https://www.macrohistory.net/database/licence-terms/",
+    "publishedLicense": "CC BY-NC-SA 4.0",
+    "reviewMethod": "Offizielle Datenbankseite und R6-Dokumentation zu Variablen, Einheiten und Renditen; Original-XLSX nicht eingelesen.",
+    "directDownloadStatus": 403,
+    "providerErrorCode": "Cloudflare 1010",
+    "browserResult": "Offizielle Seite erreichbar; EXCEL-Klick erzeugte nur ein Download-Ereignis ohne zugängliche, überprüfbare Datei.",
+    "status": "not_bound_original_file_unverified",
+    "observationRowsImported": 0,
+    "adapterImplemented": false
+  }
+}

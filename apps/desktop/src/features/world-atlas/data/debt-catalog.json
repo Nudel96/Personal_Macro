@@ -1,0 +1,378 @@
+{
+  "datasetId": "bis-borrower-debt",
+  "version": "2026-09-09.1",
+  "recipe": "bis-household-corporate-debt-gdp-break-adjusted-v1",
+  "url": "https://data.bis.org/static/bulk/WS_TC_csv_flat.zip",
+  "methodologyUrl": "https://www.bis.org/statistics/totcredit/credpriv_doc.pdf",
+  "reviewedAt": "2026-09-09",
+  "reviewedSha256": "aab49fd183db1d8623e9ea2c3c10167ace31ed7a36f58ba6b5983529090eabac",
+  "topicIds": ["finance:household_debt", "finance:corporate_debt"],
+  "regions": [
+    {
+      "code": "G2",
+      "label": "G20 economies",
+      "geographyId": "bis:debt_g20",
+      "title": "G20 · BIS-Schuldengruppe",
+      "regionId": "world"
+    },
+    {
+      "code": "5R",
+      "label": "Advanced economies",
+      "geographyId": "bis:debt_advanced",
+      "title": "Fortgeschrittene Volkswirtschaften · BIS-Schuldengruppe",
+      "regionId": "world"
+    },
+    {
+      "code": "4T",
+      "label": "Emerging market economies (aggregate)",
+      "geographyId": "bis:debt_emerging",
+      "title": "Schwellenländer · BIS-Schuldengruppe",
+      "regionId": "world"
+    },
+    {
+      "code": "5A",
+      "label": "All reporting economies",
+      "geographyId": "bis:debt_reporting",
+      "title": "Alle berichtenden Volkswirtschaften · BIS-Schuldengruppe",
+      "regionId": "world"
+    }
+  ],
+  "areas": [
+    {
+      "code": "4T",
+      "label": "Emerging market economies (aggregate)",
+      "seriesLabel": "Emerging market economies (aggregate)",
+      "geographyId": "bis:debt_emerging",
+      "decimals": 1
+    },
+    {
+      "code": "5A",
+      "label": "All reporting economies",
+      "seriesLabel": "All reporting countries (aggregate)",
+      "geographyId": "bis:debt_reporting",
+      "decimals": 1
+    },
+    {
+      "code": "5R",
+      "label": "Advanced economies",
+      "seriesLabel": "Advanced economies (aggregate)",
+      "geographyId": "bis:debt_advanced",
+      "decimals": 1
+    },
+    {
+      "code": "AR",
+      "label": "Argentina",
+      "seriesLabel": "Argentina",
+      "geographyId": "m49:032",
+      "decimals": 1
+    },
+    {
+      "code": "AT",
+      "label": "Austria",
+      "seriesLabel": "Austria",
+      "geographyId": "m49:040",
+      "decimals": 1
+    },
+    {
+      "code": "AU",
+      "label": "Australia",
+      "seriesLabel": "Australia",
+      "geographyId": "m49:036",
+      "decimals": 1
+    },
+    {
+      "code": "BE",
+      "label": "Belgium",
+      "seriesLabel": "Belgium",
+      "geographyId": "m49:056",
+      "decimals": 1
+    },
+    {
+      "code": "BR",
+      "label": "Brazil",
+      "seriesLabel": "Brazil",
+      "geographyId": "m49:076",
+      "decimals": 1
+    },
+    {
+      "code": "CA",
+      "label": "Canada",
+      "seriesLabel": "Canada",
+      "geographyId": "m49:124",
+      "decimals": 1
+    },
+    {
+      "code": "CH",
+      "label": "Switzerland",
+      "seriesLabel": "Switzerland",
+      "geographyId": "m49:756",
+      "decimals": 1
+    },
+    {
+      "code": "CL",
+      "label": "Chile",
+      "seriesLabel": "Chile",
+      "geographyId": "m49:152",
+      "decimals": 1
+    },
+    {
+      "code": "CN",
+      "label": "China",
+      "seriesLabel": "China",
+      "geographyId": "m49:156",
+      "decimals": 1
+    },
+    {
+      "code": "CO",
+      "label": "Colombia",
+      "seriesLabel": "Colombia",
+      "geographyId": "m49:170",
+      "decimals": 3
+    },
+    {
+      "code": "CZ",
+      "label": "Czechia",
+      "seriesLabel": "Czechia",
+      "geographyId": "m49:203",
+      "decimals": 1
+    },
+    {
+      "code": "DE",
+      "label": "Germany",
+      "seriesLabel": "Germany",
+      "geographyId": "m49:276",
+      "decimals": 1
+    },
+    {
+      "code": "DK",
+      "label": "Denmark",
+      "seriesLabel": "Denmark",
+      "geographyId": "m49:208",
+      "decimals": 1
+    },
+    {
+      "code": "ES",
+      "label": "Spain",
+      "seriesLabel": "Spain",
+      "geographyId": "m49:724",
+      "decimals": 1
+    },
+    {
+      "code": "FI",
+      "label": "Finland",
+      "seriesLabel": "Finland",
+      "geographyId": "m49:246",
+      "decimals": 1
+    },
+    {
+      "code": "FR",
+      "label": "France",
+      "seriesLabel": "France",
+      "geographyId": "m49:250",
+      "decimals": 1
+    },
+    {
+      "code": "G2",
+      "label": "G20 economies",
+      "seriesLabel": "G20 (aggregate)",
+      "geographyId": "bis:debt_g20",
+      "decimals": 1
+    },
+    {
+      "code": "GB",
+      "label": "United Kingdom",
+      "seriesLabel": "United Kingdom",
+      "geographyId": "m49:826",
+      "decimals": 1
+    },
+    {
+      "code": "GR",
+      "label": "Greece",
+      "seriesLabel": "Greece",
+      "geographyId": "m49:300",
+      "decimals": 1
+    },
+    {
+      "code": "HK",
+      "label": "Hong Kong SAR",
+      "seriesLabel": "Hong Kong SAR",
+      "geographyId": "m49:344",
+      "decimals": 1
+    },
+    {
+      "code": "HU",
+      "label": "Hungary",
+      "seriesLabel": "Hungary",
+      "geographyId": "m49:348",
+      "decimals": 1
+    },
+    {
+      "code": "ID",
+      "label": "Indonesia",
+      "seriesLabel": "Indonesia",
+      "geographyId": "m49:360",
+      "decimals": 1
+    },
+    {
+      "code": "IE",
+      "label": "Ireland",
+      "seriesLabel": "Ireland",
+      "geographyId": "m49:372",
+      "decimals": 1
+    },
+    {
+      "code": "IL",
+      "label": "Israel",
+      "seriesLabel": "Israel",
+      "geographyId": "m49:376",
+      "decimals": 1
+    },
+    {
+      "code": "IN",
+      "label": "India",
+      "seriesLabel": "India",
+      "geographyId": "m49:356",
+      "decimals": 1
+    },
+    {
+      "code": "IT",
+      "label": "Italy",
+      "seriesLabel": "Italy",
+      "geographyId": "m49:380",
+      "decimals": 1
+    },
+    {
+      "code": "JP",
+      "label": "Japan",
+      "seriesLabel": "Japan",
+      "geographyId": "m49:392",
+      "decimals": 1
+    },
+    {
+      "code": "KR",
+      "label": "Korea",
+      "seriesLabel": "Korea",
+      "geographyId": "m49:410",
+      "decimals": 1
+    },
+    {
+      "code": "LU",
+      "label": "Luxembourg",
+      "seriesLabel": "Luxembourg",
+      "geographyId": "m49:442",
+      "decimals": 1
+    },
+    {
+      "code": "MX",
+      "label": "Mexico",
+      "seriesLabel": "Mexico",
+      "geographyId": "m49:484",
+      "decimals": 1
+    },
+    {
+      "code": "MY",
+      "label": "Malaysia",
+      "seriesLabel": "Malaysia",
+      "geographyId": "m49:458",
+      "decimals": 1
+    },
+    {
+      "code": "NL",
+      "label": "Netherlands",
+      "seriesLabel": "Netherlands",
+      "geographyId": "m49:528",
+      "decimals": 1
+    },
+    {
+      "code": "NO",
+      "label": "Norway",
+      "seriesLabel": "Norway",
+      "geographyId": "m49:578",
+      "decimals": 1
+    },
+    {
+      "code": "NZ",
+      "label": "New Zealand",
+      "seriesLabel": "New Zealand",
+      "geographyId": "m49:554",
+      "decimals": 1
+    },
+    {
+      "code": "PL",
+      "label": "Poland",
+      "seriesLabel": "Poland",
+      "geographyId": "m49:616",
+      "decimals": 1
+    },
+    {
+      "code": "PT",
+      "label": "Portugal",
+      "seriesLabel": "Portugal",
+      "geographyId": "m49:620",
+      "decimals": 1
+    },
+    {
+      "code": "RU",
+      "label": "Russia",
+      "seriesLabel": "Russia",
+      "geographyId": "m49:643",
+      "decimals": 1
+    },
+    {
+      "code": "SA",
+      "label": "Saudi Arabia",
+      "seriesLabel": "Saudi Arabia",
+      "geographyId": "m49:682",
+      "decimals": 1
+    },
+    {
+      "code": "SE",
+      "label": "Sweden",
+      "seriesLabel": "Sweden",
+      "geographyId": "m49:752",
+      "decimals": 1
+    },
+    {
+      "code": "SG",
+      "label": "Singapore",
+      "seriesLabel": "Singapore",
+      "geographyId": "m49:702",
+      "decimals": 1
+    },
+    {
+      "code": "TH",
+      "label": "Thailand",
+      "seriesLabel": "Thailand",
+      "geographyId": "m49:764",
+      "decimals": 1
+    },
+    {
+      "code": "TR",
+      "label": "Türkiye",
+      "seriesLabel": "Türkiye",
+      "geographyId": "m49:792",
+      "decimals": 1
+    },
+    {
+      "code": "US",
+      "label": "United States",
+      "seriesLabel": "United States",
+      "geographyId": "m49:840",
+      "decimals": 1
+    },
+    {
+      "code": "XM",
+      "label": "Euro area",
+      "seriesLabel": "Euro area",
+      "geographyId": "bis:euro_area",
+      "decimals": 1
+    },
+    {
+      "code": "ZA",
+      "label": "South Africa",
+      "seriesLabel": "South Africa",
+      "geographyId": "m49:710",
+      "decimals": 1
+    }
+  ]
+}

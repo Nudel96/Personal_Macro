@@ -1,0 +1,115 @@
+{
+  "verifiedAt": "2026-09-09",
+  "source": "WIPO Statistics Database",
+  "release": "May 2026",
+  "original": {
+    "profiles": 199,
+    "numericCellsExact": 108696,
+    "missingCellsExact": 213684,
+    "sourceSha256": "c7e93cd7ad4b9305190f5cb72c899ef854771209794c3025621859c94de84f48",
+    "phase": "original",
+    "status": "passed"
+  },
+  "first": {
+    "profiles": 199,
+    "numericCellsExact": 108696,
+    "missingCellsExact": 213684,
+    "sourceSha256": "c7e93cd7ad4b9305190f5cb72c899ef854771209794c3025621859c94de84f48",
+    "identifier": "com.personal-macro.atlas-innovation-20260909",
+    "nativeResponses": 201,
+    "jobs": 1,
+    "atlasMigrations": 18,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "67715ca55bd51d5b0446258b18df6f0e81a3404c19dd51e598eb6cb8c8d9986a",
+    "exactResponsesAndNoteAfterRestart": false,
+    "productionDataAccessed": false,
+    "phase": "first",
+    "status": "passed"
+  },
+  "restart": {
+    "profiles": 199,
+    "numericCellsExact": 108696,
+    "missingCellsExact": 213684,
+    "sourceSha256": "c7e93cd7ad4b9305190f5cb72c899ef854771209794c3025621859c94de84f48",
+    "identifier": "com.personal-macro.atlas-innovation-20260909",
+    "nativeResponses": 201,
+    "jobs": 0,
+    "atlasMigrations": 18,
+    "savedNoteAndPicture": true,
+    "pictureSha256": "67715ca55bd51d5b0446258b18df6f0e81a3404c19dd51e598eb6cb8c8d9986a",
+    "exactResponsesAndNoteAfterRestart": true,
+    "productionDataAccessed": false,
+    "phase": "restart",
+    "status": "passed"
+  },
+  "checks": {
+    "atlasFrontendTests": {
+      "files": 34,
+      "passed": 237
+    },
+    "newRustTests": {
+      "normalPassed": 3,
+      "originalFilePassed": 1
+    },
+    "typecheck": "passed",
+    "targetedEslint": "passed",
+    "clippyAllTargetsDenyWarnings": "passed",
+    "productionBuild": "passed",
+    "buildAdvisory": "Known chunks above 500 kB; no build failure.",
+    "format": "Rust fmt and targeted Prettier passed",
+    "diffWhitespace": "passed"
+  },
+  "native": {
+    "firstProcessId": 11428,
+    "restartProcessId": 3924,
+    "identifier": "com.personal-macro.atlas-innovation-20260909",
+    "onlineDownloadJobs": 1,
+    "restartDownloadJobs": 0,
+    "productionDataAccessed": false,
+    "initialization": "Atlas initialized successfully",
+    "observedWarnings": [
+      "Known unrelated EODHD intraday entitlement/provider warning.",
+      "The first successful notebook insert took 5.07 seconds and triggered the existing SQL slow-statement warning. No lost write or failed notebook operation.",
+      "Windows linker emitted informational library/object creation warnings."
+    ]
+  },
+  "visual": {
+    "method": "CUA browser view of production components with public snapshots from actual native commands",
+    "widths": [
+      1024,
+      1440
+    ],
+    "checks": [
+      "Germany and USA: six charts, same per-field scale and calendar",
+      "India and China: rapid selection settles correctly",
+      "Keyboard Enter opens semiconductor detail",
+      "Optional numbers and 2024 hollow isolated boundary marks",
+      "2010 period and return to overview",
+      "Medical technology group and no horizontal overflow at 1024 px",
+      "Unavailable comparison preserves primary country",
+      "World profile remains unsupported with no invented aggregate",
+      "WIPO to WDI resident-patent perspective and back",
+      "Coverage search opens exact medical-technology WIPO field through 2023",
+      "WIPO to WHO and back retains exact field"
+    ],
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "nativeClickAcceptance": false
+  },
+  "limitations": [
+    "Technology-field geography is not a complete economic sector.",
+    "2024 marking is an editorial boundary decision, not a provider per-cell preliminary flag.",
+    "No full native click regression: the native UI surface is unavailable in this session.",
+    "Pinned current export requires renewed source audit when WIPO revises it.",
+    "The broad R18 Atlas objective remains open."
+  ],
+  "cleanup": {
+    "nativeProcessesStopped": [
+      11428,
+      3924
+    ],
+    "browserViewportReset": true,
+    "temporaryBrowserTabClosed": true,
+    "viteStopped": true
+  }
+}

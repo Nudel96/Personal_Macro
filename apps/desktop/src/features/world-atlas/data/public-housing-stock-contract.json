@@ -1,0 +1,353 @@
+{
+  "sourceId": "oecd-housing-stock",
+  "sheet": "HM1.1.A1",
+  "rawFile": "oecd-housing-stock.xlsx",
+  "headers": [
+    {
+      "row": 0,
+      "column": 0,
+      "text": "Table HM1.1.A1. Total housing stock in OECD and EU countries, selected years"
+    },
+    {
+      "row": 1,
+      "column": 0,
+      "text": "Number of dwellings, total and per thousand inhabitants, around 2011, around 2018 and 2022 or latest year available"
+    },
+    {
+      "row": 3,
+      "column": 1,
+      "text": "Total number of dwellings"
+    },
+    {
+      "row": 3,
+      "column": 4,
+      "text": "Total Population (1000s)"
+    },
+    {
+      "row": 3,
+      "column": 7,
+      "text": "Dwellings per 1000 inhabitants"
+    },
+    {
+      "row": 3,
+      "column": 10,
+      "text": "Year of reference"
+    },
+    {
+      "row": 4,
+      "column": 1,
+      "text": "Around 2011"
+    },
+    {
+      "row": 4,
+      "column": 2,
+      "text": "Around 2018"
+    },
+    {
+      "row": 4,
+      "column": 3,
+      "text": "2022 or latest available year"
+    },
+    {
+      "row": 4,
+      "column": 7,
+      "text": "Around 2011"
+    },
+    {
+      "row": 4,
+      "column": 8,
+      "text": "Around 2018"
+    },
+    {
+      "row": 4,
+      "column": 9,
+      "text": "2022 or latest available year "
+    },
+    {
+      "row": 4,
+      "column": 10,
+      "text": "Around 2011"
+    },
+    {
+      "row": 4,
+      "column": 11,
+      "text": "Around 2018"
+    },
+    {
+      "row": 4,
+      "column": 12,
+      "text": "2022 or latest available year"
+    }
+  ],
+  "notes": [
+    {
+      "row": 49,
+      "text": "1. Data refer to the responses as in the 2023 and 2021 OECD Questionnaire on Affordable and Social Housing (QuASH) except for Croatia, Czech Republic, Hungary, Italy and Malta where data refer to RESH - Structural Housing Indicators - ECB Statistical Data Warehouse (europa.eu). Data Greece (2015), the Slovak Republic (2016) refers to Eurostat. Data Colombia (2018 and 2021) refers to DANE. Data Spain (2017 and 2022) refers to Ministerio de Transportes, Movilidad y Agenda Urbana. Data Switzerland (2021) refers to Federal Statistical Office. Data UK (England) (2021) to Ministry of Ministry of Housing Communities & Local Government. Data regarding total population refers to OECD Statistics, dataset of historical population and England refers to ONS Population estimates."
+    },
+    {
+      "row": 50,
+      "text": "Source: OECD Questionnaire on Affordable and Social Housing (2021 and 2023), OECD Statistics - Population, RESH - Structural Housing Indicators - ECB Statistical Data Warehouse (europa.eu) for Croatia, Czech Republic, Hungary, Italy and Malta, Eurostat - Housing in Europe for Greece and Slovak Republic, DANE - Proyecciones de Vivienda 2018-2050 for Colombia, Ministerio de Transportes, Movilidad y Agenda Urbana - Estimación del Parque de Viviendas for Spain, Federal Statistical Office - Construction and Housing for Switzerland, OECD Historical Population Database, Ministry of Housing Communities & Local Government - Live tables on dwelling stock and ONS - Population estimates for United Kingdom - England."
+    }
+  ],
+  "areas": [
+    {
+      "row": 5,
+      "label": "Australia",
+      "geographyId": "m49:036",
+      "years": [2011, 2018, 2022]
+    },
+    {
+      "row": 6,
+      "label": "Austria",
+      "geographyId": "m49:040",
+      "years": [2011, 2018, 2021]
+    },
+    {
+      "row": 7,
+      "label": "Belgium",
+      "geographyId": "m49:056",
+      "years": [2010, 2018, 2020]
+    },
+    {
+      "row": 8,
+      "label": "Brazil",
+      "geographyId": "m49:076",
+      "years": [2010, 2018, 2019]
+    },
+    {
+      "row": 9,
+      "label": "Bulgaria",
+      "geographyId": "m49:100",
+      "years": [2011, 2017, 2021]
+    },
+    {
+      "row": 10,
+      "label": "Canada",
+      "geographyId": "m49:124",
+      "years": [2011, 2016, 2021]
+    },
+    {
+      "row": 11,
+      "label": "Chile",
+      "geographyId": "m49:152",
+      "years": [2011, 2017, 2020]
+    },
+    {
+      "row": 12,
+      "label": "Colombia",
+      "geographyId": "m49:170",
+      "years": [2015, 2018, 2022]
+    },
+    {
+      "row": 13,
+      "label": "Costa Rica",
+      "geographyId": "m49:188",
+      "years": [2010, 2018, 2022]
+    },
+    {
+      "row": 14,
+      "label": "Croatia",
+      "geographyId": "m49:191",
+      "years": [2013, 2016, 2021]
+    },
+    {
+      "row": 15,
+      "label": "Cyprus",
+      "geographyId": "m49:196",
+      "years": [2010, 2018, 2020]
+    },
+    {
+      "row": 16,
+      "label": "Czechia",
+      "geographyId": "m49:203",
+      "years": [2011, 2015, 2021]
+    },
+    {
+      "row": 17,
+      "label": "Denmark",
+      "geographyId": "m49:208",
+      "years": [2010, 2018, 2022]
+    },
+    {
+      "row": 18,
+      "label": "Estonia",
+      "geographyId": "m49:233",
+      "years": [2011, 2017, 2019]
+    },
+    {
+      "row": 19,
+      "label": "Finland",
+      "geographyId": "m49:246",
+      "years": [2010, 2017, 2022]
+    },
+    {
+      "row": 20,
+      "label": "France",
+      "geographyId": "m49:250",
+      "years": [2011, 2018, 2019]
+    },
+    {
+      "row": 21,
+      "label": "Germany",
+      "geographyId": "m49:276",
+      "years": [2011, 2018, 2021]
+    },
+    {
+      "row": 22,
+      "label": "Greece",
+      "geographyId": "m49:300",
+      "years": [2011, 2015, null]
+    },
+    {
+      "row": 23,
+      "label": "Hungary",
+      "geographyId": "m49:348",
+      "years": [2011, 2018, 2022]
+    },
+    {
+      "row": 24,
+      "label": "Iceland",
+      "geographyId": "m49:352",
+      "years": [2010, 2018, 2022]
+    },
+    {
+      "row": 25,
+      "label": "Ireland",
+      "geographyId": "m49:372",
+      "years": [2011, 2016, 2022]
+    },
+    {
+      "row": 26,
+      "label": "Italy",
+      "geographyId": "m49:380",
+      "years": [2011, 2018, 2021]
+    },
+    {
+      "row": 27,
+      "label": "Japan",
+      "geographyId": "m49:392",
+      "years": [2013, 2018, null]
+    },
+    {
+      "row": 28,
+      "label": "Korea",
+      "geographyId": "m49:410",
+      "years": [2013, null, null]
+    },
+    {
+      "row": 29,
+      "label": "Latvia",
+      "geographyId": "m49:428",
+      "years": [2010, 2017, 2021]
+    },
+    {
+      "row": 30,
+      "label": "Lithuania",
+      "geographyId": "m49:440",
+      "years": [2010, 2018, 2019]
+    },
+    {
+      "row": 31,
+      "label": "Luxembourg",
+      "geographyId": "m49:442",
+      "years": [2011, 2017, 2020]
+    },
+    {
+      "row": 32,
+      "label": "Malta",
+      "geographyId": "m49:470",
+      "years": [2011, 2018, 2021]
+    },
+    {
+      "row": 33,
+      "label": "Netherlands",
+      "geographyId": "m49:528",
+      "years": [2012, 2018, 2021]
+    },
+    {
+      "row": 34,
+      "label": "New Zealand",
+      "geographyId": "m49:554",
+      "years": [2010, 2018, 2022]
+    },
+    {
+      "row": 35,
+      "label": "Norway",
+      "geographyId": "m49:578",
+      "years": [2011, 2018, 2022]
+    },
+    {
+      "row": 36,
+      "label": "Poland",
+      "geographyId": "m49:616",
+      "years": [2010, 2018, 2021]
+    },
+    {
+      "row": 37,
+      "label": "Portugal",
+      "geographyId": "m49:620",
+      "years": [2011, 2017, 2021]
+    },
+    {
+      "row": 38,
+      "label": "Romania",
+      "geographyId": "m49:642",
+      "years": [2010, 2018, 2021]
+    },
+    {
+      "row": 39,
+      "label": "Slovak Republic",
+      "geographyId": "m49:703",
+      "years": [2011, 2016, 2021]
+    },
+    {
+      "row": 40,
+      "label": "Slovenia",
+      "geographyId": "m49:705",
+      "years": [2011, 2018, 2021]
+    },
+    {
+      "row": 41,
+      "label": "South Africa",
+      "geographyId": "m49:710",
+      "years": [2011, 2016, null]
+    },
+    {
+      "row": 42,
+      "label": "Spain",
+      "geographyId": "m49:724",
+      "years": [2010, 2017, 2022]
+    },
+    {
+      "row": 43,
+      "label": "Sweden",
+      "geographyId": "m49:752",
+      "years": [2017, 2018, 2022]
+    },
+    {
+      "row": 44,
+      "label": "Switzerland",
+      "geographyId": "m49:756",
+      "years": [2013, 2017, 2022]
+    },
+    {
+      "row": 45,
+      "label": "Türkiye",
+      "geographyId": "m49:792",
+      "years": [2010, 2018, 2021]
+    },
+    {
+      "row": 46,
+      "label": "UK (England)",
+      "geographyId": "oecd:england",
+      "years": [2010, 2018, 2021]
+    },
+    {
+      "row": 47,
+      "label": "United States",
+      "geographyId": "m49:840",
+      "years": [2011, 2017, 2021]
+    }
+  ],
+  "expectedUndatedBlocks": 10
+}

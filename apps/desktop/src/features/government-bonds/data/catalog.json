@@ -1,0 +1,3394 @@
+{
+  "reviewedAt": "2026-09-10",
+  "sourceUrl": "https://eodhd.com/api/exchange-symbol-list/GBOND",
+  "methodologyUrl": "https://eodhd.com/financial-apis/macroeconomic-data-api",
+  "sha256": "04088e35b75d22fb5b114023a843a7f88d4ed9066e5533c76180b7706ed525d4",
+  "countries": [
+    {
+      "id": "ABW",
+      "name": "Aruba",
+      "region": "Americas"
+    },
+    {
+      "id": "AFG",
+      "name": "Afghanistan",
+      "region": "Asia"
+    },
+    {
+      "id": "AGO",
+      "name": "Angola",
+      "region": "Africa"
+    },
+    {
+      "id": "AIA",
+      "name": "Anguilla",
+      "region": "Americas"
+    },
+    {
+      "id": "ALA",
+      "name": "Ålandinseln",
+      "region": "Europe"
+    },
+    {
+      "id": "ALB",
+      "name": "Albanien",
+      "region": "Europe"
+    },
+    {
+      "id": "AND",
+      "name": "Andorra",
+      "region": "Europe"
+    },
+    {
+      "id": "ARE",
+      "name": "Vereinigte Arabische Emirate",
+      "region": "Asia"
+    },
+    {
+      "id": "ARG",
+      "name": "Argentinien",
+      "region": "Americas"
+    },
+    {
+      "id": "ARM",
+      "name": "Armenien",
+      "region": "Asia"
+    },
+    {
+      "id": "ASM",
+      "name": "Amerikanisch-Samoa",
+      "region": "Oceania"
+    },
+    {
+      "id": "ATA",
+      "name": "Antarktis",
+      "region": "Unassigned"
+    },
+    {
+      "id": "ATF",
+      "name": "Französische Süd- und Antarktisgebiete",
+      "region": "Africa"
+    },
+    {
+      "id": "ATG",
+      "name": "Antigua und Barbuda",
+      "region": "Americas"
+    },
+    {
+      "id": "AUS",
+      "name": "Australien",
+      "region": "Oceania"
+    },
+    {
+      "id": "AUT",
+      "name": "Österreich",
+      "region": "Europe"
+    },
+    {
+      "id": "AZE",
+      "name": "Aserbaidschan",
+      "region": "Asia"
+    },
+    {
+      "id": "BDI",
+      "name": "Burundi",
+      "region": "Africa"
+    },
+    {
+      "id": "BEL",
+      "name": "Belgien",
+      "region": "Europe"
+    },
+    {
+      "id": "BEN",
+      "name": "Benin",
+      "region": "Africa"
+    },
+    {
+      "id": "BES",
+      "name": "Karibische Niederlande",
+      "region": "Americas"
+    },
+    {
+      "id": "BFA",
+      "name": "Burkina Faso",
+      "region": "Africa"
+    },
+    {
+      "id": "BGD",
+      "name": "Bangladesch",
+      "region": "Asia"
+    },
+    {
+      "id": "BGR",
+      "name": "Bulgarien",
+      "region": "Europe"
+    },
+    {
+      "id": "BHR",
+      "name": "Bahrain",
+      "region": "Asia"
+    },
+    {
+      "id": "BHS",
+      "name": "Bahamas",
+      "region": "Americas"
+    },
+    {
+      "id": "BIH",
+      "name": "Bosnien und Herzegowina",
+      "region": "Europe"
+    },
+    {
+      "id": "BLM",
+      "name": "St. Barthélemy",
+      "region": "Americas"
+    },
+    {
+      "id": "BLR",
+      "name": "Belarus",
+      "region": "Europe"
+    },
+    {
+      "id": "BLZ",
+      "name": "Belize",
+      "region": "Americas"
+    },
+    {
+      "id": "BMU",
+      "name": "Bermuda",
+      "region": "Americas"
+    },
+    {
+      "id": "BOL",
+      "name": "Bolivien",
+      "region": "Americas"
+    },
+    {
+      "id": "BRA",
+      "name": "Brasilien",
+      "region": "Americas"
+    },
+    {
+      "id": "BRB",
+      "name": "Barbados",
+      "region": "Americas"
+    },
+    {
+      "id": "BRN",
+      "name": "Brunei Darussalam",
+      "region": "Asia"
+    },
+    {
+      "id": "BTN",
+      "name": "Bhutan",
+      "region": "Asia"
+    },
+    {
+      "id": "BVT",
+      "name": "Bouvetinsel",
+      "region": "Americas"
+    },
+    {
+      "id": "BWA",
+      "name": "Botsuana",
+      "region": "Africa"
+    },
+    {
+      "id": "CAF",
+      "name": "Zentralafrikanische Republik",
+      "region": "Africa"
+    },
+    {
+      "id": "CAN",
+      "name": "Kanada",
+      "region": "Americas"
+    },
+    {
+      "id": "CCK",
+      "name": "Kokosinseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "CHE",
+      "name": "Schweiz",
+      "region": "Europe"
+    },
+    {
+      "id": "CHL",
+      "name": "Chile",
+      "region": "Americas"
+    },
+    {
+      "id": "CHN",
+      "name": "China",
+      "region": "Asia"
+    },
+    {
+      "id": "CIV",
+      "name": "Côte d’Ivoire",
+      "region": "Africa"
+    },
+    {
+      "id": "CMR",
+      "name": "Kamerun",
+      "region": "Africa"
+    },
+    {
+      "id": "COD",
+      "name": "Kongo-Kinshasa",
+      "region": "Africa"
+    },
+    {
+      "id": "COG",
+      "name": "Kongo-Brazzaville",
+      "region": "Africa"
+    },
+    {
+      "id": "COK",
+      "name": "Cookinseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "COL",
+      "name": "Kolumbien",
+      "region": "Americas"
+    },
+    {
+      "id": "COM",
+      "name": "Komoren",
+      "region": "Africa"
+    },
+    {
+      "id": "CPV",
+      "name": "Cabo Verde",
+      "region": "Africa"
+    },
+    {
+      "id": "CRI",
+      "name": "Costa Rica",
+      "region": "Americas"
+    },
+    {
+      "id": "CUB",
+      "name": "Kuba",
+      "region": "Americas"
+    },
+    {
+      "id": "CUW",
+      "name": "Curaçao",
+      "region": "Americas"
+    },
+    {
+      "id": "CXR",
+      "name": "Weihnachtsinsel",
+      "region": "Oceania"
+    },
+    {
+      "id": "CYM",
+      "name": "Kaimaninseln",
+      "region": "Americas"
+    },
+    {
+      "id": "CYP",
+      "name": "Zypern",
+      "region": "Asia"
+    },
+    {
+      "id": "CZE",
+      "name": "Tschechien",
+      "region": "Europe"
+    },
+    {
+      "id": "DEU",
+      "name": "Deutschland",
+      "region": "Europe"
+    },
+    {
+      "id": "DJI",
+      "name": "Dschibuti",
+      "region": "Africa"
+    },
+    {
+      "id": "DMA",
+      "name": "Dominica",
+      "region": "Americas"
+    },
+    {
+      "id": "DNK",
+      "name": "Dänemark",
+      "region": "Europe"
+    },
+    {
+      "id": "DOM",
+      "name": "Dominikanische Republik",
+      "region": "Americas"
+    },
+    {
+      "id": "DZA",
+      "name": "Algerien",
+      "region": "Africa"
+    },
+    {
+      "id": "ECU",
+      "name": "Ecuador",
+      "region": "Americas"
+    },
+    {
+      "id": "EGY",
+      "name": "Ägypten",
+      "region": "Africa"
+    },
+    {
+      "id": "ERI",
+      "name": "Eritrea",
+      "region": "Africa"
+    },
+    {
+      "id": "ESH",
+      "name": "Westsahara",
+      "region": "Africa"
+    },
+    {
+      "id": "ESP",
+      "name": "Spanien",
+      "region": "Europe"
+    },
+    {
+      "id": "EST",
+      "name": "Estland",
+      "region": "Europe"
+    },
+    {
+      "id": "ETH",
+      "name": "Äthiopien",
+      "region": "Africa"
+    },
+    {
+      "id": "FIN",
+      "name": "Finnland",
+      "region": "Europe"
+    },
+    {
+      "id": "FJI",
+      "name": "Fidschi",
+      "region": "Oceania"
+    },
+    {
+      "id": "FLK",
+      "name": "Falklandinseln",
+      "region": "Americas"
+    },
+    {
+      "id": "FRA",
+      "name": "Frankreich",
+      "region": "Europe"
+    },
+    {
+      "id": "FRO",
+      "name": "Färöer",
+      "region": "Europe"
+    },
+    {
+      "id": "FSM",
+      "name": "Mikronesien",
+      "region": "Oceania"
+    },
+    {
+      "id": "GAB",
+      "name": "Gabun",
+      "region": "Africa"
+    },
+    {
+      "id": "GBR",
+      "name": "Vereinigtes Königreich",
+      "region": "Europe"
+    },
+    {
+      "id": "GEO",
+      "name": "Georgien",
+      "region": "Asia"
+    },
+    {
+      "id": "GGY",
+      "name": "Guernsey",
+      "region": "Europe"
+    },
+    {
+      "id": "GHA",
+      "name": "Ghana",
+      "region": "Africa"
+    },
+    {
+      "id": "GIB",
+      "name": "Gibraltar",
+      "region": "Europe"
+    },
+    {
+      "id": "GIN",
+      "name": "Guinea",
+      "region": "Africa"
+    },
+    {
+      "id": "GLP",
+      "name": "Guadeloupe",
+      "region": "Americas"
+    },
+    {
+      "id": "GMB",
+      "name": "Gambia",
+      "region": "Africa"
+    },
+    {
+      "id": "GNB",
+      "name": "Guinea-Bissau",
+      "region": "Africa"
+    },
+    {
+      "id": "GNQ",
+      "name": "Äquatorialguinea",
+      "region": "Africa"
+    },
+    {
+      "id": "GRC",
+      "name": "Griechenland",
+      "region": "Europe"
+    },
+    {
+      "id": "GRD",
+      "name": "Grenada",
+      "region": "Americas"
+    },
+    {
+      "id": "GRL",
+      "name": "Grönland",
+      "region": "Americas"
+    },
+    {
+      "id": "GTM",
+      "name": "Guatemala",
+      "region": "Americas"
+    },
+    {
+      "id": "GUF",
+      "name": "Französisch-Guayana",
+      "region": "Americas"
+    },
+    {
+      "id": "GUM",
+      "name": "Guam",
+      "region": "Oceania"
+    },
+    {
+      "id": "GUY",
+      "name": "Guyana",
+      "region": "Americas"
+    },
+    {
+      "id": "HKG",
+      "name": "Sonderverwaltungsregion Hongkong",
+      "region": "Asia"
+    },
+    {
+      "id": "HMD",
+      "name": "Heard und McDonaldinseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "HND",
+      "name": "Honduras",
+      "region": "Americas"
+    },
+    {
+      "id": "HRV",
+      "name": "Kroatien",
+      "region": "Europe"
+    },
+    {
+      "id": "HTI",
+      "name": "Haiti",
+      "region": "Americas"
+    },
+    {
+      "id": "HUN",
+      "name": "Ungarn",
+      "region": "Europe"
+    },
+    {
+      "id": "IDN",
+      "name": "Indonesien",
+      "region": "Asia"
+    },
+    {
+      "id": "IMN",
+      "name": "Isle of Man",
+      "region": "Europe"
+    },
+    {
+      "id": "IND",
+      "name": "Indien",
+      "region": "Asia"
+    },
+    {
+      "id": "IOT",
+      "name": "Britisches Territorium im Indischen Ozean",
+      "region": "Africa"
+    },
+    {
+      "id": "IRL",
+      "name": "Irland",
+      "region": "Europe"
+    },
+    {
+      "id": "IRN",
+      "name": "Iran",
+      "region": "Asia"
+    },
+    {
+      "id": "IRQ",
+      "name": "Irak",
+      "region": "Asia"
+    },
+    {
+      "id": "ISL",
+      "name": "Island",
+      "region": "Europe"
+    },
+    {
+      "id": "ISR",
+      "name": "Israel",
+      "region": "Asia"
+    },
+    {
+      "id": "ITA",
+      "name": "Italien",
+      "region": "Europe"
+    },
+    {
+      "id": "JAM",
+      "name": "Jamaika",
+      "region": "Americas"
+    },
+    {
+      "id": "JEY",
+      "name": "Jersey",
+      "region": "Europe"
+    },
+    {
+      "id": "JOR",
+      "name": "Jordanien",
+      "region": "Asia"
+    },
+    {
+      "id": "JPN",
+      "name": "Japan",
+      "region": "Asia"
+    },
+    {
+      "id": "KAZ",
+      "name": "Kasachstan",
+      "region": "Asia"
+    },
+    {
+      "id": "KEN",
+      "name": "Kenia",
+      "region": "Africa"
+    },
+    {
+      "id": "KGZ",
+      "name": "Kirgisistan",
+      "region": "Asia"
+    },
+    {
+      "id": "KHM",
+      "name": "Kambodscha",
+      "region": "Asia"
+    },
+    {
+      "id": "KIR",
+      "name": "Kiribati",
+      "region": "Oceania"
+    },
+    {
+      "id": "KNA",
+      "name": "St. Kitts und Nevis",
+      "region": "Americas"
+    },
+    {
+      "id": "KOR",
+      "name": "Südkorea",
+      "region": "Asia"
+    },
+    {
+      "id": "KWT",
+      "name": "Kuwait",
+      "region": "Asia"
+    },
+    {
+      "id": "LAO",
+      "name": "Laos",
+      "region": "Asia"
+    },
+    {
+      "id": "LBN",
+      "name": "Libanon",
+      "region": "Asia"
+    },
+    {
+      "id": "LBR",
+      "name": "Liberia",
+      "region": "Africa"
+    },
+    {
+      "id": "LBY",
+      "name": "Libyen",
+      "region": "Africa"
+    },
+    {
+      "id": "LCA",
+      "name": "St. Lucia",
+      "region": "Americas"
+    },
+    {
+      "id": "LIE",
+      "name": "Liechtenstein",
+      "region": "Europe"
+    },
+    {
+      "id": "LKA",
+      "name": "Sri Lanka",
+      "region": "Asia"
+    },
+    {
+      "id": "LSO",
+      "name": "Lesotho",
+      "region": "Africa"
+    },
+    {
+      "id": "LTU",
+      "name": "Litauen",
+      "region": "Europe"
+    },
+    {
+      "id": "LUX",
+      "name": "Luxemburg",
+      "region": "Europe"
+    },
+    {
+      "id": "LVA",
+      "name": "Lettland",
+      "region": "Europe"
+    },
+    {
+      "id": "MAC",
+      "name": "Sonderverwaltungsregion Macau",
+      "region": "Asia"
+    },
+    {
+      "id": "MAF",
+      "name": "St. Martin",
+      "region": "Americas"
+    },
+    {
+      "id": "MAR",
+      "name": "Marokko",
+      "region": "Africa"
+    },
+    {
+      "id": "MCO",
+      "name": "Monaco",
+      "region": "Europe"
+    },
+    {
+      "id": "MDA",
+      "name": "Republik Moldau",
+      "region": "Europe"
+    },
+    {
+      "id": "MDG",
+      "name": "Madagaskar",
+      "region": "Africa"
+    },
+    {
+      "id": "MDV",
+      "name": "Malediven",
+      "region": "Asia"
+    },
+    {
+      "id": "MEX",
+      "name": "Mexiko",
+      "region": "Americas"
+    },
+    {
+      "id": "MHL",
+      "name": "Marshallinseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "MKD",
+      "name": "Nordmazedonien",
+      "region": "Europe"
+    },
+    {
+      "id": "MLI",
+      "name": "Mali",
+      "region": "Africa"
+    },
+    {
+      "id": "MLT",
+      "name": "Malta",
+      "region": "Europe"
+    },
+    {
+      "id": "MMR",
+      "name": "Myanmar",
+      "region": "Asia"
+    },
+    {
+      "id": "MNE",
+      "name": "Montenegro",
+      "region": "Europe"
+    },
+    {
+      "id": "MNG",
+      "name": "Mongolei",
+      "region": "Asia"
+    },
+    {
+      "id": "MNP",
+      "name": "Nördliche Marianen",
+      "region": "Oceania"
+    },
+    {
+      "id": "MOZ",
+      "name": "Mosambik",
+      "region": "Africa"
+    },
+    {
+      "id": "MRT",
+      "name": "Mauretanien",
+      "region": "Africa"
+    },
+    {
+      "id": "MSR",
+      "name": "Montserrat",
+      "region": "Americas"
+    },
+    {
+      "id": "MTQ",
+      "name": "Martinique",
+      "region": "Americas"
+    },
+    {
+      "id": "MUS",
+      "name": "Mauritius",
+      "region": "Africa"
+    },
+    {
+      "id": "MWI",
+      "name": "Malawi",
+      "region": "Africa"
+    },
+    {
+      "id": "MYS",
+      "name": "Malaysia",
+      "region": "Asia"
+    },
+    {
+      "id": "MYT",
+      "name": "Mayotte",
+      "region": "Africa"
+    },
+    {
+      "id": "NAM",
+      "name": "Namibia",
+      "region": "Africa"
+    },
+    {
+      "id": "NCL",
+      "name": "Neukaledonien",
+      "region": "Oceania"
+    },
+    {
+      "id": "NER",
+      "name": "Niger",
+      "region": "Africa"
+    },
+    {
+      "id": "NFK",
+      "name": "Norfolkinsel",
+      "region": "Oceania"
+    },
+    {
+      "id": "NGA",
+      "name": "Nigeria",
+      "region": "Africa"
+    },
+    {
+      "id": "NIC",
+      "name": "Nicaragua",
+      "region": "Americas"
+    },
+    {
+      "id": "NIU",
+      "name": "Niue",
+      "region": "Oceania"
+    },
+    {
+      "id": "NLD",
+      "name": "Niederlande",
+      "region": "Europe"
+    },
+    {
+      "id": "NOR",
+      "name": "Norwegen",
+      "region": "Europe"
+    },
+    {
+      "id": "NPL",
+      "name": "Nepal",
+      "region": "Asia"
+    },
+    {
+      "id": "NRU",
+      "name": "Nauru",
+      "region": "Oceania"
+    },
+    {
+      "id": "NZL",
+      "name": "Neuseeland",
+      "region": "Oceania"
+    },
+    {
+      "id": "OMN",
+      "name": "Oman",
+      "region": "Asia"
+    },
+    {
+      "id": "PAK",
+      "name": "Pakistan",
+      "region": "Asia"
+    },
+    {
+      "id": "PAN",
+      "name": "Panama",
+      "region": "Americas"
+    },
+    {
+      "id": "PCN",
+      "name": "Pitcairninseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "PER",
+      "name": "Peru",
+      "region": "Americas"
+    },
+    {
+      "id": "PHL",
+      "name": "Philippinen",
+      "region": "Asia"
+    },
+    {
+      "id": "PLW",
+      "name": "Palau",
+      "region": "Oceania"
+    },
+    {
+      "id": "PNG",
+      "name": "Papua-Neuguinea",
+      "region": "Oceania"
+    },
+    {
+      "id": "POL",
+      "name": "Polen",
+      "region": "Europe"
+    },
+    {
+      "id": "PRI",
+      "name": "Puerto Rico",
+      "region": "Americas"
+    },
+    {
+      "id": "PRK",
+      "name": "Nordkorea",
+      "region": "Asia"
+    },
+    {
+      "id": "PRT",
+      "name": "Portugal",
+      "region": "Europe"
+    },
+    {
+      "id": "PRY",
+      "name": "Paraguay",
+      "region": "Americas"
+    },
+    {
+      "id": "PSE",
+      "name": "Palästinensische Autonomiegebiete",
+      "region": "Asia"
+    },
+    {
+      "id": "PYF",
+      "name": "Französisch-Polynesien",
+      "region": "Oceania"
+    },
+    {
+      "id": "QAT",
+      "name": "Katar",
+      "region": "Asia"
+    },
+    {
+      "id": "REU",
+      "name": "Réunion",
+      "region": "Africa"
+    },
+    {
+      "id": "ROU",
+      "name": "Rumänien",
+      "region": "Europe"
+    },
+    {
+      "id": "RUS",
+      "name": "Russland",
+      "region": "Europe"
+    },
+    {
+      "id": "RWA",
+      "name": "Ruanda",
+      "region": "Africa"
+    },
+    {
+      "id": "SAU",
+      "name": "Saudi-Arabien",
+      "region": "Asia"
+    },
+    {
+      "id": "SDN",
+      "name": "Sudan",
+      "region": "Africa"
+    },
+    {
+      "id": "SEN",
+      "name": "Senegal",
+      "region": "Africa"
+    },
+    {
+      "id": "SGP",
+      "name": "Singapur",
+      "region": "Asia"
+    },
+    {
+      "id": "SGS",
+      "name": "Südgeorgien und die Südlichen Sandwichinseln",
+      "region": "Americas"
+    },
+    {
+      "id": "SHN",
+      "name": "St. Helena",
+      "region": "Africa"
+    },
+    {
+      "id": "SJM",
+      "name": "Spitzbergen und Jan Mayen",
+      "region": "Europe"
+    },
+    {
+      "id": "SLB",
+      "name": "Salomonen",
+      "region": "Oceania"
+    },
+    {
+      "id": "SLE",
+      "name": "Sierra Leone",
+      "region": "Africa"
+    },
+    {
+      "id": "SLV",
+      "name": "El Salvador",
+      "region": "Americas"
+    },
+    {
+      "id": "SMR",
+      "name": "San Marino",
+      "region": "Europe"
+    },
+    {
+      "id": "SOM",
+      "name": "Somalia",
+      "region": "Africa"
+    },
+    {
+      "id": "SPM",
+      "name": "St. Pierre und Miquelon",
+      "region": "Americas"
+    },
+    {
+      "id": "SRB",
+      "name": "Serbien",
+      "region": "Europe"
+    },
+    {
+      "id": "SSD",
+      "name": "Südsudan",
+      "region": "Africa"
+    },
+    {
+      "id": "STP",
+      "name": "São Tomé und Príncipe",
+      "region": "Africa"
+    },
+    {
+      "id": "SUR",
+      "name": "Suriname",
+      "region": "Americas"
+    },
+    {
+      "id": "SVK",
+      "name": "Slowakei",
+      "region": "Europe"
+    },
+    {
+      "id": "SVN",
+      "name": "Slowenien",
+      "region": "Europe"
+    },
+    {
+      "id": "SWE",
+      "name": "Schweden",
+      "region": "Europe"
+    },
+    {
+      "id": "SWZ",
+      "name": "Eswatini",
+      "region": "Africa"
+    },
+    {
+      "id": "SXM",
+      "name": "Sint Maarten",
+      "region": "Americas"
+    },
+    {
+      "id": "SYC",
+      "name": "Seychellen",
+      "region": "Africa"
+    },
+    {
+      "id": "SYR",
+      "name": "Syrien",
+      "region": "Asia"
+    },
+    {
+      "id": "TCA",
+      "name": "Turks- und Caicosinseln",
+      "region": "Americas"
+    },
+    {
+      "id": "TCD",
+      "name": "Tschad",
+      "region": "Africa"
+    },
+    {
+      "id": "TGO",
+      "name": "Togo",
+      "region": "Africa"
+    },
+    {
+      "id": "THA",
+      "name": "Thailand",
+      "region": "Asia"
+    },
+    {
+      "id": "TJK",
+      "name": "Tadschikistan",
+      "region": "Asia"
+    },
+    {
+      "id": "TKL",
+      "name": "Tokelau",
+      "region": "Oceania"
+    },
+    {
+      "id": "TKM",
+      "name": "Turkmenistan",
+      "region": "Asia"
+    },
+    {
+      "id": "TLS",
+      "name": "Timor-Leste",
+      "region": "Asia"
+    },
+    {
+      "id": "TON",
+      "name": "Tonga",
+      "region": "Oceania"
+    },
+    {
+      "id": "TTO",
+      "name": "Trinidad und Tobago",
+      "region": "Americas"
+    },
+    {
+      "id": "TUN",
+      "name": "Tunesien",
+      "region": "Africa"
+    },
+    {
+      "id": "TUR",
+      "name": "Türkei",
+      "region": "Asia"
+    },
+    {
+      "id": "TUV",
+      "name": "Tuvalu",
+      "region": "Oceania"
+    },
+    {
+      "id": "TWN",
+      "name": "Taiwan",
+      "region": "Asia"
+    },
+    {
+      "id": "TZA",
+      "name": "Tansania",
+      "region": "Africa"
+    },
+    {
+      "id": "UGA",
+      "name": "Uganda",
+      "region": "Africa"
+    },
+    {
+      "id": "UKR",
+      "name": "Ukraine",
+      "region": "Europe"
+    },
+    {
+      "id": "UMI",
+      "name": "Amerikanische Überseeinseln",
+      "region": "Oceania"
+    },
+    {
+      "id": "URY",
+      "name": "Uruguay",
+      "region": "Americas"
+    },
+    {
+      "id": "USA",
+      "name": "Vereinigte Staaten",
+      "region": "Americas"
+    },
+    {
+      "id": "UZB",
+      "name": "Usbekistan",
+      "region": "Asia"
+    },
+    {
+      "id": "VAT",
+      "name": "Vatikanstadt",
+      "region": "Europe"
+    },
+    {
+      "id": "VCT",
+      "name": "St. Vincent und die Grenadinen",
+      "region": "Americas"
+    },
+    {
+      "id": "VEN",
+      "name": "Venezuela",
+      "region": "Americas"
+    },
+    {
+      "id": "VGB",
+      "name": "Britische Jungferninseln",
+      "region": "Americas"
+    },
+    {
+      "id": "VIR",
+      "name": "Amerikanische Jungferninseln",
+      "region": "Americas"
+    },
+    {
+      "id": "VNM",
+      "name": "Vietnam",
+      "region": "Asia"
+    },
+    {
+      "id": "VUT",
+      "name": "Vanuatu",
+      "region": "Oceania"
+    },
+    {
+      "id": "WLF",
+      "name": "Wallis und Futuna",
+      "region": "Oceania"
+    },
+    {
+      "id": "WSM",
+      "name": "Samoa",
+      "region": "Oceania"
+    },
+    {
+      "id": "XKX",
+      "name": "Kosovo",
+      "region": "Europe"
+    },
+    {
+      "id": "YEM",
+      "name": "Jemen",
+      "region": "Asia"
+    },
+    {
+      "id": "ZAF",
+      "name": "Südafrika",
+      "region": "Africa"
+    },
+    {
+      "id": "ZMB",
+      "name": "Sambia",
+      "region": "Africa"
+    },
+    {
+      "id": "ZWE",
+      "name": "Simbabwe",
+      "region": "Africa"
+    }
+  ],
+  "instruments": [
+    {
+      "symbol": "AT10Y.GBOND",
+      "countryId": "AUT",
+      "name": "Austria 10 Year Bond Yield",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Austria"
+    },
+    {
+      "symbol": "AT1Y.GBOND",
+      "countryId": "AUT",
+      "name": "Austria 1 Year Bond Yield",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Austria"
+    },
+    {
+      "symbol": "AT2Y.GBOND",
+      "countryId": "AUT",
+      "name": "Austria 2 Year Bond Yield",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Austria"
+    },
+    {
+      "symbol": "AU10Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "AU1Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "AU2Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "AU30Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia 30 Year bond-Yield",
+      "maturityMonths": 360,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "AU3Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "AU5Y.GBOND",
+      "countryId": "AUS",
+      "name": "Australia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "AUD",
+      "providerCountry": "Australia"
+    },
+    {
+      "symbol": "BD10Y.GBOND",
+      "countryId": "BGD",
+      "name": "Bangladesh Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "BDT",
+      "providerCountry": "Bangladesh"
+    },
+    {
+      "symbol": "BD20Y.GBOND",
+      "countryId": "BGD",
+      "name": "Bangladesh Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "BDT",
+      "providerCountry": "Bangladesh"
+    },
+    {
+      "symbol": "BD2Y.GBOND",
+      "countryId": "BGD",
+      "name": "Bangladesh Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "BDT",
+      "providerCountry": "Bangladesh"
+    },
+    {
+      "symbol": "BD5Y.GBOND",
+      "countryId": "BGD",
+      "name": "Bangladesh Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "BDT",
+      "providerCountry": "Bangladesh"
+    },
+    {
+      "symbol": "BE10Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE15Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE1Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE2Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE30Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE3Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE4Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 4Y",
+      "maturityMonths": 48,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE5Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BE7Y.GBOND",
+      "countryId": "BEL",
+      "name": "Belgium Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "EUR",
+      "providerCountry": "Belgium"
+    },
+    {
+      "symbol": "BR10Y.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "BR1Y.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "BR3M.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "BR3Y.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "BR5Y.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "BR6M.GBOND",
+      "countryId": "BRA",
+      "name": "Brazil Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "BRL",
+      "providerCountry": "Brazil"
+    },
+    {
+      "symbol": "CA10Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA1M.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA1Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA20Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada 20 Year bond Yield",
+      "maturityMonths": 240,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA2Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA30Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada 30 Year Bond Yield",
+      "maturityMonths": 360,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA3M.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA3Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA5Y.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CA6M.GBOND",
+      "countryId": "CAN",
+      "name": "Canada Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "CAD",
+      "providerCountry": "Canada"
+    },
+    {
+      "symbol": "CH10Y.GBOND",
+      "countryId": "CHL",
+      "name": "Chile Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "CLP",
+      "providerCountry": "Chile"
+    },
+    {
+      "symbol": "CI10Y.GBOND",
+      "countryId": "CIV",
+      "name": "Cote d'Ivoire Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "XOF",
+      "providerCountry": "Ivory Coast"
+    },
+    {
+      "symbol": "CI3Y.GBOND",
+      "countryId": "CIV",
+      "name": "Cote d'Ivoire Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "XOF",
+      "providerCountry": "Ivory Coast"
+    },
+    {
+      "symbol": "CN10Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CN1Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CN2Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CN30Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "CN3Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CN5Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CN7Y.GBOND",
+      "countryId": "CHN",
+      "name": "China Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "CNY",
+      "providerCountry": "China"
+    },
+    {
+      "symbol": "CO10Y.GBOND",
+      "countryId": "COL",
+      "name": "Colombia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "COP",
+      "providerCountry": "Colombia"
+    },
+    {
+      "symbol": "CO15Y.GBOND",
+      "countryId": "COL",
+      "name": "Colombia Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "COP",
+      "providerCountry": "Colombia"
+    },
+    {
+      "symbol": "CO2Y.GBOND",
+      "countryId": "COL",
+      "name": "Colombia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "COP",
+      "providerCountry": "Colombia"
+    },
+    {
+      "symbol": "CO5Y.GBOND",
+      "countryId": "COL",
+      "name": "Colombia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "COP",
+      "providerCountry": "Colombia"
+    },
+    {
+      "symbol": "CZ10Y.GBOND",
+      "countryId": "CZE",
+      "name": "Czech Republic Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "CZK",
+      "providerCountry": "Czech Republic"
+    },
+    {
+      "symbol": "CZ20Y.GBOND",
+      "countryId": "CZE",
+      "name": "Czech Republic Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "CZK",
+      "providerCountry": "Czech Republic"
+    },
+    {
+      "symbol": "CZ2Y.GBOND",
+      "countryId": "CZE",
+      "name": "Czech Republic Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "CZK",
+      "providerCountry": "Czech Republic"
+    },
+    {
+      "symbol": "CZ5Y.GBOND",
+      "countryId": "CZE",
+      "name": "Czech Republic Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "CZK",
+      "providerCountry": "Czech Republic"
+    },
+    {
+      "symbol": "DE10Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE1Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE2Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany 2 Year Schatz Yield",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE30Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany 30 Year Bond Yield",
+      "maturityMonths": 360,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE3M.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE3Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE5Y.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DE6M.GBOND",
+      "countryId": "DEU",
+      "name": "Germany Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Germany"
+    },
+    {
+      "symbol": "DK10Y.GBOND",
+      "countryId": "DNK",
+      "name": "Denmark Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "DKK",
+      "providerCountry": "Denmark"
+    },
+    {
+      "symbol": "DK2Y.GBOND",
+      "countryId": "DNK",
+      "name": "Denmark 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "DKK",
+      "providerCountry": "Denmark"
+    },
+    {
+      "symbol": "EG10Y.GBOND",
+      "countryId": "EGY",
+      "name": "Egypt Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EGP",
+      "providerCountry": "Egypt"
+    },
+    {
+      "symbol": "EG2Y.GBOND",
+      "countryId": "EGY",
+      "name": "Egypt Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "EGP",
+      "providerCountry": "Egypt"
+    },
+    {
+      "symbol": "EG5Y.GBOND",
+      "countryId": "EGY",
+      "name": "Egypt Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EGP",
+      "providerCountry": "Egypt"
+    },
+    {
+      "symbol": "ES10Y.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES1Y.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES2Y.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES3M.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES3Y.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES5Y.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "ES6M.GBOND",
+      "countryId": "ESP",
+      "name": "Spain Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Spain"
+    },
+    {
+      "symbol": "FI10Y.GBOND",
+      "countryId": "FIN",
+      "name": "Finland Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Finland"
+    },
+    {
+      "symbol": "FI2Y.GBOND",
+      "countryId": "FIN",
+      "name": "Finland 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Finland"
+    },
+    {
+      "symbol": "FR10Y.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR1M.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR1Y.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR2Y.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR3M.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR3Y.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR5Y.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "FR6M.GBOND",
+      "countryId": "FRA",
+      "name": "France Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "France"
+    },
+    {
+      "symbol": "GR10Y.GBOND",
+      "countryId": "GRC",
+      "name": "Greece Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Greece"
+    },
+    {
+      "symbol": "GR1M.GBOND",
+      "countryId": "GRC",
+      "name": "Greece Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "EUR",
+      "providerCountry": "Greece"
+    },
+    {
+      "symbol": "GR3M.GBOND",
+      "countryId": "GRC",
+      "name": "Greece Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Greece"
+    },
+    {
+      "symbol": "GR6M.GBOND",
+      "countryId": "GRC",
+      "name": "Greece Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Greece"
+    },
+    {
+      "symbol": "HK10Y.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK15Y.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 15-Year Bond Yield",
+      "maturityMonths": 180,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK1M.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 1-Month Bond Yield",
+      "maturityMonths": 1,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK1Y.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 1-Year Bond Yield",
+      "maturityMonths": 12,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK3M.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 3-Month Bond Yield",
+      "maturityMonths": 3,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK3Y.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 3-Year Bond Yield",
+      "maturityMonths": 36,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK5Y.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 5-Year Bond Yield",
+      "maturityMonths": 60,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HK6M.GBOND",
+      "countryId": "HKG",
+      "name": "Hong Kong 6-Month Bond Yield",
+      "maturityMonths": 6,
+      "currency": "HKD",
+      "providerCountry": "Hong Kong"
+    },
+    {
+      "symbol": "HR10Y.GBOND",
+      "countryId": "HRV",
+      "name": "Croatia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "HRK",
+      "providerCountry": "Croatia"
+    },
+    {
+      "symbol": "HR2Y.GBOND",
+      "countryId": "HRV",
+      "name": "Croatia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "HRK",
+      "providerCountry": "Croatia"
+    },
+    {
+      "symbol": "HR5Y.GBOND",
+      "countryId": "HRV",
+      "name": "Croatia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "HRK",
+      "providerCountry": "Croatia"
+    },
+    {
+      "symbol": "HU10Y.GBOND",
+      "countryId": "HUN",
+      "name": "Hungary Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "HUF",
+      "providerCountry": "Hungary"
+    },
+    {
+      "symbol": "HU2Y.GBOND",
+      "countryId": "HUN",
+      "name": "Hungary Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "HUF",
+      "providerCountry": "Hungary"
+    },
+    {
+      "symbol": "HU5Y.GBOND",
+      "countryId": "HUN",
+      "name": "Hungary Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "HUF",
+      "providerCountry": "Hungary"
+    },
+    {
+      "symbol": "ID10Y.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID1M.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 1 Month Bill Yield",
+      "maturityMonths": 1,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID1Y.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 52 Week Bill Yield",
+      "maturityMonths": 12,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID30Y.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "ID3M.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 3 Month Bill Yield",
+      "maturityMonths": 3,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID3Y.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 3 Year Note Yield",
+      "maturityMonths": 36,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID5Y.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 5 Year Note Yield",
+      "maturityMonths": 60,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "ID6M.GBOND",
+      "countryId": "IDN",
+      "name": "Indonesia 6 Month Bill Yield",
+      "maturityMonths": 6,
+      "currency": "IDR",
+      "providerCountry": "Indonesia"
+    },
+    {
+      "symbol": "IL10Y.GBOND",
+      "countryId": "ISR",
+      "name": "Israel Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "ILS",
+      "providerCountry": "Israel"
+    },
+    {
+      "symbol": "IL2Y.GBOND",
+      "countryId": "ISR",
+      "name": "Israel Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "ILS",
+      "providerCountry": "Israel"
+    },
+    {
+      "symbol": "IL30Y.GBOND",
+      "countryId": "ISR",
+      "name": "Israel Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "ILS",
+      "providerCountry": "Israel"
+    },
+    {
+      "symbol": "IL5Y.GBOND",
+      "countryId": "ISR",
+      "name": "Israel Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "ILS",
+      "providerCountry": "Israel"
+    },
+    {
+      "symbol": "IN10Y.GBOND",
+      "countryId": "IND",
+      "name": "India Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "INR",
+      "providerCountry": "India"
+    },
+    {
+      "symbol": "IN1Y.GBOND",
+      "countryId": "IND",
+      "name": "India Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "INR",
+      "providerCountry": "India"
+    },
+    {
+      "symbol": "IN2Y.GBOND",
+      "countryId": "IND",
+      "name": "India Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "INR",
+      "providerCountry": "India"
+    },
+    {
+      "symbol": "IN3M.GBOND",
+      "countryId": "IND",
+      "name": "India Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "INR",
+      "providerCountry": "India"
+    },
+    {
+      "symbol": "IN5Y.GBOND",
+      "countryId": "IND",
+      "name": "India Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "INR",
+      "providerCountry": "India"
+    },
+    {
+      "symbol": "IT10Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT1M.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT1Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT2Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy 24 Month CTZ Yield",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT30Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT3M.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT3Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT5Y.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "IT6M.GBOND",
+      "countryId": "ITA",
+      "name": "Italy Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Italy"
+    },
+    {
+      "symbol": "JP10Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP1M.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP1Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP2Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP30Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan 30 Year Bond Yield",
+      "maturityMonths": 360,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP3M.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP3Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP5Y.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "JP6M.GBOND",
+      "countryId": "JPN",
+      "name": "Japan Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "JPY",
+      "providerCountry": "Japan"
+    },
+    {
+      "symbol": "KE10Y.GBOND",
+      "countryId": "KEN",
+      "name": "Kenya Government Bond 10y",
+      "maturityMonths": 120,
+      "currency": "KES",
+      "providerCountry": "Kenya"
+    },
+    {
+      "symbol": "KR10Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KR1Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KR20Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KR2Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KR3Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KR5Y.GBOND",
+      "countryId": "KOR",
+      "name": "South Korea Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "KRW",
+      "providerCountry": "Korea"
+    },
+    {
+      "symbol": "KZ10Y.GBOND",
+      "countryId": "KAZ",
+      "name": "Kazakhstan Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "KZT",
+      "providerCountry": "Kazakhstan"
+    },
+    {
+      "symbol": "KZ15Y.GBOND",
+      "countryId": "KAZ",
+      "name": "Kazakhstan Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "KZT",
+      "providerCountry": "Kazakhstan"
+    },
+    {
+      "symbol": "KZ2Y.GBOND",
+      "countryId": "KAZ",
+      "name": "Kazakhstan Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "KZT",
+      "providerCountry": "Kazakhstan"
+    },
+    {
+      "symbol": "KZ5Y.GBOND",
+      "countryId": "KAZ",
+      "name": "Kazakhstan Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "KZT",
+      "providerCountry": "Kazakhstan"
+    },
+    {
+      "symbol": "LK10Y.GBOND",
+      "countryId": "LKA",
+      "name": "Sri Lanka Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "LKR",
+      "providerCountry": "Sri Lanka"
+    },
+    {
+      "symbol": "LK15Y.GBOND",
+      "countryId": "LKA",
+      "name": "Sri Lanka Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "LKR",
+      "providerCountry": "Sri Lanka"
+    },
+    {
+      "symbol": "LK2Y.GBOND",
+      "countryId": "LKA",
+      "name": "Sri Lanka Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "LKR",
+      "providerCountry": "Sri Lanka"
+    },
+    {
+      "symbol": "LK5Y.GBOND",
+      "countryId": "LKA",
+      "name": "Sri Lanka Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "LKR",
+      "providerCountry": "Sri Lanka"
+    },
+    {
+      "symbol": "MA10Y.GBOND",
+      "countryId": "MAR",
+      "name": "Morocco Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "MAD",
+      "providerCountry": "Morocco"
+    },
+    {
+      "symbol": "MA15Y.GBOND",
+      "countryId": "MAR",
+      "name": "Morocco Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "MAD",
+      "providerCountry": "Morocco"
+    },
+    {
+      "symbol": "MA2Y.GBOND",
+      "countryId": "MAR",
+      "name": "Morocco Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "MAD",
+      "providerCountry": "Morocco"
+    },
+    {
+      "symbol": "MA5Y.GBOND",
+      "countryId": "MAR",
+      "name": "Morocco Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "MAD",
+      "providerCountry": "Morocco"
+    },
+    {
+      "symbol": "MU10Y.GBOND",
+      "countryId": "MUS",
+      "name": "Mauritius Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "MUR",
+      "providerCountry": "Mauritius"
+    },
+    {
+      "symbol": "MU20Y.GBOND",
+      "countryId": "MUS",
+      "name": "Mauritius Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "MUR",
+      "providerCountry": "Mauritius"
+    },
+    {
+      "symbol": "MU2Y.GBOND",
+      "countryId": "MUS",
+      "name": "Mauritius Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "MUR",
+      "providerCountry": "Mauritius"
+    },
+    {
+      "symbol": "MU5Y.GBOND",
+      "countryId": "MUS",
+      "name": "Mauritius Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "MUR",
+      "providerCountry": "Mauritius"
+    },
+    {
+      "symbol": "MX10Y.GBOND",
+      "countryId": "MEX",
+      "name": "Mexico Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "MXN",
+      "providerCountry": "Mexico"
+    },
+    {
+      "symbol": "MY10Y.GBOND",
+      "countryId": "MYS",
+      "name": "Malaysia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "MYR",
+      "providerCountry": "Malaysia"
+    },
+    {
+      "symbol": "MY3Y.GBOND",
+      "countryId": "MYS",
+      "name": "Malaysia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "MY5Y.GBOND",
+      "countryId": "MYS",
+      "name": "Malaysia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "MYR",
+      "providerCountry": "Malaysia"
+    },
+    {
+      "symbol": "NA10Y.GBOND",
+      "countryId": "NAM",
+      "name": "Namibia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "NAD",
+      "providerCountry": "Namibia"
+    },
+    {
+      "symbol": "NA20Y.GBOND",
+      "countryId": "NAM",
+      "name": "Namibia Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "NAD",
+      "providerCountry": "Namibia"
+    },
+    {
+      "symbol": "NA3Y.GBOND",
+      "countryId": "NAM",
+      "name": "Namibia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "NAD",
+      "providerCountry": "Namibia"
+    },
+    {
+      "symbol": "NA7Y.GBOND",
+      "countryId": "NAM",
+      "name": "Namibia Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "NAD",
+      "providerCountry": "Namibia"
+    },
+    {
+      "symbol": "NG10Y.GBOND",
+      "countryId": "NGA",
+      "name": "Nigeria Government Bond 10y",
+      "maturityMonths": 120,
+      "currency": "NGN",
+      "providerCountry": "Nigeria"
+    },
+    {
+      "symbol": "NL10Y.GBOND",
+      "countryId": "NLD",
+      "name": "Netherlands Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Netherlands"
+    },
+    {
+      "symbol": "NL2Y.GBOND",
+      "countryId": "NLD",
+      "name": "Netherlands Government Bond 2 Years",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Netherlands"
+    },
+    {
+      "symbol": "NL3M.GBOND",
+      "countryId": "NLD",
+      "name": "Netherlands Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Netherlands"
+    },
+    {
+      "symbol": "NL6M.GBOND",
+      "countryId": "NLD",
+      "name": "Netherlands Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Netherlands"
+    },
+    {
+      "symbol": "NO10Y.GBOND",
+      "countryId": "NOR",
+      "name": "Norway Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "NOK",
+      "providerCountry": "Norway"
+    },
+    {
+      "symbol": "NZ10Y.GBOND",
+      "countryId": "NZL",
+      "name": "New Zealand Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "NZD",
+      "providerCountry": "New Zealand"
+    },
+    {
+      "symbol": "NZ2Y.GBOND",
+      "countryId": "NZL",
+      "name": "New Zealand 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "NZD",
+      "providerCountry": "New Zealand"
+    },
+    {
+      "symbol": "NZ5Y.GBOND",
+      "countryId": "NZL",
+      "name": "New Zealand Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "PH10Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH20Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH2Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH3Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH4Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 4Y",
+      "maturityMonths": 48,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH5Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PH7Y.GBOND",
+      "countryId": "PHL",
+      "name": "Philippines Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "PHP",
+      "providerCountry": "Philippines"
+    },
+    {
+      "symbol": "PK10Y.GBOND",
+      "countryId": "PAK",
+      "name": "Pakistan Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "PKR",
+      "providerCountry": "Pakistan"
+    },
+    {
+      "symbol": "PK20Y.GBOND",
+      "countryId": "PAK",
+      "name": "Pakistan Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "PKR",
+      "providerCountry": "Pakistan"
+    },
+    {
+      "symbol": "PK3Y.GBOND",
+      "countryId": "PAK",
+      "name": "Pakistan Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "PKR",
+      "providerCountry": "Pakistan"
+    },
+    {
+      "symbol": "PK5Y.GBOND",
+      "countryId": "PAK",
+      "name": "Pakistan Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "PKR",
+      "providerCountry": "Pakistan"
+    },
+    {
+      "symbol": "PL10Y.GBOND",
+      "countryId": "POL",
+      "name": "Poland Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "PLN",
+      "providerCountry": "Poland"
+    },
+    {
+      "symbol": "PL2Y.GBOND",
+      "countryId": "POL",
+      "name": "Poland Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "PLN",
+      "providerCountry": "Poland"
+    },
+    {
+      "symbol": "PL5Y.GBOND",
+      "countryId": "POL",
+      "name": "Poland Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "PLN",
+      "providerCountry": "Poland"
+    },
+    {
+      "symbol": "PT10Y.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "PT1Y.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "PT3M.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "PT3Y.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "PT5Y.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "PT6M.GBOND",
+      "countryId": "PRT",
+      "name": "Portugal Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "EUR",
+      "providerCountry": "Portugal"
+    },
+    {
+      "symbol": "RO10Y.GBOND",
+      "countryId": "ROU",
+      "name": "Romania Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "RON",
+      "providerCountry": "Romania"
+    },
+    {
+      "symbol": "RO2Y.GBOND",
+      "countryId": "ROU",
+      "name": "Romania Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "RON",
+      "providerCountry": "Romania"
+    },
+    {
+      "symbol": "RO5Y.GBOND",
+      "countryId": "ROU",
+      "name": "Romania Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "RON",
+      "providerCountry": "Romania"
+    },
+    {
+      "symbol": "RS10Y.GBOND",
+      "countryId": "SRB",
+      "name": "Serbia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "RSD",
+      "providerCountry": "Serbia"
+    },
+    {
+      "symbol": "RS3Y.GBOND",
+      "countryId": "SRB",
+      "name": "Serbia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "RSD",
+      "providerCountry": "Serbia"
+    },
+    {
+      "symbol": "RS7Y.GBOND",
+      "countryId": "SRB",
+      "name": "Serbia Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "RSD",
+      "providerCountry": "Serbia"
+    },
+    {
+      "symbol": "RU10Y.GBOND",
+      "countryId": "RUS",
+      "name": "Russia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "RUB",
+      "providerCountry": "Russia"
+    },
+    {
+      "symbol": "RU1Y.GBOND",
+      "countryId": "RUS",
+      "name": "Russia Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "RUB",
+      "providerCountry": "Russia"
+    },
+    {
+      "symbol": "RU2Y.GBOND",
+      "countryId": "RUS",
+      "name": "Russia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "RUB",
+      "providerCountry": "Russia"
+    },
+    {
+      "symbol": "RU3Y.GBOND",
+      "countryId": "RUS",
+      "name": "Russia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "RUB",
+      "providerCountry": "Russia"
+    },
+    {
+      "symbol": "RU5Y.GBOND",
+      "countryId": "RUS",
+      "name": "Russia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "RUB",
+      "providerCountry": "Russia"
+    },
+    {
+      "symbol": "SE10Y.GBOND",
+      "countryId": "SWE",
+      "name": "Sweden Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "SEK",
+      "providerCountry": "Sweden"
+    },
+    {
+      "symbol": "SE2Y.GBOND",
+      "countryId": "SWE",
+      "name": "Sweden 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "SEK",
+      "providerCountry": "Sweden"
+    },
+    {
+      "symbol": "SG10Y.GBOND",
+      "countryId": "SGP",
+      "name": "Singapore Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "SG5Y.GBOND",
+      "countryId": "SGP",
+      "name": "Singapore Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "SI10Y.GBOND",
+      "countryId": "SVN",
+      "name": "Slovenia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Slovenia"
+    },
+    {
+      "symbol": "SI20Y.GBOND",
+      "countryId": "SVN",
+      "name": "Slovenia Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "EUR",
+      "providerCountry": "Slovenia"
+    },
+    {
+      "symbol": "SI3Y.GBOND",
+      "countryId": "SVN",
+      "name": "Slovenia Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "EUR",
+      "providerCountry": "Slovenia"
+    },
+    {
+      "symbol": "SI5Y.GBOND",
+      "countryId": "SVN",
+      "name": "Slovenia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Slovenia"
+    },
+    {
+      "symbol": "SK10Y.GBOND",
+      "countryId": "SVK",
+      "name": "Slovakia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "EUR",
+      "providerCountry": "Slovakia"
+    },
+    {
+      "symbol": "SK2Y.GBOND",
+      "countryId": "SVK",
+      "name": "Slovakia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "EUR",
+      "providerCountry": "Slovakia"
+    },
+    {
+      "symbol": "SK30Y.GBOND",
+      "countryId": "SVK",
+      "name": "Slovakia Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "EUR",
+      "providerCountry": "Slovakia"
+    },
+    {
+      "symbol": "SK5Y.GBOND",
+      "countryId": "SVK",
+      "name": "Slovakia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "EUR",
+      "providerCountry": "Slovakia"
+    },
+    {
+      "symbol": "SW10Y.GBOND",
+      "countryId": "CHE",
+      "name": "Switzerland Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "CHF",
+      "providerCountry": "Switzerland"
+    },
+    {
+      "symbol": "SW2Y.GBOND",
+      "countryId": "CHE",
+      "name": "Switzerland 2 Year Note Yield",
+      "maturityMonths": 24,
+      "currency": "CHF",
+      "providerCountry": "Switzerland"
+    },
+    {
+      "symbol": "SW3M.GBOND",
+      "countryId": "CHE",
+      "name": "Switzerland 3 Month Note Yield",
+      "maturityMonths": 3,
+      "currency": "CHF",
+      "providerCountry": "Switzerland"
+    },
+    {
+      "symbol": "TH10Y.GBOND",
+      "countryId": "THA",
+      "name": "Thailand 10 Year Government Bond",
+      "maturityMonths": 120,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "TH5Y.GBOND",
+      "countryId": "THA",
+      "name": "Thailand 5 Year Government Bond",
+      "maturityMonths": 60,
+      "currency": null,
+      "providerCountry": null
+    },
+    {
+      "symbol": "TR10Y.GBOND",
+      "countryId": "TUR",
+      "name": "Turkey Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "TRY",
+      "providerCountry": "Turkey"
+    },
+    {
+      "symbol": "TW10Y.GBOND",
+      "countryId": "TWN",
+      "name": "Taiwan Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "TWD",
+      "providerCountry": "Taiwan"
+    },
+    {
+      "symbol": "TW20Y.GBOND",
+      "countryId": "TWN",
+      "name": "Taiwan Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "TWD",
+      "providerCountry": "Taiwan"
+    },
+    {
+      "symbol": "TW2Y.GBOND",
+      "countryId": "TWN",
+      "name": "Taiwan Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "TWD",
+      "providerCountry": "Taiwan"
+    },
+    {
+      "symbol": "TW30Y.GBOND",
+      "countryId": "TWN",
+      "name": "Taiwan Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "TWD",
+      "providerCountry": "Taiwan"
+    },
+    {
+      "symbol": "TW5Y.GBOND",
+      "countryId": "TWN",
+      "name": "Taiwan Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "TWD",
+      "providerCountry": "Taiwan"
+    },
+    {
+      "symbol": "UG10Y.GBOND",
+      "countryId": "UGA",
+      "name": "Uganda Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "UGX",
+      "providerCountry": "Uganda"
+    },
+    {
+      "symbol": "UG2Y.GBOND",
+      "countryId": "UGA",
+      "name": "Uganda Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "UGX",
+      "providerCountry": "Uganda"
+    },
+    {
+      "symbol": "UG5Y.GBOND",
+      "countryId": "UGA",
+      "name": "Uganda Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "UGX",
+      "providerCountry": "Uganda"
+    },
+    {
+      "symbol": "UK10Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK1M.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK1Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK2Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK30Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 30Y",
+      "maturityMonths": 360,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK3M.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 3M",
+      "maturityMonths": 3,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK3Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 3Y",
+      "maturityMonths": 36,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK5Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK6M.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "UK7Y.GBOND",
+      "countryId": "GBR",
+      "name": "UK Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "GBP",
+      "providerCountry": "UK"
+    },
+    {
+      "symbol": "US10Y.GBOND",
+      "countryId": "USA",
+      "name": "United States Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US1M.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 1M",
+      "maturityMonths": 1,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US1Y.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 1Y",
+      "maturityMonths": 12,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US20Y.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 20 Year",
+      "maturityMonths": 240,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US2Y.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US30Y.GBOND",
+      "countryId": "USA",
+      "name": "United States 30 Year Bond Yield",
+      "maturityMonths": 360,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US3M.GBOND",
+      "countryId": "USA",
+      "name": "United States 3 Month Bill Yield",
+      "maturityMonths": 3,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US3Y.GBOND",
+      "countryId": "USA",
+      "name": "United States 3 Year Note Yield",
+      "maturityMonths": 36,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US5Y.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US6M.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 6M",
+      "maturityMonths": 6,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "US7Y.GBOND",
+      "countryId": "USA",
+      "name": "US Government Bond 7Y",
+      "maturityMonths": 84,
+      "currency": "USD",
+      "providerCountry": "USA"
+    },
+    {
+      "symbol": "VN10Y.GBOND",
+      "countryId": "VNM",
+      "name": "Vietnam Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "VND",
+      "providerCountry": "Vietnam"
+    },
+    {
+      "symbol": "VN20Y.GBOND",
+      "countryId": "VNM",
+      "name": "Vietnam Government Bond 20Y",
+      "maturityMonths": 240,
+      "currency": "VND",
+      "providerCountry": "Vietnam"
+    },
+    {
+      "symbol": "VN2Y.GBOND",
+      "countryId": "VNM",
+      "name": "Vietnam Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "VND",
+      "providerCountry": "Vietnam"
+    },
+    {
+      "symbol": "VN5Y.GBOND",
+      "countryId": "VNM",
+      "name": "Vietnam Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "VND",
+      "providerCountry": "Vietnam"
+    },
+    {
+      "symbol": "ZA10Y.GBOND",
+      "countryId": "ZAF",
+      "name": "South Africa Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "ZAR",
+      "providerCountry": "South Africa"
+    },
+    {
+      "symbol": "ZM10Y.GBOND",
+      "countryId": "ZMB",
+      "name": "Zambia Government Bond 10Y",
+      "maturityMonths": 120,
+      "currency": "ZMW",
+      "providerCountry": "Zambia"
+    },
+    {
+      "symbol": "ZM15Y.GBOND",
+      "countryId": "ZMB",
+      "name": "Zambia Government Bond 15Y",
+      "maturityMonths": 180,
+      "currency": "ZMW",
+      "providerCountry": "Zambia"
+    },
+    {
+      "symbol": "ZM2Y.GBOND",
+      "countryId": "ZMB",
+      "name": "Zambia Government Bond 2Y",
+      "maturityMonths": 24,
+      "currency": "ZMW",
+      "providerCountry": "Zambia"
+    },
+    {
+      "symbol": "ZM5Y.GBOND",
+      "countryId": "ZMB",
+      "name": "Zambia Government Bond 5Y",
+      "maturityMonths": 60,
+      "currency": "ZMW",
+      "providerCountry": "Zambia"
+    }
+  ],
+  "excluded": [
+    {
+      "symbol": "USDSB3L1Y.GBOND",
+      "reason": "Zinsswap; keine Staatsanleihe."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+.atlas-innovation-chart {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.atlas-innovation-chart text {
+  fill: var(--text-2);
+  font-size: 11px;
+}
+.atlas-fiscal-controls .atlas-innovation-boundary {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

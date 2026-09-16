@@ -1,0 +1,70 @@
+{
+  "bis-dsr": {
+    "provenance": {
+      "sourceId": "bis-dsr",
+      "retrievedAt": "2026-09-10T22:44:34.414292+00:00",
+      "publishedAt": "2026-06-15",
+      "url": "https://data.bis.org/static/bulk/WS_DSR_csv_flat.zip",
+      "documentationUrl": "https://data.bis.org/topics/DSR",
+      "sha256": "8e01278e540ffde3b97c6f34593a7c2607cb3c9d08d8415a084cd9d4e1c93e5d",
+      "recipe": "bis-dsr-original-quarterly-2026-06-v1",
+      "sourceRows": 7116,
+      "numericValues": 7116,
+      "areaCount": 32
+    },
+    "profiles": 66,
+    "numericValues": 7116,
+    "missingValues": 0
+  },
+  "oecd-hours": {
+    "provenance": {
+      "sourceId": "oecd-hours",
+      "retrievedAt": "2026-09-10T22:44:38.105858+00:00",
+      "publishedAt": "nicht angegeben",
+      "url": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_HW@DF_AVG_ANN_HRS_WKD,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+      "documentationUrl": "https://www.oecd.org/en/data/indicators/hours-worked.html",
+      "sha256": "af224daff675ff3637940c25d70e266efe5e00fa84dd897eae049b7e4f001629",
+      "recipe": "oecd-hours-2025-source-20260911-v1",
+      "sourceRows": 3835,
+      "numericValues": 3722,
+      "areaCount": 45
+    },
+    "profiles": 89,
+    "numericValues": 3722,
+    "missingValues": 1
+  },
+  "oecd-wages": {
+    "provenance": {
+      "sourceId": "oecd-wages",
+      "retrievedAt": "2026-09-10T22:44:36.191477100+00:00",
+      "publishedAt": "nicht angegeben",
+      "url": "https://sdmx.oecd.org/public/rest/data/OECD.ELS.SAE,DSD_EARNINGS@AV_AN_WAGE,1.0/all?dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+      "documentationUrl": "https://www.oecd.org/en/data/indicators/average-annual-wages.html",
+      "sha256": "d6b83b419e9cf91bf41e3ba5d4207b0e4b7d2d2180e8b2aa265e1cbc29912a5e",
+      "recipe": "oecd-wages-2025-source-20260911-v1",
+      "sourceRows": 4049,
+      "numericValues": 1298,
+      "areaCount": 38
+    },
+    "profiles": 38,
+    "numericValues": 1298,
+    "missingValues": 0
+  },
+  "worldbank-wgi": {
+    "provenance": {
+      "sourceId": "worldbank-wgi",
+      "retrievedAt": "2026-09-10T22:44:57.747420100+00:00",
+      "publishedAt": "2026-03-11",
+      "url": "https://datacatalogfiles.worldbank.org/ddh-published/0038026/DR0095947/wgidataset_with_sourcedata-2025.xlsx",
+      "documentationUrl": "https://www.worldbank.org/en/publication/worldwide-governance-indicators",
+      "sha256": "25a2f9eabb90b0092973392c0b31571aa58b691cc5786292e504b52f693e1eb8",
+      "recipe": "wgi-2025-revision-absolute-score-v1",
+      "sourceRows": 32403,
+      "numericValues": 32319,
+      "areaCount": 215
+    },
+    "profiles": 1286,
+    "numericValues": 32319,
+    "missingValues": 0
+  }
+}

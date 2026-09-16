@@ -1,0 +1,618 @@
+[
+  {
+    "id": "iea:advanced_economies",
+    "label": "Fortgeschrittene Volkswirtschaften · IEA",
+    "iso3": "",
+    "regionId": "world",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:africa",
+    "label": "Afrika · IEA",
+    "iso3": "",
+    "regionId": "Africa",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:asia_pacific",
+    "label": "Asien und Pazifik · IEA",
+    "iso3": "",
+    "regionId": "Asia",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:developing_ex_china",
+    "label": "Entwicklungsvolkswirtschaften ohne China · IEA",
+    "iso3": "",
+    "regionId": "world",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:europe",
+    "label": "Europa · IEA",
+    "iso3": "",
+    "regionId": "Europe",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:european_union",
+    "label": "Europäische Union · IEA",
+    "iso3": "",
+    "regionId": "Europe",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:latin_america",
+    "label": "Lateinamerika · IEA",
+    "iso3": "",
+    "regionId": "Americas",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:middle_east_caspian",
+    "label": "Naher Osten und Kaspischer Raum · IEA",
+    "iso3": "",
+    "regionId": "Asia",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea:southeast_asia",
+    "label": "Südostasien · IEA",
+    "iso3": "",
+    "regionId": "Asia",
+    "kind": "aggregate"
+  },
+  {
+    "id": "eurostat:eu27_2020",
+    "label": "Europäische Union · 27 Länder · Eurostat",
+    "iso3": "",
+    "regionId": "Europe",
+    "kind": "aggregate"
+  },
+  {
+    "id": "oecd:england",
+    "label": "England · OECD-Wohnungsstatistik",
+    "iso3": "",
+    "regionId": "Europe",
+    "kind": "aggregate"
+  },
+  {
+    "id": "eu:am_priority",
+    "label": "EU-Patentämter und EPA · Prioritätsgebiet",
+    "iso3": "",
+    "regionId": "Europe",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:BON",
+    "label": "Bonaire · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "icp:EAB",
+    "label": "East Asia & Pacific (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:ECB",
+    "label": "Europe & Central Asia (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:HIB",
+    "label": "High income (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:LCB",
+    "label": "Latin America & Caribbean (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:LIB",
+    "label": "Low income (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:LMB",
+    "label": "Lower middle income (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:MEB",
+    "label": "Middle East & North Africa (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:NAB",
+    "label": "North America (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:SAB",
+    "label": "South Asia (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:SSB",
+    "label": "Sub-Saharan Africa (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "icp:UMB",
+    "label": "Upper middle income (Benchmark) · ICP",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "wto:918",
+    "label": "European Union · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:058",
+    "label": "Belgium-Luxembourg · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:201",
+    "label": "Czech and Slovak Federal Republic · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:230",
+    "label": "Ethiopia (+ Eritrea) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:532",
+    "label": "Netherlands Antilles (incl. Aruba) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:530",
+    "label": "Netherlands Antilles · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:278",
+    "label": "German Democratic Republic · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:720",
+    "label": "Yemen, People's Democratic Republic · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:886",
+    "label": "Yemen, Arab Republic of · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:891",
+    "label": "Serbia and Montenegro · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:890",
+    "label": "Yugoslavia, Socialist Federal Republic of · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:280",
+    "label": "Germany, Federal Republic of · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:810",
+    "label": "U.S.S.R. · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:983",
+    "label": "Australia and New Zealand · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:966",
+    "label": "Gulf Cooperation Council (GCC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:965",
+    "label": "Middle East · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:948",
+    "label": "Four East Asian traders · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:950",
+    "label": "Africa · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:OWE",
+    "label": "Non-EU western Europe · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:OCI",
+    "label": "Other CIS · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:997",
+    "label": "Least-developed countries · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:947",
+    "label": "OIC (Organisation of Islamic Cooperation) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:946",
+    "label": "G-7 (Group of Seven) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:932",
+    "label": "South and Central America and the Caribbean · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:949",
+    "label": "Six East Asian traders · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:981",
+    "label": "BRIC members · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:982",
+    "label": "BRICS members · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:OAS",
+    "label": "Other Asia · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:OSE",
+    "label": "Non-EU south-eastern Europe · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:OAF",
+    "label": "Other Africa · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:945",
+    "label": "OPEC (Organization of the Petroleum Exporting Countries) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:942",
+    "label": "Pacific Alliance · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:900",
+    "label": "WTO Members · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:LOX",
+    "label": "LDC oil exporters · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:943",
+    "label": "ECCAS (Economic Community of Central African States) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:927",
+    "label": "Euro Area (21) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:980",
+    "label": "Asia-Pacific Economic Cooperation (APEC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:985",
+    "label": "G-20 · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:977",
+    "label": "South Asian Association for Regional Cooperation (SAARC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:970",
+    "label": "Asia · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:959",
+    "label": "West African Economic Community (ECOWAS) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:986",
+    "label": "Africa, CIS and Middle East · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:944",
+    "label": "Southern Common Market (MERCOSUR) excluding Venezuela, Bolivarian Republic of · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:937",
+    "label": "Andean Community (ANDEAN) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:962",
+    "label": "African, Caribbean and Pacific States (ACP) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:910",
+    "label": "Commonwealth of Independent States (CIS), including certain associate and former member States · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:961",
+    "label": "Southern African Development Community (SADC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:941",
+    "label": "Caribbean Community (CARICOM) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:957",
+    "label": "West African Economic and Monetary Union (WAEMU) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:975",
+    "label": "Association of Southeast Asian Nations (ASEAN) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:LAX",
+    "label": "LDC exporters of agriculture · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:LFX",
+    "label": "LDC non-fuel mineral exporters · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:992",
+    "label": "Landlocked developing countries · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:LMX",
+    "label": "LDC exporters of manufactures · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:905",
+    "label": "Europe · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:958",
+    "label": "Common Market for Eastern and Southern Africa (COMESA) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:938",
+    "label": "Central American Common Market (CACM) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:940",
+    "label": "United States-Mexico-Canada Agreement (USMCA/CUSMA/T-MEC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:923",
+    "label": "European Free Trade Association (EFTA) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:902",
+    "label": "WTO Observer governments · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:964",
+    "label": "Central African Economic and Monetary Community (CAEMC) · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "wto:931",
+    "label": "North America · WTO",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "provider_area"
+  },
+  {
+    "id": "iea-storage:europe",
+    "label": "Europa · IEA-Batteriebericht",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  },
+  {
+    "id": "iea-storage:rest",
+    "label": "Übrige Welt · IEA-Batteriebericht",
+    "iso3": "",
+    "regionId": "Unassigned",
+    "kind": "aggregate"
+  }
+]

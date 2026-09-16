@@ -1,3 +1,6 @@
+export type { AtlasFiscalResponse } from "../features/world-atlas/atlas-fiscal";
+export type { AtlasHouseholdsResponse } from "../features/world-atlas/atlas-households";
+export type { AtlasDebtResponse } from "../features/world-atlas/atlas-debt";
 export type TradeStatus =
   | "draft"
   | "planned"
@@ -6,6 +9,14 @@ export type TradeStatus =
   | "cancelled"
   | "archived"
   | "trashed";
+
+export type {
+  AtlasSavedContext,
+  AtlasNotebookEntry,
+  AtlasNotebookSummary,
+  AtlasNotebookCreateInput,
+  AtlasNotebookUpdateInput,
+} from "../features/world-atlas/atlas-notebook-types";
 
 export type TradeDirection = "long" | "short";
 
@@ -227,6 +238,26 @@ export type TradeInput = Omit<
   "id" | "accountId" | "calculatedR" | "createdAt" | "updatedAt"
 > & { id?: string; accountId: string };
 
+export interface TradeScreenshotInput {
+  filename: string;
+  base64: string;
+}
+
+export interface ScreenshotWord {
+  text: string;
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+
+export interface TradeScreenshotAnalysis {
+  width: number;
+  height: number;
+  language: string;
+  lines: { text: string; words: ScreenshotWord[] }[];
+}
+
 export interface PagedTrades {
   items: TradeSummary[];
   total: number;
@@ -329,6 +360,30 @@ export interface MetricValue {
   n: number;
   status: "available" | "unavailable" | "special";
   reasonCode?: string | null;
+}
+
+export interface AccountCapitalPoint {
+  id: string;
+  occurredAt: string | null;
+  kind: string;
+  label: string;
+  changeMinor: number;
+  balanceMinor: number;
+  cumulativePnlMinor: number;
+}
+
+export interface AccountJournal {
+  accountId: string;
+  currency: string;
+  initialBalanceMinor: number;
+  cashflowMinor: number;
+  netPnlMinor: number;
+  journalBalanceMinor: number;
+  closedTrades: number;
+  openTrades: number;
+  missingPnlTrades: number;
+  brokerBalanceMinor: number | null;
+  capitalCurve: AccountCapitalPoint[];
 }
 
 export interface EquityPoint {
@@ -788,8 +843,16 @@ export type EconomicCalendarCategory =
   | "other";
 
 export interface EconomicCalendarInput {
-  range: "future7" | "future30" | "future90" | "today" | "week" | "month";
+  range:
+    | "currentWeek"
+    | "future7"
+    | "future30"
+    | "future90"
+    | "today"
+    | "week"
+    | "month";
   timezoneOffsetMinutes: number;
+  timezone?: string;
 }
 
 export interface EconomicCalendarEvent {
@@ -862,75 +925,6 @@ export interface EodhdMappingCandidate {
 export interface EodhdSyncResult {
   run: EodhdSyncRun;
   snapshot: MacroFundamentalsDashboard;
-}
-
-export type PutCallSentiment =
-  "bullish" | "neutral" | "bearish" | "unavailable";
-
-export type PutCallSourceOrientation = "direct" | "inverse";
-export type PutCallValueUnit =
-  "usd_notional" | "contracts" | "weighted_contracts";
-export type PutCallCalculationMethod =
-  | "official_notional_pdf"
-  | "reconstructed_weighted_pcr"
-  | "contract_volume_pcr";
-
-export interface PutCallAsset {
-  symbol: string;
-  label: string;
-  sourceSymbol: string;
-  sourceOrientation: PutCallSourceOrientation;
-}
-
-export interface PutCallPoint {
-  tradeDate: string;
-  rawRatio: number;
-  ma5?: number | null;
-  callValue: number;
-  putValue: number;
-  valueUnit: PutCallValueUnit;
-  calculationMethod: PutCallCalculationMethod;
-  methodLabel: string;
-  sourceFile?: string | null;
-  isPreliminary: boolean;
-}
-
-export interface PutCallThresholds {
-  bullish: number;
-  bearish: number;
-  sampleSize: number;
-}
-
-export interface PutCallDashboard {
-  assets: PutCallAsset[];
-  selectedAsset: PutCallAsset;
-  points: PutCallPoint[];
-  thresholds?: PutCallThresholds | null;
-  latestRawRatio?: number | null;
-  latestValue?: number | null;
-  sentiment: PutCallSentiment;
-  calibrationSampleSize: number;
-  lastSuccessfulSyncAt?: string | null;
-  lastTradeDate?: string | null;
-  lastRunStatus?: "success" | "failed" | null;
-  lastRunMessage?: string | null;
-  nativeOnly: boolean;
-}
-
-export interface PutCallSyncResult {
-  tradeDate: string;
-  storedAssets: number;
-  lastSyncedAt: string;
-}
-
-export interface PutCallBatchImportResult {
-  selectedFiles: number;
-  validTradingDays: number;
-  storedObservations: number;
-  skippedLowerPriority: number;
-  earliestTradeDate?: string | null;
-  latestTradeDate?: string | null;
-  importedAt: string;
 }
 
 export interface CotSignalComponent {
@@ -1183,6 +1177,7 @@ export interface CentralBankSummarySection {
 }
 
 export interface CentralBankReportSummary {
+  language?: string | null;
   overview: string;
   stance: "hawkish" | "dovish" | "neutral" | "unclear";
   sections: CentralBankSummarySection[];
@@ -1251,6 +1246,12 @@ export interface CentralBankSyncResult {
   reportsDownloaded: number;
   reportsSummarized: number;
   completedAt: string;
+}
+
+export interface CentralBankSummaryResult {
+  reportsSummarized: number;
+  reportsPending: number;
+  errorMessage?: string | null;
 }
 
 export interface SeasonalityItem {
@@ -1438,6 +1439,64 @@ export interface SeasonalityScreenerRow {
   calculatedAt: string;
   dataSource: string;
   missingDays: number;
+}
+
+export interface SeasonalityOpportunityInput {
+  asOf: string;
+  month: number | null;
+  universe: "fxFutures" | "forex" | "all";
+  limit: number;
+  minDays: number;
+  maxDays: number;
+  minYears: number;
+  lookbackYears: number;
+  upcomingOnly: boolean;
+}
+export interface SeasonalOpportunity {
+  id: string;
+  symbol: string;
+  label: string;
+  comparisonSymbol: string | null;
+  comparisonLabel: string | null;
+  startDate: string;
+  endDate: string;
+  calendarDays: number;
+  direction: -1 | 1;
+  meanReturn: number;
+  medianReturn: number;
+  comparisonMeanReturn: number | null;
+  comparisonMedianReturn: number | null;
+  meanDifference: number | null;
+  medianDifference: number | null;
+  hitRate: number;
+  wilsonLowerBound: number;
+  volatility: number;
+  samples: number;
+  years: number[];
+  observations: {
+    year: number;
+    entryDate: string;
+    exitDate: string;
+    returnValue: number;
+    comparisonReturn: number | null;
+  }[];
+  curve: { day: number; mean: number | null; samples: number }[];
+  source: string;
+  sourceSymbol: string;
+  comparisonSourceSymbol: string | null;
+  inverted: boolean;
+  comparisonInverted: boolean;
+}
+export interface SeasonalityOpportunityResponse {
+  input: SeasonalityOpportunityInput;
+  windows: SeasonalOpportunity[];
+  divergences: SeasonalOpportunity[];
+  instrumentCount: number;
+  currencyCount: number;
+  evaluatedWindows: number;
+  evaluatedDivergences: number;
+  unavailableReason: string | null;
+  excludedSymbols: string[];
 }
 
 export interface ReviewRecord {
@@ -1699,3 +1758,33 @@ export interface LegacyImportResult {
   imported: number;
   skipped: number;
 }
+export type {
+  AtlasCatalog,
+  AtlasSeriesInput,
+  AtlasSeriesResponse,
+  AtlasSyncJob,
+} from "../features/world-atlas/atlas-types";
+export type {
+  AtlasMarketProxy,
+  AtlasMarketResponse,
+} from "../features/world-atlas/atlas-market-types";
+export type { AtlasDemographyResponse } from "../features/world-atlas/atlas-demography-types";
+export type { AtlasHistoryResponse } from "../features/world-atlas/atlas-history";
+export type { AtlasEnergyResponse } from "../features/world-atlas/atlas-energy";
+export type { AtlasCapacityResponse } from "../features/world-atlas/atlas-capacity";
+export type { AtlasValuationResponse } from "../features/world-atlas/atlas-valuation-types";
+
+export type { AtlasCreditResponse } from "../features/world-atlas/atlas-credit";
+export type { AtlasMacrohistoryResponse } from "../features/world-atlas/atlas-macrohistory";
+
+export type { AtlasHousingRatiosResponse } from "../features/world-atlas/atlas-housing-ratios";
+export type { AtlasPropertyResponse } from "../features/world-atlas/atlas-property";
+export type { AtlasEducationResponse } from "../features/world-atlas/atlas-education";
+export type { AtlasAgricultureResponse } from "../features/world-atlas/atlas-agriculture";
+export type { AtlasCommodityResponse } from "../features/world-atlas/atlas-commodities";
+export type {
+  GovernmentBondsDashboard,
+  GovernmentBondDetail,
+  BondDetailInput,
+  BondSyncJob,
+} from "../features/government-bonds/government-bonds-types";

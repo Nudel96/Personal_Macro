@@ -735,6 +735,7 @@ async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
 
 async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
     let client = Client::builder()
+        .tls_backend_rustls()
         .user_agent("PersonalMacro/1.0 (+local COT collector)")
         .build()
         .map_err(|error| {

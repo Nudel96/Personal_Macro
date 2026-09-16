@@ -1,0 +1,90 @@
+{
+  "checkedAt": "2026-09-11T03:09:08.430Z",
+  "status": "passed",
+  "runtime": "Native Tauri / isolated com.personal-macro.atlas-public-20260911 / normal UI only",
+  "screenshots": [
+    "output/atlas-tiva-partners-comparison.png",
+    "output/atlas-tiva-partners-minwidth.png",
+    "output/atlas-tiva-india-supply.png"
+  ],
+  "checks": [
+    {
+      "label": "Germany/China full history with numbers hidden",
+      "geo": "m49:276",
+      "metric": "oecd-tiva-partners:CHN",
+      "numbers": false,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Germany/China exact source precision",
+      "geo": "m49:276",
+      "metric": "oecd-tiva-partners:CHN",
+      "numbers": true,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Largest partner click opens United States",
+      "geo": "m49:276",
+      "metric": "oecd-tiva-partners:USA",
+      "numbers": true,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Domestic diagonal explicitly excluded",
+      "passed": true
+    },
+    {
+      "label": "Germany and France share 0–100 source scale and calendar",
+      "passed": true
+    },
+    {
+      "label": "1024 px native viewport has no horizontal overflow; bars visually inspected",
+      "client": 1015,
+      "scroll": 1015,
+      "passed": true
+    },
+    {
+      "label": "World is not substituted with OECD regional total",
+      "passed": true
+    },
+    {
+      "label": "Foreign value added / Germany",
+      "geo": "m49:276",
+      "metric": "oecd-tiva-supply:EXGR_FVA",
+      "numbers": true,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Domestic value added / Germany",
+      "geo": "m49:276",
+      "metric": "oecd-tiva-supply:EXGR_DVA",
+      "numbers": true,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "India source identity and history",
+      "geo": "m49:356",
+      "metric": "oecd-tiva-supply:EXGR_DVA",
+      "numbers": true,
+      "points": 28,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Saved native view restores India / 2010 / numbers off",
+      "geo": "m49:356",
+      "metric": "oecd-tiva-supply:EXGR_DVA",
+      "numbers": false,
+      "points": 13,
+      "allOriginalValuesMatch": true
+    },
+    {
+      "label": "Saved source month and recipe preserved",
+      "passed": true
+    }
+  ]
+}

@@ -220,11 +220,17 @@ fn apply_pending_restore(paths: &AppPaths) -> Result<(), AppError> {
             "Staging-Datenbank für Wiederherstellung fehlt.".into(),
         ));
     }
-    fs::copy(&source_database, &paths.database)?;
+    fs::copy(&source_database, &paths.database).map_err(|error| {
+        AppError::Initialization(format!(
+            "Die geschlossene Journal-Datenbank konnte nicht wiederhergestellt werden: {error}"
+        ))
+    })?;
     for suffix in ["-wal", "-shm"] {
         let sidecar = PathBuf::from(format!("{}{}", paths.database.to_string_lossy(), suffix));
         if sidecar.is_file() {
-            fs::remove_file(sidecar)?;
+            fs::remove_file(sidecar).map_err(|error| {
+                AppError::Initialization(format!("Eine SQLite-Begleitdatei konnte bei der Wiederherstellung nicht entfernt werden: {error}"))
+            })?;
         }
     }
     let staged_media = canonical_staging.join("media");
@@ -263,6 +269,11 @@ fn apply_pending_restore(paths: &AppPaths) -> Result<(), AppError> {
         pending.staged_at, pending.source_backup
     )?;
     Ok(())
+}
+
+#[cfg(test)]
+pub(crate) fn apply_pending_restore_for_test(paths: &AppPaths) -> Result<(), AppError> {
+    apply_pending_restore(paths)
 }
 
 async fn seed_defaults(db: &SqlitePool) -> Result<(), AppError> {
