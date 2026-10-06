@@ -1,5 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import type { PrivateWebSession } from "./private-web-client";
+import type { TradeInput } from "../types/domain";
 
 const session = (): PrivateWebSession => ({
   authenticated: true,
@@ -43,6 +44,53 @@ describe("private media upload transport", () => {
     client.configurePrivateWebSession(value);
     return client;
   }
+
+  it("submits trade and original together as multipart with one operation and revision", async () => {
+    const current = session();
+    current.capabilities.push("create_trade_with_screenshot");
+    current.writableCommands.push("create_trade_with_screenshot");
+    const client = await configured(current);
+    const original = file();
+    const input = {
+      accountId: "account-a",
+      instrument: "EURUSD",
+      direction: "long",
+      status: "draft",
+    } as TradeInput;
+    fetchMock.mockResolvedValueOnce(
+      json({ ok: true, data: { id: "new-trade" }, revision: 8 }),
+    );
+    await expect(
+      client.privateWebTradeScreenshotUpload(original, input),
+    ).resolves.toEqual({ id: "new-trade" });
+    const [url, init] = fetchMock.mock.calls[0];
+    expect(url).toBe("/api/media");
+    const headers = new Headers(init?.headers);
+    expect(headers.has("Content-Type")).toBe(false);
+    expect(headers.get("X-Macro-CSRF-Token")).toBe(current.csrfToken);
+    const metadata = JSON.parse(
+      new TextDecoder().decode(
+        Uint8Array.from(
+          atob(
+            headers.get("X-Macro-Media")!.replace(/-/g, "+").replace(/_/g, "/"),
+          ),
+          (c) => c.charCodeAt(0),
+        ),
+      ),
+    );
+    expect(metadata).toMatchObject({
+      workspaceId: current.workspaceId,
+      expectedRevision: 7,
+      accountId: "account-a",
+      filename: original.name,
+    });
+    expect(metadata.operationId).toMatch(/^[a-f0-9-]{36}$/);
+    const body = init?.body as FormData;
+    expect(JSON.parse(String(body.get("trade")))).toEqual(input);
+    expect((body.get("image") as File).name).toBe(original.name);
+    expect(client.getPrivateWebClientState().revision).toBe(8);
+    expect(client.getPrivateWebClientState().writeInFlight).toBe(false);
+  });
 
   it("requires the session and an explicitly writable upload capability", async () => {
     const client = await import("./private-web-client");

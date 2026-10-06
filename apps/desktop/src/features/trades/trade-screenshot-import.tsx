@@ -338,7 +338,8 @@ export function TradeScreenshotImport({
       {!image && !error && (
         <p className="form-section-copy">
           Am besten eine einzelne Position mit sichtbaren Preislabels, Stop,
-          Ziel und Mengenangabe aufnehmen. PNG / JPEG · bis 12 MB.
+          Ziel und Mengenangabe aufnehmen. PNG / JPEG · bis{" "}
+          {isPrivateWeb() ? 3 : 12} MiB.
         </p>
       )}
       {image && (

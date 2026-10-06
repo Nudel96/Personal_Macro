@@ -75,4 +75,16 @@ und beide gezielt erneut erfolgreich geprüft. 87 Tests waren im Gesamtlauf
 ignoriert, darunter separat auszuführende Provider-/PostgreSQL-Prüfungen.
 Der neue PostgreSQL-Transfer-Test wurde ausdrücklich zusätzlich ausgeführt.
 ESLint und die Prüfung des Quellstands auf bekannte Secret-Formate bestehen.
-Live-Nachweise werden nach Abschluss ergänzt.
+Deployment `dpl_9BNy3eGwcPUKJekUenXZGmN6imCG` ist `READY`, `public: false`,
+in `fra1` und am stabilen Projektalias aktiviert. Der volle Leselauf besteht
+alle 22 Analyseprüfungen. Der separate mobile WebKit-Lauf besteht Übersicht,
+Trades und 16 weitere Seiten bei 390 px mit ausdrücklich ausgewähltem Konto:
+kein Seitenüberlauf, keine Laufzeit-/API-Fehler, keine persönlichen Schreibversuche.
+Atlas wurde im Browser nicht geöffnet, um seine automatische Ansichts-Speicherung
+zu vermeiden; seine Reader wurden per API geprüft. Die Journalrevision blieb
+unverändert. Die temporären Testzugänge sind widerrufen und ihre Sperre sowie
+HTTP 401 für anonyme Anfragen bestätigt. Nachweise außerhalb der versionierten
+Quellen: `.vercel/parity-full-read-report.json`, `parity-mobile-report.json`,
+`parity-alias-activation.json`. Der frühere Prüfer erwartete fälschlich deaktivierte
+Berichtsautomatik und einen anderen Kalendertitel; diese Prüfannahmen wurden an
+den aktuellen Vertrag angepasst.
