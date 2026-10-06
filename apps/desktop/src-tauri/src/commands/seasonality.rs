@@ -1,15 +1,19 @@
 use std::{cmp::Ordering, collections::BTreeMap};
 
+use crate::runtime::State;
 use chrono::{Datelike, NaiveDate, TimeZone, Utc};
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
     commands::eodhd_prices,
     database::AppState,
     errors::{AppError, CommandError, CommandResult},
+    metrics::seasonality_opportunities::{
+        MarketWindowInput, OpportunitySeries, SeasonalOpportunity, complete_years,
+        scan_market_windows,
+    },
 };
 
 const MIN_COMPLETE_YEARS: usize = 10;
@@ -293,6 +297,12 @@ pub struct SeasonalityScreenerRow {
     pub calculated_at: String,
     pub data_source: String,
     pub missing_days: usize,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub as_of: Option<NaiveDate>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub horizon_end: Option<NaiveDate>,
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub upcoming_windows: Option<Vec<SeasonalOpportunity>>,
 }
 
 #[derive(Debug, Clone, FromRow)]
@@ -340,7 +350,7 @@ async fn profile_candles(state: &AppState, row: &ProfileRow) -> CommandResult<Ve
         .map_err(CommandError::from)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_seasonality(state: State<'_, AppState>) -> CommandResult<SeasonalityDashboard> {
     let assets = provider_profile_rows(&state).await?;
     let latest_profile_at: Option<String> = sqlx::query_scalar(
@@ -399,7 +409,7 @@ pub async fn get_seasonality(state: State<'_, AppState>) -> CommandResult<Season
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_seasonality_asset_detail(
     state: State<'_, AppState>,
     symbol: String,
@@ -410,7 +420,7 @@ pub async fn get_seasonality_asset_detail(
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn analyze_seasonality(
     state: State<'_, AppState>,
     input: SeasonalityAnalysisInput,
@@ -431,14 +441,69 @@ pub async fn analyze_seasonality(
     analysis_from_candles(row, &candles, input)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_seasonality_screener(
     state: State<'_, AppState>,
+    input: Option<MarketWindowInput>,
 ) -> CommandResult<Vec<SeasonalityScreenerRow>> {
+    if let Some(input) = &input {
+        input.validate().map_err(CommandError::validation)?;
+    }
     let profiles = provider_profile_rows(&state).await?;
     let mut output = Vec::with_capacity(profiles.len());
     for row in profiles {
         let candles = profile_candles(&state, &row).await?;
+        if let Some(input) = &input {
+            let series = OpportunitySeries {
+                symbol: row.symbol.clone(),
+                label: row
+                    .description
+                    .clone()
+                    .unwrap_or_else(|| row.symbol.clone()),
+                currency: None,
+                source: row.data_source.clone(),
+                source_symbol: row.provider_symbol.clone(),
+                inverted: false,
+                prices: candles
+                    .iter()
+                    .filter_map(|(time, close)| {
+                        let date = Utc.timestamp_opt(*time, 0).single()?.date_naive();
+                        (close.is_finite() && *close > 0.0).then_some((date, *close))
+                    })
+                    .collect(),
+            };
+            let complete_years = complete_years(&series.prices, &input.cohort_input()).len();
+            let worker_input = input.clone();
+            let upcoming_windows =
+                crate::runtime::spawn_blocking(move || scan_market_windows(&series, &worker_input))
+                    .await
+                    .map_err(|_| {
+                        CommandError::validation(
+                            "Die 90-Tage-Fenstersuche konnte nicht abgeschlossen werden.",
+                        )
+                    })?;
+            output.push(SeasonalityScreenerRow {
+                symbol: row.symbol,
+                category: row.category,
+                description: row.description,
+                complete_years,
+                quality_status: if complete_years >= 5 {
+                    "available"
+                } else {
+                    "insufficient"
+                }
+                .into(),
+                bullish_window: None,
+                bearish_window: None,
+                calculated_at: row.calculated_at,
+                data_source: row.data_source,
+                missing_days: row.missing_days.max(0) as usize,
+                as_of: Some(input.as_of),
+                horizon_end: Some(input.horizon_end()),
+                upcoming_windows: Some(upcoming_windows),
+            });
+            continue;
+        }
         if let Some((bullish_window, bearish_window)) = screener_windows(&candles) {
             output.push(SeasonalityScreenerRow {
                 symbol: row.symbol.clone(),
@@ -451,6 +516,9 @@ pub async fn get_seasonality_screener(
                 calculated_at: row.calculated_at,
                 data_source: row.data_source,
                 missing_days: row.missing_days.max(0) as usize,
+                as_of: None,
+                horizon_end: None,
+                upcoming_windows: None,
             });
         }
     }
@@ -523,7 +591,7 @@ fn screener_windows(
     Some((bullish.into_iter().next(), bearish.into_iter().next()))
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_seasonality_forex_pairs(
     state: State<'_, AppState>,
 ) -> CommandResult<Vec<SeasonalityForexPair>> {
@@ -576,7 +644,7 @@ pub async fn scheduled_seasonality_sync(state: &AppState) -> CommandResult<()> {
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn refresh_seasonality_data(
     state: State<'_, AppState>,
 ) -> CommandResult<SeasonalityDashboard> {

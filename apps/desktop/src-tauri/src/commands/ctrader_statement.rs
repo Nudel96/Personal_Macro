@@ -6,6 +6,7 @@ use std::{
     str::FromStr,
 };
 
+use crate::runtime::State;
 use calamine::{Data, Reader, Xlsx};
 use chrono::{FixedOffset, LocalResult, NaiveDateTime, TimeZone, Utc};
 use chrono_tz::Tz;
@@ -13,7 +14,6 @@ use regex::Regex;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use sqlx::{Row, SqlitePool};
-use tauri::State;
 use uuid::Uuid;
 
 use super::metatrader_html::{
@@ -276,7 +276,7 @@ impl StatementOffset {
     }
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn preview_ctrader_statement(
     state: State<'_, AppState>,
     input: CTraderStatementPreviewInput,
@@ -290,7 +290,7 @@ pub async fn preview_ctrader_statement(
     .await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn commit_ctrader_statement(
     state: State<'_, AppState>,
     input: CTraderStatementCommitInput,

@@ -1,24 +1,17 @@
 import type { AtlasFiscalResponse } from "../types/domain";
+import type {
+  MyfxbookConnection,
+  MyfxbookLogin,
+  MyfxbookPreview,
+  MyfxbookSummary,
+} from "../types/domain";
 import { invoke } from "@tauri-apps/api/core";
+import { isPrivateWeb } from "./runtime-mode";
 import {
-  browserAccountBootstrap,
-  browserAccountJournal,
-  browserAccountCashflows,
-  browserSaveAccount,
-  browserArchiveAccount,
-  browserAddAccountCashflow,
-} from "./accounts-browser";
-import {
-  browserBootstrap,
-  browserCreateTrade,
-  browserDashboard,
-  browserGetTrade,
-  browserListTrades,
-  browserListDeletedTrades,
-  browserRestoreTrade,
-  browserTrashTrade,
-  browserUpdateTrade,
-} from "./browser-adapter";
+  privateWebCall,
+  privateWebTradeScreenshotUpload,
+} from "./private-web-client";
+
 import type {
   GovernmentBondsDashboard,
   GovernmentBondDetail,
@@ -78,6 +71,7 @@ import type {
   SeasonalityAnalysis,
   SeasonalityAnalysisInput,
   SeasonalityScreenerRow,
+  SeasonalityScreenerInput,
   SeasonalityOpportunityInput,
   SeasonalityOpportunityResponse,
   GoalInput,
@@ -129,6 +123,14 @@ import type {
 } from "../features/world-atlas/atlas-notebook-types";
 
 export const isTauri = () => "__TAURI_INTERNALS__" in window;
+// Hosted mode stays on the real backend even before authentication succeeds.
+// It must never select the local preview after a session or network failure.
+export const usesCommandBackend = () => isTauri() || isPrivateWeb();
+const myfxbookDesktopRequired = <T>(): Promise<T> =>
+  Promise.reject({
+    code: "DESKTOP_REQUIRED",
+    message: "Myfxbook kann nur in der Desktop-App sicher verbunden werden.",
+  });
 const atlasPersonalDesktopRequired = () =>
   Promise.reject({
     code: "DESKTOP_REQUIRED",
@@ -152,15 +154,53 @@ async function call<T>(
   args?: Record<string, unknown>,
 ): Promise<T> {
   try {
-    return await invoke<T>(command, args);
+    return isPrivateWeb()
+      ? await privateWebCall<T>(command, args)
+      : await invoke<T>(command, args);
   } catch (error) {
     throw normalizeError(error);
   }
 }
 
 export const api = {
+  cloudBackups: (): Promise<
+    import("../types/cloud-transfer").CloudBackupRecord[]
+  > => call("list_cloud_backups"),
+  createCloudBackup: (): Promise<
+    import("../types/cloud-transfer").CloudBackupRecord
+  > => call("create_cloud_backup"),
+  cloudBackup: (
+    id: string,
+  ): Promise<import("../types/cloud-transfer").CloudTransferSnapshot> =>
+    call("get_cloud_backup", { id }),
+  restoreCloudBackup: (
+    id: string,
+    confirmation: string,
+  ): Promise<{ safetyBackupId: string }> =>
+    call("restore_cloud_backup", { input: { id, confirmation } }),
+  importTradesBatch: (
+    accountId: string,
+    trades: TradeInput[],
+  ): Promise<{ imported: number }> =>
+    call("import_trades_batch", { input: { accountId, trades } }),
+  learningProgress: (): Promise<unknown> => call("get_learning_progress"),
+  saveLearningProgress: (input: {
+    version: number;
+    known: string[];
+    saved: string[];
+    notes: Record<string, string>;
+    last: { lesson: string; step: number } | null;
+  }): Promise<void> => call("save_learning_progress", { input }),
+  weatherForecast: (
+    assetId: string,
+  ): Promise<import("../types/domain").WeatherEnvelope> =>
+    usesCommandBackend()
+      ? call("get_weather_forecast", { input: { assetId } })
+      : import("./weather-browser").then((m) =>
+          m.browserWeatherForecast(assetId),
+        ),
   governmentBonds: (): Promise<GovernmentBondsDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_government_bonds")
       : import("./government-bonds-browser").then((m) =>
           m.browserGovernmentBonds(),
@@ -168,7 +208,7 @@ export const api = {
   governmentBondDetail: (
     input: BondDetailInput,
   ): Promise<GovernmentBondDetail> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_government_bond_detail", { input })
       : import("./government-bonds-browser").then((m) =>
           m.browserGovernmentBondDetail(input),
@@ -176,39 +216,41 @@ export const api = {
   syncGovernmentBonds: (
     countryId: string | null = null,
   ): Promise<BondSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_government_bonds", { countryId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Staatsanleihe-Renditen werden in der Desktop-App geladen.",
         } satisfies CommandError),
   governmentBondSync: (): Promise<BondSyncJob | null> =>
-    isTauri() ? call("get_government_bond_sync") : Promise.resolve(null),
+    usesCommandBackend()
+      ? call("get_government_bond_sync")
+      : Promise.resolve(null),
   cancelGovernmentBondSync: (jobId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("cancel_government_bond_sync", { jobId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Im Browser läuft kein Anleiheabruf.",
         } satisfies CommandError),
   atlasNotebook: (trashed = false): Promise<AtlasNotebookSummary[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_atlas_notebook", { trashed })
       : atlasPersonalDesktopRequired(),
   atlasNotebookEntry: (id: string): Promise<AtlasNotebookEntry> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_notebook_entry", { id })
       : atlasPersonalDesktopRequired(),
   createAtlasNotebookEntry: (
     input: AtlasNotebookCreateInput,
   ): Promise<AtlasNotebookEntry> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_atlas_notebook_entry", { input })
       : atlasPersonalDesktopRequired(),
   updateAtlasNotebookEntry: (
     input: AtlasNotebookUpdateInput,
   ): Promise<AtlasNotebookEntry> =>
-    isTauri()
+    usesCommandBackend()
       ? call("update_atlas_notebook_entry", { input })
       : atlasPersonalDesktopRequired(),
   trashAtlasNotebookEntry: (
@@ -216,51 +258,53 @@ export const api = {
     revision: number,
     trashed: boolean,
   ): Promise<AtlasNotebookEntry> =>
-    isTauri()
+    usesCommandBackend()
       ? call("trash_atlas_notebook_entry", { id, revision, trashed })
       : atlasPersonalDesktopRequired(),
   atlasLastContext: (): Promise<AtlasSavedContext | null> =>
-    isTauri() ? call("get_atlas_last_context") : atlasPersonalDesktopRequired(),
+    usesCommandBackend()
+      ? call("get_atlas_last_context")
+      : atlasPersonalDesktopRequired(),
   saveAtlasLastContext: (context: AtlasSavedContext): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_atlas_last_context", { context })
       : atlasPersonalDesktopRequired(),
   atlasValuation: (datasetId: string): Promise<AtlasValuationResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_valuation", { datasetId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasValuation(datasetId),
         ),
   syncAtlasValuation: (datasetId: string): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_valuation", { datasetId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Bewertungstabellen werden in der Desktop-App geladen.",
         } satisfies CommandError),
   cancelAtlasValuation: (jobId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("cancel_atlas_valuation", { jobId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Im Browser läuft kein nativer Bewertungsabruf.",
         } satisfies CommandError),
   syncAtlasStatisticsBatch: (seriesIds: string[]): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_statistics_batch", { seriesIds })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Länderstatistiken werden in der Desktop-App geladen.",
         } satisfies CommandError),
   cancelAtlasStatisticsBatch: (jobId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("cancel_atlas_statistics_batch", { jobId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Im Browser läuft kein nativer Statistikabruf.",
         } satisfies CommandError),
   atlasEnergy: (geographyId: string): Promise<AtlasEnergyResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_energy", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasEnergy(geographyId),
@@ -268,13 +312,13 @@ export const api = {
   atlasHousingRatios: (
     geographyId: string,
   ): Promise<AtlasHousingRatiosResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_housing_ratios", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasHousingRatios(geographyId),
         ),
   atlasEducation: (geographyId: string): Promise<AtlasEducationResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_education", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasEducation(geographyId),
@@ -284,47 +328,47 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-agriculture").AtlasAgricultureResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_agriculture", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasAgriculture(geographyId),
         ),
   syncAtlasAgriculture: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_agriculture")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "FAO-Produktionsdaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasEducation: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_education")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "UNESCO-Bildungsdaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasHousingRatios: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_housing_ratios")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "OECD-Wohnvergleiche werden in der Desktop-App geladen.",
         } satisfies CommandError),
   atlasProperty: (geographyId: string): Promise<AtlasPropertyResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_property", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasProperty(geographyId),
         ),
   syncAtlasProperty: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_property")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "BIS-Immobiliendaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   atlasCredit: (geographyId: string): Promise<AtlasCreditResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_credit", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasCredit(geographyId),
@@ -332,11 +376,11 @@ export const api = {
   atlasCommodities: (): Promise<
     import("../features/world-atlas/atlas-commodities").AtlasCommodityResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_commodities")
       : import("./atlas-browser").then((m) => m.browserAtlasCommodities()),
   syncAtlasCommodities: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_commodities")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -347,7 +391,7 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-labor").AtlasLaborResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_labor", { geographyId })
       : import("./atlas-browser").then((m) => m.browserAtlasLabor(geographyId)),
   atlasPublicSource: (
@@ -356,13 +400,13 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-public").AtlasPublicResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_public_source", { sourceId, geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasPublicSource(sourceId, geographyId),
         ),
   syncAtlasPublicSource: (sourceId: string): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_public_source", { sourceId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -374,20 +418,20 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-findex").AtlasFindexResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_findex", { geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasFindex(geographyId),
         ),
   syncAtlasFindex: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_findex")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Findex-Erhebungen werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasLabor: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_labor")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -398,13 +442,13 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-innovation").AtlasInnovationResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_innovation", { geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasInnovation(geographyId),
         ),
   syncAtlasInnovation: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_innovation")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -415,13 +459,13 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-health").AtlasHealthResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_health", { geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasHealth(geographyId),
         ),
   syncAtlasHealth: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_health")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -430,18 +474,18 @@ export const api = {
   atlasDebt: (
     geographyId: string,
   ): Promise<import("../features/world-atlas/atlas-debt").AtlasDebtResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_debt", { geographyId })
       : import("./atlas-browser").then((m) => m.browserAtlasDebt(geographyId)),
   syncAtlasDebt: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_debt")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "BIS-Schuldenbilder werden in der Desktop-App geladen.",
         } satisfies CommandError),
   atlasFiscal: (geographyId: string): Promise<AtlasFiscalResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_fiscal", { geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasFiscal(geographyId),
@@ -451,20 +495,20 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-households").AtlasHouseholdsResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_households", { geographyId })
       : import("./atlas-browser").then((m) =>
           m.browserAtlasHouseholds(geographyId),
         ),
   syncAtlasHouseholds: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_households")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "UN-Haushaltsdaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasFiscal: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_fiscal")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -475,40 +519,40 @@ export const api = {
   ): Promise<
     import("../features/world-atlas/atlas-macrohistory").AtlasMacrohistoryResponse
   > =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_macrohistory", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasMacrohistory(geographyId),
         ),
   syncAtlasMacrohistory: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_macrohistory")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Historische JST-Daten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasCredit: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_credit")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "BIS-Kreditdaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   atlasCapacity: (geographyId: string): Promise<AtlasCapacityResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_capacity", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasCapacity(geographyId),
         ),
   syncAtlasCapacity: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_capacity")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "IRENA-Anlagendaten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   syncAtlasEnergy: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_energy")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -516,27 +560,27 @@ export const api = {
             "Stromdaten werden in der Desktop-App geladen und lokal gespeichert.",
         } satisfies CommandError),
   syncAtlasMarketBatch: (proxyIds: string[]): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_market_batch", { proxyIds })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Marktgeschichten werden in der Desktop-App geladen.",
         } satisfies CommandError),
   cancelAtlasMarketBatch: (jobId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("cancel_atlas_market_batch", { jobId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Im Browser läuft kein nativer Markt-Abruf.",
         } satisfies CommandError),
   atlasHistory: (geographyId: string): Promise<AtlasHistoryResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_history", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasHistory(geographyId),
         ),
   syncAtlasHistory: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_history")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -544,13 +588,13 @@ export const api = {
             "Historische Daten werden in der Desktop-App geladen und lokal gespeichert.",
         } satisfies CommandError),
   atlasDemography: (geographyId: string): Promise<AtlasDemographyResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_demography", { geographyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasDemography(geographyId),
         ),
   syncAtlasDemography: (): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_demography")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -558,13 +602,13 @@ export const api = {
             "UN-Demografiedaten werden in der Desktop-App geladen und lokal gespeichert.",
         } satisfies CommandError),
   atlasMarket: (proxyId: string): Promise<AtlasMarketResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_market", { proxyId })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasMarket(proxyId),
         ),
   syncAtlasMarket: (proxyId: string): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_market", { proxyId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -572,19 +616,19 @@ export const api = {
             "Marktgeschichten werden über die vorhandene EODHD-Konfiguration in der Desktop-App geladen.",
         } satisfies CommandError),
   atlasCatalog: (): Promise<AtlasCatalog> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_catalog")
       : import("../features/world-atlas/atlas-catalog").then(
           (module) => module.atlasCatalog,
         ),
   atlasSeries: (input: AtlasSeriesInput): Promise<AtlasSeriesResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_series", { input })
       : import("./atlas-browser").then((module) =>
           module.browserAtlasSeries(input),
         ),
   syncAtlasSeries: (seriesId: string): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_series", { seriesId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -592,11 +636,11 @@ export const api = {
             "Öffentliche Atlas-Daten werden in der Desktop-App geladen und lokal gespeichert.",
         } satisfies CommandError),
   atlasSyncStatus: (jobId?: string): Promise<AtlasSyncJob | null> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_atlas_sync_status", { jobId })
       : Promise.resolve(null),
   syncAtlasLibrary: (includeMarkets = false): Promise<AtlasSyncJob> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_atlas_library", { includeMarkets })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -604,32 +648,48 @@ export const api = {
             "Der Atlas-Datenbestand wird in der Desktop-App lokal ergänzt.",
         } satisfies CommandError),
   cancelAtlasLibrary: (jobId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("cancel_atlas_library", { jobId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Der Abruf läuft nur in der Desktop-App.",
         } satisfies CommandError),
   bootstrap: (): Promise<BootstrapData> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_bootstrap_data")
-      : Promise.resolve().then(browserAccountBootstrap),
+      : import("./accounts-browser").then((module) =>
+          module.browserAccountBootstrap(),
+        ),
   accountJournal: (accountId: string): Promise<AccountJournal> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_account_journal", { accountId })
-      : Promise.resolve().then(() => browserAccountJournal(accountId)),
+      : Promise.resolve().then(() =>
+          import("./accounts-browser").then((module) =>
+            module.browserAccountJournal(accountId),
+          ),
+        ),
   saveAccount: (input: AccountInput): Promise<Account> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_account", { input })
-      : Promise.resolve().then(() => browserSaveAccount(input)),
+      : Promise.resolve().then(() =>
+          import("./accounts-browser").then((module) =>
+            module.browserSaveAccount(input),
+          ),
+        ),
   archiveAccount: (id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("archive_account", { id })
-      : Promise.resolve().then(() => browserArchiveAccount(id)),
+      : Promise.resolve().then(() =>
+          import("./accounts-browser").then((module) =>
+            module.browserArchiveAccount(id),
+          ),
+        ),
   brokerConnections: (): Promise<BrokerConnection[]> =>
-    isTauri() ? call("list_broker_connections") : Promise.resolve([]),
+    usesCommandBackend()
+      ? call("list_broker_connections")
+      : Promise.resolve([]),
   detectMt5Account: (terminalPath?: string): Promise<Mt5AccountSnapshot> =>
-    isTauri()
+    usesCommandBackend()
       ? call("detect_mt5_account", { input: { terminalPath } })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -640,14 +700,14 @@ export const api = {
     name?: string;
     defaultRiskPercent: number;
   }): Promise<ConnectedAccountResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_account_from_mt5", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Die lokale MT5-Verbindung benötigt die Desktop-App.",
         } satisfies CommandError),
   cTraderAuthorization: (): Promise<CTraderAuthorization> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_ctrader_authorization")
       : Promise.resolve({
           configured: false,
@@ -656,7 +716,7 @@ export const api = {
   exchangeCTraderCode: (
     codeOrRedirectUrl: string,
   ): Promise<CTraderCandidateResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("exchange_ctrader_code", { input: { codeOrRedirectUrl } })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -668,14 +728,14 @@ export const api = {
     name?: string;
     defaultRiskPercent: number;
   }): Promise<ConnectedAccountResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_account_from_ctrader", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Die cTrader-Verbindung benötigt die Desktop-App.",
         } satisfies CommandError),
   refreshBrokerConnection: (connectionId: string): Promise<BrokerConnection> =>
-    isTauri()
+    usesCommandBackend()
       ? call("refresh_broker_connection", { connectionId })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -683,86 +743,156 @@ export const api = {
             "Broker-Verbindungen werden nur in der Desktop-App aktualisiert.",
         } satisfies CommandError),
   disconnectBrokerConnection: (connectionId: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("disconnect_broker_connection", { connectionId })
       : Promise.resolve(),
   accountCashflows: (accountId: string): Promise<AccountCashflow[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_account_cashflows", { accountId })
-      : Promise.resolve().then(() => browserAccountCashflows(accountId)),
+      : Promise.resolve().then(() =>
+          import("./accounts-browser").then((module) =>
+            module.browserAccountCashflows(accountId),
+          ),
+        ),
+  myfxbookConnections: (): Promise<MyfxbookConnection[]> =>
+    usesCommandBackend() ? call("myfxbook_connections") : Promise.resolve([]),
+  providerAutomationStatus: (): Promise<
+    import("../types/provider-automation").ProviderAutomationStatus
+  > => call("get_provider_automation_status"),
+  myfxbookLogin: (input: {
+    email: string;
+    password: string;
+  }): Promise<MyfxbookLogin> =>
+    usesCommandBackend()
+      ? call("myfxbook_login", { input })
+      : myfxbookDesktopRequired(),
+  myfxbookPreview: (input: {
+    authorizationId: string;
+    accountId: string;
+    externalId: string;
+    brokerTimezone: string;
+  }): Promise<MyfxbookPreview> =>
+    usesCommandBackend()
+      ? call("myfxbook_preview", { input })
+      : myfxbookDesktopRequired(),
+  myfxbookActivate: (previewId: string): Promise<MyfxbookSummary> =>
+    usesCommandBackend()
+      ? call("myfxbook_activate", { previewId })
+      : myfxbookDesktopRequired(),
+  myfxbookSync: (accountId: string): Promise<MyfxbookSummary> =>
+    usesCommandBackend()
+      ? call("myfxbook_sync", { accountId })
+      : myfxbookDesktopRequired(),
+  myfxbookSetEnabled: (accountId: string, enabled: boolean): Promise<void> =>
+    usesCommandBackend()
+      ? call("myfxbook_set_enabled", { accountId, enabled })
+      : myfxbookDesktopRequired(),
+  myfxbookDisconnect: (accountId: string): Promise<void> =>
+    usesCommandBackend()
+      ? call("myfxbook_disconnect", { accountId })
+      : myfxbookDesktopRequired(),
   addAccountCashflow: (
     input: Omit<AccountCashflow, "id" | "createdAt">,
   ): Promise<AccountCashflow> =>
-    isTauri()
+    usesCommandBackend()
       ? call("add_account_cashflow", { input })
-      : Promise.resolve().then(() => browserAddAccountCashflow(input)),
+      : Promise.resolve().then(() =>
+          import("./accounts-browser").then((module) =>
+            module.browserAddAccountCashflow(input),
+          ),
+        ),
   listTrades: (
     accountId: string,
     filter: Omit<TradeFilter, "accountIds"> = {},
   ): Promise<PagedTrades> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_trades", { accountId, filter })
-      : browserListTrades({ ...filter, accountIds: [accountId] }),
+      : import("./browser-adapter").then((module) =>
+          module.browserListTrades({ ...filter, accountIds: [accountId] }),
+        ),
   getTrade: (accountId: string, id: string): Promise<TradeDetail> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_trade", { accountId, id })
-      : browserGetTrade(accountId, id),
+      : import("./browser-adapter").then((module) =>
+          module.browserGetTrade(accountId, id),
+        ),
   createTrade: (input: TradeInput): Promise<TradeDetail> =>
-    isTauri() ? call("create_trade", { input }) : browserCreateTrade(input),
+    usesCommandBackend()
+      ? call("create_trade", { input })
+      : import("./browser-adapter").then((module) =>
+          module.browserCreateTrade(input),
+        ),
   analyzeTradeScreenshot: (
     input: TradeScreenshotInput,
   ): Promise<TradeScreenshotAnalysis> =>
     isTauri()
       ? call("analyze_trade_screenshot", { input })
-      : Promise.reject({
-          code: "DESKTOP_REQUIRED",
-          message:
-            "Die lokale Screenshot-Erkennung ist in der Windows-Desktop-App verfügbar.",
-        } satisfies CommandError),
+      : import("./screenshot-browser").then((module) =>
+          module.analyzeBrowserScreenshot(input),
+        ),
   createTradeWithScreenshot: (
     input: TradeInput,
     screenshot: TradeScreenshotInput,
   ): Promise<TradeDetail> =>
-    isTauri()
-      ? call("create_trade_with_screenshot", { input, screenshot })
-      : Promise.reject({
-          code: "DESKTOP_REQUIRED",
-          message:
-            "Screenshots werden in der Windows-Desktop-App am Trade gespeichert.",
-        } satisfies CommandError),
+    isPrivateWeb()
+      ? import("./screenshot-browser").then((module) =>
+          privateWebTradeScreenshotUpload(
+            module.screenshotFile(screenshot),
+            input,
+          ),
+        )
+      : isTauri()
+        ? call("create_trade_with_screenshot", { input, screenshot })
+        : Promise.reject({
+            code: "DESKTOP_REQUIRED",
+            message:
+              "Screenshots werden in der Windows-Desktop-App am Trade gespeichert.",
+          } satisfies CommandError),
   updateTrade: (
     accountId: string,
     id: string,
     input: TradeInput,
   ): Promise<TradeDetail> =>
-    isTauri()
+    usesCommandBackend()
       ? call("update_trade", { id, input: { ...input, accountId } })
-      : browserUpdateTrade(accountId, id, input),
+      : import("./browser-adapter").then((module) =>
+          module.browserUpdateTrade(accountId, id, input),
+        ),
   trashTrade: (accountId: string, id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("trash_trade", { accountId, id })
-      : browserTrashTrade(accountId, id),
+      : import("./browser-adapter").then((module) =>
+          module.browserTrashTrade(accountId, id),
+        ),
   deletedTrades: (accountId: string): Promise<DeletedTrade[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_deleted_trades", { accountId })
-      : browserListDeletedTrades(accountId),
+      : import("./browser-adapter").then((module) =>
+          module.browserListDeletedTrades(accountId),
+        ),
   restoreTrade: (accountId: string, id: string): Promise<TradeDetail> =>
-    isTauri()
+    usesCommandBackend()
       ? call("restore_trade", { accountId, id })
-      : browserRestoreTrade(accountId, id),
+      : import("./browser-adapter").then((module) =>
+          module.browserRestoreTrade(accountId, id),
+        ),
   duplicateTrade: (accountId: string, id: string): Promise<TradeDetail> =>
-    isTauri()
+    usesCommandBackend()
       ? call("duplicate_trade", { accountId, id })
       : (async () => {
-          const trade = await browserGetTrade(accountId, id);
-          const duplicated = await browserCreateTrade({
-            ...trade,
-            accountId,
-            id: undefined,
-            status: "draft",
-            openedAt: null,
-            closedAt: null,
-          });
+          const trade = await import("./browser-adapter").then((module) =>
+            module.browserGetTrade(accountId, id),
+          );
+          const duplicated = await import("./browser-adapter").then((module) =>
+            module.browserCreateTrade({
+              ...trade,
+              accountId,
+              id: undefined,
+              status: "draft",
+              openedAt: null,
+              closedAt: null,
+            }),
+          );
           const workspace = await import("./workspace-browser");
           const context = await workspace.getBrowserTradeContext(accountId, id);
           await workspace.saveBrowserTradeContext(accountId, {
@@ -780,7 +910,7 @@ export const api = {
           return duplicated;
         })(),
   tradeContext: (accountId: string, tradeId: string): Promise<TradeContext> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_trade_context", { accountId, tradeId })
       : import("./workspace-browser").then((module) =>
           module.getBrowserTradeContext(accountId, tradeId),
@@ -789,43 +919,43 @@ export const api = {
     accountId: string,
     input: TradeContextInput,
   ): Promise<TradeContext> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_trade_context", { accountId, input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserTradeContext(accountId, input),
         ),
   savedViews: (scope: string): Promise<SavedView[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_saved_views", { scope })
       : import("./workspace-browser").then((module) =>
           module.listBrowserSavedViews(scope),
         ),
   saveSavedView: (input: SavedViewInput): Promise<SavedView> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_saved_view", { input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserSavedView(input),
         ),
   deleteSavedView: (id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("delete_saved_view", { id })
       : import("./workspace-browser").then((module) =>
           module.deleteBrowserSavedView(id),
         ),
   customFields: (entityType = "trade"): Promise<CustomField[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_custom_fields", { entityType })
       : import("./workspace-browser").then((module) =>
           module.listBrowserCustomFields(entityType),
         ),
   saveCustomField: (input: CustomFieldInput): Promise<CustomField> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_custom_field", { input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserCustomField(input),
         ),
   deleteCustomField: (id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("delete_custom_field", { id })
       : import("./workspace-browser").then((module) =>
           module.deleteBrowserCustomField(id),
@@ -834,26 +964,30 @@ export const api = {
     accountId: string,
     filter: Omit<TradeFilter, "accountIds"> = {},
   ): Promise<DashboardResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("calculate_dashboard", { accountId, filter })
-      : browserDashboard({ ...filter, accountIds: [accountId] }),
+      : import("./browser-adapter").then((module) =>
+          module.browserDashboard({ ...filter, accountIds: [accountId] }),
+        ),
   calendar: (
     accountId: string,
     filter: Omit<TradeFilter, "accountIds"> = {},
   ): Promise<CalendarDay[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("calculate_calendar", { accountId, filter })
-      : browserDashboard({ ...filter, accountIds: [accountId] }).then(
-          (dashboard) => dashboard.calendar,
-        ),
+      : import("./browser-adapter")
+          .then((module) =>
+            module.browserDashboard({ ...filter, accountIds: [accountId] }),
+          )
+          .then((dashboard) => dashboard.calendar),
   macroFundamentalsDashboard: (): Promise<MacroFundamentalsDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_eodhd_fundamentals_dashboard")
       : Promise.reject({
           message: "Der EODHD-Datenfeed benötigt die Desktop-App.",
         }),
   pairTechnicalSignals: (): Promise<PairTechnicalDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_pair_technical_signals")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -861,17 +995,25 @@ export const api = {
             "4H-/Daily- und Seasonality-Signale benötigen die lokale Desktop-Datenbank.",
         } satisfies CommandError),
   refreshPairTechnicalSignals: (): Promise<PairTechnicalDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("refresh_pair_technical_signals")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message:
-            "EODHD-Intraday-Daten können nur in der Desktop-App aktualisiert werden.",
+            "MT5-Kursdaten können nur in der Desktop-App aktualisiert werden.",
+        } satisfies CommandError),
+  setMt5TechnicalTerminal: (terminalPath: string | null): Promise<void> =>
+    isTauri()
+      ? call("set_mt5_technical_terminal", { terminalPath })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die MT5-Verbindung wird in der lokalen Desktop-App eingerichtet.",
         } satisfies CommandError),
   audChinaCpiRegime: (
     input: AudChinaCpiRegimeInput,
   ): Promise<AudChinaCpiRegimeResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_aud_china_cpi_regime", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -881,7 +1023,7 @@ export const api = {
   refreshAudChinaCpiRegime: (
     input: AudChinaCpiRegimeInput,
   ): Promise<AudChinaCpiRegimeResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("refresh_aud_china_cpi_regime", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -891,7 +1033,7 @@ export const api = {
   eodhdIndicatorHistory: (
     input: EodhdIndicatorHistoryInput,
   ): Promise<EodhdIndicatorHistory> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_eodhd_indicator_history", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -901,7 +1043,7 @@ export const api = {
   economicCalendar: (
     input: EconomicCalendarInput,
   ): Promise<EconomicCalendarResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_economic_calendar", { input })
       : Promise.resolve({
           asOf: new Date().toISOString(),
@@ -914,7 +1056,7 @@ export const api = {
   syncEodhdIndicatorHistory: (
     input: EodhdIndicatorHistoryInput,
   ): Promise<EodhdIndicatorHistory> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_eodhd_indicator_history", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -922,7 +1064,7 @@ export const api = {
             "Historische EODHD-Wirtschaftsdaten können nur in der Desktop-App aktualisiert werden.",
         } satisfies CommandError),
   eodhdFeedStatus: (): Promise<EodhdFeedStatus> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_eodhd_feed_status")
       : Promise.resolve({
           configured: false,
@@ -934,27 +1076,29 @@ export const api = {
           lastSuccessAt: null,
         }),
   syncEodhdNow: (): Promise<EodhdSyncResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_eodhd_now")
       : Promise.reject({
           message:
             "Der EODHD-Datenfeed ist in der Browser-Vorschau nicht verfügbar.",
         }),
   eodhdMappingCandidates: (): Promise<EodhdMappingCandidate[]> =>
-    isTauri() ? call("list_eodhd_mapping_candidates") : Promise.resolve([]),
+    usesCommandBackend()
+      ? call("list_eodhd_mapping_candidates")
+      : Promise.resolve([]),
   reviewEodhdMappingCandidate: (input: {
     id: string;
     action: "approve" | "ignore";
     canonicalKey?: string | null;
   }): Promise<EodhdMappingCandidate> =>
-    isTauri()
+    usesCommandBackend()
       ? call("review_eodhd_mapping_candidate", input)
       : Promise.reject({
           message:
             "EODHD-Zuordnungen können nur in der Desktop-App bearbeitet werden.",
         }),
   cotDashboard: (): Promise<CotDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_cot_dashboard")
       : Promise.resolve({
           sourceUrl: "https://www.cftc.gov/MarketReports/CommitmentsofTraders/",
@@ -963,26 +1107,32 @@ export const api = {
           currencies: [],
           pairs: [],
         }),
-  cotAssetDetail: (input: CotDetailInput): Promise<CotAssetDetail> =>
-    isTauri()
-      ? call("get_cot_asset_detail", { input })
+  cotAssetDetail: (
+    input: CotDetailInput,
+    generation?: string,
+  ): Promise<CotAssetDetail> =>
+    usesCommandBackend()
+      ? call("get_cot_asset_detail", {
+          input,
+          ...(isPrivateWeb() ? { generation } : {}),
+        })
       : Promise.reject({
-          message: "COT-Detaildaten benÃ¶tigen die Desktop-App.",
+          message: "COT-Detaildaten benötigen die Desktop-App.",
         }),
   linkCotBrokerSymbol: (input: CotBrokerLinkInput): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("link_cot_broker_symbol", { input })
       : Promise.reject({
           message: "COT-Zuordnungen benÃ¶tigen die Desktop-App.",
         }),
   syncCot: (): Promise<CotSyncResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_cot_data")
       : Promise.reject({
           message: "COT-Daten werden nur in der Desktop-App abgerufen.",
         }),
   policyRates: (): Promise<PolicyRateDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_policy_rates")
       : Promise.resolve(
           JSON.parse(
@@ -991,14 +1141,14 @@ export const api = {
           ),
         ),
   syncPolicyRates: (): Promise<PolicyRateDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_policy_rates")
       : Promise.reject({
           message:
             "Die automatische Leitzins-Aktualisierung benötigt die Desktop-App.",
         }),
   centralBankReports: (): Promise<CentralBankReportDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_central_bank_reports")
       : Promise.resolve({
           reports: [],
@@ -1010,43 +1160,55 @@ export const api = {
             summaryModel: "gpt-5-mini",
           },
         }),
-  centralBankReport: (id: string): Promise<CentralBankReportDetail> =>
-    isTauri()
-      ? call("get_central_bank_report", { id })
+  centralBankReportReadMarkers: (): Promise<
+    { id: string; readAt: string }[]
+  > =>
+    isPrivateWeb()
+      ? call("list_central_bank_report_reads")
+      : Promise.resolve([]),
+  centralBankReport: (
+    id: string,
+    generation?: string,
+  ): Promise<CentralBankReportDetail> =>
+    usesCommandBackend()
+      ? call("get_central_bank_report", {
+          id,
+          ...(isPrivateWeb() ? { generation } : {}),
+        })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message:
             "Zentralbankberichte können nur in der Desktop-App gelesen werden.",
         } satisfies CommandError),
   openCentralBankReportFile: (id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("open_central_bank_report_file", { id })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Lokale Zentralbankberichte benötigen die Desktop-App.",
         } satisfies CommandError),
   syncCentralBankReports: (): Promise<CentralBankSyncResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("sync_central_bank_reports")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Der automatische Berichtsabruf benötigt die Desktop-App.",
         } satisfies CommandError),
   markCentralBankReportRead: (id: string): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("mark_central_bank_report_read", { id })
       : Promise.resolve(),
   summarizeCentralBankReports: (
     id?: string,
   ): Promise<CentralBankSummaryResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("summarize_central_bank_reports", { id: id ?? null })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
           message: "Deutsche Zentralbank-Briefings benötigen die Desktop-App.",
         } satisfies CommandError),
   seasonality: (): Promise<SeasonalityDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_seasonality")
       : Promise.resolve(
           JSON.parse(
@@ -1062,31 +1224,67 @@ export const api = {
           lastSyncedAt: output.lastSyncedAt,
           dataVersion: output.dataVersion ?? "browser",
         })),
-  seasonalityAssetDetail: (symbol: string): Promise<SeasonalityAssetDetail> =>
-    isTauri()
-      ? call("get_seasonality_asset_detail", { symbol })
+  seasonalityAssetDetail: (
+    symbol: string,
+    generation?: string,
+  ): Promise<SeasonalityAssetDetail> =>
+    usesCommandBackend()
+      ? call("get_seasonality_asset_detail", {
+          symbol,
+          ...(isPrivateWeb() ? { generation } : {}),
+        })
       : Promise.reject({
           message: "EODHD-Seasonality benötigt die Desktop-App.",
         }),
   analyzeSeasonality: (
     input: SeasonalityAnalysisInput,
+    generation?: string,
   ): Promise<SeasonalityAnalysis> =>
-    isTauri()
-      ? call("analyze_seasonality", { input })
+    usesCommandBackend()
+      ? call("analyze_seasonality", {
+          input,
+          ...(isPrivateWeb() ? { generation } : {}),
+        })
       : Promise.reject({
           message:
             "Die interaktive Seasonality-Analyse benÃ¶tigt die Desktop-App.",
         }),
-  seasonalityScreener: (): Promise<SeasonalityScreenerRow[]> =>
-    isTauri()
-      ? call("get_seasonality_screener")
+  seasonalityScreener: (
+    input?: SeasonalityScreenerInput,
+  ): Promise<SeasonalityScreenerRow[]> =>
+    usesCommandBackend()
+      ? call("get_seasonality_screener", input ? { input } : undefined)
       : Promise.reject({
           message: "Der Seasonality-Screener benÃ¶tigt die Desktop-App.",
         }),
+  seasonalityScreenerBatch: (input: {
+    generation: string;
+    cursor: number;
+    limit: number;
+    screenerInput?: SeasonalityScreenerInput;
+  }): Promise<{
+    generation: string;
+    rows: SeasonalityScreenerRow[];
+    nextCursor: number | null;
+    total: number;
+    completed: number;
+  }> => call("get_seasonality_screener_batch", input),
+  seasonalityOpportunitiesBatch: (input: {
+    generation: string;
+    cursor: number;
+    limit: number;
+    input: SeasonalityOpportunityInput;
+  }): Promise<{
+    generation: string;
+    result: SeasonalityOpportunityResponse;
+    nextCursor: number | null;
+    total: number;
+    completed: number;
+  }> => call("get_seasonality_opportunities_batch", input),
   seasonalityOpportunities: (
     input: SeasonalityOpportunityInput,
   ): Promise<SeasonalityOpportunityResponse> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_seasonality_opportunities", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -1094,34 +1292,36 @@ export const api = {
             "Die Fenstersuche benötigt die lokal gespeicherten Tageskurse in der Desktop-App.",
         } satisfies CommandError),
   refreshSeasonality: (): Promise<SeasonalityDashboard> =>
-    isTauri()
+    usesCommandBackend()
       ? call("refresh_seasonality_data")
       : Promise.reject({
           message:
             "Die EODHD-Seasonality-Aktualisierung benötigt die Desktop-App.",
         }),
   seasonalityForexPairs: (): Promise<SeasonalityForexPair[]> =>
-    isTauri() ? call("get_seasonality_forex_pairs") : Promise.resolve([]),
+    usesCommandBackend()
+      ? call("get_seasonality_forex_pairs")
+      : Promise.resolve([]),
   reviews: (accountId: string): Promise<ReviewRecord[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_reviews", { accountId })
       : import("./workspace-browser").then((module) =>
           module.listBrowserReviews(accountId),
         ),
   saveReview: (input: ReviewInput): Promise<ReviewRecord> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_review", { input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserReview(input),
         ),
   goals: (): Promise<GoalRecord[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_goals")
       : import("./workspace-browser").then((module) =>
           module.listBrowserGoals(),
         ),
   saveGoal: (input: GoalInput): Promise<GoalRecord> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_goal", { input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserGoal(input),
@@ -1131,13 +1331,13 @@ export const api = {
     value: string,
     note?: string,
   ): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("record_goal_progress", { input: { goalId, value, note } })
       : import("./workspace-browser").then((module) =>
           module.recordBrowserGoalProgress(goalId, value),
         ),
   playbook: (accountId?: string): Promise<PlaybookSetup[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_playbook", { accountId })
       : import("./workspace-browser").then((module) =>
           module.listBrowserPlaybook(accountId),
@@ -1149,7 +1349,7 @@ export const api = {
     examples: unknown;
     notesHtml?: string;
   }): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_setup_version", { input })
       : import("./workspace-browser").then((module) =>
           module.saveBrowserSetupVersion(input.setupId, input),
@@ -1160,7 +1360,7 @@ export const api = {
     color?: string;
     strategyId?: string;
   }): Promise<TaxonomyItem> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_setup", { input })
       : import("./workspace-browser").then((module) =>
           module.createBrowserSetup(input),
@@ -1169,19 +1369,20 @@ export const api = {
     name: string;
     color?: string;
   }): Promise<TaxonomyItem> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_tag", { input })
-      : Promise.resolve().then(() => {
+      : Promise.resolve().then(async () => {
           const tag = {
             id: crypto.randomUUID(),
             name: input.name.trim(),
             color: input.color ?? "#64748b",
           };
+          const { browserBootstrap } = await import("./browser-adapter");
           browserBootstrap.tags.push(tag);
           return tag;
         }),
   mistakeAnalytics: (accountId: string): Promise<MistakeAnalytics[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_mistake_analytics", { accountId })
       : import("./workspace-browser").then((module) =>
           module.browserMistakes(accountId),
@@ -1190,7 +1391,7 @@ export const api = {
     accountId: string,
     tradeId: string,
   ): Promise<TradeMistakeRecord[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_trade_mistakes", { accountId, tradeId })
       : import("./workspace-browser").then((module) =>
           module.listBrowserTradeMistakes(accountId, tradeId),
@@ -1205,13 +1406,13 @@ export const api = {
       note?: string;
     },
   ): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("assign_trade_mistake", { accountId, input })
       : import("./workspace-browser").then((module) =>
           module.assignBrowserTradeMistake(accountId, input),
         ),
   media: (): Promise<MediaRecord[]> =>
-    isTauri()
+    usesCommandBackend()
       ? call("list_media")
       : Promise.resolve(
           JSON.parse(
@@ -1222,8 +1423,11 @@ export const api = {
     accountId: string,
     tradeId: string,
   ): Promise<MediaRecord[]> => {
-    if (isTauri()) return call("list_trade_media", { accountId, tradeId });
-    await browserGetTrade(accountId, tradeId);
+    if (usesCommandBackend())
+      return call("list_trade_media", { accountId, tradeId });
+    await import("./browser-adapter").then((module) =>
+      module.browserGetTrade(accountId, tradeId),
+    );
     const ids = JSON.parse(
       localStorage.getItem(`personal-macro:browser-trade-media:${tradeId}`) ??
         "[]",
@@ -1240,7 +1444,7 @@ export const api = {
     slot = "other",
     caption?: string,
   ): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("attach_trade_media", {
           accountId,
           tradeId,
@@ -1248,27 +1452,46 @@ export const api = {
           slot,
           caption,
         })
-      : browserGetTrade(accountId, tradeId).then(() => {
-          const key = `personal-macro:browser-trade-media:${tradeId}`;
-          const ids = JSON.parse(localStorage.getItem(key) ?? "[]") as string[];
-          if (!ids.includes(mediaId)) ids.push(mediaId);
-          localStorage.setItem(key, JSON.stringify(ids));
-        }),
+      : import("./browser-adapter")
+          .then((module) => module.browserGetTrade(accountId, tradeId))
+          .then(() => {
+            const key = `personal-macro:browser-trade-media:${tradeId}`;
+            const ids = JSON.parse(
+              localStorage.getItem(key) ?? "[]",
+            ) as string[];
+            if (!ids.includes(mediaId)) ids.push(mediaId);
+            localStorage.setItem(key, JSON.stringify(ids));
+          }),
   detachTradeMedia: (
     accountId: string,
     tradeId: string,
     mediaId: string,
   ): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("detach_trade_media", { accountId, tradeId, mediaId })
-      : browserGetTrade(accountId, tradeId).then(() => {
-          const key = `personal-macro:browser-trade-media:${tradeId}`;
-          const ids = JSON.parse(localStorage.getItem(key) ?? "[]") as string[];
-          localStorage.setItem(
-            key,
-            JSON.stringify(ids.filter((id) => id !== mediaId)),
-          );
-        }),
+      : import("./browser-adapter")
+          .then((module) => module.browserGetTrade(accountId, tradeId))
+          .then(() => {
+            const key = `personal-macro:browser-trade-media:${tradeId}`;
+            const ids = JSON.parse(
+              localStorage.getItem(key) ?? "[]",
+            ) as string[];
+            localStorage.setItem(
+              key,
+              JSON.stringify(ids.filter((id) => id !== mediaId)),
+            );
+          }),
+  uploadMedia: (file: File): Promise<MediaRecord> => {
+    if (!isPrivateWeb())
+      return Promise.reject({
+        code: "WEB_CAPABILITY_UNAVAILABLE",
+        message:
+          "Der private Upload ist nur in der privaten Browser-Version verfügbar.",
+      });
+    return import("./private-web-client").then((module) =>
+      module.privateWebMediaUpload(file),
+    );
+  },
   importMediaPath: (
     sourcePath: string,
     accountId?: string,
@@ -1279,7 +1502,7 @@ export const api = {
       input: { sourcePath, tradeId },
     }),
   mediaAnnotation: (mediaId: string): Promise<MediaAnnotationRecord | null> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_media_annotation", { mediaId })
       : Promise.resolve(
           JSON.parse(
@@ -1292,7 +1515,7 @@ export const api = {
     mediaId: string,
     annotation: unknown,
   ): Promise<MediaAnnotationRecord> =>
-    isTauri()
+    usesCommandBackend()
       ? call("save_media_annotation", { input: { mediaId, annotation } })
       : Promise.resolve().then(() => {
           const now = new Date().toISOString();
@@ -1310,7 +1533,7 @@ export const api = {
           return record;
         }),
   settings: (): Promise<{ settings: Record<string, unknown> }> =>
-    isTauri()
+    usesCommandBackend()
       ? call("get_settings")
       : Promise.resolve({
           settings: JSON.parse(
@@ -1318,7 +1541,7 @@ export const api = {
           ),
         }),
   updateSetting: (key: string, value: unknown): Promise<void> =>
-    isTauri()
+    usesCommandBackend()
       ? call("update_setting", { input: { key, value } })
       : Promise.resolve().then(() => {
           const settings = JSON.parse(
@@ -1334,11 +1557,14 @@ export const api = {
     accountId: string,
     format: "csv" | "json",
   ): Promise<ExportResult> => {
-    if (isTauri()) return call("export_trades", { accountId, format });
-    const trades = await browserListTrades({
-      accountIds: [accountId],
-      pageSize: 250,
-    });
+    if (usesCommandBackend())
+      return call("export_trades", { accountId, format });
+    const trades = await import("./browser-adapter").then((module) =>
+      module.browserListTrades({
+        accountIds: [accountId],
+        pageSize: 250,
+      }),
+    );
     const contents =
       format === "json"
         ? JSON.stringify(trades.items, null, 2)
@@ -1373,15 +1599,15 @@ export const api = {
     };
   },
   backups: (): Promise<BackupRecord[]> =>
-    isTauri() ? call("list_backups") : Promise.resolve([]),
+    usesCommandBackend() ? call("list_backups") : Promise.resolve([]),
   createBackup: (): Promise<BackupRecord> =>
-    isTauri()
+    usesCommandBackend()
       ? call("create_backup")
       : Promise.reject({
           message: "Backups werden in der installierten Desktop-App erstellt.",
         }),
   resetJournal: (confirmation: string): Promise<JournalResetResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("reset_journal", { confirmation })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -1390,7 +1616,7 @@ export const api = {
   previewMetaTraderHtml: (
     input: MetaTraderHtmlPreviewInput,
   ): Promise<MetaTraderHtmlPreview> =>
-    isTauri()
+    usesCommandBackend()
       ? call("preview_metatrader_html", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -1399,7 +1625,7 @@ export const api = {
   commitMetaTraderHtml: (
     input: MetaTraderHtmlCommitInput,
   ): Promise<MetaTraderHtmlCommitResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("commit_metatrader_html", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -1408,7 +1634,7 @@ export const api = {
   previewCTraderStatement: (
     input: CTraderStatementPreviewInput,
   ): Promise<CTraderStatementPreview> =>
-    isTauri()
+    usesCommandBackend()
       ? call("preview_ctrader_statement", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",
@@ -1417,7 +1643,7 @@ export const api = {
   commitCTraderStatement: (
     input: CTraderStatementCommitInput,
   ): Promise<CTraderStatementCommitResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("commit_ctrader_statement", { input })
       : Promise.reject({
           code: "DESKTOP_REQUIRED",

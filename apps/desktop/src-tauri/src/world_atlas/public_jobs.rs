@@ -116,7 +116,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let data = public_source::download(&source.id).await?;

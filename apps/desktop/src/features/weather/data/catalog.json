@@ -1,0 +1,3109 @@
+{
+  "version": "2026-10-05.1",
+  "reviewedOn": "2026-10-05",
+  "sources": [
+    {
+      "id": "usda",
+      "label": "USDA Crop Explorer · Regionen",
+      "url": "https://ipad.fas.usda.gov/cropexplorer/"
+    },
+    {
+      "id": "calendar",
+      "label": "USDA · typischer Kulturkalender",
+      "url": "https://ipad.fas.usda.gov/pdfs/crop_cal.pdf"
+    },
+    {
+      "id": "fao",
+      "label": "FAO · Wasserbedarf und Entwicklungsphase",
+      "url": "https://www.fao.org/4/t7202e/t7202e05.htm"
+    },
+    {
+      "id": "coffee",
+      "label": "FAO · Kaffee und Klima",
+      "url": "https://www.fao.org/4/x6939e/X6939e01.htm"
+    },
+    {
+      "id": "cocoa",
+      "label": "ICCO · Kakao und Klima",
+      "url": "https://www.icco.org/growing-cocoa/"
+    },
+    {
+      "id": "cocoa-calendar",
+      "label": "ICCO · Haupt- und Zwischenernte",
+      "url": "https://www.icco.org/faq/"
+    },
+    {
+      "id": "tea",
+      "label": "FAO · Tee",
+      "url": "https://www.fao.org/markets-and-trade/commodities-overview/beverages/tea/3/en"
+    },
+    {
+      "id": "perennial",
+      "label": "FAO · Dauerkulturen und Produktionskalender",
+      "url": "https://files-faostat.fao.org/production/QCL/QCL_methodology_e.pdf"
+    }
+  ],
+  "regions": [
+    {
+      "id": "br-minas",
+      "label": "Minas Gerais",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-minas-1",
+          "name": "Varginha",
+          "latitude": -21.55,
+          "longitude": -45.43
+        },
+        {
+          "id": "br-minas-2",
+          "name": "Patrocínio",
+          "latitude": -18.94,
+          "longitude": -46.99
+        },
+        {
+          "id": "br-minas-3",
+          "name": "Manhuaçu",
+          "latitude": -20.26,
+          "longitude": -42.03
+        }
+      ]
+    },
+    {
+      "id": "br-sao-paulo",
+      "label": "São Paulo / Paraná",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-sao-paulo-1",
+          "name": "Ribeirão Preto",
+          "latitude": -21.17,
+          "longitude": -47.81
+        },
+        {
+          "id": "br-sao-paulo-2",
+          "name": "Franca",
+          "latitude": -20.54,
+          "longitude": -47.4
+        },
+        {
+          "id": "br-sao-paulo-3",
+          "name": "Londrina",
+          "latitude": -23.31,
+          "longitude": -51.16
+        }
+      ]
+    },
+    {
+      "id": "br-espirito",
+      "label": "Espírito Santo / Rondônia",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-espirito-1",
+          "name": "Linhares",
+          "latitude": -19.39,
+          "longitude": -40.07
+        },
+        {
+          "id": "br-espirito-2",
+          "name": "São Mateus",
+          "latitude": -18.72,
+          "longitude": -39.86
+        },
+        {
+          "id": "br-espirito-3",
+          "name": "Cacoal",
+          "latitude": -11.44,
+          "longitude": -61.45
+        }
+      ]
+    },
+    {
+      "id": "vn-highlands",
+      "label": "Zentrales Hochland",
+      "country": "Vietnam",
+      "iso3": "VNM",
+      "points": [
+        {
+          "id": "vn-highlands-1",
+          "name": "Buôn Ma Thuột",
+          "latitude": 12.67,
+          "longitude": 108.04
+        },
+        {
+          "id": "vn-highlands-2",
+          "name": "Pleiku",
+          "latitude": 13.98,
+          "longitude": 108
+        },
+        {
+          "id": "vn-highlands-3",
+          "name": "Đà Lạt",
+          "latitude": 11.94,
+          "longitude": 108.44
+        }
+      ]
+    },
+    {
+      "id": "co-andes",
+      "label": "Kolumbianischer Kaffeegürtel",
+      "country": "Kolumbien",
+      "iso3": "COL",
+      "points": [
+        {
+          "id": "co-andes-1",
+          "name": "Pereira",
+          "latitude": 4.81,
+          "longitude": -75.69
+        },
+        {
+          "id": "co-andes-2",
+          "name": "Manizales",
+          "latitude": 5.07,
+          "longitude": -75.52
+        },
+        {
+          "id": "co-andes-3",
+          "name": "Pitalito",
+          "latitude": 1.85,
+          "longitude": -76.05
+        }
+      ]
+    },
+    {
+      "id": "et-highlands",
+      "label": "Äthiopisches Hochland",
+      "country": "Äthiopien",
+      "iso3": "ETH",
+      "points": [
+        {
+          "id": "et-highlands-1",
+          "name": "Jimma",
+          "latitude": 7.67,
+          "longitude": 36.83
+        },
+        {
+          "id": "et-highlands-2",
+          "name": "Yirgacheffe",
+          "latitude": 6.16,
+          "longitude": 38.21
+        },
+        {
+          "id": "et-highlands-3",
+          "name": "Hawassa",
+          "latitude": 7.06,
+          "longitude": 38.48
+        }
+      ]
+    },
+    {
+      "id": "ug-lake",
+      "label": "Uganda · Viktoriasee-Gürtel",
+      "country": "Uganda",
+      "iso3": "UGA",
+      "points": [
+        {
+          "id": "ug-lake-1",
+          "name": "Masaka",
+          "latitude": -0.34,
+          "longitude": 31.74
+        },
+        {
+          "id": "ug-lake-2",
+          "name": "Mukono",
+          "latitude": 0.35,
+          "longitude": 32.75
+        },
+        {
+          "id": "ug-lake-3",
+          "name": "Mubende",
+          "latitude": 0.56,
+          "longitude": 31.39
+        }
+      ]
+    },
+    {
+      "id": "id-sumatra",
+      "label": "Süd-Sumatra",
+      "country": "Indonesien",
+      "iso3": "IDN",
+      "points": [
+        {
+          "id": "id-sumatra-1",
+          "name": "Bandar Lampung",
+          "latitude": -5.43,
+          "longitude": 105.27
+        },
+        {
+          "id": "id-sumatra-2",
+          "name": "Bengkulu",
+          "latitude": -3.8,
+          "longitude": 102.27
+        },
+        {
+          "id": "id-sumatra-3",
+          "name": "Pagar Alam",
+          "latitude": -4.02,
+          "longitude": 103.25
+        }
+      ]
+    },
+    {
+      "id": "ci-cocoa",
+      "label": "Kakaogürtel · Südwesten",
+      "country": "Côte d’Ivoire",
+      "iso3": "CIV",
+      "points": [
+        {
+          "id": "ci-cocoa-1",
+          "name": "Soubré",
+          "latitude": 5.79,
+          "longitude": -6.61
+        },
+        {
+          "id": "ci-cocoa-2",
+          "name": "Daloa",
+          "latitude": 6.88,
+          "longitude": -6.45
+        },
+        {
+          "id": "ci-cocoa-3",
+          "name": "San-Pédro",
+          "latitude": 4.75,
+          "longitude": -6.64
+        }
+      ]
+    },
+    {
+      "id": "gh-cocoa",
+      "label": "Western / Ashanti",
+      "country": "Ghana",
+      "iso3": "GHA",
+      "points": [
+        {
+          "id": "gh-cocoa-1",
+          "name": "Kumasi",
+          "latitude": 6.69,
+          "longitude": -1.62
+        },
+        {
+          "id": "gh-cocoa-2",
+          "name": "Sefwi Wiawso",
+          "latitude": 6.21,
+          "longitude": -2.49
+        },
+        {
+          "id": "gh-cocoa-3",
+          "name": "Goaso",
+          "latitude": 6.8,
+          "longitude": -2.52
+        }
+      ]
+    },
+    {
+      "id": "ec-coast",
+      "label": "Küstenprovinzen",
+      "country": "Ecuador",
+      "iso3": "ECU",
+      "points": [
+        {
+          "id": "ec-coast-1",
+          "name": "Quevedo",
+          "latitude": -1.02,
+          "longitude": -79.47
+        },
+        {
+          "id": "ec-coast-2",
+          "name": "Babahoyo",
+          "latitude": -1.8,
+          "longitude": -79.53
+        },
+        {
+          "id": "ec-coast-3",
+          "name": "Machala",
+          "latitude": -3.26,
+          "longitude": -79.96
+        }
+      ]
+    },
+    {
+      "id": "cm-cocoa",
+      "label": "Centre / Sud-Ouest",
+      "country": "Kamerun",
+      "iso3": "CMR",
+      "points": [
+        {
+          "id": "cm-cocoa-1",
+          "name": "Yaoundé",
+          "latitude": 3.87,
+          "longitude": 11.52
+        },
+        {
+          "id": "cm-cocoa-2",
+          "name": "Kumba",
+          "latitude": 4.64,
+          "longitude": 9.45
+        },
+        {
+          "id": "cm-cocoa-3",
+          "name": "Ebolowa",
+          "latitude": 2.92,
+          "longitude": 11.15
+        }
+      ]
+    },
+    {
+      "id": "ng-cocoa",
+      "label": "Ondo / Südwesten",
+      "country": "Nigeria",
+      "iso3": "NGA",
+      "points": [
+        {
+          "id": "ng-cocoa-1",
+          "name": "Akure",
+          "latitude": 7.25,
+          "longitude": 5.2
+        },
+        {
+          "id": "ng-cocoa-2",
+          "name": "Ondo",
+          "latitude": 7.1,
+          "longitude": 4.83
+        },
+        {
+          "id": "ng-cocoa-3",
+          "name": "Ile-Ife",
+          "latitude": 7.49,
+          "longitude": 4.56
+        }
+      ]
+    },
+    {
+      "id": "br-bahia",
+      "label": "Bahia / Pará",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-bahia-1",
+          "name": "Ilhéus",
+          "latitude": -14.79,
+          "longitude": -39.05
+        },
+        {
+          "id": "br-bahia-2",
+          "name": "Itabuna",
+          "latitude": -14.79,
+          "longitude": -39.28
+        },
+        {
+          "id": "br-bahia-3",
+          "name": "Medicilândia",
+          "latitude": -3.45,
+          "longitude": -52.89
+        }
+      ]
+    },
+    {
+      "id": "us-plains",
+      "label": "US Southern / Central Plains",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-plains-1",
+          "name": "Garden City · Kansas",
+          "latitude": 37.97,
+          "longitude": -100.87
+        },
+        {
+          "id": "us-plains-2",
+          "name": "Enid · Oklahoma",
+          "latitude": 36.4,
+          "longitude": -97.88
+        },
+        {
+          "id": "us-plains-3",
+          "name": "Amarillo · Texas",
+          "latitude": 35.22,
+          "longitude": -101.83
+        }
+      ]
+    },
+    {
+      "id": "us-north",
+      "label": "US Northern Plains",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-north-1",
+          "name": "Fargo",
+          "latitude": 46.88,
+          "longitude": -96.79
+        },
+        {
+          "id": "us-north-2",
+          "name": "Bismarck",
+          "latitude": 46.81,
+          "longitude": -100.78
+        },
+        {
+          "id": "us-north-3",
+          "name": "Great Falls",
+          "latitude": 47.5,
+          "longitude": -111.3
+        }
+      ]
+    },
+    {
+      "id": "ca-prairies",
+      "label": "Kanadische Prärien",
+      "country": "Kanada",
+      "iso3": "CAN",
+      "points": [
+        {
+          "id": "ca-prairies-1",
+          "name": "Regina",
+          "latitude": 50.45,
+          "longitude": -104.62
+        },
+        {
+          "id": "ca-prairies-2",
+          "name": "Saskatoon",
+          "latitude": 52.13,
+          "longitude": -106.67
+        },
+        {
+          "id": "ca-prairies-3",
+          "name": "Brandon",
+          "latitude": 49.85,
+          "longitude": -99.95
+        }
+      ]
+    },
+    {
+      "id": "black-sea",
+      "label": "Schwarzmeer-Agrargürtel",
+      "country": "Ukraine / Russland",
+      "iso3": "UKR",
+      "points": [
+        {
+          "id": "black-sea-1",
+          "name": "Odesa",
+          "latitude": 46.48,
+          "longitude": 30.73
+        },
+        {
+          "id": "black-sea-2",
+          "name": "Poltava",
+          "latitude": 49.59,
+          "longitude": 34.55
+        },
+        {
+          "id": "black-sea-3",
+          "name": "Krasnodar",
+          "latitude": 45.04,
+          "longitude": 38.98
+        }
+      ]
+    },
+    {
+      "id": "fr-north",
+      "label": "Nordfrankreich",
+      "country": "Frankreich",
+      "iso3": "FRA",
+      "points": [
+        {
+          "id": "fr-north-1",
+          "name": "Chartres",
+          "latitude": 48.45,
+          "longitude": 1.49
+        },
+        {
+          "id": "fr-north-2",
+          "name": "Reims",
+          "latitude": 49.26,
+          "longitude": 4.03
+        },
+        {
+          "id": "fr-north-3",
+          "name": "Amiens",
+          "latitude": 49.89,
+          "longitude": 2.3
+        }
+      ]
+    },
+    {
+      "id": "de-plains",
+      "label": "Nord- / Mitteldeutschland",
+      "country": "Deutschland",
+      "iso3": "DEU",
+      "points": [
+        {
+          "id": "de-plains-1",
+          "name": "Hannover",
+          "latitude": 52.37,
+          "longitude": 9.74
+        },
+        {
+          "id": "de-plains-2",
+          "name": "Magdeburg",
+          "latitude": 52.12,
+          "longitude": 11.63
+        },
+        {
+          "id": "de-plains-3",
+          "name": "Rostock",
+          "latitude": 54.09,
+          "longitude": 12.1
+        }
+      ]
+    },
+    {
+      "id": "cn-north",
+      "label": "Nordchinesische Ebene",
+      "country": "China",
+      "iso3": "CHN",
+      "points": [
+        {
+          "id": "cn-north-1",
+          "name": "Zhengzhou",
+          "latitude": 34.75,
+          "longitude": 113.62
+        },
+        {
+          "id": "cn-north-2",
+          "name": "Jinan",
+          "latitude": 36.65,
+          "longitude": 117.12
+        },
+        {
+          "id": "cn-north-3",
+          "name": "Shijiazhuang",
+          "latitude": 38.04,
+          "longitude": 114.51
+        }
+      ]
+    },
+    {
+      "id": "in-north",
+      "label": "Punjab / Haryana / Uttar Pradesh",
+      "country": "Indien",
+      "iso3": "IND",
+      "points": [
+        {
+          "id": "in-north-1",
+          "name": "Ludhiana",
+          "latitude": 30.9,
+          "longitude": 75.86
+        },
+        {
+          "id": "in-north-2",
+          "name": "Hisar",
+          "latitude": 29.15,
+          "longitude": 75.72
+        },
+        {
+          "id": "in-north-3",
+          "name": "Meerut",
+          "latitude": 28.98,
+          "longitude": 77.71
+        }
+      ]
+    },
+    {
+      "id": "au-wheat",
+      "label": "Australischer Weizengürtel",
+      "country": "Australien",
+      "iso3": "AUS",
+      "points": [
+        {
+          "id": "au-wheat-1",
+          "name": "Merredin · WA",
+          "latitude": -31.48,
+          "longitude": 118.28
+        },
+        {
+          "id": "au-wheat-2",
+          "name": "Wagga Wagga · NSW",
+          "latitude": -35.11,
+          "longitude": 147.36
+        },
+        {
+          "id": "au-wheat-3",
+          "name": "Horsham · Victoria",
+          "latitude": -36.71,
+          "longitude": 142.2
+        }
+      ]
+    },
+    {
+      "id": "ar-pampas",
+      "label": "Pampas",
+      "country": "Argentinien",
+      "iso3": "ARG",
+      "points": [
+        {
+          "id": "ar-pampas-1",
+          "name": "Pergamino",
+          "latitude": -33.89,
+          "longitude": -60.57
+        },
+        {
+          "id": "ar-pampas-2",
+          "name": "Rosario",
+          "latitude": -32.95,
+          "longitude": -60.65
+        },
+        {
+          "id": "ar-pampas-3",
+          "name": "Tandil",
+          "latitude": -37.33,
+          "longitude": -59.14
+        }
+      ]
+    },
+    {
+      "id": "us-corn",
+      "label": "US Corn Belt",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-corn-1",
+          "name": "Ames · Iowa",
+          "latitude": 42.03,
+          "longitude": -93.62
+        },
+        {
+          "id": "us-corn-2",
+          "name": "Champaign · Illinois",
+          "latitude": 40.12,
+          "longitude": -88.24
+        },
+        {
+          "id": "us-corn-3",
+          "name": "Lafayette · Indiana",
+          "latitude": 40.42,
+          "longitude": -86.88
+        }
+      ]
+    },
+    {
+      "id": "br-mato",
+      "label": "Mato Grosso / Goiás",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-mato-1",
+          "name": "Sorriso",
+          "latitude": -12.55,
+          "longitude": -55.72
+        },
+        {
+          "id": "br-mato-2",
+          "name": "Lucas do Rio Verde",
+          "latitude": -13.05,
+          "longitude": -55.91
+        },
+        {
+          "id": "br-mato-3",
+          "name": "Rio Verde",
+          "latitude": -17.79,
+          "longitude": -50.92
+        }
+      ]
+    },
+    {
+      "id": "br-south",
+      "label": "Paraná / Rio Grande do Sul",
+      "country": "Brasilien",
+      "iso3": "BRA",
+      "points": [
+        {
+          "id": "br-south-1",
+          "name": "Cascavel",
+          "latitude": -24.96,
+          "longitude": -53.45
+        },
+        {
+          "id": "br-south-2",
+          "name": "Passo Fundo",
+          "latitude": -28.26,
+          "longitude": -52.41
+        },
+        {
+          "id": "br-south-3",
+          "name": "Santa Maria",
+          "latitude": -29.69,
+          "longitude": -53.81
+        }
+      ]
+    },
+    {
+      "id": "cn-northeast",
+      "label": "Nordostchina",
+      "country": "China",
+      "iso3": "CHN",
+      "points": [
+        {
+          "id": "cn-northeast-1",
+          "name": "Harbin",
+          "latitude": 45.76,
+          "longitude": 126.63
+        },
+        {
+          "id": "cn-northeast-2",
+          "name": "Changchun",
+          "latitude": 43.82,
+          "longitude": 125.32
+        },
+        {
+          "id": "cn-northeast-3",
+          "name": "Qiqihar",
+          "latitude": 47.35,
+          "longitude": 123.92
+        }
+      ]
+    },
+    {
+      "id": "za-maize",
+      "label": "Free State / Mpumalanga",
+      "country": "Südafrika",
+      "iso3": "ZAF",
+      "points": [
+        {
+          "id": "za-maize-1",
+          "name": "Bothaville",
+          "latitude": -27.39,
+          "longitude": 26.62
+        },
+        {
+          "id": "za-maize-2",
+          "name": "Bethlehem",
+          "latitude": -28.23,
+          "longitude": 28.3
+        },
+        {
+          "id": "za-maize-3",
+          "name": "Standerton",
+          "latitude": -26.94,
+          "longitude": 29.24
+        }
+      ]
+    },
+    {
+      "id": "in-west",
+      "label": "Maharashtra / Gujarat / Madhya Pradesh",
+      "country": "Indien",
+      "iso3": "IND",
+      "points": [
+        {
+          "id": "in-west-1",
+          "name": "Nagpur",
+          "latitude": 21.15,
+          "longitude": 79.09
+        },
+        {
+          "id": "in-west-2",
+          "name": "Rajkot",
+          "latitude": 22.3,
+          "longitude": 70.8
+        },
+        {
+          "id": "in-west-3",
+          "name": "Indore",
+          "latitude": 22.72,
+          "longitude": 75.86
+        }
+      ]
+    },
+    {
+      "id": "us-cotton",
+      "label": "Texas / Mississippi Delta",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-cotton-1",
+          "name": "Lubbock",
+          "latitude": 33.58,
+          "longitude": -101.85
+        },
+        {
+          "id": "us-cotton-2",
+          "name": "Midland",
+          "latitude": 31.99,
+          "longitude": -102.08
+        },
+        {
+          "id": "us-cotton-3",
+          "name": "Greenville · Mississippi",
+          "latitude": 33.41,
+          "longitude": -91.06
+        }
+      ]
+    },
+    {
+      "id": "cn-xinjiang",
+      "label": "Xinjiang",
+      "country": "China",
+      "iso3": "CHN",
+      "points": [
+        {
+          "id": "cn-xinjiang-1",
+          "name": "Aksu",
+          "latitude": 41.17,
+          "longitude": 80.26
+        },
+        {
+          "id": "cn-xinjiang-2",
+          "name": "Korla",
+          "latitude": 41.73,
+          "longitude": 86.18
+        },
+        {
+          "id": "cn-xinjiang-3",
+          "name": "Shihezi",
+          "latitude": 44.31,
+          "longitude": 86.03
+        }
+      ]
+    },
+    {
+      "id": "us-southeast",
+      "label": "US Südosten",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-southeast-1",
+          "name": "Albany · Georgia",
+          "latitude": 31.58,
+          "longitude": -84.16
+        },
+        {
+          "id": "us-southeast-2",
+          "name": "Dothan · Alabama",
+          "latitude": 31.22,
+          "longitude": -85.39
+        },
+        {
+          "id": "us-southeast-3",
+          "name": "Florence · South Carolina",
+          "latitude": 34.2,
+          "longitude": -79.77
+        }
+      ]
+    },
+    {
+      "id": "us-florida",
+      "label": "Florida · Zitrusgürtel",
+      "country": "USA",
+      "iso3": "USA",
+      "points": [
+        {
+          "id": "us-florida-1",
+          "name": "Lakeland",
+          "latitude": 28.04,
+          "longitude": -81.95
+        },
+        {
+          "id": "us-florida-2",
+          "name": "Sebring",
+          "latitude": 27.5,
+          "longitude": -81.44
+        },
+        {
+          "id": "us-florida-3",
+          "name": "Fort Pierce",
+          "latitude": 27.45,
+          "longitude": -80.33
+        }
+      ]
+    },
+    {
+      "id": "in-sugar",
+      "label": "Uttar Pradesh / Maharashtra",
+      "country": "Indien",
+      "iso3": "IND",
+      "points": [
+        {
+          "id": "in-sugar-1",
+          "name": "Muzaffarnagar",
+          "latitude": 29.47,
+          "longitude": 77.7
+        },
+        {
+          "id": "in-sugar-2",
+          "name": "Kolhapur",
+          "latitude": 16.71,
+          "longitude": 74.24
+        },
+        {
+          "id": "in-sugar-3",
+          "name": "Solapur",
+          "latitude": 17.66,
+          "longitude": 75.91
+        }
+      ]
+    },
+    {
+      "id": "th-central",
+      "label": "Zentrales Thailand / Nordosten",
+      "country": "Thailand",
+      "iso3": "THA",
+      "points": [
+        {
+          "id": "th-central-1",
+          "name": "Nakhon Sawan",
+          "latitude": 15.71,
+          "longitude": 100.14
+        },
+        {
+          "id": "th-central-2",
+          "name": "Khon Kaen",
+          "latitude": 16.43,
+          "longitude": 102.84
+        },
+        {
+          "id": "th-central-3",
+          "name": "Ubon Ratchathani",
+          "latitude": 15.24,
+          "longitude": 104.86
+        }
+      ]
+    },
+    {
+      "id": "vn-mekong",
+      "label": "Mekongdelta",
+      "country": "Vietnam",
+      "iso3": "VNM",
+      "points": [
+        {
+          "id": "vn-mekong-1",
+          "name": "Cần Thơ",
+          "latitude": 10.04,
+          "longitude": 105.79
+        },
+        {
+          "id": "vn-mekong-2",
+          "name": "Long Xuyên",
+          "latitude": 10.39,
+          "longitude": 105.44
+        },
+        {
+          "id": "vn-mekong-3",
+          "name": "Sóc Trăng",
+          "latitude": 9.6,
+          "longitude": 105.97
+        }
+      ]
+    },
+    {
+      "id": "in-rice",
+      "label": "Westbengalen / Odisha / Andhra Pradesh",
+      "country": "Indien",
+      "iso3": "IND",
+      "points": [
+        {
+          "id": "in-rice-1",
+          "name": "Bardhaman",
+          "latitude": 23.23,
+          "longitude": 87.86
+        },
+        {
+          "id": "in-rice-2",
+          "name": "Cuttack",
+          "latitude": 20.46,
+          "longitude": 85.88
+        },
+        {
+          "id": "in-rice-3",
+          "name": "Vijayawada",
+          "latitude": 16.51,
+          "longitude": 80.65
+        }
+      ]
+    },
+    {
+      "id": "cn-yangtze",
+      "label": "Jangtse-Becken",
+      "country": "China",
+      "iso3": "CHN",
+      "points": [
+        {
+          "id": "cn-yangtze-1",
+          "name": "Wuhan",
+          "latitude": 30.59,
+          "longitude": 114.31
+        },
+        {
+          "id": "cn-yangtze-2",
+          "name": "Changsha",
+          "latitude": 28.23,
+          "longitude": 112.94
+        },
+        {
+          "id": "cn-yangtze-3",
+          "name": "Nanchang",
+          "latitude": 28.68,
+          "longitude": 115.86
+        }
+      ]
+    },
+    {
+      "id": "id-palm",
+      "label": "Sumatra / Kalimantan",
+      "country": "Indonesien",
+      "iso3": "IDN",
+      "points": [
+        {
+          "id": "id-palm-1",
+          "name": "Pekanbaru",
+          "latitude": 0.51,
+          "longitude": 101.45
+        },
+        {
+          "id": "id-palm-2",
+          "name": "Jambi",
+          "latitude": -1.59,
+          "longitude": 103.61
+        },
+        {
+          "id": "id-palm-3",
+          "name": "Pangkalan Bun",
+          "latitude": -2.68,
+          "longitude": 111.63
+        }
+      ]
+    },
+    {
+      "id": "my-palm",
+      "label": "Sabah / Sarawak / Halbinsel",
+      "country": "Malaysia",
+      "iso3": "MYS",
+      "points": [
+        {
+          "id": "my-palm-1",
+          "name": "Sandakan",
+          "latitude": 5.84,
+          "longitude": 118.12
+        },
+        {
+          "id": "my-palm-2",
+          "name": "Bintulu",
+          "latitude": 3.17,
+          "longitude": 113.04
+        },
+        {
+          "id": "my-palm-3",
+          "name": "Johor Bahru",
+          "latitude": 1.49,
+          "longitude": 103.74
+        }
+      ]
+    },
+    {
+      "id": "th-rubber",
+      "label": "Südthailand",
+      "country": "Thailand",
+      "iso3": "THA",
+      "points": [
+        {
+          "id": "th-rubber-1",
+          "name": "Hat Yai",
+          "latitude": 7.01,
+          "longitude": 100.47
+        },
+        {
+          "id": "th-rubber-2",
+          "name": "Surat Thani",
+          "latitude": 9.14,
+          "longitude": 99.32
+        },
+        {
+          "id": "th-rubber-3",
+          "name": "Nakhon Si Thammarat",
+          "latitude": 8.43,
+          "longitude": 99.96
+        }
+      ]
+    },
+    {
+      "id": "vn-rubber",
+      "label": "Südöstliches Vietnam",
+      "country": "Vietnam",
+      "iso3": "VNM",
+      "points": [
+        {
+          "id": "vn-rubber-1",
+          "name": "Đồng Xoài",
+          "latitude": 11.53,
+          "longitude": 106.88
+        },
+        {
+          "id": "vn-rubber-2",
+          "name": "Tây Ninh",
+          "latitude": 11.31,
+          "longitude": 106.1
+        },
+        {
+          "id": "vn-rubber-3",
+          "name": "Thủ Dầu Một",
+          "latitude": 10.98,
+          "longitude": 106.65
+        }
+      ]
+    },
+    {
+      "id": "in-tea",
+      "label": "Assam / Darjeeling",
+      "country": "Indien",
+      "iso3": "IND",
+      "points": [
+        {
+          "id": "in-tea-1",
+          "name": "Jorhat",
+          "latitude": 26.75,
+          "longitude": 94.22
+        },
+        {
+          "id": "in-tea-2",
+          "name": "Dibrugarh",
+          "latitude": 27.47,
+          "longitude": 94.91
+        },
+        {
+          "id": "in-tea-3",
+          "name": "Darjeeling",
+          "latitude": 27.04,
+          "longitude": 88.26
+        }
+      ]
+    },
+    {
+      "id": "cn-tea",
+      "label": "Zhejiang / Fujian / Yunnan",
+      "country": "China",
+      "iso3": "CHN",
+      "points": [
+        {
+          "id": "cn-tea-1",
+          "name": "Hangzhou",
+          "latitude": 30.27,
+          "longitude": 120.15
+        },
+        {
+          "id": "cn-tea-2",
+          "name": "Wuyishan",
+          "latitude": 27.76,
+          "longitude": 118.04
+        },
+        {
+          "id": "cn-tea-3",
+          "name": "Pu’er",
+          "latitude": 22.78,
+          "longitude": 100.97
+        }
+      ]
+    },
+    {
+      "id": "ke-tea",
+      "label": "Kenianisches Hochland",
+      "country": "Kenia",
+      "iso3": "KEN",
+      "points": [
+        {
+          "id": "ke-tea-1",
+          "name": "Kericho",
+          "latitude": -0.37,
+          "longitude": 35.28
+        },
+        {
+          "id": "ke-tea-2",
+          "name": "Nandi Hills",
+          "latitude": 0.11,
+          "longitude": 35.18
+        },
+        {
+          "id": "ke-tea-3",
+          "name": "Nyeri",
+          "latitude": -0.42,
+          "longitude": 36.95
+        }
+      ]
+    },
+    {
+      "id": "lk-tea",
+      "label": "Zentrales Hochland",
+      "country": "Sri Lanka",
+      "iso3": "LKA",
+      "points": [
+        {
+          "id": "lk-tea-1",
+          "name": "Nuwara Eliya",
+          "latitude": 6.97,
+          "longitude": 80.77
+        },
+        {
+          "id": "lk-tea-2",
+          "name": "Badulla",
+          "latitude": 6.99,
+          "longitude": 81.06
+        },
+        {
+          "id": "lk-tea-3",
+          "name": "Ratnapura",
+          "latitude": 6.68,
+          "longitude": 80.4
+        }
+      ]
+    },
+    {
+      "id": "ru-sunflower",
+      "label": "Wolga / Südrussland",
+      "country": "Russland",
+      "iso3": "RUS",
+      "points": [
+        {
+          "id": "ru-sunflower-1",
+          "name": "Saratov",
+          "latitude": 51.53,
+          "longitude": 46.03
+        },
+        {
+          "id": "ru-sunflower-2",
+          "name": "Voronezh",
+          "latitude": 51.67,
+          "longitude": 39.18
+        },
+        {
+          "id": "ru-sunflower-3",
+          "name": "Rostov am Don",
+          "latitude": 47.24,
+          "longitude": 39.7
+        }
+      ]
+    },
+    {
+      "id": "kz-north",
+      "label": "Nordkasachstan",
+      "country": "Kasachstan",
+      "iso3": "KAZ",
+      "points": [
+        {
+          "id": "kz-north-1",
+          "name": "Kostanay",
+          "latitude": 53.21,
+          "longitude": 63.62
+        },
+        {
+          "id": "kz-north-2",
+          "name": "Petropawl",
+          "latitude": 54.87,
+          "longitude": 69.15
+        },
+        {
+          "id": "kz-north-3",
+          "name": "Kokshetau",
+          "latitude": 53.28,
+          "longitude": 69.38
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "coffee-arabica",
+      "label": "Kaffee · Arabica",
+      "group": "Tropische Kulturen",
+      "marketContext": "ICE Coffee C · Arabica",
+      "mechanism": "Ein Regenimpuls nach Trockenheit kann Blüte unterstützen. Ernten brauchen trockene Abschnitte; Frost und starke Hitze belasten.",
+      "sourceIds": ["usda", "calendar", "coffee"],
+      "thresholds": {
+        "heatC": 32,
+        "frostC": 2,
+        "heavyRainMm": 45,
+        "wetWeekMm": 90,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "br-minas",
+          "phases": [
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest",
+            "dormant",
+            "flowering",
+            "flowering",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "br-sao-paulo",
+          "phases": [
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest",
+            "dormant",
+            "flowering",
+            "growth",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "co-andes",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "et-highlands",
+          "phases": [
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest",
+            "harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "coffee-robusta",
+      "label": "Kaffee · Robusta",
+      "group": "Tropische Kulturen",
+      "marketContext": "ICE London Robusta",
+      "mechanism": "Wärmere Standorte als Arabica; Wasserversorgung bleibt wichtig. Regen kann die Ernte und Trocknung verzögern.",
+      "sourceIds": ["usda", "calendar", "coffee"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 5,
+        "heavyRainMm": 55,
+        "wetWeekMm": 110,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "vn-highlands",
+          "phases": [
+            "harvest",
+            "harvest",
+            "flowering",
+            "flowering",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "br-espirito",
+          "phases": [
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest",
+            "harvest",
+            "flowering",
+            "growth",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "id-sumatra",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "ug-lake",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cocoa",
+      "label": "Kakao",
+      "group": "Tropische Kulturen",
+      "marketContext": "ICE Cocoa · unterschiedliche Lieferqualitäten",
+      "mechanism": "Gleichmäßige Wasserversorgung unterstützt die Bäume. Längere Defizite belasten; anhaltende Nässe kann Krankheitsdruck und Trocknungsprobleme erhöhen. Ernte und Wachstum überlappen.",
+      "sourceIds": ["usda", "calendar", "cocoa", "cocoa-calendar"],
+      "thresholds": {
+        "heatC": 34,
+        "frostC": 12,
+        "heavyRainMm": 60,
+        "wetWeekMm": 120,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "ci-cocoa",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "gh-cocoa",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "ec-coast",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "cm-cocoa",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "ng-cocoa",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "br-bahia",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wheat-winter",
+      "label": "Weizen · Winterweizen",
+      "group": "Getreide",
+      "marketContext": "CBOT / Kansas City / europäischer Weizen",
+      "mechanism": "Wasserbedarf steigt beim Schossen und während Blüte/Kornfüllung. Hitze verkürzt die Füllphase; Regen zur Ernte gefährdet Qualität. Winterhärte und Schneedecke fehlen im Screening.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 30,
+        "frostC": -3,
+        "heavyRainMm": 35,
+        "wetWeekMm": 70,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "us-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "black-sea",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "fr-north",
+          "phases": [
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "cn-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "in-north",
+          "phases": [
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "au-wheat",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "ar-pampas",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "wheat-spring",
+      "label": "Weizen · Sommerweizen",
+      "group": "Getreide",
+      "marketContext": "Minneapolis / kanadischer Sommerweizen",
+      "mechanism": "Nordamerikanische Aussaat im Frühjahr; Trockenheit und Hitze in der Kornfüllung sind besonders relevant. Frost zur Ernte ist von Winterruhe zu trennen.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 30,
+        "frostC": -2,
+        "heavyRainMm": 35,
+        "wetWeekMm": 70,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "ca-prairies",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "us-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "kz-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "corn",
+      "label": "Mais",
+      "group": "Getreide",
+      "marketContext": "CBOT Corn · regionale Erntezyklen",
+      "mechanism": "Bestäubung und Kornfüllung reagieren auf Hitze und Wasserdefizite. Brasiliens zweite Maisernte hat einen anderen Kalender als der US Corn Belt.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 0,
+        "heavyRainMm": 40,
+        "wetWeekMm": 80,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "us-corn",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "br-mato",
+          "phases": [
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "ar-pampas",
+          "phases": [
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "cn-northeast",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "za-maize",
+          "phases": [
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "soybeans",
+      "label": "Sojabohnen",
+      "group": "Ölsaaten",
+      "marketContext": "CBOT Soybeans",
+      "mechanism": "Blüte, Hülsenansatz und Füllung benötigen Wasser. Nasse Erntebedingungen erschweren Feldzugang und Qualität.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 0,
+        "heavyRainMm": 40,
+        "wetWeekMm": 80,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "br-mato",
+          "phases": [
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "br-south",
+          "phases": [
+            "growth",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "us-corn",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "ar-pampas",
+          "phases": [
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "cn-northeast",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cotton",
+      "label": "Baumwolle",
+      "group": "Fasern & weitere Kulturen",
+      "marketContext": "ICE Cotton No. 2",
+      "mechanism": "Wasser unterstützt Blüte und Kapselbildung; Regen auf offene Kapseln kann Qualität beeinträchtigen. Bewässerte und unbewässerte Systeme unterscheiden sich.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 37,
+        "frostC": 2,
+        "heavyRainMm": 40,
+        "wetWeekMm": 80,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "us-cotton",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "cn-xinjiang",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "in-west",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "br-mato",
+          "phases": [
+            "growth",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "us-southeast",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "harvest"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sugarcane",
+      "label": "Zucker · Zuckerrohr",
+      "group": "Zucker & Dauerkulturen",
+      "marketContext": "ICE Sugar No. 11 · Rohzucker",
+      "mechanism": "Wasser fördert Biomasse. Zur Reife und Ernte sind trockenere Abschnitte oft günstig. Mehrjährige Bestände und versetzte Ernten überlappen.",
+      "sourceIds": ["usda", "calendar", "fao", "perennial"],
+      "thresholds": {
+        "heatC": 36,
+        "frostC": 2,
+        "heavyRainMm": 60,
+        "wetWeekMm": 120,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "br-sao-paulo",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "br-mato",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "in-sugar",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "th-central",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sugarbeet",
+      "label": "Zucker · Zuckerrübe",
+      "group": "Zucker & Dauerkulturen",
+      "marketContext": "Europäischer Rübenzucker · indirekter Zuckermarktkontext",
+      "mechanism": "Sommerfeuchte unterstützt das Rübenwachstum; Herbstregen kann Rodung und Transport erschweren. Zuckergehalt ist ohne Pflanzenmessung unbekannt.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 32,
+        "frostC": -2,
+        "heavyRainMm": 40,
+        "wetWeekMm": 80,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "fr-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "de-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "black-sea",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "growth",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rice",
+      "label": "Reis",
+      "group": "Getreide",
+      "marketContext": "CBOT Rough Rice · globaler Reiskontext",
+      "mechanism": "Wassermanagement ist zentral, aber Staunässe, Überflutung und fehlende Bewässerung sind unterschiedliche Zustände. Blütenhitze und Regen zur Ernte verdienen Aufmerksamkeit.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 8,
+        "heavyRainMm": 70,
+        "wetWeekMm": 140,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "in-rice",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "th-central",
+          "phases": [
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "vn-mekong",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "cn-yangtze",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rapeseed",
+      "label": "Raps / Canola",
+      "group": "Ölsaaten",
+      "marketContext": "ICE Canola / europäischer Raps",
+      "mechanism": "Hitze zur Blüte und Füllung sowie nasse Erntebedingungen sind relevant. Winterraps und kanadische Frühjahrsaussaat bleiben regional getrennt.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 30,
+        "frostC": -2,
+        "heavyRainMm": 35,
+        "wetWeekMm": 70,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "ca-prairies",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "fr-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "de-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "au-wheat",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "cn-yangtze",
+          "phases": [
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "growth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sunflower",
+      "label": "Sonnenblumen",
+      "group": "Ölsaaten",
+      "marketContext": "Sonnenblumenöl / indirekter Pflanzenölkontext",
+      "mechanism": "Trockenheitstoleranz bedeutet keine Unempfindlichkeit. Blüte und Samenfüllung benötigen Wasser; späte Nässe kann Ernte und Pflanzenhygiene belasten.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 0,
+        "heavyRainMm": 40,
+        "wetWeekMm": 80,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "black-sea",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "ru-sunflower",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "ar-pampas",
+          "phases": [
+            "flowering",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "palm-oil",
+      "label": "Palmöl",
+      "group": "Ölsaaten",
+      "marketContext": "Bursa Malaysia Crude Palm Oil",
+      "mechanism": "Wasserdefizite können die Produktion mit erheblicher Verzögerung belasten. Starkregen behindert Ernte und Transport. Eine 14-Tage-Prognose bildet langfristige Ertragsfolgen nicht ab.",
+      "sourceIds": ["usda", "calendar", "perennial"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 15,
+        "heavyRainMm": 70,
+        "wetWeekMm": 140,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "id-palm",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "my-palm",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "barley",
+      "label": "Gerste",
+      "group": "Getreide",
+      "marketContext": "Braugerste / Futtergerste · indirekter Getreidekontext",
+      "mechanism": "Sommer- und Wintergerste haben unterschiedliche Kalender. Trockenheit in der Füllung und Regen zur Reife können Menge und Brauqualität beeinflussen.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 30,
+        "frostC": -2,
+        "heavyRainMm": 35,
+        "wetWeekMm": 70,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "fr-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "de-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "growth",
+            "growth",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "ca-prairies",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "au-wheat",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "black-sea",
+          "phases": [
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "oats",
+      "label": "Hafer",
+      "group": "Getreide",
+      "marketContext": "CBOT Oats",
+      "mechanism": "Kühle Wachstumsbedingungen und ausreichende Wasserversorgung unterstützen die Kultur. Hitze während der Kornfüllung und Regen zur Ernte sind gesonderte Risiken.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 30,
+        "frostC": -2,
+        "heavyRainMm": 35,
+        "wetWeekMm": 70,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "ca-prairies",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "flowering",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "us-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "de-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sorghum",
+      "label": "Sorghum",
+      "group": "Getreide",
+      "marketContext": "Futtergetreide · indirekter Maiskontext",
+      "mechanism": "Sorghum toleriert Trockenheit besser als viele Getreide, bleibt aber bei Blüte und Füllung wasserabhängig. Hitze allein beweist keinen Ertragsausfall.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 38,
+        "frostC": 0,
+        "heavyRainMm": 45,
+        "wetWeekMm": 90,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "us-plains",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "ar-pampas",
+          "phases": [
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        },
+        {
+          "regionId": "au-wheat",
+          "phases": [
+            "growth",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "peanuts",
+      "label": "Erdnüsse",
+      "group": "Ölsaaten",
+      "marketContext": "Physischer Markt · kein gleichartiger globaler Future",
+      "mechanism": "Wasser ist für Blüte, Hülsenentwicklung und Füllung wichtig. Starkregen zur Rodung und Trocknung kann Qualität und Lagerfähigkeit beeinträchtigen.",
+      "sourceIds": ["usda", "calendar", "fao"],
+      "thresholds": {
+        "heatC": 35,
+        "frostC": 3,
+        "heavyRainMm": 45,
+        "wetWeekMm": 90,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "us-southeast",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        },
+        {
+          "regionId": "in-west",
+          "phases": [
+            "harvest",
+            "harvest",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "ripening",
+            "harvest"
+          ]
+        },
+        {
+          "regionId": "cn-north",
+          "phases": [
+            "dormant",
+            "dormant",
+            "dormant",
+            "dormant",
+            "growth",
+            "growth",
+            "flowering",
+            "flowering",
+            "ripening",
+            "harvest",
+            "harvest",
+            "dormant"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "orange-juice",
+      "label": "Orangen / Orangensaft",
+      "group": "Zucker & Dauerkulturen",
+      "marketContext": "ICE Frozen Concentrated Orange Juice",
+      "mechanism": "Frost und Wasserstress betreffen Frucht und Baum. Böen können Früchte schädigen. Krankheiten und tatsächliche Hurrikan-Zugbahnen sind kein Bestandteil des Wetterscreenings.",
+      "sourceIds": ["usda", "calendar", "fao", "perennial"],
+      "thresholds": {
+        "heatC": 36,
+        "frostC": 1,
+        "heavyRainMm": 60,
+        "wetWeekMm": 120,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "br-sao-paulo",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "us-florida",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "rubber",
+      "label": "Naturkautschuk",
+      "group": "Fasern & weitere Kulturen",
+      "marketContext": "SGX / japanische Kautschukmärkte",
+      "mechanism": "Wasserversorgung unterstützt Baumwachstum; Regen kann das Zapfen unterbrechen. Mehr Regen kann deshalb zugleich günstig für Bäume und ungünstig für die aktuelle Gewinnung sein.",
+      "sourceIds": ["usda", "calendar", "perennial"],
+      "thresholds": {
+        "heatC": 36,
+        "frostC": 12,
+        "heavyRainMm": 65,
+        "wetWeekMm": 130,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "th-rubber",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "id-sumatra",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "vn-rubber",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "my-palm",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "tea",
+      "label": "Tee",
+      "group": "Tropische Kulturen",
+      "marketContext": "Regionale Teeauktionen · kein global einheitlicher Future",
+      "mechanism": "Wasser und mäßige Wärme unterstützen neue Triebe. Hitze, trockene Abschnitte und Starkregen können Menge, Erntezugang und Qualität unterschiedlich beeinflussen.",
+      "sourceIds": ["usda", "calendar", "tea", "perennial"],
+      "thresholds": {
+        "heatC": 32,
+        "frostC": 3,
+        "heavyRainMm": 55,
+        "wetWeekMm": 110,
+        "waterGapMm": -20
+      },
+      "regions": [
+        {
+          "regionId": "in-tea",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "cn-tea",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "ke-tea",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        },
+        {
+          "regionId": "lk-tea",
+          "phases": [
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed",
+            "mixed"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+use crate::runtime::State;
 use crate::{
     database::AppState,
     errors::CommandResult,
@@ -5,7 +6,6 @@ use crate::{
 };
 use serde::Serialize;
 use sqlx::SqlitePool;
-use tauri::State;
 
 #[derive(Debug, Serialize)]
 #[serde(rename_all = "camelCase")]
@@ -23,7 +23,7 @@ pub struct AccountJournal {
     pub capital_curve: Vec<CapitalPoint>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_account_journal(
     state: State<'_, AppState>,
     account_id: String,

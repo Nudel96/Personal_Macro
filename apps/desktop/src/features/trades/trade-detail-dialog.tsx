@@ -9,7 +9,7 @@ import {
   Trash2,
   X,
 } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
@@ -22,15 +22,30 @@ import {
 } from "../../lib/utils";
 import { api } from "../../services/commands";
 import { TradeOutcomeEditor } from "./trade-outcome-editor";
+import {
+  readTradeDraft,
+  removeTradeDraft,
+  writeTradeDraft,
+} from "./trade-draft-storage";
 import { accountMoney } from "../accounts/use-account-journal";
 import "./trade-capture.css";
 import type {
   BootstrapData,
   CustomField,
   TradeContext,
+  TradeContextInput,
   TradeDetail,
   TradeInput,
 } from "../../types/domain";
+
+interface PendingDetailSave {
+  accountId: string;
+  tradeId: string;
+  trade: TradeDetail;
+  context: TradeContextInput;
+}
+const contextDraftKey = (tradeId: string) =>
+  `personal-macro:trade-context-pending:v1:${tradeId}`;
 
 export function TradeDetailDialog({
   accountId,
@@ -88,18 +103,38 @@ export function TradeDetailDialog({
   const [mistakeCost, setMistakeCost] = useState("");
   const [mistakeNote, setMistakeNote] = useState("");
   const [mediaId, setMediaId] = useState("");
+  const pendingSave = useRef<PendingDetailSave | null>(null);
+  const [pendingContext, setPendingContext] =
+    useState<PendingDetailSave | null>(null);
+  const currentDetailKey = useRef(detailKey);
   useEffect(() => {
-    setDraft(null);
+    currentDetailKey.current = detailKey;
+    let restored: PendingDetailSave | null = null;
+    if (accountId && tradeId) {
+      try {
+        const saved = JSON.parse(
+          readTradeDraft(contextDraftKey(tradeId), accountId) ?? "null",
+        ) as PendingDetailSave | null;
+        if (saved?.accountId === accountId && saved.tradeId === tradeId)
+          restored = saved;
+      } catch {
+        /* An unreadable local draft never changes the saved trade. */
+      }
+    }
+    pendingSave.current = restored;
+    setPendingContext(restored);
+    setDraft(restored?.trade ?? null);
     setOutcomeValid(true);
     setContext(null);
     setMistakeId("");
     setMediaId("");
-  }, [detailKey]);
+  }, [detailKey, accountId, tradeId]);
   useEffect(() => {
-    if (validatedTrade) setDraft(validatedTrade);
+    if (validatedTrade && !pendingSave.current) setDraft(validatedTrade);
   }, [detailKey, validatedTrade]);
   useEffect(() => {
-    if (validatedTrade && contextQuery.data) setContext(contextQuery.data);
+    if (validatedTrade && contextQuery.data && !pendingSave.current)
+      setContext(contextQuery.data);
   }, [contextQuery.data, validatedTrade]);
   useEffect(() => {
     if (!mistakeId && bootstrap.data?.mistakes[0])
@@ -112,9 +147,21 @@ export function TradeDetailDialog({
     queryClient.invalidateQueries({ queryKey: ["bootstrap"] });
     queryClient.invalidateQueries({ queryKey: ["calendar"] });
     queryClient.invalidateQueries({ queryKey: ["analytics"] });
+    queryClient.invalidateQueries({ queryKey: ["account-journal"] });
   };
   const save = useMutation({
     mutationFn: async () => {
+      if (!accountId || !tradeId)
+        throw new Error("Bitte einen Trade auswählen.");
+      const pending = pendingSave.current;
+      if (pending) {
+        if (pending.accountId !== accountId || pending.tradeId !== tradeId)
+          throw new Error(
+            "Die offenen Ergänzungen gehören zu einem anderen Trade.",
+          );
+        await api.saveTradeContext(pending.accountId, pending.context);
+        return { trade: pending.trade, accountId, tradeId };
+      }
       if (
         !outcomeValid ||
         (draft?.status === "closed" &&
@@ -128,7 +175,7 @@ export function TradeDetailDialog({
         accountId: accountId!,
       });
       if (context) {
-        await api.saveTradeContext(accountId!, {
+        const input: TradeContextInput = {
           tradeId: tradeId!,
           tagIds: context.tags.map((tag) => tag.id),
           legs: context.legs.map((leg) => ({
@@ -142,22 +189,53 @@ export function TradeDetailDialog({
           })),
           emotions: context.emotions,
           customValues: context.customValues,
-        });
+        };
+        const committed = { accountId, tradeId, trade, context: input };
+        if (currentDetailKey.current === detailKey) {
+          pendingSave.current = committed;
+          setPendingContext(committed);
+          setDraft(trade);
+        }
+        try {
+          writeTradeDraft(
+            contextDraftKey(tradeId),
+            accountId,
+            JSON.stringify(committed),
+          );
+        } catch {
+          /* Keep the confirmed trade and pending context in this dialog. */
+        }
+        // Publish the committed result immediately; a context error must not
+        // leave the account totals or this trade's cached outcome stale.
+        queryClient.setQueryData(["trade", accountId, tradeId], trade);
+        invalidate();
+        await api.saveTradeContext(accountId, input);
       }
-      return trade;
+      return { trade, accountId, tradeId };
     },
-    onSuccess: (trade) => {
-      setDraft(trade);
-      queryClient.setQueryData(["trade", accountId, tradeId], trade);
+    onSuccess: ({
+      trade,
+      accountId: savedAccountId,
+      tradeId: savedTradeId,
+    }) => {
+      removeTradeDraft(contextDraftKey(savedTradeId), savedAccountId);
+      if (currentDetailKey.current === `${savedAccountId}:${savedTradeId}`) {
+        pendingSave.current = null;
+        setPendingContext(null);
+        setDraft(trade);
+      }
+      queryClient.setQueryData(["trade", savedAccountId, savedTradeId], trade);
       queryClient.invalidateQueries({
-        queryKey: ["trade-context", accountId, tradeId],
+        queryKey: ["trade-context", savedAccountId, savedTradeId],
       });
       invalidate();
       toast.success("Änderungen gespeichert.");
     },
     onError: (error: { message?: string }) =>
       toast.error(
-        error.message ?? "Änderungen konnten nicht gespeichert werden.",
+        pendingSave.current
+          ? `Die Trade-Änderungen sind gespeichert. Die Ergänzungen fehlen noch; erneut speichern wiederholt nur diesen Schritt. ${error.message ?? ""}`.trim()
+          : (error.message ?? "Änderungen konnten nicht gespeichert werden."),
       ),
   });
   const duplicate = useMutation({
@@ -233,7 +311,12 @@ export function TradeDetailDialog({
   });
 
   return (
-    <Dialog.Root open={Boolean(tradeId)} onOpenChange={onOpenChange}>
+    <Dialog.Root
+      open={Boolean(tradeId)}
+      onOpenChange={(open) => {
+        if (!save.isPending) onOpenChange(open);
+      }}
+    >
       <Dialog.Portal>
         <Dialog.Overlay className="dialog-overlay" />
         <Dialog.Content
@@ -265,345 +348,378 @@ export function TradeDetailDialog({
             </Dialog.Close>
           </header>
           <div className="dialog-body">
-            {!draft ? (
-              <div className="skeleton" style={{ height: 360 }} />
-            ) : (
-              <>
-                <TradeOutcomeEditor
-                  key={`${draft.id}:${draft.updatedAt}`}
-                  trade={draft}
-                  currency={currency}
-                  onChange={setDraft}
-                  onValidityChange={setOutcomeValid}
-                  onSave={() => save.mutate()}
-                  pending={save.isPending}
-                />
-                <div
-                  className="grid"
-                  style={{
-                    gridTemplateColumns: "repeat(3, 1fr)",
-                    marginBottom: 18,
-                  }}
-                >
-                  <Metric
-                    label="Netto-P&L"
-                    value={accountMoney(draft.netPnlMinor, currency)}
-                    tone={
-                      draft.netPnlMinor == null || draft.netPnlMinor === 0
-                        ? undefined
-                        : draft.netPnlMinor > 0
+            {pendingContext && (
+              <p role="status" className="form-section-copy">
+                Die Trade-Änderungen sind bereits gespeichert. Die noch offenen
+                Ergänzungen bleiben für diesen Trade vorgemerkt.
+              </p>
+            )}
+            <fieldset
+              disabled={Boolean(pendingContext) || save.isPending}
+              style={{ border: 0, padding: 0, margin: 0, minWidth: 0 }}
+            >
+              {!draft ? (
+                <div className="skeleton" style={{ height: 360 }} />
+              ) : (
+                <>
+                  <TradeOutcomeEditor
+                    key={`${draft.id}:${draft.updatedAt}`}
+                    trade={draft}
+                    currency={currency}
+                    onChange={setDraft}
+                    onValidityChange={setOutcomeValid}
+                    onSave={() => save.mutate()}
+                    pending={save.isPending}
+                  />
+                  <div
+                    className="grid"
+                    style={{
+                      gridTemplateColumns: "repeat(3, 1fr)",
+                      marginBottom: 18,
+                    }}
+                  >
+                    <Metric
+                      label="Netto-P&L"
+                      value={accountMoney(draft.netPnlMinor, currency)}
+                      tone={
+                        draft.netPnlMinor == null || draft.netPnlMinor === 0
+                          ? undefined
+                          : draft.netPnlMinor > 0
+                            ? "positive"
+                            : "negative"
+                      }
+                    />
+                    <Metric
+                      label="Realisiertes R"
+                      value={formatR(draft.calculatedR)}
+                      tone={
+                        (Number(draft.calculatedR) || 0) >= 0
                           ? "positive"
                           : "negative"
-                    }
-                  />
-                  <Metric
-                    label="Realisiertes R"
-                    value={formatR(draft.calculatedR)}
-                    tone={
-                      (Number(draft.calculatedR) || 0) >= 0
-                        ? "positive"
-                        : "negative"
-                    }
-                  />
-                  <Metric label="Status" value={draft.status} />
-                </div>
-                <section className="form-section">
-                  <h3 className="form-section-title">Trade bearbeiten</h3>
-                  <div className="form-grid cols-3">
-                    <EditField label="Instrument">
-                      <input
-                        className="input"
-                        value={draft.instrument}
-                        onChange={(event) =>
-                          setDraft({ ...draft, instrument: event.target.value })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Richtung">
-                      <select
-                        className="select"
-                        value={draft.direction}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            direction: event.target.value as "long" | "short",
-                          })
-                        }
-                      >
-                        <option value="long">Long</option>
-                        <option value="short">Short</option>
-                      </select>
-                    </EditField>
-                    <EditField label="Status">
-                      <select
-                        className="select"
-                        value={draft.status}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            status: event.target.value as TradeDetail["status"],
-                          })
-                        }
-                      >
-                        <option value="draft">Entwurf</option>
-                        <option value="planned">Geplant</option>
-                        <option value="open">Offen</option>
-                        <option value="closed">Geschlossen</option>
-                        <option value="cancelled">Storniert</option>
-                        <option value="archived">Archiviert</option>
-                      </select>
-                    </EditField>
-                    <EditField label="Entry">
-                      <input
-                        className="input"
-                        value={draft.actualEntry ?? ""}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            actualEntry: event.target.value,
-                          })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Stop">
-                      <input
-                        className="input"
-                        value={draft.initialStopLoss ?? ""}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            initialStopLoss: event.target.value,
-                          })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Exit">
-                      <input
-                        className="input"
-                        value={draft.actualExit ?? ""}
-                        onChange={(event) =>
-                          setDraft({ ...draft, actualExit: event.target.value })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Plan eingehalten">
-                      <select
-                        className="select"
-                        value={
-                          draft.followedPlan == null
-                            ? ""
-                            : String(draft.followedPlan)
-                        }
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            followedPlan:
-                              event.target.value === ""
-                                ? null
-                                : event.target.value === "true",
-                          })
-                        }
-                      >
-                        <option value="">Nicht bewertet</option>
-                        <option value="true">Ja</option>
-                        <option value="false">Nein</option>
-                      </select>
-                    </EditField>
-                    <EditField label="Review abgeschlossen">
-                      <select
-                        className="select"
-                        value={draft.reviewedAt ? "true" : "false"}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            reviewedAt:
-                              event.target.value === "true"
-                                ? new Date().toISOString()
-                                : null,
-                          })
-                        }
-                      >
-                        <option value="false">Nein</option>
-                        <option value="true">Ja</option>
-                      </select>
-                    </EditField>
-                  </div>
-                </section>
-                <section className="form-section">
-                  <h3 className="form-section-title">These & Review</h3>
-                  <div className="form-grid">
-                    <EditField label="These">
-                      <textarea
-                        className="textarea"
-                        value={draft.thesisHtml ?? ""}
-                        onChange={(event) =>
-                          setDraft({ ...draft, thesisHtml: event.target.value })
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Review-Notizen">
-                      <textarea
-                        className="textarea"
-                        value={draft.reviewNotesHtml ?? ""}
-                        onChange={(event) =>
-                          setDraft({
-                            ...draft,
-                            reviewNotesHtml: event.target.value,
-                          })
-                        }
-                      />
-                    </EditField>
-                  </div>
-                </section>
-                {context && (
-                  <JournalContextEditor
-                    context={context}
-                    onChange={setContext}
-                    bootstrap={bootstrap.data}
-                    customFields={customFieldQuery.data ?? []}
-                  />
-                )}
-                <section className="form-section">
-                  <h3 className="form-section-title">Screenshots</h3>
-                  {tradeMediaQuery.data?.length ? (
-                    <div className="chip-list" style={{ marginBottom: 12 }}>
-                      {tradeMediaQuery.data.map((media) => (
-                        <Badge key={media.id} className="primary">
-                          {media.originalFilename}
-                          <button
-                            type="button"
-                            className="badge-remove"
-                            aria-label={`${media.originalFilename} lösen`}
-                            onClick={() => detachMedia.mutate(media.id)}
-                          >
-                            <X size={10} />
-                          </button>
-                        </Badge>
-                      ))}
-                    </div>
-                  ) : (
-                    <div className="muted" style={{ marginBottom: 12 }}>
-                      Noch kein Screenshot mit diesem Trade verknüpft.
-                    </div>
-                  )}
-                  <div className="page-actions">
-                    <select
-                      className="select"
-                      value={mediaId}
-                      onChange={(event) => setMediaId(event.target.value)}
-                    >
-                      <option value="">Screenshot auswählen</option>
-                      {allMediaQuery.data
-                        ?.filter(
-                          (media) =>
-                            !tradeMediaQuery.data?.some(
-                              (linked) => linked.id === media.id,
-                            ),
-                        )
-                        .map((media) => (
-                          <option key={media.id} value={media.id}>
-                            {media.originalFilename}
-                          </option>
-                        ))}
-                    </select>
-                    <Button
-                      disabled={!mediaId || attachMedia.isPending}
-                      onClick={() => attachMedia.mutate()}
-                    >
-                      <Plus size={13} /> Verknüpfen
-                    </Button>
-                  </div>
-                </section>
-                <section className="form-section">
-                  <h3 className="form-section-title">
-                    <AlertTriangle size={15} /> Fehler & Gegenmaßnahmen
-                  </h3>
-                  {mistakeQuery.data?.length ? (
-                    <div className="chip-list" style={{ marginBottom: 14 }}>
-                      {mistakeQuery.data.map((mistake) => (
-                        <Badge key={mistake.mistakeId} className="negative">
-                          {mistake.name} · Schwere {mistake.severity}
-                          {mistake.estimatedCostMinor
-                            ? ` · ${formatMoneyMinor(mistake.estimatedCostMinor)}`
-                            : ""}
-                        </Badge>
-                      ))}
-                    </div>
-                  ) : (
-                    <div
-                      className="muted"
-                      style={{ marginBottom: 14, fontSize: 10 }}
-                    >
-                      Noch kein Fehler zugeordnet.
-                    </div>
-                  )}
-                  <div className="form-grid cols-3">
-                    <EditField label="Fehlertyp">
-                      <select
-                        className="select"
-                        value={mistakeId}
-                        onChange={(event) => setMistakeId(event.target.value)}
-                      >
-                        {bootstrap.data?.mistakes.map((mistake) => (
-                          <option key={mistake.id} value={mistake.id}>
-                            {mistake.name}
-                          </option>
-                        ))}
-                      </select>
-                    </EditField>
-                    <EditField label={`Schweregrad: ${mistakeSeverity} / 5`}>
-                      <input
-                        className="range"
-                        type="range"
-                        min="1"
-                        max="5"
-                        value={mistakeSeverity}
-                        onChange={(event) =>
-                          setMistakeSeverity(Number(event.target.value))
-                        }
-                      />
-                    </EditField>
-                    <EditField label="Geschätzte Kosten (€)">
-                      <input
-                        className="input"
-                        inputMode="decimal"
-                        value={mistakeCost}
-                        onChange={(event) => setMistakeCost(event.target.value)}
-                        placeholder="0,00"
-                      />
-                    </EditField>
-                  </div>
-                  <EditField label="Notiz / Gegenmaßnahme">
-                    <textarea
-                      className="textarea"
-                      value={mistakeNote}
-                      onChange={(event) => setMistakeNote(event.target.value)}
-                      placeholder="Was ist passiert und wie verhinderst du es beim nächsten Mal?"
+                      }
                     />
-                  </EditField>
-                  <Button
-                    style={{ marginTop: 10 }}
-                    disabled={!mistakeId || assignMistake.isPending}
-                    onClick={() => assignMistake.mutate()}
-                  >
-                    <Plus size={14} /> Fehler zuordnen
-                  </Button>
-                </section>
-              </>
-            )}
+                    <Metric label="Status" value={draft.status} />
+                  </div>
+                  <section className="form-section">
+                    <h3 className="form-section-title">Trade bearbeiten</h3>
+                    <div className="form-grid cols-3">
+                      <EditField label="Instrument">
+                        <input
+                          className="input"
+                          value={draft.instrument}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              instrument: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Richtung">
+                        <select
+                          className="select"
+                          value={draft.direction}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              direction: event.target.value as "long" | "short",
+                            })
+                          }
+                        >
+                          <option value="long">Long</option>
+                          <option value="short">Short</option>
+                        </select>
+                      </EditField>
+                      <EditField label="Status">
+                        <select
+                          className="select"
+                          value={draft.status}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              status: event.target
+                                .value as TradeDetail["status"],
+                            })
+                          }
+                        >
+                          <option value="draft">Entwurf</option>
+                          <option value="planned">Geplant</option>
+                          <option value="open">Offen</option>
+                          <option value="closed">Geschlossen</option>
+                          <option value="cancelled">Storniert</option>
+                          <option value="archived">Archiviert</option>
+                        </select>
+                      </EditField>
+                      <EditField label="Entry">
+                        <input
+                          className="input"
+                          value={draft.actualEntry ?? ""}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              actualEntry: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Stop">
+                        <input
+                          className="input"
+                          value={draft.initialStopLoss ?? ""}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              initialStopLoss: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Exit">
+                        <input
+                          className="input"
+                          value={draft.actualExit ?? ""}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              actualExit: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Plan eingehalten">
+                        <select
+                          className="select"
+                          value={
+                            draft.followedPlan == null
+                              ? ""
+                              : String(draft.followedPlan)
+                          }
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              followedPlan:
+                                event.target.value === ""
+                                  ? null
+                                  : event.target.value === "true",
+                            })
+                          }
+                        >
+                          <option value="">Nicht bewertet</option>
+                          <option value="true">Ja</option>
+                          <option value="false">Nein</option>
+                        </select>
+                      </EditField>
+                      <EditField label="Review abgeschlossen">
+                        <select
+                          className="select"
+                          value={draft.reviewedAt ? "true" : "false"}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              reviewedAt:
+                                event.target.value === "true"
+                                  ? new Date().toISOString()
+                                  : null,
+                            })
+                          }
+                        >
+                          <option value="false">Nein</option>
+                          <option value="true">Ja</option>
+                        </select>
+                      </EditField>
+                    </div>
+                  </section>
+                  <section className="form-section">
+                    <h3 className="form-section-title">These & Review</h3>
+                    <div className="form-grid">
+                      <EditField label="These">
+                        <textarea
+                          className="textarea"
+                          value={draft.thesisHtml ?? ""}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              thesisHtml: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Review-Notizen">
+                        <textarea
+                          className="textarea"
+                          value={draft.reviewNotesHtml ?? ""}
+                          onChange={(event) =>
+                            setDraft({
+                              ...draft,
+                              reviewNotesHtml: event.target.value,
+                            })
+                          }
+                        />
+                      </EditField>
+                    </div>
+                  </section>
+                  {context && (
+                    <JournalContextEditor
+                      context={context}
+                      onChange={setContext}
+                      bootstrap={bootstrap.data}
+                      customFields={customFieldQuery.data ?? []}
+                    />
+                  )}
+                  <section className="form-section">
+                    <h3 className="form-section-title">Screenshots</h3>
+                    {tradeMediaQuery.data?.length ? (
+                      <div className="chip-list" style={{ marginBottom: 12 }}>
+                        {tradeMediaQuery.data.map((media) => (
+                          <Badge key={media.id} className="primary">
+                            {media.originalFilename}
+                            <button
+                              type="button"
+                              className="badge-remove"
+                              aria-label={`${media.originalFilename} lösen`}
+                              onClick={() => detachMedia.mutate(media.id)}
+                            >
+                              <X size={10} />
+                            </button>
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="muted" style={{ marginBottom: 12 }}>
+                        Noch kein Screenshot mit diesem Trade verknüpft.
+                      </div>
+                    )}
+                    <div className="page-actions">
+                      <select
+                        className="select"
+                        value={mediaId}
+                        onChange={(event) => setMediaId(event.target.value)}
+                      >
+                        <option value="">Screenshot auswählen</option>
+                        {allMediaQuery.data
+                          ?.filter(
+                            (media) =>
+                              !tradeMediaQuery.data?.some(
+                                (linked) => linked.id === media.id,
+                              ),
+                          )
+                          .map((media) => (
+                            <option key={media.id} value={media.id}>
+                              {media.originalFilename}
+                            </option>
+                          ))}
+                      </select>
+                      <Button
+                        disabled={!mediaId || attachMedia.isPending}
+                        onClick={() => attachMedia.mutate()}
+                      >
+                        <Plus size={13} /> Verknüpfen
+                      </Button>
+                    </div>
+                  </section>
+                  <section className="form-section">
+                    <h3 className="form-section-title">
+                      <AlertTriangle size={15} /> Fehler & Gegenmaßnahmen
+                    </h3>
+                    {mistakeQuery.data?.length ? (
+                      <div className="chip-list" style={{ marginBottom: 14 }}>
+                        {mistakeQuery.data.map((mistake) => (
+                          <Badge key={mistake.mistakeId} className="negative">
+                            {mistake.name} · Schwere {mistake.severity}
+                            {mistake.estimatedCostMinor
+                              ? ` · ${formatMoneyMinor(mistake.estimatedCostMinor)}`
+                              : ""}
+                          </Badge>
+                        ))}
+                      </div>
+                    ) : (
+                      <div
+                        className="muted"
+                        style={{ marginBottom: 14, fontSize: 10 }}
+                      >
+                        Noch kein Fehler zugeordnet.
+                      </div>
+                    )}
+                    <div className="form-grid cols-3">
+                      <EditField label="Fehlertyp">
+                        <select
+                          className="select"
+                          value={mistakeId}
+                          onChange={(event) => setMistakeId(event.target.value)}
+                        >
+                          {bootstrap.data?.mistakes.map((mistake) => (
+                            <option key={mistake.id} value={mistake.id}>
+                              {mistake.name}
+                            </option>
+                          ))}
+                        </select>
+                      </EditField>
+                      <EditField label={`Schweregrad: ${mistakeSeverity} / 5`}>
+                        <input
+                          className="range"
+                          type="range"
+                          min="1"
+                          max="5"
+                          value={mistakeSeverity}
+                          onChange={(event) =>
+                            setMistakeSeverity(Number(event.target.value))
+                          }
+                        />
+                      </EditField>
+                      <EditField label="Geschätzte Kosten (€)">
+                        <input
+                          className="input"
+                          inputMode="decimal"
+                          value={mistakeCost}
+                          onChange={(event) =>
+                            setMistakeCost(event.target.value)
+                          }
+                          placeholder="0,00"
+                        />
+                      </EditField>
+                    </div>
+                    <EditField label="Notiz / Gegenmaßnahme">
+                      <textarea
+                        className="textarea"
+                        value={mistakeNote}
+                        onChange={(event) => setMistakeNote(event.target.value)}
+                        placeholder="Was ist passiert und wie verhinderst du es beim nächsten Mal?"
+                      />
+                    </EditField>
+                    <Button
+                      style={{ marginTop: 10 }}
+                      disabled={!mistakeId || assignMistake.isPending}
+                      onClick={() => assignMistake.mutate()}
+                    >
+                      <Plus size={14} /> Fehler zuordnen
+                    </Button>
+                  </section>
+                </>
+              )}
+            </fieldset>
           </div>
           <footer className="dialog-footer">
             <div className="page-actions">
               <Button
                 variant="danger"
                 onClick={() => trash.mutate()}
-                disabled={!draft || trash.isPending}
+                disabled={
+                  !draft ||
+                  trash.isPending ||
+                  save.isPending ||
+                  Boolean(pendingContext)
+                }
               >
                 <Trash2 size={14} /> Papierkorb
               </Button>
               <Button
                 onClick={() => duplicate.mutate()}
-                disabled={!draft || duplicate.isPending}
+                disabled={
+                  !draft ||
+                  duplicate.isPending ||
+                  save.isPending ||
+                  Boolean(pendingContext)
+                }
               >
                 <Copy size={14} /> Duplizieren
               </Button>
@@ -632,7 +748,11 @@ export function TradeDetailDialog({
               disabled={!draft || save.isPending}
             >
               <Save size={14} />{" "}
-              {save.isPending ? "Speichert …" : "Änderungen speichern"}
+              {save.isPending
+                ? "Speichert …"
+                : pendingContext
+                  ? "Ergänzungen erneut speichern"
+                  : "Änderungen speichern"}
             </Button>
           </footer>
         </Dialog.Content>

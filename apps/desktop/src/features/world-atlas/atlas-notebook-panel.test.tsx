@@ -57,6 +57,7 @@ let client: QueryClient;
 const navigate = vi.fn();
 beforeEach(() => {
   vi.resetAllMocks();
+  vi.unstubAllEnvs();
   vi.mocked(isTauri).mockReturnValue(true);
   vi.mocked(api.atlasNotebook).mockResolvedValue([saved]);
   vi.mocked(api.atlasNotebookEntry).mockResolvedValue(saved);
@@ -77,6 +78,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   cleanup();
+  vi.unstubAllEnvs();
   client.clear();
 });
 function mount(
@@ -263,4 +265,30 @@ it("simuliert im Browser keine persönliche Speicherung", () => {
     screen.getByRole("button", { name: "Gemerkte Ansichten" }),
   ).toBeDisabled();
   expect(api.atlasNotebook).not.toHaveBeenCalled();
+});
+
+it("allows private cloud notebook editing without a native runtime", async () => {
+  vi.mocked(isTauri).mockReturnValue(false);
+  vi.stubEnv("VITE_PRIVATE_WEB", "true");
+  mount();
+  expect(
+    screen.getByRole("button", { name: "Ansicht merken" }),
+  ).not.toBeDisabled();
+  await openEntry();
+  fireEvent.change(screen.getByRole("textbox", { name: "Eigene Notiz" }), {
+    target: { value: "Cloudnotiz" },
+  });
+  fireEvent.click(
+    within(screen.getByRole("dialog")).getByRole("button", {
+      name: "Notiz speichern",
+    }),
+  );
+  await waitFor(() =>
+    expect(api.updateAtlasNotebookEntry).toHaveBeenCalledWith(
+      expect.objectContaining({ note: "Cloudnotiz", revision: 1 }),
+    ),
+  );
+  expect(
+    screen.getByText(/privat in deinem Cloud-Journal/),
+  ).toBeInTheDocument();
 });

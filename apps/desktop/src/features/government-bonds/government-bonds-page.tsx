@@ -22,6 +22,7 @@ import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import type {
   BondCountry,
   BondQuote,
@@ -590,7 +591,13 @@ export function GovernmentBondsPage() {
           </span>
         </div>
       </div>
-      {!data.desktop ? (
+      {isPrivateWeb() ? (
+        <p className="bond-notice">
+          Privater Quellenstand: Renditen, Historien, Zinskurven und
+          Länderabstände lassen sich hier vergleichen. Neue Providerabrufe sind
+          in dieser Ansicht noch nicht freigegeben.
+        </p>
+      ) : !data.desktop ? (
         <p className="bond-notice">
           Browser-Vorschau: Das weltweite Verzeichnis ist verfügbar. Echte
           Renditen werden in der Desktop-App geladen und lokal gespeichert.

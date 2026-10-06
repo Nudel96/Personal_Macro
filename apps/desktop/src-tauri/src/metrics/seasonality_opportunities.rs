@@ -10,6 +10,44 @@ use serde::{Deserialize, Serialize};
 #[path = "seasonality_opportunities_tests.rs"]
 mod tests;
 
+pub const MARKET_HORIZON_DAYS: u32 = 90;
+pub const MARKET_LOOKBACK_YEARS: i32 = 20;
+pub const MARKET_MIN_YEARS: usize = 5;
+pub const MARKET_RESULTS_PER_DIRECTION: usize = 10;
+
+#[derive(Debug, Clone, Deserialize, Serialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+pub struct MarketWindowInput {
+    pub as_of: NaiveDate,
+}
+
+impl MarketWindowInput {
+    pub fn validate(&self) -> Result<(), &'static str> {
+        if !(1900..=2200).contains(&self.as_of.year()) {
+            return Err("Bitte wähle einen gültigen Stichtag für die nächsten 90 Tage.");
+        }
+        Ok(())
+    }
+
+    pub fn horizon_end(&self) -> NaiveDate {
+        self.as_of + Duration::days(i64::from(MARKET_HORIZON_DAYS))
+    }
+
+    pub fn cohort_input(&self) -> OpportunityInput {
+        OpportunityInput {
+            as_of: self.as_of,
+            month: None,
+            universe: OpportunityUniverse::All,
+            limit: MARKET_RESULTS_PER_DIRECTION,
+            min_days: 5,
+            max_days: MARKET_HORIZON_DAYS,
+            min_years: MARKET_MIN_YEARS,
+            lookback_years: MARKET_LOOKBACK_YEARS,
+            upcoming_only: true,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(rename_all = "camelCase")]
 pub enum OpportunityUniverse {
@@ -407,6 +445,48 @@ fn add_curve(
             }
         })
         .collect();
+}
+
+/// Rank before truncating: filtering an annual top list can miss every useful
+/// upcoming window. Both calendar boundaries belong to the rolling horizon.
+/// Keep ten per direction so category/Long/Short filters retain a global top ten.
+pub fn scan_market_windows(
+    series: &OpportunitySeries,
+    input: &MarketWindowInput,
+) -> Vec<SeasonalOpportunity> {
+    let cohort = input.cohort_input();
+    let years = complete_years(&series.prices, &cohort);
+    if years.len() < cohort.min_years {
+        return Vec::new();
+    }
+    let mut bullish = Vec::new();
+    let mut bearish = Vec::new();
+    for offset in 0..=MARKET_HORIZON_DAYS - cohort.min_days {
+        let start = input.as_of + Duration::days(i64::from(offset));
+        if start.month() == 2 && start.day() == 29 {
+            continue;
+        }
+        for days in cohort.min_days..=MARKET_HORIZON_DAYS - offset {
+            let end = start + Duration::days(i64::from(days));
+            if end.month() == 2 && end.day() == 29 {
+                continue;
+            }
+            if let Some(row) = window(series, None, &years, start, end, cohort.min_years) {
+                if row.direction == 1 {
+                    bullish.push(row);
+                } else {
+                    bearish.push(row);
+                }
+            }
+        }
+    }
+    let mut selected = distinct_top(bullish, MARKET_RESULTS_PER_DIRECTION);
+    selected.extend(distinct_top(bearish, MARKET_RESULTS_PER_DIRECTION));
+    selected.sort_by(rank);
+    for row in &mut selected {
+        add_curve(row, series, None);
+    }
+    selected
 }
 
 pub fn scan_opportunities(

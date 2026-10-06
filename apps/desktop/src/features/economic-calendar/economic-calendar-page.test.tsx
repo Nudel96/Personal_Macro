@@ -9,6 +9,10 @@ import {
 } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import type { EconomicCalendarEvent } from "../../types/domain";
+import { isPrivateWeb } from "../../services/runtime-mode";
+vi.mock("../../services/runtime-mode", () => ({
+  isPrivateWeb: vi.fn(() => false),
+}));
 import {
   EconomicCalendarPage,
   filterAndSortEconomicCalendarEvents,
@@ -85,10 +89,24 @@ function renderPage() {
 
 afterEach(() => {
   cleanup();
+  vi.mocked(isPrivateWeb).mockReturnValue(false);
   vi.clearAllMocks();
 });
 
 describe("EconomicCalendarPage", () => {
+  it("keeps cloud calendar selection active without offering provider writes", async () => {
+    vi.mocked(isPrivateWeb).mockReturnValue(true);
+    renderPage();
+    await waitFor(() => expect(economicCalendarMock).toHaveBeenCalled());
+    fireEvent.click(await screen.findByRole("button", { name: "Kommend" }));
+    await waitFor(() =>
+      expect(economicCalendarMock).toHaveBeenCalledWith(
+        expect.objectContaining({ range: "future30" }),
+      ),
+    );
+    expect(await screen.findByText(/Privater Cloud-Datenstand/)).toBeTruthy();
+    expect(screen.queryByRole("button", { name: "Aktualisieren" })).toBeNull();
+  });
   it("opens the full active week with past values and the next upcoming event", async () => {
     economicCalendarMock.mockResolvedValueOnce({
       asOf: "2026-09-10T10:00:00Z",

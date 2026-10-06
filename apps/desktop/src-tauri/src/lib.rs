@@ -1,15 +1,26 @@
-mod commands;
-mod database;
-mod domain;
-mod errors;
-mod government_bonds;
-mod metrics;
-mod repositories;
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub mod cloud_postgres;
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub mod cloud_public;
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub mod cloud_server;
+pub mod commands;
+pub mod database;
+pub mod domain;
+pub mod errors;
+pub mod government_bonds;
+pub mod metrics;
+pub mod repositories;
+pub mod runtime;
+#[cfg(all(feature = "server", not(feature = "desktop")))]
+pub mod web_server;
 pub mod world_atlas;
 
+#[cfg(feature = "desktop")]
 use tauri::Manager;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
+#[cfg(feature = "desktop")]
 pub fn run() {
     tracing_subscriber::fmt()
         .with_target(false)
@@ -26,7 +37,20 @@ pub fn run() {
             let handle = app.handle().clone();
             let state = tauri::async_runtime::block_on(database::initialize(&handle))
                 .map_err(|error| -> Box<dyn std::error::Error> { Box::new(error) })?;
+            if tauri::async_runtime::block_on(commands::recover_myfxbook_sync(&state)).is_err() {
+                tracing::warn!("Myfxbook-Status konnte beim Start nicht wiederhergestellt werden");
+            }
             let scheduler_state = state.clone();
+            let cot_scheduler_state = state.clone();
+            let myfxbook_state = state.clone();
+            let myfxbook_handle = handle.clone();
+            tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(12)).await;
+                loop {
+                    commands::scheduled_myfxbook_sync(&myfxbook_state, &myfxbook_handle).await;
+                    tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+                }
+            });
             app.manage(government_bonds::GovernmentBondsState::new(
                 state.paths.root.join("government-bonds"),
             ));
@@ -34,6 +58,25 @@ pub fn run() {
             let atlas_startup = atlas.clone();
             app.manage(atlas);
             app.manage(state);
+            let technical_scheduler_state = scheduler_state.clone();
+            tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(8)).await;
+                loop {
+                    if let Err(error) = commands::scheduled_technical_signal_sync(&technical_scheduler_state).await {
+                        tracing::warn!(code = %error.code, "Automatische MT5-Trendaktualisierung fehlgeschlagen");
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+                }
+            });
+            tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(8)).await;
+                loop {
+                    if let Err(error) = commands::scheduled_cot_sync(&cot_scheduler_state).await {
+                        tracing::warn!(error = %error, "Automatische COT-Aktualisierung fehlgeschlagen");
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(30)).await;
+                }
+            });
             tauri::async_runtime::spawn(async move {
                 match atlas_startup.0.db().await {
                     Ok(_) => tracing::info!("Lokaler Atlas-Speicher initialisiert"),
@@ -43,17 +86,11 @@ pub fn run() {
             tauri::async_runtime::spawn(async move {
                 tokio::time::sleep(std::time::Duration::from_secs(8)).await;
                 loop {
-                    if let Err(error) = commands::scheduled_cot_sync(&scheduler_state).await {
-                        tracing::warn!(error = %error, "Automatische COT-Aktualisierung fehlgeschlagen");
-                    }
                     if let Err(error) = commands::scheduled_seasonality_sync(&scheduler_state).await {
                         tracing::warn!(error = ?error, "Automatische Seasonality-Aktualisierung fehlgeschlagen");
                     }
                     if let Err(error) = commands::scheduled_eodhd_sync(&scheduler_state).await {
                         tracing::warn!(error = %error, "Automatische EODHD-Aktualisierung fehlgeschlagen");
-                    }
-                    if let Err(error) = commands::scheduled_technical_signal_sync(&scheduler_state).await {
-                        tracing::warn!(error = ?error, "Automatische Technicals-Aktualisierung fehlgeschlagen");
                     }
                     if let Err(error) = commands::scheduled_central_bank_report_sync(&scheduler_state).await {
                         tracing::warn!(error = ?error, "Automatische Zentralbankbericht-Aktualisierung fehlgeschlagen");
@@ -64,7 +101,15 @@ pub fn run() {
             Ok(())
         })
         .invoke_handler(tauri::generate_handler![
+            commands::myfxbook_login,
+            commands::myfxbook_connections,
+            commands::myfxbook_preview,
+            commands::myfxbook_activate,
+            commands::myfxbook_sync,
+            commands::myfxbook_set_enabled,
+            commands::myfxbook_disconnect,
             commands::get_bootstrap_data,
+            commands::get_weather_forecast,
             commands::get_government_bonds,
             commands::get_government_bond_detail,
             commands::sync_government_bonds,
@@ -199,6 +244,7 @@ pub fn run() {
             commands::refresh_seasonality_data,
             commands::get_pair_technical_signals,
             commands::refresh_pair_technical_signals,
+            commands::set_mt5_technical_terminal,
             commands::list_reviews,
             commands::save_review,
             commands::list_goals,

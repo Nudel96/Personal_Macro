@@ -1,6 +1,6 @@
+use crate::runtime::State;
 use serde::Serialize;
 use sqlx::{FromRow, SqlitePool};
-use tauri::State;
 
 use crate::{
     commands::journal_scope::{require_active_account, scope_trade_filter},
@@ -41,7 +41,7 @@ pub struct DashboardResponse {
     pub filter: TradeFilter,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn calculate_dashboard(
     state: State<'_, AppState>,
     account_id: String,
@@ -84,7 +84,7 @@ pub(crate) async fn calculate_dashboard_for_pool(
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn calculate_calendar(
     state: State<'_, AppState>,
     account_id: String,

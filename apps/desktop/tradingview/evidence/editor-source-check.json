@@ -1,0 +1,15 @@
+{
+  "scriptName": "Personal Macro · Macro Heatmap v1.0",
+  "version": 1,
+  "privateSaveObserved": true,
+  "pineVersion": 6,
+  "localSha256": "a09056cb69d285134b7f62f074770fb042a169bbad7f9371ded73553c85fd32e",
+  "editorSha256AfterCrLfNormalization": "a09056cb69d285134b7f62f074770fb042a169bbad7f9371ded73553c85fd32e",
+  "editorMatchesAfterCrLfNormalization": true,
+  "chart": "OANDA:EURUSD",
+  "timeframe": "1D",
+  "macroAsOf": "2026-10-02",
+  "finalView": "Paarmatrix",
+  "automaticRequestsMaximum": 39,
+  "configuredRequestBudget": 40
+}

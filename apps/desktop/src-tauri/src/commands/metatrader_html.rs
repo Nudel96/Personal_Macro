@@ -652,6 +652,7 @@ use std::{
     str::FromStr,
 };
 
+use crate::runtime::State;
 use chrono::{LocalResult, NaiveDateTime, TimeZone, Utc};
 use chrono_tz::Tz;
 use regex::Regex;
@@ -659,7 +660,6 @@ use rust_decimal::{Decimal, prelude::ToPrimitive};
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use sqlx::{Row, SqlitePool};
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -834,7 +834,7 @@ struct StagedPosition {
     payload_sha256: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 #[allow(dead_code)]
 pub async fn preview_metatrader_html(
     state: State<'_, AppState>,
@@ -849,7 +849,7 @@ pub async fn preview_metatrader_html(
     .await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 #[allow(dead_code)]
 pub async fn commit_metatrader_html(
     state: State<'_, AppState>,

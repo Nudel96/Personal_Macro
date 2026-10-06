@@ -7,6 +7,7 @@ import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { dateTime, formatMoneyMinor } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 
 export function TrashDialog({
   accountId,
@@ -46,7 +47,9 @@ export function TrashDialog({
             <div>
               <Dialog.Title className="dialog-title">Papierkorb</Dialog.Title>
               <div className="dialog-description">
-                Gelöschte Trades wiederherstellen. Daten bleiben lokal erhalten.
+                {isPrivateWeb()
+                  ? "Gelöschte Trades wiederherstellen. Die Einträge bleiben im privaten Webjournal erhalten."
+                  : "Gelöschte Trades wiederherstellen. Daten bleiben lokal erhalten."}
               </div>
             </div>
             <Dialog.Close asChild>

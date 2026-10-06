@@ -7,6 +7,7 @@ use sqlx::{
     migrate::MigrateDatabase,
     sqlite::{SqliteConnectOptions, SqliteJournalMode, SqlitePoolOptions, SqliteSynchronous},
 };
+#[cfg(feature = "desktop")]
 use tauri::{AppHandle, Manager, path::BaseDirectory};
 use uuid::Uuid;
 use walkdir::WalkDir;
@@ -32,11 +33,25 @@ pub struct AppState {
 }
 
 impl AppPaths {
+    #[cfg(feature = "desktop")]
     pub fn resolve(app: &AppHandle) -> Result<Self, AppError> {
         let root = app
             .path()
             .resolve("PersonalMacro", BaseDirectory::AppData)
             .map_err(|error| AppError::Initialization(error.to_string()))?;
+        Self::from_root(root)
+    }
+
+    /// Resolve an explicitly configured persistent data directory.
+    ///
+    /// This never chooses AppData or a temporary directory implicitly. A server
+    /// must provide its own durable volume, separately from any desktop data.
+    pub fn from_root(root: PathBuf) -> Result<Self, AppError> {
+        if !root.is_absolute() {
+            return Err(AppError::Initialization(
+                "Das Datenverzeichnis muss ein absoluter Pfad sein.".into(),
+            ));
+        }
         let database_dir = root.join("database");
         let media = root.join("media");
         let exports = root.join("exports");
@@ -76,39 +91,26 @@ impl AppPaths {
     pub fn resolve_headless() -> Result<Self, AppError> {
         let root =
             std::env::temp_dir().join(format!("personal-macro-test-{}", uuid::Uuid::new_v4()));
-        let database_dir = root.join("database");
-        let media = root.join("media");
-        let exports = root.join("exports");
-        let backups = root.join("backups");
-        let logs = root.join("logs");
-        let settings = root.join("settings");
-        let central_bank_reports = root.join("central-bank-reports");
-        for path in [
-            &database_dir,
-            &media,
-            &exports,
-            &backups,
-            &logs,
-            &settings,
-            &central_bank_reports,
-        ] {
-            std::fs::create_dir_all(path)?;
-        }
-        Ok(Self {
-            root,
-            database: database_dir.join("journal.sqlite"),
-            media,
-            exports,
-            backups,
-            logs,
-            settings,
-            central_bank_reports,
-        })
+        Self::from_root(root)
     }
 }
 
+#[cfg(feature = "desktop")]
 pub async fn initialize(app: &AppHandle) -> Result<AppState, AppError> {
     let paths = AppPaths::resolve(app)?;
+    initialize_paths(paths, SqliteSynchronous::Normal).await
+}
+
+/// Initialize the same journal core on a durable, explicitly selected volume.
+/// Every server connection uses FULL synchronization for acknowledged writes.
+pub async fn initialize_at(root: PathBuf) -> Result<AppState, AppError> {
+    initialize_paths(AppPaths::from_root(root)?, SqliteSynchronous::Full).await
+}
+
+async fn initialize_paths(
+    paths: AppPaths,
+    synchronous: SqliteSynchronous,
+) -> Result<AppState, AppError> {
     apply_pending_restore(&paths)?;
     let database_url = format!(
         "sqlite://{}",
@@ -126,7 +128,7 @@ pub async fn initialize(app: &AppHandle) -> Result<AppState, AppError> {
         .create_if_missing(true)
         .foreign_keys(true)
         .journal_mode(SqliteJournalMode::Wal)
-        .synchronous(SqliteSynchronous::Normal)
+        .synchronous(synchronous)
         .busy_timeout(Duration::from_secs(5));
 
     let db = SqlitePoolOptions::new()
@@ -338,6 +340,173 @@ async fn seed_defaults(db: &SqlitePool) -> Result<(), AppError> {
     }
 
     Ok(())
+}
+
+#[cfg(test)]
+mod configured_startup_tests {
+    use super::*;
+
+    #[test]
+    fn configured_root_must_be_absolute() {
+        assert!(matches!(
+            AppPaths::from_root(PathBuf::from("relative-data")),
+            Err(AppError::Initialization(_))
+        ));
+    }
+
+    #[tokio::test]
+    async fn configured_volume_migrates_backs_up_and_preserves_data_on_restart() {
+        let volume = tempfile::tempdir().unwrap();
+        let root = volume.path().join("workspace");
+        let first = initialize_at(root.clone()).await.unwrap();
+        assert_eq!(first.paths.root, root);
+        assert!(first.paths.media.join("trades").is_dir());
+        let migration_count: i64 =
+            sqlx::query_scalar("SELECT COUNT(*) FROM _sqlx_migrations WHERE success = 1")
+                .fetch_one(&first.db)
+                .await
+                .unwrap();
+        assert_eq!(migration_count, 52);
+        let (accounts, setups): (i64, i64) =
+            sqlx::query_as("SELECT (SELECT COUNT(*) FROM accounts), (SELECT COUNT(*) FROM setups)")
+                .fetch_one(&first.db)
+                .await
+                .unwrap();
+        assert_eq!(accounts, 0);
+        assert!(setups > 0);
+        let foreign_keys: i64 = sqlx::query_scalar("PRAGMA foreign_keys")
+            .fetch_one(&first.db)
+            .await
+            .unwrap();
+        let journal_mode: String = sqlx::query_scalar("PRAGMA journal_mode")
+            .fetch_one(&first.db)
+            .await
+            .unwrap();
+        assert_eq!(foreign_keys, 1);
+        assert_eq!(journal_mode, "wal");
+        let mut connections = Vec::new();
+        for _ in 0..8 {
+            let mut connection = first.db.acquire().await.unwrap();
+            let synchronous: i64 = sqlx::query_scalar("PRAGMA synchronous")
+                .fetch_one(&mut *connection)
+                .await
+                .unwrap();
+            assert_eq!(synchronous, 2, "every server connection must use FULL");
+            connections.push(connection);
+        }
+        drop(connections);
+        let backups: Vec<_> = fs::read_dir(&first.paths.backups)
+            .unwrap()
+            .map(|entry| entry.unwrap().path())
+            .filter(|path| path.extension().is_some_and(|extension| extension == "zip"))
+            .collect();
+        assert_eq!(backups.len(), 1);
+        let preview = crate::commands::preview_backup(backups[0].to_string_lossy().into_owned())
+            .await
+            .unwrap();
+        assert!(preview.valid);
+        sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES ('persistent-account', 'Headless persistence test', '2026-09-24T00:00:00Z', '2026-09-24T00:00:00Z')")
+            .execute(&first.db)
+            .await
+            .unwrap();
+        first.db.close().await;
+
+        let second = initialize_at(root).await.unwrap();
+        let persisted: String =
+            sqlx::query_scalar("SELECT name FROM accounts WHERE id = 'persistent-account'")
+                .fetch_one(&second.db)
+                .await
+                .unwrap();
+        assert_eq!(persisted, "Headless persistence test");
+        let second_setup_count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM setups")
+            .fetch_one(&second.db)
+            .await
+            .unwrap();
+        assert_eq!(second_setup_count, setups);
+        assert_eq!(fs::read_dir(&second.paths.backups).unwrap().count(), 1);
+        second.db.close().await;
+    }
+
+    #[cfg(not(feature = "desktop"))]
+    #[tokio::test]
+    async fn headless_native_actions_fail_before_querying_or_contacting_providers() {
+        let volume = tempfile::tempdir().unwrap();
+        let state = initialize_at(volume.path().join("workspace"))
+            .await
+            .unwrap();
+        let error = crate::commands::open_central_bank_report_file(
+            crate::runtime::AppHandle,
+            crate::runtime::State::new(&state),
+            "missing-report".into(),
+        )
+        .await
+        .unwrap_err();
+        assert_eq!(error.code, "DESKTOP_REQUIRED");
+        let error = crate::commands::myfxbook_sync(
+            crate::runtime::State::new(&state),
+            crate::runtime::AppHandle,
+            "missing-account".into(),
+        )
+        .await
+        .err()
+        .unwrap();
+        assert_eq!(error.code, "DESKTOP_REQUIRED");
+        state.db.close().await;
+    }
+
+    #[tokio::test]
+    async fn configured_startup_applies_only_the_previously_validated_restore() {
+        let volume = tempfile::tempdir().unwrap();
+        let root = volume.path().join("workspace");
+        let state = initialize_at(root.clone()).await.unwrap();
+        let backup = fs::read_dir(&state.paths.backups)
+            .unwrap()
+            .next()
+            .unwrap()
+            .unwrap()
+            .path();
+        sqlx::query("INSERT INTO accounts (id, name, created_at, updated_at) VALUES ('after-backup', 'After backup', '2026-09-24T00:00:00Z', '2026-09-24T00:00:00Z')")
+            .execute(&state.db)
+            .await
+            .unwrap();
+        let staged = crate::commands::stage_backup_restore_for_state(
+            &state,
+            backup.to_string_lossy().into_owned(),
+        )
+        .await
+        .unwrap();
+        assert!(staged.staged);
+        assert!(PathBuf::from(&staged.safety_copy_path).is_file());
+        assert!(state.paths.settings.join("pending-restore.json").is_file());
+        // Model process exit: explicitly close every SQLite handle before the
+        // restart. Pool on-release pings otherwise briefly retain WAL handles
+        // on Windows even after the pool's close future has completed.
+        let mut connections = Vec::new();
+        for _ in 0..8 {
+            connections.push(state.db.acquire().await.unwrap());
+        }
+        let closing = state.db.close();
+        for connection in connections {
+            connection.close().await.unwrap();
+        }
+        closing.await;
+
+        let restored = initialize_at(root).await.unwrap();
+        let count: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM accounts")
+            .fetch_one(&restored.db)
+            .await
+            .unwrap();
+        assert_eq!(count, 0);
+        assert!(
+            !restored
+                .paths
+                .settings
+                .join("pending-restore.json")
+                .exists()
+        );
+        assert!(PathBuf::from(staged.safety_copy_path).is_file());
+        restored.db.close().await;
+    }
 }
 
 #[cfg(test)]

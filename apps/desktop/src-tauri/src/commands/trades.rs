@@ -1,4 +1,4 @@
-use tauri::State;
+use crate::runtime::State;
 
 use crate::{
     commands::journal_scope::{require_active_account, scope_trade_filter},
@@ -8,7 +8,7 @@ use crate::{
     repositories::trades,
 };
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_trade(
     state: State<'_, AppState>,
     mut input: TradeInput,
@@ -18,7 +18,7 @@ pub async fn create_trade(
     trades::create(&state.db, input).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn update_trade(
     state: State<'_, AppState>,
     id: String,
@@ -31,7 +31,7 @@ pub async fn update_trade(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_trade(
     state: State<'_, AppState>,
     id: String,
@@ -43,7 +43,7 @@ pub async fn get_trade(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_trades(
     state: State<'_, AppState>,
     account_id: String,
@@ -55,7 +55,7 @@ pub async fn list_trades(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn duplicate_trade(
     state: State<'_, AppState>,
     id: String,
@@ -67,7 +67,7 @@ pub async fn duplicate_trade(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn trash_trade(
     state: State<'_, AppState>,
     id: String,
@@ -79,7 +79,7 @@ pub async fn trash_trade(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn restore_trade(
     state: State<'_, AppState>,
     id: String,
@@ -115,7 +115,7 @@ pub(crate) async fn list_deleted_trades_for_pool(
     .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_deleted_trades(
     state: State<'_, AppState>,
     account_id: String,

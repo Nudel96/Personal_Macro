@@ -1,12 +1,12 @@
-use std::collections::{BTreeMap, HashMap};
+use std::collections::{BTreeMap, HashMap, HashSet};
 
-use chrono::{Duration, NaiveDate, Utc};
+use crate::runtime::State;
+use chrono::{Datelike, Duration, NaiveDate, Utc};
 use reqwest::{Client, Url};
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sha2::{Digest, Sha256};
-use sqlx::FromRow;
-use tauri::State;
+use sqlx::{FromRow, SqlitePool};
 use tokio::sync::Mutex;
 use uuid::Uuid;
 
@@ -18,7 +18,11 @@ use crate::{
 const LEGACY_URL: &str = "https://publicreporting.cftc.gov/resource/6dca-aqww.json";
 const LEGACY_SELECT: &str = "cftc_contract_market_code,report_date_as_yyyy_mm_dd,\
 open_interest_all,change_in_open_interest_all,noncomm_positions_long_all,\
-noncomm_positions_short_all,change_in_noncomm_long_all,change_in_noncomm_short_all";
+noncomm_positions_short_all,change_in_noncomm_long_all,change_in_noncomm_short_all,\
+comm_positions_long_all,comm_positions_short_all,nonrept_positions_long_all,nonrept_positions_short_all";
+#[path = "cot/chart_history.rs"]
+mod chart_history;
+pub use chart_history::CotParticipantPoint;
 const CFTC_COT_LANDING_URL: &str = "https://publicreporting.cftc.gov/stories/s/r4w3-av2u";
 const MIN_HISTORY_WEEKS: usize = 104;
 const VALID_HISTORY_WEEKS: usize = 156;
@@ -26,7 +30,11 @@ const EVALUATION_LOOKBACK_WEEKS: usize = 260;
 const REPORT_STALE_AFTER_DAYS: i64 = 10;
 const SCORING_VERSION: &str = "cot-v4-legacy-noncommercial";
 const HISTORY_YEARS: i64 = 15;
+const MAX_COT_RESPONSE_BYTES: usize = 32 * 1024 * 1024;
+const MAX_COT_RESPONSE_ROWS: usize = 50_000;
 static COT_SYNC_LOCK: Mutex<()> = Mutex::const_new(());
+static COT_SCHEDULE_LOCK: Mutex<()> = Mutex::const_new(());
+const COT_SCHEDULE_STATE_KEY: &str = "cot.releaseAutomation.v1";
 
 #[derive(Clone, Copy)]
 struct ContractSeed {
@@ -617,9 +625,10 @@ pub struct CotAssetDetail {
     pub historical_outcomes: CotHistoricalOutcomes,
     pub groups: Vec<CotGroupSummary>,
     pub series: Vec<CotSeriesPoint>,
+    pub participant_series: Vec<CotParticipantPoint>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn link_cot_broker_symbol(
     state: State<'_, AppState>,
     input: CotBrokerLinkInput,
@@ -683,17 +692,148 @@ struct DailyCloseRow {
 }
 
 pub async fn scheduled_cot_sync(state: &AppState) -> Result<(), AppError> {
-    let recent = latest_completed_sync_at(state, LEGACY_URL).await?;
-    let due = recent
-        .and_then(|value| chrono::DateTime::parse_from_rfc3339(&value).ok())
-        .map(|value| Utc::now() - value.with_timezone(&Utc) > Duration::hours(6))
-        .unwrap_or(true);
-    if due {
-        sync_cot(state).await?;
+    let _scheduler_guard = COT_SCHEDULE_LOCK.lock().await;
+    let now = Utc::now();
+    let stored: Option<String> =
+        sqlx::query_scalar("SELECT value_json FROM app_settings WHERE key=?")
+            .bind(COT_SCHEDULE_STATE_KEY)
+            .fetch_optional(&state.db)
+            .await?;
+    let mut status: CotDesktopScheduleState = stored
+        .as_deref()
+        .map(serde_json::from_str)
+        .transpose()
+        .map_err(|_| cot_source_error("Der gespeicherte COT-Automatikstatus ist ungültig."))?
+        .unwrap_or_default();
+    status.calendar.validate()?;
+    if status
+        .calendar_checked_at
+        .is_none_or(|checked| now - checked >= Duration::hours(24))
+    {
+        status.calendar_checked_at = Some(now);
+        match super::cot_schedule::fetch_release_calendar().await {
+            Ok(calendar) => {
+                status.calendar = calendar;
+                status.calendar_error = None;
+            }
+            Err(error) => {
+                status.calendar_error = Some(error.to_string());
+            }
+        }
+        save_cot_schedule_state(state, &status).await?;
     }
+    let Some(release) = status.calendar.latest_due(now) else {
+        if status
+            .calendar
+            .years
+            .contains_key(&now.with_timezone(&chrono_tz::America::New_York).year())
+        {
+            // The first release of an available calendar year is still ahead.
+            return Ok(());
+        }
+        return Err(cot_source_error(
+            "Für dieses Jahr ist noch kein geprüfter CFTC-Veröffentlichungskalender verfügbar.",
+        ));
+    };
+    // A normal explicit refresh also satisfies the current release. Every
+    // configured market must have arrived; MAX alone would hide partial data.
+    let report_dates: Vec<Option<String>> = sqlx::query_scalar("SELECT MAX(o.report_date) FROM cot_contracts c LEFT JOIN cot_legacy_observations o ON o.contract_id=c.id WHERE c.is_active=1 GROUP BY c.id")
+        .fetch_all(&state.db).await?;
+    if release_is_present(&report_dates, release.expected_report_date)
+        && !chart_history::needs_backfill(&state.db).await?
+    {
+        return Ok(());
+    }
+    if !desktop_retry_due(&status, &release, now) {
+        return Ok(());
+    }
+    if status.attempted_release != Some(release.release_date) {
+        status.attempts = 0;
+    }
+    status.attempted_release = Some(release.release_date);
+    status.last_attempt_at = Some(now);
+    status.attempts += 1;
+    // Persist the attempt before network access, so restart does not reset the
+    // retry budget. The provider import itself commits atomically on success.
+    save_cot_schedule_state(state, &status).await?;
+    let result = sync_cot_expected(state, Some(release.expected_report_date)).await;
+    status.last_error = result.as_ref().err().map(ToString::to_string);
+    save_cot_schedule_state(state, &status).await?;
+    result.map(|_| ())
+}
+
+#[derive(Debug, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase", deny_unknown_fields)]
+struct CotDesktopScheduleState {
+    calendar: super::cot_schedule::CotReleaseCalendar,
+    calendar_checked_at: Option<chrono::DateTime<Utc>>,
+    calendar_error: Option<String>,
+    attempted_release: Option<NaiveDate>,
+    last_attempt_at: Option<chrono::DateTime<Utc>>,
+    attempts: u32,
+    last_error: Option<String>,
+}
+
+impl Default for CotDesktopScheduleState {
+    fn default() -> Self {
+        Self {
+            calendar: super::cot_schedule::CotReleaseCalendar::reviewed_2026(),
+            calendar_checked_at: None,
+            calendar_error: None,
+            attempted_release: None,
+            last_attempt_at: None,
+            attempts: 0,
+            last_error: None,
+        }
+    }
+}
+
+fn release_is_present(report_dates: &[Option<String>], expected: NaiveDate) -> bool {
+    report_dates.len() == CONTRACTS.len()
+        && report_dates.iter().all(|date| {
+            date.as_deref()
+                .and_then(|date| NaiveDate::parse_from_str(date, "%Y-%m-%d").ok())
+                .is_some_and(|date| date >= expected)
+        })
+}
+
+fn desktop_retry_due(
+    status: &CotDesktopScheduleState,
+    release: &super::cot_schedule::CotRelease,
+    now: chrono::DateTime<Utc>,
+) -> bool {
+    if now < release.refresh_at || now - release.refresh_at > Duration::days(5) {
+        return false;
+    }
+    if status.attempted_release != Some(release.release_date) {
+        return true;
+    }
+    if status.attempts >= 24 {
+        return false;
+    }
+    let delay = if status.attempts < 4 {
+        Duration::minutes(30)
+    } else {
+        Duration::hours(6)
+    };
+    status
+        .last_attempt_at
+        .is_none_or(|last| now - last >= delay)
+}
+
+async fn save_cot_schedule_state(
+    state: &AppState,
+    status: &CotDesktopScheduleState,
+) -> Result<(), AppError> {
+    let json = serde_json::to_string(status).map_err(|_| {
+        cot_source_error("Der COT-Automatikstatus konnte nicht gespeichert werden.")
+    })?;
+    sqlx::query("INSERT INTO app_settings (key,value_json,updated_at) VALUES (?,?,?) ON CONFLICT(key) DO UPDATE SET value_json=excluded.value_json,updated_at=excluded.updated_at")
+        .bind(COT_SCHEDULE_STATE_KEY).bind(json).bind(Utc::now().to_rfc3339()).execute(&state.db).await?;
     Ok(())
 }
 
+#[cfg(test)]
 async fn latest_completed_sync_at(
     state: &AppState,
     source_url: &str,
@@ -705,19 +845,27 @@ async fn latest_completed_sync_at(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn sync_cot_data(state: State<'_, AppState>) -> CommandResult<CotSyncResult> {
     sync_cot(&state).await.map_err(Into::into)
 }
 
 async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
+    sync_cot_expected(state, None).await
+}
+
+async fn sync_cot_expected(
+    state: &AppState,
+    expected: Option<NaiveDate>,
+) -> Result<CotSyncResult, AppError> {
     let _guard = COT_SYNC_LOCK.lock().await;
     seed_contracts(state).await?;
     let now = Utc::now().to_rfc3339();
     let run_id = Uuid::new_v4().to_string();
     sqlx::query("INSERT INTO cot_sync_runs (id,status,started_at,records_upserted,source_url) VALUES (?, 'running', ?, 0, ?)")
         .bind(&run_id).bind(&now).bind(LEGACY_URL).execute(&state.db).await?;
-    let result = sync_cot_inner(state).await;
+    let result = sync_cot_inner(state, expected).await;
+    let now = Utc::now().to_rfc3339();
     match result {
         Ok(imported) => {
             sqlx::query("UPDATE cot_sync_runs SET status='complete', completed_at=?, records_upserted=? WHERE id=?").bind(&now).bind(imported as i64).bind(&run_id).execute(&state.db).await?;
@@ -733,15 +881,21 @@ async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
     }
 }
 
-async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
+async fn fetch_legacy_rows(
+    contracts: &[ContractRow],
+    expected: Option<NaiveDate>,
+) -> Result<LegacyFetch, AppError> {
+    validate_contract_registry(contracts)?;
     let client = Client::builder()
         .tls_backend_rustls()
         .user_agent("PersonalMacro/1.0 (+local COT collector)")
+        .timeout(std::time::Duration::from_secs(45))
+        .connect_timeout(std::time::Duration::from_secs(10))
+        .redirect(reqwest::redirect::Policy::none())
         .build()
         .map_err(|error| {
             AppError::DataTransfer(format!("CFTC-Client konnte nicht erstellt werden: {error}"))
         })?;
-    let contracts = contract_rows(state).await?;
     let cutoff = (Utc::now().date_naive() - Duration::days(HISTORY_YEARS * 366))
         .format("%Y-%m-%d")
         .to_string();
@@ -776,21 +930,169 @@ async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
         ],
     )
     .map_err(|error| AppError::DataTransfer(format!("CFTC-URL ist ungültig: {error}")))?;
-    let rows: Vec<Value> = client
+    let mut response = client
         .get(url.clone())
         .send()
         .await
         .map_err(|error| AppError::DataTransfer(format!("CFTC-Abruf fehlgeschlagen: {error}")))?
         .error_for_status()
-        .map_err(|error| AppError::DataTransfer(format!("CFTC antwortete mit Fehler: {error}")))?
-        .json()
-        .await
-        .map_err(|error| AppError::DataTransfer(format!("CFTC-JSON ist ungültig: {error}")))?;
-    if rows.is_empty() {
-        return Err(AppError::DataTransfer(
-            "Die offizielle CFTC-Quelle lieferte keine Legacy-Futures-Only-Daten.".into(),
+        .map_err(|_| cot_source_error("CFTC antwortete mit einem Fehler."))?;
+    if !response.status().is_success()
+        || response
+            .content_length()
+            .is_some_and(|size| size > MAX_COT_RESPONSE_BYTES as u64)
+    {
+        return Err(cot_source_error(
+            "Die CFTC-Antwort überschreitet die zulässige Größe.",
         ));
     }
+    let mut bytes = Vec::new();
+    while let Some(chunk) = response
+        .chunk()
+        .await
+        .map_err(|_| cot_source_error("Der CFTC-Abruf wurde unterbrochen."))?
+    {
+        if bytes.len().saturating_add(chunk.len()) > MAX_COT_RESPONSE_BYTES {
+            return Err(cot_source_error(
+                "Die CFTC-Antwort überschreitet die zulässige Größe.",
+            ));
+        }
+        bytes.extend_from_slice(&chunk);
+    }
+    let rows: Vec<Value> = serde_json::from_slice(&bytes)
+        .map_err(|_| cot_source_error("Die CFTC-Antwort enthält kein gültiges Datenpaket."))?;
+    let latest_report_date =
+        validate_legacy_batch(&rows, contracts, expected, Utc::now().date_naive())?;
+    Ok(LegacyFetch {
+        rows,
+        source_url: url.to_string(),
+        latest_report_date,
+    })
+}
+
+struct LegacyFetch {
+    rows: Vec<Value>,
+    source_url: String,
+    latest_report_date: NaiveDate,
+}
+
+fn cot_source_error(message: &str) -> AppError {
+    AppError::DataTransfer(message.into())
+}
+
+fn validate_contract_registry(contracts: &[ContractRow]) -> Result<(), AppError> {
+    let ids: HashSet<_> = contracts.iter().map(|contract| &contract.id).collect();
+    let symbols: HashSet<_> = contracts
+        .iter()
+        .map(|contract| contract.symbol.as_str())
+        .collect();
+    if contracts.len() != CONTRACTS.len()
+        || ids.len() != CONTRACTS.len()
+        || symbols.len() != CONTRACTS.len()
+        || contracts.iter().any(|contract| {
+            !CONTRACTS.iter().any(|seed| {
+                seed.symbol == contract.symbol
+                    && Some(seed.legacy_cftc_code)
+                        == contract.legacy_cftc_contract_market_code.as_deref()
+            })
+        })
+    {
+        return Err(cot_source_error(
+            "Der COT-Kontraktkatalog stimmt nicht mit den freigegebenen Märkten überein.",
+        ));
+    }
+    Ok(())
+}
+
+fn validate_legacy_batch(
+    rows: &[Value],
+    contracts: &[ContractRow],
+    expected: Option<NaiveDate>,
+    today: NaiveDate,
+) -> Result<NaiveDate, AppError> {
+    validate_contract_registry(contracts)?;
+    if rows.is_empty() || rows.len() >= MAX_COT_RESPONSE_ROWS {
+        return Err(cot_source_error(
+            "Das CFTC-Datenpaket ist leer oder möglicherweise abgeschnitten.",
+        ));
+    }
+    let codes: HashSet<_> = contracts
+        .iter()
+        .filter_map(|contract| contract.legacy_cftc_contract_market_code.as_deref())
+        .collect();
+    let mut seen = HashSet::new();
+    let mut newest_by_code = HashMap::new();
+    let mut previous_key = None;
+    for row in rows {
+        let code = row
+            .get("cftc_contract_market_code")
+            .and_then(Value::as_str)
+            .filter(|code| codes.contains(code))
+            .ok_or_else(|| {
+                cot_source_error("Das CFTC-Datenpaket enthält eine unbekannte Marktkennung.")
+            })?;
+        let date = row
+            .get("report_date_as_yyyy_mm_dd")
+            .and_then(Value::as_str)
+            .and_then(|value| value.get(..10))
+            .and_then(|value| NaiveDate::parse_from_str(value, "%Y-%m-%d").ok())
+            .filter(|date| *date <= today)
+            .ok_or_else(|| {
+                cot_source_error("Das CFTC-Datenpaket enthält ein ungültiges Berichtsdatum.")
+            })?;
+        if !seen.insert((code, date)) {
+            return Err(cot_source_error(
+                "Das CFTC-Datenpaket enthält doppelte Marktberichte.",
+            ));
+        }
+        let key = (date, code);
+        if previous_key.is_some_and(|previous| previous > key) {
+            return Err(cot_source_error(
+                "Die CFTC-Berichte sind nicht vollständig chronologisch geordnet.",
+            ));
+        }
+        previous_key = Some(key);
+        newest_by_code.insert(code, date);
+    }
+    let latest = newest_by_code.values().max().copied().ok_or_else(|| {
+        cot_source_error("Die CFTC hat noch keinen nutzbaren Bericht bereitgestellt.")
+    })?;
+    if expected.is_some_and(|expected| latest < expected) {
+        return Err(cot_source_error(
+            "Der erwartete neue CFTC-Bericht ist noch nicht verfügbar; der bisherige Stand bleibt erhalten.",
+        ));
+    }
+    if newest_by_code.len() != codes.len() || newest_by_code.values().any(|date| *date != latest) {
+        return Err(cot_source_error(
+            "Der neue CFTC-Bericht enthält noch nicht alle freigegebenen Märkte.",
+        ));
+    }
+    // Historical zero-position rows retain the established native treatment.
+    // A malformed newest row, however, may never mark a release as complete.
+    let latest_date = latest.to_string();
+    for row in rows {
+        if row
+            .get("report_date_as_yyyy_mm_dd")
+            .and_then(Value::as_str)
+            .and_then(|value| value.get(..10))
+            == Some(latest_date.as_str())
+            && (parse_legacy_observation(row, LEGACY_URL).is_none()
+                || chart_history::positions(row, "comm").is_none()
+                || chart_history::positions(row, "nonrept").is_none())
+        {
+            return Err(cot_source_error(
+                "Mindestens ein neuer CFTC-Marktbericht ist unvollständig.",
+            ));
+        }
+    }
+    Ok(latest)
+}
+
+async fn sync_cot_inner(state: &AppState, expected: Option<NaiveDate>) -> Result<usize, AppError> {
+    let contracts = contract_rows(state).await?;
+    let fetched = fetch_legacy_rows(&contracts, expected).await?;
+    let rows = fetched.rows;
+    let url = fetched.source_url;
 
     let by_code: HashMap<_, _> = contracts
         .iter()
@@ -870,6 +1172,7 @@ async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
             .bind(weekly_change.map(|value| value.to_string()))
             .execute(&mut *tx)
             .await?;
+        chart_history::store(&mut tx, &contract.id, &observation.report_date, &row).await?;
         previous_positions.insert(
             contract.id.clone(),
             (observation.long_positions, observation.short_positions),
@@ -878,6 +1181,133 @@ async fn sync_cot_inner(state: &AppState) -> Result<usize, AppError> {
     }
     tx.commit().await?;
     Ok(imported)
+}
+
+#[derive(Debug, Clone, Serialize)]
+#[serde(rename_all = "camelCase")]
+pub struct PublicCotRefreshResult {
+    pub latest_report_date: NaiveDate,
+    pub imported: usize,
+    pub completed_at: String,
+    pub contracts: usize,
+}
+
+/// Refresh a writable copy of an already verified public COT shard. This path
+/// cannot access journal tables, native source payload tables or user settings.
+/// The caller verifies and publishes the finished immutable package separately.
+pub async fn refresh_public_cot(
+    pool: &SqlitePool,
+    expected_report_date: NaiveDate,
+) -> Result<PublicCotRefreshResult, AppError> {
+    tokio::time::timeout(std::time::Duration::from_secs(90), async {
+        let tables: Vec<String> = sqlx::query_scalar("SELECT name FROM sqlite_master WHERE type='table' AND name NOT LIKE 'sqlite_%' ORDER BY name")
+            .fetch_all(pool).await?;
+        if tables != ["cot_contracts", "cot_legacy_observations", "cot_sync_runs"] {
+            return Err(cot_source_error("Die COT-Aktualisierung benötigt das isolierte öffentliche Datenpaket."));
+        }
+        let contracts: Vec<ContractRow> = sqlx::query_as("SELECT id,symbol,display_name,asset_class,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order")
+            .fetch_all(pool).await?;
+        validate_contract_registry(&contracts)?;
+        let fetched = fetch_legacy_rows(&contracts, Some(expected_report_date)).await?;
+        apply_public_cot(pool, &contracts, fetched).await
+    }).await.map_err(|_| cot_source_error("Die COT-Aktualisierung hat das Zeitlimit überschritten."))?
+}
+
+async fn apply_public_cot(
+    pool: &SqlitePool,
+    contracts: &[ContractRow],
+    fetched: LegacyFetch,
+) -> Result<PublicCotRefreshResult, AppError> {
+    let previous_latest: Option<String> =
+        sqlx::query_scalar("SELECT MAX(report_date) FROM cot_legacy_observations")
+            .fetch_one(pool)
+            .await?;
+    if previous_latest
+        .as_deref()
+        .is_some_and(|date| date > fetched.latest_report_date.to_string().as_str())
+    {
+        return Err(cot_source_error(
+            "Die CFTC-Quelle ist älter als das bereits geprüfte öffentliche Datenpaket.",
+        ));
+    }
+    let by_code: HashMap<_, _> = contracts
+        .iter()
+        .filter_map(|contract| {
+            contract
+                .legacy_cftc_contract_market_code
+                .as_deref()
+                .map(|code| (code, contract))
+        })
+        .collect();
+    let mut previous_positions = HashMap::new();
+    let mut imported = 0;
+    let mut tx = pool.begin().await?;
+    chart_history::upgrade_public(&mut tx).await?;
+    for row in fetched.rows {
+        let code = value_string(&row, "cftc_contract_market_code")
+            .ok_or_else(|| cot_source_error("CFTC-Marktkennung fehlt."))?;
+        let contract = by_code
+            .get(code.as_str())
+            .ok_or_else(|| cot_source_error("CFTC-Marktkennung ist unbekannt."))?;
+        let Some(observation) = parse_legacy_observation(&row, &fetched.source_url) else {
+            continue;
+        };
+        let weekly_change = previous_positions
+            .get(&contract.id)
+            .and_then(|&(long, short)| {
+                weekly_long_share_change(
+                    observation.long_positions,
+                    observation.short_positions,
+                    long,
+                    short,
+                )
+            });
+        sqlx::query("INSERT INTO cot_legacy_observations (contract_id,report_date,long_positions,short_positions,long_change,short_change,open_interest,open_interest_change,net_positions,net_change,net_position_pct_oi,net_change_pct_oi,long_share,short_share,weekly_long_share_change) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?) ON CONFLICT(contract_id,report_date) DO UPDATE SET long_positions=excluded.long_positions,short_positions=excluded.short_positions,long_change=excluded.long_change,short_change=excluded.short_change,open_interest=excluded.open_interest,open_interest_change=excluded.open_interest_change,net_positions=excluded.net_positions,net_change=excluded.net_change,net_position_pct_oi=excluded.net_position_pct_oi,net_change_pct_oi=excluded.net_change_pct_oi,long_share=excluded.long_share,short_share=excluded.short_share,weekly_long_share_change=excluded.weekly_long_share_change")
+            .bind(&contract.id).bind(&observation.report_date)
+            .bind(observation.long_positions).bind(observation.short_positions)
+            .bind(observation.long_change).bind(observation.short_change)
+            .bind(observation.open_interest).bind(observation.open_interest_change)
+            .bind(observation.net_positions).bind(observation.net_change)
+            .bind(observation.net_position_pct_oi.to_string()).bind(observation.net_change_pct_oi.to_string())
+            .bind(observation.long_share.to_string()).bind(observation.short_share.to_string())
+            .bind(weekly_change.map(|value| value.to_string())).execute(&mut *tx).await?;
+        chart_history::store(&mut tx, &contract.id, &observation.report_date, &row).await?;
+        previous_positions.insert(
+            contract.id.clone(),
+            (observation.long_positions, observation.short_positions),
+        );
+        imported += 1;
+    }
+    let latest_count: i64 =
+        sqlx::query_scalar("SELECT count(*) FROM cot_legacy_observations WHERE report_date=?")
+            .bind(fetched.latest_report_date.to_string())
+            .fetch_one(&mut *tx)
+            .await?;
+    let total: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_legacy_observations")
+        .fetch_one(&mut *tx)
+        .await?;
+    if latest_count != CONTRACTS.len() as i64 || total > 100_000 {
+        return Err(cot_source_error(
+            "Das aktualisierte COT-Paket ist nicht vollständig oder zu groß.",
+        ));
+    }
+    let completed_at = Utc::now().to_rfc3339();
+    sqlx::query(
+        "INSERT INTO cot_sync_runs (completed_at,status,source_url) VALUES (?,'complete',?)",
+    )
+    .bind(&completed_at)
+    .bind(LEGACY_URL)
+    .execute(&mut *tx)
+    .await?;
+    sqlx::query("DELETE FROM cot_sync_runs WHERE rowid NOT IN (SELECT rowid FROM cot_sync_runs ORDER BY completed_at DESC LIMIT 2)")
+        .execute(&mut *tx).await?;
+    tx.commit().await?;
+    Ok(PublicCotRefreshResult {
+        latest_report_date: fetched.latest_report_date,
+        imported,
+        completed_at,
+        contracts: contracts.len(),
+    })
 }
 
 struct ParsedLegacyObservation {
@@ -918,6 +1348,7 @@ fn parse_legacy_observation(row: &Value, source_url: &str) -> Option<ParsedLegac
     let report_date = value_string(row, "report_date_as_yyyy_mm_dd")?
         .get(..10)?
         .to_string();
+    NaiveDate::parse_from_str(&report_date, "%Y-%m-%d").ok()?;
     let open_interest = value_i64(row, "open_interest_all")?;
     let open_interest_change = value_i64(row, "change_in_open_interest_all")?;
     let long_positions = value_i64(row, "noncomm_positions_long_all")?;
@@ -928,8 +1359,8 @@ fn parse_legacy_observation(row: &Value, source_url: &str) -> Option<ParsedLegac
         return None;
     }
     let long_share = long_share(long_positions, short_positions)?;
-    let net_positions = long_positions - short_positions;
-    let net_change = long_change - short_change;
+    let net_positions = long_positions.checked_sub(short_positions)?;
+    let net_change = long_change.checked_sub(short_change)?;
     Some(ParsedLegacyObservation {
         report_date,
         source_url: source_url.into(),
@@ -973,12 +1404,23 @@ async fn contract_rows(state: &AppState) -> Result<Vec<ContractRow>, AppError> {
     sqlx::query_as("SELECT id,symbol,display_name,asset_class,legacy_cftc_contract_market_code,currency FROM cot_contracts WHERE is_active=1 ORDER BY sort_order").fetch_all(&state.db).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_cot_dashboard(state: State<'_, AppState>) -> CommandResult<CotDashboard> {
     cot_dashboard(&state).await.map_err(Into::into)
 }
 pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
     seed_contracts(state).await?;
+    build_cot_dashboard(state, true).await
+}
+
+/// Reuses the canonical assessment without seeding contracts or writing derived
+/// evaluations. Public cloud packages are immutable and contain no journal data.
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub(crate) async fn cot_dashboard_readonly(state: &AppState) -> Result<CotDashboard, AppError> {
+    build_cot_dashboard(state, false).await
+}
+
+async fn build_cot_dashboard(state: &AppState, persist: bool) -> Result<CotDashboard, AppError> {
     let contracts = contract_rows(state).await?;
     let mut views = Vec::new();
     let mut currencies = BTreeMap::new();
@@ -987,7 +1429,9 @@ pub async fn cot_dashboard(state: &AppState) -> Result<CotDashboard, AppError> {
             .bind(&contract.id).bind((Utc::now().date_naive() - Duration::days(HISTORY_YEARS * 366)).format("%Y-%m-%d").to_string()).fetch_all(&state.db).await?;
         let latest = observations.last();
         let assessment = assess_observations(&observations, Utc::now().date_naive());
-        persist_evaluation(state, &contract.id, &assessment).await?;
+        if persist {
+            persist_evaluation(state, &contract.id, &assessment).await?;
+        }
         let position_component = assessment
             .components
             .iter()
@@ -1432,7 +1876,7 @@ fn cot_bias(score: i8) -> &'static str {
     }
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_cot_asset_detail(
     state: State<'_, AppState>,
     input: CotDetailInput,
@@ -1443,6 +1887,23 @@ pub async fn get_cot_asset_detail(
 async fn cot_asset_detail(
     state: &AppState,
     input: CotDetailInput,
+) -> CommandResult<CotAssetDetail> {
+    build_cot_asset_detail(state, input, true).await
+}
+
+/// Public packages deliberately exclude personal broker symbol assignments.
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub(crate) async fn cot_asset_detail_readonly(
+    state: &AppState,
+    input: CotDetailInput,
+) -> CommandResult<CotAssetDetail> {
+    build_cot_asset_detail(state, input, false).await
+}
+
+async fn build_cot_asset_detail(
+    state: &AppState,
+    input: CotDetailInput,
+    include_broker: bool,
 ) -> CommandResult<CotAssetDetail> {
     let lookback = input.lookback_weeks.unwrap_or(156);
     if lookback != 0 && ![52, 156, 260, 520, 780].contains(&lookback) {
@@ -1481,12 +1942,15 @@ async fn cot_asset_detail(
     let current_z_score = current.and_then(|value| z_score(&values, value));
     let percentile_value = current.map(|value| percentile(&values, value));
     let current_cot_index = current.and_then(|value| cot_index(&values, value));
-    let broker_symbol: Option<String> =
+    let broker_symbol: Option<String> = if include_broker {
         sqlx::query_scalar("SELECT broker_symbol FROM cot_broker_links WHERE contract_id=?")
             .bind(&contract.id)
             .fetch_optional(&state.db)
             .await
-            .map_err(AppError::from)?;
+            .map_err(AppError::from)?
+    } else {
+        None
+    };
     let broker_candles: Vec<DailyCloseRow> = if let Some(symbol) = &broker_symbol {
         sqlx::query_as("SELECT candle_time,close FROM market_daily_candles WHERE symbol=? ORDER BY candle_time")
             .bind(symbol).fetch_all(&state.db).await.map_err(AppError::from)?
@@ -1535,6 +1999,12 @@ async fn cot_asset_detail(
         z_score: current_z_score,
         percentile: percentile_value,
     }];
+    let participant_series = chart_history::read(
+        &state.db,
+        &contract.id,
+        selected.first().map(|row| row.report_date.as_str()),
+    )
+    .await?;
     Ok(CotAssetDetail {
         symbol: contract.symbol,
         display_name: contract.display_name,
@@ -1558,6 +2028,7 @@ async fn cot_asset_detail(
         historical_outcomes,
         groups,
         series,
+        participant_series,
     })
 }
 
@@ -1687,6 +2158,237 @@ fn close_on_or_before(candles: &[DailyCloseRow], report_date: &str) -> Option<f6
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    fn public_contract_fixture() -> Vec<ContractRow> {
+        CONTRACTS
+            .iter()
+            .map(|seed| ContractRow {
+                id: format!("fixture-{}", seed.symbol),
+                symbol: seed.symbol.into(),
+                display_name: seed.display_name.into(),
+                asset_class: seed.asset_class.into(),
+                legacy_cftc_contract_market_code: Some(seed.legacy_cftc_code.into()),
+                currency: seed.currency.map(str::to_owned),
+            })
+            .collect()
+    }
+
+    fn official_rows_fixture(dates: &[&str]) -> Vec<Value> {
+        let mut codes: Vec<_> = CONTRACTS.iter().map(|seed| seed.legacy_cftc_code).collect();
+        codes.sort();
+        dates
+            .iter()
+            .enumerate()
+            .flat_map(|(index, date)| {
+                codes.iter().map(move |code| {
+                    serde_json::json!({
+                        "cftc_contract_market_code": code,
+                        "report_date_as_yyyy_mm_dd": format!("{date}T00:00:00.000"),
+                        "open_interest_all": "1000", "change_in_open_interest_all": "10",
+                        "noncomm_positions_long_all": (100 + index * 20).to_string(),
+                        "noncomm_positions_short_all": "100", "change_in_noncomm_long_all": "20",
+                        "change_in_noncomm_short_all": "0",
+                        "comm_positions_long_all": "500", "comm_positions_short_all": "600",
+                        "nonrept_positions_long_all": "100", "nonrept_positions_short_all": "0",
+                    })
+                })
+            })
+            .collect()
+    }
+
+    #[test]
+    fn complete_release_is_required_and_stale_or_truncated_responses_fail() {
+        let contracts = public_contract_fixture();
+        let expected: NaiveDate = "2026-09-22".parse().unwrap();
+        let today: NaiveDate = "2026-09-26".parse().unwrap();
+        let rows = official_rows_fixture(&["2026-09-15", "2026-09-22"]);
+        assert_eq!(
+            validate_legacy_batch(&rows, &contracts, Some(expected), today).unwrap(),
+            expected
+        );
+        assert!(
+            validate_legacy_batch(&rows[..rows.len() - 1], &contracts, Some(expected), today)
+                .is_err()
+        );
+        assert!(validate_legacy_batch(&rows[..35], &contracts, Some(expected), today).is_err());
+        assert!(validate_legacy_batch(&[], &contracts, Some(expected), today).is_err());
+        assert!(
+            validate_legacy_batch(
+                &vec![Value::Null; MAX_COT_RESPONSE_ROWS],
+                &contracts,
+                Some(expected),
+                today
+            )
+            .is_err()
+        );
+        let mut duplicate = rows.clone();
+        duplicate.push(rows.last().unwrap().clone());
+        assert!(validate_legacy_batch(&duplicate, &contracts, Some(expected), today).is_err());
+        let mut malformed = rows.clone();
+        malformed.last_mut().unwrap()["open_interest_all"] = serde_json::json!("0");
+        assert!(validate_legacy_batch(&malformed, &contracts, Some(expected), today).is_err());
+        let mut historical_zero = rows.clone();
+        historical_zero[0]["open_interest_all"] = serde_json::json!("0");
+        assert!(validate_legacy_batch(&historical_zero, &contracts, Some(expected), today).is_ok());
+        let mut future = rows.clone();
+        future.last_mut().unwrap()["report_date_as_yyyy_mm_dd"] =
+            serde_json::json!("2026-09-29T00:00:00");
+        assert!(validate_legacy_batch(&future, &contracts, Some(expected), today).is_err());
+        let mut unordered = rows.clone();
+        unordered.swap(0, 1);
+        assert!(validate_legacy_batch(&unordered, &contracts, Some(expected), today).is_err());
+    }
+
+    #[test]
+    fn desktop_manual_refresh_satisfies_release_and_retry_budget_survives_restart() {
+        let expected: NaiveDate = "2026-09-22".parse().unwrap();
+        let mut dates = vec![Some(expected.to_string()); CONTRACTS.len()];
+        assert!(release_is_present(&dates, expected));
+        dates[0] = None;
+        assert!(!release_is_present(&dates, expected));
+        let now = "2026-09-25T21:00:00Z".parse().unwrap();
+        let mut state = CotDesktopScheduleState::default();
+        let release = state.calendar.latest_due(now).unwrap();
+        assert!(desktop_retry_due(&state, &release, now));
+        state.attempted_release = Some(release.release_date);
+        state.last_attempt_at = Some(now);
+        state.attempts = 1;
+        let state: CotDesktopScheduleState =
+            serde_json::from_str(&serde_json::to_string(&state).unwrap()).unwrap();
+        assert!(!desktop_retry_due(
+            &state,
+            &release,
+            now + Duration::minutes(29)
+        ));
+        assert!(desktop_retry_due(
+            &state,
+            &release,
+            now + Duration::minutes(30)
+        ));
+        let exhausted = CotDesktopScheduleState {
+            attempts: 24,
+            ..state
+        };
+        assert!(!desktop_retry_due(
+            &exhausted,
+            &release,
+            now + Duration::days(1)
+        ));
+    }
+
+    async fn public_pool_fixture() -> SqlitePool {
+        let pool = sqlx::sqlite::SqlitePoolOptions::new()
+            .max_connections(1)
+            .connect("sqlite::memory:")
+            .await
+            .unwrap();
+        let schema: Value =
+            serde_json::from_str(include_str!("../cloud_public/macro_schema.json")).unwrap();
+        for table in schema["cot"]["tables"].as_object().unwrap().values() {
+            sqlx::query(table["ddl"].as_str().unwrap())
+                .execute(&pool)
+                .await
+                .unwrap();
+        }
+        for (index, contract) in public_contract_fixture().iter().enumerate() {
+            sqlx::query("INSERT INTO cot_contracts(id,symbol,display_name,asset_class,legacy_cftc_contract_market_code,currency,sort_order,is_active) VALUES(?,?,?,?,?,?,?,1)")
+                .bind(&contract.id).bind(&contract.symbol).bind(&contract.display_name).bind(&contract.asset_class)
+                .bind(&contract.legacy_cftc_contract_market_code).bind(&contract.currency).bind(index as i64).execute(&pool).await.unwrap();
+        }
+        pool
+    }
+
+    fn public_fetch_fixture() -> LegacyFetch {
+        LegacyFetch {
+            rows: official_rows_fixture(&["2026-09-15", "2026-09-22"]),
+            source_url: LEGACY_URL.into(),
+            latest_report_date: "2026-09-22".parse().unwrap(),
+        }
+    }
+
+    #[tokio::test]
+    async fn public_refresh_preserves_history_and_native_computation_and_is_idempotent() {
+        let pool = public_pool_fixture().await;
+        let contracts = public_contract_fixture();
+        sqlx::query("INSERT INTO cot_legacy_observations(contract_id,report_date,long_positions,short_positions) VALUES(?,'2000-01-04',90,80)")
+            .bind(&contracts[0].id).execute(&pool).await.unwrap();
+        for _ in 0..3 {
+            let result = apply_public_cot(&pool, &contracts, public_fetch_fixture())
+                .await
+                .unwrap();
+            assert_eq!(result.imported, 70);
+            assert_eq!(result.contracts, 35);
+        }
+        let count: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_legacy_observations")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+        assert_eq!(count, 71);
+        let (net, change, weekly): (i64,i64,String) = sqlx::query_as("SELECT net_positions,net_change,weekly_long_share_change FROM cot_legacy_observations WHERE contract_id=? AND report_date='2026-09-22'")
+            .bind(&contracts[0].id).fetch_one(&pool).await.unwrap();
+        assert_eq!((net, change), (20, 20));
+        assert_eq!(
+            weekly,
+            weekly_long_share_change(120, 100, 100, 100)
+                .unwrap()
+                .to_string()
+        );
+        let runs: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_sync_runs")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+        assert_eq!(runs, 2);
+        sqlx::query("INSERT INTO cot_legacy_observations(contract_id,report_date,long_positions,short_positions) VALUES(?,'2026-09-29',130,100)")
+            .bind(&contracts[0].id).execute(&pool).await.unwrap();
+        assert!(
+            apply_public_cot(&pool, &contracts, public_fetch_fixture())
+                .await
+                .is_err()
+        );
+        let runs_after: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_sync_runs")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+        assert_eq!(runs_after, 2);
+    }
+
+    #[tokio::test]
+    async fn public_refresh_rolls_back_all_changes_on_write_failure() {
+        let pool = public_pool_fixture().await;
+        sqlx::query("CREATE TRIGGER deny_new_report BEFORE INSERT ON cot_legacy_observations WHEN NEW.report_date='2026-09-22' BEGIN SELECT RAISE(ABORT,'fixture'); END")
+            .execute(&pool).await.unwrap();
+        assert!(
+            apply_public_cot(&pool, &public_contract_fixture(), public_fetch_fixture())
+                .await
+                .is_err()
+        );
+        let count: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_legacy_observations")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+        let runs: i64 = sqlx::query_scalar("SELECT count(*) FROM cot_sync_runs")
+            .fetch_one(&pool)
+            .await
+            .unwrap();
+        assert_eq!((count, runs), (0, 0));
+    }
+
+    #[tokio::test]
+    async fn public_refresh_rejects_a_journal_database_before_any_network_access() {
+        let pool = public_pool_fixture().await;
+        sqlx::query("CREATE TABLE trades(id TEXT)")
+            .execute(&pool)
+            .await
+            .unwrap();
+        let error = refresh_public_cot(&pool, "2026-09-22".parse().unwrap())
+            .await
+            .unwrap_err();
+        assert!(
+            error
+                .to_string()
+                .contains("isolierte öffentliche Datenpaket")
+        );
+    }
 
     #[tokio::test]
     async fn migration_adds_isolated_legacy_cot_storage() {

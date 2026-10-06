@@ -1,5 +1,14 @@
 import { create } from "zustand";
-import { persist } from "zustand/middleware";
+import {
+  createJSONStorage,
+  persist,
+  type StateStorage,
+} from "zustand/middleware";
+import {
+  getPrivateWebClientState,
+  subscribePrivateWebClient,
+} from "../services/private-web-client";
+import { isPrivateWeb } from "../services/runtime-mode";
 
 interface UiState {
   sidebarCollapsed: boolean;
@@ -63,6 +72,14 @@ export function migrateUiState(
   return state;
 }
 
+// The Zustand store already holds the current private UI in memory. Do not
+// hydrate account/filter identifiers from a desktop preview or persist them.
+const privateMemoryStorage: StateStorage = {
+  getItem: () => null,
+  setItem: () => undefined,
+  removeItem: () => undefined,
+};
+
 export const useUiStore = create<UiState>()(
   persist(
     (set) => ({
@@ -94,6 +111,24 @@ export const useUiStore = create<UiState>()(
       name: "personal-macro:ui",
       version: 1,
       migrate: migrateUiState,
+      storage: createJSONStorage(() =>
+        isPrivateWeb() ? privateMemoryStorage : localStorage,
+      ),
     },
   ),
 );
+
+export function resetPrivateUiState() {
+  if (isPrivateWeb()) useUiStore.setState(useUiStore.getInitialState(), true);
+}
+
+if (isPrivateWeb()) {
+  let workspaceId = getPrivateWebClientState().workspaceId;
+  subscribePrivateWebClient(() => {
+    const state = getPrivateWebClientState();
+    if (state.status !== "ready" || state.workspaceId !== workspaceId) {
+      resetPrivateUiState();
+    }
+    workspaceId = state.status === "ready" ? state.workspaceId : null;
+  });
+}

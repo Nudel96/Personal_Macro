@@ -20,6 +20,53 @@ export type {
 
 export type TradeDirection = "long" | "short";
 
+export interface MyfxbookAccount {
+  id: string;
+  name: string;
+  currency: string;
+  balanceMinor: number;
+  profitMinor: number;
+  capitalMinor: number;
+  updatedAt: string;
+}
+export interface MyfxbookLogin {
+  authorizationId: string;
+  accounts: MyfxbookAccount[];
+}
+export interface MyfxbookSummary {
+  newTrades: number;
+  closedTrades: number;
+  matchedTrades: number;
+  newCashflows: number;
+  balanceMinor: number;
+  profitMinor: number;
+  openTrades: number;
+  historyCount: number;
+  warnings: string[];
+}
+export interface MyfxbookPreview {
+  previewId: string;
+  summary: MyfxbookSummary;
+  externalName: string;
+  brokerTimezone: string;
+}
+export interface MyfxbookConnection {
+  accountId: string;
+  externalId: string;
+  externalName: string;
+  currency: string;
+  brokerTimezone: string;
+  pnlMode: string;
+  enabled: boolean;
+  status: string;
+  message: string;
+  lastAttemptAt: string | null;
+  lastSyncAt: string | null;
+  lastProviderAt: string | null;
+  balanceMinor: number | null;
+  updatedAt: string;
+}
+
 export interface Account {
   id: string;
   name: string;
@@ -565,6 +612,8 @@ export interface FundamentalPairView {
 }
 
 export interface MacroFundamentalsDashboard {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   asOf: string;
   snapshotId?: string | null;
   currencies: FundamentalCurrencyView[];
@@ -593,6 +642,13 @@ export interface ChartTrendView {
   signal?: -1 | 0 | 1 | null;
   status: TechnicalSignalStatus;
   reasonCodes: string[];
+  source?: {
+    provider: "mt5" | "eodhd";
+    label?: string | null;
+    symbol?: string | null;
+    inverted: boolean;
+    fetchedAt?: string | null;
+  } | null;
   fourHour: TimeframeTrendView;
   daily: TimeframeTrendView;
 }
@@ -620,9 +676,20 @@ export interface PairTechnicalSignalView {
 }
 
 export interface PairTechnicalDashboard {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   asOf: string;
   methodVersion: string;
   pairs: PairTechnicalSignalView[];
+  refresh?: {
+    status: "pending" | "running" | "complete" | "failed";
+    lastAttemptAt?: string | null;
+    lastSuccessAt?: string | null;
+    nextRefreshAt?: string | null;
+    sourceLabel?: string | null;
+    terminalPath?: string | null;
+    message?: string | null;
+  } | null;
 }
 
 export interface EodhdIndicatorHistoryInput {
@@ -657,6 +724,8 @@ export type EconomicValueUnit =
   | "value";
 
 export interface EodhdIndicatorHistory {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   currency: string;
   country?: string | null;
   canonicalKey: string;
@@ -809,6 +878,8 @@ export interface AudChinaCpiRegimeDataQuality {
 }
 
 export interface AudChinaCpiRegimeResponse {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   asOf: string;
   modelVersion: string;
   timeframe: AudChinaCpiRegimeTimeframe;
@@ -876,6 +947,8 @@ export interface EconomicCalendarEvent {
 }
 
 export interface EconomicCalendarResponse {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   asOf: string;
   from: string;
   to: string;
@@ -1003,6 +1076,14 @@ export interface CotPairScore {
 }
 
 export interface CotDashboard {
+  automaticRefresh?: {
+    enabled: boolean;
+    calendarAvailable: boolean;
+    nextRefreshAt: string | null;
+    lastOutcome: string | null;
+  };
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   sourceUrl: string;
   lastSyncedAt?: string | null;
   contracts: CotContractView[];
@@ -1062,6 +1143,8 @@ export interface CotGroupSummary {
   percentile?: number | null;
 }
 export interface CotAssetDetail {
+  /** Absent on older cloud servers; missing participants remain unavailable. */
+  participantSeries?: CotParticipantPoint[];
   symbol: string;
   displayName: string;
   assetClass: string;
@@ -1082,6 +1165,14 @@ export interface CotAssetDetail {
   historicalOutcomes: CotHistoricalOutcomes;
   groups: CotGroupSummary[];
   series: CotSeriesPoint[];
+}
+
+export interface CotParticipantPoint {
+  reportDate: string;
+  openInterest: number;
+  nonCommercialNet: number;
+  commercialNet: number | null;
+  nonReportableNet: number | null;
 }
 
 export interface PolicyRateInput {
@@ -1126,6 +1217,8 @@ export interface UsdRelativeEvaluation {
 }
 
 export interface PolicyRateDashboard {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   snapshotAt?: string | null;
   sourceName?: string | null;
   sourceUrl?: string | null;
@@ -1159,6 +1252,7 @@ export type CentralBankReportType =
 export interface CentralBankSummaryPoint {
   text: string;
   sourceRefs: string[];
+  evidence?: { sourceRef: string; quote: string }[];
 }
 
 export interface CentralBankSummarySection {
@@ -1181,6 +1275,14 @@ export interface CentralBankReportSummary {
   overview: string;
   stance: "hawkish" | "dovish" | "neutral" | "unclear";
   sections: CentralBankSummarySection[];
+  quality?: {
+    version: number;
+    sourceChunks: number;
+    sentChunks: number;
+    sourceCharacters: number;
+    sentCharacters: number;
+    partial: boolean;
+  } | null;
 }
 
 export interface CentralBankReportListItem {
@@ -1232,9 +1334,25 @@ export interface CentralBankReportAutomation {
   nextRefreshAt?: string | null;
   openaiConfigured: boolean;
   summaryModel: string;
+  aiBudget?: {
+    month: string;
+    currency: "USD";
+    limitMicros: number;
+    spentMicros: number;
+    heldMicros: number;
+    requests: number;
+    uncertainRequests: number;
+    inputTokens: number;
+    cachedTokens: number;
+    outputTokens: number;
+    reasoningTokens: number;
+    priceVersion: string;
+  };
 }
 
 export interface CentralBankReportDashboard {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   reports: CentralBankReportListItem[];
   sources: CentralBankSourceStatus[];
   automation: CentralBankReportAutomation;
@@ -1268,12 +1386,15 @@ export interface SeasonalityItem {
 }
 
 export interface SeasonalityDashboard {
+  cloudGeneration?: string;
+  cloudImportedAt?: string;
   snapshotAt?: string | null;
   sourceName?: string | null;
   sourceUrl?: string | null;
   items: SeasonalityItem[];
   assets: SeasonalityAssetSummary[];
-  collectionStatus?: "running" | "complete" | "partial" | "failed" | null;
+  collectionStatus?:
+    "running" | "complete" | "partial" | "failed" | "snapshot" | null;
   collectionError?: string | null;
   collectionCompleted: number;
   collectionTotal: number;
@@ -1428,6 +1549,10 @@ export interface SeasonalityHeatmapCell {
   samples: number;
   direction?: -1 | 1 | null;
 }
+export interface SeasonalityScreenerInput {
+  asOf: string;
+}
+
 export interface SeasonalityScreenerRow {
   symbol: string;
   category: string;
@@ -1439,6 +1564,9 @@ export interface SeasonalityScreenerRow {
   calculatedAt: string;
   dataSource: string;
   missingDays: number;
+  asOf?: string;
+  horizonEnd?: string;
+  upcomingWindows?: SeasonalOpportunity[];
 }
 
 export interface SeasonalityOpportunityInput {
@@ -1788,3 +1916,7 @@ export type {
   BondDetailInput,
   BondSyncJob,
 } from "../features/government-bonds/government-bonds-types";
+export type {
+  WeatherEnvelope,
+  WeatherSnapshot,
+} from "../features/weather/weather-types";

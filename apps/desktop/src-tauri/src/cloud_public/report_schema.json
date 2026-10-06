@@ -1,0 +1,29 @@
+{
+  "central-bank-reports": {
+    "tables": {
+      "central_bank_reports": {
+        "ddl": "CREATE TABLE central_bank_reports(id TEXT,bank_code TEXT,currency TEXT,report_type TEXT,title TEXT,source_url TEXT,published_at TEXT,discovered_at TEXT,language TEXT,mime_type TEXT,extraction_status TEXT,summary_status TEXT,summary_provider TEXT,summary_model TEXT,summarized_at TEXT,extracted_text TEXT,summary_json TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 250,
+        "columns": {
+          "id": "TEXT",
+          "bank_code": "TEXT",
+          "currency": "TEXT",
+          "report_type": "TEXT",
+          "title": "TEXT",
+          "source_url": "TEXT",
+          "published_at": "TEXT",
+          "discovered_at": "TEXT",
+          "language": "TEXT",
+          "mime_type": "TEXT",
+          "extraction_status": "TEXT",
+          "summary_status": "TEXT",
+          "summary_provider": "TEXT",
+          "summary_model": "TEXT",
+          "summarized_at": "TEXT",
+          "extracted_text": "TEXT",
+          "summary_json": "TEXT"
+        }
+      }
+    }
+  }
+}

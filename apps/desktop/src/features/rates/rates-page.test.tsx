@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { api } from "../../services/commands";
@@ -80,6 +80,8 @@ function renderPage() {
 afterEach(() => {
   cleanup();
   vi.clearAllMocks();
+  vi.unstubAllEnvs();
+  vi.useRealTimers();
 });
 
 describe("RatesPage", () => {
@@ -109,5 +111,49 @@ describe("RatesPage", () => {
     );
 
     expect(api.syncPolicyRates).toHaveBeenCalledTimes(1);
+  });
+
+  it("shows the imported private snapshot without provider actions or automatic polling", async () => {
+    vi.stubEnv("VITE_PRIVATE_WEB", "true");
+    vi.useFakeTimers();
+    vi.mocked(api.policyRates).mockResolvedValue({
+      ...dashboard(),
+      cloudGeneration: "9a654938-e146-49bb-9866-9ff4c54c1e50",
+      cloudImportedAt: "2026-09-24T10:00:00Z",
+    });
+    renderPage();
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(1);
+    });
+    expect(screen.getByText("Übernommener Snapshot")).toBeTruthy();
+    expect(
+      screen.getByText(
+        /Übernommen am .*Keine automatische Cloud-Aktualisierung/,
+      ),
+    ).toBeTruthy();
+    expect(screen.queryByText("Automatisch · 9/9")).toBeNull();
+    expect(
+      screen.queryByRole("button", { name: /aktualisieren|synchronisieren/i }),
+    ).toBeNull();
+    await act(async () => {
+      await vi.advanceTimersByTimeAsync(120_001);
+    });
+    expect(api.policyRates).toHaveBeenCalledTimes(1);
+    expect(api.syncPolicyRates).not.toHaveBeenCalled();
+  });
+
+  it("does not offer an unsupported provider sync when the private snapshot is empty", async () => {
+    vi.stubEnv("VITE_PRIVATE_WEB", "true");
+    vi.mocked(api.policyRates).mockResolvedValue({ ...dashboard(), rates: [] });
+    renderPage();
+    expect(
+      await screen.findByText(
+        /Der übernommene Datenstand enthält noch keine Leitzinsen/,
+      ),
+    ).toBeTruthy();
+    expect(
+      screen.queryByRole("button", { name: /aktualisieren|synchronisieren/i }),
+    ).toBeNull();
+    expect(api.syncPolicyRates).not.toHaveBeenCalled();
   });
 });

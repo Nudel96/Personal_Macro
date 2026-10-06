@@ -195,7 +195,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let data = energy_source::download().await?;
@@ -265,7 +265,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let data = history_source::download(&db, &service.session, &mut job).await?;
@@ -325,7 +325,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let data = demography_source::download(&db, &service.session, &mut job).await?;
@@ -389,7 +389,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let data = market_source::download(&proxy).await?;
@@ -460,7 +460,7 @@ impl AtlasService {
         store::save_job(&db, &self.session, &job).await?;
         let result = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 let download = if definition.source_id == "unsdg" {

@@ -22,6 +22,10 @@ import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { EmptyState } from "../../components/ui/empty-state";
 import { PageLoading } from "../../components/ui/loading";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { useCloudOpportunities } from "./use-cloud-seasonality-scan";
+import { localSeasonalityDate } from "./use-seasonality-date";
+export { localSeasonalityDate } from "./use-seasonality-date";
 import type {
   SeasonalOpportunity,
   SeasonalityOpportunityInput,
@@ -50,10 +54,6 @@ const dateLabel = (date: string) =>
     month: "2-digit",
   });
 
-export function localSeasonalityDate(date = new Date()) {
-  return `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
-}
-
 export function opportunityStatus(
   row: Pick<SeasonalOpportunity, "startDate" | "endDate">,
   today: string,
@@ -65,9 +65,12 @@ export function opportunityStatus(
 
 export function SeasonalityOpportunities({
   dataVersion,
+  generation,
 }: {
   dataVersion: string;
+  generation?: string;
 }) {
+  const privateWeb = isPrivateWeb();
   const [today, setToday] = useState(localSeasonalityDate);
   const [month, setMonth] = useState("current");
   const [universe, setUniverse] =
@@ -113,13 +116,16 @@ export function SeasonalityOpportunities({
     }),
     [today, month, universe, filters],
   );
-  const query = useQuery({
+  const nativeQuery = useQuery({
     queryKey: ["seasonality", "opportunities", dataVersion, input],
     queryFn: () => api.seasonalityOpportunities(input),
     retry: false,
     staleTime: 60_000,
     refetchOnWindowFocus: false,
+    enabled: !privateWeb,
   });
+  const cloudQuery = useCloudOpportunities(generation, input);
+  const query = privateWeb ? cloudQuery : nativeQuery;
   const rows =
     (mode === "divergences" ? query.data?.divergences : query.data?.windows) ??
     [];
@@ -152,6 +158,26 @@ export function SeasonalityOpportunities({
         }
       />
       <CardContent>
+        {privateWeb && (
+          <div className="page-actions">
+            <Button
+              onClick={() => void cloudQuery.refetch()}
+              disabled={cloudQuery.isPending || !generation}
+            >
+              Fenstersuche berechnen
+            </Button>
+            {cloudQuery.isPending && (
+              <Button onClick={cloudQuery.cancel}>
+                Fenstersuche abbrechen
+              </Button>
+            )}
+            <span role="status">
+              {cloudQuery.isPending
+                ? `${cloudQuery.completed} von ${cloudQuery.total || "…"} Märkten geprüft`
+                : "Die Auswahl wird erst nach deinem Start berechnet. Der Datenstand bleibt während der Suche unverändert."}
+            </span>
+          </div>
+        )}
         <div className="seasonal-scan-controls">
           <label>
             Datenbasis
@@ -334,6 +360,11 @@ export function SeasonalityOpportunities({
             <Tabs.Content key={tab} value={tab}>
               {query.isPending ? (
                 <PageLoading />
+              ) : privateWeb && !query.data && !query.isError ? (
+                <p className="seasonal-scan-empty">
+                  Wähle die Datenbasis und starte die Fenstersuche. Forex-Spot
+                  und echte Futures bleiben getrennt.
+                </p>
               ) : query.isError ? (
                 <div className="seasonal-scan-empty" role="alert">
                   <EmptyState
@@ -528,7 +559,7 @@ export function SeasonalityOpportunities({
   );
 }
 
-function OpportunityDetail({
+export function OpportunityDetail({
   row,
   today,
 }: {

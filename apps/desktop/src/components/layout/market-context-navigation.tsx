@@ -1,5 +1,6 @@
 import {
   Activity,
+  CloudRain,
   BarChart3,
   CalendarDays,
   ChartNoAxesCombined,
@@ -12,6 +13,7 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { NavLink } from "react-router-dom";
+import { canUseWorkspaceRoute } from "../../app/workspace-capabilities";
 
 type MarketContextItem = {
   label: string;
@@ -22,6 +24,13 @@ type MarketContextItem = {
 };
 
 const analysisItems: MarketContextItem[] = [
+  {
+    label: "Wetter & Rohstoffe",
+    description: "Regionen & Wetterverlauf",
+    path: "/weather",
+    icon: CloudRain,
+    accent: "cyan",
+  },
   {
     label: "Weltatlas",
     description: "Länder & lange Entwicklungen",
@@ -145,6 +154,14 @@ function DataLink({ item }: { item: MarketContextItem }) {
 }
 
 export function MarketContextNavigation() {
+  const availableAnalysis = analysisItems.filter((item) =>
+    canUseWorkspaceRoute(item.path),
+  );
+  const availableData = dataItems.filter((item) =>
+    canUseWorkspaceRoute(item.path),
+  );
+  if (availableAnalysis.length + availableData.length === 0) return null;
+
   return (
     <nav
       className="nav-group market-context-nav"
@@ -160,29 +177,35 @@ export function MarketContextNavigation() {
         </span>
         <span
           className="market-context-nav-count"
-          title={`${analysisItems.length + dataItems.length} verknüpfte Ansichten`}
+          title={`${availableAnalysis.length + availableData.length} verknüpfte Ansichten`}
           aria-hidden="true"
         >
-          {analysisItems.length + dataItems.length}
+          {availableAnalysis.length + availableData.length}
         </span>
       </div>
 
-      <div className="market-context-nav-analysis" aria-label="Kernanalysen">
-        {analysisItems.map((item) => (
-          <AnalysisLink item={item} key={item.path} />
-        ))}
-      </div>
+      {availableAnalysis.length > 0 && (
+        <div className="market-context-nav-analysis" aria-label="Kernanalysen">
+          {availableAnalysis.map((item) => (
+            <AnalysisLink item={item} key={item.path} />
+          ))}
+        </div>
+      )}
 
-      <div className="market-context-nav-divider" aria-hidden="true">
-        <span>Datenmodule</span>
-        <small>{dataItems.length} Quellenmodule</small>
-      </div>
+      {availableData.length > 0 && (
+        <>
+          <div className="market-context-nav-divider" aria-hidden="true">
+            <span>Datenmodule</span>
+            <small>{availableData.length} Quellenmodule</small>
+          </div>
 
-      <div className="market-context-nav-modules" aria-label="Datenmodule">
-        {dataItems.map((item) => (
-          <DataLink item={item} key={item.path} />
-        ))}
-      </div>
+          <div className="market-context-nav-modules" aria-label="Datenmodule">
+            {availableData.map((item) => (
+              <DataLink item={item} key={item.path} />
+            ))}
+          </div>
+        </>
+      )}
     </nav>
   );
 }

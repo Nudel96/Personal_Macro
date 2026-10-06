@@ -32,6 +32,7 @@ Benutzer. Die Anwendung verbindet:
 - automatische Positionsgrößenberechnung,
 - optionale read-only Kontoerstellung und Kontostandsaktualisierung über ein
   lokal angemeldetes MetaTrader-5-Terminal oder cTrader Open API OAuth,
+- optionaler automatischer Journal-Abgleich über die persönliche Myfxbook-API,
 - manueller, kontogebundener Import klassischer MetaTrader-HTML-Historien sowie
   cTrader-Account-Statements als HTML oder XLSX,
 - direkter Forecast-/Actual-/Previous-Import aus EODHD Economic Events,
@@ -50,7 +51,7 @@ Nicht-Ziele, solange der Benutzer sie nicht ausdrücklich neu beauftragt:
 Die Anwendung ist **local-first**. Journal- und Kontodaten bleiben standardmäßig
 in einer lokalen SQLite-Datenbank. Netzwerkzugriffe sind auf ausdrücklich
 konfigurierte Datenanbieter, releasegebundene EODHD-Aktualisierungen und vom
-Benutzer autorisierte read-only-cTrader-Kontoverbindungen begrenzt.
+Benutzer autorisierte read-only-Kontoverbindungen (cTrader/Myfxbook) begrenzt.
 
 ## 2. Source of Truth und Repository-Aufbau
 
@@ -122,6 +123,9 @@ Quelltexte. Bearbeite sie nicht manuell und committe sie nicht.
 
 - Desktop-App: SQLite und lokale Dateien in Windows AppData
 - Browser-Vorschau: `localStorage` und Demo-/Fallback-Adapter
+- Privater Webmodus: Neon PostgreSQL für Journal und Metadaten, privater Vercel
+  Blob für Originalbilder und geprüfte Markt-Snapshots; persönliche UI-Entwürfe
+  bleiben ausschließlich im Arbeitsspeicher der bestätigten Sitzung
 - UI-Präferenzen: Zustand-Persistenz beziehungsweise Tauri Store
 
 ## 4. Laufzeitarchitektur
@@ -144,6 +148,261 @@ In der Browser-Vorschau erkennt `isTauri()` die fehlende native Laufzeit. Der
 Service verwendet dann Implementierungen aus `browser-adapter.ts`,
 `rates-browser.ts` und `workspace-browser.ts`. Dieser Modus
 ist für schnelle UI-Entwicklung, nicht für die vollständige Produktabnahme.
+
+Für den beauftragten privaten Handyzugriff gibt es einen separaten
+`pnpm build:private-web`-Build und `vercel.json` in `apps/desktop`.
+Der Webmodus prüft vor dem App-Einstieg Sitzung und vollständige Journal-/Medien-
+Capabilities; ohne bestätigte Cloud-Anbindung bleibt er geschlossen.
+Vercel-Zugriffsschutz ist extern und muss vor Veröffentlichung für alle
+Deployments sowie ausschließlich die Besitzeridentität nachgewiesen werden.
+Die mobile Shell unter 1024 px ändert die Desktop-Dichte nicht. Aktueller
+Umfang und verbleibende Abnahme: `docs/planning/private-mobile-web.md`.
+Der Nutzer hat inzwischen schreibenden Betrieb bei ausgeschaltetem PC bestätigt.
+Der vorbereitete separate Rust-Server wird mit `--no-default-features --features
+server --bin personal-macro-server` gebaut; Desktop bleibt das Standardfeature.
+`runtime.rs` trennt Tauri-Handles und Tokio, ohne die Geschäftslogik zu ersetzen.
+`initialize_at()` erfordert einen absoluten dauerhaften Datenpfad und SQLite FULL.
+Die HTTP-Freigabeliste in `web_server/dispatch.rs` ist ausdrücklich begrenzt;
+niemals alle nativen Commands, freie Dateipfade oder Geheimnisse durchreichen.
+`api/` und `server/gateway/` unter `apps/desktop` gehören zur neuen privaten
+Browser-Anbindung, nicht zum älteren Referenzprojekt `apps/api`.
+Bei Vercel Services wird das Verzeichnis `api/` nicht automatisch gebaut.
+Der produktive Einstieg ist deshalb `server/gateway/service.mjs` als eigener
+Dienst `gateway` mit `runtime: "node"`; `/api/:path*` wird unverändert dorthin
+geroutet. Die interne Backend-Bindung gehört zum Gateway, nicht zur statischen
+Weboberfläche. Vor Freigabe müssen Gateway-Funktion und Rust-Container im echten
+Build nachgewiesen und Sitzung sowie Datenzugriff am veröffentlichten Host geprüft
+werden; ein erfolgreicher Frontend-Build reicht nicht aus.
+Gateway und Browsertransport verwenden ausschließlich freigegebene Cloud-Commands.
+Nicht verfügbare Routen dürfen keine Browser-Demodaten laden. Keine automatische
+Synchronisierung mit der bestehenden lokalen Desktop-Datenbank behaupten.
+
+Der bereitgestellte Cloudbetrieb nutzt Vercel mit PostgreSQL über die native
+Neon-Marketplace-Integration und privatem Objektspeicher. Die vorhandene
+SQLite-Serverbasis ist eine getrennte Alternative mit dauerhaftem Datenträger.
+Das separate PostgreSQL-Backend sichert Datenmutation, Revision und Vorgangsbeleg
+in derselben Datenbanktransaktion ab; Dateisperren oder Prozess-Mutex reichen nicht.
+Nach bestätigten Anbieterbedingungen wurden Neon Free in Frankfurt und ein privater
+Vercel-Blob-Speicher eingerichtet, zunächst für Preview. `cloud_postgres` und
+`cloud_server` bilden den getrennten Build `--no-default-features --features postgres
+--bin personal-macro-cloud`. Die Journal-/Medienbasis umfasst 45 Commands plus
+privaten Bild-Upload; zusätzliche Analyse-Capabilities bleiben getrennt optional.
+Mutation, Revision und Beleg sind atomar. Medienobjekte sind nur über den separat
+signierten internen Pfad erreichbar. Originaldateien bleiben unverändert.
+Eine konsistente SQLite-Sicherung außerhalb des Repository wurde geprüft und
+338 persönliche Datensätze aus 51 freigegebenen Tabellen in ein neues
+PostgreSQL-Schema übernommen. Hashes und Kennzahlen beider Konten
+stimmen. Beim Journalimport wurden Provider-Caches und Broker-Zugangsdaten
+ausgeschlossen. Ausgewählte öffentliche Marktdaten wurden anschließend separat
+als geprüfte Pakete übertragen. Vier Originalbilder wurden privat übertragen und durch erneuten Abruf
+bytegenau geprüft. Die Workspace-Identität wurde danach atomar aktiviert.
+Der echte signierte Gateway-/Server-Lesetest gegen Neon und Blob besteht.
+Journal-Weboberfläche, Node-Gateway und Rust-Container sind über den geschützten
+Projektlink bereitgestellt. Nach Korrektur des fehlenden API-Dienstes bestehen
+der Live-Lesetest mit 46 Pflicht-Capabilities, beiden Konten und vier Bildern
+sowie der mobile Browsertest bei 390 px mit Übersicht und Trade-Navigation.
+Der temporäre Testzugang wurde widerrufen und seine Sperre nachgewiesen;
+anonyme Seiten- und API-Zugriffe bleiben blockiert. Die erneute Besitzerbedienung
+am tatsächlichen iPhone ist noch offen; der Browsertest verwendet Chromium.
+
+`cloud_public` ergänzt getrennte, unveränderliche Markt-Snapshots. Ein expliziter
+Exporter erzeugt neue SQLite-Dateien mit freigegebenen Tabellen und Spalten;
+niemals die persönliche Datenbank kopieren und daraus Tabellen löschen.
+Migration `postgres-migrations/0004_public_cache.sql` veröffentlicht Generationen
+mit atomarem Vergleich des vorherigen Zeigers, getrennt von der Journalrevision.
+216 Pakete für neun Leitzinsreihen, Katalog und alle 214 EODHD-Symbole wurden privat
+hochgeladen, bytegenau geprüft und aktiviert: 1.690.660 öffentliche Zeilen,
+142.450.688 unkomprimierte und 34.170.392 komprimierte Byte.
+Der Rust-Lader prüft Roh-/Transporthash, Größe, Schema und Symbolzuordnung,
+hält höchstens zwei temporäre Pakete und öffnet sie unveränderlich/query-only.
+Analysen laufen außerhalb von PostgreSQL-Transaktionen und auf begrenzten
+Blocking-Tasks. Details und Analyse verlangen die angezeigte Generation.
+Die bisherige Grundlage mit vier Markt-Lesebefehlen und `/rates` sowie
+`/seasonality` ist bereitgestellt und optional; fehlende Pakete dürfen die
+46 Pflicht-Capabilities des Journals nicht erweitern oder den Journalzugang
+sperren. Die Cloudseiten zeigen den Übernahmestand ohne Provider-Refresh oder
+Polling.
+Vier echte Analysen aus unterschiedlichen Assetklassen bestanden einschließlich
+Cloudabruf in maximal 8.047 ms im lokalen Debug-Build; dies ist kein Vercel-Benchmark.
+Die Erweiterung vom 25.09.2026 implementiert die optionalen Analysefamilien
+Macro-Heatmap, COT, Wirtschaftsdaten/-kalender, Technicals, Regime Insights,
+Weltatlas, Staatsanleihen und Zentralbankberichte. `cloud_public/macro_readers.rs`,
+`atlas_readers.rs` und `report_readers.rs` verwenden die nativen Fachreader auf
+geprüften unveränderlichen Paketen. Der neue Codestand enthält ausdrücklich
+gestartete Seasonality-Screener und Fenstersuchen über generationstreue Batches.
+Die vollständigen erforderlichen Capabilities jeder Route werden geprüft;
+fehlende optionale Pakete dürfen weder das Journal sperren noch Demodaten laden.
+
+Persönliche Atlasnotizen, gespeicherte Ansichten und die letzte Ansicht gehören
+zu `cloud_postgres/atlas.rs`, persönliche Berichtslesemarker zum separaten
+PostgreSQL-Pfad. Diese Mutationen verwenden dieselbe atomare Revision- und
+Vorgangsbeleg-Transaktion wie das Journal. Notizen und Lesemarker werden nicht
+in öffentliche Marktpakete exportiert. Berichtstexte und vorhandene
+Zusammenfassungen werden gelesen; neue Cloud-Erfassung, Textextraktion und
+KI-Zusammenfassung waren in diesem Rollout noch nicht implementiert. Die
+Erweiterung vom 30.09.2026 ergänzt sie über die vorhandene Provider-Jobfamilie:
+zwölf bankgebundene Quellen, tägliche Planung, getrennte Erfassungs- und
+Zusammenfassungsaufträge, geprüfter Berichtspaket-Export und atomare Veröffentlichung
+über den Generationsvergleich. Persönliche Lesemarker und Journalrevision werden
+dabei nicht verändert. Details und datierte Abnahmen stehen in
+`docs/planning/cloud-central-bank-briefings.md`.
+
+Briefing-Version 3 verlangt wortgetreue Quellenzitate und prüft Quellenmarken,
+Zahlen, Zentralbankzuordnung und ausgewählte Bedeutungsgrenzen. Lange Texte bleiben
+begrenzt und werden als Auszüge kenntlich gemacht; dies ist keine vollständige
+semantische Faktenprüfung. SQLite-Migration 0051 und PostgreSQL-Migration 0011
+führen einen separaten dauerhaften KI-Kostenbeleg mit jeweils 0,50 USD je UTC-Monat
+und Datenspeicher ein. Höchstbeträge werden vor dem API-Aufruf atomar reserviert;
+ungeklärte Aufträge bleiben gesperrt, erfolgreiche identische Ergebnisse werden
+wiederverwendet. Keine Budgettabellen, Zugangsdaten oder persönlichen Metadaten in
+öffentliche Markt-Snapshots aufnehmen. Die Cloud-Aktivierung benötigt
+`MACRO_REPORT_AUTOMATION=1` und einen ausschließlich serverseitigen OpenAI-Schlüssel.
+
+Alle 555 Pakete der neuen Gesamtgeneration wurden mit dem produktiven Loader
+und nativen Readern geprüft sowie privat hochgeladen und bytegenau erneut
+gelesen: 1.000.374.272 Rohbytes und 141.744.234 Gzip-Bytes. Die Gesamtbelegung
+einschließlich vorheriger Generation und vier Originalbildern beträgt
+176.407.066 Byte. Migrationen 0005 und 0006 wurden identitätsgeprüft angewendet.
+Deployment `dpl_AqHBFCN5aPmYKpv5EePWhjQHeuWh` ist `READY`, `public: false`,
+Region `fra1`, mit Web-, Gateway- und Rust-Service. Der stabile Projektalias
+zeigt auf `personal-macro-i1ktdtp9e-nudel96s-projects.vercel.app`. Die
+CAS-Veröffentlichung der Generation `9aa3d4e2-1c44-4852-bc16-cf400fd72d3e` ist
+erfolgreich bestätigt: `published: true`, 555 Artefakte und 141.744.234
+Transportbytes. Die Generation ist am stabilen Alias aktiviert.
+
+Der Live-Lesetest vom 25.09.2026, 13:36–13:44 UTC, bestand alle 22
+Analyseprüfungen, darunter eine Atlas-Antwort mit 2.112.285 Byte, ein
+Screener-Batch mit fünf Instrumenten und die Fenstersuche in zwei Schritten
+mit fünf und zwei Instrumenten. Die gemessenen Scan-Schritte benötigten etwa
+16–18 Sekunden. Persönliche Schreibbefehle wurden nicht ausgeführt
+(`personalWritesPerformed: false`); ihre Nachweise stammen aus isolierten
+PostgreSQL-Tests. Die damalige Gesamtprüfung meldete trotzdem `ok: false`, weil
+`AppShell` die Marktkontext-Navigation im privaten Webmodus ausblendete.
+Nachweis: `apps/desktop/.vercel/live-owner-service-report.json` außerhalb der
+versionierten Quellen. Der temporäre Zugang ist entfernt (`cleanup: true`);
+anonyme und widerrufene Testanfragen lieferten HTTP 401.
+
+Der Navigationsfix filtert die Einträge jetzt anhand der verfügbaren
+Capabilities; 16 Tests bestehen. Zwei mobile Macro-CSS-Korrekturen wurden mit
+Fixtures bei 320, 390, 768 und 1440 px geprüft. Ein vorgeschalteter Test der
+lokal kompilierten Oberfläche mit dem echten Backend bestand separat
+(`apps/desktop/.vercel/live-owner-local-ui-report.json`); dieser war noch kein
+Nachweis der bereitgestellten Oberfläche.
+
+Der abschließende Test der tatsächlich bereitgestellten Aq-Oberfläche ist am
+25.09.2026 um `14:15:31.548Z` erfolgreich abgeschlossen:
+`apps/desktop/.vercel/live-owner-mobile-report.json` meldet `ok: true`,
+`validationSucceeded: true`, `cleanupVerified: true`, `deployedUI: true` und
+`compiledLocalUI: false`. Sechs Analyseseiten sowie Übersicht und Trades
+bestanden bei 390 px ohne Seitenüberlauf; zehn Navigationslinks sind sichtbar.
+Keine Laufzeit-/API-Fehler oder blockierten Schreibversuche, unveränderte
+Journalrevision. Der frühere Navigationsfehler ist damit behoben und live
+nachgeprüft. Besitzer-/SSO-Schutz für alle Deployments blieb unverändert;
+genau der temporäre Testschlüssel wurde widerrufen, anonyme und widerrufene
+Testanfragen lieferten HTTP 401. Diese Freigabe umfasst Analyselesepfade und
+die geprüfte mobile Navigation/UI, keine persönlichen Live-Schreibvorgänge
+oder vollständige Desktop-Parität. Die physische iPhone-/Safari-Bedienung
+durch den Besitzer bleibt eine gesonderte offene Geräteprüfung.
+
+Die nachfolgende Korrektur des iPhone-Einstiegs beseitigt wiederholtes Parsen
+großer eingebetteter Atlaskataloge innerhalb der Cloud-Manifestprüfung.
+`cloud_public/atlas_readers.rs` hält je Katalogfamilie eine unveränderliche
+Menge geprüfter Identitäten. Diese Mengen stammen ausschließlich aus den
+nativen, eingebetteten Katalogen einschließlich der Markt-Proxy-Prüfung;
+unbekannte Anfragen werden nicht gespeichert. Keine Manifest-, Generations-,
+Journal-, Hash- oder SQLite-Prüfung wird dadurch ersetzt. Die nativen
+Desktop-Katalogfunktionen bleiben unverändert. 29 Cloud-Public-Tests bestehen,
+zwei bestehende PostgreSQL-Integrationstests wurden dabei nicht ausgeführt.
+Der private Browser gleicht seine 30-Sekunden-Sitzungsfrist zusätzlich bei
+Rückkehr aus dem Hintergrund ab und bietet nach acht Sekunden einen manuellen
+Neustart. Abgebrochene Antworten können keine Sitzung aktivieren. Details,
+Vorher-/Nachhermessungen und Grenzen der Geräteabnahme:
+`docs/audit/private-web-iphone-startup.md`.
+
+Diese Korrektur ist als `dpl_FJHF6sZthr7w9GiyA4USpDvSnGnp` mit allen drei
+Services `READY`, `public: false`, in `fra1` bereitgestellt. Der stabile Alias
+zeigt aktuell auf `personal-macro-qi1zlug2a-nudel96s-projects.vercel.app`.
+Der WebKit-Live-Lauf vom 25.09.2026, abgeschlossen um `15:51:25.087Z`,
+bestand alle 22 Analyseprüfungen, Übersicht, Trades und sechs Analyseseiten
+bei 390 px mit zehn sichtbaren Navigationslinks, ohne Laufzeit-/API-Fehler.
+Der erste Sitzungsabruf dauerte 4.406 ms, der nachfolgende Browseraufruf 175 ms.
+Journalrevision unverändert, keine persönlichen Live-Schreibvorgänge;
+Testschlüssel widerrufen, anonyme und widerrufene JSON-Anfragen HTTP 401.
+Nachweis: `apps/desktop/.vercel/iphone-final-live-report.json`; zusätzliche
+anonyme Seiten-/API-Prüfung auf beiden Hosts: `iphone-final-anonymous-report.json`.
+Das ersetzt weiterhin keine physische iPhone-/Besitzer-SSO-Abnahme.
+
+Der gemeinsame Vertrag erlaubt 1.024 Artefakte und 2 GiB Rohdaten je
+Generation, höchstens 500 MiB Gzip insgesamt und je Paket 32 MiB Transport
+beziehungsweise 128 MiB SQLite. Zwei temporäre Lese-Leases begrenzen aktive
+Paketdateien einschließlich Transport auf 320 MiB. `load_active` bindet
+`MAX_MANIFEST_ARTIFACTS + 1`, damit zusätzliche Transportzeilen erkannt werden.
+JSON-Anfragen bleiben auf 2 MiB begrenzt, vollständige Antworten auf 4 MiB.
+Die Antwortgrenze wurde nach dem gemessenen Valuation-Paket mit 2.112.267 Byte
+separat erhöht; derselbe unveränderte Inhalt wurde erfolgreich erneut geprüft.
+
+Saisonale Batches verarbeiten höchstens fünf Instrumente; der erste
+Divergenzschritt lädt zusätzlich sieben USD-Spotreihen. Ein globaler Semaphore
+begrenzt umfangreiche Scans pro Instanz auf zwei und hält seinen Permit bis
+zum tatsächlichen Ende der Blocking-Arbeit. Gesamtfrist je Batch: 75 Sekunden;
+numerische Teilfrist: 50 Sekunden. Der Browser prüft Generation und monotone
+Cursor, führt die globale Rangfolge erst nach Abschluss zusammen und startet
+nach Abbruch keine weiteren Schritte. Laufende synchrone Berechnungen sind
+dadurch nicht sofort beendet. Echte FX-Futures bleiben ohne Datenanbindung.
+
+Die Macro-Frische wird vor der aktuellen Aggregation geprüft, ohne gespeicherte
+Quellwerte oder Snapshotdatum zu ändern. Ein bestehender Widerspruch zwischen
+§10.4 und dem tatsächlich implementierten nativen Paarvertrag für fehlende
+Seiten wurde nicht als Teil des Cloudrollouts geändert. Siehe
+`docs/audit/cloud-macro-freshness-review.md`; keine stillschweigende fachliche
+Umstellung oder identische Zielmethodik behaupten.
+
+Die Erweiterung vom 26.09.2026 ergänzt dauerhafte Cloudjobs für EODHD-Wochenplanung
+und Aktualisierung eine Stunde nach Releases, den CFTC-Kalender mit einstündigem
+Abstand sowie den ausdrücklich genehmigten Myfxbook-Abgleich alle sechs Stunden.
+Myfxbook erfordert eine eigene Anmeldung und bestätigte Vorschau im privaten
+Webmodus. Credentials werden mit ChaCha20-Poly1305 und getrenntem Serverschlüssel
+verschlüsselt. Netzwerkabruf und Datenbanktransaktion sind getrennt; Journaländerung,
+Revision, Beleg und Vorherabbild werden atomar bestätigt. Pausieren/Trennen sperrt
+laufende Jobs; Trennen entfernt die gespeicherten Credentials. Migrationen 0007–0010
+sind nach privater Sicherung und Identitätsprüfung angewendet, ohne persönliche
+Datensätze oder Journalrevision zu verändern. Deployment
+`dpl_Hpi448CaLwbTeNXp4rkgamBFUdQR` ist mit fünf Diensten `READY`, `public: false`,
+in `fra1`; der stabile Alias zeigt auf
+`personal-macro-bzmoadfjx-nudel96s-projects.vercel.app`. Alle neun Wochenplanungen
+und der COT-Auftrag sind abgeschlossen. Der WebKit-Live-Lauf vom 26.09.2026,
+abgeschlossen um `16:29:08.921Z`, besteht alle 22 Analyseprüfungen, Übersicht,
+Trades, sechs Analyseseiten und die Myfxbook-Einrichtung bei 390 px ohne
+Seitenüberlauf oder Laufzeit-/API-Fehler. Journalrevision 3 unverändert,
+keine persönlichen Schreibversuche, Testzugang widerrufen und HTTP 401 für
+anonyme sowie widerrufene Testanfragen. Die persönliche Myfxbook-Aktivierung
+durch den Besitzer und die physische iPhone-Abnahme bleiben offen. Nachweise stehen in
+`docs/planning/cloud-provider-automation.md`.
+
+Cron und Queues bilden zwei getrennte Jobfamilien (`server/cot`, `server/providers`).
+Die täglichen Cron-Auslöser verteilen fällige Jobs; die Wirtschaftswochenplanung
+bleibt dedupliziert. Fachliche Wartezeiten werden als neue verzögerte Nachrichten
+innerhalb der bisherigen Aufbewahrungsfrist eingeplant; erst nach bestätigter
+Annahme wird die aktuelle Zustellung quittiert. PostgreSQL begrenzt weiterhin
+die Datenabrufe und prüft Fälligkeit/Lease. Auch eine Queue-Annahme mit HTTP 202
+und `messageId: null` gilt als Erfolg. Nur geprüfte öffentliche Pakete werden aktualisiert, alle
+anderen Paketobjekte generationstreu wiederverwendet. Providerobjekte werden
+referenzsicher mindestens 24 Stunden und für acht Generationen aufbewahrt;
+ursprüngliche Pakete und persönliche Medien sind von dieser Bereinigung ausgenommen.
+Der bestehende Hobby-/Free-Betrieb wurde nicht kostenpflichtig umgestellt.
+
+Weitere Provider-Aktualisierungen, MT5-/cTrader-Anbindungen, native Dateiimporte/-exporte
+und Backup/Restore sind weiterhin nicht in die Cloud portiert. Keine automatische
+Desktop-/Cloud-Synchronisierung oder volle Desktop-Parität behaupten. Der
+Windows-Debug-Build und der reale Prozess-/Fensterstart sind geprüft; mangels
+CDP-Zugriff ist dies keine vollständige native UI-Abnahme. Die Ende-zu-Ende-
+Abnahme mit der Besitzeranmeldung am iPhone bleibt offen. Aktueller Umfang und
+Nachweise: `docs/planning/private-market-cloud.md` und
+`docs/planning/private-mobile-web.md`.
+Der vereinbarte Kostenrahmen beträgt höchstens 10 EUR pro Monat;
+Vercels Ausgabenlimit erfasst Marketplace-Kosten nicht. Vor einer kostenpflichtigen
+Umstellung müssen deren Grenzen nachgewiesen werden. Desktop-SQLite und bestehende
+Migrationen bleiben unabhängig davon erhalten.
 
 Native Funktionen, die in der Browser-Vorschau nicht vollständig funktionieren:
 
@@ -197,7 +456,11 @@ apps/desktop/src
 - `/mistakes` – Fehleranalyse
 - `/media` – Medien und Annotationen
 - `/goals` – Ziele und Fortschritt
+- `/learning` – umfangreiche Lernbibliothek mit Wirkungsketten, Lernwegen,
+  Glossar, Fokusmodus, Merkliste und eigenen Lernnotizen
 - `/macro` – Macro- und Pair-Heatmap
+- `/weather` – Wetter & Rohstoffe: Produktionsschwerpunkte, öffentliche
+  Punktprognosen, typischer Anbaukalender und erklärbare Wetterhinweise
 - `/world-atlas` – weltweites Länder-/Themenverzeichnis, öffentliche WDI-
   Jahresreihen, langfristige Marktwellen und UN-Altersprofile mit getrennten
   Szenarien; weitere Sektor-, Bewertungs- und Jahrhundertansichten sind im Ausbau
@@ -317,7 +580,7 @@ apps/desktop/src-tauri/src
 
 Die tatsächliche Datenbank wird ausschließlich durch die SQL-Dateien unter
 `apps/desktop/src-tauri/migrations` definiert. Aktuell existieren Migrationen
-`0001` bis `0048`.
+`0001` bis `0052`.
 
 Wichtige Tabellengruppen:
 
@@ -335,6 +598,8 @@ Wichtige Tabellengruppen:
 - Provider: `economic_provider_events`, `provider_sync_runs`
 - Legacy-MT5: alte Snapshot-, Deal-, Positions- und Sync-Tabellen bleiben nur
   als Upgrade-Historie bestehen und werden nicht mehr zur Laufzeit befüllt
+- MT5-Charttrends: `mt5_technical_refresh`, `mt5_technical_pairs` und
+  `mt5_technical_candles` speichern ausschließlich lokale H4-/D1-Marktdaten
 - EODHD: Events, Mappingkandidaten, Release-Jobs und Fundamentals-Snapshots
 
 ### Migrationsregeln
@@ -432,6 +697,18 @@ Der COT-Faktorscore ist der Durchschnitt der verfügbaren Signale. Coverage zeig
 welche der drei Komponenten tatsächlich vorlagen. Mindestens zwei historische
 Netto-Beobachtungen sind für einen Z-Score erforderlich.
 
+Die COT-Seite ergänzt seit 26.09.2026 einen deskriptiven Vergleich zweier Märkte:
+je drei Legacy-Teilnehmer im historischen Diagramm und darunter COT-Saisonalität.
+Migration `0050` speichert Commercial-/Non-Reportable-Long/Short als zusätzliche
+nullable Spalten; der Collector liest dieselben offiziellen Legacy-Berichte.
+`participantSeries` ergänzt die bestehenden Detailantworten. Fehlende Gruppen
+bleiben unavailable. `cot-chart-data.ts` mittelt wöchentliche Netto-Bestände
+über vollständige Kalenderjahre; keine Kursrendite, Indexierung oder Änderung
+der bestehenden COT-/Macro-Bewertung. Cloudpakete akzeptieren genau das alte
+oder neue geprüfte DDL, die isolierte Arbeitskopie wird atomar erweitert.
+Methodik, Mindeststichproben und Rolloutgrenzen:
+`docs/planning/cot-participant-comparison.md`.
+
 ### 10.3 Currency-Faktoren
 
 Die verbindliche Reihenfolge der Kernfaktoren lautet:
@@ -492,6 +769,32 @@ score(A/B) = -score(B/A)
 Jede Änderung braucht mindestens Tests für `+2`, Aufhebung gleicher Signale,
 fehlende Gegenstücke, Summenbildung und Antisymmetrie.
 
+### 10.5 Lokaler 4H-/Daily-Charttrend über MT5
+
+Die Desktop-Heatmap liest abgeschlossene H4- und D1-Kerzen aus dem lokal
+angemeldeten MT5-Terminal über `connectors/mt5_market_connector.py`. Dafür
+wird kein EODHD-Intraday-Abruf mehr ausgeführt. Python und das Paket
+`MetaTrader5` müssen lokal verfügbar sein. Ein optionaler Terminalpfad unter
+**Macro → MT5-Verbindung** wählt bei mehreren Installationen die konkrete
+`terminal64.exe`; keine Zugangsdaten und keine Journal-Kontoverbindung nötig.
+
+`commands/mt5_technicals.rs` aktualisiert einmal je Kalendertag Europe/Berlin
+bei laufender App, erstmalig kurz nach dem Start. Fehler werden nach 30 Minuten
+erneut versucht; **MT5-Trends** erlaubt einen sofortigen manuellen Abruf.
+Lease und atomare Veröffentlichung verhindern konkurrierende oder verspätete
+Schreibvorgänge. Fehler erhalten den letzten guten Snapshot; alte Kerzen werden
+bei der Auswertung als nicht verfügbar markiert. Broker-Suffixe werden über
+Währungsmetadaten zugeordnet, CNH wird nicht als CNY ausgegeben.
+
+Die vorhandene OHLC4-/EMA20-/EMA50-/ADX-/DMI-Methodik bleibt erhalten,
+mindestens 100 abgeschlossene Kerzen je Zeitrahmen. Nur übereinstimmende
+gerichtete Signale bestätigen den gemeinsamen Trend. H4 und Daily bleiben
+einzeln sichtbar, auch bei fehlender oder gegensätzlicher Evidenz; der
+Fundamentals Score wird dadurch nicht verändert. Migration 0052 trennt diese
+Marktdaten von EODHD und Journal. Der private Webmodus behält seine bisherigen
+unveränderlichen Marktpakete; es gibt keine automatische MT5-Cloudübertragung.
+Bedienung und Prüfnachweise: `docs/planning/mt5-technical-trends.md`.
+
 ## 11. Leitzinsmodell
 
 Zinsen sind ein eigener fachlicher Bereich und kein versteckter Teil von
@@ -542,6 +845,88 @@ atomar je Reihe und abbrechbar nach der laufenden Reihe. Teilerfolge bleiben
 erhalten. Der Browser zeigt das Verzeichnis ohne erfundene Renditen.
 Details und Prüfungen: `docs/planning/government-bonds.md`.
 
+## 11b. Wetter & Rohstoffe
+
+`/weather` verwendet den gemeinsamen, versionierten JSON-Katalog unter
+`src/features/weather/data/catalog.json`: 21 Rohstoffprofile, 49 redaktionelle
+Anbauschwerpunkte und 147 feste benannte Wetterpunkte (Stand 05.10.2026).
+Der Generator liegt unter `scripts/build-weather-catalog.mjs`. Keine aktuellen
+Produktionsanteile oder genauen Anbauflächen aus diesen Punkten ableiten.
+Die Karte verwendet die vorhandene Natural-Earth-Geometrie und Equal-Earth-Projektion.
+
+`commands/weather.rs` akzeptiert nur bekannte Asset-IDs und ruft ausschließlich
+Open-Meteo über HTTPS ab. Koordinaten und Variablen stammen aus dem Katalog;
+Journal, Konten und Nutzerstandort sind nicht beteiligt. Vor dem 30-Minuten-Cache
+werden Ortszuordnung, UTC-Zeitachse, Einheiten, Wertebereiche und Modellzeit geprüft.
+Frist 25 Sekunden, Antwortgrenze 4 MiB, mindestens eine Minute zwischen
+Abrufversuchen nach einem Fehler.
+Die lokale Browser-Vorschau verwendet denselben Vertrag mit echten öffentlichen
+Abrufen. Der private Webmodus besitzt einen eigenen lesenden Backendpfad und eine
+optionale Capability; fehlende Unterstützung darf weder Demo-Wetter laden noch
+das Journal sperren. Eine Live-Bereitstellung dieser neuen Route ist nicht bestätigt.
+
+Alle Tagesfenster sind UTC: sieben archivierte Modelltage und heute plus 13
+Vorhersagetage. Aktuelle Werte sind Modellwerte, keine Stations-/Radarmessungen.
+`weather-model.ts` trennt fehlende Werte und echte Null, prüft Punktabdeckung und
+behält Einzelpunktextreme neben dem ungewichteten Vergleich bei. Typische Phasen
+sind redaktionell und manuell übersteuerbar; dies misst keine aktuelle Phänologie.
+P−ET₀ verwendet eine Grasreferenz und ist keine Bodenfeuchte- oder Dürrediagnose.
+Schwellen erklären mögliche Wasserzufuhr, Hitze, Frost, Nässe oder Ernteerschwernis;
+keine Ertragsverluste, Preisrichtungen oder Handelssignale daraus behaupten.
+Alte Daten bleiben sichtbar, die Wirkungsbewertung wird nach drei Stunden oder
+einem UTC-Tageswechsel ausgesetzt. Langfristige Anomalien, Produktionsmasken,
+Ensembles und eigenständige Energiewirkungen sind noch nicht implementiert.
+Der Layer `picture` zeigt pro Region einen benannten Wetterpunkt mit Symbol
+und Tagesmaximum. `weather-picture.tsx` verbindet dieselbe Orts-/Tagesauswahl
+mit einer schematischen SVG-Wetterdarstellung und 14 anklickbaren Tagesbildern.
+`weather_code` ist der tägliche WMO-Code für die schwerwiegendste modellierte
+Wetterart, kein aktueller Radar-/Stundenverlauf. Einheit `wmo code`, 21 Werte,
+Ganzzahlen 0–99 oder null werden geprüft. Ältere Backendantworten ohne Code
+behalten ihre Messgrößen, zeigen aber ausdrücklich keine bekannte Wetterart.
+Unbekannte Codes werden nicht als klarer Himmel behandelt. Animationen beachten
+reduzierte Bewegung und den manuellen Schalter; die Landschaft ist kein Feldbefund.
+Aufbau, Primärquellen und Prüfungen: `docs/planning/weather-insights.md`.
+
+## 11c. Learning
+
+`/learning` ist ein lazy geladenes, redaktionelles Nachschlagewerk unter
+`src/features/learning`. Stand 05.10.2026: 69 Kapitel, sieben Themenwelten,
+acht Lernwege und 95 Glossarbegriffe. Themen sind Währungen, Agrarrohstoffe,
+Metalle/Energie, wirtschaftliche Zusammenhänge, Tokenisierung und Beobachtungswerkzeuge.
+Die Texte verwenden einfache deutsche Sprache und denselben Kontextaufbau:
+Einordnung, Treiber, Wirkungskette, Gedankenbeispiel, Gegenkräfte und Anwendung.
+Fokusmodus ist die Voreinstellung; alle Abschnitte können gemeinsam gelesen werden.
+
+Der Katalog ist typisiert und wird mit dem Frontend ausgeliefert. Er lädt keine
+Marktprognosen, persönlichen Journal-Daten oder automatisch generierten Texte.
+Quellen sind verlinkte Primärquellen mit datierter Prüfung und jeweiligem
+Geltungsbereich. Beispiele sind ausdrücklich hypothetisch. US-Aufsichtsmaterial
+zu Tokens nicht als deutsches/EU-Produktrecht ausgeben; keine sichere Preisrichtung
+oder persönliche Produktempfehlung aus den Wirkungsketten ableiten.
+
+`learning-progress.ts` speichert auf Desktop und in der lokalen Browser-Vorschau
+Lesestelle, manuell markiertes Verständnis, Merkliste und höchstens 2.000 Zeichen
+Notiz je Kapitel im lokalen Browser-/WebView-Speicher. Diese Daten sind nicht
+Teil des SQLite-Backups. Bei gesperrtem Speicher bleibt der Zustand im Arbeitsspeicher
+und wird entsprechend beschriftet. Im privaten Webmodus darf dieser Pfad keinen
+Browser-Speicher lesen oder schreiben: Zustand bleibt ausschließlich im
+Arbeitsspeicher der bestätigten Sitzung und wird bei Sitzungsende verworfen.
+Keine Desktop-/Cloud-Synchronisierung des Lernfortschritts behaupten.
+Die Erweiterung vom 06.10.2026 ergänzt optionale `get_learning_progress` und
+`save_learning_progress` in PostgreSQL. Bei vollständiger Capability-Anbindung
+bleiben Lernstand und Notizen dort dauerhaft; der Browser nutzt weiterhin keinen
+persönlichen localStorage. Ohne diese Commands bleibt der Sitzungsmodus bestehen.
+Migration `0012_cloud_transfer.sql` ergänzt außerdem private Journal-Sicherungen;
+sie gehören weder in öffentliche Marktpakete noch in deren Generationsrevision.
+Browser-Import/-Export, begrenzte Cloud-Wiederherstellung und Screenshot-Erfassung
+mit Browser-OCR sind unter `docs/planning/mobile-function-parity-2026-10-06.md`
+beschrieben. Dies bestätigt keine vollständige Desktop-Parität.
+
+Die private Sitzungsschranke bleibt vorgeschaltet. Die statische Lernroute benötigt
+keine zusätzlichen Cloud-Commands und erweitert die 46 Pflicht-Capabilities nicht.
+Weiterführende Workspace-Links werden nach den verfügbaren Routen gefiltert.
+Aufbau, Quellenregeln und Abnahme: `docs/planning/learning-dashboard.md`.
+
 ## 12. Seasonality
 
 Seasonality-Snapshots speichern Asset, Symbol, Horizont, Stichprobenzeitraum,
@@ -574,6 +959,19 @@ ohne angebundene Futures-Historie ausdrücklich nicht verfügbar; die EODHD-
 Katalogprüfung vom 15.09.2026 ergab nur Forex-Spotpaare. Spotdaten werden nur nach
 ausdrücklicher UI-Auswahl verwendet und nie als Futures ausgegeben. Details,
 Methodik und offene Datenanbindung: `docs/planning/seasonality-opportunities.md`.
+
+**Chancen im Markt** ergänzt seit 05.10.2026 einen rollierenden, lokalen
+90-Kalendertage-Horizont: tägliche Einstiege ab heute, beide Fenstergrenzen
+innerhalb des Horizonts, gemeinsame Long-/Short-Rangfolge. Die Berechnung
+`scan_market_windows` nutzt dieselbe Kalenderfenster-Engine mit mindestens fünf
+vollständigen Jahren aus den letzten 20 abgeschlossenen Jahren. Je Markt und
+Richtung bleiben zehn unterschiedliche Kandidaten für eine globale Top 10.
+Der optionale native Input `{ asOf }` und Cloud-`screenerInput` trennen dies vom
+älteren jährlichen Screener-Vertrag. Die Desktop-Abfrage wechselt mit dem lokalen
+Tag und Profilstand; Cloud-Batches bleiben ausdrücklich gestartet und an den
+Tag sowie die Generation gebunden. Kalender- und Handelstage nicht gleichsetzen.
+Eine neue Cloud-Bereitstellung ist damit nicht bestätigt. Vertrag und Grenzen:
+`docs/planning/seasonality-market-opportunities-90-days.md`.
 
 ## 12a. Put/Call-Bereich vorerst entfernt
 
@@ -1320,8 +1718,8 @@ Konten können optional read-only über ein lokal angemeldetes MT5-Terminal oder
 der Broker-Balance aktualisiert werden. Die Verbindung enthält keine
 Orderfunktionen. MT5-Passwörter werden nicht abgefragt oder gespeichert;
 cTrader-Tokens liegen nicht in SQLite, sondern geschützt im
-Windows-Anmeldedatenspeicher. Historische Trades werden weiterhin ausschließlich
-über die zweiphasige Vorschau und den atomaren Commit eines klassischen
+Windows-Anmeldedatenspeicher. Historische Trades werden über die zweiphasige
+Vorschau und den atomaren Commit eines klassischen
 MetaTrader-HTML-Reports oder eines cTrader-Statements als HTML/XLSX in ein
 ausdrücklich ausgewähltes aktives Journal-Konto übernommen.
 Beim cTrader-Import ist dieses Konto ausschließlich das Importziel;
@@ -1330,6 +1728,52 @@ werden ohne erfundene FX-Umrechnung numerisch unverändert übernommen und mit d
 Quellwährung gekennzeichnet.
 Grafische Aggregate-Reports und leere XLSX-Dateien werden abgelehnt; HTML wird
 niemals in der Oberfläche ausgeführt.
+
+Zusätzlich kann ein bestehendes aktives Journal-Konto unter **Einstellungen →
+Konten → Myfxbook automatisch synchronisieren** verbunden werden. Die erste
+Übernahme erfordert Anmeldung, ausdrückliche Brokerzeitzone, geprüfte Vorschau
+und Aktivierung. `commands/myfxbook` liest die offizielle persönliche API; ein
+separater Scheduler prüft aktivierte Verbindungen alle fünf Minuten, solange
+die App läuft. Es gibt keine Broker-Orderausführung und keinen Journal-Upload.
+Passwörter werden nur für den Login verwendet; Sitzungen liegen im
+Windows-Anmeldedatenspeicher. SQLite speichert ausschließlich Verbindung,
+Zuordnungen und Importnachweise (`0049_myfxbook_sync.sql`).
+
+Die API liefert höchstens 50 Historieneinträge, brokerlokale Zeiten und keine
+dokumentierte verlässliche Ticket-ID. Mehrdeutige Einstiege/Teilschließungen,
+fehlende offene Positionen, Historienlücken, lokale Konflikte und abweichende
+Kontosummen stoppen den Import atomar. Identitäten berücksichtigen Symbol,
+Richtung, Einstiegsminute, Preis und Quellmenge. Altimporte mit dokumentierter
+Myfxbook-Anzeigemenge behalten korrigierte Journalgrößen. Offene Trades werden
+unter derselben Journal-ID abgeschlossen; Notizen, Risiko und Beziehungen
+bleiben erhalten. Explizite Quellmenge `0` bedeutet unbekannt und wird bei neuen
+Trades als `NULL` mit sichtbarem Hinweis gespeichert; bestehende Größen bleiben
+erhalten. Die übrigen Identitätsfelder müssen eindeutig passen. Nur zuvor als
+unbekannt importierte API-Mengen dürfen später positiv ergänzt werden, auch bei
+geschlossenen Trades; Journal-ID und Quellzuordnung bleiben stabil. Fehlende,
+negative oder unlesbare Mengen bleiben Fehler. Startkapital, Kapitalbuchungen,
+realisiertes Netto-P&L und
+Quellbalance müssen exakt übereinstimmen; offene Gewinne werden ausgeschlossen.
+Kosteninterpretation bleibt ohne eindeutige Evidenz offen. Vor Aktivierung und
+anschließend vor Änderungen spätestens alle 24 Stunden wird ein Backup erstellt.
+Der Browser bietet keine simulierte Verbindung. Details und Grenzen:
+`docs/planning/myfxbook-sync.md`.
+
+Mehrere Trades in derselben Einstiegsminute sind bei unterschiedlichen
+Einstiegspreisen getrennt zuordenbar. Gleiche Preise bleiben trotz anderer
+Mengen/Abschlüsse mehrdeutig. Ist bereits ein Journal-Trade dieser Minute
+vorhanden, darf ein weiterer Einstieg erst neu angelegt werden, wenn der
+bisherige Trade im selben API-Snapshot separat eindeutig enthalten ist.
+So bleibt ein lokal geänderter Einstiegspreis ein Konflikt und wird nicht als
+neuer Trade vervielfacht. Parser und Abgleich erzwingen dieselbe Eindeutigkeit.
+
+Fehlgeschlagene Myfxbook-Vorschauen unterscheiden Quell-Duplikate und lokale
+Preis-/Mengenkonflikte. `diagnostics.rs` schreibt dafür genau einen begrenzten
+lokalen Bericht `logs/myfxbook-last-preview-error.json` mit normalisierten
+Ausführungsfeldern; keine Sitzungen, Passwörter, Notizen oder beliebigen
+Quellantworten. Diagnosefehler ersetzen nie den ursprünglichen Importfehler
+und lösen keine Journalmutation aus. Zuordnungsregeln dürfen aus einer
+pauschalen Fehlermeldung allein nicht gelockert werden.
 
 ### Trades
 
@@ -1518,6 +1962,8 @@ pnpm exec tauri build --target x86_64-pc-windows-msvc --no-bundle
 `START-MACROTOOL.cmd` wählt die neuere vorhandene Datei aus `target/release`
 und `target/x86_64-pc-windows-msvc/release`. Neuere Quelldateien lösen weiterhin
 einen normalen Build aus; anschließend wird dessen Standard-Release gestartet.
+Die Prüfung umfasst auch `src-tauri/connectors`, da diese Python-Dateien in
+den nativen Build eingebettet werden.
 
 Der Browser-Modus reicht nicht als Abnahme für Datenbank, Backup, EODHD-Sync,
 Medien oder Restore. Nach Änderungen an diesen Bereichen muss die
@@ -1563,7 +2009,9 @@ Typische Ursachen:
 4. Externe URLs und Importpfade validieren; keine beliebigen Dateipfade aus
    untrusted Input öffnen.
 5. HTML aus Rich-Text-Inhalten vor unsicherer Darstellung bereinigen.
-6. Medienzugriff bleibt auf den Tauri-Asset-Scope beschränkt.
+6. Native Medienzugriffe bleiben auf den Tauri-Asset-Scope beschränkt. Im privaten
+   Webmodus erfolgt der Bildzugriff ausschließlich über den geschützten Medien-
+   Endpunkt; keine lokalen Pfade, Blobtokens oder freien Blob-URLs an den Browser.
 7. Import/Restore niemals direkt über die aktive Datenbank schreiben, bevor
    Validierung und Sicherheitskopie abgeschlossen sind.
 8. Keine rekursiven Löschoperationen gegen Projektroot oder AppData.
@@ -1659,9 +2107,12 @@ Eine Aufgabe ist erst fertig, wenn:
 - Forecasts sind nicht flächendeckend über offizielle Primärquellen verfügbar.
   Drittanbieter sind erlaubt, Herkunft und Aktualität müssen aber sichtbar
   bleiben.
-- Der aktuelle Scheduler lebt im Desktop-Prozess. Er arbeitet nur, wenn die App
-  läuft; es existiert kein externer Cloud-Cronjob. Das gilt auch für den
-  release-nahen Macro Feed und seinen Nachhol-Lauf beim nächsten App-Start.
+- Der native Scheduler lebt weiterhin im Desktop-Prozess und arbeitet nur bei
+  laufender App. Die getrennten privaten Cloudjobs für EODHD, COT und Myfxbook
+  sind in `docs/planning/cloud-provider-automation.md` beschrieben. Ihre
+  Produktionsabnahme ist nachgewiesen; die persönliche Myfxbook-Aktivierung
+  erfolgt getrennt durch den Besitzer;
+  Cloud- und Desktop-Datenbanken synchronisieren sich nicht automatisch.
 
 Wenn eine Anforderung eine dieser fachlichen Invarianten verändern würde, stoppe
 nicht automatisch die Arbeit, aber benenne die Auswirkung ausdrücklich und hole

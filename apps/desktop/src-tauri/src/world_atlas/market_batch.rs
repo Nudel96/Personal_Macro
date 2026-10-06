@@ -133,7 +133,7 @@ impl AtlasService {
         *self.market_batch.lock().await = Some((job.id.clone(), Arc::clone(&cancel)));
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             if let Err(error) = run(
                 &db,

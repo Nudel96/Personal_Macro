@@ -1,0 +1,61 @@
+.myfxbook-panel p {
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+.myfxbook-status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin: 18px 0;
+}
+.myfxbook-status-grid span {
+  display: block;
+  color: var(--text-2);
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+.myfxbook-status-grid strong {
+  display: block;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.myfxbook-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 14px 0;
+}
+.myfxbook-setup {
+  margin-top: 18px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.myfxbook-submit {
+  display: flex;
+  align-items: end;
+}
+.myfxbook-setup .form-grid {
+  margin-bottom: 14px;
+}
+.myfxbook-muted {
+  color: var(--text-2);
+  font-size: 12px;
+}
+.myfxbook-preview {
+  padding: 18px;
+  margin-top: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+}
+.myfxbook-preview h3 {
+  margin: 0;
+}
+.myfxbook-preview ul {
+  padding-left: 20px;
+  line-height: 1.6;
+  color: var(--text-2);
+}
+.myfxbook-error {
+  color: var(--negative);
+}

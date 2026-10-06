@@ -25,6 +25,7 @@ import { toast } from "sonner";
 import { Button } from "../../components/ui/button";
 import { formatR, toInputDateTime } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { useUiStore } from "../../stores/ui-store";
 import type {
   Account,
@@ -54,6 +55,7 @@ import {
   readCaptureDraft,
   type CaptureValues,
 } from "./trade-capture";
+import { removeTradeDraft, writeTradeDraft } from "./trade-draft-storage";
 import "./trade-capture.css";
 
 export function readyTradeAccountId(
@@ -151,15 +153,20 @@ function QuickTradeForm({
     const persist = () => {
       if (saved.current) return;
       try {
-        localStorage.setItem(
+        writeTradeDraft(
           captureDraftKey(account.id),
+          account.id,
           JSON.stringify({
             values: form.getValues(),
             screenshotReview,
             hadScreenshot: Boolean(screenshot) || imageMissing,
           }),
         );
-        setDraftStatus("Entwurf lokal gesichert");
+        setDraftStatus(
+          isPrivateWeb()
+            ? "Entwurf für diese Sitzung vorgemerkt"
+            : "Entwurf lokal gesichert",
+        );
       } catch {
         setDraftStatus(
           "Zwischenspeichern nicht verfügbar – bitte Trade speichern",
@@ -194,7 +201,7 @@ function QuickTradeForm({
     onSuccess: (trade) => {
       saved.current = true;
       try {
-        localStorage.removeItem(captureDraftKey(account.id));
+        removeTradeDraft(captureDraftKey(account.id), account.id);
       } catch {
         /* Saving the trade still succeeded. */
       }

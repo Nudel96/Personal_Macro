@@ -1,0 +1,74 @@
+[
+  {
+    "id": "fed-december-2024-fractions",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20241218a.htm",
+    "sourceText": "lower the target range for the federal funds rate by 1/4 percentage point to 4-1/4 to 4-1/2 percent",
+    "key": "decision",
+    "expectedText": "Die Zielspanne wurde um 0,25 Prozentpunkte auf 4,25 bis 4,50 Prozent gesenkt.",
+    "badText": "Die Zielspanne wurde auf 5,25 bis 5,50 Prozent gesenkt.",
+    "overview": "Die Zentralbank senkte die Zielspanne."
+  },
+  {
+    "id": "fed-november-2024-fractions",
+    "sourceUrl": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20241107a.htm",
+    "sourceText": "lower the target range for the federal funds rate by 1/4 percentage point to 4-1/2 to 4-3/4 percent",
+    "key": "decision",
+    "expectedText": "Die Zielspanne wurde um 0,25 Prozentpunkte auf 4,50 bis 4,75 Prozent gesenkt.",
+    "badText": "Die Zielspanne beträgt 4,25 bis 4,50 Prozent.",
+    "overview": "Die Zentralbank senkte die Zielspanne."
+  },
+  {
+    "id": "ecb-june-2025-rates",
+    "sourceUrl": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.mp250605~3b5f67d007.en.html",
+    "sourceText": "decreased to 2.00%, 2.15% and 2.40% respectively",
+    "key": "decision",
+    "expectedText": "Die drei Leitzinsen werden auf 2,00 %, 2,15 % und 2,40 % gesenkt.",
+    "badText": "Die drei Leitzinsen betragen 2,25 %, 2,40 % und 2,65 %.",
+    "overview": "Die Zentralbank senkte ihre Leitzinsen."
+  },
+  {
+    "id": "ecb-june-2025-no-commitment",
+    "sourceUrl": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.mp250605~3b5f67d007.en.html",
+    "sourceText": "The Governing Council is not pre-committing to a particular rate path.",
+    "key": "guidance",
+    "expectedText": "Der EZB-Rat legt sich nicht vorab auf einen bestimmten Zinspfad fest.",
+    "badText": "Der EZB-Rat hat sich auf einen garantierten Zinspfad festgelegt.",
+    "overview": "Der weitere Zinspfad bleibt offen."
+  },
+  {
+    "id": "ecb-july-2025-unchanged",
+    "sourceUrl": "https://www.ecb.europa.eu/press/pr/date/2025/html/ecb.mp250724~50bc70e13f.en.html",
+    "sourceText": "will remain unchanged at 2.00%, 2.15% and 2.40% respectively",
+    "key": "decision",
+    "expectedText": "Die drei Leitzinsen bleiben unverändert bei 2,00 %, 2,15 % und 2,40 %.",
+    "badText": "Die EZB erhöht die drei Leitzinsen auf 2,00 %, 2,15 % und 2,40 %.",
+    "overview": "Die Zentralbank hält die Leitzinsen unverändert."
+  },
+  {
+    "id": "synthetic-negated-cut",
+    "sourceUrl": null,
+    "sourceText": "The Committee did not lower the policy rate; it remains at 4 percent.",
+    "key": "decision",
+    "expectedText": "Der Ausschuss senkt den Leitzins nicht; er bleibt bei 4 Prozent.",
+    "badText": "Der Ausschuss senkt den Leitzins auf 4 Prozent.",
+    "overview": "Es gab keine Zinssenkung."
+  },
+  {
+    "id": "synthetic-uncertain-outlook",
+    "sourceUrl": null,
+    "sourceText": "Growth could weaken, although the current assessment remains uncertain.",
+    "key": "guidance",
+    "expectedText": "Das Wachstum könnte schwächer werden; die Einschätzung bleibt unsicher.",
+    "badText": "Das Wachstum wird sicher schwächer.",
+    "overview": "Der Ausblick bleibt unsicher."
+  },
+  {
+    "id": "synthetic-unit-preservation",
+    "sourceUrl": null,
+    "sourceText": "The policy rate was cut by 0.25 percentage point.",
+    "key": "decision",
+    "expectedText": "Der Leitzins wurde um 0,25 Prozentpunkte gesenkt.",
+    "badText": "Der Leitzins wurde um 25 Basispunkte gesenkt.",
+    "overview": "Der Leitzins wurde gesenkt."
+  }
+]

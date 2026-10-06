@@ -1,7 +1,7 @@
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sqlx::{FromRow, SqlitePool};
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -192,7 +192,7 @@ fn validate_context(input: &TradeContextInput) -> Result<(), AppError> {
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_trade_context(
     state: State<'_, AppState>,
     account_id: String,
@@ -227,7 +227,7 @@ pub(crate) async fn get_trade_context_for_pool(
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_trade_context(
     state: State<'_, AppState>,
     account_id: String,
@@ -309,7 +309,7 @@ pub(crate) async fn save_trade_context_for_pool(
     get_trade_context_for_pool(db, account_id, &input.trade_id).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_saved_views(
     state: State<'_, AppState>,
     scope: String,
@@ -318,7 +318,7 @@ pub async fn list_saved_views(
         .bind(scope).fetch_all(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_saved_view(
     state: State<'_, AppState>,
     input: SavedViewInput,
@@ -345,7 +345,7 @@ pub async fn save_saved_view(
     .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn delete_saved_view(state: State<'_, AppState>, id: String) -> CommandResult<()> {
     sqlx::query("DELETE FROM saved_views WHERE id = ?")
         .bind(id)
@@ -354,7 +354,7 @@ pub async fn delete_saved_view(state: State<'_, AppState>, id: String) -> Comman
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_custom_fields(
     state: State<'_, AppState>,
     entity_type: String,
@@ -363,7 +363,7 @@ pub async fn list_custom_fields(
         .bind(entity_type).fetch_all(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_custom_field(
     state: State<'_, AppState>,
     input: CustomFieldInput,
@@ -388,7 +388,7 @@ pub async fn save_custom_field(
         .bind(id).fetch_one(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn delete_custom_field(state: State<'_, AppState>, id: String) -> CommandResult<()> {
     sqlx::query("DELETE FROM custom_fields WHERE id = ?")
         .bind(id)

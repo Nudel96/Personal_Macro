@@ -2,6 +2,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Command } from "cmdk";
 import {
   BarChart3,
+  BookOpen,
+  CloudRain,
   BookOpenCheck,
   CalendarDays,
   ChartNoAxesCombined,
@@ -27,6 +29,7 @@ import { useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useState } from "react";
 import { api } from "../../services/commands";
+import { canUseWorkspaceRoute } from "../../app/workspace-capabilities";
 import { useUiStore } from "../../stores/ui-store";
 import { useJournalAccount } from "../../features/accounts/journal-account-context";
 import { Button } from "../ui/button";
@@ -41,8 +44,10 @@ const commands = [
   { label: "Fehleranalyse öffnen", path: "/mistakes", icon: Target },
   { label: "Medien öffnen", path: "/media", icon: Image },
   { label: "Ziele öffnen", path: "/goals", icon: Goal },
+  { label: "Learning öffnen", path: "/learning", icon: BookOpen },
   { label: "Macro Heatmap öffnen", path: "/macro", icon: Grid3X3 },
   { label: "Weltatlas öffnen", path: "/world-atlas", icon: Globe },
+  { label: "Wetter & Rohstoffe öffnen", path: "/weather", icon: CloudRain },
   {
     label: "Regime Insights öffnen",
     path: "/regime-insights",
@@ -131,15 +136,17 @@ export function CommandPalette() {
                 </Command.Item>
               </Command.Group>
               <Command.Group className="command-group" heading="Navigation">
-                {commands.map(({ label, path, icon: Icon }) => (
-                  <Command.Item
-                    className="command-item"
-                    key={path}
-                    onSelect={() => run(() => navigate(path))}
-                  >
-                    <Icon size={17} /> {label}
-                  </Command.Item>
-                ))}
+                {commands
+                  .filter(({ path }) => canUseWorkspaceRoute(path))
+                  .map(({ label, path, icon: Icon }) => (
+                    <Command.Item
+                      className="command-item"
+                      key={path}
+                      onSelect={() => run(() => navigate(path))}
+                    >
+                      <Icon size={17} /> {label}
+                    </Command.Item>
+                  ))}
               </Command.Group>
               {trades.data?.items.length ? (
                 <Command.Group className="command-group" heading="Trades">
@@ -172,14 +179,16 @@ export function CommandPalette() {
                   </>
                 </Command.Group>
               ) : null}
-              <Command.Group className="command-group" heading="Werkzeuge">
-                <Command.Item
-                  className="command-item"
-                  onSelect={() => run(() => navigate("/playbook"))}
-                >
-                  <Shapes size={17} /> Neues Setup anlegen
-                </Command.Item>
-              </Command.Group>
+              {canUseWorkspaceRoute("/playbook") && (
+                <Command.Group className="command-group" heading="Werkzeuge">
+                  <Command.Item
+                    className="command-item"
+                    onSelect={() => run(() => navigate("/playbook"))}
+                  >
+                    <Shapes size={17} /> Neues Setup anlegen
+                  </Command.Item>
+                </Command.Group>
+              )}
             </Command.List>
             <div className="command-footer">
               <span>

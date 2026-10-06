@@ -2,7 +2,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, render, screen, waitFor } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { api } from "../../services/commands";
+import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+vi.mock("../../services/runtime-mode", () => ({
+  isPrivateWeb: vi.fn(() => false),
+}));
 import type { AudChinaCpiRegimeResponse } from "../../types/domain";
 import {
   buildAudChinaCpiChartOption,
@@ -14,7 +18,7 @@ vi.mock("../../services/commands", () => ({
     audChinaCpiRegime: vi.fn(),
     refreshAudChinaCpiRegime: vi.fn(),
   },
-  isTauri: () => true,
+  isTauri: vi.fn(() => true),
 }));
 
 vi.mock("../../charts/base-chart", () => ({
@@ -220,6 +224,8 @@ function renderPage() {
 
 afterEach(() => {
   cleanup();
+  vi.mocked(isPrivateWeb).mockReturnValue(false);
+  vi.mocked(isTauri).mockReturnValue(true);
   vi.clearAllMocks();
 });
 
@@ -236,6 +242,24 @@ describe("buildAudChinaCpiChartOption", () => {
 });
 
 describe("RegimeInsightsPage", () => {
+  it("supports cloud timeframe selection without desktop refresh commands", async () => {
+    vi.mocked(isPrivateWeb).mockReturnValue(true);
+    vi.mocked(isTauri).mockReturnValue(false);
+    vi.mocked(api.audChinaCpiRegime).mockImplementation(async ({ timeframe }) =>
+      response(timeframe),
+    );
+    const user = userEvent.setup();
+    renderPage();
+    await screen.findByTestId("regime-chart");
+    await user.click(screen.getByRole("button", { name: "D1" }));
+    await waitFor(() =>
+      expect(api.audChinaCpiRegime).toHaveBeenCalledWith({ timeframe: "D1" }),
+    );
+    expect(
+      screen.queryByRole("button", { name: "CPI & AUDUSD aktualisieren" }),
+    ).toBeNull();
+    expect(api.refreshAudChinaCpiRegime).not.toHaveBeenCalled();
+  });
   it("shows the macro state separately from the empirically measured AUD bias", async () => {
     vi.mocked(api.audChinaCpiRegime).mockResolvedValue(response());
     renderPage();

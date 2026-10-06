@@ -4,11 +4,11 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use sqlx::{FromRow, SqlitePool};
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -62,7 +62,7 @@ pub struct MediaAnnotationInput {
     pub annotation: serde_json::Value,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_media(state: State<'_, AppState>) -> CommandResult<Vec<MediaRecord>> {
     let mut rows = sqlx::query_as::<_, MediaRecord>(r#"SELECT mf.id, mf.relative_path, mf.thumbnail_relative_path, mf.original_filename, mf.mime_type, mf.size_bytes,
         mf.sha256, mf.width, mf.height, mf.captured_at, mf.created_at,
@@ -81,7 +81,7 @@ pub async fn list_media(state: State<'_, AppState>) -> CommandResult<Vec<MediaRe
     Ok(rows)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_trade_media(
     state: State<'_, AppState>,
     account_id: String,
@@ -108,7 +108,7 @@ pub(crate) async fn list_trade_media_for_pool(
     Ok(rows)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn attach_trade_media(
     state: State<'_, AppState>,
     account_id: String,
@@ -139,7 +139,7 @@ pub(crate) async fn attach_trade_media_for_pool(
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn detach_trade_media(
     state: State<'_, AppState>,
     account_id: String,
@@ -167,7 +167,7 @@ pub(crate) async fn detach_trade_media_for_pool(
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn import_media_file(
     state: State<'_, AppState>,
     account_id: Option<String>,
@@ -265,7 +265,7 @@ pub(crate) async fn import_media_file_for_pool(
     Ok(record)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_media_annotation(
     state: State<'_, AppState>,
     media_id: String,
@@ -280,7 +280,7 @@ pub async fn get_media_annotation(
     .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_media_annotation(
     state: State<'_, AppState>,
     input: MediaAnnotationInput,

@@ -43,6 +43,7 @@ function Harness({ initial = "" }: { initial?: string }) {
 }
 beforeEach(() => {
   vi.resetAllMocks();
+  vi.unstubAllEnvs();
   vi.useFakeTimers();
   vi.mocked(isTauri).mockReturnValue(true);
   vi.mocked(api.atlasLastContext).mockResolvedValue(null);
@@ -50,6 +51,7 @@ beforeEach(() => {
 });
 afterEach(async () => {
   cleanup();
+  vi.unstubAllEnvs();
   await act(async () => {
     await vi.runAllTimersAsync();
   });
@@ -246,4 +248,23 @@ it("wartet beim schnellen Wiederöffnen auf die letzte Speicherung der vorherige
   await tick();
   expect(api.atlasLastContext).toHaveBeenCalledTimes(2);
   expect(screen.getByRole("status").textContent).toContain("area=m49%3A276");
+});
+
+it("restores and saves the private cloud selection without Tauri", async () => {
+  vi.mocked(isTauri).mockReturnValue(false);
+  vi.stubEnv("VITE_PRIVATE_WEB", "true");
+  vi.mocked(api.atlasLastContext).mockResolvedValue({
+    version: 1,
+    params: { area: "m49:356" },
+  });
+  render(<Harness />);
+  await tick();
+  expect(api.atlasLastContext).toHaveBeenCalledOnce();
+  fireEvent.click(screen.getByRole("button", { name: "Deutschland" }));
+  await tick();
+  expect(api.saveAtlasLastContext).toHaveBeenCalledWith(
+    expect.objectContaining({
+      params: expect.objectContaining({ area: "m49:276" }),
+    }),
+  );
 });

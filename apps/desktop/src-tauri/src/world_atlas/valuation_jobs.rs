@@ -48,7 +48,7 @@ impl AtlasService {
         *self.valuation_job.lock().await = Some((job.id.clone(), Arc::clone(&cancel)));
         let initial = job.clone();
         let service = Arc::clone(self);
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _permit = permit;
             let outcome = async {
                 match valuation_source::download(

@@ -45,6 +45,7 @@ pub async fn fetch_events_for_currencies(
 ) -> Result<Vec<EconomicEvent>, AppError> {
     let client = Client::builder()
         .tls_backend_rustls()
+        .redirect(reqwest::redirect::Policy::none())
         .timeout(Duration::from_secs(30))
         .user_agent("PersonalMacro/1 eodhd-economic-events")
         .build()
@@ -69,18 +70,26 @@ pub async fn fetch_events_for_currencies(
                     .append_pair("limit", "1000")
                     .append_pair("offset", &offset.to_string())
                     .append_pair("fmt", "json");
-                let response = client.get(url).send().await.map_err(|error| {
+                let mut response = client.get(url).send().await.map_err(|_error| {
                     AppError::DataTransfer(format!(
                         "EODHD Economic Events konnte nicht abgerufen werden: {}",
-                        bounded_error(&error.to_string())
+                        "Netzwerkfehler"
                     ))
                 })?;
                 let status = response.status();
-                let body = response.text().await.map_err(|error| {
-                    AppError::DataTransfer(format!(
-                        "EODHD-Antwort konnte nicht gelesen werden: {}",
-                        bounded_error(&error.to_string())
-                    ))
+                let mut bytes = Vec::new();
+                while let Some(chunk) = response.chunk().await.map_err(|_| {
+                    AppError::DataTransfer("EODHD-Antwort konnte nicht gelesen werden.".into())
+                })? {
+                    if bytes.len() + chunk.len() > 8 * 1024 * 1024 {
+                        return Err(AppError::DataTransfer(
+                            "EODHD-Antwort überschreitet die zulässige Größe.".into(),
+                        ));
+                    }
+                    bytes.extend_from_slice(&chunk);
+                }
+                let body = String::from_utf8(bytes).map_err(|_| {
+                    AppError::DataTransfer("EODHD-Antwort enthält ungültigen Text.".into())
                 })?;
                 if !status.is_success() {
                     return Err(AppError::DataTransfer(format!(
@@ -111,6 +120,9 @@ pub async fn fetch_events_for_currencies(
                 }
                 if items.len() < 1000 {
                     break;
+                }
+                if page == 1 {
+                    return Err(AppError::DataTransfer("Das EODHD-Fenster überschreitet die vollständige Seitengrenze. Es wird kein unvollständiger Abruf übernommen.".into()));
                 }
             }
             window_from = window_to + chrono::Duration::days(1);

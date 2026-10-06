@@ -1,0 +1,14 @@
+# SYNTHETISCHE PRUEFDATEN, KEINE ECHTEN WIRTSCHAFTSVEROEFFENTLICHUNGEN.
+# Aktive Keys: gdp,cpi_yoy,unemployment_rate,interest_rates
+# Gleichgewichtete EUR/USD-Rohsumme +2, Score +25, Coverage 100%, n=4.
+# Zukunft und unsortierte alte Zeile duerfen den aktuellen GDP-Wert nicht ersetzen.
+EUR;gdp;TEST-2026-Q2;2026-09-15T09:00;2.1;2;5
+USD;gdp;TEST-2026-Q2;2026-09-15T12:30;1.8;2;0
+EUR;cpi_yoy;TEST-2026-08;2026-09-16T09:00;2;2;2.1
+USD;cpi_yoy;TEST-2026-08;2026-09-16T12:30;2.1;2;2.2
+EUR;unemployment_rate;TEST-2026-08;2026-09-17T09:00;6.3;6.4;6.2
+USD;unemployment_rate;TEST-2026-08;2026-09-17T12:30;4.1;4.1;4.2
+EUR;interest_rates;TEST-2026-09;2026-09-18T12:15;2;2;2.25
+USD;interest_rates;TEST-2026-09;2026-09-18T18:00;3.5;3.5;3.75
+EUR;gdp;TEST-FUTURE;2099-09-15T09:00;-999;999;0
+EUR;gdp;TEST-OLD;2025-09-15T09:00;-999;999;0

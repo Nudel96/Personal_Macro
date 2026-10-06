@@ -1,9 +1,9 @@
 use std::collections::HashMap;
 
+use crate::runtime::State;
 use chrono::{DateTime, Duration, Utc};
 use serde::Serialize;
 use sqlx::FromRow;
-use tauri::State;
 
 use crate::{
     database::AppState,
@@ -59,12 +59,12 @@ struct EodhdRunRow {
     error_message: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_policy_rates(state: State<'_, AppState>) -> CommandResult<PolicyRateDashboard> {
     get_policy_rates_inner(&state).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn sync_policy_rates(state: State<'_, AppState>) -> CommandResult<PolicyRateDashboard> {
     sync_eodhd_for_rates(&state)
         .await

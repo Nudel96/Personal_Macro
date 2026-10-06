@@ -4,11 +4,11 @@ use std::{
     path::{Path, PathBuf},
 };
 
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use sqlx::FromRow;
-use tauri::State;
 use uuid::Uuid;
 use walkdir::WalkDir;
 use zip::{CompressionMethod, ZipArchive, ZipWriter, write::SimpleFileOptions};
@@ -49,7 +49,7 @@ struct ExportTrade {
     review_notes_html: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn export_trades(
     state: State<'_, AppState>,
     account_id: String,
@@ -127,7 +127,7 @@ struct ManifestFile {
     sha256: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_backup(state: State<'_, AppState>) -> CommandResult<BackupRecord> {
     create_backup_for_state(&state).await.map_err(Into::into)
 }
@@ -272,7 +272,7 @@ pub async fn maybe_automatic_backup(state: &AppState) -> Result<(), AppError> {
     Ok(())
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_backups(state: State<'_, AppState>) -> CommandResult<Vec<BackupRecord>> {
     let mut rows = Vec::new();
     for entry in std::fs::read_dir(&state.paths.backups).map_err(AppError::from)? {
@@ -323,7 +323,7 @@ struct PendingRestore {
     source_backup: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn preview_backup(path: String) -> CommandResult<RestorePreview> {
     let archive_path = PathBuf::from(path);
     let file = File::open(&archive_path).map_err(AppError::from)?;
@@ -365,7 +365,7 @@ pub async fn preview_backup(path: String) -> CommandResult<RestorePreview> {
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn stage_backup_restore(
     state: State<'_, AppState>,
     path: String,

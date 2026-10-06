@@ -21,9 +21,10 @@ import { toast } from "sonner";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
-import { PageLoading } from "../../components/ui/loading";
+import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import type { TaxonomyItem } from "../../types/domain";
 import { AccountSettings } from "../accounts/account-settings";
 
@@ -39,6 +40,7 @@ const sections = [
 ];
 
 export function SettingsPage() {
+  const privateWeb = isPrivateWeb();
   const [searchParams, setSearchParams] = useSearchParams();
   const requestedSection = searchParams.get("section");
   const initialSection = sections.some((item) => item.id === requestedSection)
@@ -64,13 +66,23 @@ export function SettingsPage() {
         <PageLoading />
       </div>
     );
+  if (privateWeb && (bootstrap.isError || settings.isError))
+    return (
+      <div className="page settings-page">
+        <ErrorState message="Die gespeicherten Einstellungen konnten nicht geladen werden. Lade die Seite erneut, bevor du Änderungen vornimmst." />
+      </div>
+    );
   return (
     <div className="page settings-page">
       <PageHeader
         icon={PageIcon}
         eyebrow="Daten & System"
         title="Einstellungen"
-        description="Lokale Darstellung, Analytics-Regeln, Backups und Datenschutz."
+        description={
+          privateWeb
+            ? "Darstellung, Analytics-Regeln, privater Webspeicher und Datenschutz."
+            : "Lokale Darstellung, Analytics-Regeln, Backups und Datenschutz."
+        }
       />
       <div className="grid settings-grid">
         <Card
@@ -90,7 +102,8 @@ export function SettingsPage() {
                 });
               }}
             >
-              <Icon size={15} /> {label}
+              <Icon size={15} />{" "}
+              {privateWeb && id === "data" ? "Datenspeicherung" : label}
             </button>
           ))}
         </Card>
@@ -108,15 +121,19 @@ export function SettingsPage() {
           {section === "taxonomy" && (
             <TagSettings tags={bootstrap.data?.tags ?? []} />
           )}
-          {section === "data" && (
-            <DataSettings
-              databasePath={bootstrap.data?.databasePath ?? "—"}
-              appDataPath={bootstrap.data?.appDataPath ?? "—"}
-              initial={settings.data?.settings.backup}
-            />
-          )}
+          {section === "data" &&
+            (privateWeb ? (
+              <PrivateDataSettings />
+            ) : (
+              <DataSettings
+                databasePath={bootstrap.data?.databasePath ?? "—"}
+                appDataPath={bootstrap.data?.appDataPath ?? "—"}
+                initial={settings.data?.settings.backup}
+              />
+            ))}
           {section === "shortcuts" && <ShortcutSettings />}
-          {section === "privacy" && <PrivacySettings />}
+          {section === "privacy" &&
+            (privateWeb ? <PrivatePrivacySettings /> : <PrivacySettings />)}
         </div>
       </div>
     </div>
@@ -431,6 +448,33 @@ function AnalyticsSettings({ initial }: { initial: unknown }) {
     </SettingsCard>
   );
 }
+function PrivateDataSettings() {
+  return (
+    <SettingsCard
+      title="Datenspeicherung"
+      subtitle="Deine gespeicherten Inhalte liegen dauerhaft in deinem privaten Cloudspeicher. Dein PC kann ausgeschaltet bleiben."
+    >
+      <Setting
+        label="Privater Webspeicher"
+        copy="Konten, Trades und Journal-Einträge werden über deine geschützte Verbindung gespeichert. Zum Laden und Speichern brauchst du eine Internetverbindung."
+      >
+        <Badge className="primary">Cloud</Badge>
+      </Setting>
+      <Setting
+        label="Daten der Desktop-App"
+        copy="Das Webjournal startet mit dem einmalig übernommenen Desktop-Datenstand. Spätere Änderungen werden nicht automatisch zwischen PC und Web synchronisiert."
+      >
+        <Badge>Getrennt</Badge>
+      </Setting>
+      <div className="notice" style={{ marginTop: 15 }}>
+        Lokale Desktop-Backups und deren Wiederherstellung stehen hier nicht zur
+        Verfügung. Die Backup-Einstellungen der Desktop-App sichern diesen
+        Cloudspeicher nicht.
+      </div>
+    </SettingsCard>
+  );
+}
+
 function DataSettings({
   databasePath,
   appDataPath,
@@ -529,6 +573,28 @@ function ShortcutSettings() {
     </SettingsCard>
   );
 }
+function PrivatePrivacySettings() {
+  return (
+    <SettingsCard
+      title="Privatsphäre"
+      subtitle="Privater Webzugriff für deine persönliche Nutzung."
+    >
+      <Setting
+        label="Geschützte Anmeldung"
+        copy="Der Zugriff auf dieses Webjournal erfolgt über deine Anmeldung. Deine Inhalte werden über eine verschlüsselte Verbindung an deinen privaten Cloudspeicher übertragen."
+      >
+        <Badge className="primary">Privat</Badge>
+      </Setting>
+      <Setting
+        label="Desktop und Web"
+        copy="Nach der einmaligen Übernahme bleiben deine Daten auf dem PC und im Web getrennt. Weitere Änderungen werden nicht automatisch synchronisiert."
+      >
+        <Badge>Getrennt</Badge>
+      </Setting>
+    </SettingsCard>
+  );
+}
+
 function PrivacySettings() {
   const [telemetry, setTelemetry] = useState(false);
   return (

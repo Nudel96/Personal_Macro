@@ -1,0 +1,71 @@
+TAP version 13
+# {"script":"D:\\\\Macrotool\\\\apps\\\\desktop\\\\tradingview\\\\personal-macro-heatmap.pine","sha256":"a09056cb69d285134b7f62f074770fb042a169bbad7f9371ded73553c85fd32e","scalarFunctions":14,"note":"Local arithmetic and structural checks; actual Pine compiler and live-feed checks are separate."}
+# Subtest: surprises: higher/lower, inverted unemployment, exact zero and negative values
+ok 1 - surprises: higher/lower, inverted unemployment, exact zero and negative values
+  ---
+  duration_ms: 1.6693
+  type: 'test'
+  ...
+# Subtest: all scalar pair combinations preserve missingness, bounds and antisymmetry
+ok 2 - all scalar pair combinations preserve missingness, bounds and antisymmetry
+  ---
+  duration_ms: 0.6889
+  type: 'test'
+  ...
+# Subtest: weighted normalization: correct pair divisor, minimum count and exact coverage boundary
+ok 3 - weighted normalization: correct pair divisor, minimum count and exact coverage boundary
+  ---
+  duration_ms: 0.2398
+  type: 'test'
+  ...
+# Subtest: 10,000 generated common-evidence portfolios are antisymmetric
+ok 4 - 10,000 generated common-evidence portfolios are antisymmetric
+  ---
+  duration_ms: 27.2068
+  type: 'test'
+  ...
+# Subtest: millionth scaling preserves tiny surprises and large allowed integers
+ok 5 - millionth scaling preserves tiny surprises and large allowed integers
+  ---
+  duration_ms: 0.3303
+  type: 'test'
+  ...
+# Subtest: freshness is inclusive, rejects future and absent timestamps
+ok 6 - freshness is inclusive, rejects future and absent timestamps
+  ---
+  duration_ms: 0.1831
+  type: 'test'
+  ...
+# Subtest: COT demands matching weeks and nonnegative positions; z-score needs variance and history
+ok 7 - COT demands matching weeks and nonnegative positions; z-score needs variance and history
+  ---
+  duration_ms: 0.1905
+  type: 'test'
+  ...
+# Subtest: seasonality excludes current/future/out-of-window years and missing calendar months
+ok 8 - seasonality excludes current/future/out-of-window years and missing calendar months
+  ---
+  duration_ms: 0.2537
+  type: 'test'
+  ...
+# Subtest: all profile and module budgets use the exact script expression
+ok 9 - all profile and module budgets use the exact script expression
+  ---
+  duration_ms: 1.074
+  type: 'test'
+  ...
+# Subtest: structural guards preserve time, provenance and missing-data contracts
+ok 10 - structural guards preserve time, provenance and missing-data contracts
+  ---
+  duration_ms: 1.4764
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 193.4737

@@ -1,17 +1,17 @@
+use crate::runtime::State;
 use crate::{
     errors::CommandResult,
     government_bonds::{GovernmentBondsState, models::*},
 };
-use tauri::State;
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_government_bonds(
     state: State<'_, GovernmentBondsState>,
 ) -> CommandResult<Dashboard> {
     state.dashboard().await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_government_bond_detail(
     state: State<'_, GovernmentBondsState>,
     input: DetailInput,
@@ -19,7 +19,7 @@ pub async fn get_government_bond_detail(
     state.detail(&input).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn sync_government_bonds(
     state: State<'_, GovernmentBondsState>,
     country_id: Option<String>,
@@ -27,14 +27,14 @@ pub async fn sync_government_bonds(
     state.start(country_id).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_government_bond_sync(
     state: State<'_, GovernmentBondsState>,
 ) -> CommandResult<Option<SyncJob>> {
     state.job().await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn cancel_government_bond_sync(
     state: State<'_, GovernmentBondsState>,
     job_id: String,

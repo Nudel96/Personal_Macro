@@ -13,6 +13,7 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { dateTime, fromInputDateTime, toInputDateTime } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { useUiStore } from "../../stores/ui-store";
 import type {
   Account,
@@ -20,6 +21,7 @@ import type {
   AccountInput,
 } from "../../types/domain";
 import { AccountConnectionPanel } from "./account-connection-panel";
+import { MyfxbookConnectionPanel } from "./myfxbook-connection-panel";
 import { accountMoney, useAccountJournal } from "./use-account-journal";
 import "./journal-workspace.css";
 import { parseAccountAmount } from "./account-input";
@@ -33,6 +35,7 @@ const emptyAccount = {
 };
 
 export function AccountSettings({ accounts }: { accounts: Account[] }) {
+  const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
   const { selectedJournalAccountId, setSelectedJournalAccountId } =
     useUiStore();
@@ -220,6 +223,13 @@ export function AccountSettings({ accounts }: { accounts: Account[] }) {
           }
         />
         <CardContent>
+          {privateWeb && (
+            <p className="notice">
+              MT5- und cTrader-Verbindungen sind hier nicht verfügbar. Du kannst
+              Konten und Kapitalbuchungen manuell pflegen. Broker-Verbindungen
+              verwaltest du in der Desktop-App.
+            </p>
+          )}
           <div className="account-settings-list">
             {activeAccounts.map((account) => (
               <button
@@ -302,7 +312,7 @@ export function AccountSettings({ accounts }: { accounts: Account[] }) {
                   <X size={14} />
                 </Button>
               </div>
-              {mode !== "edit" && (
+              {mode !== "edit" && !privateWeb && (
                 <div className="segmented" style={{ marginTop: 12 }}>
                   <button
                     className={mode === "create" ? "active" : ""}
@@ -318,7 +328,7 @@ export function AccountSettings({ accounts }: { accounts: Account[] }) {
                   </button>
                 </div>
               )}
-              {mode === "connected" ? (
+              {mode === "connected" && !privateWeb ? (
                 <AccountConnectionPanel
                   onAccountCreated={(id) => {
                     setSelectedJournalAccountId(id);
@@ -564,6 +574,9 @@ export function AccountSettings({ accounts }: { accounts: Account[] }) {
             </div>
           </CardContent>
         </Card>
+      )}
+      {selected && (
+        <MyfxbookConnectionPanel key={selected.id} account={selected} />
       )}
     </div>
   );

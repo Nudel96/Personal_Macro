@@ -31,6 +31,9 @@ import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { dateTime } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { CloudMarketNotice } from "./cloud-market-notice";
+import { useCloudCotRefresh } from "../cot/use-cloud-cot-refresh";
 import type {
   CotContractView,
   CotDashboard,
@@ -131,8 +134,13 @@ const stablePairOrder = new Map(
 );
 
 export function MacroPage() {
+  useCloudCotRefresh();
+  const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
   const [selectedCurrency, setSelectedCurrency] = useState("USD");
+  const [terminalPathDraft, setTerminalPathDraft] = useState<string | null>(
+    null,
+  );
   const dashboard = useQuery({
     queryKey: ["macro", "eodhd-fundamentals"],
     queryFn: api.macroFundamentalsDashboard,
@@ -147,17 +155,19 @@ export function MacroPage() {
     queryKey: ["macro", "technicals"],
     queryFn: api.pairTechnicalSignals,
     retry: false,
+    refetchInterval: privateWeb || !isTauri() ? false : 30_000,
   });
   const feedStatus = useQuery({
     queryKey: ["macro", "eodhd-status"],
     queryFn: api.eodhdFeedStatus,
     retry: false,
-    refetchInterval: 60_000,
+    refetchInterval: privateWeb ? false : 60_000,
   });
   const feedReviews = useQuery({
     queryKey: ["macro", "eodhd-reviews"],
     queryFn: api.eodhdMappingCandidates,
     retry: false,
+    enabled: !privateWeb,
   });
   const syncFeed = useMutation({
     mutationFn: api.syncEodhdNow,
@@ -188,12 +198,35 @@ export function MacroPage() {
     mutationFn: api.refreshPairTechnicalSignals,
     onSuccess: (result) => {
       queryClient.setQueryData(["macro", "technicals"], result);
-      toast.success("4H-/Daily- und Seasonality-Signale wurden aktualisiert.");
+      const available = result.pairs.filter(
+        (pair) =>
+          pair.chartTrend.daily.signal != null ||
+          pair.chartTrend.fourHour.signal != null,
+      ).length;
+      toast.success(
+        `MT5-Tagesstand aktualisiert · ${available} Paare mit auswertbaren Trends.`,
+      );
     },
-    onError: (error: { message?: string }) =>
+    onError: (error: { message?: string }) => {
+      void queryClient.invalidateQueries({ queryKey: ["macro", "technicals"] });
       toast.error(
         error.message ??
           "Technische Signale konnten nicht aktualisiert werden.",
+      );
+    },
+  });
+  const saveMt5Terminal = useMutation({
+    mutationFn: api.setMt5TechnicalTerminal,
+    onSuccess: () => {
+      setTerminalPathDraft(null);
+      void queryClient.invalidateQueries({ queryKey: ["macro", "technicals"] });
+      toast.success(
+        "MT5-Verbindung gespeichert. Der nächste Kursabruf startet automatisch.",
+      );
+    },
+    onError: (error: { message?: string }) =>
+      toast.error(
+        error.message ?? "MT5-Verbindung konnte nicht gespeichert werden.",
       ),
   });
   const reviewFeedCandidate = useMutation({
@@ -332,35 +365,51 @@ export function MacroPage() {
           <SnapshotMetric
             icon={Clock3}
             label="Snapshot-Zeitpunkt"
-            meta="lokal gespeicherter Datenstand"
+            meta={
+              privateWeb
+                ? "gespeicherter Quellenstand"
+                : "lokal gespeicherter Datenstand"
+            }
             tone="neutral"
             value={dateTime(dashboard.data.asOf)}
           />
         </div>
       </section>
 
-      <MacroFeedOverview
-        status={feedStatus.data}
-        reviews={feedReviews.data ?? []}
-        unavailable={!isTauri()}
-        syncing={syncFeed.isPending || Boolean(feedStatus.data?.running)}
-        onSync={() => syncFeed.mutate()}
-        onReview={(input) => reviewFeedCandidate.mutate(input)}
+      <CloudMarketNotice
+        importedAt={dashboard.data.cloudImportedAt}
+        cotAutomaticRefresh={cot.data?.automaticRefresh}
       />
+      {!privateWeb && (
+        <MacroFeedOverview
+          status={feedStatus.data}
+          reviews={feedReviews.data ?? []}
+          unavailable={!isTauri()}
+          syncing={syncFeed.isPending || Boolean(feedStatus.data?.running)}
+          onSync={() => syncFeed.mutate()}
+          onReview={(input) => reviewFeedCandidate.mutate(input)}
+        />
+      )}
 
       {!imported ? (
         <Card>
           <EmptyState
             icon={DatabaseZap}
             title="Noch keine EODHD-Fundamentaldaten synchronisiert"
-            description="Starte den ersten EODHD-Abruf. Eindeutige Releases fließen direkt in die Bewertung; unsichere Provider-Bezeichnungen bleiben bis zur manuellen Freigabe nicht verfügbar."
+            description={
+              privateWeb
+                ? "Der übernommene Datenstand enthält noch keine freigegebene Fundamentalauswertung. Fehlende Daten erzeugen keine neutralen Ersatzsignale."
+                : "Starte den ersten EODHD-Abruf. Eindeutige Releases fließen direkt in die Bewertung; unsichere Provider-Bezeichnungen bleiben bis zur manuellen Freigabe nicht verfügbar."
+            }
             action={
-              <Button
-                onClick={() => syncFeed.mutate()}
-                disabled={syncFeed.isPending || !feedStatus.data?.configured}
-              >
-                <RefreshCw size={14} /> EODHD jetzt synchronisieren
-              </Button>
+              !privateWeb ? (
+                <Button
+                  onClick={() => syncFeed.mutate()}
+                  disabled={syncFeed.isPending || !feedStatus.data?.configured}
+                >
+                  <RefreshCw size={14} /> EODHD jetzt synchronisieren
+                </Button>
+              ) : undefined
             }
           />
         </Card>
@@ -388,19 +437,25 @@ export function MacroPage() {
               </div>
               <div className="macro-technical-actions">
                 <Badge className="neutral">{pairs.length} Fiat-Paare</Badge>
-                <Button
-                  aria-label="Technische Signale aktualisieren"
-                  disabled={syncTechnicals.isPending || !isTauri()}
-                  onClick={() => syncTechnicals.mutate()}
-                  size="sm"
-                  title="EODHD-1H-Daten und technische Signale aktualisieren"
-                >
-                  <RefreshCw
-                    className={syncTechnicals.isPending ? "spin" : undefined}
-                    size={13}
-                  />
-                  Technicals
-                </Button>
+                {!privateWeb && (
+                  <Button
+                    aria-label="Technische Signale aktualisieren"
+                    disabled={
+                      syncTechnicals.isPending ||
+                      technicals.data?.refresh?.status === "running" ||
+                      !isTauri()
+                    }
+                    onClick={() => syncTechnicals.mutate()}
+                    size="sm"
+                    title="Abgeschlossene 4H- und Daily-Kerzen aus dem lokalen MetaTrader 5 laden"
+                  >
+                    <RefreshCw
+                      className={syncTechnicals.isPending ? "spin" : undefined}
+                      size={13}
+                    />
+                    MT5-Trends
+                  </Button>
+                )}
               </div>
             </header>
             <div className="macro-heatmap-toolbar">
@@ -426,6 +481,73 @@ export function MacroPage() {
                 scrollen für alle Treiber
               </span>
             </div>
+            {!privateWeb && (
+              <div className="macro-technical-status" role="status">
+                <span>
+                  MT5 · Tagesstand beim ersten App-Start des Tages
+                  {technicals.data?.refresh?.lastSuccessAt &&
+                    ` · Letzter Abruf ${dateTime(technicals.data.refresh.lastSuccessAt)}`}
+                </span>
+                <span>
+                  {technicals.isError
+                    ? "MT5-Trendstatus konnte nicht geladen werden."
+                    : technicals.data?.refresh?.status === "running"
+                      ? "Abgeschlossene Brokerkerzen werden geladen …"
+                      : (technicals.data?.refresh?.message ??
+                        (technicals.data?.refresh?.lastSuccessAt
+                          ? "Aktualisierung bei laufender App und erreichbarem MT5-Terminal."
+                          : "MetaTrader 5 öffnen und anmelden; der tägliche Abruf startet automatisch."))}
+                </span>
+                {isTauri() && (
+                  <details className="macro-mt5-connection">
+                    <summary>MT5-Verbindung</summary>
+                    <form
+                      onSubmit={(event) => {
+                        event.preventDefault();
+                        saveMt5Terminal.mutate(
+                          terminalPathDraft ??
+                            technicals.data?.refresh?.terminalPath ??
+                            "",
+                        );
+                      }}
+                    >
+                      <label htmlFor="mt5-terminal-path">
+                        Terminalpfad (optional)
+                      </label>
+                      <input
+                        id="mt5-terminal-path"
+                        className="input"
+                        placeholder="Automatisch erkennen"
+                        value={
+                          terminalPathDraft ??
+                          technicals.data?.refresh?.terminalPath ??
+                          ""
+                        }
+                        onChange={(event) =>
+                          setTerminalPathDraft(event.target.value)
+                        }
+                        autoComplete="off"
+                      />
+                      <small>
+                        Bei mehreren Installationen den vollständigen Pfad zur
+                        gewünschten terminal64.exe angeben.
+                      </small>
+                      <Button
+                        type="submit"
+                        size="sm"
+                        disabled={
+                          saveMt5Terminal.isPending ||
+                          syncTechnicals.isPending ||
+                          technicals.data?.refresh?.status === "running"
+                        }
+                      >
+                        Verbindung speichern
+                      </Button>
+                    </form>
+                  </details>
+                )}
+              </div>
+            )}
             <CardContent className="macro-scaffold-heatmap-wrap">
               <FundamentalHeatmap
                 pairs={pairs}
@@ -902,6 +1024,11 @@ function FundamentalHeatmap({
   }
   return (
     <table className="macro-scaffold-heatmap pair-heatmap-table">
+      <colgroup>
+        <col span={6} />
+        <col className="macro-chart-trend-column" />
+        <col span={fields.length + 1} />
+      </colgroup>
       <thead>
         <tr>
           <th
@@ -1045,33 +1172,69 @@ function FundamentalHeatmap({
 
 function ChartTrendCell({ pair }: { pair?: PairTechnicalSignalView }) {
   const trend = pair?.chartTrend;
-  if (!trend || trend.signal == null) {
-    const reason = trend?.reasonCodes.map(technicalReasonLabel).join(", ");
+  if (!trend) {
     return (
       <td
         className="heatmap-unavailable macro-technical-signal-cell"
-        title={`4H / Daily Chart Trend: nicht verfügbar${reason ? ` · ${reason}` : ""}`}
+        title="4H / Daily Chart Trend: nicht verfügbar"
       >
         —
       </td>
     );
   }
-  const source = pair.sourceSymbol
-    ? ` · Quelle ${pair.sourceSymbol}${pair.inverted ? " (invertiert)" : ""}`
-    : "";
+  const source = trend.source;
+  const symbol = source?.symbol ?? (source ? null : pair?.sourceSymbol);
+  const provider = source?.provider === "mt5" ? "MT5" : "EODHD";
+  const inverted = source?.inverted ?? pair?.inverted;
+  const available = trend.daily.signal != null || trend.fourHour.signal != null;
+  const label =
+    trend.signal == null
+      ? available
+        ? "Teilweise verfügbar"
+        : "Nicht verfügbar"
+      : trend.signal === 0
+        ? trend.daily.signal !== trend.fourHour.signal
+          ? "Uneinheitlich"
+          : "Neutral"
+        : `${technicalSignalLabel(trend.status)} bestätigt`;
   const title = [
-    `4H / Daily: ${technicalSignalLabel(trend.status)}`,
+    `4H / Daily: ${label}`,
     timeframeTitle("4H", trend.fourHour),
     timeframeTitle("Daily", trend.daily),
+    `Quelle ${provider}${source?.label ? ` · ${source.label}` : ""}${symbol ? ` · ${symbol}` : ""}${inverted ? " (invertiert; Indikatoren beziehen sich auf das Quellsymbol)" : ""}`,
+    ...(source?.fetchedAt ? [`Abgerufen ${dateTime(source.fetchedAt)}`] : []),
   ].join(" · ");
   return (
     <td
-      className={`${toneForScore(trend.signal)} macro-technical-signal-cell`}
-      title={`${title}${source}`}
+      className={`${trend.signal == null ? "heatmap-unavailable" : toneForScore(trend.signal)} macro-technical-signal-cell`}
+      title={title}
     >
-      <span className="technical-signal-label">
-        {technicalSignalLabel(trend.status)}
-      </span>
+      <div className="technical-chart-trend">
+        <span className="technical-signal-label">{label}</span>
+        {(
+          [
+            ["Daily", trend.daily],
+            ["4H", trend.fourHour],
+          ] as const
+        ).map(([name, value]) => (
+          <span
+            className="technical-timeframe"
+            key={name}
+            title={timeframeTitle(name, value)}
+          >
+            <span>{name}</span>
+            <strong data-signal={value.signal ?? "unavailable"}>
+              {technicalSignalLabel(value.status)}
+            </strong>
+          </span>
+        ))}
+        {symbol && (
+          <small>
+            {provider} · {symbol}
+            {inverted ? " ↔" : ""}
+          </small>
+        )}
+      </div>
     </td>
   );
 }
@@ -1113,10 +1276,13 @@ function SeasonalityTrendCell({ pair }: { pair?: PairTechnicalSignalView }) {
 }
 
 function timeframeTitle(label: string, value: TimeframeTrendView) {
+  const stamp = value.latestCandleAt
+    ? ` · Letzte Kerze ab ${dateTime(value.latestCandleAt)}`
+    : "";
   if (value.signal == null) {
-    return `${label} nicht verfügbar (${value.reasonCodes.map(technicalReasonLabel).join(", ")})`;
+    return `${label} nicht verfügbar (${value.reasonCodes.map(technicalReasonLabel).join(", ")})${stamp}`;
   }
-  return `${label} ${technicalSignalLabel(value.status)} · EMA20 ${decimal(value.ema20)} · EMA50 ${decimal(value.ema50)} · ADX ${decimal(value.adx14)} · ${value.bars} Kerzen${value.latestCandleAt ? ` · Stand ${dateTime(value.latestCandleAt)}` : ""}`;
+  return `${label} ${technicalSignalLabel(value.status)} · EMA20 ${decimal(value.ema20)} · EMA50 ${decimal(value.ema50)} · ADX ${decimal(value.adx14)} · ${value.bars} abgeschlossene Kerzen${stamp}`;
 }
 
 function technicalSignalLabel(status: TechnicalSignalStatus) {
@@ -1133,6 +1299,13 @@ function technicalReasonLabel(reason: string) {
     indicator_warmup_unavailable: "Indikator-Warm-up unvollständig",
     stale_completed_candles: "Kerzendaten sind veraltet",
     timeframe_evidence_unavailable: "ein Zeitrahmen ist nicht verfügbar",
+    mt5_not_loaded: "noch kein MT5-Kursabruf",
+    mt5_symbol_unavailable: "dieses Währungspaar fehlt im MT5-Forexkatalog",
+    mt5_symbol_ambiguous:
+      "mehrere Broker-Symbole; bitte genau eine Variante in der MT5-Marktübersicht auswählen",
+    mt5_history_unavailable:
+      "MT5-Kerzen fehlen; den Chart im Terminal öffnen und erneut aktualisieren",
+    mt5_invalid_candles: "MT5-Kerzen sind unvollständig oder ungültig",
     seasonality_profile_invalid: "Seasonality-Profil ist ungültig",
     seasonality_20d_window_unavailable: "20-Tage-Fenster fehlt",
     seasonality_history_insufficient: "zu wenige vollständige Jahre",
@@ -1608,15 +1781,17 @@ function InstitutionalActivityPanel({
           >
             {activity.biasLabel}
           </span>
-          <Button
-            aria-label="COT aktualisieren"
-            disabled={syncing || unavailable}
-            onClick={onSync}
-            size="sm"
-          >
-            <RefreshCw size={13} className={syncing ? "spin" : undefined} />
-            {syncing ? "COT wird geladen …" : "COT aktualisieren"}
-          </Button>
+          {!isPrivateWeb() && (
+            <Button
+              aria-label="COT aktualisieren"
+              disabled={syncing || unavailable}
+              onClick={onSync}
+              size="sm"
+            >
+              <RefreshCw size={13} className={syncing ? "spin" : undefined} />
+              {syncing ? "COT wird geladen …" : "COT aktualisieren"}
+            </Button>
+          )}
         </div>
       </header>
       {error ? (

@@ -1,6 +1,6 @@
 pub mod models;
 mod provider;
-mod store;
+pub(crate) mod store;
 #[cfg(test)]
 mod tests;
 
@@ -133,7 +133,7 @@ impl GovernmentBondsState {
         store::save_job(&db, &job).await?;
         let initial = job.clone();
         let state = self.clone();
-        tauri::async_runtime::spawn(async move {
+        crate::runtime::spawn(async move {
             let _guard = guard;
             let mut job = job;
             let result = state.run_sync(&db, &key, &mut job).await;

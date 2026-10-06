@@ -17,12 +17,17 @@ import { PageHeader } from "../../components/ui/page-header";
 import { DataStatusStrip } from "../../components/ui/data-status-strip";
 import { dateTime, number } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 export function RatesPage() {
+  const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
   const query = useQuery({
     queryKey: ["rates"],
     queryFn: api.policyRates,
-    refetchInterval: 60_000,
+    refetchInterval: privateWeb ? false : 60_000,
+    ...(privateWeb
+      ? { refetchOnWindowFocus: false, refetchOnReconnect: false }
+      : {}),
   });
   const syncMutation = useMutation({
     mutationFn: api.syncPolicyRates,
@@ -65,44 +70,52 @@ export function RatesPage() {
           <>
             <Badge className={data.snapshotAt ? "positive" : "warning"}>
               <DatabaseZap size={11} />{" "}
-              {automation.enabled
-                ? `Automatisch · ${automation.coveredCurrencies}/${automation.expectedCurrencies}`
-                : data.snapshotAt
-                  ? "Lokaler Snapshot"
-                  : "Keine Daten"}
+              {privateWeb
+                ? "Übernommener Snapshot"
+                : automation.enabled
+                  ? `Automatisch · ${automation.coveredCurrencies}/${automation.expectedCurrencies}`
+                  : data.snapshotAt
+                    ? "Lokaler Snapshot"
+                    : "Keine Daten"}
             </Badge>
-            <Button
-              variant="primary"
-              onClick={() => syncMutation.mutate()}
-              disabled={syncMutation.isPending || !automation.enabled}
-            >
-              <RefreshCw size={14} /> Jetzt aktualisieren
-            </Button>
+            {!privateWeb && (
+              <Button
+                variant="primary"
+                onClick={() => syncMutation.mutate()}
+                disabled={syncMutation.isPending || !automation.enabled}
+              >
+                <RefreshCw size={14} /> Jetzt aktualisieren
+              </Button>
+            )}
           </>
         }
       />
       <DataStatusStrip
         status={
-          automation.enabled
-            ? "Automatische Leitzins-Aktualisierung aktiv"
-            : data.snapshotAt
-              ? "Lokaler Zins-Snapshot"
-              : "Keine Zinsdaten"
+          privateWeb
+            ? "Privater Leitzins-Datenstand"
+            : automation.enabled
+              ? "Automatische Leitzins-Aktualisierung aktiv"
+              : data.snapshotAt
+                ? "Lokaler Zins-Snapshot"
+                : "Keine Zinsdaten"
         }
         quality={
-          automation.lastStatus === "failed"
+          !privateWeb && automation.lastStatus === "failed"
             ? "Letzter Abruf fehlgeschlagen"
             : `${automation.coveredCurrencies} von ${automation.expectedCurrencies} Währungen abgedeckt`
         }
         detail={
-          automation.lastSuccessAt
-            ? `Zuletzt erfolgreich: ${dateTime(automation.lastSuccessAt)} · automatisch alle ${automation.refreshIntervalHours} Stunden`
-            : data.snapshotAt
-              ? "Erwartungen und Quellen prüfen"
-              : "Der erste automatische Abruf startet in der Desktop-App."
+          privateWeb
+            ? `${data.cloudImportedAt ? `Übernommen am ${dateTime(data.cloudImportedAt)}` : "Übernahmezeit nicht verfügbar"} · Keine automatische Cloud-Aktualisierung.`
+            : automation.lastSuccessAt
+              ? `Zuletzt erfolgreich: ${dateTime(automation.lastSuccessAt)} · automatisch alle ${automation.refreshIntervalHours} Stunden`
+              : data.snapshotAt
+                ? "Erwartungen und Quellen prüfen"
+                : "Der erste automatische Abruf startet in der Desktop-App."
         }
       />
-      {automation.errorMessage ? (
+      {!privateWeb && automation.errorMessage ? (
         <div className="notice" style={{ marginBottom: 14 }}>
           Der letzte automatische Abruf ist fehlgeschlagen. Die zuletzt
           bestätigten Istwerte bleiben sichtbar. {automation.errorMessage}
@@ -305,13 +318,19 @@ export function RatesPage() {
             <EmptyState
               icon={CirclePercent}
               title="Noch kein Leitzins-Snapshot"
-              description="Synchronisiere EODHD. Fehlende kommende Konsenswerte bleiben bewusst unavailable."
+              description={
+                privateWeb
+                  ? "Der übernommene Datenstand enthält noch keine Leitzinsen. Fehlende Erwartungen bleiben nicht verfügbar."
+                  : "Synchronisiere EODHD. Fehlende kommende Konsenswerte bleiben bewusst unavailable."
+              }
               action={
-                <div className="page-actions">
-                  <Button onClick={() => syncMutation.mutate()}>
-                    <RefreshCw size={14} /> EODHD synchronisieren
-                  </Button>
-                </div>
+                !privateWeb && (
+                  <div className="page-actions">
+                    <Button onClick={() => syncMutation.mutate()}>
+                      <RefreshCw size={14} /> EODHD synchronisieren
+                    </Button>
+                  </div>
+                )
               }
             />
           )}

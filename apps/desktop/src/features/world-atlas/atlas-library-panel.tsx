@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { Download, Square } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import type { AtlasSyncJob } from "./atlas-types";
 
 export const atlasLibraryJobId = "atlas-library";
@@ -27,6 +28,14 @@ export function AtlasLibraryPanel({
   });
   const own = job?.seriesId === atlasLibraryJobId ? job : null;
   const busy = job?.status === "running" || sync.isPending;
+  if (isPrivateWeb())
+    return (
+      <p className="atlas-notice">
+        Du verwendest den privat übernommenen Quellenstand. Auswahl, Vergleiche
+        und gemerkte Ansichten sind verfügbar. Neue Providerabrufe sind hier
+        noch nicht freigegeben.
+      </p>
+    );
   return (
     <details className="atlas-details atlas-library-panel">
       <summary>Lokalen Datenbestand ergänzen</summary>

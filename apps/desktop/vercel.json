@@ -1,0 +1,151 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "regions": ["fra1"],
+  "services": {
+    "web": {
+      "root": ".",
+      "framework": "vite",
+      "buildCommand": "pnpm build:private-web",
+      "outputDirectory": "dist-private-web",
+      "installCommand": "pnpm install --frozen-lockfile",
+      "rewrites": [
+        {
+          "source": "/((?!api(?:/|$)).*)",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    "backend": {
+      "root": ".",
+      "entrypoint": "Dockerfile.vercel",
+      "runtime": "container"
+    },
+    "gateway": {
+      "root": ".",
+      "runtime": "node",
+      "entrypoint": "server/gateway/service.mjs",
+      "installCommand": "pnpm install --frozen-lockfile",
+      "functions": {
+        "server/gateway/service.mjs": {
+          "maxDuration": 120
+        }
+      },
+      "bindings": [
+        {
+          "type": "service",
+          "service": "backend",
+          "format": "url",
+          "env": "MACRO_BACKEND_ORIGIN"
+        }
+      ]
+    },
+    "provider-worker": {
+      "root": ".",
+      "runtime": "node",
+      "entrypoint": "server/providers/service.mjs",
+      "installCommand": "pnpm install --frozen-lockfile",
+      "functions": {
+        "server/providers/service.mjs": {
+          "maxDuration": 120,
+          "experimentalTriggers": [
+            {
+              "type": "queue/v2beta",
+              "topic": "personal-macro-providers",
+              "maxDeliveries": 8,
+              "retryAfterSeconds": 900,
+              "maxConcurrency": 1
+            }
+          ]
+        }
+      },
+      "bindings": [
+        {
+          "type": "service",
+          "service": "backend",
+          "format": "url",
+          "env": "MACRO_BACKEND_ORIGIN"
+        }
+      ]
+    },
+    "cot-worker": {
+      "root": ".",
+      "runtime": "node",
+      "entrypoint": "server/cot/service.mjs",
+      "installCommand": "pnpm install --frozen-lockfile",
+      "functions": {
+        "server/cot/service.mjs": {
+          "maxDuration": 120,
+          "experimentalTriggers": [
+            {
+              "type": "queue/v2beta",
+              "topic": "personal-macro-cot",
+              "maxDeliveries": 8,
+              "retryAfterSeconds": 900,
+              "maxConcurrency": 1
+            }
+          ]
+        }
+      },
+      "bindings": [
+        {
+          "type": "service",
+          "service": "backend",
+          "format": "url",
+          "env": "MACRO_BACKEND_ORIGIN"
+        }
+      ]
+    }
+  },
+  "crons": [
+    { "path": "/api/cron/providers", "schedule": "0 0 * * *" },
+    {
+      "path": "/api/cron/cot",
+      "schedule": "0 16 * * *"
+    }
+  ],
+  "rewrites": [
+    {
+      "source": "/api/:path*",
+      "destination": {
+        "service": "gateway"
+      }
+    },
+    {
+      "source": "/(.*)",
+      "destination": {
+        "service": "web"
+      }
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "private, no-store"
+        },
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow, noarchive"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "no-referrer"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        }
+      ]
+    }
+  ]
+}

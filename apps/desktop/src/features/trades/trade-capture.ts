@@ -2,6 +2,7 @@ import { z } from "zod";
 import { fromInputDateTime, toInputDateTime } from "../../lib/utils";
 import type { TradeInput } from "../../types/domain";
 import type { ScreenshotReview } from "./trade-screenshot-import";
+import { readTradeDraft } from "./trade-draft-storage";
 
 export function captureMoney(value?: string) {
   if (!value?.trim()) return undefined;
@@ -181,7 +182,7 @@ export interface CaptureDraft {
 export function readCaptureDraft(accountId: string): CaptureDraft | null {
   try {
     const saved = JSON.parse(
-      localStorage.getItem(captureDraftKey(accountId)) ?? "null",
+      readTradeDraft(captureDraftKey(accountId), accountId) ?? "null",
     );
     if (!saved?.values || typeof saved.values !== "object") return null;
     const defaults = captureDefaults();

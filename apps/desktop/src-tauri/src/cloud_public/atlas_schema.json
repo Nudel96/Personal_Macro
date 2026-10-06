@@ -1,0 +1,968 @@
+{
+  "catalog": {
+    "tables": {
+      "atlas_cloud_metadata": {
+        "ddl": "CREATE TABLE atlas_cloud_metadata (version INTEGER) STRICT",
+        "columns": {
+          "version": "INTEGER"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "version",
+          "value": 1
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "series": {
+    "tables": {
+      "atlas_datasets": {
+        "ddl": "CREATE TABLE atlas_datasets (series_id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(series_id)) STRICT",
+        "columns": {
+          "series_id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "series_id",
+          "valueFromKeyPrefix": "atlas:series:"
+        }
+      },
+      "atlas_observations": {
+        "ddl": "CREATE TABLE atlas_observations (series_id TEXT, geography_id TEXT, year INTEGER, value REAL, source_flag TEXT, PRIMARY KEY(series_id,geography_id,year)) STRICT",
+        "columns": {
+          "series_id": "TEXT",
+          "geography_id": "TEXT",
+          "year": "INTEGER",
+          "value": "REAL",
+          "source_flag": "TEXT"
+        },
+        "maxRows": 200000,
+        "identity": {
+          "column": "series_id",
+          "valueFromKeyPrefix": "atlas:series:"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "market": {
+    "tables": {
+      "atlas_market_datasets": {
+        "ddl": "CREATE TABLE atlas_market_datasets (proxy_id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(proxy_id)) STRICT",
+        "columns": {
+          "proxy_id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "proxy_id",
+          "valueFromKeyPrefix": "atlas:market:"
+        }
+      },
+      "atlas_market_months": {
+        "ddl": "CREATE TABLE atlas_market_months (proxy_id TEXT, month TEXT, adjusted_close REAL, PRIMARY KEY(proxy_id,month)) STRICT",
+        "columns": {
+          "proxy_id": "TEXT",
+          "month": "TEXT",
+          "adjusted_close": "REAL"
+        },
+        "maxRows": 5000,
+        "identity": {
+          "column": "proxy_id",
+          "valueFromKeyPrefix": "atlas:market:"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "public": {
+    "tables": {
+      "atlas_public_datasets": {
+        "ddl": "CREATE TABLE atlas_public_datasets (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "valueFromKeyPrefix": "atlas:public:"
+        }
+      },
+      "atlas_public_series": {
+        "ddl": "CREATE TABLE atlas_public_series (dataset_id TEXT, metric_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,metric_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "metric_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 20000,
+        "identity": {
+          "column": "dataset_id",
+          "valueFromKeyPrefix": "atlas:public:"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "valuation": {
+    "tables": {
+      "atlas_valuation_datasets": {
+        "ddl": "CREATE TABLE atlas_valuation_datasets (id TEXT, data_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "data_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "valueFromKeyPrefix": "atlas:valuation:"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "demography": {
+    "tables": {
+      "atlas_demography_dataset": {
+        "ddl": "CREATE TABLE atlas_demography_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "un-wpp-2024-age5"
+        }
+      },
+      "atlas_demography_areas": {
+        "ddl": "CREATE TABLE atlas_demography_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "un-wpp-2024-age5"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "history": {
+    "tables": {
+      "atlas_history_dataset": {
+        "ddl": "CREATE TABLE atlas_history_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "maddison-2023-owid"
+        }
+      },
+      "atlas_history_areas": {
+        "ddl": "CREATE TABLE atlas_history_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "maddison-2023-owid"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "energy": {
+    "tables": {
+      "atlas_energy_dataset": {
+        "ddl": "CREATE TABLE atlas_energy_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "ember-yearly-electricity"
+        }
+      },
+      "atlas_energy_areas": {
+        "ddl": "CREATE TABLE atlas_energy_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "ember-yearly-electricity"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "capacity": {
+    "tables": {
+      "atlas_capacity_dataset": {
+        "ddl": "CREATE TABLE atlas_capacity_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "irena-capacity-2026-h1"
+        }
+      },
+      "atlas_capacity_areas": {
+        "ddl": "CREATE TABLE atlas_capacity_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "irena-capacity-2026-h1"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "credit": {
+    "tables": {
+      "atlas_credit_dataset": {
+        "ddl": "CREATE TABLE atlas_credit_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "bis-credit-gap"
+        }
+      },
+      "atlas_credit_areas": {
+        "ddl": "CREATE TABLE atlas_credit_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "bis-credit-gap"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "property": {
+    "tables": {
+      "atlas_property_dataset": {
+        "ddl": "CREATE TABLE atlas_property_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "bis-residential-property"
+        }
+      },
+      "atlas_property_areas": {
+        "ddl": "CREATE TABLE atlas_property_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "bis-residential-property"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "housing_ratios": {
+    "tables": {
+      "atlas_housing_ratio_dataset": {
+        "ddl": "CREATE TABLE atlas_housing_ratio_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "oecd-housing-ratios"
+        }
+      },
+      "atlas_housing_ratio_areas": {
+        "ddl": "CREATE TABLE atlas_housing_ratio_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "oecd-housing-ratios"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "education": {
+    "tables": {
+      "atlas_education_dataset": {
+        "ddl": "CREATE TABLE atlas_education_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "uis-education"
+        }
+      },
+      "atlas_education_areas": {
+        "ddl": "CREATE TABLE atlas_education_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "uis-education"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "agriculture": {
+    "tables": {
+      "atlas_agriculture_dataset": {
+        "ddl": "CREATE TABLE atlas_agriculture_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "fao-production-indices"
+        }
+      },
+      "atlas_agriculture_areas": {
+        "ddl": "CREATE TABLE atlas_agriculture_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "fao-production-indices"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "macrohistory": {
+    "tables": {
+      "atlas_macrohistory_dataset": {
+        "ddl": "CREATE TABLE atlas_macrohistory_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "jst-macrohistory-r6"
+        }
+      },
+      "atlas_macrohistory_areas": {
+        "ddl": "CREATE TABLE atlas_macrohistory_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "jst-macrohistory-r6"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "fiscal": {
+    "tables": {
+      "atlas_fiscal_dataset": {
+        "ddl": "CREATE TABLE atlas_fiscal_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "imf-fiscal-dec2025"
+        }
+      },
+      "atlas_fiscal_areas": {
+        "ddl": "CREATE TABLE atlas_fiscal_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "imf-fiscal-dec2025"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "households": {
+    "tables": {
+      "atlas_households_dataset": {
+        "ddl": "CREATE TABLE atlas_households_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "un-households-2026"
+        }
+      },
+      "atlas_households_areas": {
+        "ddl": "CREATE TABLE atlas_households_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "un-households-2026"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "debt": {
+    "tables": {
+      "atlas_debt_dataset": {
+        "ddl": "CREATE TABLE atlas_debt_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "bis-borrower-debt"
+        }
+      },
+      "atlas_debt_areas": {
+        "ddl": "CREATE TABLE atlas_debt_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "bis-borrower-debt"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "health": {
+    "tables": {
+      "atlas_health_dataset": {
+        "ddl": "CREATE TABLE atlas_health_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "who-health-finance"
+        }
+      },
+      "atlas_health_areas": {
+        "ddl": "CREATE TABLE atlas_health_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "who-health-finance"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "innovation": {
+    "tables": {
+      "atlas_innovation_dataset": {
+        "ddl": "CREATE TABLE atlas_innovation_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "wipo-technology"
+        }
+      },
+      "atlas_innovation_areas": {
+        "ddl": "CREATE TABLE atlas_innovation_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "wipo-technology"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "labor": {
+    "tables": {
+      "atlas_labor_dataset": {
+        "ddl": "CREATE TABLE atlas_labor_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "ilo-sector-employment"
+        }
+      },
+      "atlas_labor_areas": {
+        "ddl": "CREATE TABLE atlas_labor_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "ilo-sector-employment"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "commodities": {
+    "tables": {
+      "atlas_commodity_dataset": {
+        "ddl": "CREATE TABLE atlas_commodity_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "worldbank-commodity-prices"
+        }
+      },
+      "atlas_commodity_points": {
+        "ddl": "CREATE TABLE atlas_commodity_points (dataset_id TEXT, year INTEGER, values_json TEXT, PRIMARY KEY(dataset_id,year)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "year": "INTEGER",
+          "values_json": "TEXT"
+        },
+        "maxRows": 100000,
+        "identity": {
+          "column": "dataset_id",
+          "value": "worldbank-commodity-prices"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "findex": {
+    "tables": {
+      "atlas_findex_dataset": {
+        "ddl": "CREATE TABLE atlas_findex_dataset (id TEXT, provenance_json TEXT, retrieved_at TEXT, PRIMARY KEY(id)) STRICT",
+        "columns": {
+          "id": "TEXT",
+          "provenance_json": "TEXT",
+          "retrieved_at": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "id",
+          "value": "worldbank-findex-2025"
+        }
+      },
+      "atlas_findex_areas": {
+        "ddl": "CREATE TABLE atlas_findex_areas (dataset_id TEXT, geography_id TEXT, profile_json TEXT, PRIMARY KEY(dataset_id,geography_id)) STRICT",
+        "columns": {
+          "dataset_id": "TEXT",
+          "geography_id": "TEXT",
+          "profile_json": "TEXT"
+        },
+        "maxRows": 500,
+        "identity": {
+          "column": "dataset_id",
+          "value": "worldbank-findex-2025"
+        }
+      },
+      "atlas_cloud_identity": {
+        "ddl": "CREATE TABLE atlas_cloud_identity (key TEXT) STRICT",
+        "columns": {
+          "key": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "valueFromKeyPrefix": "atlas:"
+        },
+        "minRows": 1
+      }
+    }
+  },
+  "bonds": {
+    "tables": {
+      "bond_series": {
+        "ddl": "CREATE TABLE bond_series (symbol TEXT, active INTEGER, fetched_at TEXT, last_attempt_at TEXT, last_error TEXT, PRIMARY KEY(symbol)) STRICT",
+        "columns": {
+          "symbol": "TEXT",
+          "active": "INTEGER",
+          "fetched_at": "TEXT",
+          "last_attempt_at": "TEXT",
+          "last_error": "TEXT"
+        },
+        "maxRows": 300
+      },
+      "bond_observations": {
+        "ddl": "CREATE TABLE bond_observations (symbol TEXT, observation_date TEXT, yield_pct TEXT, PRIMARY KEY(symbol,observation_date)) STRICT",
+        "columns": {
+          "symbol": "TEXT",
+          "observation_date": "TEXT",
+          "yield_pct": "TEXT"
+        },
+        "maxRows": 4000000
+      },
+      "bond_metadata": {
+        "ddl": "CREATE TABLE bond_metadata (key TEXT, value TEXT, PRIMARY KEY(key)) STRICT",
+        "columns": {
+          "key": "TEXT",
+          "value": "TEXT"
+        },
+        "maxRows": 1,
+        "identity": {
+          "column": "key",
+          "value": "catalogCheckedAt"
+        }
+      }
+    }
+  }
+}

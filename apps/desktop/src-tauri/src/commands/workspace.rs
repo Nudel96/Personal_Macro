@@ -1,8 +1,8 @@
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
 use sqlx::{FromRow, SqlitePool};
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -49,7 +49,7 @@ pub struct ReviewInput {
     pub process_rating: Option<i64>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_reviews(
     state: State<'_, AppState>,
     account_id: String,
@@ -67,7 +67,7 @@ pub(crate) async fn list_reviews_for_pool(
         .fetch_all(db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_review(
     state: State<'_, AppState>,
     input: ReviewInput,
@@ -148,7 +148,7 @@ pub struct GoalInput {
     pub status: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_goals(state: State<'_, AppState>) -> CommandResult<Vec<GoalRecord>> {
     sqlx::query_as::<_, GoalRecord>(r#"SELECT g.id, g.name, g.description, g.metric_key, g.target_value, g.unit, g.direction, g.starts_at, g.ends_at, g.status,
         (SELECT gp.value FROM goal_progress gp WHERE gp.goal_id = g.id ORDER BY gp.recorded_at DESC LIMIT 1) AS latest_value, g.updated_at
@@ -156,7 +156,7 @@ pub async fn list_goals(state: State<'_, AppState>) -> CommandResult<Vec<GoalRec
         .fetch_all(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_goal(state: State<'_, AppState>, input: GoalInput) -> CommandResult<GoalRecord> {
     if input.name.trim().is_empty() || input.metric_key.trim().is_empty() {
         return Err(crate::errors::CommandError::validation(
@@ -184,7 +184,7 @@ pub struct GoalProgressInput {
     pub note: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn record_goal_progress(
     state: State<'_, AppState>,
     input: GoalProgressInput,
@@ -213,7 +213,7 @@ pub struct PlaybookSetup {
     pub trade_count: Option<i64>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_playbook(
     state: State<'_, AppState>,
     account_id: Option<String>,
@@ -262,7 +262,7 @@ pub struct SetupVersionInput {
     pub notes_html: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_setup_version(
     state: State<'_, AppState>,
     input: SetupVersionInput,
@@ -295,7 +295,7 @@ pub struct MistakeAnalytics {
     pub average_severity: Option<f64>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_mistake_analytics(
     state: State<'_, AppState>,
     account_id: String,
@@ -354,7 +354,7 @@ pub struct TradeMistakeRecord {
     pub note: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_trade_mistakes(
     state: State<'_, AppState>,
     account_id: String,
@@ -379,7 +379,7 @@ pub(crate) async fn list_trade_mistakes_for_pool(
     .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn assign_trade_mistake(
     state: State<'_, AppState>,
     account_id: String,

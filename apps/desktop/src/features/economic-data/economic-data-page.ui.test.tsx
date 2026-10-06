@@ -2,6 +2,11 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { cleanup, fireEvent, render, screen } from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { EconomicDataPage } from "./economic-data-page";
+import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+vi.mock("../../services/runtime-mode", () => ({
+  isPrivateWeb: vi.fn(() => false),
+}));
 
 vi.mock("../../services/commands", () => ({
   api: {
@@ -26,10 +31,31 @@ function renderPage() {
 
 afterEach(() => {
   cleanup();
+  vi.mocked(isPrivateWeb).mockReturnValue(false);
   vi.clearAllMocks();
 });
 
 describe("EconomicDataPage", () => {
+  it("loads private history without requiring a desktop runtime and preserves errors", async () => {
+    vi.mocked(isPrivateWeb).mockReturnValue(true);
+    vi.mocked(api.eodhdIndicatorHistory).mockRejectedValue({
+      message: "Datenstand nicht erreichbar",
+    });
+    vi.mocked(api.macroFundamentalsDashboard).mockRejectedValue({
+      message: "Datenstand nicht erreichbar",
+    });
+    renderPage();
+    expect(await screen.findByText("Datenstand nicht erreichbar")).toBeTruthy();
+    expect(api.eodhdIndicatorHistory).toHaveBeenCalledWith({
+      currency: "USD",
+      canonicalKey: "cpi_yoy",
+      months: 24,
+    });
+    expect(
+      screen.queryByText("Historische EODHD-Daten benötigen die Desktop-App"),
+    ).toBeNull();
+    expect(api.syncEodhdIndicatorHistory).not.toHaveBeenCalled();
+  });
   it("filters economic releases by currency instead of market or asset", () => {
     renderPage();
 

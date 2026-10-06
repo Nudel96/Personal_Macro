@@ -1,4 +1,5 @@
 import { CalendarRange as PageIcon } from "lucide-react";
+import { useCloudCotRefresh } from "../cot/use-cloud-cot-refresh";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import {
@@ -19,6 +20,8 @@ import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { dateTime } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { CloudMarketNotice } from "../macro/cloud-market-notice";
 import type {
   EconomicCalendarCategory,
   EconomicCalendarEvent,
@@ -152,6 +155,7 @@ function countryLabel(event: EconomicCalendarEvent) {
 }
 
 export function EconomicCalendarPage() {
+  useCloudCotRefresh();
   const queryClient = useQueryClient();
   const [range, setRange] =
     useState<EconomicCalendarInput["range"]>("currentWeek");
@@ -176,13 +180,13 @@ export function EconomicCalendarPage() {
     queryFn: () =>
       api.economicCalendar({ range, timezoneOffsetMinutes, timezone }),
     retry: false,
-    refetchInterval: 60_000,
+    refetchInterval: isPrivateWeb() ? false : 60_000,
   });
   const feedStatus = useQuery({
     queryKey: ["macro", "eodhd-status"],
     queryFn: api.eodhdFeedStatus,
     retry: false,
-    refetchInterval: 60_000,
+    refetchInterval: isPrivateWeb() ? false : 60_000,
   });
   const refresh = useMutation({
     mutationFn: api.syncEodhdNow,
@@ -354,33 +358,37 @@ export function EconomicCalendarPage() {
                     ))}
               </div>
             )}
-            <Button
-              onClick={() => refresh.mutate()}
-              disabled={
-                !isTauri() ||
-                !feedStatus.data?.configured ||
-                feedStatus.data?.running ||
-                refresh.isPending
-              }
-              title={
-                isTauri()
-                  ? "EODHD-Kalender aktualisieren"
-                  : "Nur in der Desktop-App verfügbar"
-              }
-            >
-              <RefreshCw
-                size={15}
-                className={refresh.isPending ? "spin" : undefined}
-              />
-              Aktualisieren
-            </Button>
+            {!isPrivateWeb() && (
+              <Button
+                onClick={() => refresh.mutate()}
+                disabled={
+                  !isTauri() ||
+                  !feedStatus.data?.configured ||
+                  feedStatus.data?.running ||
+                  refresh.isPending
+                }
+                title={
+                  isTauri()
+                    ? "EODHD-Kalender aktualisieren"
+                    : "Nur in der Desktop-App verfügbar"
+                }
+              >
+                <RefreshCw
+                  size={15}
+                  className={refresh.isPending ? "spin" : undefined}
+                />
+                Aktualisieren
+              </Button>
+            )}
           </>
         }
       />
 
       {calendar.isError ? (
-        <ErrorState message="Wirtschaftstermine konnten nicht aus der lokalen Datenbank geladen werden." />
+        <ErrorState message="Wirtschaftstermine konnten nicht geladen werden." />
       ) : null}
+
+      <CloudMarketNotice importedAt={calendar.data?.cloudImportedAt} />
 
       <div className="economic-calendar-summary">
         <div>
@@ -619,16 +627,18 @@ export function EconomicCalendarPage() {
           </div>
         ) : (
           <EmptyState
-            icon={isTauri() ? CalendarClock : Globe2}
+            icon={isTauri() || isPrivateWeb() ? CalendarClock : Globe2}
             title={
-              isTauri()
+              isTauri() || isPrivateWeb()
                 ? "Keine passenden Termine"
                 : "Desktop-App für Live-Termine erforderlich"
             }
             description={
-              isTauri()
-                ? "Ändere die Filter oder aktualisiere den EODHD-Feed. Fehlende Termine werden nicht als neutrale Ereignisse ergänzt."
-                : "Die Browser-Vorschau erzeugt bewusst keine Mock-Termine. Starte die Tauri-App, um den lokalen EODHD-Kalender zu laden."
+              isPrivateWeb()
+                ? "Für diese Auswahl enthält der übernommene Datenstand keine Termine. Prüfe Zeitraum und Filter."
+                : isTauri()
+                  ? "Ändere die Filter oder aktualisiere den EODHD-Feed. Fehlende Termine werden nicht als neutrale Ereignisse ergänzt."
+                  : "Die Browser-Vorschau erzeugt bewusst keine Mock-Termine. Starte die Tauri-App, um den lokalen EODHD-Kalender zu laden."
             }
           />
         )}

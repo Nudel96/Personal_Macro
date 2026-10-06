@@ -1,174 +1,27 @@
 import { lazy, Suspense } from "react";
-import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
-import { AppProviders } from "./app/providers";
 import { AppErrorBoundary } from "./components/ui/app-error-boundary";
-import { AppShell } from "./components/layout/app-shell";
-import { PageLoading } from "./components/ui/loading";
-import { JournalAccountProvider } from "./features/accounts/journal-account-context";
+import { PrivateWebBoundary } from "./app/private-web-boundary";
+import { PRIVATE_WORKSPACE_COMMANDS } from "./app/workspace-capabilities";
+import { isPrivateWeb } from "./services/runtime-mode";
 
-const DashboardPage = lazy(() =>
-  import("./features/dashboard/dashboard-page").then((module) => ({
-    default: module.DashboardPage,
-  })),
-);
-const TradesPage = lazy(() =>
-  import("./features/trades/trades-page").then((module) => ({
-    default: module.TradesPage,
-  })),
-);
-const CalendarPage = lazy(() =>
-  import("./features/calendar/calendar-page").then((module) => ({
-    default: module.CalendarPage,
-  })),
-);
-const AnalyticsPage = lazy(() =>
-  import("./features/analytics/analytics-page").then((module) => ({
-    default: module.AnalyticsPage,
-  })),
-);
-const ReviewsPage = lazy(() =>
-  import("./features/reviews/reviews-page").then((module) => ({
-    default: module.ReviewsPage,
-  })),
-);
-const PlaybookPage = lazy(() =>
-  import("./features/playbook/playbook-page").then((module) => ({
-    default: module.PlaybookPage,
-  })),
-);
-const MistakesPage = lazy(() =>
-  import("./features/mistakes/mistakes-page").then((module) => ({
-    default: module.MistakesPage,
-  })),
-);
-const MediaPage = lazy(() =>
-  import("./features/media/media-page").then((module) => ({
-    default: module.MediaPage,
-  })),
-);
-const GoalsPage = lazy(() =>
-  import("./features/goals/goals-page").then((module) => ({
-    default: module.GoalsPage,
-  })),
-);
-const MacroPage = lazy(() =>
-  import("./features/macro/macro-page").then((module) => ({
-    default: module.MacroPage,
-  })),
-);
-const RegimeInsightsPage = lazy(() =>
-  import("./features/regime-insights/regime-insights-page").then((module) => ({
-    default: module.RegimeInsightsPage,
-  })),
-);
-const WorldAtlasPage = lazy(() =>
-  import("./features/world-atlas/world-atlas-page").then((module) => ({
-    default: module.WorldAtlasPage,
-  })),
-);
-const GovernmentBondsPage = lazy(() =>
-  import("./features/government-bonds/government-bonds-page").then(
-    (module) => ({
-      default: module.GovernmentBondsPage,
-    }),
-  ),
-);
-const EconomicDataPage = lazy(() =>
-  import("./features/economic-data/economic-data-page").then((module) => ({
-    default: module.EconomicDataPage,
-  })),
-);
-const EconomicCalendarPage = lazy(() =>
-  import("./features/economic-calendar/economic-calendar-page").then(
-    (module) => ({ default: module.EconomicCalendarPage }),
-  ),
-);
-const CotPage = lazy(() =>
-  import("./features/cot/cot-page").then((module) => ({
-    default: module.CotPage,
-  })),
-);
-const SeasonalityPage = lazy(() =>
-  import("./features/seasonality/seasonality-page").then((module) => ({
-    default: module.SeasonalityPage,
-  })),
-);
-const RatesPage = lazy(() =>
-  import("./features/rates/rates-page").then((module) => ({
-    default: module.RatesPage,
-  })),
-);
-const CentralBankReportsPage = lazy(() =>
-  import("./features/central-bank-reports/central-bank-reports-page").then(
-    (module) => ({ default: module.CentralBankReportsPage }),
-  ),
-);
-const ImportExportPage = lazy(() =>
-  import("./features/import-export/import-export-page").then((module) => ({
-    default: module.ImportExportPage,
-  })),
-);
-const SettingsPage = lazy(() =>
-  import("./features/settings/settings-page").then((module) => ({
-    default: module.SettingsPage,
-  })),
-);
+// Import providers and workspace state only after a validated private session.
+const WorkspaceApp = lazy(() => import("./workspace-app"));
 
 export default function App() {
+  const workspace = (
+    <Suspense fallback={<p role="status">Personal Macro wird geladen …</p>}>
+      <WorkspaceApp />
+    </Suspense>
+  );
   return (
     <AppErrorBoundary>
-      <AppProviders>
-        <BrowserRouter>
-          <JournalAccountProvider>
-            <Suspense
-              fallback={
-                <div className="page">
-                  <PageLoading />
-                </div>
-              }
-            >
-              <Routes>
-                <Route element={<AppShell />}>
-                  <Route index element={<DashboardPage />} />
-                  <Route path="trades" element={<TradesPage />} />
-                  <Route path="calendar" element={<CalendarPage />} />
-                  <Route path="analytics" element={<AnalyticsPage />} />
-                  <Route path="reviews" element={<ReviewsPage />} />
-                  <Route path="playbook" element={<PlaybookPage />} />
-                  <Route path="mistakes" element={<MistakesPage />} />
-                  <Route path="media" element={<MediaPage />} />
-                  <Route path="goals" element={<GoalsPage />} />
-                  <Route path="macro" element={<MacroPage />} />
-                  <Route path="world-atlas" element={<WorldAtlasPage />} />
-                  <Route
-                    path="regime-insights"
-                    element={<RegimeInsightsPage />}
-                  />
-                  <Route path="economic-data" element={<EconomicDataPage />} />
-                  <Route
-                    path="economic-calendar"
-                    element={<EconomicCalendarPage />}
-                  />
-                  <Route path="cot" element={<CotPage />} />
-                  <Route path="seasonality" element={<SeasonalityPage />} />
-                  <Route path="rates" element={<RatesPage />} />
-                  <Route
-                    path="government-bonds"
-                    element={<GovernmentBondsPage />}
-                  />
-                  <Route
-                    path="central-bank-reports"
-                    element={<CentralBankReportsPage />}
-                  />
-                  <Route path="import-export" element={<ImportExportPage />} />
-                  <Route path="settings" element={<SettingsPage />} />
-                  <Route path="*" element={<Navigate to="/" replace />} />
-                </Route>
-              </Routes>
-            </Suspense>
-          </JournalAccountProvider>
-        </BrowserRouter>
-      </AppProviders>
+      {isPrivateWeb() ? (
+        <PrivateWebBoundary requiredCommands={PRIVATE_WORKSPACE_COMMANDS}>
+          {workspace}
+        </PrivateWebBoundary>
+      ) : (
+        workspace
+      )}
     </AppErrorBoundary>
   );
 }

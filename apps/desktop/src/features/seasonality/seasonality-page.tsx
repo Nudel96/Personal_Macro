@@ -1,6 +1,5 @@
 import { Sparkles as PageIcon } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
 import * as Tabs from "@radix-ui/react-tabs";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import type { EChartsOption } from "echarts";
@@ -10,14 +9,12 @@ import {
   ChevronDown,
   DatabaseZap,
   Info,
-  Maximize2,
   RefreshCw,
   Search,
   SlidersHorizontal,
   Sparkles,
   TrendingDown,
   TrendingUp,
-  X,
 } from "lucide-react";
 import { toast } from "sonner";
 import {
@@ -34,9 +31,20 @@ import { EmptyState } from "../../components/ui/empty-state";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { DataStatusStrip } from "../../components/ui/data-status-strip";
-import { number, percent } from "../../lib/utils";
+import { dateTime, number, percent } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { SeasonalityOpportunities } from "./seasonality-opportunities";
+import { SeasonalityInsightChart } from "./seasonality-insight-chart";
+import {
+  defaultChartSettings,
+  type SeasonalityChartSettings,
+} from "./seasonality-annual-chart";
+export {
+  annualOption,
+  fullscreenChartHeight,
+} from "./seasonality-annual-chart";
+import { SeasonalityMarketOpportunities } from "./seasonality-market-opportunities";
 import type {
   SeasonalityAnalysis,
   SeasonalityYearFilter,
@@ -50,6 +58,7 @@ const defaultFilter: SeasonalityYearFilter = {
 };
 
 export function SeasonalityPage() {
+  const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
   const [category, setCategory] = useState("Alle");
   const [search, setSearch] = useState("");
@@ -59,10 +68,15 @@ export function SeasonalityPage() {
   const [referenceDate, setReferenceDate] = useState(currentMonthDay());
   const [windowStart, setWindowStart] = useState("");
   const [windowDays, setWindowDays] = useState(20);
+  const [chartSettings, setChartSettings] =
+    useState<SeasonalityChartSettings>(defaultChartSettings);
   const dashboard = useQuery({
     queryKey: ["seasonality"],
     queryFn: api.seasonality,
-    refetchInterval: 30_000,
+    refetchInterval: privateWeb ? false : 30_000,
+    ...(privateWeb
+      ? { refetchOnWindowFocus: false, refetchOnReconnect: false }
+      : {}),
   });
   const refresh = useMutation({
     mutationFn: api.refreshSeasonality,
@@ -104,23 +118,22 @@ export function SeasonalityPage() {
       "seasonality",
       "analysis",
       dashboard.data?.dataVersion,
+      dashboard.data?.cloudGeneration,
       analysisInput,
     ],
-    queryFn: () => api.analyzeSeasonality(analysisInput!),
-    enabled: Boolean(analysisInput),
-    retry: false,
-  });
-  const screener = useQuery({
-    queryKey: [
-      "seasonality",
-      "screener",
-      dashboard.data?.dataVersion,
-      dashboard.data?.assets.map(
-        (item) => `${item.symbol}:${item.calculatedAt}`,
-      ),
-    ],
-    queryFn: api.seasonalityScreener,
-    enabled: (dashboard.data?.assets.length ?? 0) > 0,
+    queryFn: () =>
+      privateWeb
+        ? api.analyzeSeasonality(
+            analysisInput!,
+            dashboard.data?.cloudGeneration,
+          )
+        : api.analyzeSeasonality(analysisInput!),
+    enabled: Boolean(
+      analysisInput && (!privateWeb || dashboard.data?.cloudGeneration),
+    ),
+    ...(privateWeb
+      ? { refetchOnWindowFocus: false, refetchOnReconnect: false }
+      : {}),
     retry: false,
   });
   if (dashboard.isLoading)
@@ -151,7 +164,11 @@ export function SeasonalityPage() {
         icon={PageIcon}
         eyebrow="Marktkontext"
         title="Seasonality Explorer"
-        description="Historische Marktphasen aus lokal gespeicherten EODHD-Tagesreihen – mit transparenter Kohorte, klarer Evidenz und frei wählbaren Analysefenstern."
+        description={
+          privateWeb
+            ? "Historische Marktphasen aus übernommenen EODHD-Tagesreihen – mit transparenter Kohorte, klarer Evidenz und frei wählbaren Analysefenstern."
+            : "Historische Marktphasen aus lokal gespeicherten EODHD-Tagesreihen – mit transparenter Kohorte, klarer Evidenz und frei wählbaren Analysefenstern."
+        }
         actions={
           <Badge className="primary">
             <DatabaseZap size={12} /> EODHD · {dashboard.data.assets.length}{" "}
@@ -160,61 +177,76 @@ export function SeasonalityPage() {
         }
       />
       <DataStatusStrip
-        status={`${dashboard.data.collectionCompleted} von ${dashboard.data.collectionTotal || "—"} Profilen`}
+        status={
+          privateWeb
+            ? `Privater Datenstand · ${dashboard.data.assets.length} übernommene Profile`
+            : `${dashboard.data.collectionCompleted} von ${dashboard.data.collectionTotal || "—"} Profilen`
+        }
         quality={
-          dashboard.data.collectionError
-            ? "Synchronisierung prüfen"
-            : dashboard.data.collectionStatus === "running"
-              ? "EODHD-Synchronisierung läuft"
-              : "Provider-native D1-Daten"
+          privateWeb
+            ? "EODHD-Tagesreihen aus dem übernommenen Snapshot"
+            : dashboard.data.collectionError
+              ? "Synchronisierung prüfen"
+              : dashboard.data.collectionStatus === "running"
+                ? "EODHD-Synchronisierung läuft"
+                : "Provider-native D1-Daten"
         }
         detail={
-          dashboard.data.lastSyncedAt
-            ? `Zuletzt aktualisiert ${new Date(dashboard.data.lastSyncedAt).toLocaleString("de-DE")}`
-            : "Historische Profile werden lokal aufgebaut"
+          privateWeb
+            ? `${dashboard.data.cloudImportedAt ? `Übernommen am ${dateTime(dashboard.data.cloudImportedAt)}` : "Übernahmezeit nicht verfügbar"} · Keine automatische Cloud-Aktualisierung.`
+            : dashboard.data.lastSyncedAt
+              ? `Zuletzt aktualisiert ${new Date(dashboard.data.lastSyncedAt).toLocaleString("de-DE")}`
+              : "Historische Profile werden lokal aufgebaut"
         }
         action={
-          <Button
-            variant="primary"
-            size="sm"
-            onClick={() => refresh.mutate()}
-            disabled={refresh.isPending}
-          >
-            <RefreshCw
-              size={14}
-              className={refresh.isPending ? "spin" : undefined}
-            />
-            {refresh.isPending ? "Aktualisiere …" : "Jetzt aktualisieren"}
-          </Button>
+          !privateWeb && (
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => refresh.mutate()}
+              disabled={refresh.isPending}
+            >
+              <RefreshCw
+                size={14}
+                className={refresh.isPending ? "spin" : undefined}
+              />
+              {refresh.isPending ? "Aktualisiere …" : "Jetzt aktualisieren"}
+            </Button>
+          )
         }
       />
-      <section
-        className="seasonality-sync-overview"
-        aria-label="EODHD-Synchronisationsfortschritt"
-      >
-        <div>
-          <span>EODHD-Datenbestand</span>
-          <strong>{Math.round(syncProgress * 100)} % synchronisiert</strong>
-        </div>
-        <progress
-          value={dashboard.data.collectionCompleted}
-          max={Math.max(1, dashboard.data.collectionTotal)}
+      {!privateWeb && (
+        <section
+          className="seasonality-sync-overview"
+          aria-label="EODHD-Synchronisationsfortschritt"
         >
-          {Math.round(syncProgress * 100)} %
-        </progress>
-        <p>
-          Adjusted Close wird genutzt, wenn EODHD ihn liefert. Fehlende oder zu
-          kurze Historien bleiben sichtbar explorativ und werden nicht als
-          neutral gewertet.
-        </p>
-      </section>
-      {dashboard.data.collectionError && (
+          <div>
+            <span>EODHD-Datenbestand</span>
+            <strong>{Math.round(syncProgress * 100)} % synchronisiert</strong>
+          </div>
+          <progress
+            value={dashboard.data.collectionCompleted}
+            max={Math.max(1, dashboard.data.collectionTotal)}
+          >
+            {Math.round(syncProgress * 100)} %
+          </progress>
+          <p>
+            Adjusted Close wird genutzt, wenn EODHD ihn liefert. Fehlende oder
+            zu kurze Historien bleiben sichtbar explorativ und werden nicht als
+            neutral gewertet.
+          </p>
+        </section>
+      )}
+      {!privateWeb && dashboard.data.collectionError && (
         <div className="notice danger" role="alert">
           <strong>EODHD-Synchronisierung:</strong>{" "}
           {dashboard.data.collectionError}
         </div>
       )}
-      <SeasonalityOpportunities dataVersion={dashboard.data.dataVersion} />
+      <SeasonalityOpportunities
+        dataVersion={dashboard.data.dataVersion}
+        generation={dashboard.data.cloudGeneration}
+      />
       <div className="seasonality-workspace">
         <Card className="seasonality-market-panel">
           <CardHeader
@@ -280,7 +312,11 @@ export function SeasonalityPage() {
                 <EmptyState
                   icon={Search}
                   title="Kein passendes Asset"
-                  description="Passe Suche oder Assetklasse an. Noch nicht synchronisierte Märkte erscheinen automatisch."
+                  description={
+                    privateWeb
+                      ? "Passe Suche oder Assetklasse an. Hier sind ausschließlich die im Datenstand übernommenen Märkte verfügbar."
+                      : "Passe Suche oder Assetklasse an. Noch nicht synchronisierte Märkte erscheinen automatisch."
+                  }
                 />
               )}
             </div>
@@ -296,6 +332,8 @@ export function SeasonalityPage() {
           ) : analysis.data ? (
             <AnalysisDetail
               analysis={analysis.data}
+              chartSettings={chartSettings}
+              setChartSettings={setChartSettings}
               yearFilter={yearFilter}
               setYearFilter={setYearFilter}
               referenceDate={referenceDate}
@@ -311,14 +349,22 @@ export function SeasonalityPage() {
                 <EmptyState
                   icon={Sparkles}
                   title={
-                    selectedSummary
-                      ? "Profil wird vorbereitet"
-                      : "Asset auswählen"
+                    privateWeb && selectedSummary
+                      ? "Analyse nicht verfügbar"
+                      : selectedSummary
+                        ? "Profil wird vorbereitet"
+                        : "Asset auswählen"
                   }
                   description={
-                    analysis.error
-                      ? "Für dieses Asset ist noch keine nutzbare EODHD-D1-Historie gespeichert."
-                      : "Wähle links einen Markt oder starte die EODHD-Aktualisierung."
+                    privateWeb
+                      ? dashboard.data.cloudGeneration
+                        ? analysis.error
+                          ? "Die Analyse für diesen Datenstand konnte nicht geladen werden. Lade die Seite neu, um den übernommenen Stand erneut zu prüfen."
+                          : "Wähle links einen übernommenen Markt."
+                        : "Die Versionskennung des übernommenen Datenstands fehlt. Bitte lade die Seite neu."
+                      : analysis.error
+                        ? "Für dieses Asset ist noch keine nutzbare EODHD-D1-Historie gespeichert."
+                        : "Wähle links einen Markt oder starte die EODHD-Aktualisierung."
                   }
                 />
               </CardContent>
@@ -326,118 +372,22 @@ export function SeasonalityPage() {
           )}
         </main>
       </div>
-      <Card className="seasonality-screener-card">
-        <CardHeader
-          title="Chancen im Markt"
-          subtitle="Wöchentlich gestaffelte Startpunkte, konservativ gerankt nach Wilson-Untergrenze, Medianrendite, Schwankung und Stichprobengröße."
-        />
-        <CardContent>
-          {screener.isLoading ? (
-            <PageLoading />
-          ) : screener.isError ? (
-            <EmptyState
-              icon={DatabaseZap}
-              title="Screener wird aufgebaut"
-              description="Sobald EODHD-Profile vorliegen, erscheinen hier die stärksten historischen Fenster."
-            />
-          ) : (
-            <Screener
-              rows={screener.data ?? []}
-              onSelect={(symbol, window) => {
-                setCategory("Alle");
-                setSearch("");
-                setSelected(symbol);
-                setWindowStart(window.startDate);
-                setWindowDays(window.tradingDays);
-              }}
-            />
-          )}
-        </CardContent>
-      </Card>
-    </div>
-  );
-}
-
-function Screener({
-  rows,
-  onSelect,
-}: {
-  rows: Awaited<ReturnType<typeof api.seasonalityScreener>>;
-  onSelect: (symbol: string, window: SeasonalityWindowMetric) => void;
-}) {
-  if (!rows.length)
-    return (
-      <EmptyState
-        icon={DatabaseZap}
-        title="Noch keine lokalen Seasonality-Profile"
-        description="Die dauerhaft lokale Historie wird nach dem App-Start automatisch aufgebaut."
+      <SeasonalityMarketOpportunities
+        dataVersion={dashboard.data.dataVersion}
+        generation={dashboard.data.cloudGeneration}
+        profileVersion={dashboard.data.assets
+          .map((item) => `${item.symbol}:${item.calculatedAt}`)
+          .join("|")}
+        hasProfiles={dashboard.data.assets.length > 0}
       />
-    );
-  return (
-    <div className="seasonality-screener-grid">
-      {rows.slice(0, 12).map((row) => (
-        <article className="seasonality-screener-item" key={row.symbol}>
-          <header>
-            <div>
-              <strong>{row.symbol}</strong>
-              <span>{row.description ?? row.category}</span>
-            </div>
-            <Badge
-              className={
-                row.qualityStatus === "available" ? "positive" : "warning"
-              }
-            >
-              {row.completeYears} Jahre
-            </Badge>
-          </header>
-          <div className="seasonality-screener-directions">
-            {row.bullishWindow ? (
-              <button
-                type="button"
-                className="bullish"
-                onClick={() => onSelect(row.symbol, row.bullishWindow!)}
-                aria-label={`${row.symbol}: bullisches Fenster ${row.bullishWindow.startDate} auswählen`}
-              >
-                <TrendingUp size={15} aria-hidden="true" />
-                <span>
-                  <small>Bullisch</small>
-                  <strong>{fmtPct(row.bullishWindow.medianReturn)}</strong>
-                </span>
-                <em>{row.bullishWindow.startDate}</em>
-              </button>
-            ) : (
-              <span className="seasonality-no-window">
-                Kein bullisches Fenster
-              </span>
-            )}
-            {row.bearishWindow ? (
-              <button
-                type="button"
-                className="bearish"
-                onClick={() => onSelect(row.symbol, row.bearishWindow!)}
-                aria-label={`${row.symbol}: bärisches Fenster ${row.bearishWindow.startDate} auswählen`}
-              >
-                <TrendingDown size={15} aria-hidden="true" />
-                <span>
-                  <small>Bärisch</small>
-                  <strong>{fmtPct(row.bearishWindow.medianReturn)}</strong>
-                </span>
-                <em>{row.bearishWindow.startDate}</em>
-              </button>
-            ) : (
-              <span className="seasonality-no-window">
-                Kein bärisches Fenster
-              </span>
-            )}
-          </div>
-        </article>
-      ))}
     </div>
   );
 }
 
 function AnalysisDetail({
   analysis,
+  chartSettings,
+  setChartSettings,
   yearFilter,
   setYearFilter,
   referenceDate,
@@ -448,6 +398,8 @@ function AnalysisDetail({
   setWindowDays,
 }: {
   analysis: SeasonalityAnalysis;
+  chartSettings: SeasonalityChartSettings;
+  setChartSettings: (settings: SeasonalityChartSettings) => void;
   yearFilter: SeasonalityYearFilter;
   setYearFilter: (value: SeasonalityYearFilter) => void;
   referenceDate: string;
@@ -457,7 +409,6 @@ function AnalysisDetail({
   windowDays: number;
   setWindowDays: (value: number) => void;
 }) {
-  const [chartFullscreen, setChartFullscreen] = useState(false);
   const window = analysis.selectedWindow;
   const referenceDay = monthDayToDay(analysis.referenceDate);
   const phase = phaseAtDay(analysis, referenceDay);
@@ -538,16 +489,12 @@ function AnalysisDetail({
       </div>
       <SeasonalityVisualDashboard
         analysis={analysis}
-        onOpenFullscreen={() => setChartFullscreen(true)}
+        chartSettings={chartSettings}
+        setChartSettings={setChartSettings}
         onSelectWindow={(startDate, tradingDays) => {
           setWindowStart(startDate);
           setWindowDays(tradingDays);
         }}
-      />
-      <SeasonalityChartFullscreen
-        analysis={analysis}
-        open={chartFullscreen}
-        onOpenChange={setChartFullscreen}
       />
     </>
   );
@@ -744,11 +691,13 @@ export function SeasonalityControls({
 function SeasonalityVisualDashboard({
   analysis,
   onSelectWindow,
-  onOpenFullscreen,
+  chartSettings,
+  setChartSettings,
 }: {
   analysis: SeasonalityAnalysis;
   onSelectWindow: (startDate: string, tradingDays: number) => void;
-  onOpenFullscreen: () => void;
+  chartSettings: SeasonalityChartSettings;
+  setChartSettings: (settings: SeasonalityChartSettings) => void;
 }) {
   const window = analysis.selectedWindow;
   const gains = window.yearReturns.filter((item) => item.returnValue > 0);
@@ -760,36 +709,12 @@ function SeasonalityVisualDashboard({
     ) - 1;
   return (
     <div className="seasonality-visual-dashboard">
-      <div className="seasonality-hero-grid">
-        <Card className="seasonality-annual-card">
-          <CardHeader
-            title="Saisonaler Jahresverlauf"
-            subtitle={`${analysis.selectedYears.length} Jahre als eine Index-100-Kurve · aktives Fenster ${window.startDate} / ${window.tradingDays} Handelstage`}
-            action={
-              <Button
-                size="icon"
-                variant="ghost"
-                onClick={onOpenFullscreen}
-                aria-label="Seasonality-Chart im Vollbild öffnen"
-                title="Vollbild"
-              >
-                <Maximize2 size={16} />
-              </Button>
-            }
-          />
-          <CardContent>
-            <BaseChart
-              option={annualOption(analysis)}
-              height={390}
-              ariaLabel={`Saisonaler Jahresverlauf für ${analysis.symbol}. Eine Durchschnittslinie aus ${analysis.selectedYears.length} Jahren.`}
-            />
-            <p className="seasonality-chart-note">
-              Die 15-Kalendertage-Glättung dient nur der Darstellung. Renditen,
-              Trefferquoten, Rankings und Macro-Signale verwenden unveränderte
-              Beobachtungen.
-            </p>
-          </CardContent>
-        </Card>
+      <div className="seasonality-hero-grid seasonality-insight-layout">
+        <SeasonalityInsightChart
+          analysis={analysis}
+          settings={chartSettings}
+          onSettingsChange={setChartSettings}
+        />
         <Card className="seasonality-evidence-card">
           <CardHeader
             title="Evidenz zum Fenster"
@@ -1007,69 +932,6 @@ function SeasonalityVisualDashboard({
   );
 }
 
-function SeasonalityChartFullscreen({
-  analysis,
-  open,
-  onOpenChange,
-}: {
-  analysis: SeasonalityAnalysis;
-  open: boolean;
-  onOpenChange: (open: boolean) => void;
-}) {
-  const [chartHeight, setChartHeight] = useState(650);
-  useEffect(() => {
-    if (!open || typeof window === "undefined") return;
-    const resize = () =>
-      setChartHeight(fullscreenChartHeight(window.innerHeight));
-    resize();
-    window.addEventListener("resize", resize);
-    return () => window.removeEventListener("resize", resize);
-  }, [open]);
-  return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
-      <Dialog.Portal>
-        <Dialog.Overlay className="dialog-overlay" />
-        <Dialog.Content
-          className="dialog-content seasonality-fullscreen-dialog"
-          aria-describedby="seasonality-fullscreen-description"
-        >
-          <header className="dialog-header">
-            <div>
-              <Dialog.Title className="dialog-title">
-                {analysis.symbol} · Jährliche Durchschnitts-Seasonality
-              </Dialog.Title>
-              <Dialog.Description
-                id="seasonality-fullscreen-description"
-                className="dialog-description"
-              >
-                {analysis.dataSource} · {analysis.selectedYears.length}{" "}
-                ausgewählte Jahre · {analysis.selectedWindow.startDate} /{" "}
-                {analysis.selectedWindow.tradingDays} Handelstage
-              </Dialog.Description>
-            </div>
-            <Dialog.Close asChild>
-              <Button
-                size="icon"
-                variant="ghost"
-                aria-label="Vollbild schließen"
-              >
-                <X size={18} />
-              </Button>
-            </Dialog.Close>
-          </header>
-          <div className="seasonality-fullscreen-chart">
-            <BaseChart
-              option={annualOption(analysis)}
-              height={chartHeight}
-              ariaLabel={`Saisonaler Jahresverlauf für ${analysis.symbol} im Vollbild`}
-            />
-          </div>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
-  );
-}
-
 function SeasonalRoadmap({ analysis }: { analysis: SeasonalityAnalysis }) {
   const referenceDay = monthDayToDay(analysis.referenceDate);
   const windowStart = monthDayToDay(analysis.selectedWindow.startDate);
@@ -1097,7 +959,7 @@ function SeasonalRoadmap({ analysis }: { analysis: SeasonalityAnalysis }) {
             left: `${((windowStart - 1) / 365) * 100}%`,
             width: `${((windowEnd - windowStart + 1) / 365) * 100}%`,
           }}
-          title="Aktives Analysefenster"
+          title="Ungefähre Fensterlage: Handelstage sind nicht identisch mit Kalendertagen"
         />
         <span
           className="seasonality-roadmap-reference"
@@ -1127,7 +989,7 @@ function SeasonalRoadmap({ analysis }: { analysis: SeasonalityAnalysis }) {
         </span>
         <span>
           <b />
-          Aktives Fenster
+          Fensterlage (ca.)
         </span>
       </div>
       <ul
@@ -1353,109 +1215,6 @@ function Metric({
       <div className="kpi-meta">{detail}</div>
     </Card>
   );
-}
-export function annualOption(analysis: SeasonalityAnalysis): EChartsOption {
-  const values = analysis.annualCurve;
-  const startDay = monthDayToDay(analysis.selectedWindow.startDate);
-  const endDay = Math.min(
-    365,
-    startDay + Math.round(analysis.selectedWindow.tradingDays * 1.45),
-  );
-  return {
-    tooltip: {
-      ...tooltip,
-      trigger: "axis",
-      formatter: (items: unknown) => {
-        const item = (
-          items as Array<{ axisValue?: string; data?: number | null }>
-        )[0];
-        const day = values.find(
-          (value) => dayLabel(value.day) === item?.axisValue,
-        );
-        return `<strong>${item?.axisValue ?? "—"}</strong><br/>Saisonaler Durchschnitt: ${item?.data == null ? "—" : number.format(item.data)}<br/>${day?.samples ?? 0} verwendete Jahre`;
-      },
-    },
-    grid: { left: 50, right: 20, top: 22, bottom: 36 },
-    xAxis: {
-      type: "category",
-      data: values.map((value) => dayLabel(value.day)),
-      axisLabel: {
-        ...axisLabel,
-        interval: 0,
-        formatter: (_value: string, index: number) =>
-          [1, 32, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335].includes(
-            index + 1,
-          )
-            ? monthLabel(index + 1)
-            : "",
-      },
-      axisLine,
-      axisTick: { show: false },
-    },
-    yAxis: {
-      type: "value",
-      scale: true,
-      axisLabel: {
-        ...axisLabel,
-        formatter: (value: number) => `${number.format(value)}`,
-      },
-      splitLine,
-    },
-    series: [
-      {
-        name: "Durchschnitt aller gewählten Jahre",
-        type: "line",
-        data: values.map((value) => value.smoothedMean ?? value.mean),
-        symbol: "none",
-        smooth: false,
-        lineStyle: { color: "#52c5ff", width: 3 },
-        markLine: {
-          silent: true,
-          symbol: "none",
-          lineStyle: { color: "rgba(255,255,255,.3)", type: "dashed" },
-          label: {
-            color: "#858585",
-            formatter: "Index 100",
-            position: "insideEndTop",
-          },
-          data: [{ yAxis: 100 }],
-        },
-        markArea: {
-          silent: true,
-          data: [
-            ...analysis.trendSegments
-              .filter((segment) => segment.phase !== "neutral")
-              .map((segment) => [
-                {
-                  name: phaseLabel(segment.phase),
-                  xAxis: dayLabel(segment.startDay),
-                  itemStyle: {
-                    color:
-                      segment.phase === "rising"
-                        ? "rgba(55,212,129,.08)"
-                        : "rgba(255,94,108,.08)",
-                  },
-                  label: {
-                    color: segment.phase === "rising" ? "#72dba0" : "#ff9da6",
-                    fontSize: 9,
-                  },
-                },
-                { xAxis: dayLabel(segment.endDay) },
-              ]),
-            [
-              {
-                name: "Aktives Fenster",
-                xAxis: dayLabel(startDay),
-                itemStyle: { color: "rgba(82,197,255,.16)" },
-                label: { color: "#9edfff", fontSize: 9 },
-              },
-              { xAxis: dayLabel(endDay) },
-            ],
-          ] as unknown as never,
-        },
-      },
-    ],
-  };
 }
 export function opportunityHeatmapOption(
   analysis: SeasonalityAnalysis,
@@ -1761,9 +1520,6 @@ export function parseSeasonalityYears(value: string) {
         .filter((item) => Number.isInteger(item)),
     ),
   ].sort((a, b) => a - b);
-}
-export function fullscreenChartHeight(viewportHeight: number) {
-  return Math.max(420, viewportHeight - 190);
 }
 function fmtPct(value?: number | null) {
   return value == null

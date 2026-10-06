@@ -226,3 +226,158 @@ fn validates_limits_and_window_ranges() {
     request.month = Some(13);
     assert!(request.validate().is_err());
 }
+
+#[test]
+fn market_scan_ranks_inside_the_horizon_and_uses_daily_start_dates() {
+    let mut prices = series("DAILY", 0.0, 2010, 2025);
+    for (date, price) in &mut prices.prices {
+        *price = match (date.month(), date.day()) {
+            (7, 4) => 50.0,
+            (7, 10) => 200.0,
+            _ => 100.0,
+        };
+    }
+    // Include the same daily calendar in every year to isolate the start grid.
+    for year in 2010..=2025 {
+        prices
+            .prices
+            .insert(NaiveDate::from_ymd_opt(year, 7, 4).unwrap(), 50.0);
+        prices
+            .prices
+            .insert(NaiveDate::from_ymd_opt(year, 7, 10).unwrap(), 200.0);
+    }
+    let request = MarketWindowInput {
+        as_of: NaiveDate::from_ymd_opt(2026, 6, 15).unwrap(),
+    };
+    let result = scan_market_windows(&prices, &request);
+    assert!(!result.is_empty());
+    let best = &result[0];
+    assert_eq!(
+        best.start_date,
+        NaiveDate::from_ymd_opt(2026, 7, 4).unwrap()
+    );
+    assert_eq!(best.end_date, NaiveDate::from_ymd_opt(2026, 7, 10).unwrap());
+    assert_eq!(best.median_return, 3.0);
+    assert_eq!(best.samples, 16);
+    assert!(result.iter().any(|row| row.direction == -1));
+    for row in &result {
+        assert!(row.start_date >= request.as_of);
+        assert!(row.end_date <= request.horizon_end());
+        assert!((5..=90).contains(&row.calendar_days));
+        assert_eq!(row.curve.first().unwrap().mean, Some(0.0));
+        assert!((row.curve.last().unwrap().mean.unwrap() - row.mean_return).abs() < 1e-12);
+    }
+}
+
+#[test]
+fn market_scan_covers_next_year_without_using_incomplete_current_years() {
+    let prices = series("CROSS", 0.001, 2010, 2026);
+    let request = MarketWindowInput {
+        as_of: NaiveDate::from_ymd_opt(2026, 12, 15).unwrap(),
+    };
+    assert_eq!(
+        request.horizon_end(),
+        NaiveDate::from_ymd_opt(2027, 3, 15).unwrap()
+    );
+    let result = scan_market_windows(&prices, &request);
+    assert!(result.iter().any(|row| row.start_date.year() == 2027));
+    assert!(
+        result
+            .iter()
+            .any(|row| row.start_date.year() != row.end_date.year())
+    );
+    for row in &result {
+        assert!(row.start_date >= request.as_of && row.end_date <= request.horizon_end());
+        assert!(
+            row.observations
+                .iter()
+                .all(|sample| sample.exit_date.year() < 2026)
+        );
+        if row.start_date.year() != row.end_date.year() {
+            assert!(!row.years.contains(&2025));
+        }
+    }
+}
+
+#[test]
+fn market_scan_skips_leap_boundaries_and_keeps_the_90_calendar_day_limit() {
+    let prices = series("LEAP", 0.001, 2010, 2025);
+    let request = MarketWindowInput {
+        as_of: NaiveDate::from_ymd_opt(2024, 2, 29).unwrap(),
+    };
+    assert_eq!(
+        request.horizon_end(),
+        NaiveDate::from_ymd_opt(2024, 5, 29).unwrap()
+    );
+    let result = scan_market_windows(&prices, &request);
+    assert!(!result.is_empty());
+    assert!(result.iter().all(|row| {
+        row.start_date >= request.as_of
+            && row.end_date <= request.horizon_end()
+            && !(row.start_date.month() == 2 && row.start_date.day() == 29)
+            && !(row.end_date.month() == 2 && row.end_date.day() == 29)
+            && row.years.iter().all(|year| *year < 2024)
+    }));
+}
+
+#[test]
+fn market_scan_preserves_missing_evidence_and_does_not_bridge_price_gaps() {
+    let request = MarketWindowInput {
+        as_of: NaiveDate::from_ymd_opt(2026, 6, 1).unwrap(),
+    };
+    assert!(scan_market_windows(&series("SHORT", 0.001, 2022, 2025), &request).is_empty());
+    assert!(scan_market_windows(&series("FLAT", 0.0, 2010, 2025), &request).is_empty());
+    let mut prices = series("GAPS", 0.001, 2010, 2025);
+    prices
+        .prices
+        .retain(|date, _| !(date.month() == 7 && date.day() <= 20));
+    let result = scan_market_windows(&prices, &request);
+    assert!(!result.is_empty());
+    for row in result {
+        for sample in row.observations {
+            let dates: Vec<_> = prices
+                .prices
+                .range(sample.entry_date..=sample.exit_date)
+                .map(|(date, _)| *date)
+                .collect();
+            assert!(
+                dates
+                    .windows(2)
+                    .all(|pair| (pair[1] - pair[0]).num_days() <= 7)
+            );
+        }
+    }
+}
+
+#[test]
+fn market_scan_validates_its_date_and_retains_only_nonoverlapping_top_ten_per_direction() {
+    assert!(
+        MarketWindowInput {
+            as_of: NaiveDate::from_ymd_opt(1800, 1, 1).unwrap()
+        }
+        .validate()
+        .is_err()
+    );
+    let request = MarketWindowInput {
+        as_of: NaiveDate::from_ymd_opt(2026, 6, 15).unwrap(),
+    };
+    let result = scan_market_windows(&series("A", 0.001, 2010, 2025), &request);
+    for direction in [-1, 1] {
+        let rows: Vec<_> = result
+            .iter()
+            .filter(|row| row.direction == direction)
+            .collect();
+        assert!(rows.len() <= 10);
+        for (index, row) in rows.iter().enumerate() {
+            for other in &rows[index + 1..] {
+                let overlap = (row.end_date.min(other.end_date)
+                    - row.start_date.max(other.start_date))
+                .num_days()
+                .max(0);
+                assert!(
+                    (overlap as f64) < 0.75 * f64::from(row.calendar_days.min(other.calendar_days))
+                );
+            }
+        }
+    }
+}

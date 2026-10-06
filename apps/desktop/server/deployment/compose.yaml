@@ -1,0 +1,62 @@
+# Linux host networking keeps the backend on the host's loopback interface.
+# No ports section: only Caddy binds public TCP 80/443; backend stays 127.0.0.1.
+services:
+  backend:
+    image: personal-macro-private-server:local
+    build:
+      context: ../..
+      dockerfile: src-tauri/Dockerfile.private-server
+    network_mode: host
+    user: "10001:10001"
+    read_only: true
+    init: true
+    restart: unless-stopped
+    stop_grace_period: 60s
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 256
+    environment:
+      MACRO_DATA_ROOT: /data
+      MACRO_LISTEN_ADDR: 127.0.0.1:8080
+      MACRO_WORKSPACE_ID: ${MACRO_WORKSPACE_ID:?Set the persistent workspace identity}
+      MACRO_GATEWAY_SECRET: ${MACRO_GATEWAY_SECRET:?Set the private gateway secret}
+    volumes:
+      - type: bind
+        source: ${MACRO_HOST_DATA_ROOT:?Set an absolute persistent data directory}
+        target: /data
+        bind:
+          create_host_path: false
+    tmpfs:
+      - /tmp:size=128m,mode=1777,noexec,nosuid
+
+  proxy:
+    image: caddy:2-alpine@sha256:6aeddd44c3078b0f9a35206472a11420648a79c184603ef95957d0a20044cb2b
+    network_mode: host
+    user: "10002:10002"
+    read_only: true
+    restart: unless-stopped
+    stop_grace_period: 30s
+    cap_drop: [ALL]
+    cap_add: [NET_BIND_SERVICE]
+    security_opt: [no-new-privileges:true]
+    pids_limit: 128
+    depends_on:
+      backend:
+        condition: service_started
+    environment:
+      MACRO_API_HOST: ${MACRO_API_HOST:?Set the backend DNS hostname without a scheme}
+      ACME_EMAIL: ${ACME_EMAIL:?Set the certificate contact email}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - type: bind
+        source: ${MACRO_CADDY_DATA_ROOT:?Set an absolute certificate storage directory}
+        target: /data
+        bind:
+          create_host_path: false
+      - type: bind
+        source: ${MACRO_CADDY_CONFIG_ROOT:?Set an absolute Caddy configuration directory}
+        target: /config
+        bind:
+          create_host_path: false
+    tmpfs:
+      - /tmp:size=16m,mode=1777,noexec,nosuid

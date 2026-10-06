@@ -1,12 +1,13 @@
 import * as Dialog from "@radix-ui/react-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { Check, ChevronLeft, ChevronRight, Save, X } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { toast } from "sonner";
 import { Badge } from "../../components/ui/badge";
 import { Button } from "../../components/ui/button";
 import { fromInputDateTime } from "../../lib/utils";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { useUiStore } from "../../stores/ui-store";
 import type {
   BootstrapData,
@@ -21,10 +22,23 @@ import {
   TradeScreenshotImport,
   type ScreenshotReview,
 } from "./trade-screenshot-import";
+import {
+  readTradeDraft,
+  removeTradeDraft,
+  writeTradeDraft,
+} from "./trade-draft-storage";
 
 const DRAFT_KEY = "personal-macro:guided-trade-draft:v1";
 type BoolValue = "" | "true" | "false";
+interface PendingGuidedSave {
+  accountId: string;
+  tradeId: string;
+  instrument: string;
+  finalize: boolean;
+  context: TradeContextInput;
+}
 interface GuidedValues {
+  pendingSave?: PendingGuidedSave;
   status?: "draft" | "planned" | "open" | "closed";
   screenshotReview?: ScreenshotReview;
   instrument: string;
@@ -139,6 +153,8 @@ export function GuidedTradeDialog() {
   const queryClient = useQueryClient();
   const [step, setStep] = useState(0);
   const [values, setValues] = useState<GuidedValues>(emptyValues);
+  const pendingSave = useRef<PendingGuidedSave | null>(null);
+  const selectedAccountId = selectedAccount?.id ?? null;
   const [savedAt, setSavedAt] = useState<string>();
   const [screenshot, setScreenshot] = useState<TradeScreenshotInput | null>(
     null,
@@ -152,22 +168,33 @@ export function GuidedTradeDialog() {
     if (!guidedTradeOpen) return;
     try {
       const saved = JSON.parse(
-        localStorage.getItem(DRAFT_KEY) ?? "null",
+        readTradeDraft(DRAFT_KEY, selectedAccountId ?? "") ?? "null",
       ) as GuidedValues | null;
-      setValues(resolveGuidedDraft(saved, selectedAccount?.id ?? null));
+      const restored = resolveGuidedDraft(saved, selectedAccountId);
+      const retained =
+        pendingSave.current?.accountId === selectedAccountId
+          ? pendingSave.current
+          : restored.pendingSave;
+      pendingSave.current = retained ?? null;
+      setValues({ ...restored, pendingSave: retained });
     } catch {
-      setValues(emptyValues);
+      pendingSave.current = null;
+      setValues({ ...emptyValues, accountId: selectedAccountId ?? "" });
     }
     setStep(0);
-  }, [guidedTradeOpen, selectedAccount]);
+  }, [guidedTradeOpen, selectedAccountId]);
   useEffect(() => {
     if (guidedTradeOpen && !ready) setGuidedTradeOpen(false);
   }, [guidedTradeOpen, ready, setGuidedTradeOpen]);
   useEffect(() => {
     if (!guidedTradeOpen) return;
     const timer = window.setTimeout(() => {
-      localStorage.setItem(DRAFT_KEY, JSON.stringify(values));
-      setSavedAt(new Date().toISOString());
+      try {
+        writeTradeDraft(DRAFT_KEY, values.accountId, JSON.stringify(values));
+        setSavedAt(new Date().toISOString());
+      } catch {
+        setSavedAt(undefined);
+      }
     }, 450);
     return () => window.clearTimeout(timer);
   }, [values, guidedTradeOpen]);
@@ -177,34 +204,74 @@ export function GuidedTradeDialog() {
   );
   const mutation = useMutation({
     mutationFn: async (finalize: boolean) => {
-      const input = toTradeInput(values, finalize, selectedAccount!.id);
-      const trade = screenshot
-        ? await api.createTradeWithScreenshot(input, screenshot)
-        : await api.createTrade(input);
-      await api.saveTradeContext(
-        selectedAccount!.id,
-        toTradeContext(trade.id, values, bootstrap.data),
-      );
-      return trade;
+      const accountId = selectedAccountId;
+      if (!ready || !accountId)
+        throw new Error("Bitte ein aktives Konto auswählen.");
+      let pending = pendingSave.current;
+      if (pending && pending.accountId !== accountId)
+        throw new Error(
+          "Die offenen Ergänzungen gehören zu einem anderen Konto.",
+        );
+      if (!pending) {
+        const input = toTradeInput(values, finalize, accountId);
+        const trade = screenshot
+          ? await api.createTradeWithScreenshot(input, screenshot)
+          : await api.createTrade(input);
+        pending = {
+          accountId,
+          tradeId: trade.id,
+          instrument: trade.instrument,
+          finalize,
+          context: toTradeContext(trade.id, values, bootstrap.data),
+        };
+        // The trade is committed. Persist its identity before a second command
+        // can fail, so reopening the draft never creates another trade.
+        pendingSave.current = pending;
+        const committedDraft = { ...values, pendingSave: pending };
+        setValues(committedDraft);
+        try {
+          writeTradeDraft(DRAFT_KEY, accountId, JSON.stringify(committedDraft));
+        } catch {
+          // The in-memory identity still protects retries in this dialog.
+          setSavedAt(undefined);
+        }
+      }
+      await api.saveTradeContext(accountId, pending.context);
+      return pending;
     },
-    onSuccess: async (trade, finalize) => {
-      await Promise.all([
-        queryClient.invalidateQueries({ queryKey: ["trades"] }),
-        queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
-        queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),
-        queryClient.invalidateQueries({ queryKey: ["media"] }),
-      ]);
-      localStorage.removeItem(DRAFT_KEY);
+    onSuccess: (saved) => {
+      removeTradeDraft(DRAFT_KEY, saved.accountId);
+      pendingSave.current = null;
       setValues(emptyValues);
       toast.success(
-        finalize
-          ? `${trade.instrument} vollständig gespeichert.`
-          : `${trade.instrument} als Datenbank-Entwurf gespeichert.`,
+        saved.finalize
+          ? `${saved.instrument} vollständig gespeichert.`
+          : `${saved.instrument} als Datenbank-Entwurf gespeichert.`,
       );
       setGuidedTradeOpen(false);
     },
-    onError: (error: { message?: string }) =>
-      toast.error(error.message ?? "Trade konnte nicht gespeichert werden."),
+    onError: (error: { message?: string }) => {
+      toast.error(
+        pendingSave.current
+          ? `Der Trade ist gespeichert. Seine Ergänzungen fehlen noch. Erneut versuchen speichert nur diese Ergänzungen. ${error.message ?? ""}`.trim()
+          : (error.message ?? "Trade konnte nicht gespeichert werden."),
+      );
+    },
+    onSettled: async () => {
+      await Promise.all(
+        [
+          "trades",
+          "trade",
+          "trade-context",
+          "dashboard",
+          "bootstrap",
+          "media",
+          "calendar",
+          "analytics",
+          "account-journal",
+        ].map((key) => queryClient.invalidateQueries({ queryKey: [key] })),
+      );
+    },
   });
   const set = useCallback(
     <K extends keyof GuidedValues>(key: K, value: GuidedValues[K]) =>
@@ -233,12 +300,18 @@ export function GuidedTradeDialog() {
                 id="guided-description"
                 className="dialog-description"
               >
-                Vier Schritte · automatische lokale Zwischenspeicherung
+                {isPrivateWeb()
+                  ? "Vier Schritte · Entwurf bleibt nur in dieser Sitzung"
+                  : "Vier Schritte · automatische lokale Zwischenspeicherung"}
               </Dialog.Description>
             </div>
             <div className="page-actions">
               <Badge className="positive">
-                {savedAt ? "Automatisch gespeichert" : "Bereit"}
+                {savedAt
+                  ? isPrivateWeb()
+                    ? "Für diese Sitzung vorgemerkt"
+                    : "Automatisch gespeichert"
+                  : "Bereit"}
               </Badge>
               <Dialog.Close asChild>
                 <Button
@@ -255,6 +328,7 @@ export function GuidedTradeDialog() {
             {steps.map((label, index) => (
               <button
                 key={label}
+                disabled={Boolean(values.pendingSave) || mutation.isPending}
                 className={
                   index === step ? "active" : index < step ? "complete" : ""
                 }
@@ -269,91 +343,114 @@ export function GuidedTradeDialog() {
             </div>
           </div>
           <div className="dialog-body">
-            <TradeScreenshotImport
-              key={selectedAccount?.id}
-              accountCurrency={selectedAccount?.baseCurrency ?? "EUR"}
-              disabled={mutation.isPending}
-              onImageChange={setScreenshot}
-              onBusyChange={setScreenshotBusy}
-              onApply={(patch, review) => {
-                setAllowRecalculation(false);
-                setValues((current) => ({
-                  ...current,
-                  ...patch,
-                  status: patch.status as GuidedValues["status"],
-                  direction: patch.direction as GuidedValues["direction"],
-                  assetClass:
-                    review.assetClass && patch.instrument
-                      ? review.assetClass
-                      : current.assetClass,
-                  plannedEntry: patch.actualEntry ?? current.plannedEntry,
-                  riskPercent:
-                    patch.riskPercent ??
-                    (patch.plannedRisk ? "" : current.riskPercent),
-                  screenshotReview: review,
-                }));
-              }}
-            />
-            {values.screenshotReview && !screenshot && (
-              <p className="form-section-copy">
-                Die übernommenen Werte sind im Entwurf gespeichert. Den
-                zugehörigen Screenshot bei Bedarf erneut hinzufügen.
+            {values.pendingSave ? (
+              <p role="status" className="form-section-copy">
+                {values.pendingSave.instrument} ist bereits gespeichert. Tags,
+                Checkliste und weitere Ergänzungen warten noch auf die
+                Bestätigung. Mit „Ergänzungen erneut speichern“ wird derselbe
+                Trade vervollständigt.
               </p>
+            ) : (
+              <>
+                <TradeScreenshotImport
+                  key={selectedAccount?.id}
+                  accountCurrency={selectedAccount?.baseCurrency ?? "EUR"}
+                  disabled={mutation.isPending}
+                  onImageChange={setScreenshot}
+                  onBusyChange={setScreenshotBusy}
+                  onApply={(patch, review) => {
+                    setAllowRecalculation(false);
+                    setValues((current) => ({
+                      ...current,
+                      ...patch,
+                      status: patch.status as GuidedValues["status"],
+                      direction: patch.direction as GuidedValues["direction"],
+                      assetClass:
+                        review.assetClass && patch.instrument
+                          ? review.assetClass
+                          : current.assetClass,
+                      plannedEntry: patch.actualEntry ?? current.plannedEntry,
+                      riskPercent:
+                        patch.riskPercent ??
+                        (patch.plannedRisk ? "" : current.riskPercent),
+                      screenshotReview: review,
+                    }));
+                  }}
+                />
+                {values.screenshotReview && !screenshot && (
+                  <p className="form-section-copy">
+                    Die übernommenen Werte sind im Entwurf gespeichert. Den
+                    zugehörigen Screenshot bei Bedarf erneut hinzufügen.
+                  </p>
+                )}
+                {step === 0 && (
+                  <PlanningStep
+                    values={values}
+                    set={set}
+                    bootstrap={bootstrap.data}
+                    selectedAccount={selectedAccount}
+                    autoApply={!values.screenshotReview || allowRecalculation}
+                    onEnableAutomatic={() => setAllowRecalculation(true)}
+                  />
+                )}
+                {step === 1 && <ExecutionStep values={values} set={set} />}
+                {step === 2 && <ResultStep values={values} set={set} />}
+                {step === 3 && <ReviewStep values={values} set={set} />}
+              </>
             )}
-            {step === 0 && (
-              <PlanningStep
-                values={values}
-                set={set}
-                bootstrap={bootstrap.data}
-                selectedAccount={selectedAccount}
-                autoApply={!values.screenshotReview || allowRecalculation}
-                onEnableAutomatic={() => setAllowRecalculation(true)}
-              />
-            )}
-            {step === 1 && <ExecutionStep values={values} set={set} />}
-            {step === 2 && <ResultStep values={values} set={set} />}
-            {step === 3 && <ReviewStep values={values} set={set} />}
           </div>
           <footer className="dialog-footer">
-            <div className="page-actions">
-              <Button
-                disabled={step === 0}
-                onClick={() => setStep((value) => value - 1)}
-              >
-                <ChevronLeft size={14} /> Zurück
-              </Button>
-              <Button
-                onClick={() => mutation.mutate(false)}
-                disabled={
-                  !ready ||
-                  !values.instrument.trim() ||
-                  mutation.isPending ||
-                  screenshotBusy
-                }
-              >
-                <Save size={14} /> Als Entwurf
-              </Button>
-            </div>
-            {step < 3 ? (
+            {values.pendingSave ? (
               <Button
                 variant="primary"
-                onClick={() => setStep((value) => value + 1)}
+                disabled={!ready || mutation.isPending}
+                onClick={() => mutation.mutate(values.pendingSave!.finalize)}
               >
-                Weiter <ChevronRight size={14} />
+                <Save size={14} /> Ergänzungen erneut speichern
               </Button>
             ) : (
-              <Button
-                variant="primary"
-                onClick={() => mutation.mutate(true)}
-                disabled={
-                  !ready ||
-                  !values.instrument.trim() ||
-                  mutation.isPending ||
-                  screenshotBusy
-                }
-              >
-                <Check size={14} /> Trade speichern
-              </Button>
+              <>
+                <div className="page-actions">
+                  <Button
+                    disabled={step === 0}
+                    onClick={() => setStep((value) => value - 1)}
+                  >
+                    <ChevronLeft size={14} /> Zurück
+                  </Button>
+                  <Button
+                    onClick={() => mutation.mutate(false)}
+                    disabled={
+                      !ready ||
+                      !values.instrument.trim() ||
+                      mutation.isPending ||
+                      screenshotBusy
+                    }
+                  >
+                    <Save size={14} /> Als Entwurf
+                  </Button>
+                </div>
+                {step < 3 ? (
+                  <Button
+                    variant="primary"
+                    onClick={() => setStep((value) => value + 1)}
+                  >
+                    Weiter <ChevronRight size={14} />
+                  </Button>
+                ) : (
+                  <Button
+                    variant="primary"
+                    onClick={() => mutation.mutate(true)}
+                    disabled={
+                      !ready ||
+                      !values.instrument.trim() ||
+                      mutation.isPending ||
+                      screenshotBusy
+                    }
+                  >
+                    <Check size={14} /> Trade speichern
+                  </Button>
+                )}
+              </>
             )}
           </footer>
         </Dialog.Content>

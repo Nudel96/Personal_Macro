@@ -217,7 +217,7 @@ pub fn validate_context(context: &SavedContext) -> CommandResult<()> {
     Ok(())
 }
 
-fn validate_text(title: &str, note: &str) -> CommandResult<()> {
+pub(crate) fn validate_text(title: &str, note: &str) -> CommandResult<()> {
     if title.trim().is_empty() || !bounded(title.trim(), 160) || !bounded(note, 12000) {
         return Err(CommandError::validation(
             "Bitte einen Namen mit höchstens 160 und eine Notiz mit höchstens 12.000 Zeichen verwenden.",
@@ -226,7 +226,7 @@ fn validate_text(title: &str, note: &str) -> CommandResult<()> {
     Ok(())
 }
 
-fn validate_sources(sources: &[SourceReference]) -> CommandResult<()> {
+pub(crate) fn validate_sources(sources: &[SourceReference]) -> CommandResult<()> {
     if sources.len() > 160
         || sources.iter().any(|s| {
             ![
@@ -270,14 +270,14 @@ fn validate_sources(sources: &[SourceReference]) -> CommandResult<()> {
     Ok(())
 }
 
-fn image_hash(bytes: &[u8]) -> String {
+pub(crate) fn image_hash(bytes: &[u8]) -> String {
     Sha256::digest(bytes)
         .iter()
         .map(|byte| format!("{byte:02x}"))
         .collect()
 }
 
-fn decode_snapshot(input: Option<&str>) -> CommandResult<Option<Vec<u8>>> {
+pub(crate) fn decode_snapshot(input: Option<&str>) -> CommandResult<Option<Vec<u8>>> {
     let Some(input) = input else {
         return Ok(None);
     };

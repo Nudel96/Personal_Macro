@@ -1,0 +1,407 @@
+/* Mobile browser layout is separate from the dense desktop workspace. */
+@media (max-width: 1023px) {
+  html body,
+  html body:has(.world-atlas-page) {
+    min-width: 0;
+    margin: 0;
+  }
+
+  .app-shell {
+    width: 100%;
+    min-height: 100dvh;
+  }
+
+  .app-shell .app-main {
+    width: 100%;
+    margin-left: 0;
+  }
+
+  .app-shell .topbar {
+    height: auto;
+    min-height: 60px;
+    gap: 8px;
+    padding: max(8px, env(safe-area-inset-top))
+      max(12px, env(safe-area-inset-right)) 8px
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .app-shell .topbar-left {
+    gap: 8px;
+    flex: 1;
+  }
+
+  .app-shell .breadcrumbs {
+    font-size: 13px;
+  }
+
+  .app-shell .breadcrumbs strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .app-shell .breadcrumb-brand,
+  .app-shell .topbar-logo,
+  .app-shell .keyboard-shortcut-trigger,
+  .app-shell .search-trigger-copy,
+  .app-shell .search-trigger kbd {
+    display: none;
+  }
+
+  .app-shell .search-trigger {
+    width: 44px;
+    height: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .app-shell .topbar-add-trade {
+    min-width: 44px;
+    height: 44px;
+    padding: 0 12px;
+  }
+
+  .mobile-navigation-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 69;
+    background: rgba(0, 4, 12, 0.72);
+    backdrop-filter: blur(4px);
+  }
+
+  .sidebar.mobile-sidebar {
+    z-index: 70;
+    width: min(340px, calc(100vw - 24px));
+    height: 100dvh;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .mobile-sidebar .brand {
+    padding-right: 60px;
+  }
+
+  .mobile-sidebar .brand-title {
+    font-size: 14px;
+  }
+
+  .mobile-sidebar .mobile-navigation-close {
+    position: absolute;
+    top: calc(18px + env(safe-area-inset-top));
+    right: 12px;
+  }
+
+  .mobile-sidebar .sidebar-scroll {
+    overscroll-behavior: contain;
+  }
+
+  .mobile-sidebar .nav-item {
+    min-height: 46px;
+    font-size: 14px;
+  }
+
+  .mobile-sidebar .context-nav-module {
+    min-height: 54px;
+  }
+
+  .app-shell .page {
+    min-height: calc(100dvh - 60px);
+    padding: 16px max(12px, env(safe-area-inset-right))
+      max(28px, env(safe-area-inset-bottom))
+      max(12px, env(safe-area-inset-left));
+  }
+
+  .app-shell .page-header {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 17px;
+    gap: 14px;
+  }
+
+  .app-shell .page-header:not(:has(.page-context)) > .page-actions,
+  .app-shell .page-header > .page-actions {
+    grid-column: 1;
+    grid-row: auto;
+    justify-content: flex-start;
+    max-width: none;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+  }
+
+  .app-shell .page-title {
+    font-size: 25px;
+    overflow-wrap: anywhere;
+  }
+
+  .app-shell .journal-account-bar {
+    position: static;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    padding: 16px;
+  }
+
+  .app-shell .journal-account-bar-selection {
+    grid-column: 1 / -1;
+    min-width: 0;
+  }
+
+  .app-shell .journal-account-bar-selection .journal-account-selector {
+    max-width: none;
+    min-width: 0;
+    flex: 1;
+  }
+
+  .app-shell .journal-account-number {
+    min-width: 0;
+  }
+
+  .app-shell .journal-account-profit {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .app-shell .journal-account-number strong {
+    font-size: clamp(18px, 5vw, 23px);
+    overflow-wrap: anywhere;
+  }
+
+  .app-shell .journal-account-bar > .button {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+
+  .app-shell .dashboard-main-grid,
+  .app-shell .dashboard-secondary-grid,
+  .app-shell .dashboard-tertiary-grid,
+  .app-shell .settings-grid,
+  .app-shell .market-layout,
+  .app-shell .macro-layout,
+  .app-shell .macro-pipeline-layout,
+  .app-shell .seasonality-deep-layout,
+  .app-shell .seasonality-hero-grid,
+  .app-shell .seasonality-screener-grid,
+  .app-shell .regime-insights-bottom-grid,
+  .app-shell .bond-workspace,
+  .app-shell .world-atlas-page .atlas-workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-shell .kpi-grid,
+  .app-shell .economic-kpi-grid,
+  .app-shell .macro-summary-grid,
+  .app-shell .central-bank-kpis,
+  .app-shell .bond-overview-kpis,
+  .app-shell .regime-insights-current-grid,
+  .app-shell .world-atlas-page .atlas-domains {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .app-shell .settings-nav {
+    position: static;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .app-shell .settings-nav button {
+    width: auto;
+    flex: 1 1 140px;
+  }
+
+  .app-shell .market-symbol-card {
+    min-height: 0;
+  }
+
+  .app-shell .market-symbols {
+    max-height: 260px;
+  }
+
+  .app-shell .central-bank-detail-card {
+    position: static;
+    max-height: none;
+  }
+
+  .app-shell .atlas-wave-horizons {
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+
+  .app-shell .atlas-wave-horizons button {
+    min-height: 44px;
+  }
+
+  .app-shell .table-wrap,
+  .app-shell div:has(> .account-ledger),
+  .app-shell .bond-table-scroll,
+  .app-shell .economic-calendar-table-wrap,
+  .app-shell .economic-release-table-wrap {
+    max-width: 100%;
+    overflow: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  .app-shell .sortable-kpi {
+    touch-action: pan-y;
+  }
+
+  .app-shell .macro-pipeline-panel {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+  }
+
+  body .button,
+  body .button.sm,
+  body .journal-account-selector,
+  body .segmented button {
+    min-height: 44px;
+  }
+
+  body .button.icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  body .input,
+  body .select,
+  body .textarea,
+  body .command-input {
+    min-height: 44px;
+    font-size: 16px;
+  }
+
+  body .dialog-content,
+  body .dialog-content.wide,
+  body .dialog-content.trade-capture-dialog {
+    width: calc(100vw - 16px);
+    max-height: calc(
+      100dvh - 16px - env(safe-area-inset-top) - env(safe-area-inset-bottom)
+    );
+    border-radius: 14px;
+  }
+
+  body .dialog-header,
+  body .dialog-body,
+  body .dialog-footer {
+    padding: 16px;
+  }
+
+  body .dialog-footer {
+    flex-wrap: wrap;
+  }
+
+  body .dialog-content .form-grid,
+  body .dialog-content .form-grid.cols-3 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .app-shell .topbar-actions {
+    gap: 4px;
+  }
+
+  .app-shell .topbar-add-trade span {
+    display: none;
+  }
+
+  .app-shell .page-heading {
+    gap: 10px;
+  }
+
+  .app-shell .page-heading-icon {
+    flex-basis: 36px;
+    height: 36px;
+  }
+
+  .app-shell .card-content,
+  .app-shell .card-header,
+  .app-shell .toolbar {
+    padding: 14px;
+  }
+
+  .app-shell .kpi-card {
+    padding: 14px;
+  }
+
+  .app-shell .form-grid,
+  .app-shell .form-grid.cols-3,
+  .app-shell .macro-hero-metrics,
+  body .dialog-content .form-grid,
+  body .dialog-content .form-grid.cols-3,
+  .app-shell .account-settings-summary,
+  .app-shell .central-bank-filters,
+  .app-shell .economic-calendar-filters,
+  .app-shell .economic-category-grid,
+  .app-shell .economic-insight-grid,
+  .app-shell .data-status-strip,
+  .app-shell .release-schedule-strip,
+  .app-shell .release-research-grid,
+  .app-shell .currency-detail-grid,
+  .app-shell .currency-factor-grid,
+  .app-shell .seasonality-filter-grid,
+  .app-shell .seasonality-decision-grid,
+  .app-shell .seasonality-diagnostics-grid,
+  .app-shell .seasonality-gain-loss-grid,
+  .app-shell .regime-insights-state-grids,
+  .app-shell .regime-insights-quality-grid,
+  .app-shell .bond-table-filters,
+  .app-shell .bond-detail-controls,
+  .app-shell .bond-detail-kpis,
+  .app-shell .atlas-coverage-families,
+  .app-shell .atlas-coverage-controls,
+  .app-shell .atlas-wave-grid,
+  .app-shell .atlas-valuation-grid,
+  .app-shell .world-atlas-page .atlas-location,
+  .app-shell .world-atlas-page .atlas-location.is-coverage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-shell .form-grid > *,
+  body .dialog-content .form-grid > * {
+    grid-column: auto;
+  }
+
+  .app-shell .settings-row,
+  .app-shell .market-toolbar,
+  .app-shell .market-status-row,
+  body .trade-capture-account,
+  body .trade-capture-result-help,
+  body .position-calculator-heading,
+  body .position-calculator-result {
+    flex-wrap: wrap;
+  }
+
+  body .trade-capture-status > div {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  body .guided-steps {
+    padding-inline: 8px;
+  }
+
+  body .guided-steps button {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 9px;
+  }
+
+  .app-shell .calendar-grid {
+    min-width: 600px;
+  }
+
+  .app-shell .card-content:has(> .calendar-grid) {
+    overflow-x: auto;
+  }
+
+  .app-shell .page-action-menu-panel {
+    max-width: calc(100vw - 48px);
+  }
+
+  body .command-item {
+    min-height: 46px;
+  }
+
+  body .command-footer {
+    display: none;
+  }
+}

@@ -1,5 +1,6 @@
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { atlasContextParams, atlasSavedContext } from "./atlas-notebook-model";
 import type { AtlasSavedContext } from "./atlas-notebook-types";
 
@@ -43,7 +44,7 @@ export function useAtlasLastView(
   params: URLSearchParams,
   restore: (params: URLSearchParams) => void,
 ) {
-  const native = isTauri();
+  const native = isTauri() || isPrivateWeb();
   const initial = useRef(params.toString());
   const current = useRef(initial.current);
   const restoreRef = useRef(restore);

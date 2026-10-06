@@ -1,9 +1,9 @@
 use std::collections::BTreeMap;
 
+use crate::runtime::State;
 use chrono::{DateTime, Datelike, NaiveDate, TimeZone, Utc};
 use serde::{Deserialize, Serialize};
 use sqlx::FromRow;
-use tauri::State;
 
 use crate::{
     commands::{eodhd_fundamentals, seasonality},
@@ -259,7 +259,7 @@ impl RegimeState {
     }
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_aud_china_cpi_regime(
     state: State<'_, AppState>,
     input: AudChinaCpiRegimeInput,
@@ -267,7 +267,7 @@ pub async fn get_aud_china_cpi_regime(
     load_aud_china_cpi_regime(&state, &input).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn refresh_aud_china_cpi_regime(
     state: State<'_, AppState>,
     input: AudChinaCpiRegimeInput,

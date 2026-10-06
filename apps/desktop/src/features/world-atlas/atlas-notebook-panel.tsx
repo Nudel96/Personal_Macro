@@ -5,6 +5,7 @@ import { Bookmark, ChevronDown, Star, Trash2, X } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { useDialogFocus } from "../../components/ui/use-dialog-focus";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import {
   atlasContextParams,
   atlasNotebookSources,
@@ -286,7 +287,7 @@ function EntryForm({
                 ? "Speichere oder verwerfe zuerst deine Änderungen."
                 : !liveContext
                   ? "Diese Ansichtsversion kann hier nicht geöffnet werden. Notiz und Bild bleiben verfügbar."
-                  : "Öffnet deine Auswahl mit den aktuell lokal vorhandenen Daten. Der gespeicherte Bildstand bleibt erhalten."}
+                  : "Öffnet deine Auswahl mit den aktuell vorhandenen Daten. Der gespeicherte Bildstand bleibt erhalten."}
             </p>
           </div>
         )}
@@ -364,7 +365,7 @@ export function AtlasNotebookPanel({
   onNavigate: (params: URLSearchParams) => void;
   lastViewError: string | null;
 }) {
-  const native = isTauri();
+  const native = isTauri() || isPrivateWeb();
   const client = useQueryClient();
   const [expanded, setExpanded] = useState(false);
   const [trashed, setTrashed] = useState(false);
@@ -397,7 +398,9 @@ export function AtlasNotebookPanel({
     setNotice(
       entry.trashedAt
         ? "Ansicht im Papierkorb. Du kannst sie dort wiederherstellen."
-        : "Ansicht lokal gespeichert.",
+        : isPrivateWeb()
+          ? "Ansicht privat in der Cloud gespeichert."
+          : "Ansicht lokal gespeichert.",
     );
   };
   const entries =
@@ -413,7 +416,11 @@ export function AtlasNotebookPanel({
       const context = atlasSavedContext(params);
       const sources = atlasNotebookSources(client, context);
       const picture = root.current
-        ? captureAtlasPictures(root.current, contextLabel)
+        ? captureAtlasPictures(
+            root.current,
+            contextLabel,
+            isPrivateWeb() ? 1024 * 1024 : undefined,
+          )
             .then((base64): Picture => ({ base64, error: null }))
             .catch((e): Picture => ({ base64: null, error: message(e) }))
         : Promise.resolve({ base64: null, error: null });
@@ -461,9 +468,11 @@ export function AtlasNotebookPanel({
           <ChevronDown size={16} /> Gemerkte Ansichten
         </Button>
         <span>
-          {native
-            ? "Eigene Notizen · lokal · im Journal-Backup enthalten"
-            : "Notizen und gemerkte Ansichten sind in der Desktop-App verfügbar."}
+          {isPrivateWeb()
+            ? "Eigene Notizen · privat in deinem Cloud-Journal"
+            : native
+              ? "Eigene Notizen · lokal · im Journal-Backup enthalten"
+              : "Notizen und gemerkte Ansichten sind in der Desktop-App verfügbar."}
         </span>
       </div>
       {lastViewError && <p role="status">{lastViewError}</p>}

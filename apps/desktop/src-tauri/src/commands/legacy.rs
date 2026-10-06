@@ -1,5 +1,6 @@
 use std::path::PathBuf;
 
+use crate::runtime::State;
 use chrono::Utc;
 use serde::Serialize;
 use sha2::{Digest, Sha256};
@@ -8,7 +9,6 @@ use sqlx::{
     sqlite::{SqliteConnectOptions, SqlitePoolOptions},
 };
 use std::str::FromStr;
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -53,7 +53,7 @@ struct LegacyTrade {
     created_at: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn preview_legacy_database(path: String) -> CommandResult<LegacyPreview> {
     let (pool, canonical) = open_legacy(&path).await?;
     let table_exists: i64 = sqlx::query_scalar(
@@ -81,7 +81,7 @@ pub async fn preview_legacy_database(path: String) -> CommandResult<LegacyPrevie
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn import_legacy_database(
     state: State<'_, AppState>,
     path: String,

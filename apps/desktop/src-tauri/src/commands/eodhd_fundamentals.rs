@@ -1,12 +1,12 @@
 use std::{collections::HashMap, str::FromStr};
 
+use crate::runtime::State;
 use chrono::{DateTime, Datelike, Duration, FixedOffset, Months, NaiveDate, TimeZone, Utc};
 use chrono_tz::Tz;
 use rust_decimal::Decimal;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use sqlx::FromRow;
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -577,7 +577,7 @@ fn decide_mapping(scores: &[MappingScore]) -> MappingDecision {
     }
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_eodhd_fundamentals_dashboard(
     state: State<'_, AppState>,
 ) -> CommandResult<MacroFundamentalsDashboard> {
@@ -587,7 +587,7 @@ pub async fn get_eodhd_fundamentals_dashboard(
     load_fundamental_dashboard(&state).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_eodhd_indicator_history(
     state: State<'_, AppState>,
     input: EodhdIndicatorHistoryInput,
@@ -597,7 +597,7 @@ pub async fn get_eodhd_indicator_history(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_economic_calendar(
     state: State<'_, AppState>,
     input: EconomicCalendarInput,
@@ -607,7 +607,7 @@ pub async fn get_economic_calendar(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn sync_eodhd_indicator_history(
     state: State<'_, AppState>,
     input: EodhdIndicatorHistoryInput,
@@ -617,17 +617,17 @@ pub async fn sync_eodhd_indicator_history(
         .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_eodhd_feed_status(state: State<'_, AppState>) -> CommandResult<EodhdFeedStatus> {
     load_feed_status(&state).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn sync_eodhd_now(state: State<'_, AppState>) -> CommandResult<EodhdSyncResult> {
     sync_eodhd(&state, "manual", true).await.map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_eodhd_mapping_candidates(
     state: State<'_, AppState>,
 ) -> CommandResult<Vec<EodhdMappingCandidate>> {
@@ -640,7 +640,7 @@ pub async fn list_eodhd_mapping_candidates(
     .map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn review_eodhd_mapping_candidate(
     state: State<'_, AppState>,
     id: String,
@@ -1156,7 +1156,7 @@ fn economic_calendar_assets(currency: &str, category: &str) -> Vec<String> {
     assets
 }
 
-async fn ingest_events(
+pub(super) async fn ingest_events(
     state: &AppState,
     events: &[eodhd::EconomicEvent],
 ) -> Result<(i64, i64), AppError> {
@@ -1433,7 +1433,10 @@ async fn rebuild_snapshot(state: &AppState) -> Result<bool, AppError> {
     rebuild_snapshot_at(state, Utc::now()).await
 }
 
-async fn rebuild_snapshot_at(state: &AppState, now: DateTime<Utc>) -> Result<bool, AppError> {
+pub(super) async fn rebuild_snapshot_at(
+    state: &AppState,
+    now: DateTime<Utc>,
+) -> Result<bool, AppError> {
     let profiles: Vec<ProfileRow> = sqlx::query_as(
         "SELECT currency,canonical_key,target_label,factor,direction,expected_comparison,
                 expected_frequency,unit,freshness_days
@@ -1488,12 +1491,7 @@ async fn rebuild_snapshot_at(state: &AppState, now: DateTime<Utc>) -> Result<boo
             .to_vec();
         let selected_candidate = select_current_release(&releases);
         let stale_release = selected_candidate.as_ref().is_some_and(|selected| {
-            DateTime::parse_from_rfc3339(&selected.release.released_at)
-                .ok()
-                .map(|released_at| released_at.with_timezone(&Utc))
-                .is_some_and(|released_at| {
-                    released_at < now - Duration::days(profile.freshness_days)
-                })
+            release_is_stale(&selected.release.released_at, profile.freshness_days, now)
         });
         let selected = (!stale_release).then_some(selected_candidate).flatten();
         let (score, status, reasons, surprise) = if let Some(selected) = &selected {
@@ -1681,15 +1679,42 @@ async fn rebuild_snapshot_at(state: &AppState, now: DateTime<Utc>) -> Result<boo
     Ok(true)
 }
 
-async fn load_fundamental_dashboard(
+/// Reads the last persisted evaluation after the desktop refresh check.
+/// Immutable cloud snapshots use the time-aware read-only variant below.
+pub(crate) async fn load_fundamental_dashboard(
     state: &AppState,
+) -> Result<MacroFundamentalsDashboard, AppError> {
+    load_fundamental_dashboard_with_freshness(state, None).await
+}
+
+/// Immutable cloud snapshots cannot run the desktop rebuild. Expire their
+/// selected releases before aggregating, using the same boundary as that
+/// rebuild; retain the imported raw observations and provenance for inspection.
+#[cfg(all(feature = "postgres", not(feature = "desktop")))]
+pub(crate) async fn load_fundamental_dashboard_readonly_at(
+    state: &AppState,
+    now: DateTime<Utc>,
+) -> Result<MacroFundamentalsDashboard, AppError> {
+    load_fundamental_dashboard_with_freshness(state, Some(now)).await
+}
+
+fn release_is_stale(released_at: &str, freshness_days: i64, now: DateTime<Utc>) -> bool {
+    DateTime::parse_from_rfc3339(released_at)
+        .ok()
+        .map(|released_at| released_at.with_timezone(&Utc))
+        .is_some_and(|released_at| released_at < now - Duration::days(freshness_days))
+}
+
+async fn load_fundamental_dashboard_with_freshness(
+    state: &AppState,
+    evaluation_time: Option<DateTime<Utc>>,
 ) -> Result<MacroFundamentalsDashboard, AppError> {
     let snapshot: Option<(String, String)> = sqlx::query_as(
         "SELECT id,built_at FROM eodhd_fundamental_snapshots ORDER BY built_at DESC LIMIT 1",
     )
     .fetch_optional(&state.db)
     .await?;
-    let (snapshot_id, as_of, rows) = if let Some((id, built_at)) = snapshot {
+    let (snapshot_id, as_of, mut rows) = if let Some((id, built_at)) = snapshot {
         let rows: Vec<EvaluationRow> = sqlx::query_as(
             "SELECT currency,canonical_key,source_label,actual_text,forecast_text,previous_text,surprise_text,score,evaluation_status,reason_codes_json,released_at,pending_newer_release_at,frequency,source_url,unit
              FROM eodhd_fundamental_evaluations WHERE snapshot_id=? ORDER BY currency,canonical_key",
@@ -1699,8 +1724,37 @@ async fn load_fundamental_dashboard(
         .await?;
         (Some(id), built_at, rows)
     } else {
-        (None, Utc::now().to_rfc3339(), Vec::new())
+        (
+            None,
+            evaluation_time.unwrap_or_else(Utc::now).to_rfc3339(),
+            Vec::new(),
+        )
     };
+    if let Some(now) = evaluation_time {
+        let profiles: Vec<(String, String, i64)> = sqlx::query_as(
+            "SELECT currency,canonical_key,freshness_days FROM eodhd_indicator_profiles WHERE enabled=1",
+        )
+        .fetch_all(&state.db)
+        .await?;
+        let freshness_by_key = profiles
+            .into_iter()
+            .map(|(currency, key, days)| ((currency, key), days))
+            .collect::<HashMap<_, _>>();
+        for row in &mut rows {
+            if matches!(row.evaluation_status.as_str(), "scored" | "neutral")
+                && let Some(days) =
+                    freshness_by_key.get(&(row.currency.clone(), row.canonical_key.clone()))
+                && row
+                    .released_at
+                    .as_deref()
+                    .is_some_and(|released_at| release_is_stale(released_at, *days, now))
+            {
+                row.score = 0;
+                row.evaluation_status = "unmapped".into();
+                row.reason_codes_json = "[\"stale_release\"]".into();
+            }
+        }
+    }
     let by_key = rows
         .into_iter()
         .map(|row| ((row.currency.clone(), row.canonical_key.clone()), row))
@@ -1814,7 +1868,7 @@ fn validate_history_input(
     Ok((currency, canonical_key))
 }
 
-async fn load_indicator_history_at(
+pub(crate) async fn load_indicator_history_at(
     state: &AppState,
     input: EodhdIndicatorHistoryInput,
     now: DateTime<Utc>,

@@ -1,6 +1,5 @@
 import { Images as PageIcon } from "lucide-react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { convertFileSrc } from "@tauri-apps/api/core";
 import { open } from "@tauri-apps/plugin-dialog";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import {
@@ -44,6 +43,8 @@ import { WorkspaceSummary } from "../../components/ui/workspace-summary";
 import { useDialogFocus } from "../../components/ui/use-dialog-focus";
 import { dateTime, uid } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { mediaUrl } from "../../services/media-url";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import type { MediaRecord } from "../../types/domain";
 
 type AnnotationShape =
@@ -94,6 +95,7 @@ export function MediaPage() {
   const query = useQuery({ queryKey: ["media"], queryFn: api.media });
   const inputRef = useRef<HTMLInputElement>(null);
   const [busy, setBusy] = useState(false);
+  const privateWeb = isPrivateWeb();
   const [selected, setSelected] = useState<MediaRecord>();
   const { rememberFocus, restoreFocus } = useDialogFocus();
   const [search, setSearch] = useState("");
@@ -130,6 +132,24 @@ export function MediaPage() {
   };
   const browserFile = async (file?: File) => {
     if (!file) return;
+    if (privateWeb) {
+      setBusy(true);
+      try {
+        await api.uploadMedia(file);
+        await queryClient.invalidateQueries({ queryKey: ["media"] });
+        toast.success(
+          "Bild privat gespeichert. Das Original bleibt unverändert.",
+        );
+      } catch (error) {
+        toast.error(
+          (error as { message?: string }).message ??
+            "Das Bild konnte nicht hochgeladen werden.",
+        );
+      } finally {
+        setBusy(false);
+      }
+      return;
+    }
     if (file.size > 5 * 1024 * 1024) {
       toast.error("In der Browser-Vorschau sind maximal 5 MB erlaubt.");
       return;
@@ -178,7 +198,11 @@ export function MediaPage() {
         icon={PageIcon}
         eyebrow="Tradingjournal"
         title="Medien"
-        description="Lokale Screenshots mit unverändertem Original und nicht-destruktiven Chart-Anmerkungen."
+        description={
+          privateWeb
+            ? "Private Screenshots mit unverändertem Original und nicht-destruktiven Chart-Anmerkungen. PNG, JPEG oder WebP bis 3 MiB."
+            : "Lokale Screenshots mit unverändertem Original und nicht-destruktiven Chart-Anmerkungen."
+        }
         actions={
           <Button variant="primary" onClick={addMedia} disabled={busy}>
             <Upload size={14} /> {busy ? "Importiert …" : "Datei importieren"}
@@ -189,8 +213,14 @@ export function MediaPage() {
         ref={inputRef}
         hidden
         type="file"
-        accept="image/*"
-        onChange={(event) => browserFile(event.target.files?.[0])}
+        aria-label="Bilddatei auswählen"
+        accept={privateWeb ? "image/png,image/jpeg,image/webp" : "image/*"}
+        disabled={busy}
+        onChange={(event) => {
+          const file = event.target.files?.[0];
+          event.target.value = "";
+          void browserFile(file);
+        }}
       />
       {mediaFiles.length > 0 && (
         <>
@@ -199,7 +229,9 @@ export function MediaPage() {
               {
                 label: "Medienbibliothek",
                 value: mediaFiles.length,
-                detail: "Originale auf diesem Gerät",
+                detail: privateWeb
+                  ? "Originale im privaten Workspace"
+                  : "Originale auf diesem Gerät",
               },
               {
                 label: "Mit Trades verknüpft",
@@ -246,7 +278,7 @@ export function MediaPage() {
                 : "Sammle Screenshots zu deinen Trades und ergänze Pfeile, Markierungen und Notizen. Das Original bleibt erhalten."
             }
             action={
-              <Button variant="primary" onClick={addMedia}>
+              <Button variant="primary" onClick={addMedia} disabled={busy}>
                 <Plus size={14} /> Screenshot importieren
               </Button>
             }
@@ -269,13 +301,11 @@ function MediaCard({
   media: MediaRecord;
   onClick: () => void;
 }) {
-  const src = media.absolutePath.startsWith("data:")
-    ? media.absolutePath
-    : convertFileSrc(media.absolutePath);
+  const src = mediaUrl(media);
   return (
     <Card className="collection-card">
       <div className="media-preview">
-        {media.mimeType.startsWith("image/") ? (
+        {src && media.mimeType.startsWith("image/") ? (
           <img src={src} alt={media.originalFilename} />
         ) : (
           <FileImage size={32} className="muted" />
@@ -314,11 +344,7 @@ function AnnotationDialog({
   onOpenChange: (open: boolean) => void;
   onCloseAutoFocus: (event: Event) => void;
 }) {
-  const src = media
-    ? media.absolutePath.startsWith("data:")
-      ? media.absolutePath
-      : convertFileSrc(media.absolutePath)
-    : "";
+  const src = media ? mediaUrl(media) : "";
   const query = useQuery({
     queryKey: ["media-annotation", media?.id],
     queryFn: () => api.mediaAnnotation(media!.id),
@@ -333,10 +359,16 @@ function AnnotationDialog({
   const [color, setColor] = useState("#4c8dff");
   const stageRef = useRef<Konva.Stage>(null);
   useEffect(() => {
+    setImage(undefined);
     if (!src) return;
+    let active = true;
     const next = new window.Image();
-    next.onload = () => setImage(next);
+    next.onload = () => active && setImage(next);
     next.src = src;
+    return () => {
+      active = false;
+      next.onload = null;
+    };
   }, [src]);
   useEffect(() => {
     if (!query.data) {

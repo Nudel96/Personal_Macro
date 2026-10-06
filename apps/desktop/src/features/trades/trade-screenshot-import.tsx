@@ -15,6 +15,8 @@ import {
 } from "react";
 import { Button } from "../../components/ui/button";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
 import type { TradeScreenshotInput } from "../../types/domain";
 import { readScreenshotColors } from "./trade-screenshot-colors";
 import {
@@ -94,8 +96,9 @@ export function TradeScreenshotImport({
       onBusyChange(false);
       return;
     }
-    if (!file.size || file.size > 12 * 1024 * 1024) {
-      setError("Der Screenshot ist leer oder größer als 12 MB.");
+    const limit = isPrivateWeb() ? 3 : 12;
+    if (!file.size || file.size > limit * 1024 * 1024) {
+      setError(`Der Screenshot ist leer oder größer als ${limit} MiB.`);
       setBusy(false);
       onBusyChange(false);
       return;
@@ -265,7 +268,11 @@ export function TradeScreenshotImport({
     setApplied(true);
   }
 
-  if (!isTauri())
+  if (
+    !isTauri() &&
+    (!isPrivateWeb() ||
+      !supportsPrivateWebCommand("create_trade_with_screenshot"))
+  )
     return (
       <section className="screenshot-import">
         <strong>
@@ -293,8 +300,9 @@ export function TradeScreenshotImport({
             <ScanText size={17} /> Trade aus Screenshot
           </strong>
           <p className="muted">
-            TradingView-Bild hier ablegen oder mit Strg+V einfügen. Die
-            Erkennung bleibt lokal.
+            {isPrivateWeb()
+              ? "Bild auswählen oder einfügen. Die Erkennung erfolgt auf diesem Gerät; beim Speichern kommt das Original in deinen privaten Bildspeicher."
+              : "TradingView-Bild hier ablegen oder mit Strg+V einfügen. Die Erkennung bleibt lokal."}
           </p>
         </div>
         <div className="page-actions">

@@ -15,7 +15,6 @@ use serde::Deserialize;
 use crate::errors::CommandError;
 
 const EOD_URL: &str = "https://eodhd.com/api/eod";
-const INTRADAY_URL: &str = "https://eodhd.com/api/intraday";
 const SYMBOLS_URL: &str = "https://eodhd.com/api/exchange-symbol-list";
 const COMMODITIES_URL: &str = "https://eodhd.com/api/commodities/historical";
 const COMMODITY_PAGE_SIZE: usize = 1_000;
@@ -68,16 +67,6 @@ struct EodRow {
     low: Option<f64>,
     close: Option<f64>,
     adjusted_close: Option<f64>,
-    volume: Option<f64>,
-}
-
-#[derive(Debug, Deserialize)]
-struct IntradayRow {
-    timestamp: i64,
-    open: Option<f64>,
-    high: Option<f64>,
-    low: Option<f64>,
-    close: Option<f64>,
     volume: Option<f64>,
 }
 
@@ -214,54 +203,6 @@ pub async fn history(
     }
 }
 
-pub async fn intraday_hourly_history(
-    client: &Client,
-    api_key: &str,
-    source_code: &str,
-    from: i64,
-    to: i64,
-) -> Result<Vec<PriceBar>, CommandError> {
-    if source_code.trim().is_empty() || from <= 0 || to < from {
-        return Err(provider_error(
-            "Die EODHD-Intraday-Anfrage enthält ungültige Parameter.",
-        ));
-    }
-    let mut url = Url::parse(&format!("{INTRADAY_URL}/{}", source_code.trim())).map_err(|_| {
-        provider_error("Die EODHD-Intraday-Anfrage konnte nicht vorbereitet werden.")
-    })?;
-    url.query_pairs_mut()
-        .append_pair("api_token", api_key)
-        .append_pair("fmt", "json")
-        .append_pair("interval", "1h")
-        .append_pair("from", &from.to_string())
-        .append_pair("to", &to.to_string());
-    let response = client.get(url).send().await.map_err(|_| {
-        provider_error("Die EODHD-Intraday-Historie ist momentan nicht erreichbar.")
-    })?;
-    if !response.status().is_success() {
-        return Err(http_error(
-            "EODHD-Intraday-Historie",
-            response.status().as_u16(),
-        ));
-    }
-    let rows: Vec<IntradayRow> = response
-        .json()
-        .await
-        .map_err(|_| provider_error("EODHD hat eine ungültige Intraday-Historie geliefert."))?;
-    let mut bars = rows
-        .into_iter()
-        .filter_map(intraday_row_to_bar)
-        .collect::<Vec<_>>();
-    bars.sort_by_key(|bar| bar.time);
-    bars.dedup_by_key(|bar| bar.time);
-    if bars.is_empty() {
-        return Err(provider_error(
-            "EODHD liefert für dieses Forexpaar keine nutzbare 1H-Historie.",
-        ));
-    }
-    Ok(bars)
-}
-
 async fn fetch_exchange_symbols(
     client: &Client,
     api_key: &str,
@@ -388,27 +329,6 @@ fn eod_row_to_bar(row: EodRow) -> Option<PriceBar> {
         open: row.open.and_then(valid_price).unwrap_or(close),
         high: row.high.and_then(valid_price).unwrap_or(close),
         low: row.low.and_then(valid_price).unwrap_or(close),
-        close,
-        volume: row
-            .volume
-            .filter(|value| value.is_finite() && *value >= 0.0)
-            .map(|value| value.round().clamp(0.0, i64::MAX as f64) as i64),
-    })
-}
-
-fn intraday_row_to_bar(row: IntradayRow) -> Option<PriceBar> {
-    let open = row.open.and_then(valid_price)?;
-    let high = row.high.and_then(valid_price)?;
-    let low = row.low.and_then(valid_price)?;
-    let close = row.close.and_then(valid_price)?;
-    if row.timestamp <= 0 || high < open.max(close).max(low) || low > open.min(close).min(high) {
-        return None;
-    }
-    Some(PriceBar {
-        time: row.timestamp.checked_mul(1_000)?,
-        open,
-        high,
-        low,
         close,
         volume: row
             .volume
@@ -761,33 +681,6 @@ mod tests {
         .unwrap();
         assert_eq!(bar.close, 50.0);
         assert_eq!(bar.open, 90.0);
-    }
-
-    #[test]
-    fn intraday_rows_require_complete_consistent_ohlc() {
-        let bar = intraday_row_to_bar(IntradayRow {
-            timestamp: 1_700_000_000,
-            open: Some(1.10),
-            high: Some(1.12),
-            low: Some(1.09),
-            close: Some(1.11),
-            volume: Some(42.0),
-        })
-        .unwrap();
-        assert_eq!(bar.time, 1_700_000_000_000);
-        assert_eq!(bar.high, 1.12);
-
-        assert!(
-            intraday_row_to_bar(IntradayRow {
-                timestamp: 1_700_000_000,
-                open: Some(1.10),
-                high: Some(1.08),
-                low: Some(1.09),
-                close: Some(1.11),
-                volume: None,
-            })
-            .is_none()
-        );
     }
 
     #[test]

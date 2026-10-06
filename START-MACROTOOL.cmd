@@ -25,7 +25,7 @@ REM A separate Windows target allows rebuilding while the current app stays open
 for /f "usebackq delims=" %%E in (`powershell -NoProfile -ExecutionPolicy Bypass -Command "Get-Item -LiteralPath $env:DEFAULT_APP_EXE,$env:TARGET_APP_EXE -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1 -ExpandProperty FullName"`) do set "APP_EXE=%%E"
 
 REM Build only when no release executable exists or source files are newer.
-powershell -NoProfile -ExecutionPolicy Bypass -Command "$exe='%APP_EXE%'; $changed = -not (Test-Path -LiteralPath $exe); if (-not $changed) { $latest = Get-ChildItem -LiteralPath '%ROOT%apps\desktop\src','%ROOT%apps\desktop\src-tauri\src','%ROOT%apps\desktop\src-tauri\migrations','%ROOT%apps\desktop\src-tauri\atlas-migrations','%ROOT%apps\desktop\src-tauri\bond-migrations' -Recurse -File | Sort-Object LastWriteTime -Descending | Select-Object -First 1; $changed = $latest.LastWriteTime -gt (Get-Item -LiteralPath $exe).LastWriteTime }; exit ([int]$changed)"
+powershell -NoProfile -ExecutionPolicy Bypass -Command "$exe='%APP_EXE%'; $changed = -not (Test-Path -LiteralPath $exe); if (-not $changed) { $latest = Get-ChildItem -LiteralPath '%ROOT%apps\desktop\src','%ROOT%apps\desktop\src-tauri\src','%ROOT%apps\desktop\src-tauri\connectors','%ROOT%apps\desktop\src-tauri\migrations','%ROOT%apps\desktop\src-tauri\atlas-migrations','%ROOT%apps\desktop\src-tauri\bond-migrations' -Recurse -File | Where-Object { $_.Extension -notin '.pyc','.pyo' } | Sort-Object LastWriteTime -Descending | Select-Object -First 1; $changed = $latest.LastWriteTime -gt (Get-Item -LiteralPath $exe).LastWriteTime }; exit ([int]$changed)"
 if errorlevel 1 (
   echo Erstelle stabilen Desktop-Build ...
   call pnpm tauri build

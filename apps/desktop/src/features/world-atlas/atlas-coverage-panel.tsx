@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { Button } from "../../components/ui/button";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { atlasCatalog } from "./atlas-catalog";
 import { atlasMarketProxies } from "./atlas-markets";
 import { atlasPublicCatalog } from "./atlas-public";
@@ -66,103 +67,126 @@ export function AtlasCoveragePanel({
   };
   onNavigate: (values: Record<string, string>) => void;
 }) {
+  const [requestedArea, setRequestedArea] = useState<string | null>(null);
+  const canRead = !isPrivateWeb() || requestedArea === geography.id;
   const catalog = atlasCatalog;
   const client = useQueryClient();
   const [expanded, setExpanded] = useState<Record<string, boolean>>({});
   const publicQueries = useQueries({
     queries: atlasPublicCatalog.sources.map((source) => ({
       queryKey: ["atlas", "public", source.id, geography.id],
+      enabled: canRead,
       queryFn: () => api.atlasPublicSource(source.id, geography.id),
     })),
   });
   const series = useQueries({
     queries: catalog.series.map((def) => ({
       queryKey: ["atlas", "series", def.id, geography.id],
+      enabled: canRead,
       queryFn: () =>
         api.atlasSeries({ seriesId: def.id, geographyId: geography.id }),
     })),
   });
   const demography = useQuery({
     queryKey: ["atlas", "demography", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasDemography(geography.id),
   });
   const history = useQuery({
     queryKey: ["atlas", "history", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasHistory(geography.id),
   });
   const energy = useQuery({
     queryKey: ["atlas", "energy", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasEnergy(geography.id),
   });
   const housingRatios = useQuery({
     queryKey: ["atlas", "housingRatios", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasHousingRatios(geography.id),
   });
   const education = useQuery({
     queryKey: ["atlas", "education", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasEducation(geography.id),
   });
   const agriculture = useQuery({
     queryKey: ["atlas", "agriculture", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasAgriculture(geography.id),
   });
   const commodities = useQuery({
     queryKey: ["atlas", "commodities"],
+    enabled: canRead,
     queryFn: () => api.atlasCommodities(),
   });
   const findex = useQuery({
     queryKey: ["atlas", "findex", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasFindex(geography.id),
   });
   const labor = useQuery({
     queryKey: ["atlas", "labor", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasLabor(geography.id),
   });
   const innovation = useQuery({
     queryKey: ["atlas", "innovation", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasInnovation(geography.id),
   });
   const health = useQuery({
     queryKey: ["atlas", "health", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasHealth(geography.id),
   });
   const fiscal = useQuery({
     queryKey: ["atlas", "fiscal", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasFiscal(geography.id),
   });
   const debt = useQuery({
     queryKey: ["atlas", "debt", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasDebt(geography.id),
   });
   const households = useQuery({
     queryKey: ["atlas", "households", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasHouseholds(geography.id),
   });
   const macrohistory = useQuery({
     queryKey: ["atlas", "macrohistory", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasMacrohistory(geography.id),
   });
   const property = useQuery({
     queryKey: ["atlas", "property", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasProperty(geography.id),
   });
   const credit = useQuery({
     queryKey: ["atlas", "credit", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasCredit(geography.id),
   });
   const capacity = useQuery({
     queryKey: ["atlas", "capacity", geography.id],
+    enabled: canRead,
     queryFn: () => api.atlasCapacity(geography.id),
   });
   const valuation = useQuery({
     queryKey: ["atlas", "valuation", "countries"],
+    enabled: canRead,
     queryFn: () => api.atlasValuation("countries"),
   });
   const valuationScope = valuationCountryScopes[geography.id];
   const valuationIndustries = useQuery({
     queryKey: ["atlas", "valuation", `pbv-${valuationScope}`],
     queryFn: () => api.atlasValuation(`pbv-${valuationScope}`),
-    enabled: Boolean(valuationScope),
+    enabled: canRead && Boolean(valuationScope),
   });
   const proxies = atlasMarketProxies.filter(
     (p) =>
@@ -172,6 +196,7 @@ export function AtlasCoveragePanel({
   const markets = useQueries({
     queries: proxies.map((proxy) => ({
       queryKey: ["atlas", "market", proxy.id],
+      enabled: canRead,
       queryFn: () => api.atlasMarket(proxy.id),
     })),
   });
@@ -277,6 +302,19 @@ export function AtlasCoveragePanel({
   const issues = atlasCoverageMapping.issues.filter((issue) =>
     issue.geographyIds.includes(geography.id),
   );
+  if (!canRead)
+    return (
+      <section className="atlas-notice">
+        <h3>Daten und Quellen prüfen</h3>
+        <p>
+          Die vollständige Abdeckung fragt alle angebundenen Quellen für dieses
+          Gebiet ab. Einzelne Themenbilder öffnen sich unabhängig davon direkt.
+        </p>
+        <Button onClick={() => setRequestedArea(geography.id)}>
+          Quellenabdeckung für {geography.label} laden
+        </Button>
+      </section>
+    );
   return (
     <section className="atlas-coverage" aria-labelledby="atlas-coverage-title">
       <div className="atlas-overview-heading">

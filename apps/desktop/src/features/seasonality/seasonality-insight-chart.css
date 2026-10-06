@@ -1,0 +1,296 @@
+.seasonality-insight-layout {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.seasonality-insight-card {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.seasonality-insight-card .card-header {
+  padding-bottom: 12px;
+}
+
+.seasonality-insight-body {
+  min-width: 0;
+}
+
+.seasonality-insight-toolbar,
+.seasonality-smoothing-input,
+.seasonality-chart-context {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.seasonality-insight-toolbar {
+  flex-wrap: wrap;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--surface-2);
+}
+
+.seasonality-smoothing-control {
+  flex: 1 1 270px;
+  min-width: 0;
+  max-width: 460px;
+}
+
+.seasonality-smoothing-control label,
+.seasonality-day-picker label {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  color: var(--text-2);
+  font-size: 11px;
+}
+
+.seasonality-smoothing-control strong,
+.seasonality-day-picker strong {
+  color: var(--text);
+  font-weight: 600;
+}
+
+.seasonality-smoothing-input {
+  gap: 10px;
+  margin-top: 7px;
+}
+
+.seasonality-insight-body input[type="range"] {
+  min-width: 0;
+  width: 100%;
+  height: 24px;
+  padding: 0;
+  accent-color: #52c5ff;
+  cursor: pointer;
+}
+
+.seasonality-smoothing-presets,
+.seasonality-chart-scale,
+.seasonality-chart-range {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 0;
+}
+
+.seasonality-chart-scale {
+  margin-left: auto;
+  padding: 3px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+}
+
+.seasonality-smoothing-presets button,
+.seasonality-chart-scale button,
+.seasonality-chart-range button {
+  padding: 6px 9px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--text-2);
+  font-size: 11px;
+  font-weight: 550;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.seasonality-insight-body button[aria-pressed="true"] {
+  border-color: rgba(82, 197, 255, 0.25);
+  background: rgba(82, 197, 255, 0.1);
+  color: #a5e1ff;
+}
+
+.seasonality-insight-body button:hover:not(:disabled) {
+  background: var(--surface-hover);
+  color: var(--text);
+}
+
+.seasonality-insight-body :is(button, input, summary):focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+
+.seasonality-insight-body :disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.seasonality-chart-context {
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 10px 0 0;
+}
+
+.seasonality-chart-phases {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-2);
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.seasonality-chart-phases input {
+  width: 14px;
+  height: 14px;
+  margin: 0;
+  accent-color: #52c5ff;
+}
+
+.seasonality-day-inspector {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px;
+  padding: 12px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+}
+
+.seasonality-day-picker {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.seasonality-day-picker > span {
+  display: block;
+  color: var(--text-3);
+  font-size: 9px;
+}
+
+.seasonality-day-values {
+  display: flex;
+  justify-content: space-between;
+  flex: 2 1 340px;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0;
+}
+
+.seasonality-day-values dt {
+  margin-bottom: 5px;
+  color: var(--text-3);
+  font-size: 10px;
+}
+
+.seasonality-day-values dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 650;
+  font-variant-numeric: tabular-nums;
+}
+
+.seasonality-day-values small {
+  display: block;
+  color: var(--warning);
+  font-size: 10px;
+}
+
+.seasonality-chart-method,
+.seasonality-chart-provenance {
+  margin: 10px 0 0;
+  color: var(--text-3);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.seasonality-chart-provenance summary {
+  color: var(--text-2);
+  cursor: pointer;
+}
+
+.seasonality-chart-provenance p {
+  margin: 6px 0;
+}
+
+.seasonality-chart-empty {
+  display: grid;
+  min-height: 250px;
+  align-content: center;
+  text-align: center;
+  gap: 10px;
+  padding: 24px;
+  color: var(--text-2);
+}
+
+.seasonality-chart-empty p {
+  color: var(--text-3);
+  font-size: 12px;
+}
+
+.seasonality-insight-layout .seasonality-evidence-card .card-content {
+  grid-template-columns: minmax(160px, 1fr) minmax(0, 2fr);
+  align-items: start;
+}
+
+.seasonality-insight-layout .seasonality-evidence-list {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.seasonality-insight-layout .seasonality-source-summary {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px 12px;
+  align-items: baseline;
+}
+
+body .dialog-content.seasonality-insight-fullscreen {
+  width: auto;
+  max-width: none;
+  max-height: none;
+  overflow-y: auto;
+  transform: none;
+  animation: none;
+}
+
+.seasonality-insight-fullscreen-body {
+  padding: 12px 24px 20px;
+}
+
+@media (max-width: 700px) {
+  .seasonality-insight-toolbar {
+    gap: 8px;
+  }
+  .seasonality-smoothing-control {
+    flex-basis: 100%;
+    max-width: none;
+  }
+  .seasonality-chart-scale {
+    margin-left: 0;
+  }
+  .seasonality-insight-toolbar > .button {
+    margin-left: auto;
+  }
+  .seasonality-day-values {
+    flex-basis: 100%;
+    gap: 14px;
+  }
+  .seasonality-day-values > div {
+    flex: 1 1 42%;
+  }
+  .seasonality-insight-fullscreen {
+    inset: 6px;
+    left: 6px;
+    top: 6px;
+  }
+  .seasonality-insight-fullscreen-body {
+    padding: 8px 12px 16px;
+  }
+  .seasonality-insight-layout .seasonality-evidence-card .card-content,
+  .seasonality-insight-layout .seasonality-evidence-list {
+    grid-template-columns: 1fr;
+  }
+  .seasonality-insight-layout .seasonality-evidence-list {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}

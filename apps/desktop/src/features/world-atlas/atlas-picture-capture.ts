@@ -117,6 +117,7 @@ function canvas(width: number, height: number) {
 export async function captureAtlasPictures(
   root: HTMLElement,
   label: string,
+  maximumBytes = 2 * 1024 * 1024,
 ): Promise<string | null> {
   const elements = [
     ...root.querySelectorAll<HTMLElement | SVGSVGElement>('[role="img"]'),
@@ -317,12 +318,12 @@ export async function captureAtlasPictures(
     ctx.drawImage(image, x + (width - 32 - w) / 2, y + 84, w, h);
   }
   let encoded = result.toDataURL("image/png").split(",")[1];
-  if (encoded.length > (2 * 1024 * 1024 * 4) / 3) {
+  if (encoded.length > (maximumBytes * 4) / 3) {
     const small = canvas(720, result.height * 0.75);
     small.getContext("2d")!.drawImage(result, 0, 0, small.width, small.height);
     encoded = small.toDataURL("image/png").split(",")[1];
   }
-  if (encoded.length > (2 * 1024 * 1024 * 4) / 3)
+  if (encoded.length > (maximumBytes * 4) / 3)
     throw new Error(
       "Der Bildstand ist zu groß. Du kannst die Ansicht ohne Bild oder mit weniger Diagrammen merken.",
     );

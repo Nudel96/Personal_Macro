@@ -103,6 +103,7 @@ import {
 import { Button } from "../../components/ui/button";
 import { PageHeader } from "../../components/ui/page-header";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
 import { atlasCatalog, atlasGeographies } from "./atlas-catalog";
 import { atlasDisplayedQuality, atlasQuality } from "./atlas-analysis";
 import { AtlasSeriesChart } from "./atlas-series-chart";
@@ -524,6 +525,7 @@ export function WorldAtlasPage() {
   const job = useQuery({
     queryKey: ["atlas", "job"],
     queryFn: () => api.atlasSyncStatus(),
+    enabled: !isPrivateWeb(),
     refetchInterval: (query) =>
       query.state.data?.status === "running" ? 1000 : false,
   });

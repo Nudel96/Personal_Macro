@@ -3,13 +3,25 @@ import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { env } from "node:process";
 
-// @ts-expect-error process is a nodejs global
-const host = process.env.TAURI_DEV_HOST;
+const host = env.TAURI_DEV_HOST;
 
 // https://vite.dev/config/
-export default defineConfig(async () => ({
+export default defineConfig(async ({ mode }) => ({
   plugins: [react(), tailwindcss()],
+  // A hosted build must never silently open the disconnected browser journal.
+  // This selects the setup screen until an authenticated data adapter exists;
+  // access control itself must be enforced by Vercel before deployment.
+  define: {
+    "import.meta.env.VITE_PRIVATE_WEB": JSON.stringify(
+      mode === "private-web" || env.VERCEL === "1" ? "true" : "false",
+    ),
+  },
+  build: {
+    outDir: mode === "private-web" ? "dist-private-web" : "dist",
+    sourcemap: false,
+  },
   resolve: {
     alias: {
       "@": path.resolve(path.dirname(fileURLToPath(import.meta.url)), "./src"),

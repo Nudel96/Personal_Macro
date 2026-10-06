@@ -1,12 +1,12 @@
 //! Local screenshot OCR and atomic trade/media creation. Images never leave this process.
 use std::{io::Write, path::Path};
 
+use crate::runtime::State;
 use base64::{Engine, engine::general_purpose::STANDARD};
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
 use sqlx::SqlitePool;
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -78,19 +78,19 @@ fn decode_image(input: &TradeScreenshotInput) -> CommandResult<(Vec<u8>, &'stati
     Ok((bytes, extension))
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn analyze_trade_screenshot(
     input: TradeScreenshotInput,
 ) -> CommandResult<TradeScreenshotAnalysis> {
     let (bytes, _) = decode_image(&input)?;
-    tauri::async_runtime::spawn_blocking(move || inspect_image(&bytes, true))
+    crate::runtime::spawn_blocking(move || inspect_image(&bytes, true))
         .await
         .map_err(|_| {
             CommandError::validation("Die lokale Bilderkennung konnte nicht abgeschlossen werden.")
         })?
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_trade_with_screenshot(
     state: State<'_, AppState>,
     mut input: TradeInput,
@@ -99,7 +99,7 @@ pub async fn create_trade_with_screenshot(
     input.account_id = input.account_id.trim().to_owned();
     require_active_account(&state.db, &input.account_id).await?;
     let (bytes, extension) = decode_image(&screenshot)?;
-    let (bytes, dimensions) = tauri::async_runtime::spawn_blocking(move || {
+    let (bytes, dimensions) = crate::runtime::spawn_blocking(move || {
         let dimensions = inspect_image(&bytes, false)?;
         Ok::<_, CommandError>((bytes, dimensions))
     })

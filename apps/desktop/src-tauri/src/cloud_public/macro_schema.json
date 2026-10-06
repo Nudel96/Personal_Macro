@@ -1,0 +1,99 @@
+{
+  "macro": {
+    "tables": {
+      "eodhd_events": {
+        "ddl": "CREATE TABLE eodhd_events(id TEXT,country TEXT,currency TEXT,provider_type TEXT,comparison TEXT,period TEXT,released_at TEXT,actual_value TEXT,forecast_value TEXT,previous_value TEXT,frequency TEXT,canonical_key TEXT,mapping_status TEXT,source_url TEXT,updated_at TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 200000
+      },
+      "eodhd_indicator_profiles": {
+        "ddl": "CREATE TABLE eodhd_indicator_profiles(currency TEXT,canonical_key TEXT,target_label TEXT,factor TEXT,direction INTEGER,unit TEXT,freshness_days INTEGER,expected_comparison TEXT,expected_frequency TEXT,enabled INTEGER,PRIMARY KEY(currency,canonical_key)) STRICT",
+        "maxRows": 500
+      },
+      "eodhd_indicator_series": {
+        "ddl": "CREATE TABLE eodhd_indicator_series(id TEXT,currency TEXT,canonical_key TEXT,provider_type TEXT,comparison TEXT,priority INTEGER,unit TEXT,frequency TEXT,enabled INTEGER,PRIMARY KEY(id)) STRICT",
+        "maxRows": 2000
+      },
+      "eodhd_event_revisions": {
+        "ddl": "CREATE TABLE eodhd_event_revisions(id TEXT,event_id TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 500000
+      },
+      "eodhd_fundamental_snapshots": {
+        "ddl": "CREATE TABLE eodhd_fundamental_snapshots(id TEXT,built_at TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 1
+      },
+      "eodhd_fundamental_evaluations": {
+        "ddl": "CREATE TABLE eodhd_fundamental_evaluations(snapshot_id TEXT,currency TEXT,canonical_key TEXT,source_label TEXT,actual_text TEXT,forecast_text TEXT,previous_text TEXT,surprise_text TEXT,score INTEGER,evaluation_status TEXT,reason_codes_json TEXT,released_at TEXT,pending_newer_release_at TEXT,frequency TEXT,source_url TEXT,unit TEXT,PRIMARY KEY(snapshot_id,currency,canonical_key)) STRICT",
+        "maxRows": 500
+      },
+      "eodhd_sync_runs": {
+        "ddl": "CREATE TABLE eodhd_sync_runs(completed_at TEXT,status TEXT) STRICT",
+        "maxRows": 2
+      },
+      "eodhd_mapping_candidates": {
+        "ddl": "CREATE TABLE eodhd_mapping_candidates(id TEXT,currency TEXT,provider_type TEXT,comparison TEXT,proposed_canonical_key TEXT,confidence INTEGER,runner_up_canonical_key TEXT,runner_up_confidence INTEGER,status TEXT,created_at TEXT,reviewed_at TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 10000
+      }
+    }
+  },
+  "cot": {
+    "tables": {
+      "cot_contracts": {
+        "ddl": "CREATE TABLE cot_contracts(id TEXT,symbol TEXT,display_name TEXT,asset_class TEXT,legacy_cftc_contract_market_code TEXT,currency TEXT,sort_order INTEGER,is_active INTEGER,PRIMARY KEY(id)) STRICT",
+        "maxRows": 500
+      },
+      "cot_legacy_observations": {
+        "ddl": "CREATE TABLE cot_legacy_observations(contract_id TEXT,report_date TEXT,long_positions INTEGER,short_positions INTEGER,long_change INTEGER,short_change INTEGER,open_interest INTEGER,open_interest_change INTEGER,net_positions INTEGER,net_change INTEGER,net_position_pct_oi TEXT,net_change_pct_oi TEXT,long_share TEXT,short_share TEXT,weekly_long_share_change TEXT,commercial_long INTEGER,commercial_short INTEGER,nonreportable_long INTEGER,nonreportable_short INTEGER,PRIMARY KEY(contract_id,report_date)) STRICT",
+        "legacyDdl": "CREATE TABLE cot_legacy_observations(contract_id TEXT,report_date TEXT,long_positions INTEGER,short_positions INTEGER,long_change INTEGER,short_change INTEGER,open_interest INTEGER,open_interest_change INTEGER,net_positions INTEGER,net_change INTEGER,net_position_pct_oi TEXT,net_change_pct_oi TEXT,long_share TEXT,short_share TEXT,weekly_long_share_change TEXT,PRIMARY KEY(contract_id,report_date)) STRICT",
+        "maxRows": 100000
+      },
+      "cot_sync_runs": {
+        "ddl": "CREATE TABLE cot_sync_runs(completed_at TEXT,status TEXT,source_url TEXT) STRICT",
+        "maxRows": 2
+      }
+    }
+  },
+  "technicals": {
+    "tables": {
+      "seasonality_provider_instruments": {
+        "ddl": "CREATE TABLE seasonality_provider_instruments(provider TEXT,provider_symbol TEXT,source_code TEXT,display_symbol TEXT,category TEXT,base_currency TEXT,quote_currency TEXT,sync_priority INTEGER,PRIMARY KEY(provider,provider_symbol)) STRICT",
+        "maxRows": 1000
+      },
+      "seasonality_provider_profiles": {
+        "ddl": "CREATE TABLE seasonality_provider_profiles(provider TEXT,provider_symbol TEXT,profile_json TEXT,PRIMARY KEY(provider,provider_symbol)) STRICT",
+        "maxRows": 1000
+      },
+      "seasonality_provider_daily_candles": {
+        "ddl": "CREATE TABLE seasonality_provider_daily_candles(provider TEXT,provider_symbol TEXT,candle_time INTEGER,bid_open REAL,bid_high REAL,bid_low REAL,bid_close REAL,volume INTEGER,PRIMARY KEY(provider,provider_symbol,candle_time)) STRICT",
+        "maxRows": 1000000
+      },
+      "eodhd_intraday_candles": {
+        "ddl": "CREATE TABLE eodhd_intraday_candles(provider_symbol TEXT,interval_seconds INTEGER,candle_time INTEGER,open REAL,high REAL,low REAL,close REAL,PRIMARY KEY(provider_symbol,interval_seconds,candle_time)) STRICT",
+        "maxRows": 1000000
+      }
+    }
+  },
+  "regime": {
+    "tables": {
+      "eodhd_events": {
+        "ddl": "CREATE TABLE eodhd_events(id TEXT,country TEXT,currency TEXT,provider_type TEXT,comparison TEXT,period TEXT,released_at TEXT,actual_value TEXT,forecast_value TEXT,previous_value TEXT,frequency TEXT,canonical_key TEXT,mapping_status TEXT,source_url TEXT,updated_at TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 200000
+      },
+      "eodhd_indicator_series": {
+        "ddl": "CREATE TABLE eodhd_indicator_series(id TEXT,currency TEXT,canonical_key TEXT,provider_type TEXT,comparison TEXT,priority INTEGER,unit TEXT,frequency TEXT,enabled INTEGER,PRIMARY KEY(id)) STRICT",
+        "maxRows": 2000
+      },
+      "eodhd_event_revisions": {
+        "ddl": "CREATE TABLE eodhd_event_revisions(id TEXT,event_id TEXT,PRIMARY KEY(id)) STRICT",
+        "maxRows": 500000
+      },
+      "seasonality_provider_instruments": {
+        "ddl": "CREATE TABLE seasonality_provider_instruments(provider TEXT,provider_symbol TEXT,source_code TEXT,display_symbol TEXT,category TEXT,base_currency TEXT,quote_currency TEXT,sync_priority INTEGER,PRIMARY KEY(provider,provider_symbol)) STRICT",
+        "maxRows": 1000
+      },
+      "seasonality_provider_daily_candles": {
+        "ddl": "CREATE TABLE seasonality_provider_daily_candles(provider TEXT,provider_symbol TEXT,candle_time INTEGER,bid_open REAL,bid_high REAL,bid_low REAL,bid_close REAL,volume INTEGER,PRIMARY KEY(provider,provider_symbol,candle_time)) STRICT",
+        "maxRows": 1000000
+      }
+    }
+  }
+}

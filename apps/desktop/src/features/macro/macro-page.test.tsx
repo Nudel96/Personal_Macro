@@ -3,6 +3,10 @@ import { cleanup, render, screen, within } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 import { api } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+vi.mock("../../services/runtime-mode", () => ({
+  isPrivateWeb: vi.fn(() => false),
+}));
 import type {
   CotContractView,
   CotDashboard,
@@ -35,6 +39,7 @@ vi.mock("../../services/commands", () => ({
     syncCot: vi.fn(),
     pairTechnicalSignals: vi.fn(),
     refreshPairTechnicalSignals: vi.fn(),
+    setMt5TechnicalTerminal: vi.fn(),
   },
   isTauri: () => true,
 }));
@@ -311,6 +316,7 @@ function renderPage() {
 
 afterEach(() => {
   cleanup();
+  vi.mocked(isPrivateWeb).mockReturnValue(false);
   vi.clearAllMocks();
 });
 
@@ -327,6 +333,23 @@ beforeEach(() => {
 });
 
 describe("MacroPage", () => {
+  it("uses real cloud readers while withholding unsupported provider writes", async () => {
+    vi.mocked(isPrivateWeb).mockReturnValue(true);
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+    renderPage();
+    expect(await screen.findByText("Fundamentale Heatmap")).toBeTruthy();
+    expect(screen.getByText(/Privater Cloud-Datenstand/)).toBeTruthy();
+    expect(
+      screen.queryByRole("button", { name: "COT aktualisieren" }),
+    ).toBeNull();
+    expect(
+      screen.queryByRole("button", {
+        name: "Technische Signale aktualisieren",
+      }),
+    ).toBeNull();
+    expect(api.eodhdMappingCandidates).not.toHaveBeenCalled();
+    expect(api.syncEodhdNow).not.toHaveBeenCalled();
+  });
   it("surfaces snapshot health, feed state and a readable signal legend", async () => {
     vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
 
@@ -493,15 +516,96 @@ describe("MacroPage", () => {
       within(row).queryByRole("rowheader", { name: "USDCAD" }),
     );
     expect(usdCad).toBeTruthy();
-    expect(within(usdCad!).getByTitle(/4H \/ Daily: Bullish/).textContent).toBe(
-      "Bullish",
-    );
+    const chart = within(usdCad!).getByTitle(/4H \/ Daily: Bullish/);
+    expect(within(chart).getByText("Bullish bestätigt")).toBeTruthy();
+    expect(within(chart).getByTitle(/^Daily Bullish/)).toBeTruthy();
+    expect(within(chart).getByTitle(/^4H Bullish/)).toBeTruthy();
     expect(within(usdCad!).getByTitle(/Seasonality: Bearish/).textContent).toBe(
       "Bearish",
     );
     expect(within(usdCad!).getByTitle("Fundamentals +2").textContent).toBe(
       "+2",
     );
+  });
+
+  it("keeps the Daily signal visible when MT5 has no H4 history", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+    const data = technicalDashboard();
+    const pair = data.pairs.find(
+      (item) => item.base === "USD" && item.quote === "CAD",
+    )!;
+    pair.chartTrend.signal = null;
+    pair.chartTrend.status = "unavailable";
+    pair.chartTrend.fourHour = {
+      signal: null,
+      status: "unavailable",
+      bars: 0,
+      reasonCodes: ["mt5_history_unavailable"],
+    };
+    pair.chartTrend.source = {
+      provider: "mt5",
+      label: "Broker-Test",
+      symbol: "USDCAD.a",
+      inverted: false,
+      fetchedAt: "2026-10-02T07:00:00Z",
+    };
+    data.refresh = {
+      status: "failed",
+      lastSuccessAt: "2026-10-02T07:00:00Z",
+      message: "Bitte MetaTrader 5 öffnen und anmelden.",
+    };
+    vi.mocked(api.pairTechnicalSignals).mockResolvedValue(data);
+    renderPage();
+    const cell = await screen.findByTitle(/4H \/ Daily: Teilweise verfügbar/);
+    expect(within(cell).getByTitle(/^Daily Bullish/)).toBeTruthy();
+    expect(within(cell).getByTitle(/^4H nicht verfügbar/)).toBeTruthy();
+    expect(within(cell).getByText("MT5 · USDCAD.a")).toBeTruthy();
+    expect(cell.title).toContain("Broker-Test");
+    expect(
+      screen.getByText("Bitte MetaTrader 5 öffnen und anmelden."),
+    ).toBeTruthy();
+    expect(screen.getByText(/Letzter Abruf/)).toBeTruthy();
+  });
+
+  it("saves an explicit local MT5 terminal without changing journal accounts", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+    vi.mocked(api.setMt5TechnicalTerminal).mockResolvedValue(undefined);
+    const user = userEvent.setup();
+    renderPage();
+    await screen.findAllByTestId("forex-pair-row");
+    await user.click(screen.getByText("MT5-Verbindung"));
+    await user.click(screen.getByLabelText("Terminalpfad (optional)"));
+    await user.paste("D:\\Broker\\terminal64.exe");
+    await user.click(
+      screen.getByRole("button", { name: "Verbindung speichern" }),
+    );
+    expect(api.setMt5TechnicalTerminal).toHaveBeenCalledWith(
+      "D:\\Broker\\terminal64.exe",
+      expect.anything(),
+    );
+  });
+
+  it("labels opposing timeframes as mixed and refreshes from MT5", async () => {
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(dashboard());
+    const data = technicalDashboard();
+    const pair = data.pairs.find(
+      (item) => item.base === "USD" && item.quote === "CAD",
+    )!;
+    pair.chartTrend.signal = 0;
+    pair.chartTrend.status = "neutral";
+    pair.chartTrend.fourHour.signal = -1;
+    pair.chartTrend.fourHour.status = "bearish";
+    vi.mocked(api.pairTechnicalSignals).mockResolvedValue(data);
+    const user = userEvent.setup();
+    renderPage();
+    const cell = await screen.findByTitle(/4H \/ Daily: Uneinheitlich/);
+    expect(within(cell).getByTitle(/^Daily Bullish/)).toBeTruthy();
+    expect(within(cell).getByTitle(/^4H Bearish/)).toBeTruthy();
+    await user.click(
+      screen.getByRole("button", { name: "Technische Signale aktualisieren" }),
+    );
+    expect(api.refreshPairTechnicalSignals).toHaveBeenCalledTimes(1);
+    expect(await screen.findByText("Bullish bestätigt")).toBeTruthy();
   });
 
   it("selects a currency and shows its actual, forecast and surprise", async () => {

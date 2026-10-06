@@ -5,6 +5,7 @@ use std::{
     process::{Command, Stdio},
 };
 
+use crate::runtime::State;
 use chrono::Utc;
 use futures_util::{SinkExt, StreamExt};
 use keyring::Entry;
@@ -12,7 +13,6 @@ use rust_decimal::{Decimal, prelude::FromPrimitive};
 use serde::{Deserialize, Serialize};
 use serde_json::{Value, json};
 use sqlx::{FromRow, Sqlite, Transaction};
-use tauri::State;
 use tokio::time::{Duration, timeout};
 use tokio_tungstenite::{connect_async, tungstenite::Message};
 use url::Url;
@@ -163,14 +163,14 @@ struct ConnectorResponse<T> {
     message: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_broker_connections(
     state: State<'_, AppState>,
 ) -> CommandResult<Vec<BrokerConnectionView>> {
     load_connections(&state.db).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn detect_mt5_account(
     state: State<'_, AppState>,
     input: Mt5DetectInput,
@@ -181,7 +181,7 @@ pub async fn detect_mt5_account(
         .map_err(|_| command_error("MT5_CONNECTOR_ERROR", "Die MT5-Prüfung wurde abgebrochen."))?
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_account_from_mt5(
     state: State<'_, AppState>,
     input: CreateMt5AccountInput,
@@ -229,7 +229,7 @@ pub async fn create_account_from_mt5(
     load_connected_result(&state.db, &result.0, &result.1).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub fn get_ctrader_authorization() -> CommandResult<CTraderAuthorization> {
     let Some(config) = load_ctrader_config()? else {
         return Ok(CTraderAuthorization {
@@ -259,7 +259,7 @@ pub fn get_ctrader_authorization() -> CommandResult<CTraderAuthorization> {
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn exchange_ctrader_code(
     input: CTraderCodeInput,
 ) -> CommandResult<CTraderCandidateResponse> {
@@ -281,7 +281,7 @@ pub async fn exchange_ctrader_code(
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_account_from_ctrader(
     state: State<'_, AppState>,
     input: CreateCTraderAccountInput,
@@ -343,7 +343,7 @@ pub async fn create_account_from_ctrader(
     load_connected_result(&state.db, &result.0, &result.1).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn refresh_broker_connection(
     state: State<'_, AppState>,
     connection_id: String,
@@ -389,7 +389,7 @@ pub async fn refresh_broker_connection(
     load_connection(&state.db, &connection_id).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn disconnect_broker_connection(
     state: State<'_, AppState>,
     connection_id: String,

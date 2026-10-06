@@ -85,8 +85,8 @@ describe("parseSeasonalityYears", () => {
   });
 
   it("resizes the fullscreen chart with the viewport and keeps a readable floor", () => {
-    expect(fullscreenChartHeight(1080)).toBe(890);
-    expect(fullscreenChartHeight(700)).toBe(510);
-    expect(fullscreenChartHeight(500)).toBe(420);
+    expect(fullscreenChartHeight(1080)).toBe(640);
+    expect(fullscreenChartHeight(700)).toBe(280);
+    expect(fullscreenChartHeight(500)).toBe(280);
   });
 });

@@ -1,0 +1,63 @@
+body:has(.private-web-setup) {
+  min-width: 0;
+  margin: 0;
+}
+
+.private-web-setup {
+  display: grid;
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: max(24px, env(safe-area-inset-top))
+    max(20px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom))
+    max(20px, env(safe-area-inset-left));
+  place-items: center;
+  color: var(--text-1);
+  background: var(--bg);
+}
+
+.private-web-setup-card {
+  width: min(100%, 560px);
+  padding: clamp(24px, 5vw, 40px);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+}
+
+.private-web-setup-card h1 {
+  margin: 12px 0 20px;
+  font-size: clamp(24px, 6vw, 32px);
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.private-web-setup-card p {
+  margin: 16px 0 0;
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.private-web-setup-card .private-web-brand {
+  margin: 0;
+  color: var(--primary-bright);
+  font-size: 14px;
+  font-weight: 650;
+}
+
+.private-web-setup-card .private-web-status {
+  padding: 12px 14px;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  color: var(--warning);
+  background: var(--surface-2);
+  font-weight: 600;
+}
+
+.private-web-setup-card .private-web-access-note {
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  color: var(--text-3);
+  font-size: 13px;
+}

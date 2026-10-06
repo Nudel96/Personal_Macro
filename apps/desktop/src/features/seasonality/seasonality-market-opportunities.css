@@ -1,0 +1,47 @@
+.seasonality-market-opportunities {
+  margin-top: 18px;
+}
+.seasonality-market-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 12px;
+}
+.seasonality-market-toolbar .seasonal-scan-controls {
+  display: grid;
+  margin: 0;
+  grid-template-columns: repeat(3, minmax(130px, 1fr));
+}
+.seasonality-market-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.seasonality-market-method-note {
+  margin: 12px 0 16px;
+  color: var(--text-2);
+  font-size: 12px;
+  line-height: 1.6;
+}
+.seasonality-market-opportunities .seasonal-window-name > strong {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+.seasonality-market-opportunities .seasonal-window-name > strong > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 12px;
+}
+@media (max-width: 600px) {
+  .seasonality-market-toolbar,
+  .seasonality-market-toolbar .seasonal-scan-controls {
+    width: 100%;
+  }
+  .seasonality-market-toolbar .seasonal-scan-controls {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

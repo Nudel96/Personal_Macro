@@ -6,6 +6,7 @@ use std::{
     str::FromStr,
 };
 
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use sha2::{Digest, Sha256};
@@ -13,7 +14,6 @@ use sqlx::{
     Row, SqliteConnection,
     sqlite::{SqliteConnectOptions, SqlitePoolOptions},
 };
-use tauri::State;
 use uuid::Uuid;
 use zip::ZipArchive;
 
@@ -30,6 +30,8 @@ const MAX_BACKUP_BYTES: u64 = 2 * 1024 * 1024 * 1024;
 const JOURNAL_ENTITY_ROWS_FILTER: &str = "entity_type IN ('trade', 'review', 'goal')";
 
 const RESET_TABLES: &[&str] = &[
+    "myfxbook_links",
+    "myfxbook_connections",
     "mt5_sync_runs",
     "mt5_accounts",
     "ctrader_trade_links",
@@ -49,6 +51,8 @@ const RESET_TABLES: &[&str] = &[
 ];
 
 const JOURNAL_EMPTY_TABLES: &[&str] = &[
+    "myfxbook_links",
+    "myfxbook_connections",
     "accounts",
     "account_cashflows",
     "trades",
@@ -120,7 +124,7 @@ struct ManifestFile {
     sha256: String,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 #[allow(dead_code)] // Registered by the Tauri integration hunk once the reset UI lands.
 pub async fn reset_journal(
     state: State<'_, AppState>,

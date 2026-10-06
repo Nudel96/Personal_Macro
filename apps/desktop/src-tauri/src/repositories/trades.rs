@@ -9,7 +9,7 @@ use crate::{
     metrics::MetricTrade,
 };
 
-const TRADE_DETAIL_COLUMNS: &str = r#"
+pub(crate) const TRADE_DETAIL_COLUMNS: &str = r#"
   id, account_id, strategy_id, setup_id, status, instrument, asset_class, direction,
   session, timeframe, opened_at, closed_at, display_timezone, planned_entry, actual_entry,
   initial_stop_loss, actual_exit, take_profit, quantity, planned_risk_minor, gross_pnl_minor,
@@ -21,7 +21,7 @@ const TRADE_DETAIL_COLUMNS: &str = r#"
   lessons_html, source_metadata_json, created_at, updated_at
 "#;
 
-fn validate_trade(input: &TradeInput) -> Result<(), AppError> {
+pub(crate) fn validate_trade(input: &TradeInput) -> Result<(), AppError> {
     if input.account_id.trim().is_empty() {
         return Err(AppError::Validation("Ein Konto ist erforderlich.".into()));
     }
@@ -79,7 +79,7 @@ fn validate_trade(input: &TradeInput) -> Result<(), AppError> {
     Ok(())
 }
 
-fn computed_values(input: &TradeInput) -> (Option<i64>, Option<String>) {
+pub(crate) fn computed_values(input: &TradeInput) -> (Option<i64>, Option<String>) {
     let fees = input.fees_minor.unwrap_or(0);
     let commission = input.commission_minor.unwrap_or(0);
     let swap = input.swap_minor.unwrap_or(0);

@@ -1,0 +1,278 @@
+.cot-comparison {
+  display: grid;
+  gap: 14px;
+  min-width: 0;
+}
+.cot-market-selectors {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 38px minmax(0, 1fr);
+  gap: 14px;
+  align-items: end;
+}
+.cot-market-select {
+  display: grid;
+  gap: 6px;
+  min-width: 0;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.cot-market-select-0 {
+  grid-column: 1;
+  grid-row: 1;
+}
+.cot-market-select-1 {
+  grid-column: 3;
+  grid-row: 1;
+}
+.cot-swap {
+  grid-column: 2;
+  grid-row: 1;
+}
+.cot-market-select .input {
+  width: 100%;
+  min-width: 0;
+  font-weight: 600;
+}
+.cot-comparison-controls {
+  display: flex;
+  gap: 18px;
+  align-items: end;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+}
+.cot-comparison-controls label,
+.cot-seasonal-toolbar > label:not(.cot-current-toggle) {
+  display: grid;
+  gap: 5px;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.cot-comparison-controls p {
+  flex: 1;
+  min-width: 180px;
+  max-width: 470px;
+  margin: 0;
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.6;
+}
+.cot-comparison-scroll {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+}
+.cot-comparison-scroll:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+}
+.cot-chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  min-width: 760px;
+}
+.cot-chart-card {
+  min-width: 0;
+}
+.cot-chart-card .card-content {
+  padding: 8px 14px 14px;
+}
+.cot-chart-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.cot-chart-values > div {
+  min-width: 0;
+  display: grid;
+  gap: 6px;
+}
+.cot-chart-values span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: var(--text-2);
+  font-size: 10px;
+}
+.cot-chart-values i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+.cot-chart-values strong {
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.cot-chart-note {
+  margin: 10px 0 0;
+  color: var(--text-2);
+  font-size: 10px;
+  line-height: 1.6;
+}
+.cot-chart-empty {
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 24px;
+  color: var(--text-2);
+  font-size: 12px;
+  text-align: center;
+  line-height: 1.7;
+}
+.cot-seasonal-toolbar {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 18px;
+  padding: 14px 0 0;
+}
+.cot-seasonal-toolbar > div:first-child {
+  flex: 1;
+  min-width: 230px;
+}
+.cot-seasonal-toolbar h3 {
+  font-size: 15px;
+  margin: 0 0 5px;
+  color: var(--text-1);
+}
+.cot-seasonal-toolbar p {
+  margin: 0;
+  color: var(--text-2);
+  font-size: 11px;
+}
+.cot-seasonal-toolbar fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+}
+.cot-seasonal-toolbar legend {
+  margin-bottom: 9px;
+  font-size: 11px;
+  color: var(--text-2);
+}
+.cot-window-options {
+  display: flex;
+  gap: 12px;
+}
+.cot-window-options label,
+.cot-current-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  white-space: nowrap;
+}
+.cot-current-toggle {
+  padding-bottom: 7px;
+}
+.cot-comparison input[type="checkbox"] {
+  accent-color: var(--primary);
+}
+.cot-seasonal-samples {
+  display: grid;
+  gap: 5px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.cot-seasonal-samples p {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  font-size: 10px;
+  color: var(--text-2);
+  font-variant-numeric: tabular-nums;
+}
+.cot-seasonal-samples strong {
+  min-width: 30px;
+  color: var(--text-1);
+}
+.cot-chart-method {
+  padding: 12px 15px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.7;
+}
+.cot-chart-method summary {
+  cursor: pointer;
+  color: var(--text-1);
+}
+.cot-chart-method p {
+  max-width: 1100px;
+  margin: 10px 0 0;
+}
+.cot-axis-controls {
+  border-top: 1px solid var(--border);
+  padding: 9px 0 12px;
+  color: var(--text-2);
+  font-size: 10px;
+}
+.cot-axis-controls summary {
+  cursor: pointer;
+  color: var(--text-1);
+}
+.cot-axis-actions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin: 7px 0;
+}
+.cot-axis-actions > span {
+  flex: 1;
+}
+.cot-axis-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 8px;
+}
+.cot-axis-form label {
+  display: grid;
+  gap: 4px;
+  flex: 1 1 85px;
+  min-width: 0;
+}
+.cot-axis-form .input {
+  width: 100%;
+  min-width: 0;
+  height: 31px;
+  font-variant-numeric: tabular-nums;
+}
+.cot-axis-controls p {
+  margin: 7px 0 0;
+  line-height: 1.5;
+}
+.cot-axis-error {
+  flex-basis: 100%;
+  color: var(--negative);
+}
+@media (max-width: 760px) {
+  .cot-market-selectors {
+    gap: 7px;
+    grid-template-columns: minmax(0, 1fr) 32px minmax(0, 1fr);
+    overflow: clip;
+    overflow-clip-margin: 4px;
+  }
+  .cot-comparison-controls {
+    gap: 12px;
+  }
+  .cot-comparison-controls label {
+    width: 100%;
+  }
+  .cot-comparison-controls .input {
+    width: 100%;
+  }
+}

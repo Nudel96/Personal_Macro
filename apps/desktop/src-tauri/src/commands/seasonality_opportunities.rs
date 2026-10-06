@@ -1,8 +1,8 @@
 use std::collections::BTreeMap;
 
+use crate::runtime::State;
 use chrono::{TimeZone, Utc};
 use sqlx::FromRow;
-use tauri::State;
 
 use crate::{
     database::AppState,
@@ -52,7 +52,7 @@ fn currency_series(series: &OpportunitySeries) -> Option<OpportunitySeries> {
     Some(output)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_seasonality_opportunities(
     state: State<'_, AppState>,
     input: OpportunityInput,
@@ -132,7 +132,7 @@ pub async fn opportunities_for_state(
     }
     tx.commit().await.map_err(AppError::from)?;
     // CPU work does not hold a DB transaction or block the async command executor.
-    tauri::async_runtime::spawn_blocking(move || {
+    crate::runtime::spawn_blocking(move || {
         let mut response = scan_opportunities(&instruments, &currencies, input);
         response.excluded_symbols = excluded;
         response

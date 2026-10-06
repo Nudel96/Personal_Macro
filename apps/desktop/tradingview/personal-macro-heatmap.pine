@@ -1,0 +1,737 @@
+//@version=6
+// Personal Macro | TradingView edition 1.0.0 | 2026-10-03
+// Standalone daily dashboard. Read README.md and VALIDATION.md before use.
+// Economic revisions and source timestamps are not a point-in-time release archive.
+indicator("Personal Macro · Macro Heatmap", shorttitle="PM Macro", overlay=false, dynamic_requests=true, max_bars_back=500, precision=2)
+import TradingView/LibraryCOT/6 as cot
+
+const string G_DATA = "1 · Daten und Umfang"
+const string G_SCORE = "2 · Bewertung"
+const string G_PAIR = "3 · Paar und Zusatzdaten"
+const string G_MANUAL = "4 · Manuelle Releases"
+const string G_VIEW = "5 · Darstellung und Prüfung"
+const int DAY_MS = 86400000
+const color BG = #111A2C
+const color PANEL = #1A2640
+const color TEXT = #E5EAF5
+const color MUTED = #94A5C2
+const color POS = #227F65
+const color NEG = #993D55
+const color NEUTRAL = #334361
+const color AMBER = #D7A44A
+
+string mode = input.string("Automatische Macro-Trends", "Berechnung", options=["Automatische Macro-Trends", "Manuelle Release-Überraschungen"], group=G_DATA, display=display.none)
+string profile = input.string("Basis · 4 Kennzahlen", "Automatisches Datenprofil", options=["Basis · 4 Kennzahlen", "Erweitert · 6 Kennzahlen"], group=G_DATA, display=display.none)
+bool includeCny = input.bool(false, "CNY zusätzlich anzeigen (kein CNH)", group=G_DATA, display=display.none)
+int requestLimit = input.int(40, "Abfragebudget (64 nur mit Ultimate)", options=[40, 64], group=G_DATA, display=display.none)
+string inflationModel = input.string("Nur anzeigen", "Automatische Inflation", options=["Nur anzeigen", "Zinsdruck: Anstieg positiv", "Disinflation: Rückgang positiv"], group=G_SCORE, tooltip="Eine Inflationsbeschleunigung hat keine allgemeingültige Währungswirkung. Standardmäßig kein Beitrag zum automatischen Macro-Score. Manuelle Überraschungen verwenden die dokumentierte Actual/Forecast-Richtung.", display=display.none)
+float growthWeight = input.float(1, "Gewicht Wachstum", minval=0, maxval=10, step=0.25, group=G_SCORE, display=display.none)
+float inflationWeight = input.float(1, "Gewicht Inflation", minval=0, maxval=10, step=0.25, group=G_SCORE, display=display.none)
+float laborWeight = input.float(1, "Gewicht Arbeitsmarkt", minval=0, maxval=10, step=0.25, group=G_SCORE, display=display.none)
+float ratesWeight = input.float(1, "Gewicht Leitzins", minval=0, maxval=10, step=0.25, group=G_SCORE, display=display.none)
+float minCoverage = input.float(75, "Mindestabdeckung in % des Gewichts", minval=1, maxval=100, step=5, group=G_SCORE, display=display.none)
+int minComponents = input.int(2, "Mindestens gemeinsame Kennzahlen", minval=1, maxval=17, group=G_SCORE, display=display.none)
+float alertThreshold = input.float(50, "Alarmgrenze des Paar-Scores", minval=1, maxval=100, group=G_SCORE, display=display.none)
+bool enableAlerts = input.bool(false, "Alarme bei bestätigtem Schwellenübertritt erlauben", group=G_SCORE, display=display.none)
+string baseCcy = input.string("EUR", "Basiswährung", options=["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD", "CNY"], group=G_PAIR, display=display.none)
+string quoteCcy = input.string("USD", "Quotewährung", options=["USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD", "CNY"], group=G_PAIR, display=display.none)
+string pairSymbol = input.symbol("OANDA:EURUSD", "Exaktes Forex-Symbol für Trend/Saison", group=G_PAIR, tooltip="Basis- und Quotewährung müssen zur Auswahl passen. Inverse Paare und CNH werden nicht stillschweigend umgerechnet.", display=display.none)
+bool enableCot = input.bool(true, "COT des ausgewählten Paares", group=G_PAIR, display=display.none)
+bool enableTrend = input.bool(true, "H4-/D1-Trend des ausgewählten Paares", group=G_PAIR, display=display.none)
+bool enableSeason = input.bool(true, "Monats-Saisonalität des ausgewählten Paares", group=G_PAIR, display=display.none)
+int seasonYears = input.int(15, "Saison: maximal frühere volle Jahre", minval=5, maxval=20, group=G_PAIR, display=display.none)
+int seasonMonth = input.int(0, "Saisonmonat (0 = Monat des Auswertungsstands)", minval=0, maxval=12, group=G_PAIR, display=display.none)
+string manualKeys = input.string("gdp,cpi_yoy,unemployment_rate,interest_rates", "Manuell: aktive Kennzahlen (Komma)", group=G_MANUAL, display=display.none)
+string manualSource = input.string("", "Manuell: Quelle / Herkunft", group=G_MANUAL, display=display.none)
+bool manualConfirmed = input.bool(false, "Actual/Forecast je Zeile: gleicher Release, gleiche Einheit und Transformation geprüft", group=G_MANUAL, display=display.none)
+string manualText = input.text_area("", "CCY;KEY;PERIODE;UTC-ZEIT;ACTUAL;FORECAST;PREVIOUS", group=G_MANUAL, tooltip="Eine Zeile je Release. UTC-Zeit: YYYY-MM-DDTHH:MM. Dezimalpunkt, maximal 6 Nachkommastellen. Previous darf leer sein. Keine Kopfzeile. Anleitung enthält die zugelassenen Kennzahlen und Einheiten.", display=display.none)
+string view = input.string("Paarmatrix", "Ansicht", options=["Paarmatrix", "Währungen", "Paar-Details"], group=G_VIEW, display=display.none)
+string textSize = input.string("Normal", "Schrift", options=["Klein", "Normal", "Groß"], group=G_VIEW, display=display.none)
+bool rankCurrencies = input.bool(true, "Währungsübersicht nach Score ordnen", group=G_VIEW, display=display.none)
+bool runSelfTests = input.bool(true, "Interne Rechenprüfungen beim Start", group=G_VIEW, display=display.none)
+
+bool manualMode = mode == "Manuelle Release-Überraschungen"
+bool extended = profile == "Erweitert · 6 Kennzahlen"
+int currencyCount = includeCny ? 9 : 8
+int budget = (manualMode ? 0 : currencyCount * (extended ? 6 : 4)) + (enableCot ? 4 : 0) + (enableTrend ? 2 : 0) + (enableSeason ? 1 : 0)
+string fontSize = textSize == "Groß" ? size.large : textSize == "Normal" ? size.normal : size.small
+var array<string> currencies = array.from("USD", "EUR", "GBP", "JPY", "CHF", "CAD", "AUD", "NZD", "CNY")
+var array<string> countries = array.from("US", "EU", "GB", "JP", "CH", "CA", "AU", "NZ", "CN")
+var array<string> allKeys = array.from("gdp", "manufacturing_pmi", "services_pmi", "retail_sales", "consumer_confidence", "industrial_production", "trade_balance", "cpi_yoy", "ppi_yoy", "pce_yoy", "interest_rates", "nfp", "unemployment_rate", "unemployment_claims", "adp", "jolts", "wage_growth")
+var array<string> keys = array.new_string()
+var array<float> weights = array.new_float()
+var array<float> values = array.new_float()
+var array<float> priors = array.new_float()
+var array<float> forecasts = array.new_float()
+var array<int> observedAt = array.new_int()
+var array<int> priorObservedAt = array.new_int()
+var array<string> periods = array.new_string()
+var array<float> signals = array.new_float()
+var array<string> reasons = array.new_string()
+
+// PURE_SCALAR_BEGIN: verify.mjs executes these exact expressions against test vectors.
+f_sign(float value) =>
+    na(value) ? na : value > 0 ? 1.0 : value < 0 ? -1.0 : 0.0
+f_component(float base, float quote) =>
+    na(base) or na(quote) ? na : base - quote
+f_impulse(float actual, float reference, float direction) =>
+    na(actual) or na(reference) ? na : f_sign((actual - reference) * direction)
+f_coverage(float available, float planned) =>
+    planned > 0 ? 100.0 * available / planned : na
+f_normalized(float contribution, float available, float planned, int count, int minimum, float required, float scale) =>
+    available <= 0 or planned <= 0 or count < minimum or f_coverage(available, planned) + 1e-9 < required ? na : math.max(-100.0, math.min(100.0, 100.0 * contribution / (scale * available)))
+f_fresh(int stamp, int asOf, int maxDays) =>
+    not na(stamp) and not na(asOf) and stamp <= asOf and asOf - stamp <= maxDays * 86400000
+f_z(float current, float mean, float variance, int samples) =>
+    na(current) or na(mean) or na(variance) or samples < 26 or variance <= 0 ? na : (current - mean) / math.sqrt(variance)
+f_return(float current, float previous) =>
+    na(current) or na(previous) or current <= 0 or previous <= 0 ? na : 100.0 * (current / previous - 1.0)
+f_season_signal(float mean, float wins, int samples) =>
+    na(mean) or na(wins) or samples < 5 ? na : mean > 0 and wins >= 60 ? 1.0 : mean < 0 and wins <= 40 ? -1.0 : 0.0
+f_scaled_decimal(float whole, float fraction, int digits, float direction) =>
+    direction * (whole * 1000000.0 + fraction * math.pow(10.0, 6 - digits))
+f_direction(string key) =>
+    key == "unemployment_rate" or key == "unemployment_claims" ? -1.0 : 1.0
+f_month_valid(int observedYear, int observedMonth, int expectedYear, int expectedMonth, float price) =>
+    not na(observedYear) and not na(observedMonth) and observedYear == expectedYear and observedMonth == expectedMonth and not na(price) and price > 0
+f_prior_year(int candidate, int current, int maximum) =>
+    not na(candidate) and candidate < current and candidate >= current - maximum
+f_cot_valid(float longs, float shorts, int longWeek, int shortWeek, int asOf) =>
+    not na(longs) and not na(shorts) and longs >= 0 and shorts >= 0 and not na(longWeek) and longWeek == shortWeek and longWeek <= asOf
+// PURE_SCALAR_END
+
+f_group(string key) =>
+    switch key
+        "cpi_yoy" => 1
+        "ppi_yoy" => 1
+        "pce_yoy" => 1
+        "interest_rates" => 3
+        "nfp" => 2
+        "unemployment_rate" => 2
+        "unemployment_claims" => 2
+        "adp" => 2
+        "jolts" => 2
+        "wage_growth" => 2
+        => 0
+
+f_field(string key) =>
+    switch key
+        "gdp" => "GDPYY"
+        "cpi_yoy" => "IRYY"
+        "unemployment_rate" => "UR"
+        "interest_rates" => "INTR"
+        "industrial_production" => "IPYY"
+        "retail_sales" => "RSYY"
+        => ""
+
+f_label(string key) =>
+    switch key
+        "gdp" => "BIP YoY"
+        "manufacturing_pmi" => "Industrie-PMI"
+        "services_pmi" => "Dienstleistungs-PMI"
+        "retail_sales" => "Einzelhandel YoY"
+        "consumer_confidence" => "Konsumvertrauen"
+        "industrial_production" => "Industrie YoY"
+        "trade_balance" => "Handelsbilanz"
+        "cpi_yoy" => "Inflation YoY"
+        "ppi_yoy" => "PPI YoY"
+        "pce_yoy" => "PCE YoY"
+        "interest_rates" => "Leitzins"
+        "nfp" => "Beschäftigungsänderung"
+        "unemployment_rate" => "Arbeitslosenquote"
+        "unemployment_claims" => "Erstanträge"
+        "adp" => "ADP"
+        "jolts" => "Offene Stellen"
+        "wage_growth" => "Löhne YoY"
+        => key
+
+f_max_age(string key, string currency) =>
+    key == "gdp" or key == "interest_rates" ? 180 : key == "unemployment_claims" ? 21 : ((key == "cpi_yoy" and (currency == "AUD" or currency == "NZD")) or (key == "unemployment_rate" and currency == "NZD")) ? 135 : 75
+
+f_digits(string value) =>
+    bool valid = str.length(value) > 0
+    if valid
+        for i = 0 to str.length(value) - 1
+            valid := valid and str.contains("0123456789", str.substring(value, i, i + 1))
+    valid
+
+f_decimal(string token) =>
+    string value = str.trim(token)
+    float result = na
+    if str.length(value) > 0
+        string first = str.substring(value, 0, 1)
+        float direction = first == "-" ? -1.0 : 1.0
+        string unsigned = first == "-" or first == "+" ? str.substring(value, 1) : value
+        array<string> parts = str.split(unsigned, ".")
+        if array.size(parts) >= 1 and array.size(parts) <= 2
+            string whole = array.get(parts, 0)
+            string fraction = array.size(parts) == 2 ? array.get(parts, 1) : ""
+            bool valid = f_digits(whole) and str.length(whole) <= 9 and str.length(fraction) <= 6 and (array.size(parts) == 1 or f_digits(fraction))
+            if valid
+                result := f_scaled_decimal(str.tonumber(whole), str.length(fraction) > 0 ? str.tonumber(fraction) : 0, str.length(fraction), direction)
+    result
+
+f_utc(string value) =>
+    int result = na
+    if str.length(value) == 16
+        bool separators = str.substring(value, 4, 5) == "-" and str.substring(value, 7, 8) == "-" and str.substring(value, 10, 11) == "T" and str.substring(value, 13, 14) == ":"
+        string ys = str.substring(value, 0, 4)
+        string ms = str.substring(value, 5, 7)
+        string ds = str.substring(value, 8, 10)
+        string hs = str.substring(value, 11, 13)
+        string ns = str.substring(value, 14, 16)
+        if separators and f_digits(ys + ms + ds + hs + ns)
+            int y = int(str.tonumber(ys))
+            int m = int(str.tonumber(ms))
+            int d = int(str.tonumber(ds))
+            int h = int(str.tonumber(hs))
+            int n = int(str.tonumber(ns))
+            if y >= 2000 and y <= 2100 and m >= 1 and m <= 12 and d >= 1 and d <= 31 and h >= 0 and h <= 23 and n >= 0 and n <= 59
+                int candidate = timestamp("UTC", y, m, d, h, n)
+                if year(candidate, "UTC") == y and month(candidate, "UTC") == m and dayofmonth(candidate, "UTC") == d
+                    result := candidate
+    result
+
+type Release
+    int currencyIndex
+    int keyIndex
+    int stamp
+    float actual
+    float forecast
+    float previous
+    string period
+
+var array<Release> releases = array.new<Release>()
+
+f_assert(bool condition, string label) =>
+    if not condition
+        runtime.error("Interne Rechenprüfung fehlgeschlagen: " + label)
+
+f_self_tests() =>
+    f_assert(f_component(1, -1) == 2, "+1 minus -1")
+    f_assert(f_component(1, 1) == 0, "gleiche Richtung")
+    f_assert(na(f_component(1, na)), "fehlende Gegenseite")
+    f_assert(f_component(-1, 1) == -f_component(1, -1), "Antisymmetrie")
+    f_assert(f_impulse(-2, -3, 1) == 1, "negative Actual/Forecast")
+    f_assert(f_impulse(0, 0, 1) == 0, "echte Null")
+    f_assert(f_impulse(4.1, 4.2, -1) == 1, "Arbeitslosigkeit")
+    f_assert(f_decimal("-3.000001") == -3000001, "exakte Dezimalstellen")
+    f_assert(f_decimal("+0.100000") == 100000, "Vorzeichen und Nachnullen")
+    f_assert(f_decimal("999999999.999999") == 999999999999999, "maximaler exakter Wert")
+    f_assert(na(f_decimal("1e6")) and na(f_decimal("1,2")) and na(f_decimal("1.")), "Dezimalfehler")
+    f_assert(na(f_utc("2025-02-29T12:00")) and not na(f_utc("2024-02-29T12:00")), "Schaltjahr")
+    f_assert(na(f_utc("2026-04-31T12:00")) and na(f_utc("2026-10-02T24:00")), "ungültige Zeit")
+    f_assert(na(f_normalized(2, 1, 4, 1, 2, 75, 2)), "Coverage-Sperre")
+    f_assert(f_normalized(2, 2, 2, 2, 2, 75, 2) == 50, "Paar-Normierung")
+    f_assert(na(f_z(10, 5, 0, 52)), "COT-Varianz null")
+    f_assert(na(f_z(10, 5, 1, 25)), "COT-Stichprobe")
+    f_assert(math.abs(f_return(110, 100) - 10) < 1e-9, "Monatsrendite")
+    f_assert(na(f_season_signal(2, 80, 4)), "Saison-Minimum")
+    f_assert(not f_fresh(2000, 1000, 10), "Zukunftssperre")
+
+if barstate.isfirst
+    if not timeframe.isdaily or timeframe.multiplier != 1 or not chart.is_standard
+        runtime.error("Personal Macro benötigt einen normalen 1D-Chart (Kerzen/Balken/Linie, keine synthetischen Kurse). Bitte auf 1D wechseln.")
+    if budget > requestLimit
+        runtime.error("Diese Auswahl benötigt bis zu " + str.tostring(budget) + " Datenabfragen; eingestellt sind " + str.tostring(requestLimit) + ". Basisprofil wählen, CNY/Zusatzmodule deaktivieren oder mit Ultimate 64 einstellen.")
+    if baseCcy == quoteCcy or (not includeCny and (baseCcy == "CNY" or quoteCcy == "CNY"))
+        runtime.error("Bitte zwei unterschiedliche aktive Währungen wählen. Für CNY zuerst CNY aktivieren.")
+    if manualMode
+        if not manualConfirmed or str.length(str.trim(manualSource)) == 0 or str.length(str.trim(manualText)) == 0
+            runtime.error("Manuelle Releases benötigen Quelldokumentation, ausgefüllte Zeilen und die Bestätigung gleicher Release-/Einheitenzuordnung.")
+        array<string> configured = str.split(manualKeys, ",")
+        if array.size(configured) == 0 or array.size(configured) > 17
+            runtime.error("Manuell sind 1 bis 17 bekannte Kennzahlen zulässig.")
+        for item in configured
+            string key = str.trim(item)
+            if not array.includes(allKeys, key) or array.includes(keys, key)
+                runtime.error("Unbekannte oder doppelte aktive Kennzahl: " + key)
+            array.push(keys, key)
+    else
+        keys := array.from("gdp", "cpi_yoy", "unemployment_rate", "interest_rates")
+        if extended
+            array.push(keys, "industrial_production")
+            array.push(keys, "retail_sales")
+    array<int> domainCounts = array.new_int(4, 0)
+    for key in keys
+        int domain = f_group(key)
+        array.set(domainCounts, domain, array.get(domainCounts, domain) + 1)
+    array<float> domainWeights = array.from(growthWeight, not manualMode and inflationModel == "Nur anzeigen" ? 0.0 : inflationWeight, laborWeight, ratesWeight)
+    int activeCount = 0
+    for key in keys
+        int domain = f_group(key)
+        float weight = array.get(domainWeights, domain) / array.get(domainCounts, domain)
+        array.push(weights, weight)
+        if weight > 0
+            activeCount += 1
+    if array.sum(weights) <= 0 or activeCount < minComponents
+        runtime.error("Zu wenige Kennzahlen mit positivem Gewicht für die eingestellte Mindestanzahl.")
+    int cells = currencyCount * array.size(keys)
+    values := array.new_float(cells, na)
+    priors := array.new_float(cells, na)
+    forecasts := array.new_float(cells, na)
+    observedAt := array.new_int(cells, na)
+    priorObservedAt := array.new_int(cells, na)
+    periods := array.new_string(cells, "")
+    signals := array.new_float(cells, na)
+    reasons := array.new_string(cells, "Keine Beobachtung")
+    if manualMode
+        if str.length(manualText) > 30000
+            runtime.error("Manuelle Eingabe auf 30.000 Zeichen begrenzt.")
+        array<string> lines = str.split(manualText, "\n")
+        array<string> identities = array.new_string()
+        if array.size(lines) > 300
+            runtime.error("Manuelle Eingabe auf 300 Zeilen begrenzt.")
+        for row = 0 to array.size(lines) - 1
+            string line = str.trim(array.get(lines, row))
+            if str.length(line) > 0 and not str.startswith(line, "#")
+                string prefix = "Manuelle Zeile " + str.tostring(row + 1) + ": "
+                array<string> columns = str.split(line, ";")
+                if array.size(columns) != 7
+                    runtime.error(prefix + "Genau 7 Felder erforderlich; Previous darf leer sein.")
+                string ccy = str.trim(array.get(columns, 0))
+                string key = str.trim(array.get(columns, 1))
+                string period = str.trim(array.get(columns, 2))
+                string dateText = str.trim(array.get(columns, 3))
+                string previousText = str.trim(array.get(columns, 6))
+                int ci = array.indexof(currencies, ccy)
+                int ki = array.indexof(keys, key)
+                int stamp = f_utc(dateText)
+                float actual = f_decimal(array.get(columns, 4))
+                float forecast = f_decimal(array.get(columns, 5))
+                float previous = f_decimal(previousText)
+                if ci < 0 or ci >= currencyCount or ki < 0
+                    runtime.error(prefix + "Währung oder Kennzahl ist nicht aktiviert.")
+                if str.length(period) == 0 or str.length(period) > 40 or na(stamp) or na(actual) or na(forecast) or (str.length(previousText) > 0 and na(previous))
+                    runtime.error(prefix + "Periode, UTC-Zeit oder Dezimalwerte ungültig. Dezimalpunkt und bis zu 6 Nachkommastellen verwenden.")
+                string identity = ccy + ";" + key + ";" + dateText
+                if array.includes(identities, identity)
+                    runtime.error(prefix + "Doppelter Release für dieselbe Währung/Kennzahl/Zeit.")
+                array.push(identities, identity)
+                array.push(releases, Release.new(ci, ki, stamp, actual, forecast, previous, period))
+        if array.size(releases) == 0
+            runtime.error("Keine manuelle Release-Zeile vorhanden.")
+    if runSelfTests
+        f_self_tests()
+
+int keyCount = array.size(keys)
+int baseIndex = array.indexof(currencies, baseCcy)
+int quoteIndex = array.indexof(currencies, quoteCcy)
+var int evaluationTime = na
+if barstate.isconfirmed
+    evaluationTime := time_close
+
+// gaps_on identifies new data even when its numerical value is unchanged.
+// Arrays give every currency/indicator its own prior and timestamp state.
+if not manualMode
+    for ci = 0 to currencyCount - 1
+        for ki = 0 to keyCount - 1
+            string country = array.get(countries, ci)
+            string field = f_field(array.get(keys, ki))
+            float point = request.economic(country, field, gaps=barmerge.gaps_on, ignore_invalid_symbol=true)
+            if barstate.isconfirmed and not na(point)
+                int index = ci * keyCount + ki
+                array.set(priors, index, array.get(values, index))
+                array.set(priorObservedAt, index, array.get(observedAt, index))
+                array.set(values, index, point)
+                array.set(observedAt, index, evaluationTime)
+else if barstate.isconfirmed
+    for release in releases
+        int index = release.currencyIndex * keyCount + release.keyIndex
+        int previousStamp = array.get(observedAt, index)
+        if release.stamp <= evaluationTime and (na(previousStamp) or release.stamp > previousStamp)
+            array.set(values, index, release.actual)
+            array.set(forecasts, index, release.forecast)
+            array.set(priors, index, release.previous)
+            array.set(observedAt, index, release.stamp)
+            array.set(periods, index, release.period)
+
+for ci = 0 to currencyCount - 1
+    for ki = 0 to keyCount - 1
+        int index = ci * keyCount + ki
+        string key = array.get(keys, ki)
+        float actual = array.get(values, index)
+        float reference = manualMode ? array.get(forecasts, index) : array.get(priors, index)
+        int stamp = array.get(observedAt, index)
+        float direction = f_direction(key) * (not manualMode and key == "cpi_yoy" and inflationModel == "Disinflation: Rückgang positiv" ? -1.0 : 1.0)
+        int maxAge = f_max_age(key, array.get(currencies, ci))
+        bool fresh = f_fresh(stamp, evaluationTime, maxAge)
+        bool priorValid = manualMode or f_fresh(array.get(priorObservedAt, index), stamp, maxAge * 2)
+        float signal = fresh and priorValid ? f_impulse(actual, reference, direction) : na
+        array.set(signals, index, signal)
+        array.set(reasons, index, na(actual) ? "Keine Beobachtung" : not fresh ? "Quellenstand zu alt / nicht auswertbar" : na(reference) ? (manualMode ? "Forecast fehlt" : "Vorbeobachtung fehlt") : not priorValid ? "Vorbeobachtung zu alt" : array.get(weights, ki) == 0 ? "Nur Anzeige; Gewicht 0" : "Verfügbar")
+
+f_aggregate_data(array<float> data, array<float> assignedWeights, int numberOfKeys, int first, int second, int minimum, float required) =>
+    bool pair = second >= 0
+    float weighted = 0.0
+    float available = 0.0
+    float raw = 0.0
+    int count = 0
+    for ki = 0 to numberOfKeys - 1
+        float weight = array.get(assignedWeights, ki)
+        float value = array.get(data, first * numberOfKeys + ki)
+        float contribution = pair ? f_component(value, array.get(data, second * numberOfKeys + ki)) : value
+        if weight > 0 and not na(contribution)
+            weighted += weight * contribution
+            available += weight
+            raw += contribution
+            count += 1
+    float planned = array.sum(assignedWeights)
+    float score = f_normalized(weighted, available, planned, count, minimum, required, pair ? 2.0 : 1.0)
+    [score, count > 0 ? raw : na, f_coverage(available, planned), count]
+
+f_aggregate(int first, int second) =>
+    f_aggregate_data(signals, weights, keyCount, first, second, minComponents, minCoverage)
+
+if barstate.isfirst and runSelfTests
+    array<float> testSignals = array.from(1.0, 1.0, 0.0, float(na), -1.0, 1.0, 0.0, 1.0)
+    array<float> testWeights = array.from(1.0, 1.0, 1.0, 1.0)
+    [forwardScore, rawScore, coverage, count] = f_aggregate_data(testSignals, testWeights, 4, 0, 1, 2, 75)
+    [reverseScore, reverseRaw, reverseCoverage, reverseCount] = f_aggregate_data(testSignals, testWeights, 4, 1, 0, 2, 75)
+    f_assert(math.abs(forwardScore - 100.0 / 3.0) < 1e-9 and rawScore == 2 and coverage == 75 and count == 3, "gemeinsame gewichtete Paaraggregation")
+    f_assert(forwardScore == -reverseScore and rawScore == -reverseRaw and coverage == reverseCoverage and count == reverseCount, "Aggregation antisymmetrisch")
+    array.set(testWeights, 3, 0.0)
+    [zeroWeightScore, zeroWeightRaw, zeroWeightCoverage, zeroWeightCount] = f_aggregate_data(testSignals, testWeights, 4, 0, 1, 2, 100)
+    f_assert(zeroWeightCoverage == 100 and zeroWeightCount == 3 and zeroWeightScore == forwardScore, "Gewicht 0 nicht im Nenner")
+
+[selectedScore, selectedRaw, selectedCoverage, selectedCount] = f_aggregate(baseIndex, quoteIndex)
+
+// Technicals use the final closed H4/D1 bar available at each confirmed daily bar.
+f_technical() =>
+    float fast = ta.ema(ohlc4, 20)
+    float slow = ta.ema(ohlc4, 50)
+    [diPlus, diMinus, adx] = ta.dmi(14, 14)
+    float slope = fast - fast[3]
+    bool ready = not na(ohlc4[99]) and not na(adx) and not na(slope)
+    float signal = not ready ? na : ohlc4 > fast and fast > slow and slope > 0 and diPlus > diMinus and adx >= 20 ? 1.0 : ohlc4 < fast and fast < slow and slope < 0 and diMinus > diPlus and adx >= 20 ? -1.0 : 0.0
+    [signal, adx, time_close, signal[1], adx[1], time_close[1], syminfo.basecurrency, syminfo.currency]
+
+var array<float> technicalSignals = array.new_float(2, na)
+var array<float> technicalAdx = array.new_float(2, na)
+var array<int> technicalTimes = array.new_int(2, na)
+var bool technicalIdentity = false
+if enableTrend
+    for ti = 0 to 1
+        string tf = ti == 0 ? "240" : "1D"
+        [currentSignal, currentAdx, currentStamp, previousSignal, previousAdx, previousStamp, symbolBase, symbolQuote] = request.security(pairSymbol, tf, f_technical(), gaps=barmerge.gaps_off, lookahead=barmerge.lookahead_off, ignore_invalid_symbol=true, calc_bars_count=500)
+        if barstate.isconfirmed
+            bool currentClosed = not na(currentStamp) and currentStamp <= evaluationTime
+            float signal = currentClosed ? currentSignal : previousSignal
+            float adx = currentClosed ? currentAdx : previousAdx
+            int stamp = currentClosed ? currentStamp : previousStamp
+            bool identity = symbolBase == baseCcy and symbolQuote == quoteCcy
+            technicalIdentity := identity
+            bool usable = identity and not na(stamp) and stamp <= evaluationTime and f_fresh(stamp, evaluationTime, 5)
+            array.set(technicalSignals, ti, usable ? signal : na)
+            array.set(technicalAdx, ti, usable ? adx : na)
+            array.set(technicalTimes, ti, usable ? stamp : na)
+
+f_cot_code(string ccy) =>
+    switch ccy
+        "USD" => "098662"
+        "EUR" => "099741"
+        "GBP" => "096742"
+        "JPY" => "097741"
+        "CHF" => "092741"
+        "CAD" => "090741"
+        "AUD" => "232741"
+        "NZD" => "112741"
+        => ""
+
+type CotHistory
+    array<float> nets
+    array<int> stamps
+
+var array<CotHistory> cotHistories = array.from(CotHistory.new(array.new_float(), array.new_int()), CotHistory.new(array.new_float(), array.new_int()))
+var array<float> cotNets = array.new_float(2, na)
+var array<float> cotChanges = array.new_float(2, na)
+var array<float> cotZs = array.new_float(2, na)
+var array<float> cotScores = array.new_float(2, na)
+var array<int> cotTimes = array.new_int(2, na)
+
+f_cot_statistics(array<float> history) =>
+    int length = array.size(history)
+    float current = length > 0 ? array.get(history, length - 1) : na
+    float change = length >= 2 ? current - array.get(history, length - 2) : na
+    int samples = math.min(52, length - 1)
+    float mean = 0.0
+    float variance = 0.0
+    if samples >= 26
+        for i = length - samples - 1 to length - 2
+            mean += array.get(history, i) / samples
+        for i = length - samples - 1 to length - 2
+            variance += math.pow(array.get(history, i) - mean, 2) / (samples - 1)
+    float z = f_z(current, mean, variance, samples)
+    // Full three-component evidence is required for the composite COT score.
+    float score = na(change) or na(z) ? na : (f_sign(current) + f_sign(change) + (z >= 1 ? 1.0 : z <= -1 ? -1.0 : 0.0)) / 3.0
+    [current, change, z, score]
+
+if barstate.isfirst and runSelfTests
+    array<float> cotFixture = array.new_float()
+    for i = 0 to 26
+        array.push(cotFixture, float(i))
+    [testNet, testChange, testZ, testCotScore] = f_cot_statistics(cotFixture)
+    f_assert(testNet == 26 and testChange == 1 and math.abs(testZ - 13.5 / math.sqrt(58.5)) < 1e-9 and testCotScore == 1, "COT: Referenz ohne aktuelle Woche")
+    [constantNet, constantChange, constantZ, constantScore] = f_cot_statistics(array.new_float(27, 10.0))
+    f_assert(constantNet == 10 and constantChange == 0 and na(constantZ) and na(constantScore), "COT: konstante neue Wochen")
+
+if enableCot
+    for side = 0 to 1
+        string ccy = side == 0 ? baseCcy : quoteCcy
+        string code = f_cot_code(ccy)
+        if code != ""
+            string longTicker = cot.COTTickerid("Legacy", code, false, "Noncommercial Positions", "Long", "All")
+            string shortTicker = cot.COTTickerid("Legacy", code, false, "Noncommercial Positions", "Short", "All")
+            // W [1] + lookahead_on deliberately uses the previous closed source week.
+            // The extra delay avoids a partial-week observation masquerading as confirmed.
+            [longs, longWeek] = request.security(longTicker, "1W", [close[1], time[1]], gaps=barmerge.gaps_off, lookahead=barmerge.lookahead_on, ignore_invalid_symbol=true, calc_bars_count=120)
+            [shorts, shortWeek] = request.security(shortTicker, "1W", [close[1], time[1]], gaps=barmerge.gaps_off, lookahead=barmerge.lookahead_on, ignore_invalid_symbol=true, calc_bars_count=120)
+            if barstate.isconfirmed
+                CotHistory history = array.get(cotHistories, side)
+                bool valid = f_cot_valid(longs, shorts, longWeek, shortWeek, evaluationTime)
+                if valid
+                    int length = array.size(history.stamps)
+                    int lastStamp = length > 0 ? array.get(history.stamps, length - 1) : na
+                    if na(lastStamp) or longWeek > lastStamp
+                        // A gap of more than 10 days breaks the consecutive weekly sample.
+                        if not na(lastStamp) and longWeek - lastStamp > 10 * DAY_MS
+                            array.clear(history.nets)
+                            array.clear(history.stamps)
+                        array.push(history.nets, longs - shorts)
+                        array.push(history.stamps, longWeek)
+                        if array.size(history.nets) > 53
+                            array.shift(history.nets)
+                            array.shift(history.stamps)
+                    else if longWeek == lastStamp
+                        array.set(history.nets, length - 1, longs - shorts)
+                [net, change, z, score] = f_cot_statistics(history.nets)
+                int lastWeek = array.size(history.stamps) > 0 ? array.last(history.stamps) : na
+                bool fresh = valid and f_fresh(lastWeek, evaluationTime, 21)
+                array.set(cotNets, side, fresh ? net : na)
+                array.set(cotChanges, side, fresh ? change : na)
+                array.set(cotZs, side, fresh ? z : na)
+                array.set(cotScores, side, fresh ? score : na)
+                array.set(cotTimes, side, fresh ? lastWeek : na)
+
+// Only earlier COMPLETE calendar years; no current price is used in this request.
+f_seasonality(int targetInput, int maxYears) =>
+    // Forex monthly bars may OPEN on the prior calendar day's evening.
+    // Their closing calendar month identifies the return period correctly.
+    int target = targetInput == 0 ? month(time_close - 1) : targetInput
+    int currentYear = year(time_close - 1)
+    float total = 0.0
+    int wins = 0
+    int samples = 0
+    int firstYear = na
+    int lastYear = na
+    for offset = 1 to 252
+        if not na(time_close[offset]) and month(time_close[offset] - 1) == 12
+            int y = year(time_close[offset] - 1)
+            if f_prior_year(y, currentYear, maxYears)
+                bool complete = f_month_valid(year(time_close[offset + 12] - 1), month(time_close[offset + 12] - 1), y - 1, 12, close[offset + 12])
+                for m = 0 to 11
+                    complete := complete and f_month_valid(year(time_close[offset + m] - 1), month(time_close[offset + m] - 1), y, 12 - m, close[offset + m])
+                if complete
+                    int at = offset + 12 - target
+                    float value = f_return(close[at], close[at + 1])
+                    if not na(value)
+                        total += value
+                        wins += value > 0 ? 1 : 0
+                        samples += 1
+                        firstYear := na(firstYear) ? y : math.min(firstYear, y)
+                        lastYear := na(lastYear) ? y : math.max(lastYear, y)
+    [samples >= 5 ? total / samples : na, samples >= 5 ? 100.0 * wins / samples : na, samples, firstYear, lastYear, target, syminfo.basecurrency, syminfo.currency]
+
+var float seasonMean = na
+var float seasonWins = na
+var int seasonSamples = 0
+var int seasonFirst = na
+var int seasonLast = na
+var int seasonTarget = na
+var bool seasonIdentity = false
+if enableSeason
+    // lookahead_on is safe here: expression accesses only preceding full years.
+    // Current month's timestamp supplies the target month, never its close.
+    [mean, wins, samples, firstYear, lastYear, target, symbolBase, symbolQuote] = request.security(pairSymbol, "1M", f_seasonality(seasonMonth, seasonYears), gaps=barmerge.gaps_off, lookahead=barmerge.lookahead_on, ignore_invalid_symbol=true, calc_bars_count=280)
+    if barstate.isconfirmed
+        seasonIdentity := symbolBase == baseCcy and symbolQuote == quoteCcy
+        seasonMean := seasonIdentity ? mean : na
+        seasonWins := seasonIdentity ? wins : na
+        seasonSamples := seasonIdentity ? samples : 0
+        seasonFirst := seasonIdentity ? firstYear : na
+        seasonLast := seasonIdentity ? lastYear : na
+        seasonTarget := target
+
+// Presentation never substitutes missing evidence with a neutral value.
+f_number(float value) =>
+    na(value) ? "—" : str.tostring(value, "#.##")
+f_signed(float value) =>
+    na(value) ? "—" : (value > 0 ? "+" : "") + str.tostring(value, "#.##")
+f_date(int stamp) =>
+    na(stamp) ? "—" : str.format_time(stamp, "yyyy-MM-dd", "UTC")
+f_tone(float value) =>
+    na(value) ? BG : value > 0 ? color.from_gradient(math.min(value, 100), 0, 100, NEUTRAL, POS) : value < 0 ? color.from_gradient(math.min(-value, 100), 0, 100, NEUTRAL, NEG) : NEUTRAL
+f_bias(float value) =>
+    na(value) ? "Nicht verfügbar" : value >= 50 ? "Stark positiv" : value > 0 ? "Positiv" : value <= -50 ? "Stark negativ" : value < 0 ? "Negativ" : "Neutral"
+f_raw_value(float value) =>
+    na(value) ? "—" : manualMode ? str.tostring(value / 1000000.0, "#.######") : f_number(value)
+
+var table board = table.new(position.middle_left, 12, 44, bgcolor=BG, frame_color=#334461, frame_width=1, border_color=#24324A, border_width=1)
+var bool layoutMerged = false
+
+f_cell(int column, int row, string value, color background, string tooltip) =>
+    table.cell(board, column, row, value, text_color=TEXT, bgcolor=background, text_size=fontSize, tooltip=tooltip)
+f_heading(int row, string headingText) =>
+    if not layoutMerged
+        table.merge_cells(board, 0, row, 11, row)
+    f_cell(0, row, headingText, PANEL, headingText)
+f_metric_tooltip(int ci, int ki) =>
+    int index = ci * keyCount + ki
+    string stampLabel = manualMode ? "Release UTC: " : "Beobachtung im Chart: "
+    string source = manualMode ? manualSource : "TradingView · " + array.get(countries, ci) + " / " + f_field(array.get(keys, ki))
+    string referenceLabel = manualMode ? "Forecast: " : "Vorheriger Quellenpunkt: "
+    string tooltipText = source + "\n" + f_label(array.get(keys, ki)) + "\nActual: " + f_raw_value(array.get(values, index)) + "\n" + referenceLabel + f_raw_value(manualMode ? array.get(forecasts, index) : array.get(priors, index))
+    int stamp = array.get(observedAt, index)
+    string stampText = na(stamp) ? "—" : manualMode ? str.format_time(stamp, "yyyy-MM-dd HH:mm", "UTC") + " UTC" : f_date(stamp)
+    tooltipText += "\n" + stampLabel + stampText + "\n" + array.get(reasons, index)
+    if manualMode
+        tooltipText += "\nPeriode: " + array.get(periods, index) + "\nPrevious (nur Kontext): " + f_raw_value(array.get(priors, index))
+    tooltipText
+
+if barstate.islast
+    table.clear(board, 0, 0, 11, 43)
+    f_heading(0, "PERSONAL MACRO  ·  " + (manualMode ? "RELEASE-ÜBERRASCHUNGEN · MANUELL" : "MACRO-TRENDS · AUTOMATISCH"))
+    f_heading(1, "Stand: " + f_date(evaluationTime) + " · letzter bestätigter Charttag · " + str.tostring(budget) + "/" + str.tostring(requestLimit) + " Abfragen maximal")
+    int nextRow = 3
+    if view == "Paarmatrix"
+        f_cell(0, 2, "Base ↓ / Quote →", PANEL, "Nur gemeinsame, verfügbare Kennzahlen. Skala -100 bis +100; kein prognostizierter Ertrag.")
+        for ci = 0 to currencyCount - 1
+            f_cell(ci + 1, 2, array.get(currencies, ci), PANEL, "Quotewährung")
+            f_cell(0, ci + 3, array.get(currencies, ci), PANEL, "Basiswährung")
+            for qi = 0 to currencyCount - 1
+                if ci == qi
+                    f_cell(qi + 1, ci + 3, "·", BG, "Identische Währung")
+                else
+                    [score, raw, coverage, count] = f_aggregate(ci, qi)
+                    string tip = array.get(currencies, ci) + "/" + array.get(currencies, qi) + "\nScore: " + f_signed(score) + "\nRohsumme: " + f_signed(raw) + "\nGemeinsame Kennzahlen: " + str.tostring(count) + "\nGewichtsabdeckung: " + f_number(coverage) + "%\n" + f_bias(score)
+                    f_cell(qi + 1, ci + 3, f_signed(score), f_tone(score), tip)
+        nextRow := currencyCount + 4
+    else if view == "Währungen"
+        array<int> order = array.new_int()
+        array<float> currencyScores = array.new_float()
+        for ci = 0 to currencyCount - 1
+            [score, raw, coverage, count] = f_aggregate(ci, -1)
+            array.push(order, ci)
+            array.push(currencyScores, score)
+        if rankCurrencies
+            for i = 0 to currencyCount - 2
+                for j = i + 1 to currencyCount - 1
+                    int left = array.get(order, i)
+                    int right = array.get(order, j)
+                    float a = array.get(currencyScores, left)
+                    float b = array.get(currencyScores, right)
+                    if not na(b) and (na(a) or b > a)
+                        array.set(order, i, right)
+                        array.set(order, j, left)
+        f_cell(0, 2, "Währung", PANEL, "Ranking mit sichtbarer Abdeckung")
+        f_cell(1, 2, "Score", PANEL, "Normierter Währungswert -100 bis +100")
+        f_cell(2, 2, "Abdeckung", PANEL, "Verfügbare Gewichte / konfigurierte Gewichte")
+        // The currency view shows at most six indicators; all are in pair details.
+        int visibleKeys = math.min(keyCount, 6)
+        for ki = 0 to visibleKeys - 1
+            f_cell(ki + 3, 2, f_label(array.get(keys, ki)), PANEL, "Signal und Quellenwert; Details im Tooltip")
+        for row = 0 to currencyCount - 1
+            int ci = array.get(order, row)
+            [score, raw, coverage, count] = f_aggregate(ci, -1)
+            f_cell(0, row + 3, array.get(currencies, ci), PANEL, f_bias(score))
+            f_cell(1, row + 3, f_signed(score), f_tone(score), "Rohsumme " + f_signed(raw) + "; " + str.tostring(count) + " Kennzahlen")
+            f_cell(2, row + 3, f_number(coverage) + "%", PANEL, "Mindestabdeckung " + f_number(minCoverage) + "%")
+            for ki = 0 to visibleKeys - 1
+                int index = ci * keyCount + ki
+                float signal = array.get(signals, index)
+                bool scored = array.get(weights, ki) > 0
+                string cellText = f_raw_value(array.get(values, index)) + " | " + (scored ? f_signed(signal) : "Info")
+                f_cell(ki + 3, row + 3, cellText, scored ? f_tone(signal * 100) : PANEL, f_metric_tooltip(ci, ki))
+        nextRow := currencyCount + 4
+    else
+        f_cell(0, 2, "Kennzahl", PANEL, "Exakt dieselbe Kennzahl für Base und Quote")
+        f_cell(1, 2, baseCcy + " Wert", PANEL, "Rohwert")
+        f_cell(2, 2, "Referenz", PANEL, manualMode ? "Forecast desselben Releases" : "Voriger Quellenpunkt")
+        f_cell(3, 2, "Signal", PANEL, "-1 / 0 / +1")
+        f_cell(4, 2, quoteCcy + " Wert", PANEL, "Rohwert")
+        f_cell(5, 2, "Referenz", PANEL, manualMode ? "Forecast desselben Releases" : "Voriger Quellenpunkt")
+        f_cell(6, 2, "Signal", PANEL, "-1 / 0 / +1")
+        f_cell(7, 2, "Differenz", PANEL, "Base minus Quote; fehlende Seite bleibt leer")
+        f_cell(8, 2, "Gewicht", PANEL, "Auf Kennzahlen verteiltes Domänengewicht")
+        for ki = 0 to keyCount - 1
+            int bi = baseIndex * keyCount + ki
+            int qi = quoteIndex * keyCount + ki
+            float b = array.get(signals, bi)
+            float q = array.get(signals, qi)
+            float component = f_component(b, q)
+            bool scored = array.get(weights, ki) > 0
+            string bt = f_metric_tooltip(baseIndex, ki)
+            string qt = f_metric_tooltip(quoteIndex, ki)
+            f_cell(0, ki + 3, f_label(array.get(keys, ki)), PANEL, bt + "\n\n" + qt)
+            f_cell(1, ki + 3, f_raw_value(array.get(values, bi)), BG, bt)
+            f_cell(2, ki + 3, f_raw_value(manualMode ? array.get(forecasts, bi) : array.get(priors, bi)), BG, bt)
+            f_cell(3, ki + 3, f_signed(b), scored ? f_tone(b * 100) : PANEL, bt)
+            f_cell(4, ki + 3, f_raw_value(array.get(values, qi)), BG, qt)
+            f_cell(5, ki + 3, f_raw_value(manualMode ? array.get(forecasts, qi) : array.get(priors, qi)), BG, qt)
+            f_cell(6, ki + 3, f_signed(q), scored ? f_tone(q * 100) : PANEL, qt)
+            f_cell(7, ki + 3, scored ? f_signed(component) : "Info", scored ? f_tone(component * 50) : PANEL, "Nur bei zwei verfügbaren Signalen; Gewicht 0 beeinflusst den Score nicht.")
+            f_cell(8, ki + 3, f_number(array.get(weights, ki)), BG, "Kein stilles Ersetzen fehlender Werte")
+        nextRow := keyCount + 4
+    f_heading(nextRow, baseCcy + "/" + quoteCcy + " · Macro " + f_signed(selectedScore) + " · Rohsumme " + f_signed(selectedRaw) + " · Abdeckung " + f_number(selectedCoverage) + "% · n=" + str.tostring(selectedCount))
+    int row = nextRow + 1
+    f_heading(row, "ZUSATZINFORMATIONEN · separat vom Macro-Score · " + pairSymbol)
+    row += 1
+    if enableTrend
+        float h4 = array.get(technicalSignals, 0)
+        float d1 = array.get(technicalSignals, 1)
+        bool agreement = not na(h4) and not na(d1) and h4 != 0 and h4 == d1
+        f_cell(0, row, "Charttrend", PANEL, "OHLC4 / EMA20 / EMA50 / Steigung / DMI14 / ADX14 >= 20; mindestens 100 Kerzen")
+        f_cell(1, row, "H4 " + f_signed(h4), f_tone(h4 * 100), "ADX " + f_number(array.get(technicalAdx, 0)) + " · " + f_date(array.get(technicalTimes, 0)))
+        f_cell(2, row, "D1 " + f_signed(d1), f_tone(d1 * 100), "ADX " + f_number(array.get(technicalAdx, 1)) + " · " + f_date(array.get(technicalTimes, 1)))
+        if not layoutMerged
+            table.merge_cells(board, 3, row, 11, row)
+        f_cell(3, row, not technicalIdentity ? "Symbol fehlt oder Base/Quote passen nicht" : agreement ? "Gerichtete Bestätigung" : "Keine gemeinsame gerichtete Bestätigung", PANEL, "Stand des letzten bestätigten Charttags. Kein untertägiger Live-Trend.")
+        row += 1
+    if enableCot
+        for side = 0 to 1
+            string ccy = side == 0 ? baseCcy : quoteCcy
+            f_cell(0, row, "COT " + ccy + (ccy == "USD" ? " (DXY)" : ""), PANEL, "Legacy Noncommercial, Futures ohne Optionen. USD ist ein Index-Stellvertreter. Vorige abgeschlossene Quellenwoche; zusätzliche Verzögerung möglich.")
+            f_cell(1, row, "Netto " + f_number(array.get(cotNets, side)), BG, "Long minus Short in Kontrakten")
+            f_cell(2, row, "Δ " + f_signed(array.get(cotChanges, side)), BG, "Differenz zur vorigen Quellenwoche")
+            f_cell(3, row, "Z " + f_number(array.get(cotZs, side)), BG, "26 bis 52 vorherige Wochen; Stichproben-Standardabweichung; aktuelle Woche nicht in Referenz")
+            f_cell(4, row, f_signed(array.get(cotScores, side)), f_tone(array.get(cotScores, side) * 100), "Durchschnitt aus Netto-Vorzeichen, Änderungs-Vorzeichen und Z-Signal (Schwelle ±1)")
+            if not layoutMerged
+                table.merge_cells(board, 5, row, 11, row)
+            f_cell(5, row, "Quellenwoche " + f_date(array.get(cotTimes, side)), PANEL, f_cot_code(ccy) == "" ? "Kein COT-Kontrakt zugeordnet" : "CFTC " + f_cot_code(ccy) + "; keine Behauptung des tatsächlichen Veröffentlichungsdatums")
+            row += 1
+        float cotPair = f_component(array.get(cotScores, 0), array.get(cotScores, 1))
+        f_cell(0, row, "COT-Paar", PANEL, "Base-COT minus Quote-COT; beide Quellenwochen müssen übereinstimmen")
+        bool sameWeek = not na(array.get(cotTimes, 0)) and array.get(cotTimes, 0) == array.get(cotTimes, 1)
+        f_cell(1, row, sameWeek ? f_signed(cotPair) : "—", f_tone(sameWeek ? cotPair * 50 : na), "Separate Skala -2 bis +2; kein Beitrag zum Macro-Score")
+        row += 1
+    if enableSeason
+        float seasonalSignal = f_season_signal(seasonMean, seasonWins, seasonSamples)
+        f_cell(0, row, "Saison Monat " + str.tostring(seasonTarget), PANEL, "Ganze Kalendermonate früherer vollständiger Jahre; nicht die verbleibenden Tage des aktuellen Monats")
+        f_cell(1, row, f_signed(seasonMean) + "%", f_tone(seasonalSignal * 100), "Arithmetischer Mittelwert der Monatsrenditen")
+        f_cell(2, row, f_number(seasonWins) + "% positiv", PANEL, "Strikt positive Monate / alle gültigen Stichproben; Nullmonate im Nenner")
+        if not layoutMerged
+            table.merge_cells(board, 3, row, 11, row)
+        string seasonPeriod = na(seasonFirst) or na(seasonLast) ? "Kein vollständiges Jahr verfügbar" : str.tostring(seasonFirst) + "–" + str.tostring(seasonLast)
+        f_cell(3, row, not seasonIdentity ? "Symbol fehlt oder Base/Quote passen nicht" : "n=" + str.tostring(seasonSamples) + " volle Jahre · " + seasonPeriod, PANEL, "Mindestens 5 vollständige Vorjahre. Aktuelles Jahr ausgeschlossen; Jahre mit Kurslücken ausgeschlossen.")
+        row += 1
+    f_heading(row + 1, manualMode ? "Manuelle Quelle: " + manualSource + " · " + str.tostring(array.size(releases)) + " Releases · keine automatische Aktualisierung" : "Trend gegenüber Vorbeobachtung · Inflation: " + inflationModel + " · Quellen können historische Werte revidieren")
+    f_heading(row + 2, "— = nicht verfügbar / Abdeckung zu gering · Tooltip zeigt Datenbasis · Score ist ein Modell, keine Renditeprognose")
+    layoutMerged := true
+
+plot(selectedScore, "Macro Paar-Score", display=display.data_window, color=color.blue)
+plot(selectedRaw, "Macro Rohsumme", display=display.data_window, color=color.gray)
+plot(selectedCoverage, "Macro Gewichtsabdeckung %", display=display.data_window, color=color.gray)
+bool positiveCross = not na(selectedScore[1]) and selectedScore >= alertThreshold and selectedScore[1] < alertThreshold
+bool negativeCross = not na(selectedScore[1]) and selectedScore <= -alertThreshold and selectedScore[1] > -alertThreshold
+alertcondition(enableAlerts and barstate.isconfirmed and positiveCross, "Macro: positive Schwelle", "Personal Macro: Das ausgewählte Paar hat die positive Macro-Schwelle am bestätigten Tagesende überschritten. Paar und Datenabdeckung im Dashboard prüfen.")
+alertcondition(enableAlerts and barstate.isconfirmed and negativeCross, "Macro: negative Schwelle", "Personal Macro: Das ausgewählte Paar hat die negative Macro-Schwelle am bestätigten Tagesende unterschritten. Paar und Datenabdeckung im Dashboard prüfen.")

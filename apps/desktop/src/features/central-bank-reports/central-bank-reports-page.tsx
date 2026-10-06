@@ -23,6 +23,8 @@ import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { dateTime, localDate } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { officialReportUrl } from "./report-source";
 import type {
   CentralBankReportDetail,
   CentralBankReportListItem,
@@ -55,6 +57,15 @@ const stanceLabels = {
   unclear: "Nicht eindeutig",
 };
 
+function usdMicros(value: number) {
+  return new Intl.NumberFormat("de-DE", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 4,
+  }).format(value / 1_000_000);
+}
+
 function message(error: unknown) {
   if (typeof error === "string" && error.trim()) return error;
   if (typeof error === "object" && error && "message" in error) {
@@ -64,6 +75,7 @@ function message(error: unknown) {
 }
 
 export function CentralBankReportsPage() {
+  const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
   const [bank, setBank] = useState("all");
   const [reportType, setReportType] = useState<CentralBankReportType | "all">(
@@ -96,17 +108,35 @@ export function CentralBankReportsPage() {
   const dashboard = useQuery({
     queryKey: ["central-bank-reports"],
     queryFn: api.centralBankReports,
-    refetchInterval: summarize.isPending ? 3_000 : 60_000,
+    refetchInterval: privateWeb ? false : summarize.isPending ? 3_000 : 60_000,
+    ...(privateWeb
+      ? {
+          staleTime: Infinity,
+          refetchOnWindowFocus: false,
+          refetchOnReconnect: false,
+        }
+      : {}),
+  });
+  const readMarkers = useQuery({
+    queryKey: ["central-bank-report-reads"],
+    queryFn: api.centralBankReportReadMarkers,
+    enabled: privateWeb,
   });
   const detail = useQuery({
     queryKey: [
       "central-bank-report",
       selectedId,
+      dashboard.data?.cloudGeneration,
       dashboard.data?.reports.find((report) => report.id === selectedId)
         ?.summarizedAt,
     ],
-    queryFn: () => api.centralBankReport(selectedId!),
-    enabled: Boolean(selectedId),
+    queryFn: () =>
+      privateWeb
+        ? api.centralBankReport(selectedId!, dashboard.data?.cloudGeneration)
+        : api.centralBankReport(selectedId!),
+    enabled: Boolean(
+      selectedId && (!privateWeb || dashboard.data?.cloudGeneration),
+    ),
   });
   const sync = useMutation({
     mutationFn: api.syncCentralBankReports,
@@ -125,29 +155,51 @@ export function CentralBankReportsPage() {
     mutationFn: api.markCentralBankReportRead,
     onSuccess: (_, id) => {
       void queryClient.invalidateQueries({
+        queryKey: ["central-bank-report-reads"],
+      });
+      void queryClient.invalidateQueries({
         queryKey: ["central-bank-reports"],
       });
       void queryClient.invalidateQueries({
         queryKey: ["central-bank-report", id],
       });
     },
+    onError: () =>
+      toast.error("Der Lesestatus konnte nicht gespeichert werden."),
   });
 
   const reports = useMemo(() => {
     const needle = search.trim().toLocaleLowerCase("de");
-    return (dashboard.data?.reports ?? []).filter((report) => {
-      if (bank !== "all" && report.bankCode !== bank) return false;
-      if (reportType !== "all" && report.reportType !== reportType)
-        return false;
-      if (status === "unread" && report.readAt) return false;
-      return (
-        !needle ||
-        `${report.title} ${report.bankCode} ${report.currency}`
-          .toLocaleLowerCase("de")
-          .includes(needle)
-      );
-    });
-  }, [bank, dashboard.data?.reports, reportType, search, status]);
+    const markers = new Map(
+      readMarkers.data?.map((item) => [item.id, item.readAt]),
+    );
+    return (dashboard.data?.reports ?? [])
+      .map((report) =>
+        privateWeb
+          ? { ...report, readAt: markers.get(report.id) ?? null }
+          : report,
+      )
+      .filter((report) => {
+        if (bank !== "all" && report.bankCode !== bank) return false;
+        if (reportType !== "all" && report.reportType !== reportType)
+          return false;
+        if (status === "unread" && report.readAt) return false;
+        return (
+          !needle ||
+          `${report.title} ${report.bankCode} ${report.currency}`
+            .toLocaleLowerCase("de")
+            .includes(needle)
+        );
+      });
+  }, [
+    bank,
+    dashboard.data?.reports,
+    reportType,
+    search,
+    status,
+    privateWeb,
+    readMarkers.data,
+  ]);
 
   useEffect(() => {
     if (selectedId || reports.length === 0) return;
@@ -178,14 +230,25 @@ export function CentralBankReportsPage() {
   const successfulSources = data.sources.filter(
     (source) => source.lastStatus === "success",
   ).length;
-  const unread = data.reports.filter((report) => !report.readAt).length;
+  const unread = privateWeb
+    ? data.reports.filter(
+        (report) => !readMarkers.data?.some((item) => item.id === report.id),
+      ).length
+    : data.reports.filter((report) => !report.readAt).length;
 
   async function openReport(report: CentralBankReportListItem) {
     try {
       if (report.localPath && isTauri()) {
         await api.openCentralBankReportFile(report.id);
-      } else {
+      } else if (isTauri()) {
         await openUrl(report.sourceUrl);
+      } else {
+        const url = officialReportUrl(report.bankCode, report.sourceUrl);
+        if (!url)
+          throw new Error(
+            "Die offizielle Berichtsquelle konnte nicht bestätigt werden.",
+          );
+        window.open(url, "_blank", "noopener,noreferrer");
       }
     } catch (error) {
       toast.error(message(error));
@@ -203,64 +266,141 @@ export function CentralBankReportsPage() {
         icon={PageIcon}
         eyebrow="Marktkontext"
         title="Zentralbank-Briefings"
-        description="Offizielle Entscheidungen, geldpolitische Berichte und Projektionen – automatisch geladen, lokal archiviert und auf Deutsch zusammengefasst."
+        description={
+          privateWeb
+            ? data.automation.enabled
+              ? data.automation.openaiConfigured
+                ? "Offizielle Entscheidungen, geldpolitische Berichte und Projektionen – tägliche Quellenprüfung und deutsche Briefings im privaten Workspace."
+                : "Offizielle Entscheidungen, geldpolitische Berichte und Projektionen – tägliche Quellenprüfung im privaten Workspace."
+              : "Offizielle Entscheidungen, geldpolitische Berichte und Projektionen aus deinem übernommenen Datenstand – mit vorhandenen deutschen Briefings und Originaltexten."
+            : "Offizielle Entscheidungen, geldpolitische Berichte und Projektionen – automatisch geladen, lokal archiviert und auf Deutsch zusammengefasst."
+        }
         actions={
-          <>
-            <Badge className={data.automation.enabled ? "positive" : "warning"}>
+          privateWeb ? (
+            <Badge className="primary">
               <DatabaseZap size={11} />{" "}
               {data.automation.enabled
-                ? "Automatisch aktiv"
-                : "Desktop erforderlich"}
+                ? "Cloud-Aktualisierung aktiv"
+                : "Privater Datenstand"}
             </Badge>
-            <Button
-              onClick={() => summarize.mutate(undefined)}
-              disabled={
-                summarize.isPending ||
-                sync.isPending ||
-                !isTauri() ||
-                !data.automation.openaiConfigured
-              }
-            >
-              <Languages size={14} />
-              {summarize.isPending
-                ? "Briefings werden übersetzt …"
-                : "Briefings auf Deutsch"}
-            </Button>
-            <Button
-              variant="primary"
-              onClick={() => sync.mutate()}
-              disabled={sync.isPending || summarize.isPending || !isTauri()}
-            >
-              <RefreshCw
-                size={14}
-                className={sync.isPending ? "spin" : undefined}
-              />
-              {sync.isPending ? "Prüfe Quellen …" : "Jetzt aktualisieren"}
-            </Button>
-          </>
+          ) : (
+            <>
+              <Badge
+                className={data.automation.enabled ? "positive" : "warning"}
+              >
+                <DatabaseZap size={11} />{" "}
+                {data.automation.enabled
+                  ? "Automatisch aktiv"
+                  : "Desktop erforderlich"}
+              </Badge>
+              <Button
+                onClick={() => summarize.mutate(undefined)}
+                disabled={
+                  summarize.isPending ||
+                  sync.isPending ||
+                  !isTauri() ||
+                  !data.automation.openaiConfigured
+                }
+              >
+                <Languages size={14} />
+                {summarize.isPending
+                  ? "Briefings werden übersetzt …"
+                  : "Briefings auf Deutsch"}
+              </Button>
+              <Button
+                variant="primary"
+                onClick={() => sync.mutate()}
+                disabled={sync.isPending || summarize.isPending || !isTauri()}
+              >
+                <RefreshCw
+                  size={14}
+                  className={sync.isPending ? "spin" : undefined}
+                />
+                {sync.isPending ? "Prüfe Quellen …" : "Jetzt aktualisieren"}
+              </Button>
+            </>
+          )
         }
       />
 
       <DataStatusStrip
-        status={`${data.sources.length} offizielle Quellen · ${data.reports.length} Berichte`}
-        quality={`${successfulSources}/${data.sources.length} Quellen zuletzt erreichbar · ${unread} ungelesen`}
+        status={
+          privateWeb
+            ? `${data.reports.length} übernommene offizielle Berichte`
+            : `${data.sources.length} offizielle Quellen · ${data.reports.length} Berichte`
+        }
+        quality={
+          privateWeb
+            ? readMarkers.isSuccess
+              ? `${unread} ungelesen · Originalquellen geprüft`
+              : "Lesestatus wird geladen"
+            : `${successfulSources}/${data.sources.length} Quellen zuletzt erreichbar · ${unread} ungelesen`
+        }
         detail={
-          data.automation.lastSuccessAt
-            ? `Zuletzt geprüft: ${dateTime(data.automation.lastSuccessAt)} · Intervall ${data.automation.refreshIntervalMinutes} Minuten`
-            : "Der erste Abruf startet automatisch in der Desktop-App."
+          privateWeb
+            ? data.automation.enabled
+              ? "Tägliche Quellenprüfung" +
+                (data.automation.lastSuccessAt
+                  ? " · Zuletzt geprüft: " +
+                    dateTime(data.automation.lastSuccessAt)
+                  : " · Erster Abruf ausstehend")
+              : `${data.cloudImportedAt ? `Übernommen am ${dateTime(data.cloudImportedAt)}` : "Übernahmezeit nicht verfügbar"} · Keine automatische Cloud-Aktualisierung.`
+            : data.automation.lastSuccessAt
+              ? `Zuletzt geprüft: ${dateTime(data.automation.lastSuccessAt)} · Intervall ${data.automation.refreshIntervalMinutes} Minuten`
+              : "Der erste Abruf startet automatisch in der Desktop-App."
         }
         action={
-          <Badge
-            className={
-              data.automation.openaiConfigured ? "positive" : "warning"
-            }
-          >
-            {data.automation.openaiConfigured
-              ? `Deutsche KI-Zusammenfassung · ${data.automation.summaryModel}`
-              : "Deutsche Zusammenfassung benötigt die Modellanbindung"}
-          </Badge>
+          privateWeb ? (
+            <Badge>
+              {data.automation.enabled && data.automation.openaiConfigured
+                ? "Neue deutsche Briefings aktiv"
+                : "Vorhandene Briefings"}
+            </Badge>
+          ) : (
+            <Badge
+              className={
+                data.automation.openaiConfigured ? "positive" : "warning"
+              }
+            >
+              {data.automation.openaiConfigured
+                ? `Deutsche KI-Zusammenfassung · ${data.automation.summaryModel}`
+                : "Deutsche Zusammenfassung benötigt die Modellanbindung"}
+            </Badge>
+          )
         }
       />
+      {data.automation.aiBudget && (
+        <div className="notice central-bank-notice">
+          KI-Teilbudget für {data.automation.aiBudget.month} (UTC):{" "}
+          {usdMicros(data.automation.aiBudget.spentMicros)} verbraucht,{" "}
+          {usdMicros(data.automation.aiBudget.heldMicros)} reserviert · Grenze{" "}
+          {usdMicros(data.automation.aiBudget.limitMicros)} pro Monat.
+          {data.automation.aiBudget.uncertainRequests > 0 &&
+            " Ungeklärte Anfragen bleiben reserviert."}{" "}
+          Originalberichte bleiben bei ausgeschöpftem Budget verfügbar.
+          <details>
+            <summary>Tokenverbrauch anzeigen</summary>
+            <p>
+              {data.automation.aiBudget.requests.toLocaleString("de-DE")}{" "}
+              Anfragen ·{" "}
+              {data.automation.aiBudget.inputTokens.toLocaleString("de-DE")}{" "}
+              Eingabetokens, davon{" "}
+              {data.automation.aiBudget.cachedTokens.toLocaleString("de-DE")}{" "}
+              aus dem Cache ·{" "}
+              {data.automation.aiBudget.outputTokens.toLocaleString("de-DE")}{" "}
+              Ausgabetokens, davon{" "}
+              {data.automation.aiBudget.reasoningTokens.toLocaleString("de-DE")}{" "}
+              Reasoning-Tokens.
+            </p>
+          </details>
+        </div>
+      )}
+      {privateWeb && readMarkers.isError && (
+        <p className="notice" role="alert">
+          Der persönliche Lesestatus konnte nicht geladen werden. Die Berichte
+          bleiben verfügbar.
+        </p>
+      )}
 
       {data.automation.errorMessage ? (
         <div className="notice central-bank-notice">
@@ -289,9 +429,11 @@ export function CentralBankReportsPage() {
                 <strong>{code}</strong>
                 <small>{count} Berichte</small>
               </span>
-              <span
-                className={`central-bank-source-dot ${source?.lastStatus === "success" ? "ok" : ""}`}
-              />
+              {!privateWeb && (
+                <span
+                  className={`central-bank-source-dot ${source?.lastStatus === "success" ? "ok" : ""}`}
+                />
+              )}
             </button>
           );
         })}
@@ -363,7 +505,12 @@ export function CentralBankReportsPage() {
               }
             >
               <option value="all">Alle Berichte</option>
-              <option value="unread">Nur ungelesene</option>
+              <option
+                value="unread"
+                disabled={privateWeb && !readMarkers.isSuccess}
+              >
+                Nur ungelesene
+              </option>
             </select>
           </div>
         </CardContent>
@@ -416,7 +563,8 @@ export function CentralBankReportsPage() {
                             ? "Deutsch ausstehend"
                             : "Zusammenfassung ausstehend"}
                       </Badge>
-                      {!report.readAt ? (
+                      {!report.readAt &&
+                      (!privateWeb || readMarkers.isSuccess) ? (
                         <Badge className="positive">Neu</Badge>
                       ) : null}
                     </span>
@@ -430,7 +578,11 @@ export function CentralBankReportsPage() {
               <EmptyState
                 icon={Building2}
                 title="Keine passenden Berichte"
-                description="Passe die Filter an oder prüfe die offiziellen Quellen jetzt manuell."
+                description={
+                  privateWeb
+                    ? "Passe die Filter an. Hier sind die im Datenstand übernommenen Berichte verfügbar."
+                    : "Passe die Filter an oder prüfe die offiziellen Quellen jetzt manuell."
+                }
               />
             )}
           </CardContent>
@@ -451,6 +603,7 @@ export function CentralBankReportsPage() {
               ? message(summarize.error)
               : summarize.data?.errorMessage
           }
+          privateWeb={privateWeb}
         />
       </div>
     </div>
@@ -466,6 +619,7 @@ function ReportDetailPanel({
   summarizing,
   canSummarize,
   summaryError,
+  privateWeb,
 }: {
   report?: CentralBankReportDetail;
   loading: boolean;
@@ -475,6 +629,7 @@ function ReportDetailPanel({
   summarizing: boolean;
   canSummarize: boolean;
   summaryError?: string | null;
+  privateWeb: boolean;
 }) {
   if (loading)
     return (
@@ -539,9 +694,15 @@ function ReportDetailPanel({
               ? "Lokales Original öffnen"
               : "Offizielle Quelle öffnen"}
           </Button>
-          <Button onClick={() => void openUrl(report.sourceUrl)}>
-            <ExternalLink size={14} /> Offizielle Quelle
-          </Button>
+          {report.localPath && (
+            <Button
+              onClick={() =>
+                void (isTauri() ? openUrl(report.sourceUrl) : onOpen(report))
+              }
+            >
+              <ExternalLink size={14} /> Offizielle Quelle
+            </Button>
+          )}
         </div>
         {summary ? (
           <>
@@ -555,6 +716,19 @@ function ReportDetailPanel({
             <div className="notice central-bank-overview">
               {summary.overview}
             </div>
+            {summary.quality && (
+              <p className="notice central-bank-notice">
+                Belegzitate und Zahlen wurden automatisch geprüft.
+                {summary.quality.partial
+                  ? " Grundlage sind begrenzte Auszüge aus " +
+                    summary.quality.sentChunks +
+                    " von " +
+                    summary.quality.sourceChunks +
+                    " Textabschnitten."
+                  : " Grundlage sind alle extrahierten Textabschnitte."}{" "}
+                Die inhaltliche Einordnung bleibt eine KI-Zusammenfassung.
+              </p>
+            )}
             <div className="central-bank-summary-sections">
               {summary.sections.map((section) => (
                 <section key={section.key}>
@@ -564,6 +738,17 @@ function ReportDetailPanel({
                       <li key={`${section.key}-${index}`}>
                         <span>{point.text}</span>
                         <small>{point.sourceRefs.join(" · ")}</small>
+                        {point.evidence && point.evidence.length > 0 && (
+                          <details className="central-bank-evidence">
+                            <summary>Originalbelege anzeigen</summary>
+                            {point.evidence.map((evidence, evidenceIndex) => (
+                              <blockquote key={evidenceIndex}>
+                                <small>{evidence.sourceRef}</small>
+                                <p>{evidence.quote}</p>
+                              </blockquote>
+                            ))}
+                          </details>
+                        )}
                       </li>
                     ))}
                   </ul>
@@ -583,7 +768,9 @@ function ReportDetailPanel({
               summaryError ??
               (canSummarize
                 ? "Erstelle die deutsche Zusammenfassung aus dem gespeicherten Originalbericht."
-                : "Für deutsche Briefings muss die Modellanbindung verfügbar sein. Das Original kannst du weiterhin öffnen.")
+                : privateWeb
+                  ? "Für diesen übernommenen Bericht liegt noch kein deutsches Briefing vor. Der Originaltext und die offizielle Quelle bleiben verfügbar."
+                  : "Für deutsche Briefings muss die Modellanbindung verfügbar sein. Das Original kannst du weiterhin öffnen.")
             }
             action={
               canSummarize && report.extractedText ? (

@@ -1,7 +1,7 @@
+use crate::runtime::State;
 use chrono::Utc;
 use serde::{Deserialize, Serialize};
 use serde_json::Value;
-use tauri::State;
 use uuid::Uuid;
 
 use crate::{
@@ -13,7 +13,7 @@ use crate::{
     metrics::CALCULATION_VERSION,
 };
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_bootstrap_data(state: State<'_, AppState>) -> CommandResult<BootstrapData> {
     let accounts = sqlx::query_as::<_, Account>(
         "SELECT a.id, a.name, a.broker, a.account_type, a.base_currency, a.initial_balance_minor, a.default_risk_percent, a.is_archived, COALESCE((SELECT c.balance_minor FROM broker_account_connections c WHERE c.local_account_id = a.id AND c.balance_minor IS NOT NULL LIMIT 1), a.initial_balance_minor + COALESCE((SELECT SUM(ac.amount_minor) FROM account_cashflows ac WHERE ac.account_id = a.id), 0) + COALESCE((SELECT SUM(t.net_pnl_minor) FROM trades t WHERE t.account_id = a.id AND t.status = 'closed' AND t.is_deleted = 0), 0)) AS current_balance_minor FROM accounts a WHERE a.is_archived = 0 ORDER BY a.name",
@@ -63,7 +63,7 @@ pub async fn get_bootstrap_data(state: State<'_, AppState>) -> CommandResult<Boo
     })
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_strategy(
     state: State<'_, AppState>,
     input: NamedEntityInput,
@@ -71,7 +71,7 @@ pub async fn create_strategy(
     create_taxonomy(&state, "strategies", input).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_setup(
     state: State<'_, AppState>,
     input: NamedEntityInput,
@@ -79,7 +79,7 @@ pub async fn create_setup(
     create_taxonomy(&state, "setups", input).await
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn create_tag(
     state: State<'_, AppState>,
     input: NamedEntityInput,
@@ -104,7 +104,7 @@ fn default_risk_percent() -> f64 {
     1.0
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn save_account(
     state: State<'_, AppState>,
     input: AccountInput,
@@ -154,7 +154,7 @@ pub async fn save_account(
         .bind(id).fetch_one(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn archive_account(state: State<'_, AppState>, id: String) -> CommandResult<()> {
     let active_count: i64 =
         sqlx::query_scalar("SELECT COUNT(*) FROM accounts WHERE is_archived = 0")
@@ -197,7 +197,7 @@ pub struct AccountCashflowInput {
     pub note: Option<String>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn list_account_cashflows(
     state: State<'_, AppState>,
     account_id: String,
@@ -206,7 +206,7 @@ pub async fn list_account_cashflows(
         .bind(account_id).fetch_all(&state.db).await.map_err(AppError::from).map_err(Into::into)
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn add_account_cashflow(
     state: State<'_, AppState>,
     input: AccountCashflowInput,
@@ -354,7 +354,7 @@ pub struct SettingsResponse {
     pub settings: serde_json::Map<String, Value>,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn get_settings(state: State<'_, AppState>) -> CommandResult<SettingsResponse> {
     let rows: Vec<(String, String)> =
         sqlx::query_as("SELECT key, value_json FROM app_settings ORDER BY key")
@@ -375,7 +375,7 @@ pub struct SettingInput {
     pub value: Value,
 }
 
-#[tauri::command]
+#[cfg_attr(feature = "desktop", tauri::command)]
 pub async fn update_setting(state: State<'_, AppState>, input: SettingInput) -> CommandResult<()> {
     if input.key.trim().is_empty() {
         return Err(crate::errors::CommandError::validation(

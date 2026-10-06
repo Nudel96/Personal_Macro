@@ -1,4 +1,5 @@
 import { ChartColumn as PageIcon } from "lucide-react";
+import { useCloudCotRefresh } from "../cot/use-cloud-cot-refresh";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { openUrl } from "@tauri-apps/plugin-opener";
 import type { EChartsOption } from "echarts";
@@ -31,6 +32,8 @@ import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { dateTime, localDate, number } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { CloudMarketNotice } from "../macro/cloud-market-notice";
 import type {
   EconomicValueUnit,
   EodhdIndicatorHistory,
@@ -617,6 +620,7 @@ function latestActualPoint(points: EodhdIndicatorHistoryPoint[]) {
 }
 
 export function EconomicDataPage() {
+  useCloudCotRefresh();
   const queryClient = useQueryClient();
   const [currency, setCurrency] = useState("USD");
   const [category, setCategory] = useState<EconomicCategoryKey>("inflation");
@@ -633,7 +637,7 @@ export function EconomicDataPage() {
         canonicalKey: indicatorKey,
         months,
       }),
-    enabled: isTauri(),
+    enabled: isTauri() || isPrivateWeb(),
   });
   const feedStatus = useQuery({
     queryKey: ["macro", "eodhd-status"],
@@ -643,7 +647,7 @@ export function EconomicDataPage() {
   const fundamentals = useQuery({
     queryKey: ["macro", "eodhd-fundamentals"],
     queryFn: api.macroFundamentalsDashboard,
-    enabled: isTauri(),
+    enabled: isTauri() || isPrivateWeb(),
   });
   const syncHistory = useMutation({
     mutationFn: () =>
@@ -857,7 +861,8 @@ export function EconomicDataPage() {
         </div>
       )}
 
-      {!isTauri() ? (
+      <CloudMarketNotice importedAt={data?.cloudImportedAt} />
+      {!isTauri() && !isPrivateWeb() ? (
         <Card>
           <EmptyState
             icon={BarChart3}

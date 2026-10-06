@@ -1,5 +1,6 @@
-import ReactECharts from "echarts-for-react";
+import ReactECharts from "echarts-for-react/lib/core";
 import type { EChartsOption } from "echarts";
+import { echarts } from "./echarts-runtime";
 
 export function BaseChart({
   option,
@@ -15,6 +16,7 @@ export function BaseChart({
   return (
     <div role={ariaLabel ? "img" : undefined} aria-label={ariaLabel}>
       <ReactECharts
+        echarts={echarts}
         option={{
           animationDuration: 350,
           animation: !window.matchMedia?.("(prefers-reduced-motion: reduce)")

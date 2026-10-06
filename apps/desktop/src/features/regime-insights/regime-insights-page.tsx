@@ -26,6 +26,8 @@ import { ErrorState, PageLoading } from "../../components/ui/loading";
 import { PageHeader } from "../../components/ui/page-header";
 import { localDate, number } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { CloudMarketNotice } from "../macro/cloud-market-notice";
 import type {
   AudChinaCpiBias,
   AudChinaCpiConfidence,
@@ -434,7 +436,7 @@ export function RegimeInsightsPage() {
   const regime = useQuery({
     queryKey: ["regime-insights", "aud-china-cpi", timeframe],
     queryFn: () => api.audChinaCpiRegime({ timeframe }),
-    enabled: isTauri(),
+    enabled: isTauri() || isPrivateWeb(),
   });
   const refresh = useMutation({
     mutationFn: () => api.refreshAudChinaCpiRegime({ timeframe }),
@@ -485,7 +487,8 @@ export function RegimeInsightsPage() {
         <ErrorState message={queryErrorMessage(refresh.error)} />
       )}
 
-      {!isTauri() ? (
+      <CloudMarketNotice importedAt={regime.data?.cloudImportedAt} />
+      {!isTauri() && !isPrivateWeb() ? (
         <Card>
           <EmptyState
             icon={Database}
@@ -529,15 +532,21 @@ export function RegimeInsightsPage() {
                 <EmptyState
                   icon={BarChart3}
                   title="Noch keine gemeinsame Historie"
-                  description="Für den Chart werden lokale China-CPI-Releases und AUDUSD-D1-Kerzen benötigt; eine Regimeklassifikation beginnt ab vier Releases."
-                  availabilityReason="Mit „CPI & AUDUSD aktualisieren“ lädt die Desktop-App beide EODHD-Reihen gezielt nach."
+                  description="Für den Chart werden gespeicherte China-CPI-Releases und AUDUSD-D1-Kerzen benötigt; eine Regimeklassifikation beginnt ab vier Releases."
+                  availabilityReason={
+                    isPrivateWeb()
+                      ? "Die benötigten Reihen fehlen im übernommenen Cloud-Datenstand."
+                      : "Mit „CPI & AUDUSD aktualisieren“ lädt die Desktop-App beide EODHD-Reihen gezielt nach."
+                  }
                   action={
-                    <Button
-                      onClick={() => refresh.mutate()}
-                      disabled={refresh.isPending}
-                    >
-                      <RefreshCw size={14} /> Daten laden
-                    </Button>
+                    isTauri() ? (
+                      <Button
+                        onClick={() => refresh.mutate()}
+                        disabled={refresh.isPending}
+                      >
+                        <RefreshCw size={14} /> Daten laden
+                      </Button>
+                    ) : undefined
                   }
                 />
               ) : (

@@ -300,44 +300,97 @@ export function TradesPage() {
   const selectedIds = Object.entries(rowSelection)
     .filter(([, selected]) => selected)
     .map(([id]) => id);
+  const currentAccountId = useRef(selectedAccountId);
+  useEffect(() => {
+    currentAccountId.current = selectedAccountId;
+  }, [selectedAccountId]);
   const bulk = useMutation({
     mutationFn: async (action: "archive" | "trash" | "tag") => {
-      for (const id of selectedIds) {
-        if (action === "trash") await api.trashTrade(selectedAccountId!, id);
-        else if (action === "archive") {
-          const trade = await api.getTrade(selectedAccountId!, id);
-          await api.updateTrade(selectedAccountId!, id, {
-            ...trade,
-            accountId: selectedAccountId!,
-            status: "archived",
-          });
-        } else if (bulkTagId) {
-          const context = await api.tradeContext(selectedAccountId!, id);
-          await api.saveTradeContext(selectedAccountId!, {
-            tradeId: id,
-            tagIds: [
-              ...new Set([...context.tags.map((tag) => tag.id), bulkTagId]),
-            ],
-            legs: context.legs,
-            checklistItems: context.checklistItems.map((item) => ({
-              ...item,
-              label: item.label ?? item.labelSnapshot ?? "",
-            })),
-            emotions: context.emotions,
-            customValues: context.customValues,
-          });
+      const accountId = selectedAccountId;
+      if (!ready || !accountId)
+        throw new Error("Bitte ein aktives Konto auswählen.");
+      const ids = [...selectedIds];
+      const completedIds: string[] = [];
+      let failure: string | null = null;
+      for (const id of ids) {
+        try {
+          if (action === "trash") await api.trashTrade(accountId, id);
+          else if (action === "archive") {
+            const trade = await api.getTrade(accountId, id);
+            await api.updateTrade(accountId, id, {
+              ...trade,
+              accountId,
+              status: "archived",
+            });
+          } else if (bulkTagId) {
+            const context = await api.tradeContext(accountId, id);
+            await api.saveTradeContext(accountId, {
+              tradeId: id,
+              tagIds: [
+                ...new Set([...context.tags.map((tag) => tag.id), bulkTagId]),
+              ],
+              legs: context.legs,
+              checklistItems: context.checklistItems.map((item) => ({
+                ...item,
+                label: item.label ?? item.labelSnapshot ?? "",
+              })),
+              emotions: context.emotions,
+              customValues: context.customValues,
+            });
+          }
+          completedIds.push(id);
+        } catch (error) {
+          failure =
+            error && typeof error === "object" && "message" in error
+              ? String(error.message)
+              : "Sammelaktion fehlgeschlagen.";
+          break;
         }
       }
+      return {
+        action,
+        accountId,
+        completedIds,
+        remaining: ids.length - completedIds.length,
+        failure,
+      };
     },
-    onSuccess: async (_, action) => {
-      const count = selectedIds.length;
-      setRowSelection({});
-      setBulkTagId("");
+    onSuccess: async ({
+      action,
+      accountId,
+      completedIds,
+      remaining,
+      failure,
+    }) => {
+      const count = completedIds.length;
+      // Successful writes are never retried, even if a later item failed.
+      // A completion from the old account must not change the new selection.
+      if (currentAccountId.current === accountId) {
+        setRowSelection((selection) =>
+          Object.fromEntries(
+            Object.entries(selection).filter(
+              ([id]) => !completedIds.includes(id),
+            ),
+          ),
+        );
+        if (!failure) setBulkTagId("");
+      }
       await Promise.all([
         queryClient.invalidateQueries({ queryKey: ["trades"] }),
         queryClient.invalidateQueries({ queryKey: ["dashboard"] }),
         queryClient.invalidateQueries({ queryKey: ["bootstrap"] }),
+        queryClient.invalidateQueries({ queryKey: ["trade"] }),
+        queryClient.invalidateQueries({ queryKey: ["trade-context"] }),
+        queryClient.invalidateQueries({ queryKey: ["calendar"] }),
+        queryClient.invalidateQueries({ queryKey: ["analytics"] }),
+        queryClient.invalidateQueries({ queryKey: ["account-journal"] }),
       ]);
+      if (failure) {
+        toast.error(
+          `${count} von ${count + remaining} Trades gespeichert. ${remaining} noch nicht bestätigt; nur diese bleiben ausgewählt. ${failure}`,
+        );
+        return;
+      }
       toast.success(
         action === "tag"
           ? `Tag zu ${count} Trades hinzugefügt.`

@@ -1,0 +1,34 @@
+# Build context: apps/desktop, never the repository root or an AppData directory.
+# Official image tags/digests checked with Docker Hub on 2026-09-24.
+FROM rust:1.97-bookworm@sha256:0e2bcaef56d041a486784e54104a81aebe0da44bd03019bd70bc0401e42e4a97 AS build
+
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends cmake clang pkg-config \
+    && rm -rf /var/lib/apt/lists/*
+WORKDIR /build/apps/desktop/src-tauri
+COPY src-tauri/Cargo.toml src-tauri/Cargo.lock src-tauri/build.rs ./
+COPY src-tauri/src ./src
+COPY src-tauri/migrations ./migrations
+COPY src-tauri/atlas-migrations ./atlas-migrations
+COPY src-tauri/bond-migrations ./bond-migrations
+COPY src-tauri/connectors/mt5_account_connector.py ./connectors/mt5_account_connector.py
+# Rust embeds these shared, public catalogues at compile time.
+COPY src/features/world-atlas/data ../src/features/world-atlas/data
+COPY src/features/government-bonds/data ../src/features/government-bonds/data
+RUN cargo build --locked --release --no-default-features --features server --bin personal-macro-server
+
+FROM debian:bookworm-slim@sha256:3783cc01769c7b2b1b83a5c5ad96c815348e28ed7da68e2e3687004faa906251 AS runtime
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends ca-certificates libgcc-s1 \
+    && rm -rf /var/lib/apt/lists/* \
+    && groupadd --gid 10001 macrotool \
+    && useradd --uid 10001 --gid 10001 --no-log-init --home-dir /nonexistent --shell /usr/sbin/nologin macrotool \
+    && mkdir /data /app \
+    && chown 10001:10001 /data
+COPY --from=build /build/apps/desktop/src-tauri/target/release/personal-macro-server /usr/local/bin/personal-macro-server
+WORKDIR /app
+ENV MACRO_DATA_ROOT=/data \
+    MACRO_LISTEN_ADDR=127.0.0.1:8080
+USER 10001:10001
+STOPSIGNAL SIGTERM
+ENTRYPOINT ["/usr/local/bin/personal-macro-server"]
