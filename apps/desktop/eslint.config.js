@@ -7,6 +7,9 @@ export default tseslint.config(
   {
     ignores: [
       "dist",
+      "dist-private-web",
+      ".vercel",
+      "public/ocr",
       "node_modules",
       "src-tauri/target",
       "src-tauri/gen",
@@ -17,9 +20,9 @@ export default tseslint.config(
   js.configs.recommended,
   ...tseslint.configs.recommended,
   {
-    files: ["scripts/**/*.mjs"],
+    files: ["scripts/**/*.mjs", "server/**/*.mjs", "api/**/*.mjs", "tradingview/**/*.mjs"],
     languageOptions: {
-      globals: { console: "readonly", process: "readonly" },
+      globals: { console: "readonly", process: "readonly", URL: "readonly", URLSearchParams: "readonly", Buffer: "readonly", fetch: "readonly", Request: "readonly", Response: "readonly", AbortSignal: "readonly", setTimeout: "readonly", clearTimeout: "readonly" },
     },
   },
   {

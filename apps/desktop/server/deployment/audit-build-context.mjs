@@ -19,7 +19,7 @@ const rules = (await readFile(ignorePath, "utf8"))
     const include = line.startsWith("!");
     const glob = (include ? line.slice(1) : line).replace(/^\/+|\/+$/g, "");
     assert(
-      !/[?\[\]\\]/.test(glob),
+      ![...glob].some((character) => ["?", "[", "]", "\\"].includes(character)),
       "Audit does not implement this ignore syntax",
     );
     let expression = "^";

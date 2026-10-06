@@ -11,7 +11,7 @@ const source = readFileSync(scriptPath, 'utf8');
 const scalarBlock = source.split('// PURE_SCALAR_BEGIN:')[1]?.split('// PURE_SCALAR_END')[0];
 assert.ok(scalarBlock, 'Marked scalar source must exist');
 const scope = { math: Math, isNa: value => value == null || Number.isNaN(value) };
-const definitions = [...scalarBlock.matchAll(/^(f_\w+)\(([^\n]*)\) =>\n    ([^\n]+)$/gm)];
+const definitions = [...scalarBlock.matchAll(/^(f_\w+)\(([^\n]*)\) =>\n {4}([^\n]+)$/gm)];
 assert.equal(definitions.length, 14, 'Every marked expression must be parsed; fail closed on syntax changes');
 for (const [, name, parameters, expression] of definitions) {
   const names = parameters.split(',').map(parameter => parameter.trim().split(/\s+/).at(-1));

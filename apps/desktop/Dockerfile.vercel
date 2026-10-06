@@ -9,13 +9,16 @@ COPY src-tauri/src ./src
 COPY src-tauri/examples/import_private_snapshot.rs ./examples/import_private_snapshot.rs
 COPY src-tauri/examples/finish_private_snapshot.rs ./examples/finish_private_snapshot.rs
 COPY src-tauri/examples/publish_public_snapshot.rs ./examples/publish_public_snapshot.rs
+COPY src-tauri/examples/atlas_public_qa.rs ./examples/atlas_public_qa.rs
 COPY src-tauri/migrations ./migrations
 COPY src-tauri/postgres-migrations ./postgres-migrations
 COPY src-tauri/atlas-migrations ./atlas-migrations
 COPY src-tauri/bond-migrations ./bond-migrations
 COPY src-tauri/connectors/mt5_account_connector.py ./connectors/mt5_account_connector.py
+COPY src-tauri/connectors/mt5_market_connector.py ./connectors/mt5_market_connector.py
 COPY src/features/world-atlas/data ../src/features/world-atlas/data
 COPY src/features/government-bonds/data ../src/features/government-bonds/data
+COPY src/features/weather/data ../src/features/weather/data
 RUN cargo build --locked --release --no-default-features --features postgres --bin personal-macro-cloud \
     && strip target/release/personal-macro-cloud
 
