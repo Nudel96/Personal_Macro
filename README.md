@@ -19,12 +19,15 @@ Tests und die Definition of Done. `apps/desktop` ist die produktive Anwendung;
 ## Schnellstart zum Testen
 
 **Start und Smartphone-Erweiterung vom 06.10.2026:** Die Desktop-EXE liegt
-unter `D:\Macrotool\apps\desktop\src-tauri\target\release\personal-macro-desktop.exe`.
+unter `D:\Macrotool\apps\desktop\src-tauri\target\x86_64-pc-windows-msvc\release\personal-macro-desktop.exe`.
 `START-MACROTOOL.cmd` berücksichtigt zusätzlich einen neueren separaten Windows-
 Build. Der private Browser erhält Dateiimport/-export, Cloud-Sicherungen mit
 Wiederherstellung, dauerhaften Lernstand und Screenshot-Erfassung mit lokaler
 Browser-OCR. Vollständige Desktop-Parität und automatische Synchronisierung
-sind weiterhin offen. [Umfang, Grenzen und Nachweise](docs/planning/mobile-function-parity-2026-10-06.md).
+sind weiterhin offen. Der neue private Build ist am Handy-Link aktiviert:
+Übersicht, Trades und 16 weitere Seiten bestehen im WebKit-Test bei 390 px;
+die Browser-OCR erkannte sechs Felder in einem synthetischen Testbild.
+[Umfang, Grenzen und Nachweise](docs/planning/mobile-function-parity-2026-10-06.md).
 
 **Handy und Vercel:** Der private Cloud-Workspace ist unter
 [Personal Macro](https://personal-macro-nudel96s-projects.vercel.app) im eigenen

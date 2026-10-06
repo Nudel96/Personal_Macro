@@ -88,3 +88,24 @@ Quellen: `.vercel/parity-full-read-report.json`, `parity-mobile-report.json`,
 `parity-alias-activation.json`. Der frühere Prüfer erwartete fälschlich deaktivierte
 Berichtsautomatik und einen anderen Kalendertitel; diese Prüfannahmen wurden an
 den aktuellen Vertrag angepasst.
+
+Der abschließende Anzeige-Fix ist als `dpl_B71ECJTeL2jxTpMSqMBbzEc5kyuD`
+`READY`, `public: false`, in `fra1` bereitgestellt und am stabilen Alias aktiv.
+Der aktuelle Host ist `personal-macro-91i1mn5wp-nudel96s-projects.vercel.app`.
+Der abschließende WebKit-Seitenlauf besteht erneut mit Übersicht, Trades und
+16 weiteren Seiten sowie expliziter Kontowahl, ohne Laufzeit-/API-Fehler oder
+Seitenüberlauf. `parity-latest-mobile-report.json` meldet `ok: true` und
+`cleanupVerified: true`. Journalrevision unverändert, keine persönlichen Writes.
+
+Die eigene OCR-Abnahme auf diesem Deployment besteht mit einem synthetischen
+PNG: sechs Felder erkannt, kein persönliches Bild hochgeladen und kein Trade
+erstellt. `parity-ocr-final-report.json` meldet `ok: true` und bestätigte
+Bereinigung. Der Prüfharness musste lokale Blob-Vorschauen direkt im Browser
+verarbeiten; deren Weiterleitung per HTTP war keine gültige Bildprüfung.
+Für geschützte Worker-Dateien wurde eine temporäre Cookie-Testfreigabe benutzt;
+Browser und Zugang wurden anschließend geschlossen beziehungsweise widerrufen.
+
+Der heutige Windows-Release unter
+`src-tauri/target/x86_64-pc-windows-msvc/release/personal-macro-desktop.exe`
+ist gebaut, gestartet und als reagierendes Fenster nachgewiesen. Vollständige
+native UI- und physische iPhone-Abnahme werden damit nicht behauptet.
