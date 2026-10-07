@@ -141,3 +141,27 @@ betreffen die anschließend gezielt geprüften relevanten Tests. Beim vollständ
 Clippy-Lauf fiel außerdem ein bestehender Desktop-/Headless-State-Widerspruch im
 Wartungsbeispiel `refresh_cot` auf. Es verwendet jetzt denselben unveränderten
 COT-Kern direkt; weder Scoring noch HTTP-Freigabelisten werden dadurch erweitert.
+
+## Repository und mobiler Live-Stand
+
+Am 07.10.2026 wurden alle 19 Quell- und Dokumentationsänderungen als Commit
+`0952769091936c15dc670ef25ae35e6de9d536b3` auf `origin/main` gepusht. Der private
+Web-Build und `cargo check --no-default-features --features postgres --lib`
+bestehen zusätzlich. Persönliche Daten, lokale Nachweise und Build-Artefakte
+wurden nicht mitgepusht.
+
+Die Vercel-Prüfung bestätigt das richtige Besitzerprojekt und SSO für alle
+Deployments. Es gibt keine automatische Git-Verknüpfung. Am stabilen Handy-Link
+ist weiterhin Deployment `dpl_B71ECJTeL2jxTpMSqMBbzEc5kyuD` vom 06.10.2026 mit
+dem damaligen Code-Commit `e732d61` aktiv. Der tatsächliche WebKit-Seitenlauf
+bei 390 px vom 07.10.2026, abgeschlossen um 17:13:34 UTC, lädt die Macro-Seite
+ohne Seitenüberlauf und weist ausdrücklich **null Gold-/Silber-Zeilen** nach.
+Die Erweiterung ist damit im Repository, aber noch nicht am Handy-Link aktiviert.
+
+Der Test führte keine persönlichen Schreibbefehle aus; die Journalrevision
+blieb unverändert. Der temporäre Testzugang wurde widerrufen, seine Sperre und
+HTTP 401 für anonyme Anfragen wurden bestätigt. Lokaler Nachweis außerhalb der
+versionierten Quellen: `apps/desktop/.vercel/metals-mobile-before-report.json`.
+Eine physische iPhone-Abnahme ist dies nicht. Die gesonderte manuelle
+Live-Aktivierung wurde als Rückfrage vorgelegt und ist durch diesen Prüfbericht
+nicht ausgeführt oder bestätigt.
