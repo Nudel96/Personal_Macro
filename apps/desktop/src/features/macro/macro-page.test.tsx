@@ -452,6 +452,9 @@ describe("MacroPage", () => {
     renderPage();
     await screen.findAllByTestId("forex-pair-row");
 
+    const heatmap = within(
+      screen.getByRole("table", { name: "Fiat-Forexpaare" }),
+    );
     for (const header of [
       "Output",
       "Economic Growth & Consumer Strength",
@@ -466,10 +469,10 @@ describe("MacroPage", () => {
       "4H / Daily Chart Trend",
       "Seasonality Trend",
     ]) {
-      expect(screen.getByRole("columnheader", { name: header })).toBeTruthy();
+      expect(heatmap.getByRole("columnheader", { name: header })).toBeTruthy();
     }
     expect(
-      screen.getByRole("columnheader", { name: "Technicals" }),
+      heatmap.getByRole("columnheader", { name: "Technicals" }),
     ).toBeTruthy();
     expect(
       screen.queryByRole("columnheader", { name: "Sentiment" }),
@@ -526,6 +529,116 @@ describe("MacroPage", () => {
     expect(within(usdCad!).getByTitle("Fundamentals +2").textContent).toBe(
       "+2",
     );
+  });
+
+  it("shows inverse USD releases for metals with their own COT and market trends", async () => {
+    const data = dashboard();
+    const usd = data.currencies.find(
+      (currency) => currency.currency === "USD",
+    )!;
+    usd.indicators = usd.indicators.map((indicator, index) => ({
+      ...indicator,
+      score: index < 2 ? 1 : 0,
+      status:
+        index < 2 ? "scored" : index === 2 ? "neutral" : "missingForecast",
+      actualText: index === 0 ? "2.20" : indicator.actualText,
+      forecastText:
+        index === 0 ? "1.50" : index > 2 ? null : indicator.forecastText,
+      previousText: index === 0 ? "1.80" : null,
+      surpriseText: index === 0 ? "0.70" : indicator.surpriseText,
+      sourceLabel: index === 0 ? "US GDP QoQ" : indicator.sourceLabel,
+      reasonCodes: index > 2 ? ["no_same_release_forecast"] : [],
+    }));
+    const cot = cotDashboard();
+    const gold = cotContract("GOLD");
+    gold.currency = null;
+    gold.assetClass = "Metalle";
+    gold.latestChangeSignal = 1;
+    gold.assessment.biasSignal = 1;
+    cot.contracts.push(gold);
+    const technicals = technicalDashboard();
+    const own = structuredClone(
+      technicals.pairs.find(
+        (pair) => pair.base === "USD" && pair.quote === "CAD",
+      )!,
+    );
+    own.base = "XAU";
+    own.quote = "USD";
+    own.sourceSymbol = "XAUUSD";
+    technicals.pairs.push(own);
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(data);
+    vi.mocked(api.cotDashboard).mockResolvedValue(cot);
+    vi.mocked(api.pairTechnicalSignals).mockResolvedValue(technicals);
+    const user = userEvent.setup();
+    renderPage();
+    const rows = await screen.findAllByTestId("precious-metal-row");
+    expect(rows).toHaveLength(2);
+    const goldRow = within(rows[0]);
+    expect(
+      goldRow.getByTitle("Gold USD-Einfluss: -2 · 3/17 US-Signale").textContent,
+    ).toBe("-2");
+    expect(
+      goldRow.getByTitle(/Gold · US GDP: USD \+1 → Metall -1/).title,
+    ).toContain("Actual 2.20 · Forecast 1.50 · Previous 1.80");
+    expect(
+      goldRow.getByTitle(/GOLD Institutional Score: \+2/).textContent,
+    ).toBe("+2");
+    expect(goldRow.getByTitle(/4H \/ Daily: Bullish/).textContent).toContain(
+      "Bullish bestätigt",
+    );
+    expect(goldRow.getByTitle(/Seasonality: Bearish/).textContent).toBe(
+      "Bearish",
+    );
+    expect(
+      within(rows[1]).getByTitle(/SILVER Institutional Score: nicht verfügbar/)
+        .textContent,
+    ).toBe("—");
+    await user.click(
+      goldRow.getByRole("button", { name: "Gold US-Releases ansehen" }),
+    );
+    const gauge = screen.getByRole("meter", { name: "USD-Einfluss Score XAU" });
+    expect(gauge.getAttribute("aria-valuenow")).toBe("-2");
+    expect(gauge.getAttribute("aria-valuetext")).toContain("3 von 17");
+    expect(
+      screen.getByRole("heading", { name: "Gold · XAU/USD" }),
+    ).toBeTruthy();
+    expect(screen.getByText("US GDP QoQ")).toBeTruthy();
+    expect(screen.getByText("2.20")).toBeTruthy();
+    expect(screen.getByText("1.50")).toBeTruthy();
+    expect(screen.getByText("1.80")).toBeTruthy();
+    expect(screen.getByLabelText("GOLD Institutional Activity")).toBeTruthy();
+    expect(
+      goldRow.getByTitle("Gold USD-Einfluss: -2 · 3/17 US-Signale").textContent,
+    ).toBe("-2");
+  });
+
+  it("keeps unavailable USD data unavailable for both metals in heatmap and detail", async () => {
+    const data = dashboard();
+    data.currencies = data.currencies.filter(
+      (currency) => currency.currency !== "USD",
+    );
+    vi.mocked(api.macroFundamentalsDashboard).mockResolvedValue(data);
+    const user = userEvent.setup();
+    renderPage();
+    const rows = await screen.findAllByTestId("precious-metal-row");
+    expect(
+      within(rows[0]).getByTitle(
+        "Gold USD-Einfluss: nicht verfügbar · 0/17 US-Signale",
+      ).textContent,
+    ).toBe("—");
+    expect(
+      within(rows[1]).getByTitle(
+        "Silber USD-Einfluss: nicht verfügbar · 0/17 US-Signale",
+      ).textContent,
+    ).toBe("—");
+    await user.click(
+      within(rows[1]).getByRole("button", {
+        name: "Silber US-Releases ansehen",
+      }),
+    );
+    const gauge = screen.getByRole("meter", { name: "USD-Einfluss Score XAG" });
+    expect(gauge.hasAttribute("aria-valuenow")).toBe(false);
+    expect(gauge.getAttribute("aria-valuetext")).toContain("Nicht verfügbar");
   });
 
   it("keeps the Daily signal visible when MT5 has no H4 history", async () => {

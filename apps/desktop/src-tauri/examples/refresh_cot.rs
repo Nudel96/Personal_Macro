@@ -3,7 +3,6 @@
 use personal_macro_desktop_lib::{
     commands,
     database::{AppPaths, AppState},
-    runtime::State,
 };
 use sqlx::sqlite::{SqliteConnectOptions, SqlitePoolOptions};
 use std::{
@@ -69,12 +68,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             .fetch_one(&db)
             .await?;
     let state = AppState { db, paths };
-    let result = tokio::time::timeout(
-        Duration::from_secs(180),
-        commands::sync_cot_data(State::new(&state)),
-    )
-    .await?
-    .map_err(|_| "COT refresh failed; previous data retained")?;
+    let result = tokio::time::timeout(Duration::from_secs(180), commands::sync_cot(&state))
+        .await?
+        .map_err(|_| "COT refresh failed; previous data retained")?;
     let latest: Option<String> =
         sqlx::query_scalar("SELECT MAX(report_date) FROM cot_legacy_observations")
             .fetch_one(&state.db)

@@ -19,6 +19,21 @@ pub(super) const FOREX_PRIORITY: [&str; 9] = [
 ];
 const SEASONALITY_MIN_YEARS: usize = 10;
 
+/// Keep the existing 36 fiat orientations and append only the two USD metals.
+pub(super) fn technical_pairs() -> Vec<(&'static str, &'static str)> {
+    FOREX_PRIORITY
+        .iter()
+        .enumerate()
+        .flat_map(|(index, base)| {
+            FOREX_PRIORITY
+                .iter()
+                .skip(index + 1)
+                .map(move |quote| (*base, *quote))
+        })
+        .chain([("XAU", "USD"), ("XAG", "USD")])
+        .collect()
+}
+
 #[derive(Debug, Clone, Serialize)]
 #[serde(rename_all = "camelCase")]
 pub struct PairTechnicalDashboard {
@@ -173,28 +188,26 @@ async fn load_pair_technical_signals(state: &AppState) -> CommandResult<PairTech
     } else {
         (None, HashMap::new())
     };
-    let mut pairs = Vec::with_capacity(36);
-    for (base_index, base) in FOREX_PRIORITY.iter().enumerate() {
-        for quote in FOREX_PRIORITY.iter().skip(base_index + 1) {
-            let direct = by_pair.get(&(*base, *quote)).copied();
-            let inverse = by_pair.get(&(*quote, *base)).copied();
-            let (instrument, inverted) = direct
-                .map(|value| (Some(value), false))
-                .or_else(|| inverse.map(|value| (Some(value), true)))
-                .unwrap_or((None, false));
-            pairs.push(
-                build_pair_view(
-                    state,
-                    base,
-                    quote,
-                    instrument,
-                    inverted,
-                    now.timestamp(),
-                    mt5_charts.remove(&(base.to_string(), quote.to_string())),
-                )
-                .await?,
-            );
-        }
+    let mut pairs = Vec::with_capacity(38);
+    for (base, quote) in technical_pairs() {
+        let direct = by_pair.get(&(base, quote)).copied();
+        let inverse = by_pair.get(&(quote, base)).copied();
+        let (instrument, inverted) = direct
+            .map(|value| (Some(value), false))
+            .or_else(|| inverse.map(|value| (Some(value), true)))
+            .unwrap_or((None, false));
+        pairs.push(
+            build_pair_view(
+                state,
+                base,
+                quote,
+                instrument,
+                inverted,
+                now.timestamp(),
+                mt5_charts.remove(&(base.to_string(), quote.to_string())),
+            )
+            .await?,
+        );
     }
     Ok(PairTechnicalDashboard {
         as_of: now.to_rfc3339(),
@@ -289,7 +302,8 @@ async fn load_instruments(state: &AppState) -> CommandResult<Vec<InstrumentRow>>
         "SELECT pi.provider_symbol,pi.display_symbol,pi.base_currency,pi.quote_currency,pp.profile_json
          FROM seasonality_provider_instruments pi
          LEFT JOIN seasonality_provider_profiles pp ON pp.provider=pi.provider AND pp.provider_symbol=pi.provider_symbol
-         WHERE pi.provider='eodhd' AND pi.category='Forex' AND pi.base_currency IS NOT NULL AND pi.quote_currency IS NOT NULL
+         WHERE pi.provider='eodhd' AND pi.base_currency IS NOT NULL AND pi.quote_currency IS NOT NULL
+           AND (pi.category='Forex' OR (pi.category='Commodities' AND pi.base_currency IN ('XAU','XAG') AND pi.quote_currency='USD'))
          ORDER BY pi.sync_priority,pi.display_symbol",
     )
     .fetch_all(&state.db)
@@ -523,6 +537,61 @@ mod tests {
             }]
         })
         .to_string()
+    }
+
+    #[test]
+    fn technical_universe_preserves_fiat_pairs_and_adds_only_usd_gold_and_silver() {
+        let pairs = technical_pairs();
+        assert_eq!(pairs.len(), 38);
+        assert_eq!(
+            pairs
+                .iter()
+                .copied()
+                .collect::<std::collections::HashSet<_>>()
+                .len(),
+            38
+        );
+        assert_eq!(&pairs[36..], &[("XAU", "USD"), ("XAG", "USD")]);
+        assert_eq!(pairs[0], ("EUR", "GBP"));
+        assert_eq!(pairs[35], ("JPY", "CNY"));
+    }
+
+    #[tokio::test]
+    async fn usd_metals_read_their_own_eodhd_seasonality_and_keep_missing_evidence_explicit() {
+        let directory = tempfile::tempdir().unwrap();
+        let state = crate::database::initialize_at(directory.path().join("workspace"))
+            .await
+            .unwrap();
+        for (base, mean, median, hit) in [("XAU", 0.02, 0.01, 0.7), ("XAG", -0.02, -0.01, 0.3)] {
+            let symbol = format!("{base}USD.FOREX");
+            sqlx::query("INSERT INTO seasonality_provider_instruments(provider,provider_symbol,display_symbol,category,base_currency,quote_currency,last_catalogued_at) VALUES('eodhd',?,?,'Commodities',?,'USD','2026-10-07') ON CONFLICT(provider,provider_symbol) DO UPDATE SET category='Commodities',base_currency=excluded.base_currency,quote_currency='USD'")
+                .bind(&symbol).bind(format!("{base}USD")).bind(base).execute(&state.db).await.unwrap();
+            sqlx::query("INSERT INTO seasonality_provider_profiles(provider,provider_symbol,calculated_at,complete_years,quality_status,profile_json) VALUES('eodhd',?,'2026-10-07',10,'available',?)")
+                .bind(&symbol).bind(profile(mean,median,hit,10)).execute(&state.db).await.unwrap();
+        }
+        let dashboard = load_pair_technical_signals(&state).await.unwrap();
+        assert_eq!(dashboard.pairs.len(), 38);
+        for (base, expected) in [("XAU", 1), ("XAG", -1)] {
+            let metal = dashboard
+                .pairs
+                .iter()
+                .find(|pair| pair.base == base && pair.quote == "USD")
+                .unwrap();
+            assert_eq!(metal.seasonality_trend.signal, Some(expected));
+            assert_eq!(metal.seasonality_trend.complete_years, 10);
+            assert!(!metal.inverted);
+            assert_eq!(metal.chart_trend.signal, None);
+        }
+        sqlx::query("DELETE FROM seasonality_provider_instruments WHERE provider='eodhd' AND base_currency IN ('XAU','XAG')").execute(&state.db).await.unwrap();
+        let missing = load_pair_technical_signals(&state).await.unwrap();
+        assert!(
+            missing
+                .pairs
+                .iter()
+                .filter(|pair| pair.base == "XAU" || pair.base == "XAG")
+                .all(|pair| pair.seasonality_trend.signal.is_none())
+        );
+        state.db.close().await;
     }
 
     #[test]

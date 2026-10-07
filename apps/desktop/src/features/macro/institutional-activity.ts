@@ -52,6 +52,23 @@ export function buildInstitutionalCurrencyActivity(
 ): InstitutionalCurrencyActivity {
   const contract =
     dashboard?.contracts.find((item) => item.currency === currency) ?? null;
+  return contractActivity(currency, contract);
+}
+
+/** Asset COT is used directly; USD futures positions are not a metal proxy. */
+export function buildInstitutionalAssetActivity(
+  symbol: string,
+  dashboard?: CotDashboard,
+): InstitutionalCurrencyActivity {
+  const contract =
+    dashboard?.contracts.find((item) => item.symbol === symbol) ?? null;
+  return contractActivity(symbol, contract);
+}
+
+function contractActivity(
+  currency: string,
+  contract: CotContractView | null,
+): InstitutionalCurrencyActivity {
   const latestChangeSignal = contract?.latestChangeSignal ?? null;
   const pipelineSignal = contract?.assessment.biasSignal ?? null;
   const { score, coverage } = sumAvailable([

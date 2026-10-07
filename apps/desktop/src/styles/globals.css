@@ -6245,6 +6245,53 @@ html,
   white-space: nowrap;
 }
 
+.macro-metal-context {
+  display: grid;
+  gap: 5px;
+  padding: 0 18px 14px;
+  color: var(--text-2);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.macro-metal-context p {
+  margin: 0;
+}
+
+.macro-metal-symbol {
+  display: grid;
+  gap: 4px;
+  padding: 4px 0;
+  border: 0;
+  background: transparent;
+  color: var(--text-1);
+  text-align: left;
+  cursor: pointer;
+}
+
+.macro-metal-symbol small {
+  color: var(--text-2);
+}
+
+.macro-metal-symbol:hover {
+  color: var(--primary);
+}
+
+.macro-metal-symbol:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+#macro-precious-metals .macro-methodology-note > div {
+  flex-wrap: wrap;
+}
+
+#macro-precious-metals .macro-methodology-note a {
+  color: var(--text-2);
+  font-size: 10px;
+}
+
 /* Currency drilldown */
 .macro-pipeline {
   padding-top: 0;

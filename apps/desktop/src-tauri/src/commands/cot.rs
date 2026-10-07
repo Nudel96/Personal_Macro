@@ -850,7 +850,8 @@ pub async fn sync_cot_data(state: State<'_, AppState>) -> CommandResult<CotSyncR
     sync_cot(&state).await.map_err(Into::into)
 }
 
-async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
+/// Shared core for the native command and explicit local maintenance tools.
+pub async fn sync_cot(state: &AppState) -> Result<CotSyncResult, AppError> {
     sync_cot_expected(state, None).await
 }
 

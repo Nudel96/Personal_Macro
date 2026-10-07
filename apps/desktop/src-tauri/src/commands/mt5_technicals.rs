@@ -11,7 +11,7 @@ use sqlx::FromRow;
 use uuid::Uuid;
 
 use super::technical_signals::{
-    ChartTrendSource, ChartTrendView, FOREX_PRIORITY, chart_view, timeframe_view,
+    ChartTrendSource, ChartTrendView, chart_view, technical_pairs, timeframe_view,
     unavailable_timeframe,
 };
 use crate::{
@@ -200,19 +200,19 @@ fn valid_text(value: &str) -> bool {
 }
 
 fn validate_snapshot(snapshot: &MarketSnapshot, started: i64, now: i64) -> CommandResult<()> {
+    let expected_pairs = technical_pairs();
     if !valid_text(&snapshot.source_label)
         || snapshot.observed_at < started - 5
         || snapshot.observed_at > now + 5
-        || snapshot.pairs.len() != 36
+        || snapshot.pairs.len() != expected_pairs.len()
     {
         return Err(error("MT5_INVALID_SNAPSHOT"));
     }
     let mut seen = HashSet::new();
     let mut usable = false;
     for pair in &snapshot.pairs {
-        let base = FOREX_PRIORITY.iter().position(|value| *value == pair.base);
-        let quote = FOREX_PRIORITY.iter().position(|value| *value == pair.quote);
-        if !matches!((base,quote), (Some(a),Some(b)) if a < b)
+        if !expected_pairs.contains(&(pair.base.as_str(), pair.quote.as_str()))
+            || (matches!(pair.base.as_str(), "XAU" | "XAG") && pair.inverted)
             || !seen.insert((&pair.base, &pair.quote))
             || pair
                 .source_symbol
@@ -332,62 +332,60 @@ pub(super) async fn load(
         .map(|pair| ((pair.base.clone(), pair.quote.clone()), pair))
         .collect();
     let mut charts = HashMap::new();
-    for (index, base) in FOREX_PRIORITY.iter().enumerate() {
-        for quote in FOREX_PRIORITY.iter().skip(index + 1) {
-            let key = (base.to_string(), quote.to_string());
-            let pair = rows.remove(&key);
-            let frame = |name: &str, reason: Option<&str>| {
-                if pair.is_none() {
-                    return unavailable_timeframe("mt5_not_loaded");
-                }
-                if let Some(reason) = reason {
-                    return unavailable_timeframe(reason);
-                }
-                let bars = candles_by_pair.get(&(key.0.clone(), key.1.clone(), name.into()));
-                let mut assessment = assess_trend(bars.map(Vec::as_slice).unwrap_or_default());
-                if let Some(latest) = assessment.latest_candle_at {
-                    let h4 = name == "H4";
-                    let age = now.timestamp() - latest - if h4 { 14_400 } else { 86_400 };
-                    // A daily H4 snapshot stays usable until the next daily run;
-                    // weekends extend the allowance, not the underlying candle time.
-                    let max_age = if h4 {
-                        if matches!(now.weekday(), Weekday::Sat | Weekday::Sun | Weekday::Mon) {
-                            80 * 3600
-                        } else {
-                            32 * 3600
-                        }
+    for (base, quote) in technical_pairs() {
+        let key = (base.to_string(), quote.to_string());
+        let pair = rows.remove(&key);
+        let frame = |name: &str, reason: Option<&str>| {
+            if pair.is_none() {
+                return unavailable_timeframe("mt5_not_loaded");
+            }
+            if let Some(reason) = reason {
+                return unavailable_timeframe(reason);
+            }
+            let bars = candles_by_pair.get(&(key.0.clone(), key.1.clone(), name.into()));
+            let mut assessment = assess_trend(bars.map(Vec::as_slice).unwrap_or_default());
+            if let Some(latest) = assessment.latest_candle_at {
+                let h4 = name == "H4";
+                let age = now.timestamp() - latest - if h4 { 14_400 } else { 86_400 };
+                // A daily H4 snapshot stays usable until the next daily run;
+                // weekends extend the allowance, not the underlying candle time.
+                let max_age = if h4 {
+                    if matches!(now.weekday(), Weekday::Sat | Weekday::Sun | Weekday::Mon) {
+                        80 * 3600
                     } else {
-                        4 * 86400
-                    };
-                    if age < 0 || age > max_age {
-                        assessment.signal = None;
-                        assessment.reason_code = "stale_completed_candles";
+                        32 * 3600
                     }
+                } else {
+                    4 * 86400
+                };
+                if age < 0 || age > max_age {
+                    assessment.signal = None;
+                    assessment.reason_code = "stale_completed_candles";
                 }
-                timeframe_view(
-                    assessment,
-                    pair.as_ref().is_some_and(|value| value.inverted),
-                )
-            };
-            let four_hour = frame(
-                "H4",
-                pair.as_ref()
-                    .and_then(|value| value.four_hour_reason.as_deref()),
-            );
-            let daily = frame(
-                "D1",
-                pair.as_ref()
-                    .and_then(|value| value.daily_reason.as_deref()),
-            );
-            let source = ChartTrendSource {
-                provider: "mt5".into(),
-                label: refresh.source_label.clone(),
-                symbol: pair.as_ref().and_then(|value| value.source_symbol.clone()),
-                inverted: pair.as_ref().is_some_and(|value| value.inverted),
-                fetched_at: timestamp(refresh.last_success_at),
-            };
-            charts.insert(key, chart_view(four_hour, daily, Some(source)));
-        }
+            }
+            timeframe_view(
+                assessment,
+                pair.as_ref().is_some_and(|value| value.inverted),
+            )
+        };
+        let four_hour = frame(
+            "H4",
+            pair.as_ref()
+                .and_then(|value| value.four_hour_reason.as_deref()),
+        );
+        let daily = frame(
+            "D1",
+            pair.as_ref()
+                .and_then(|value| value.daily_reason.as_deref()),
+        );
+        let source = ChartTrendSource {
+            provider: "mt5".into(),
+            label: refresh.source_label.clone(),
+            symbol: pair.as_ref().and_then(|value| value.source_symbol.clone()),
+            inverted: pair.as_ref().is_some_and(|value| value.inverted),
+            fetched_at: timestamp(refresh.last_success_at),
+        };
+        charts.insert(key, chart_view(four_hour, daily, Some(source)));
     }
     let interrupted = refresh.status == "running" && refresh.lease_until <= now.timestamp();
     Ok((
@@ -430,7 +428,7 @@ fn error(code: &str) -> CommandError {
             "Das MT5-Konto wurde während des Kursabrufs gewechselt. Bitte erneut aktualisieren."
         }
         "MT5_SYMBOLS_UNAVAILABLE" | "MT5_NO_HISTORY" => {
-            "MT5 liefert noch keine ausreichende Forex-Historie. Bitte die gewünschten Paare in MT5 öffnen und erneut aktualisieren."
+            "MT5 liefert noch keine ausreichende Kurshistorie. Bitte die gewünschten Forexpaare oder Gold/Silber in MT5 öffnen und erneut aktualisieren."
         }
         "MT5_TECHNICAL_BUSY" => "Ein MT5-Kursabruf läuft bereits. Bitte kurz warten.",
         "MT5_TIMEOUT" => {

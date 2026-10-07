@@ -49,11 +49,17 @@ import type {
   TimeframeTrendView,
 } from "../../types/domain";
 import {
+  buildInstitutionalAssetActivity,
   buildInstitutionalCurrencyActivity,
   buildInstitutionalPairActivity,
   type InstitutionalPairActivity,
   type InstitutionalSignal,
 } from "./institutional-activity";
+import {
+  buildPreciousMetalUsdViews,
+  isAvailableIndicator,
+  type PreciousMetalUsdView,
+} from "./precious-metals";
 import {
   detectMacroRegime,
   type MacroRegimeAssessment,
@@ -125,6 +131,13 @@ const groups = [
 ] as const;
 
 const fields = groups.flatMap((group) => group.columns);
+const indicatorTemplate = groups.flatMap((group) =>
+  group.columns.map((key) => ({
+    key,
+    label: fieldLabel(key),
+    factor: group.factor,
+  })),
+);
 const stablePairOrder = new Map(
   forexPriority
     .flatMap((base, baseIndex) =>
@@ -249,10 +262,19 @@ export function MacroPage() {
         error.message ?? "Prüfkandidat konnte nicht aktualisiert werden.",
       ),
   });
+  const usd = dashboard.data?.currencies.find(
+    (currency) => currency.currency === "USD",
+  );
+  const metals = buildPreciousMetalUsdViews(usd, indicatorTemplate);
+  const selectedMetal = metals.find(
+    (metal) => metal.definition.currency === selectedCurrency,
+  );
   const selected =
+    selectedMetal?.view ??
     dashboard.data?.currencies.find(
       (currency) => currency.currency === selectedCurrency,
-    ) ?? dashboard.data?.currencies[0];
+    ) ??
+    dashboard.data?.currencies[0];
   const pairs = useMemo(
     () => sortVisiblePairs(dashboard.data?.pairs ?? []),
     [dashboard.data?.pairs],
@@ -313,8 +335,8 @@ export function MacroPage() {
         <PageHeader
           icon={PageIcon}
           eyebrow="Macro Workspace · EODHD Fundamentals"
-          title="Fundamentale Forex-Heatmap"
-          description="Actual, Forecast und Previous werden releasegenau gegenübergestellt. So erkennst du globale Überraschungsregime, relative Währungsstärke und die Treiber hinter jedem Fiat-Paar in einem konsistenten Research-Workspace."
+          title="Fundamentale Forex- & Edelmetall-Heatmap"
+          description="Actual, Forecast und Previous werden releasegenau gegenübergestellt. Vergleiche Fiat-Paare und den USD-Einfluss auf Gold und Silber mit ihren eigenen COT- und Kurstrends."
           actions={
             <>
               <Badge className={imported ? "positive" : "warning"}>
@@ -573,9 +595,20 @@ export function MacroPage() {
             </footer>
           </Card>
 
+          <PreciousMetalsHeatmap
+            metals={metals}
+            usd={usd}
+            cot={cot.data}
+            technicals={technicals.data}
+            onSelect={setSelectedCurrency}
+          />
+
           {selected && (
             <CurrencyOverview
               currencies={dashboard.data.currencies}
+              metals={metals}
+              selectedMetal={selectedMetal}
+              usd={usd}
               selected={selected}
               onSelect={setSelectedCurrency}
               cot={cot.data}
@@ -1023,86 +1056,11 @@ function FundamentalHeatmap({
     );
   }
   return (
-    <table className="macro-scaffold-heatmap pair-heatmap-table">
-      <colgroup>
-        <col span={6} />
-        <col className="macro-chart-trend-column" />
-        <col span={fields.length + 1} />
-      </colgroup>
-      <thead>
-        <tr>
-          <th
-            className="macro-output-group-heading"
-            colSpan={4}
-            scope="colgroup"
-          >
-            <span>
-              <Gauge size={12} aria-hidden="true" /> Output
-            </span>
-          </th>
-          <th
-            className="institutional-group-heading"
-            colSpan={2}
-            scope="colgroup"
-          >
-            <span>
-              <Activity size={12} aria-hidden="true" /> Institutional Activity
-            </span>
-          </th>
-          <th className="technical-group-heading" colSpan={2} scope="colgroup">
-            <span>
-              <TrendingUp size={12} aria-hidden="true" /> Technicals
-            </span>
-          </th>
-          {groups.map((group) => {
-            const GroupIcon = group.icon;
-            return (
-              <th
-                className={`macro-factor-group-heading is-${group.factor}`}
-                colSpan={group.columns.length}
-                key={group.factor}
-                scope="colgroup"
-              >
-                <span>
-                  <GroupIcon size={12} aria-hidden="true" /> {group.title}
-                  <small aria-hidden="true">{group.columns.length}</small>
-                </span>
-              </th>
-            );
-          })}
-        </tr>
-        <tr>
-          <th className="macro-output-column" scope="col">
-            Symbol
-          </th>
-          <th className="macro-output-column" scope="col">
-            Fund. Bias
-          </th>
-          <th className="macro-output-column" scope="col">
-            Fundamentals Score
-          </th>
-          <th className="macro-output-column" scope="col">
-            Institutional Score
-          </th>
-          <th className="macro-institutional-column" scope="col">
-            Latest Buys/Sells
-          </th>
-          <th className="macro-institutional-column" scope="col">
-            COT Pipeline
-          </th>
-          <th className="macro-technical-column" scope="col">
-            4H / Daily Chart Trend
-          </th>
-          <th className="macro-technical-column" scope="col">
-            Seasonality Trend
-          </th>
-          {fields.map((key) => (
-            <th key={key} scope="col">
-              {fieldLabel(key)}
-            </th>
-          ))}
-        </tr>
-      </thead>
+    <table
+      className="macro-scaffold-heatmap pair-heatmap-table"
+      aria-label="Fiat-Forexpaare"
+    >
+      <HeatmapHead />
       <tbody>
         {pairs.map((pair) => {
           const institutional = buildInstitutionalPairActivity(
@@ -1167,6 +1125,300 @@ function FundamentalHeatmap({
         })}
       </tbody>
     </table>
+  );
+}
+
+function HeatmapHead({ metals = false }: { metals?: boolean }) {
+  return (
+    <>
+      <colgroup>
+        <col span={6} />
+        <col className="macro-chart-trend-column" />
+        <col span={fields.length + 1} />
+      </colgroup>
+      <thead>
+        <tr>
+          <th
+            className="macro-output-group-heading"
+            colSpan={4}
+            scope="colgroup"
+          >
+            <span>
+              <Gauge size={12} aria-hidden="true" /> Output
+            </span>
+          </th>
+          <th
+            className="institutional-group-heading"
+            colSpan={2}
+            scope="colgroup"
+          >
+            <span>
+              <Activity size={12} aria-hidden="true" /> Institutional Activity
+            </span>
+          </th>
+          <th className="technical-group-heading" colSpan={2} scope="colgroup">
+            <span>
+              <TrendingUp size={12} aria-hidden="true" /> Technicals
+            </span>
+          </th>
+          {groups.map((group) => {
+            const GroupIcon = group.icon;
+            return (
+              <th
+                className={`macro-factor-group-heading is-${group.factor}`}
+                colSpan={group.columns.length}
+                key={group.factor}
+                scope="colgroup"
+              >
+                <span>
+                  <GroupIcon size={12} aria-hidden="true" /> {group.title}
+                  <small aria-hidden="true">{group.columns.length}</small>
+                </span>
+              </th>
+            );
+          })}
+        </tr>
+        <tr>
+          <th className="macro-output-column" scope="col">
+            Symbol
+          </th>
+          <th className="macro-output-column" scope="col">
+            {metals ? "USD-Einfluss Bias" : "Fund. Bias"}
+          </th>
+          <th className="macro-output-column" scope="col">
+            {metals ? "USD-Einfluss Score" : "Fundamentals Score"}
+          </th>
+          <th className="macro-output-column" scope="col">
+            Institutional Score
+          </th>
+          <th className="macro-institutional-column" scope="col">
+            Latest Buys/Sells
+          </th>
+          <th className="macro-institutional-column" scope="col">
+            COT Pipeline
+          </th>
+          <th className="macro-technical-column" scope="col">
+            4H / Daily Chart Trend
+          </th>
+          <th className="macro-technical-column" scope="col">
+            Seasonality Trend
+          </th>
+          {fields.map((key) => (
+            <th key={key} scope="col">
+              {fieldLabel(key)}
+            </th>
+          ))}
+        </tr>
+      </thead>
+    </>
+  );
+}
+
+function PreciousMetalsHeatmap({
+  metals,
+  usd,
+  cot,
+  technicals,
+  onSelect,
+}: {
+  metals: PreciousMetalUsdView[];
+  usd?: FundamentalCurrencyView;
+  cot?: CotDashboard;
+  technicals?: PairTechnicalDashboard;
+  onSelect: (currency: string) => void;
+}) {
+  return (
+    <Card
+      className="macro-scaffold-card macro-workspace-card"
+      id="macro-precious-metals"
+    >
+      <header className="macro-section-header">
+        <div className="macro-section-heading">
+          <span className="macro-section-icon" aria-hidden="true">
+            <Layers3 size={17} />
+          </span>
+          <div>
+            <span className="page-eyebrow">Edelmetalle · USD-Kanal</span>
+            <h2>Gold & Silber</h2>
+            <p>
+              USD-positive Überraschung → Metall −1 · USD-negative Überraschung
+              → Metall +1
+            </p>
+          </div>
+        </div>
+        <Badge className="neutral">XAU/USD · XAG/USD</Badge>
+      </header>
+      <div className="macro-metal-context">
+        <p>
+          Der USD-Einfluss ist eine Modellannahme aus den US-Releases. Gold und
+          Silber haben hier denselben USD-Score; ihre eigenen COT-, Kurs- und
+          Seasonality-Signale können davon abweichen.
+        </p>
+        <p>
+          Realzinsen, Krisennachfrage und Zentralbankkäufe können den Goldpreis
+          anders bewegen. Bei Silber kommen Industrienachfrage und Angebot
+          hinzu. Die gesamte Metallrichtung lässt sich daraus nicht ableiten.
+        </p>
+      </div>
+      <CardContent className="macro-scaffold-heatmap-wrap">
+        <table
+          className="macro-scaffold-heatmap pair-heatmap-table"
+          aria-label="Edelmetalle und USD-Einfluss"
+        >
+          <HeatmapHead metals />
+          <tbody>
+            {metals.map((metal) => {
+              const { definition, view, score, availableIndicators } = metal;
+              const activity = buildInstitutionalAssetActivity(
+                definition.cotSymbol,
+                cot,
+              );
+              const technical = technicals?.pairs.find(
+                (pair) =>
+                  pair.base === definition.currency && pair.quote === "USD",
+              );
+              return (
+                <tr
+                  key={definition.currency}
+                  data-testid="precious-metal-row"
+                  data-tone={toneKey(score)}
+                >
+                  <th className="heatmap-symbol" scope="row">
+                    <button
+                      type="button"
+                      className="macro-metal-symbol"
+                      onClick={() => onSelect(definition.currency)}
+                      aria-label={`${definition.name} US-Releases ansehen`}
+                    >
+                      <strong>{definition.name}</strong>
+                      <small>{definition.currency}/USD</small>
+                    </button>
+                  </th>
+                  <td
+                    className={`macro-bias-cell ${score === null ? "heatmap-unavailable" : biasTone(view.fundamentalsBias)}`}
+                  >
+                    <span data-tone={toneKey(score)}>
+                      {score === null
+                        ? "Nicht verfügbar"
+                        : view.fundamentalsBias}
+                    </span>
+                  </td>
+                  <td
+                    className={
+                      score === null
+                        ? "heatmap-unavailable"
+                        : toneForScore(score)
+                    }
+                    title={`${definition.name} USD-Einfluss: ${score === null ? "nicht verfügbar" : signed(score)} · ${availableIndicators}/${fields.length} US-Signale`}
+                  >
+                    {score === null ? (
+                      "—"
+                    ) : (
+                      <HeatmapValue max={fields.length} score={score} />
+                    )}
+                  </td>
+                  <MetalInstitutionalCell
+                    activity={activity}
+                    label="Institutional Score"
+                    score={activity.score}
+                    max={2}
+                  />
+                  <MetalInstitutionalCell
+                    activity={activity}
+                    label="Latest Buys/Sells"
+                    score={activity.latestChangeSignal}
+                    max={1}
+                  />
+                  <MetalInstitutionalCell
+                    activity={activity}
+                    label="COT Pipeline"
+                    score={activity.pipelineSignal}
+                    max={1}
+                  />
+                  <ChartTrendCell pair={technical} />
+                  <SeasonalityTrendCell pair={technical} />
+                  {fields.map((key) => {
+                    const indicator = view.indicators.find(
+                      (item) => item.key === key,
+                    );
+                    const source = usd?.indicators.find(
+                      (item) => item.key === key,
+                    );
+                    const available =
+                      indicator && isAvailableIndicator(indicator);
+                    const title = `${definition.name} · US ${fieldLabel(key)}: ${available ? `USD ${signed(source!.score)} → Metall ${signed(indicator.score)}` : "nicht verfügbar"} · Actual ${source?.actualText ?? "—"} · Forecast ${source?.forecastText ?? "—"} · Previous ${source?.previousText ?? "—"} · ${source?.releasedAt ? dateTime(source.releasedAt) : "kein Release"}${source?.frequency ? ` · ${source.frequency}` : ""}${indicator?.reasonCodes.length ? ` · ${indicator.reasonCodes.map(reasonLabel).join(", ")}` : ""}`;
+                    return (
+                      <td
+                        key={key}
+                        className={
+                          available
+                            ? toneForScore(indicator.score)
+                            : "heatmap-unavailable"
+                        }
+                        title={title}
+                      >
+                        {available ? (
+                          <HeatmapValue max={1} score={indicator.score} />
+                        ) : (
+                          "—"
+                        )}
+                      </td>
+                    );
+                  })}
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </CardContent>
+      <footer className="macro-methodology-note">
+        <Info size={15} aria-hidden="true" />
+        <p>
+          USD-Einfluss = Summe der umgekehrten verfügbaren US-Signale. Fehlende
+          oder veraltete Releases bleiben ohne Signal; Coverage steht im
+          Score-Tooltip. COT wird direkt aus GOLD bzw. SILVER gelesen. Charts
+          und Saisonalität verwenden die eigene Metallhistorie.
+        </p>
+        <div>
+          <a
+            href="https://www.gold.org/goldhub/research/what-drives-gold"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Gold-Treiber · WGC
+          </a>
+          <a
+            href="https://silverinstitute.org/global-silver-market-forecast-to-remain-in-a-sizeable-deficit-in-2025/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Silber-Treiber · Silver Institute
+          </a>
+        </div>
+      </footer>
+    </Card>
+  );
+}
+
+function MetalInstitutionalCell({
+  activity,
+  label,
+  score,
+  max,
+}: {
+  activity: ReturnType<typeof buildInstitutionalAssetActivity>;
+  label: string;
+  score: number | null;
+  max: number;
+}) {
+  const title = `${activity.currency} ${label}: ${score === null ? "nicht verfügbar" : signed(score)} · eigener Metall-COT · ${activity.contract?.reportDate ?? "kein Report"} · ${activity.contract?.traderGroup ?? "—"} · Coverage ${activity.coverage}/2`;
+  return (
+    <td
+      className={score === null ? "heatmap-unavailable" : toneForScore(score)}
+      title={title}
+    >
+      {score === null ? "—" : <HeatmapValue score={score} max={max} />}
+    </td>
   );
 }
 
@@ -1439,6 +1691,9 @@ function HeatmapValue({ max, score }: { max: number; score: number }) {
 
 function CurrencyOverview({
   currencies,
+  metals,
+  selectedMetal,
+  usd,
   selected,
   onSelect,
   cot,
@@ -1448,6 +1703,9 @@ function CurrencyOverview({
   onSyncCot,
 }: {
   currencies: FundamentalCurrencyView[];
+  metals: PreciousMetalUsdView[];
+  selectedMetal?: PreciousMetalUsdView;
+  usd?: FundamentalCurrencyView;
   selected: FundamentalCurrencyView;
   onSelect: (currency: string) => void;
   cot?: CotDashboard;
@@ -1456,10 +1714,12 @@ function CurrencyOverview({
   cotUnavailable: boolean;
   onSyncCot: () => void;
 }) {
-  const institutional = buildInstitutionalCurrencyActivity(
-    selected.currency,
-    cot,
-  );
+  const institutional = selectedMetal
+    ? buildInstitutionalAssetActivity(selectedMetal.definition.cotSymbol, cot)
+    : buildInstitutionalCurrencyActivity(selected.currency, cot);
+  const scoreLabel = selectedMetal
+    ? "USD-Einfluss Score"
+    : "Fundamentals Score";
   const selectedAvailableIndicators = availableIndicatorCount(
     selected.indicators,
   );
@@ -1481,17 +1741,17 @@ function CurrencyOverview({
           <div>
             <span className="page-eyebrow">Economic Overview</span>
             <h2 id="fundamental-currency-title">
-              Fundamentale Bewertung je Währung
+              Währungen & Edelmetalle im Detail
             </h2>
             <p>
-              Treiber, Konsensüberraschungen und COT-Aktivität im vollständigen
-              Währungs-Drilldown.
+              US-Releases für Gold und Silber, Währungstreiber und eigene
+              COT-Aktivität.
             </p>
           </div>
         </div>
         <Badge className="neutral">
-          <Layers3 size={11} aria-hidden="true" /> {currencies.length}
-          Währungen · {selected.indicators.length} Indikatoren
+          <Layers3 size={11} aria-hidden="true" />
+          {`${currencies.length} Währungen + ${metals.length} Metalle · ${selected.indicators.length} Indikatoren`}
         </Badge>
       </div>
       <div className="macro-pipeline-layout">
@@ -1539,10 +1799,50 @@ function CurrencyOverview({
               })}
             </div>
           </section>
+          <section
+            className="macro-asset-group"
+            aria-label="Edelmetall auswählen"
+          >
+            <header>
+              <h3>Edelmetalle</h3>
+              <span>USD-Einfluss</span>
+            </header>
+            <div>
+              {metals.map((metal) => (
+                <button
+                  type="button"
+                  key={metal.definition.currency}
+                  onClick={() => onSelect(metal.definition.currency)}
+                  aria-label={`${metal.definition.name}, USD-Einfluss ${metal.score === null ? "nicht verfügbar" : signed(metal.score)}`}
+                  aria-pressed={selected.currency === metal.definition.currency}
+                  className={
+                    selected.currency === metal.definition.currency
+                      ? "is-selected"
+                      : undefined
+                  }
+                  data-tone={toneKey(metal.score)}
+                >
+                  <span className="macro-asset-code">
+                    {metal.definition.name}
+                  </span>
+                  <small>
+                    <strong>
+                      {metal.score === null ? "—" : signed(metal.score)}
+                    </strong>
+                    <span>
+                      {metal.score === null
+                        ? "Keine US-Daten"
+                        : metal.view.fundamentalsBias}
+                    </span>
+                  </small>
+                </button>
+              ))}
+            </div>
+          </section>
           <div
             className="macro-scorecard"
             data-tone={selectedScoreTone}
-            aria-label={`${selected.currency} Fundamentals Score`}
+            aria-label={`${selected.currency} ${scoreLabel}`}
           >
             <header className="macro-scorecard-header">
               <div className="macro-scorecard-title">
@@ -1550,7 +1850,11 @@ function CurrencyOverview({
                   <Gauge size={15} />
                 </span>
                 <div>
-                  <small>Fundamentaler Gesamtscore</small>
+                  <small>
+                    {selectedMetal
+                      ? "USD-Einfluss auf das Metall"
+                      : "Fundamentaler Gesamtscore"}
+                  </small>
                   <strong>{selected.currency}</strong>
                 </div>
               </div>
@@ -1572,6 +1876,7 @@ function CurrencyOverview({
               availableIndicators={selectedAvailableIndicators}
               bias={selected.fundamentalsBias}
               currency={selected.currency}
+              scoreLabel={scoreLabel}
               score={selected.fundamentalsScore}
               totalIndicators={selected.indicators.length}
             />
@@ -1599,7 +1904,11 @@ function CurrencyOverview({
 
             <section className="macro-scorecard-drivers">
               <header>
-                <span>Fundamentale Treiber</span>
+                <span>
+                  {selectedMetal
+                    ? "US-Treiber · umgekehrte Signale"
+                    : "Fundamentale Treiber"}
+                </span>
                 <small>Score / verfügbare Signale</small>
               </header>
               <dl>
@@ -1630,7 +1939,9 @@ function CurrencyOverview({
               </dl>
             </section>
             <p className="macro-scorecard-method">
-              Ungewichtete Summe · fehlende Werte bleiben ohne Signal.
+              {selectedMetal
+                ? "USD-Modell: positive US-Signale werden negativ für das Metall gewertet. Kein Gesamtscore des Metalls."
+                : "Ungewichtete Summe · fehlende Werte bleiben ohne Signal."}
             </p>
           </div>
         </aside>
@@ -1645,14 +1956,26 @@ function CurrencyOverview({
                 {selected.currency.slice(0, 1)}
               </span>
               <div>
-                <span className="page-eyebrow">Ausgewählte Währung</span>
-                <h3>{selected.currency}</h3>
-                <p>Releasebasierte Bewertung aus Actual versus Forecast</p>
+                <span className="page-eyebrow">
+                  {selectedMetal
+                    ? "Edelmetall · US-Daten"
+                    : "Ausgewählte Währung"}
+                </span>
+                <h3>
+                  {selectedMetal
+                    ? `${selectedMetal.definition.name} · ${selected.currency}/USD`
+                    : selected.currency}
+                </h3>
+                <p>
+                  {selectedMetal
+                    ? "Actual, Forecast und Previous stammen aus den USA; der Status zeigt den umgekehrten USD-Einfluss."
+                    : "Releasebasierte Bewertung aus Actual versus Forecast"}
+                </p>
               </div>
             </div>
             <div className="macro-selected-asset-summary">
               <span>
-                <small>Fundamentals</small>
+                <small>{selectedMetal ? "USD-Einfluss" : "Fundamentals"}</small>
                 <strong>
                   {selectedAvailableIndicators
                     ? signed(selected.fundamentalsScore)
@@ -1703,10 +2026,13 @@ function CurrencyOverview({
                         <GroupIcon size={15} />
                       </span>
                       <div>
-                        <h4>{group.title}</h4>
+                        <h4>
+                          {selectedMetal
+                            ? `USA · ${group.shortTitle}`
+                            : group.title}
+                        </h4>
                         <small>
-                          {group.description} · {available}/{indicators.length}
-                          Signale
+                          {`${group.description} · ${available}/${indicators.length} Signale`}
                         </small>
                       </div>
                     </div>
@@ -1720,7 +2046,7 @@ function CurrencyOverview({
                     </span>
                   </header>
                   <div className="macro-pipeline-columns" aria-hidden="true">
-                    <span>Status</span>
+                    <span>{selectedMetal ? "Metall-Signal" : "Status"}</span>
                     <span>Actual</span>
                     <span>Forecast</span>
                     <span>Previous</span>
@@ -1729,7 +2055,17 @@ function CurrencyOverview({
                   </div>
                   <div className="macro-pipeline-rows">
                     {indicators.map((indicator) => (
-                      <IndicatorRow indicator={indicator} key={indicator.key} />
+                      <IndicatorRow
+                        indicator={indicator}
+                        key={indicator.key}
+                        usdSource={
+                          selectedMetal
+                            ? usd?.indicators.find(
+                                (source) => source.key === indicator.key,
+                              )
+                            : undefined
+                        }
+                      />
                     ))}
                   </div>
                 </section>
@@ -1852,7 +2188,13 @@ function InstitutionalActivityPanel({
   );
 }
 
-function IndicatorRow({ indicator }: { indicator: FundamentalIndicatorView }) {
+function IndicatorRow({
+  indicator,
+  usdSource,
+}: {
+  indicator: FundamentalIndicatorView;
+  usdSource?: FundamentalIndicatorView;
+}) {
   const displayLabel =
     indicator.key === "unemployment_claims"
       ? indicator.label
@@ -1866,7 +2208,9 @@ function IndicatorRow({ indicator }: { indicator: FundamentalIndicatorView }) {
       : "unavailable";
   return (
     <div className="macro-pipeline-row" data-tone={indicatorTone}>
-      <strong title={`${displayLabel} · Heatmap-Feld: ${indicator.label}`}>
+      <strong
+        title={`${displayLabel} · Heatmap-Feld: ${indicator.label}${usdSource ? ` · US-Release, USD-Signal ${isAvailableIndicator(usdSource) ? signed(usdSource.score) : "nicht verfügbar"}; umgekehrter Effekt auf das Metall` : ""}`}
+      >
         <i aria-hidden="true" />
         {displayLabel}
       </strong>
@@ -1903,12 +2247,14 @@ function FundamentalScoreGauge({
   availableIndicators,
   bias,
   currency,
+  scoreLabel = "Fundamentals Score",
   score,
   totalIndicators,
 }: {
   availableIndicators: number;
   bias: FundamentalCurrencyView["fundamentalsBias"];
   currency: string;
+  scoreLabel?: string;
   score: number;
   totalIndicators: number;
 }) {
@@ -1924,7 +2270,7 @@ function FundamentalScoreGauge({
 
   return (
     <div
-      aria-label={`Fundamentals Score ${currency}`}
+      aria-label={`${scoreLabel} ${currency}`}
       aria-valuemax={range}
       aria-valuemin={-range}
       aria-valuenow={hasScore ? score : undefined}
@@ -1991,7 +2337,11 @@ function FundamentalScoreGauge({
           )}
         </svg>
         <div className="macro-score-gauge-value">
-          <small>Gesamtscore</small>
+          <small>
+            {scoreLabel === "USD-Einfluss Score"
+              ? "USD-Einfluss"
+              : "Gesamtscore"}
+          </small>
           <strong>{hasScore ? signed(score) : "—"}</strong>
           <span>{hasScore ? bias : "Nicht verfügbar"}</span>
         </div>
@@ -2074,10 +2424,7 @@ function FundamentalDriverRow({
 }
 
 function availableIndicatorCount(indicators: FundamentalIndicatorView[]) {
-  return indicators.filter(
-    (indicator) =>
-      indicator.status === "scored" || indicator.status === "neutral",
-  ).length;
+  return indicators.filter(isAvailableIndicator).length;
 }
 
 function gaugePoint(position: number, radius: number) {
@@ -2232,6 +2579,7 @@ function reasonLabel(reason?: string) {
     no_functional_equivalent: "kein funktionales Äquivalent",
     future_release: "Release liegt in der Zukunft",
     eodhd_release_unavailable: "kein vollständiger EODHD-Release",
+    usd_indicator_unavailable: "US-Indikator nicht verfügbar",
     mapping_review_required: "EODHD-Zuordnung muss geprüft werden",
     stale_release: "Release ist älter als das Frischefenster",
   };

@@ -795,6 +795,27 @@ Marktdaten von EODHD und Journal. Der private Webmodus behält seine bisherigen
 unveränderlichen Marktpakete; es gibt keine automatische MT5-Cloudübertragung.
 Bedienung und Prüfnachweise: `docs/planning/mt5-technical-trends.md`.
 
+### 10.6 Gold und Silber: eigener USD-Einfluss
+
+Die Macro-Seite ergänzt XAU/USD und XAG/USD in einer separaten Heatmap.
+`features/macro/precious-metals.ts` bildet ausschließlich den angenommenen
+USD-Kanal ab: verfügbare US-Indikatorsignale werden genau einmal invertiert
+und summiert. Actual/Forecast/Previous, Quelle, Release und Verfügbarkeitsgründe
+bleiben erhalten. Ohne bewertbares Signal bleibt der angezeigte Score leer.
+Gold und Silber teilen diesen USD-Score; keine gemessene Korrelation oder
+Gesamtprognose des Metalls behaupten. Realzinsen, Krisennachfrage und
+Industrienachfrage werden als Gegenkräfte erklärt.
+
+Metall-COT wird direkt aus GOLD/SILVER gelesen, nicht aus USD abgeleitet.
+Die technische Lesefamilie und der MT5-Connector umfassen die bisherigen
+36 Fiat-Paare plus genau XAU/USD und XAG/USD. Forex-/CFD-Metadaten sind Pflicht;
+Futures, fremde Quotes und mehrdeutige Symbole bleiben ausgeschlossen.
+Seasonality liest die eigenen vorhandenen EODHD-Spotprofile. Alte MT5-Caches
+bleiben lesbar; fehlende Metallhistorie wird nicht als neutral behandelt.
+Neue öffentliche Technicals-Pakete dürfen genau diese zwei USD-Spots ergänzen;
+das bestätigt keine Cloud-Bereitstellung oder MT5-Übertragung. Vertrag und
+Prüfungen: `docs/planning/precious-metals-heatmap.md`.
+
 ## 11. Leitzinsmodell
 
 Zinsen sind ein eigener fachlicher Bereich und kein versteckter Teil von

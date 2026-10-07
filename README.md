@@ -822,6 +822,25 @@ und optionaler Notiz; sie zählen nicht als Trading-Gewinn. Fehlende
 Trade-Ergebnisse bleiben als unvollständig erkennbar. Eine verbundene
 Broker-Balance wird getrennt vom Journal-Kontostand angezeigt.
 
+## Gold und Silber in der Heatmap
+
+Unter **Macro → Gold & Silber** zeigen XAU/USD und XAG/USD einen eigenen
+**USD-Einfluss Score**. Ein positives US-Signal wird dort negativ für das
+Metall gewertet, ein negatives positiv. Ein Klick auf Gold oder Silber zeigt
+die ursprünglichen US-Werte mit Actual, Forecast, Previous und Release-Datum.
+Fehlende oder veraltete Releases bleiben ohne Signal; der Score nennt seine
+Datenabdeckung im Tooltip.
+
+Die eigenen GOLD-/SILVER-COT-Signale, MT5-Kurstrends und vorhandenen
+EODHD-Seasonality-Profile stehen separat daneben. Für die ersten Metalltrends
+**MT5-Trends** verwenden oder den nächsten täglichen Abruf abwarten.
+Gold und Silber teilen denselben USD-Einfluss, können sich durch Realzinsen,
+Krisennachfrage, Industrienachfrage und Angebot trotzdem unterschiedlich
+entwickeln. Der Score bewertet ausschließlich den USD-Kanal.
+Die Erweiterung ist lokal implementiert; eine neue Cloud-Veröffentlichung
+ist damit nicht bestätigt.
+[Methodik, Quellen und Grenzen](docs/planning/precious-metals-heatmap.md).
+
 ## Automatische Positionsgröße und EODHD-Fundamentaldaten
 
 Die schnelle und die geführte Trade-Erfassung enthalten einen automatischen

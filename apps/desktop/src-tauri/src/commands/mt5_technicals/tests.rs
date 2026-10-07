@@ -22,7 +22,7 @@ async fn live_mt5_round_trip_in_isolated_workspace() {
     refresh(&state, true).await.unwrap();
     let (first, charts) = load(&state, Utc::now()).await.unwrap();
     assert_eq!(first.status, "complete");
-    assert_eq!(charts.len(), 36);
+    assert_eq!(charts.len(), 38);
     let available = charts
         .values()
         .filter(|chart| chart.four_hour.signal.is_some() && chart.daily.signal.is_some())
@@ -50,7 +50,7 @@ async fn live_mt5_round_trip_in_isolated_workspace() {
     )
     .unwrap();
     println!(
-        "MT5 live check: {available}/36 pairs with both trends; journal unchanged; daily refresh deduplicated"
+        "MT5 live check: {available}/38 markets with both trends; journal unchanged; daily refresh deduplicated"
     );
     state.db.close().await;
 }
@@ -76,20 +76,18 @@ fn bars(direction: f64, seconds: i64) -> Vec<MarketBar> {
 
 fn snapshot() -> MarketSnapshot {
     let mut pairs = Vec::new();
-    for (index, base) in FOREX_PRIORITY.iter().enumerate() {
-        for quote in FOREX_PRIORITY.iter().skip(index + 1) {
-            let available = *base == "EUR" && *quote == "USD";
-            pairs.push(MarketPair {
-                base: base.to_string(),
-                quote: quote.to_string(),
-                inverted: false,
-                source_symbol: available.then(|| "EURUSD.a".into()),
-                four_hour: if available { bars(1.0, 14_400) } else { vec![] },
-                daily: if available { bars(1.0, 86_400) } else { vec![] },
-                four_hour_reason: (!available).then(|| "mt5_symbol_unavailable".into()),
-                daily_reason: (!available).then(|| "mt5_symbol_unavailable".into()),
-            });
-        }
+    for (base, quote) in technical_pairs() {
+        let available = base == "EUR" && quote == "USD";
+        pairs.push(MarketPair {
+            base: base.to_string(),
+            quote: quote.to_string(),
+            inverted: false,
+            source_symbol: available.then(|| "EURUSD.a".into()),
+            four_hour: if available { bars(1.0, 14_400) } else { vec![] },
+            daily: if available { bars(1.0, 86_400) } else { vec![] },
+            four_hour_reason: (!available).then(|| "mt5_symbol_unavailable".into()),
+            daily_reason: (!available).then(|| "mt5_symbol_unavailable".into()),
+        });
     }
     MarketSnapshot {
         source_label: "Broker-Test".into(),
@@ -162,6 +160,73 @@ fn daily_schedule_uses_berlin_calendar_including_dst() {
 }
 
 #[tokio::test]
+async fn gold_and_silver_use_their_own_broker_candles_and_old_snapshots_remain_readable() {
+    let (_dir, state) = state().await;
+    let mut data = snapshot();
+    for (base, direction) in [("XAU", 1.0), ("XAG", -1.0)] {
+        let pair = data
+            .pairs
+            .iter_mut()
+            .find(|pair| pair.base == base)
+            .unwrap();
+        pair.source_symbol = Some(format!("{base}USD.a"));
+        pair.four_hour = bars(direction, 14_400);
+        pair.daily = bars(direction, 86_400);
+        pair.four_hour_reason = None;
+        pair.daily_reason = None;
+    }
+    let token = claim(&state, now().timestamp(), true)
+        .await
+        .unwrap()
+        .unwrap();
+    store_snapshot(&state, &token, &data, now(), now())
+        .await
+        .unwrap();
+    let (_, charts) = load(&state, now()).await.unwrap();
+    assert_eq!(charts[&("XAU".into(), "USD".into())].signal, Some(1));
+    assert_eq!(charts[&("XAG".into(), "USD".into())].signal, Some(-1));
+    assert_eq!(
+        charts[&("XAU".into(), "USD".into())]
+            .source
+            .as_ref()
+            .unwrap()
+            .symbol
+            .as_deref(),
+        Some("XAUUSD.a")
+    );
+
+    // Simulate the previous 36-pair cache without modifying personal data.
+    sqlx::query("DELETE FROM mt5_technical_pairs WHERE base IN ('XAU','XAG')")
+        .execute(&state.db)
+        .await
+        .unwrap();
+    let (_, previous) = load(&state, now()).await.unwrap();
+    assert_eq!(previous.len(), 38);
+    assert_eq!(previous[&("EUR".into(), "USD".into())].signal, Some(1));
+    assert_eq!(previous[&("XAU".into(), "USD".into())].signal, None);
+    assert_eq!(
+        previous[&("XAU".into(), "USD".into())].daily.reason_codes,
+        vec!["mt5_not_loaded"]
+    );
+    state.db.close().await;
+}
+
+#[test]
+fn only_exact_usd_metals_extend_the_snapshot_contract() {
+    let validate =
+        |data: &MarketSnapshot| validate_snapshot(data, now().timestamp(), now().timestamp());
+    let mut unknown = snapshot();
+    unknown.pairs.last_mut().unwrap().base = "XPT".into();
+    assert!(validate(&unknown).is_err());
+    let mut inverse = snapshot();
+    inverse.pairs.last_mut().unwrap().inverted = true;
+    assert!(validate(&inverse).is_err());
+    let mut duplicate = snapshot();
+    duplicate.pairs.last_mut().unwrap().base = "XAU".into();
+    assert!(validate(&duplicate).is_err());
+}
+
+#[tokio::test]
 async fn persists_broker_candles_and_keeps_missing_pairs_unavailable() {
     let (_dir, state) = state().await;
     let token = claim(&state, now().timestamp(), false)
@@ -173,7 +238,7 @@ async fn persists_broker_candles_and_keeps_missing_pairs_unavailable() {
         .unwrap();
     let (refresh, mut charts) = load(&state, now()).await.unwrap();
     assert_eq!(refresh.status, "complete");
-    assert_eq!(charts.len(), 36);
+    assert_eq!(charts.len(), 38);
     let chart = charts.remove(&("EUR".into(), "USD".into())).unwrap();
     assert_eq!(chart.signal, Some(1));
     assert_eq!(chart.daily.bars, 120);

@@ -36,7 +36,11 @@ export const MACRO_KEYS = Object.freeze({
 const MAX_ARTIFACT = 128 * 1024 * 1024;
 const MAX_BUNDLE = 512 * 1024 * 1024;
 const FX = "'AUD','CAD','CHF','CNY','EUR','GBP','JPY','NZD','USD'";
-const FX_SELECT = `SELECT provider_symbol FROM seasonality_provider_instruments WHERE provider='eodhd' AND category='Forex' AND base_currency IN (${FX}) AND quote_currency IN (${FX})`;
+const TECHNICAL_SELECT = `SELECT provider_symbol FROM seasonality_provider_instruments WHERE provider='eodhd' AND (
+  (category='Forex' AND base_currency IN (${FX}) AND quote_currency IN (${FX}))
+  OR (category IN ('Forex','Commodities') AND base_currency IN ('XAU','XAG') AND quote_currency='USD'
+    AND provider_symbol IN ('XAUUSD.FOREX','XAGUSD.FOREX'))
+)`;
 const AUD_SELECT =
   "SELECT provider_symbol FROM seasonality_provider_instruments WHERE provider='eodhd' AND (LOWER(REPLACE(display_symbol,'/',''))='audusd' OR LOWER(provider_symbol)='audusd.forex')";
 const URLS = new Set([
@@ -177,9 +181,9 @@ function filter(kind, table) {
     case "seasonality_provider_instruments":
     case "seasonality_provider_profiles":
     case "seasonality_provider_daily_candles":
-      return `provider='eodhd' AND provider_symbol IN (${kind === "regime" ? AUD_SELECT : FX_SELECT})`;
+      return `provider='eodhd' AND provider_symbol IN (${kind === "regime" ? AUD_SELECT : TECHNICAL_SELECT})`;
     case "eodhd_intraday_candles":
-      return `interval_seconds=3600 AND provider_symbol IN (${FX_SELECT})`;
+      return `interval_seconds=3600 AND provider_symbol IN (${TECHNICAL_SELECT})`;
     default:
       throw new MacroShardExportError("SCHEMA_INVALID");
   }

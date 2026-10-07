@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import type { CotContractView, CotDashboard } from "../../types/domain";
 import {
+  buildInstitutionalAssetActivity,
   buildInstitutionalCurrencyActivity,
   buildInstitutionalPairActivity,
 } from "./institutional-activity";
@@ -120,6 +121,39 @@ describe("buildInstitutionalCurrencyActivity", () => {
       score: null,
       coverage: 0,
       biasLabel: "Nicht verfügbar",
+      contract: null,
+    });
+  });
+});
+
+describe("metal institutional activity", () => {
+  it("uses its own contract when GOLD and SILVER have no currency metadata", () => {
+    const data = cotDashboard({
+      GOLD: { latest: 1, pipeline: 1 },
+      SILVER: { latest: -1, pipeline: 0 },
+      USD: { latest: -1, pipeline: -1 },
+    });
+    data.contracts
+      .filter((item) => item.symbol !== "USD")
+      .forEach((item) => {
+        item.currency = null;
+      });
+    expect(buildInstitutionalAssetActivity("GOLD", data)).toMatchObject({
+      score: 2,
+      latestChangeSignal: 1,
+      pipelineSignal: 1,
+      coverage: 2,
+    });
+    expect(buildInstitutionalAssetActivity("SILVER", data)).toMatchObject({
+      score: -1,
+      latestChangeSignal: -1,
+      pipelineSignal: 0,
+      coverage: 2,
+    });
+    data.contracts = data.contracts.filter((item) => item.symbol === "USD");
+    expect(buildInstitutionalAssetActivity("GOLD", data)).toMatchObject({
+      score: null,
+      coverage: 0,
       contract: null,
     });
   });

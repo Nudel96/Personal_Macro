@@ -187,6 +187,63 @@ test("rejects source URLs carrying credentials and returns only fixed error text
     (e) => e.code === "DATA_INVALID" && !e.message.includes("sentinel"),
   );
 });
+
+test("technical exports include only the two USD spot metals and retain their own profiles", async (t) => {
+  const options = await fixture(t, (db) => {
+    const source = db
+      .prepare(
+        "SELECT * FROM seasonality_provider_instruments WHERE provider_symbol='AUDUSD.FOREX'",
+      )
+      .get();
+    const columns = Object.keys(source);
+    const insert = db.prepare(
+      `INSERT INTO seasonality_provider_instruments(${columns.map((name) => `"${name}"`).join(",")}) VALUES(${columns.map(() => "?").join(",")})`,
+    );
+    for (const base of ["XAU", "XAG", "XPT"]) {
+      const metal = {
+        ...source,
+        provider_symbol: `${base}USD.FOREX`,
+        source_code: `${base}USD.FOREX`,
+        display_symbol: `${base}/USD`,
+        base_currency: base,
+        category: "Commodities",
+      };
+      insert.run(...columns.map((name) => metal[name]));
+      db.prepare(
+        "INSERT INTO seasonality_provider_profiles SELECT provider,?,profile_json FROM seasonality_provider_profiles WHERE provider_symbol='AUDUSD.FOREX'",
+      ).run(metal.provider_symbol);
+    }
+  });
+  const manifest = await exportMacroShards(options);
+  const technicals = manifest.artifacts.find(
+    (artifact) => artifact.kind === "technicals",
+  );
+  const db = new DatabaseSync(
+    path.join(options.outputDirectory, technicals.fileName),
+    { readOnly: true },
+  );
+  try {
+    assert.deepEqual(
+      db
+        .prepare(
+          "SELECT provider_symbol FROM seasonality_provider_instruments ORDER BY provider_symbol",
+        )
+        .all()
+        .map((row) => row.provider_symbol),
+      ["AUDUSD.FOREX", "XAGUSD.FOREX", "XAUUSD.FOREX"],
+    );
+    assert.equal(
+      db
+        .prepare(
+          "SELECT COUNT(*) AS total FROM seasonality_provider_profiles WHERE provider_symbol IN ('XAUUSD.FOREX','XAGUSD.FOREX')",
+        )
+        .get().total,
+      2,
+    );
+  } finally {
+    db.close();
+  }
+});
 test("rejects an active WAL snapshot", async (t) => {
   const options = await fixture(t);
   await writeFile(options.snapshotPath + "-wal", "pending");
