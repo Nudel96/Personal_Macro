@@ -102,6 +102,13 @@ deshalb nicht mit dem Dienstagstermin als früher bekanntes Signal ausgegeben.
   Start wurde anschließend ein unabhängiger Collector mit zwei Sekunden
   Anfangswartezeit und 60 Sekunden Abstand ergänzt, damit Seasonality- und
   Providerabrufe die Erfassung nicht verzögern.
+- Der abschließende reguläre Tauri-Produktionsbuild mit eingebetteter Oberfläche
+  bestand um 20:40 Uhr Europe/Berlin. Die EXE liegt unter
+  `apps/desktop/src-tauri/target/release/personal-macro-desktop.exe` (73.462.784 Byte).
+  Der erneute reale Fenster-/Prozessstart reagiert; der read-only-Lesetest sieht
+  6.141 Beobachtungen für alle 89 Instrumente und eine abgeschlossene
+  Archivübernahme. Keine Score-/Initialisierungsfehlermeldung in den separat
+  erfassten Startlogs. Der bisherige Nutzerprozess wurde nicht beendet.
 
 Die Softwareprüfungen bestätigen keine allgemeine Prognosegüte des Teilmodells.
 Die Bilder sind keine Live-Marktdaten. Browser-DTO-Prüfung und nativer
