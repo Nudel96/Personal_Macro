@@ -24,6 +24,8 @@ import { PageHeader } from "../../components/ui/page-header";
 import { dateTime, localDate } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
 import { isPrivateWeb } from "../../services/runtime-mode";
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
+import { useCloudCotRefresh } from "../cot/use-cloud-cot-refresh";
 import { officialReportUrl } from "./report-source";
 import type {
   CentralBankReportDetail,
@@ -75,8 +77,21 @@ function message(error: unknown) {
 }
 
 export function CentralBankReportsPage() {
+  useCloudCotRefresh();
   const privateWeb = isPrivateWeb();
   const queryClient = useQueryClient();
+  const cloudRefresh = useMutation({
+    mutationFn: api.requestCloudCentralBankReportRefresh,
+    onSuccess: () => {
+      void queryClient.invalidateQueries({
+        queryKey: ["central-bank-reports"],
+      });
+      toast.success(
+        "Quellenprüfung eingeplant. Neue Berichte erscheinen nach der Prüfung automatisch.",
+      );
+    },
+    onError: (error) => toast.error(message(error)),
+  });
   const [bank, setBank] = useState("all");
   const [reportType, setReportType] = useState<CentralBankReportType | "all">(
     "all",
@@ -277,12 +292,30 @@ export function CentralBankReportsPage() {
         }
         actions={
           privateWeb ? (
-            <Badge className="primary">
-              <DatabaseZap size={11} />{" "}
-              {data.automation.enabled
-                ? "Cloud-Aktualisierung aktiv"
-                : "Privater Datenstand"}
-            </Badge>
+            <>
+              <Badge className="primary">
+                <DatabaseZap size={11} />{" "}
+                {data.automation.enabled
+                  ? "Cloud-Aktualisierung aktiv"
+                  : "Privater Datenstand"}
+              </Badge>
+              {supportsPrivateWebCommand(
+                "request_central_bank_report_refresh",
+              ) && (
+                <Button
+                  onClick={() => cloudRefresh.mutate()}
+                  disabled={cloudRefresh.isPending}
+                >
+                  <RefreshCw
+                    size={14}
+                    className={cloudRefresh.isPending ? "spin" : undefined}
+                  />
+                  {cloudRefresh.isPending
+                    ? "Plane Quellenprüfung …"
+                    : "Jetzt aktualisieren"}
+                </Button>
+              )}
+            </>
           ) : (
             <>
               <Badge
@@ -332,7 +365,7 @@ export function CentralBankReportsPage() {
         quality={
           privateWeb
             ? readMarkers.isSuccess
-              ? `${unread} ungelesen · Originalquellen geprüft`
+              ? `${unread} ungelesen · ${successfulSources}/${data.sources.length} Quellen zuletzt erreichbar`
               : "Lesestatus wird geladen"
             : `${successfulSources}/${data.sources.length} Quellen zuletzt erreichbar · ${unread} ungelesen`
         }
@@ -340,6 +373,10 @@ export function CentralBankReportsPage() {
           privateWeb
             ? data.automation.enabled
               ? "Tägliche Quellenprüfung" +
+                (data.automation.nextRefreshAt
+                  ? " · Abruf eingeplant: " +
+                    dateTime(data.automation.nextRefreshAt)
+                  : "") +
                 (data.automation.lastSuccessAt
                   ? " · Zuletzt geprüft: " +
                     dateTime(data.automation.lastSuccessAt)

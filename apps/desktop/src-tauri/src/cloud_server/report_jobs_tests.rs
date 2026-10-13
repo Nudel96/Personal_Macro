@@ -136,3 +136,39 @@ async fn report_cloud_publication_fences_leases_cas_and_duplicates_without_chang
         resume_unwind(error)
     }
 }
+
+#[tokio::test]
+#[ignore = "Requires MACRO_TEST_ENV_FILE; disposable PostgreSQL schema only"]
+async fn manual_report_requests_are_deduplicated_and_leave_journal_revision_unchanged() {
+    let db = TestDatabase::open().await;
+    let result = AssertUnwindSafe(async {
+        let server = CloudServer::from_pool(
+            db.pool.clone(),
+            db.schema.clone(),
+            db.workspace_id.clone(),
+            [71; 32],
+        )
+        .await
+        .unwrap();
+        let (first, second) = tokio::join!(
+            server.request_report_refresh(),
+            server.request_report_refresh()
+        );
+        assert!(first.unwrap()["scheduled"].as_bool().unwrap());
+        assert!(second.unwrap()["scheduled"].as_bool().unwrap());
+        let count: i64 = sqlx::query_scalar(
+            "SELECT COUNT(*) FROM cloud_provider_jobs WHERE kind='report-discover'",
+        )
+        .fetch_one(&db.pool)
+        .await
+        .unwrap();
+        assert_eq!(count, cloud::sources().count() as i64);
+        assert_eq!(server.revision().await.unwrap(), 0);
+    })
+    .catch_unwind()
+    .await;
+    db.close().await;
+    if let Err(error) = result {
+        resume_unwind(error)
+    }
+}

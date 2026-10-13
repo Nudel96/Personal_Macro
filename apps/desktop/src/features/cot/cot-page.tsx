@@ -1,5 +1,5 @@
-import { useQuery } from "@tanstack/react-query";
-import { ChartNoAxesCombined, ExternalLink } from "lucide-react";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { ChartNoAxesCombined, ExternalLink, RefreshCw } from "lucide-react";
 import { useState } from "react";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { ErrorState, PageLoading } from "../../components/ui/loading";
@@ -11,9 +11,25 @@ import { CloudMarketNotice } from "../macro/cloud-market-notice";
 import { dateTime } from "../../lib/utils";
 import { useCloudCotRefresh } from "./use-cloud-cot-refresh";
 import { CotComparison } from "./cot-comparison";
+import { Button } from "../../components/ui/button";
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
+import { toast } from "sonner";
 
 export function CotPage() {
   useCloudCotRefresh();
+  const queryClient = useQueryClient();
+  const refresh = useMutation({
+    mutationFn: api.requestCloudCotRefresh,
+    onSuccess: (result) => {
+      void queryClient.invalidateQueries({ queryKey: ["cot"] });
+      toast.success(
+        result.scheduled
+          ? "COT-Abruf eingeplant. Neue Daten erscheinen nach der Prüfung automatisch."
+          : "Der letzte veröffentlichte CFTC-Bericht ist bereits geladen.",
+      );
+    },
+    onError: () => toast.error("Der COT-Abruf konnte nicht eingeplant werden."),
+  });
   const [pair, setPair] = useState<[string, string]>(["EUR", "USD"]);
   const dashboard = useQuery({
     queryKey: ["cot"],
@@ -26,6 +42,17 @@ export function CotPage() {
       eyebrow="Marktkontext"
       title="COT Analyse"
       description="Institutionelle Positionierung, Kapitalfluss und Trend im Vergleich der Währungen."
+      actions={
+        isPrivateWeb() && supportsPrivateWebCommand("request_cot_refresh") ? (
+          <Button onClick={() => refresh.mutate()} disabled={refresh.isPending}>
+            <RefreshCw
+              size={14}
+              className={refresh.isPending ? "spin" : undefined}
+            />
+            {refresh.isPending ? "Plane Abruf …" : "Jetzt aktualisieren"}
+          </Button>
+        ) : undefined
+      }
     />
   );
 
@@ -62,6 +89,9 @@ export function CotPage() {
             " Der nächste Veröffentlichungstermin ist noch nicht bestätigt."}
           {dashboard.data.automaticRefresh.lastOutcome === "expired" &&
             " Der letzte Abruf konnte nicht abgeschlossen werden; der bisherige geprüfte Stand bleibt sichtbar."}
+          {["pending", "running", "staged"].includes(
+            dashboard.data.automaticRefresh.lastOutcome ?? "",
+          ) && " Ein Abruf ist eingeplant oder wird gerade geprüft."}
           {dashboard.data.lastSyncedAt &&
             ` Zuletzt geladen: ${dateTime(dashboard.data.lastSyncedAt)}.`}
         </p>

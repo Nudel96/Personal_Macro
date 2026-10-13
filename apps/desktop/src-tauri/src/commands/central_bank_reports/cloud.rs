@@ -88,6 +88,7 @@ pub(crate) async fn discover(
     root: &Path,
     source_id: &str,
     saved: Option<SourceSnapshot>,
+    force: bool,
 ) -> Result<Discovery, AppError> {
     let source = SOURCES
         .iter()
@@ -126,7 +127,7 @@ pub(crate) async fn discover(
         })?;
     let state = state(db, root);
     let mut counts = SyncCounts::default();
-    sync_source(&state, &client, source, &mut counts, true).await?;
+    sync_source(&state, &client, source, &mut counts, true, force).await?;
     if !counts.errors.is_empty() {
         return Err(AppError::DataTransfer(
             "Die offizielle Quelle konnte nicht vollständig übernommen werden.".into(),
@@ -141,14 +142,14 @@ pub(crate) async fn discover(
     }
     Ok(Discovery {
         state: snapshot,
-        changed: counts.reports_discovered > 0,
+        changed: counts.reports_discovered > 0 || counts.reports_removed > 0,
         pending: pending(db).await?,
     })
 }
 pub(crate) async fn pending(db: &SqlitePool) -> Result<Vec<String>, AppError> {
     // Upgrade only the latest public briefing in each bank/document family.
     // Retain the archive as-is; no automatic full-archive paid backfill.
-    Ok(sqlx::query_scalar("SELECT id FROM (SELECT id,extraction_status,extracted_text,summary_status,summary_version,ROW_NUMBER() OVER(PARTITION BY bank_code,report_type ORDER BY COALESCE(published_at,discovered_at) DESC,id) AS position FROM central_bank_reports) WHERE position=1 AND extraction_status IN ('complete','partial') AND LENGTH(TRIM(COALESCE(extracted_text,'')))>0 AND (summary_status<>'complete' OR summary_version<?) ORDER BY id LIMIT 36")
+    Ok(sqlx::query_scalar("SELECT id FROM (SELECT id,extraction_status,extracted_text,summary_status,summary_version,ROW_NUMBER() OVER(PARTITION BY bank_code,report_type ORDER BY COALESCE(published_at,discovered_at) DESC,id) AS position FROM central_bank_reports WHERE published_at IS NULL OR julianday(published_at)<=julianday('now')) WHERE position=1 AND extraction_status IN ('complete','partial') AND LENGTH(TRIM(COALESCE(extracted_text,'')))>0 AND (summary_status<>'complete' OR summary_version<?) ORDER BY id LIMIT 36")
         .bind(SUMMARY_VERSION).fetch_all(db).await?)
 }
 pub(crate) async fn summarize(
@@ -157,7 +158,7 @@ pub(crate) async fn summarize(
     id: &str,
     budget: &BudgetStore,
 ) -> Result<bool, AppError> {
-    let row:LocalSummaryRow=sqlx::query_as("SELECT id,bank_code,report_type,title,source_url,published_at,extracted_text FROM central_bank_reports WHERE id=? AND extraction_status IN ('complete','partial') AND LENGTH(TRIM(COALESCE(extracted_text,'')))>0")
+    let row:LocalSummaryRow=sqlx::query_as("SELECT id,bank_code,report_type,title,source_url,published_at,extracted_text FROM central_bank_reports WHERE id=? AND (published_at IS NULL OR julianday(published_at)<=julianday('now')) AND extraction_status IN ('complete','partial') AND LENGTH(TRIM(COALESCE(extracted_text,'')))>0")
         .bind(id).fetch_optional(db).await?.ok_or_else(||AppError::NotFound("Zentralbankbericht".into()))?;
     if !crate::cloud_public::report_readers::official_source(&row.bank_code, &row.source_url) {
         return Err(AppError::Validation(

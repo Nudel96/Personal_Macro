@@ -18,8 +18,15 @@ vi.mock("../../services/commands", () => ({
     centralBankReportReadMarkers: vi.fn(),
     markCentralBankReportRead: vi.fn(),
     syncCentralBankReports: vi.fn(),
+    requestCloudCentralBankReportRefresh: vi.fn(),
     summarizeCentralBankReports: vi.fn(),
   },
+}));
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
+vi.mock("../../services/private-web-client", () => ({
+  supportsPrivateWebCommand: vi.fn(() => false),
+  getPrivateWebClientState: () => ({ status: "idle" }),
+  refreshPrivateWebMarketGeneration: vi.fn(),
 }));
 const generation = "11111111-1111-4111-8111-111111111111";
 const detail: CentralBankReportDetail = {
@@ -80,6 +87,23 @@ function mount() {
   );
 }
 describe("private reports", () => {
+  it("requests a durable source check using the owner capability", async () => {
+    vi.mocked(supportsPrivateWebCommand).mockReturnValue(true);
+    vi.mocked(api.requestCloudCentralBankReportRefresh).mockResolvedValue({
+      scheduled: true,
+      nextRefreshAt: null,
+    });
+    mount();
+    await userEvent.click(
+      await screen.findByRole("button", { name: "Jetzt aktualisieren" }),
+    );
+    await waitFor(() =>
+      expect(api.requestCloudCentralBankReportRefresh).toHaveBeenCalledTimes(1),
+    );
+    expect(api.syncCentralBankReports).not.toHaveBeenCalled();
+    expect(api.summarizeCentralBankReports).not.toHaveBeenCalled();
+    vi.mocked(supportsPrivateWebCommand).mockReturnValue(false);
+  });
   it("shows cloud scheduling, cost reservations and exact evidence without starting provider requests from the browser", async () => {
     const proven: CentralBankReportDetail = {
       ...detail,

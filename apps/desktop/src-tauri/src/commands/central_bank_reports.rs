@@ -386,6 +386,7 @@ struct SyncCounts {
     reports_discovered: usize,
     reports_downloaded: usize,
     reports_summarized: usize,
+    reports_removed: usize,
     errors: Vec<String>,
 }
 
@@ -567,7 +568,7 @@ async fn sync_reports(
     let mut counts = SyncCounts::default();
     for source in SOURCES {
         counts.sources_checked += 1;
-        if let Err(error) = sync_source(state, &client, source, &mut counts, false).await {
+        if let Err(error) = sync_source(state, &client, source, &mut counts, false, force).await {
             let message = limited_error(&error.to_string());
             counts
                 .errors
@@ -754,7 +755,12 @@ async fn sync_source(
     source: &ReportSource,
     counts: &mut SyncCounts,
     cloud: bool,
+    force_discovery: bool,
 ) -> Result<(), AppError> {
+    // Upcoming calendar links are not published reports. Remove only the
+    // incorrectly imported future entries for this bank in the working store.
+    // Cloud publication still uses a new immutable shard and generation CAS.
+    counts.reports_removed += remove_future_reports(state, source.bank_code).await?;
     let source_state: Option<SourceStateRow> = sqlx::query_as(
         "SELECT etag,last_modified,last_success_at FROM central_bank_report_source_state WHERE source_id=?",
     )
@@ -764,10 +770,10 @@ async fn sync_source(
     let fetched = fetch_url(
         client,
         source.url,
-        (source.id != "pboc-reports")
+        (!force_discovery && matches!(source.kind, SourceKind::Rss))
             .then(|| source_state.as_ref().and_then(|row| row.etag.as_deref()))
             .flatten(),
-        (source.id != "pboc-reports")
+        (!force_discovery && matches!(source.kind, SourceKind::Rss))
             .then(|| {
                 source_state
                     .as_ref()
@@ -782,20 +788,55 @@ async fn sync_source(
         return Ok(());
     }
     let source_body = String::from_utf8_lossy(&fetched.bytes);
-    let (discovery_body, discovery_base_url) = if source.id == "pboc-reports" {
+    let (discovery_body, discovery_base_url) = if source.id == "pbc-reports" {
         let year_url = find_pbc_current_year_url(&source_body, source.url)?;
         let year_page = fetch_url(client, &year_url, None, None, MAX_SOURCE_BYTES).await?;
         (
             String::from_utf8_lossy(&year_page.bytes).into_owned(),
             year_page.final_url,
         )
+    } else if source.id == "ecb-decisions" {
+        // The index is only a shell. Its official, year-bound snippets contain
+        // the actual releases and change independently of the shell's ETag.
+        let snippet_url = ecb_current_decisions_url(&source_body, &fetched.final_url)?;
+        let snippet = fetch_url(client, &snippet_url, None, None, MAX_SOURCE_BYTES).await?;
+        (
+            String::from_utf8_lossy(&snippet.bytes).into_owned(),
+            snippet.final_url,
+        )
     } else {
         (source_body.into_owned(), source.url.to_string())
     };
-    let candidates = match source.kind {
+    let mut candidates = match source.kind {
         SourceKind::Rss => discover_rss(&discovery_body, source)?,
         SourceKind::Html => discover_html(&discovery_body, &discovery_base_url, source)?,
     };
+    // RBA's RSS feed contains only its most recent media release, which can
+    // concern financial stability. Its official yearly archive retains the
+    // monetary-policy releases missed between checks.
+    if source.id == "rba-decisions" && candidates.is_empty() {
+        let archive_url = format!(
+            "https://www.rba.gov.au/media-releases/{}/",
+            Utc::now().year()
+        );
+        let archive = fetch_url(client, &archive_url, None, None, MAX_SOURCE_BYTES).await?;
+        candidates = discover_html(
+            &String::from_utf8_lossy(&archive.bytes),
+            &archive.final_url,
+            source,
+        )?;
+        if candidates.is_empty() {
+            return Err(AppError::DataTransfer(
+                "Das offizielle RBA-Archiv enthält keine erkennbaren geldpolitischen Berichte."
+                    .into(),
+            ));
+        }
+    }
+    if candidates.is_empty() && matches!(source.kind, SourceKind::Html) {
+        return Err(AppError::DataTransfer(
+            "Die offizielle Liste enthält keine erkennbaren geldpolitischen Berichte.".into(),
+        ));
+    }
     let initial_crawl = source_state
         .as_ref()
         .and_then(|row| row.last_success_at.as_ref())
@@ -844,15 +885,20 @@ async fn sync_source(
                 counts.reports_downloaded += usize::from(downloaded);
                 counts.reports_summarized += usize::from(summarized);
             }
-            Err(error) => counts.errors.push(format!(
-                "{}: {}",
-                source.bank_code,
-                limited_error(&error.to_string())
-            )),
+            Err(error) => return Err(error),
         }
     }
     update_source_success(state, source, &fetched).await?;
     Ok(())
+}
+
+async fn remove_future_reports(state: &AppState, bank: &str) -> Result<usize, AppError> {
+    Ok(sqlx::query("DELETE FROM central_bank_reports WHERE bank_code=? AND julianday(published_at)>julianday(?)")
+        .bind(bank)
+        .bind(Utc::now().to_rfc3339())
+        .execute(&state.db)
+        .await?
+        .rows_affected() as usize)
 }
 
 async fn ingest_report(
@@ -1121,6 +1167,7 @@ fn discover_rss(xml: &str, source: &ReportSource) -> Result<Vec<Candidate>, AppE
     let item_re = Regex::new(r"(?is)<(?:item|entry)\b.*?</(?:item|entry)>")
         .map_err(|error| AppError::Initialization(error.to_string()))?;
     let mut candidates = Vec::new();
+    let mut valid_feed_item = false;
     for item in item_re.find_iter(xml) {
         let raw = item.as_str();
         let Some(title) = xml_tag(raw, "title") else {
@@ -1130,6 +1177,7 @@ fn discover_rss(xml: &str, source: &ReportSource) -> Result<Vec<Candidate>, AppE
         let Some(url) = link.and_then(|value| normalize_url(source.url, &value)) else {
             continue;
         };
+        valid_feed_item = true;
         let Some(report_type) = classify_report(&title, &url) else {
             continue;
         };
@@ -1142,6 +1190,11 @@ fn discover_rss(xml: &str, source: &ReportSource) -> Result<Vec<Candidate>, AppE
                 .and_then(|value| parse_published_at(&value)),
             report_type: report_type.into(),
         });
+    }
+    if !valid_feed_item {
+        return Err(AppError::DataTransfer(
+            "Der offizielle Feed enthält keine gültigen Einträge.".into(),
+        ));
     }
     Ok(unique_candidates(candidates))
 }
@@ -1178,7 +1231,7 @@ fn discover_html(
             .map(|parent| normalize_space(&parent.text().collect::<Vec<_>>().join(" ")))
             .unwrap_or_default();
         let mut title = if label.len() < 18 || label.to_ascii_lowercase().starts_with("pdf") {
-            context
+            context.clone()
         } else {
             label
         };
@@ -1224,7 +1277,7 @@ fn discover_html(
             } else {
                 None
             }
-        } else if source.id == "pboc-reports" {
+        } else if source.id == "pbc-reports" {
             title_lower
                 .contains("china monetary policy report")
                 .then_some("monetary_policy_report")
@@ -1235,7 +1288,8 @@ fn discover_html(
             continue;
         };
         candidates.push(Candidate {
-            published_at: parse_published_at(&title),
+            published_at: publication_date(&title, &url)
+                .or_else(|| publication_date(&context, &url)),
             title,
             url,
             report_type: report_type.into(),
@@ -1272,6 +1326,35 @@ fn find_pbc_current_year_url(html: &str, base_url: &str) -> Result<String, AppEr
             AppError::DataTransfer(format!(
                 "Auf der PBoC-Seite wurde noch kein Berichtsarchiv für {expected_year} gefunden."
             ))
+        })
+}
+
+fn ecb_current_decisions_url(html: &str, base_url: &str) -> Result<String, AppError> {
+    let document = Html::parse_document(html);
+    let selector = Selector::parse("[data-snippets]").expect("valid selector");
+    let base =
+        Url::parse(base_url).map_err(|_| AppError::Validation("Ungültige EZB-Quelle.".into()))?;
+    let expected = format!(
+        "/press/govcdec/mopo/{}/html/index_include.en.html",
+        Utc::now().year()
+    );
+    document
+        .select(&selector)
+        .filter_map(|element| element.value().attr("data-snippets"))
+        .flat_map(|value| value.split(','))
+        .filter_map(|href| base.join(href.trim()).ok())
+        .find(|url| {
+            url.scheme() == "https"
+                && url.host_str() == Some("www.ecb.europa.eu")
+                && url.path() == expected
+                && url.query().is_none()
+                && url.fragment().is_none()
+        })
+        .map(|url| url.to_string())
+        .ok_or_else(|| {
+            AppError::DataTransfer(
+                "Die aktuelle EZB-Entscheidungsliste wurde nicht gefunden.".into(),
+            )
         })
 }
 
@@ -1336,6 +1419,18 @@ fn classify_report(title: &str, url: &str) -> Option<&'static str> {
         || haystack.contains("bank rate maintained")
         || haystack.contains("bank rate reduced")
         || haystack.contains("bank rate increased")
+        || [
+            "maintains the policy rate",
+            "reduces the policy rate",
+            "raises the policy rate",
+            "lowers the policy rate",
+            "ocr increased",
+            "ocr reduced",
+            "ocr lowered",
+            "ocr held",
+        ]
+        .iter()
+        .any(|marker| haystack.contains(marker))
         || combined_boe_decision
     {
         return Some("decision");
@@ -1912,7 +2007,7 @@ fn validate_summary_refs(
 
 async fn load_dashboard(state: &AppState) -> Result<CentralBankReportDashboard, AppError> {
     let reports: Vec<CentralBankReportListItem> = sqlx::query_as(
-        "SELECT id,bank_code,currency,report_type,title,source_url,published_at,discovered_at,language,mime_type,local_path,extraction_status,summary_status,summary_provider,summary_model,summarized_at,read_at FROM central_bank_reports ORDER BY COALESCE(published_at,discovered_at) DESC LIMIT 250",
+        "SELECT id,bank_code,currency,report_type,title,source_url,published_at,discovered_at,language,mime_type,local_path,extraction_status,summary_status,summary_provider,summary_model,summarized_at,read_at FROM central_bank_reports WHERE published_at IS NULL OR julianday(published_at)<=julianday('now') ORDER BY COALESCE(published_at,discovered_at) DESC LIMIT 250",
     ).fetch_all(&state.db).await?;
     let mut sources = Vec::new();
     for source in SOURCES {
@@ -2336,10 +2431,47 @@ fn html_fragment_text(value: &str) -> String {
 
 fn unique_candidates(candidates: Vec<Candidate>) -> Vec<Candidate> {
     let mut seen = HashSet::new();
-    candidates
+    let now = Utc::now();
+    let mut candidates: Vec<_> = candidates
         .into_iter()
+        .filter(|candidate| {
+            candidate
+                .published_at
+                .as_deref()
+                .and_then(parse_time)
+                .is_none_or(|date| date <= now)
+        })
         .filter(|candidate| seen.insert(candidate.url.clone()))
-        .collect()
+        .collect();
+    // Stable order preserves undated feed entries; dated archive entries are
+    // examined newest first even when the bank presents them chronologically.
+    candidates.sort_by(|a, b| b.published_at.cmp(&a.published_at));
+    candidates
+}
+
+fn publication_date(title: &str, url: &str) -> Option<String> {
+    if let Some(date) = parse_published_at(title) {
+        return Some(date);
+    }
+    let expression = if url.starts_with("https://www.boj.or.jp/") {
+        Some(r"/k(\d{2})(\d{2})(\d{2})[a-z]\.pdf(?:$|\?)")
+    } else if url.starts_with("https://www.ecb.europa.eu/") {
+        Some(r"/ecb\.mp(\d{2})(\d{2})(\d{2})~")
+    } else {
+        None
+    };
+    if let Some(expression) = expression {
+        let regex = Regex::new(expression).ok()?;
+        if let Some(parts) = regex.captures(url) {
+            let day = NaiveDate::from_ymd_opt(
+                2000 + parts[1].parse::<i32>().ok()?,
+                parts[2].parse().ok()?,
+                parts[3].parse().ok()?,
+            )?;
+            return Some(day.and_hms_opt(12, 0, 0)?.and_utc().to_rfc3339());
+        }
+    }
+    parse_published_at(url)
 }
 
 fn parse_published_at(value: &str) -> Option<String> {
@@ -2357,6 +2489,15 @@ fn parse_published_at(value: &str) -> Option<String> {
             captures[3].parse().ok()?,
         )?;
         return Some(date.and_hms_opt(12, 0, 0)?.and_utc().to_rfc3339());
+    }
+    let month_date = Regex::new(r"(?i)\b(\d{1,2})\s+(January|February|March|April|May|June|July|August|September|October|November|December)\s+(20\d{2})\b|\b(January|February|March|April|May|June|July|August|September|October|November|December)\s+(\d{1,2}),?\s+(20\d{2})\b").ok()?;
+    if let Some(parts) = month_date.captures(value) {
+        let text = parts.get(0)?.as_str();
+        for format in ["%d %B %Y", "%B %d, %Y", "%B %d %Y"] {
+            if let Ok(date) = NaiveDate::parse_from_str(text, format) {
+                return Some(date.and_hms_opt(12, 0, 0)?.and_utc().to_rfc3339());
+            }
+        }
     }
     None
 }
@@ -2469,6 +2610,116 @@ fn limited_error(value: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn future_boe_calendar_links_do_not_replace_published_decisions() {
+        let source = SOURCES.iter().find(|s| s.id == "boe-latest").unwrap();
+        let html = r#"<ul>
+          <li>16 September 2099 <a href='/monetary-policy-summary-and-minutes/2099/september-2099'>Monetary Policy Summary and Minutes</a></li>
+          <li>17 September 2020 <a href='/monetary-policy-summary-and-minutes/2020/september-2020'>Monetary Policy Summary and Minutes</a></li>
+        </ul>"#;
+        let candidates = discover_html(html, source.url, source).unwrap();
+        assert_eq!(candidates.len(), 1);
+        assert!(candidates[0].url.ends_with("/2020/september-2020"));
+        assert_eq!(
+            candidates[0].published_at.as_deref(),
+            Some("2020-09-17T12:00:00+00:00")
+        );
+    }
+
+    #[test]
+    fn rss_with_only_a_financial_stability_release_is_valid_but_not_a_policy_report() {
+        let source = SOURCES.iter().find(|s| s.id == "rba-decisions").unwrap();
+        let xml = r#"<rdf:RDF><item><title>Release of Financial Stability Review</title><link>https://www.rba.gov.au/media-releases/2026/mr-26-28.html</link><dc:date>2026-10-01T11:30:00+10:00</dc:date></item></rdf:RDF>"#;
+        assert!(discover_rss(xml, source).unwrap().is_empty());
+        assert!(discover_rss("<html>Unavailable</html>", source).is_err());
+    }
+
+    #[tokio::test]
+    async fn future_entry_repair_preserves_published_reports_and_other_banks() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        insert_archived_report(
+            &state,
+            "published",
+            "2020-09-17",
+            "complete",
+            SUMMARY_VERSION,
+        )
+        .await;
+        insert_archived_report(&state, "upcoming", "2099-09-17", "pending", 0).await;
+        insert_archived_report(&state, "another-bank", "2099-09-18", "pending", 0).await;
+        sqlx::query("UPDATE central_bank_reports SET bank_code='BOE' WHERE id='another-bank'")
+            .execute(&state.db)
+            .await
+            .unwrap();
+        assert_eq!(load_dashboard(&state).await.unwrap().reports.len(), 1);
+        assert_eq!(remove_future_reports(&state, "FED").await.unwrap(), 1);
+        assert!(
+            report_exists(&state, "https://www.federalreserve.gov/published.htm")
+                .await
+                .unwrap()
+        );
+        assert_eq!(
+            sqlx::query_scalar::<_, i64>(
+                "SELECT COUNT(*) FROM central_bank_reports WHERE id='another-bank'"
+            )
+            .fetch_one(&state.db)
+            .await
+            .unwrap(),
+            1
+        );
+        state.db.close().await;
+    }
+
+    #[test]
+    fn dated_boj_archives_are_examined_newest_first() {
+        let source = SOURCES.iter().find(|s| s.id == "boj-meetings").unwrap();
+        let html = r#"<table>
+          <tr><td><a href="/en/mopo/mpmdeci/mpr_2026/k260123a.pdf">January 23</a></td></tr>
+          <tr><td><a href="/en/mopo/mpmdeci/mpr_2026/k260918a.pdf">September 18</a></td></tr>
+        </table>"#;
+        let candidates = discover_html(html, source.url, source).unwrap();
+        assert!(candidates[0].url.ends_with("k260918a.pdf"));
+        assert_eq!(
+            candidates[0].published_at.as_deref(),
+            Some("2026-09-18T12:00:00+00:00")
+        );
+    }
+
+    #[test]
+    fn ecb_lazy_list_uses_only_the_official_current_year_snippet() {
+        let year = Utc::now().year();
+        let html = format!(
+            r#"<dl data-snippets="https://other.example/{year}/index_include.en.html,../{year}/html/index_include.en.html,../2025/html/index_include.en.html"></dl>"#
+        );
+        let base = "https://www.ecb.europa.eu/press/govcdec/mopo/html/index.en.html";
+        assert_eq!(
+            ecb_current_decisions_url(&html, base).unwrap(),
+            format!(
+                "https://www.ecb.europa.eu/press/govcdec/mopo/{year}/html/index_include.en.html"
+            )
+        );
+        assert!(
+            ecb_current_decisions_url("<dl data-snippets='https://other.example/file'></dl>", base)
+                .is_err()
+        );
+    }
+
+    #[test]
+    fn canadian_rate_decisions_and_registered_pbc_source_are_recognized() {
+        assert_eq!(
+            classify_report(
+                "Bank of Canada maintains the policy rate at 2¼%",
+                "https://www.bankofcanada.ca/2026/09/fad-press-release-2026-09-16/"
+            ),
+            Some("decision")
+        );
+        let source = SOURCES.iter().find(|s| s.id == "pbc-reports").unwrap();
+        let candidates = discover_html(r#"<a href='/en/3688229/3688353/3688356/2026/report.html'>China Monetary Policy Report Q1 2026</a><a href='/en/3688229/3688353/3688356/navigation.html'>Monetary policy operations</a>"#, source.url, source).unwrap();
+        assert_eq!(candidates.len(), 1);
+        assert_eq!(candidates[0].report_type, "monetary_policy_report");
+        assert!(parse_published_at("2 September 2026").is_some());
+    }
     #[test]
     fn verified_inline_citation_labels_do_not_become_monetary_numbers() {
         let mut value = german_response("completed");

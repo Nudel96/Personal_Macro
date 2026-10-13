@@ -1,10 +1,22 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { cleanup, render, screen } from "@testing-library/react";
+import {
+  cleanup,
+  fireEvent,
+  render,
+  screen,
+  waitFor,
+} from "@testing-library/react";
 import { afterEach, describe, expect, it, vi } from "vitest";
 import { api } from "../../services/commands";
 import { isPrivateWeb } from "../../services/runtime-mode";
 vi.mock("../../services/runtime-mode", () => ({
   isPrivateWeb: vi.fn(() => false),
+}));
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
+vi.mock("../../services/private-web-client", () => ({
+  supportsPrivateWebCommand: vi.fn(() => false),
+  getPrivateWebClientState: () => ({ status: "idle" }),
+  refreshPrivateWebMarketGeneration: vi.fn(),
 }));
 import type { CotDashboard } from "../../types/domain";
 import { CotPage } from "./cot-page";
@@ -14,6 +26,7 @@ vi.mock("../../services/commands", () => ({
     cotDashboard: vi.fn(),
     cotAssetDetail: vi.fn(),
     syncCot: vi.fn(),
+    requestCloudCotRefresh: vi.fn(),
   },
   isTauri: () => false,
 }));
@@ -45,6 +58,24 @@ afterEach(() => {
 });
 
 describe("CotPage", () => {
+  it("requests a server refresh only when the owner capability is available", async () => {
+    vi.mocked(isPrivateWeb).mockReturnValue(true);
+    vi.mocked(supportsPrivateWebCommand).mockReturnValue(true);
+    vi.mocked(api.cotDashboard).mockResolvedValue(dashboard);
+    vi.mocked(api.requestCloudCotRefresh).mockResolvedValue({
+      scheduled: true,
+      nextRefreshAt: null,
+    });
+    renderPage();
+    fireEvent.click(
+      await screen.findByRole("button", { name: "Jetzt aktualisieren" }),
+    );
+    await waitFor(() =>
+      expect(api.requestCloudCotRefresh).toHaveBeenCalledTimes(1),
+    );
+    expect(api.syncCot).not.toHaveBeenCalled();
+    vi.mocked(supportsPrivateWebCommand).mockReturnValue(false);
+  });
   it("zeigt den bestätigten automatischen Cloud-Abruf und dessen Fehlerstatus", async () => {
     vi.mocked(isPrivateWeb).mockReturnValue(true);
     vi.mocked(api.cotDashboard).mockResolvedValue({

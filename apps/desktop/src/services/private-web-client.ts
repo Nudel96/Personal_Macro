@@ -739,7 +739,10 @@ async function privateWebRequest<T>(
         ? WRITE_TIMEOUT_MS
         : PRIVATE_MARKET_COMMANDS.has(command)
           ? MARKET_READ_TIMEOUT_MS
-          : command === "myfxbook_login" || command === "myfxbook_preview"
+          : command === "myfxbook_login" ||
+              command === "myfxbook_preview" ||
+              command === "request_cot_refresh" ||
+              command === "request_central_bank_report_refresh"
             ? WRITE_TIMEOUT_MS
             : READ_TIMEOUT_MS,
     );

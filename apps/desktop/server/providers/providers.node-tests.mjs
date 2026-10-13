@@ -149,6 +149,35 @@ test("deferred queue acceptance does not interrupt the remaining weekly jobs", a
     code: "PROVIDERS_QUEUE_UNAVAILABLE",
   });
 });
+
+test("ready refreshes precede delayed retries and every bounded batch is awaited", async () => {
+  const jobs = Array.from({ length: 12 }, (_, i) => ({
+    jobId: `00000000-0000-4000-8000-${String(i).padStart(12, "0")}`,
+    dueAt: new Date(NOW + (i < 10 ? 21600000 : 0)).toISOString(),
+  }));
+  const h = harness(jobs);
+  let active = 0,
+    peak = 0,
+    completed = 0;
+  h.send = async (...args) => {
+    active++;
+    peak = Math.max(peak, active);
+    h.sent.push(args);
+    await new Promise((resolve) => setTimeout(resolve, 1));
+    active--;
+    completed++;
+    return { messageId: null };
+  };
+  assert.equal(await scheduleProviderJobs(h, new AbortController().signal), 12);
+  assert.equal(completed, 12);
+  assert.equal(active, 0);
+  assert.equal(peak, 4);
+  assert.deepEqual(
+    h.sent.slice(0, 2).map((args) => args[2].delaySeconds),
+    [0, 0],
+  );
+  assert.equal(new Set(h.sent.map((args) => args[1].job.jobId)).size, 12);
+});
 test("invalid jobs, impossible dates, non-UUID IDs and schedules past queue retention fail closed", async () => {
   for (const job of [
     { ...JOB, jobId: "../../secret" },

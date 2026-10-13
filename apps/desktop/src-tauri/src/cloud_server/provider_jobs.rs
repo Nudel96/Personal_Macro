@@ -163,7 +163,7 @@ impl CloudServer {
             .bind(now.timestamp())
             .execute(&mut *tx)
             .await?;
-        let rows:Vec<(String,i64)>=sqlx::query_as("SELECT id,GREATEST(due_at,retry_at,lease_until,$1) FROM cloud_provider_jobs WHERE status IN ('pending','running','staged') AND attempts<8 AND expires_at>$1 AND GREATEST(due_at,retry_at,lease_until)<$2 ORDER BY due_at,id LIMIT 256")
+        let rows:Vec<(String,i64)>=sqlx::query_as("SELECT id,GREATEST(due_at,retry_at,lease_until,$1) FROM cloud_provider_jobs WHERE status IN ('pending','running','staged') AND attempts<8 AND expires_at>$1 AND GREATEST(due_at,retry_at,lease_until)<$2 ORDER BY GREATEST(due_at,retry_at,lease_until,$1),due_at,id LIMIT 256")
             .bind(now.timestamp()).bind(now.timestamp()+86400).fetch_all(&mut *tx).await?;
         tx.commit().await?;
         Ok(
@@ -429,7 +429,17 @@ mod tests {
             sqlx::query("UPDATE cloud_provider_jobs SET status='cancelled',attempts=3,lease_id='old-lease' WHERE task_key='account-slot'").execute(&db.pool).await.unwrap();
             let mut tx=db.pool.begin().await.unwrap();enqueue(&mut tx,"account-slot","myfxbook",json!({"accountId":"synthetic-account"}),now-1,now+21600).await.unwrap();tx.commit().await.unwrap();
             let state:(String,i32,Option<String>)=sqlx::query_as("SELECT status,attempts,lease_id FROM cloud_provider_jobs WHERE task_key='account-slot'").fetch_one(&db.pool).await.unwrap();
-            assert_eq!(state,("pending".into(),0,None));assert_eq!(server.revision().await.unwrap(),0);
+            assert_eq!(state,("pending".into(),0,None));
+            let mut tx=db.pool.begin().await.unwrap();
+            enqueue(&mut tx,"old-delayed-retry","macro-release",json!({"currency":"USD","from":now,"to":now+86400,"releasedAt":now}),now-3600,now+86400).await.unwrap();
+            sqlx::query("UPDATE cloud_provider_jobs SET retry_at=$1 WHERE task_key='old-delayed-retry'").bind(now+3600).execute(&mut *tx).await.unwrap();
+            enqueue(&mut tx,"ready-refresh","macro-release",json!({"currency":"USD","from":now,"to":now+86400,"releasedAt":now}),now-1,now+86400).await.unwrap();
+            tx.commit().await.unwrap();
+            let ready:String=sqlx::query_scalar("SELECT id FROM cloud_provider_jobs WHERE task_key='ready-refresh'").fetch_one(&db.pool).await.unwrap();
+            let delayed:String=sqlx::query_scalar("SELECT id FROM cloud_provider_jobs WHERE task_key='old-delayed-retry'").fetch_one(&db.pool).await.unwrap();
+            let plan=server.providers_plan().await.unwrap();let jobs=plan["jobs"].as_array().unwrap();
+            assert!(jobs.iter().position(|j|j["jobId"].as_str()==Some(&ready)).unwrap()<jobs.iter().position(|j|j["jobId"].as_str()==Some(&delayed)).unwrap());
+            assert_eq!(server.revision().await.unwrap(),0);
         }).catch_unwind().await;
         db.close().await;
         if let Err(error) = result {

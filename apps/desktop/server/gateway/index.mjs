@@ -602,13 +602,19 @@ async function forward(request, route, config, origin, options, signal) {
   if (route === "commands") {
     const result = commandResponse(value);
     const submitted = parseJson(body, "INVALID_REQUEST");
-    if (value.ok === true && ["myfxbook_activate", "myfxbook_set_enabled"].includes(submitted.command) && options.env.MACRO_MYFXBOOK_AUTOMATION === "1") {
+    if (value.ok === true && ((["myfxbook_activate", "myfxbook_set_enabled"].includes(submitted.command) && options.env.MACRO_MYFXBOOK_AUTOMATION === "1") || (submitted.command === "request_central_bank_report_refresh" && options.env.MACRO_REPORT_AUTOMATION === "1"))) {
       // The committed mutation must remain successful if Queue dispatch fails.
       // Durable jobs and the daily dispatcher recover that transient failure.
       try {
         const { nudgeProviderJobs } = await import("../providers/index.mjs");
         await nudgeProviderJobs(options);
       } catch { /* Status remains visible through the durable scheduler. */ }
+    }
+    if (value.ok === true && submitted.command === "request_cot_refresh" && value.data?.job && options.env.MACRO_COT_AUTOMATION === "1") {
+      try {
+        const { nudgeCotJob } = await import("../cot/index.mjs");
+        await nudgeCotJob(value.data.job, options);
+      } catch { /* The daily dispatcher recovers the committed job. */ }
     }
     return result;
   }

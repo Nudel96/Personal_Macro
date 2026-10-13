@@ -574,3 +574,24 @@ test("worker function is a separate private trigger; cron stays daily and routes
     false,
   );
 });
+
+// A real 35-market participant-history package exceeded the former JSON bridge.
+test("worker completes directly uploaded packages without a binary JSON bridge", async () => {
+  const leaseId = "12345678-1234-4234-8234-123456789012";
+  const subject = harness();
+  subject.now = () => RUN_NOW;
+  subject.fetch = async (url, options) => {
+    subject.calls.push({ url, options });
+    if (url.endsWith("/run")) return Response.json({ status: "uploaded", leaseId });
+    assert.deepEqual(JSON.parse(options.body), { releaseDate: JOB.releaseDate, leaseId });
+    return Response.json({ status: "complete" });
+  };
+  subject.blob = { async put() { throw Error("unexpected binary bridge"); } };
+  await processCotMessage(MESSAGE, META, subject);
+  assert.equal(subject.calls.length, 2);
+  for (const invalid of ["invalid", "12345678-1234-1234-8234-123456789012"]) {
+    const bad = harness({ status: "uploaded", leaseId: invalid });
+    bad.now = () => RUN_NOW;
+    await assert.rejects(processCotMessage(MESSAGE, META, bad), (error) => error.code === "COT_INVALID_RESPONSE");
+  }
+});

@@ -60,6 +60,7 @@ import type {
   CotDetailInput,
   CotBrokerLinkInput,
   CotSyncResult,
+  CloudRefreshRequestResult,
   PolicyRateDashboard,
   CentralBankReportDashboard,
   CentralBankReportDetail,
@@ -1107,6 +1108,11 @@ export const api = {
           currencies: [],
           pairs: [],
         }),
+  requestCloudCotRefresh: (): Promise<CloudRefreshRequestResult> =>
+    privateWebCall("request_cot_refresh", {}),
+  requestCloudCentralBankReportRefresh:
+    (): Promise<CloudRefreshRequestResult> =>
+      privateWebCall("request_central_bank_report_refresh", {}),
   cotAssetDetail: (
     input: CotDetailInput,
     generation?: string,

@@ -205,13 +205,13 @@ export async function handleCotCronRequest(request, dependencies = {}) {
 
 function result(value, allowPrepared = true) {
   if (
-    !object(value, ["status", "retryAt", "prepared"]) ||
+    !object(value, ["status", "retryAt", "prepared", "leaseId"]) ||
     ![
       "complete",
       "already-complete",
       "wait",
       "expired",
-      ...(allowPrepared ? ["prepared"] : []),
+      ...(allowPrepared ? ["prepared", "uploaded"] : []),
     ].includes(value.status)
   )
     throw new CotJobError("COT_INVALID_RESPONSE");
@@ -222,7 +222,29 @@ function result(value, allowPrepared = true) {
   }
   if (value.status !== "prepared" && value.prepared !== undefined)
     throw new CotJobError("COT_INVALID_RESPONSE");
+  if (value.status === "uploaded" &&
+      !/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/.test(value.leaseId ?? ""))
+    throw new CotJobError("COT_INVALID_RESPONSE");
+  if (value.status !== "uploaded" && value.leaseId !== undefined)
+    throw new CotJobError("COT_INVALID_RESPONSE");
   return value;
+}
+
+/** Dispatch the calendar-confirmed job already committed by an owner request. */
+export async function nudgeCotJob(value, dependencies = {}) {
+  const settings = options(dependencies);
+  configuration(settings.env);
+  const scheduled = job(value);
+  const delaySeconds = Math.max(0, Math.ceil((Date.parse(scheduled.dueAt) - settings.now()) / 1000));
+  if (delaySeconds >= DAY_SECONDS) throw new CotJobError("COT_INVALID_JOB");
+  await bounded(15_000, undefined, async (signal) => {
+    const accepted = await settings.send(COT_TOPIC, { version: 1, job: scheduled }, {
+      delaySeconds, retentionSeconds: DAY_SECONDS,
+      idempotencyKey: `cot-manual:${scheduled.releaseDate}:${Math.floor(settings.now() / 900_000)}`,
+    });
+    if (signal.aborted || (typeof accepted?.messageId !== "string" && accepted?.messageId !== null))
+      throw new CotJobError("COT_QUEUE_UNAVAILABLE");
+  });
 }
 
 export async function processCotMessage(message, metadata, dependencies = {}) {
@@ -252,8 +274,8 @@ export async function processCotMessage(message, metadata, dependencies = {}) {
             signal,
           ),
         );
-        if (outcome.status !== "prepared") return;
-        const leaseId = await storePreparedCot(
+        if (!["prepared", "uploaded"].includes(outcome.status)) return;
+        const leaseId = outcome.status === "uploaded" ? outcome.leaseId : await storePreparedCot(
           outcome.prepared,
           settings,
           signal,

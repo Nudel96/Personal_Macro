@@ -62,7 +62,7 @@ pub(crate) fn priced_model(model: &str) -> bool {
 }
 
 fn unavailable() -> AppError {
-    AppError::Conflict("Das KI-Budget ist ausgeschöpft oder eine gleiche Anfrage ist noch ungeklärt. Der Originalbericht bleibt verfügbar.".into())
+    AppError::Conflict("Das KI-Budget reicht nicht aus, eine gleiche Anfrage ist ungeklärt oder ihre Antwort wurde in diesem Monat bereits von der Qualitätsprüfung abgelehnt. Der Originalbericht bleibt verfügbar.".into())
 }
 fn cost(input: i64, cached: i64, output: i64) -> i64 {
     // USD micro-units. Standard tariff per 1M tokens: .25 / .025 / 2 USD.
@@ -151,9 +151,9 @@ impl BudgetStore {
                     .execute(pool)
                     .await?;
                 // One conditional write is atomic even across independent processes.
-                let inserted = sqlx::query("INSERT INTO report_ai_usage(id,month,request_key,model,price_version,status,reserved_usd_micros,created_at) SELECT ?,?,?,?,?,'reserved',?,? WHERE (SELECT COALESCE(SUM(COALESCE(spent_usd_micros,reserved_usd_micros)),0) FROM report_ai_usage WHERE month=?)+?<=? AND NOT EXISTS(SELECT 1 FROM report_ai_usage WHERE request_key=? AND status IN ('reserved','uncertain'))")
+                let inserted = sqlx::query("INSERT INTO report_ai_usage(id,month,request_key,model,price_version,status,reserved_usd_micros,created_at) SELECT ?,?,?,?,?,'reserved',?,? WHERE (SELECT COALESCE(SUM(COALESCE(spent_usd_micros,reserved_usd_micros)),0) FROM report_ai_usage WHERE month=?)+?<=? AND NOT EXISTS(SELECT 1 FROM report_ai_usage WHERE request_key=? AND (status IN ('reserved','uncertain') OR (status='complete' AND summary_json IS NULL AND month=?)))")
                     .bind(&id).bind(month).bind(&request_key).bind(model).bind(PRICE_VERSION).bind(reserved).bind(now)
-                    .bind(month).bind(reserved).bind(MONTHLY_USD_MICROS).bind(&request_key).execute(pool).await?.rows_affected();
+                    .bind(month).bind(reserved).bind(MONTHLY_USD_MICROS).bind(&request_key).bind(month).execute(pool).await?.rows_affected();
                 if inserted != 1 {
                     return Err(unavailable());
                 }
@@ -178,7 +178,7 @@ impl BudgetStore {
                     tx.rollback().await?;
                     return Ok(Ticket::Cached(cached));
                 }
-                let inserted = sqlx::query("INSERT INTO report_ai_usage(id,month,request_key,model,price_version,status,reserved_usd_micros,created_at) SELECT $1,$2,$3,$4,$5,'reserved',$6,$7 WHERE (SELECT COALESCE(SUM(COALESCE(spent_usd_micros,reserved_usd_micros)),0) FROM report_ai_usage WHERE month=$2)+$6<=$8 AND NOT EXISTS(SELECT 1 FROM report_ai_usage WHERE request_key=$3 AND status IN ('reserved','uncertain'))")
+                let inserted = sqlx::query("INSERT INTO report_ai_usage(id,month,request_key,model,price_version,status,reserved_usd_micros,created_at) SELECT $1,$2,$3,$4,$5,'reserved',$6,$7 WHERE (SELECT COALESCE(SUM(COALESCE(spent_usd_micros,reserved_usd_micros)),0) FROM report_ai_usage WHERE month=$2)+$6<=$8 AND NOT EXISTS(SELECT 1 FROM report_ai_usage WHERE request_key=$3 AND (status IN ('reserved','uncertain') OR (status='complete' AND summary_json IS NULL AND month=$2)))")
                     .bind(&id).bind(month).bind(&request_key).bind(model).bind(PRICE_VERSION).bind(reserved).bind(now).bind(MONTHLY_USD_MICROS)
                     .execute(&mut *tx).await?.rows_affected();
                 if inserted != 1 {
@@ -430,5 +430,28 @@ mod tests {
         assert_eq!(status.spent_micros, 23);
         assert_eq!(status.output_tokens, 10);
         assert_eq!(status.reasoning_tokens, 3);
+    }
+
+    #[tokio::test]
+    async fn paid_quality_rejection_cannot_be_repeated_in_the_same_month() {
+        let store = store().await;
+        let Ticket::Reserved(id) = store.reserve_month(&payload(3), "2100-01").await.unwrap()
+        else {
+            panic!()
+        };
+        let used = Usage {
+            input: 10,
+            cached: 0,
+            output: 10,
+            reasoning: 3,
+            cost: 23,
+            response_id: None,
+        };
+        store.settle(&id, Some(&used), None, false).await.unwrap();
+        assert!(store.reserve_month(&payload(3), "2100-01").await.is_err());
+        assert!(matches!(
+            store.reserve_month(&payload(3), "2100-02").await.unwrap(),
+            Ticket::Reserved(_)
+        ));
     }
 }

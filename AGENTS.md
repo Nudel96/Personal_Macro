@@ -258,6 +258,26 @@ wiederverwendet. Keine Budgettabellen, Zugangsdaten oder persönlichen Metadaten
 öffentliche Markt-Snapshots aufnehmen. Die Cloud-Aktivierung benötigt
 `MACRO_REPORT_AUTOMATION=1` und einen ausschließlich serverseitigen OpenAI-Schlüssel.
 
+Die Aktualitätsprüfung vom 08.10.2026 ergänzt die privaten Webbefehle
+`request_cot_refresh` und `request_central_bank_report_refresh` mit manuellen
+Schaltflächen. Sie planen ausschließlich öffentliche Provideraufträge und
+ändern keine Journalrevision. COT lädt größere Pakete direkt aus Rust in den
+privaten Speicher; die unabhängige Prüfung und atomare Veröffentlichung bleiben
+erhalten. Der Dispatcher priorisiert tatsächliche Fälligkeit einschließlich
+Retry/Lease und versendet höchstens vier Queue-Nachrichten gleichzeitig.
+EZB-, BOJ-, BOC-, PBC-, BoE- und RBA-Quellenpfade sind korrigiert; zukünftige
+Kalendertermine werden nicht als veröffentlichte Berichte übernommen.
+Identische bereits bezahlte Qualitätsablehnungen werden im selben UTC-Monat
+nicht erneut kostenpflichtig angefragt. RBNZ bleibt wegen HTTP 403 beim
+vollständigen Abruf eingeschränkt, deutsche Zusammenfassungen zusätzlich durch
+Qualitätsprüfung und das unveränderte 0,50-USD-Limit. Der neue Produktionsstand
+`dpl_3n7Yy3AJC3HWZ3ER3FjnqtbEWHKH` ist geschützt am stabilen Projektalias
+aktiviert. Beide Cron-Auslöser, 35 aktuelle COT-Märkte mit Datum 29.09.2026,
+alle zwölf Quellenprüfungen (elf erfolgreich) und beide manuellen Schaltflächen
+bestehen den WebKit-Livelauf bei 390 px; Journalrevision 9 bleibt unverändert,
+Testzugang widerrufen. Details und Abnahmegrenzen:
+`docs/audit/central-bank-cot-freshness-2026-10-08.md`.
+
 Alle 555 Pakete der neuen Gesamtgeneration wurden mit dem produktiven Loader
 und nativen Readern geprüft sowie privat hochgeladen und bytegenau erneut
 gelesen: 1.000.374.272 Rohbytes und 141.744.234 Gzip-Bytes. Die Gesamtbelegung

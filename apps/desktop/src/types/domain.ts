@@ -1249,6 +1249,11 @@ export interface PolicyRateAutomationStatus {
 export type CentralBankReportType =
   "decision" | "monetary_policy_report" | "projections" | "special_notice";
 
+export interface CloudRefreshRequestResult {
+  scheduled: boolean;
+  nextRefreshAt: string | null;
+}
+
 export interface CentralBankSummaryPoint {
   text: string;
   sourceRefs: string[];

@@ -280,6 +280,66 @@ impl CloudServer {
                 _ => internal_error(),
             };
         }
+        if !internal_media
+            && matches!(
+                request.command.as_str(),
+                "request_cot_refresh" | "request_central_bank_report_refresh"
+            )
+        {
+            if request.args != json!({}) {
+                return failure(
+                    StatusCode::BAD_REQUEST,
+                    "VALIDATION_ERROR",
+                    "Die Aktualisierung benötigt keine zusätzlichen Angaben.",
+                    None,
+                );
+            }
+            let Ok((_, Some(manifest))) = self.market_snapshot().await else {
+                return failure(
+                    StatusCode::NOT_FOUND,
+                    "COMMAND_UNAVAILABLE",
+                    "Der öffentliche Datenstand ist nicht verfügbar.",
+                    None,
+                );
+            };
+            let cot = request.command == "request_cot_refresh";
+            let needed = if cot {
+                "get_cot_dashboard"
+            } else {
+                "get_central_bank_reports"
+            };
+            if !(if cot {
+                self.cot_enabled
+            } else {
+                self.reports_enabled
+            }) || !market::capabilities(&manifest).contains(&needed)
+            {
+                return failure(
+                    StatusCode::NOT_FOUND,
+                    "COMMAND_UNAVAILABLE",
+                    "Die Cloud-Aktualisierung ist nicht aktiviert.",
+                    None,
+                );
+            }
+            // Provider scheduling leaves the journal revision unchanged.
+            let outcome = if cot {
+                self.cot_plan(true).await.map(|plan| json!({"scheduled":!plan["job"].is_null(),"nextRefreshAt":plan["job"]["dueAt"],"job":plan["job"]}))
+            } else {
+                self.request_report_refresh().await
+            };
+            return match (outcome, self.revision().await) {
+                (Ok(data), Ok(revision)) => (
+                    StatusCode::OK,
+                    json!({"ok":true,"data":data,"revision":revision}),
+                ),
+                _ => failure(
+                    StatusCode::SERVICE_UNAVAILABLE,
+                    "REFRESH_UNAVAILABLE",
+                    "Der Abruf konnte noch nicht eingeplant werden. Bitte später erneut versuchen.",
+                    None,
+                ),
+            };
+        }
         if !internal_media && request.command == "get_weather_forecast" {
             let Ok(input) = serde_json::from_value::<crate::commands::WeatherInput>(
                 request.args.get("input").cloned().unwrap_or(Value::Null),
@@ -740,6 +800,12 @@ async fn session(
         && let Ok((_, Some(manifest))) = server.market_snapshot().await
     {
         capabilities.extend(market::capabilities(&manifest));
+        if server.cot_enabled && capabilities.contains(&"get_cot_dashboard") {
+            capabilities.push("request_cot_refresh");
+        }
+        if server.reports_enabled && capabilities.contains(&"get_central_bank_reports") {
+            capabilities.push("request_central_bank_report_refresh");
+        }
         market_generation = Some(manifest.manifest.generation.clone());
     }
     response((

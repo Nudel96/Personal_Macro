@@ -171,3 +171,25 @@ persönliche Datenbank wurden für diesen Test nicht verwendet. Nachweise:
 
 Cloud-Live-Nachweise werden nach Abschluss ergänzt. Die physische
 iPhone-/Safari-Bedienung mit Besitzeranmeldung bleibt eine eigene Geräteprüfung.
+
+## Aktualitätsprüfung vom 8. Oktober 2026
+
+Die erneute Prüfung von COT und Zentralbankberichten ist im
+[datierten Aktualitätsaudit](../audit/central-bank-cot-freshness-2026-10-08.md)
+beschrieben. Die Quellenpfade für EZB, BOJ, BOC, PBC, BoE und RBA wurden
+korrigiert. COT überträgt das größere Paket direkt über den Rust-Worker und
+behält die unabhängige Paketprüfung vor Veröffentlichung.
+
+Der private Webbetrieb bietet getrennte, authentifizierte manuelle
+Aktualisierungsbefehle für beide Seiten. Öffentliche Jobplanung und
+Paketveröffentlichung ändern die persönliche Journalrevision nicht.
+Der Dispatcher behandelt die tatsächliche Fälligkeit vor späteren
+Wiederholungen und begrenzt den gleichzeitigen Queueversand auf vier Aufträge.
+
+RBNZ weist den vollständigen Quellenabruf derzeit mit HTTP 403 ab. Verfügbare
+RSS-Titel werden nicht als vollständiger Bericht ausgegeben. Neue Originale
+und erfolgreich geprüfte deutsche Zusammenfassungen bleiben getrennte
+Zustände. Identische bereits bezahlte Qualitätsablehnungen werden im selben
+UTC-Monat nicht erneut kostenpflichtig angefragt; das bestehende 0,50-USD-Limit
+je Datenspeicher bleibt erhalten. Der Audit nennt den konkret geprüften
+Bereitstellungsstand sowie die Grenzen der Geräte- und Briefingabnahme.

@@ -84,7 +84,7 @@ pub async fn read(command: &str, args: &Value, shard: &LoadedShard) -> CommandRe
     match command {
         "get_central_bank_reports" => {
             let rows = sqlx::query_as::<_, CentralBankReportListItem>(&format!(
-                "{SELECT} ORDER BY COALESCE(published_at,discovered_at) DESC,id LIMIT 250"
+                "{SELECT} WHERE published_at IS NULL OR julianday(published_at)<=julianday('now') ORDER BY COALESCE(published_at,discovered_at) DESC,id LIMIT 250"
             ))
             .fetch_all(shard.pool())
             .await

@@ -38,6 +38,8 @@ export function useCloudCotRefresh() {
             queryClient.cancelQueries({ queryKey: ["macro"] }),
             queryClient.cancelQueries({ queryKey: ["economic-data"] }),
             queryClient.cancelQueries({ queryKey: ["economic-calendar"] }),
+            queryClient.cancelQueries({ queryKey: ["central-bank-reports"] }),
+            queryClient.cancelQueries({ queryKey: ["central-bank-report"] }),
           ]);
           const refetchType =
             !stopped &&
@@ -51,8 +53,22 @@ export function useCloudCotRefresh() {
               queryKey: ["macro"],
               refetchType,
             }),
-            queryClient.invalidateQueries({ queryKey: ["economic-data"], refetchType }),
-            queryClient.invalidateQueries({ queryKey: ["economic-calendar"], refetchType }),
+            queryClient.invalidateQueries({
+              queryKey: ["economic-data"],
+              refetchType,
+            }),
+            queryClient.invalidateQueries({
+              queryKey: ["economic-calendar"],
+              refetchType,
+            }),
+            queryClient.invalidateQueries({
+              queryKey: ["central-bank-reports"],
+              refetchType,
+            }),
+            queryClient.invalidateQueries({
+              queryKey: ["central-bank-report"],
+              refetchType,
+            }),
           ]);
         }
       } finally {

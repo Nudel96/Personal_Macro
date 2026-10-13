@@ -33,6 +33,8 @@ mod integration_tests;
 struct DiscoveryPayload {
     source_id: String,
     catchup: bool,
+    #[serde(default)]
+    force: bool,
 }
 #[derive(Deserialize)]
 #[serde(rename_all = "camelCase", deny_unknown_fields)]
@@ -132,6 +134,33 @@ impl Drop for Scratch {
 }
 
 impl CloudServer {
+    pub(super) async fn request_report_refresh(&self) -> CloudResult<Value> {
+        let now = Utc::now().timestamp();
+        let mut tx = self.pool.begin().await?;
+        self.scope(&mut tx).await?;
+        sqlx::query("SELECT id FROM cloud_workspace WHERE id=1 FOR UPDATE")
+            .fetch_one(&mut *tx)
+            .await?;
+        let recent: Option<i64> = sqlx::query_scalar("SELECT MAX(due_at) FROM cloud_provider_jobs WHERE kind='report-discover' AND task_key LIKE 'report-manual:%' AND due_at>$1")
+            .bind(now - 900).fetch_one(&mut *tx).await?;
+        if recent.is_none() {
+            for source in cloud::sources() {
+                provider_jobs::enqueue(
+                    &mut tx,
+                    &format!("report-manual:{source}:{}", now.div_euclid(900)),
+                    "report-discover",
+                    json!({"sourceId":source,"catchup":false,"force":true}),
+                    now,
+                    now + 86400,
+                )
+                .await?;
+            }
+        }
+        tx.commit().await?;
+        Ok(
+            json!({"scheduled":true,"nextRefreshAt":chrono::DateTime::from_timestamp(recent.unwrap_or(now),0).unwrap_or_default().to_rfc3339()}),
+        )
+    }
     fn report_budget(&self) -> BudgetStore {
         BudgetStore::Postgres {
             pool: self.pool.clone(),
@@ -166,6 +195,8 @@ impl CloudServer {
         .await?;
         let last:Option<i64>=sqlx::query_scalar("SELECT MAX(completed_at) FROM cloud_provider_jobs WHERE kind='report-discover' AND status='complete'").fetch_one(&mut *tx).await?;
         let next:Option<i64>=sqlx::query_scalar("SELECT MIN(GREATEST(due_at,retry_at,lease_until)) FROM cloud_provider_jobs WHERE kind='report-discover' AND status IN ('pending','running','staged') AND expires_at>$1").bind(Utc::now().timestamp()).fetch_one(&mut *tx).await?;
+        let summary_failed: i64 = sqlx::query_scalar("SELECT COUNT(*) FROM cloud_provider_jobs WHERE kind='report-summary' AND status='expired' AND due_at>$1")
+            .bind(Utc::now().timestamp()-7*86400).fetch_one(&mut *tx).await?;
         tx.rollback().await?;
         let sources = rows
             .into_iter()
@@ -201,8 +232,8 @@ impl CloudServer {
                 .is_none_or(|v| !matches!(v.as_str(), "0" | "false" | "FALSE" | "off" | "OFF"));
         Ok((
             json!({"enabled":self.reports_enabled,"refreshIntervalMinutes":1440,"lastAttemptAt":attempted,
-            "lastSuccessAt":time(last),"lastStatus":if failed {"partial"} else if last.is_some() {"complete"} else {"pending"},
-            "errorMessage":if failed {Some("Einzelne offizielle Quellen sind vorübergehend nicht erreichbar. Der bisherige Berichtsstand bleibt verfügbar.")} else {None},"nextRefreshAt":time(next),"openaiConfigured":configured,
+            "lastSuccessAt":time(last),"lastStatus":if failed || summary_failed>0 {"partial"} else if last.is_some() {"complete"} else {"pending"},
+            "errorMessage":if summary_failed>0 {Some("Einzelne deutsche Briefings konnten wegen Qualitätsprüfung oder KI-Budget nicht erstellt werden. Originalberichte bleiben verfügbar; fehlgeschlagene Quellen sind separat markiert.")} else if failed {Some("Einzelne offizielle Quellen sind vorübergehend nicht erreichbar. Der bisherige Berichtsstand bleibt verfügbar.")} else {None},"nextRefreshAt":time(next),"openaiConfigured":configured,
             "summaryModel":std::env::var("OPENAI_REPORT_MODEL").unwrap_or_else(|_|"gpt-5-mini".into()),"aiBudget":budget}),
             serde_json::to_value(sources).map_err(|_| unavailable())?,
         ))
@@ -291,6 +322,7 @@ impl CloudServer {
                     &scratch.root,
                     &input.source_id,
                     self.report_source(&input.source_id).await?,
+                    input.force,
                 )
                 .await
                 .map_err(|_| unavailable())?;

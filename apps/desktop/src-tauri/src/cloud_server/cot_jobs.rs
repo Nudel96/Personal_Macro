@@ -12,17 +12,16 @@ use crate::{
         cot_schedule::{self, CotReleaseCalendar},
     },
 };
-use base64::{Engine, engine::general_purpose::STANDARD};
 use chrono::{DateTime, NaiveDate, Utc};
 use flate2::{Compression, write::GzEncoder};
 use serde::{Deserialize, Serialize};
 use std::{io::Write, path::PathBuf};
 
 const MAX_ATTEMPTS: i32 = 8;
-const MAX_JOB_AGE: i64 = 5 * 86400;
+const MAX_JOB_AGE: i64 = 7 * 86400;
 const LEASE_SECONDS: i64 = 180;
 const RETRY_SECONDS: i64 = 1800;
-const MAX_COT_GZIP: usize = 2_900_000;
+const MAX_COT_GZIP: usize = 32 * 1024 * 1024;
 
 #[cfg(test)]
 #[path = "cot_job_tests.rs"]
@@ -143,7 +142,7 @@ impl CloudServer {
         Ok(value)
     }
 
-    async fn cot_plan(&self) -> CloudResult<Value> {
+    pub(super) async fn cot_plan(&self, manual: bool) -> CloudResult<Value> {
         let now = Utc::now();
         // The official calendar is validated in full before replacing the last
         // known good copy; an unavailable provider does not erase that copy.
@@ -184,6 +183,12 @@ impl CloudServer {
         self.scope(&mut tx).await?;
         sqlx::query("INSERT INTO cloud_cot_jobs(release_date,report_date,due_at,retry_at) VALUES($1,$2,$3,$3) ON CONFLICT(release_date) DO NOTHING")
             .bind(&release_date).bind(release.expected_report_date.to_string()).bind(release.refresh_at.timestamp()).execute(&mut *tx).await?;
+        if manual {
+            // Only the latest calendar-confirmed release can be retried. Never
+            // replace a live lease, completed receipt or another release's work.
+            sqlx::query("UPDATE cloud_cot_jobs SET status='pending',attempts=0,retry_at=$2,lease_id=NULL,lease_until=0,stage_json=NULL,error_code=NULL WHERE release_date=$1 AND status='expired' AND lease_until<=$2 AND retry_at<=$2-900")
+                .bind(&release_date).bind(now.timestamp()).execute(&mut *tx).await?;
+        }
         tx.commit().await?;
         let job = self.cot_job(&release_date).await?.ok_or_else(unavailable)?;
         if matches!(job.status.as_str(), "complete" | "expired") {
@@ -191,7 +196,7 @@ impl CloudServer {
         }
         Ok(
             json!({"job":{"releaseDate":job.release_date,"reportDate":job.report_date,
-            "dueAt":timestamp(job.due_at.max(job.retry_at).max(now.timestamp()))}}),
+            "dueAt":timestamp(job.due_at.max(job.retry_at).max(job.lease_until).max(now.timestamp()))}}),
         )
     }
 
@@ -344,11 +349,10 @@ impl CloudServer {
         }
         super::provider_storage::track(&mut tx, &stage.descriptor()?).await?;
         tx.commit().await?;
-        Ok(
-            json!({"status":"prepared","prepared":{"leaseId":lease,"generation":stage.generation,
-            "objectPath":stage.descriptor()?.object_path().map_err(|_|unavailable())?,"transferSha256":stage.transport.transfer_sha256,
-            "transferBytes":gzip.len(),"dataBase64":STANDARD.encode(gzip)}}),
-        )
+        // Binary packages never cross the bounded JSON gateway. Completion
+        // independently downloads and validates the stored private object.
+        super::provider_storage::upload(&stage.descriptor()?, gzip).await?;
+        Ok(json!({"status":"uploaded","leaseId":lease}))
     }
 
     async fn cot_complete(&self, release: &str, lease: &str) -> CloudResult<Value> {
@@ -658,7 +662,7 @@ pub(super) async fn route(
         "/internal/cot/plan"
             if serde_json::from_slice::<Value>(&body).is_ok_and(|v| v == json!({})) =>
         {
-            server.cot_plan().await
+            server.cot_plan(false).await
         }
         "/internal/cot/run" => match serde_json::from_slice::<RunRequest>(&body) {
             Ok(input) => server.cot_run(&input.release_date).await,

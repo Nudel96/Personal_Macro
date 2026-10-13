@@ -107,8 +107,10 @@ export async function scheduleProviderJobs(dependencies = {}, signal) {
     planned.jobs.length > 256
   )
     throw new ProviderJobError("PROVIDERS_INVALID_JOB");
-  const scheduled = planned.jobs.map(job);
-  for (const entry of scheduled) {
+  const scheduled = planned.jobs
+    .map(job)
+    .sort((a, b) => Date.parse(a.dueAt) - Date.parse(b.dueAt));
+  const dispatch = async (entry) => {
     const delaySeconds = Math.max(
       0,
       Math.ceil((Date.parse(entry.dueAt) - settings.now()) / 1000),
@@ -130,6 +132,15 @@ export async function scheduleProviderJobs(dependencies = {}, signal) {
       signal?.aborted
     )
       throw new ProviderJobError("PROVIDERS_QUEUE_UNAVAILABLE");
+  };
+  // Send ready jobs first, in small bounded batches. A backlog of delayed
+  // retries must not consume the owner's short dispatch deadline first.
+  for (let start = 0; start < scheduled.length; start += 4) {
+    const results = await Promise.allSettled(
+      scheduled.slice(start, start + 4).map(dispatch),
+    );
+    const failed = results.find((result) => result.status === "rejected");
+    if (failed) throw failed.reason;
   }
   return scheduled.length;
 }
