@@ -1,0 +1,177 @@
+.score-history-page {
+  gap: 20px;
+}
+.score-history-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  gap: 14px;
+}
+.score-history-filters label,
+.score-horizon {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-2);
+  font-size: 12px;
+}
+.score-history-filters label:first-child {
+  flex: 1 1 260px;
+}
+.score-history-filters input[type="number"] {
+  width: 90px;
+}
+.score-range-presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.score-history-metrics {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+.score-history-metrics > div,
+.score-outcome-grid > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+.score-history-metrics span,
+.score-outcome-grid span,
+.score-explanation,
+.score-history-metrics small,
+.score-outcome-grid small {
+  color: var(--text-2);
+}
+.score-history-metrics strong {
+  font-size: 19px;
+}
+.score-history-page [data-bias="bullish"],
+.commodity-score-card [data-bias="bullish"] {
+  color: var(--positive);
+}
+.score-history-page [data-bias="bearish"],
+.commodity-score-card [data-bias="bearish"] {
+  color: var(--negative);
+}
+.score-history-page [data-bias="unavailable"],
+.commodity-score-card [data-bias="unavailable"] {
+  color: var(--text-3);
+}
+.score-explanation {
+  font-size: 12px;
+  line-height: 1.7;
+  margin: 10px 0 16px;
+  max-width: 1120px;
+}
+.score-chart-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  align-items: center;
+  padding: 0 0 18px;
+  font-size: 12px;
+  color: var(--text-2);
+}
+.score-chart-controls label {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+}
+.score-outcome-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.score-outcome-grid strong {
+  font-size: 32px;
+  font-variant-numeric: tabular-nums;
+}
+.score-methodology {
+  padding: 18px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--surface);
+  font-size: 12px;
+  line-height: 1.7;
+}
+.score-methodology summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-1);
+}
+.score-table-scroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+.commodity-score-table,
+.score-evidence-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+.commodity-score-table th,
+.commodity-score-table td,
+.score-evidence-table th,
+.score-evidence-table td {
+  padding: 12px;
+  border-bottom: 1px solid var(--border);
+  vertical-align: top;
+  font-variant-numeric: tabular-nums;
+}
+.commodity-score-table thead,
+.score-evidence-table thead {
+  color: var(--text-2);
+}
+.commodity-score-table small,
+.score-evidence-table small {
+  display: block;
+  margin-top: 4px;
+  color: var(--text-2);
+}
+.commodity-score-table tr[data-selected="true"] {
+  background: var(--surface-2);
+}
+.score-market-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+}
+.score-market-button:hover {
+  color: var(--positive);
+}
+.score-model-version {
+  display: block;
+  color: var(--text-3);
+  padding-top: 14px;
+}
+.score-history-preview .card-header h2 {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.score-history-preview a {
+  font-size: 12px;
+}
+@media (max-width: 1023px) {
+  .private-web-runtime .score-history-metrics,
+  .private-web-runtime .score-outcome-grid {
+    grid-template-columns: 1fr;
+  }
+  .private-web-runtime .score-history-filters label {
+    flex: 1 1 130px;
+  }
+  .private-web-runtime .score-history-filters label:first-child {
+    flex-basis: 100%;
+  }
+}

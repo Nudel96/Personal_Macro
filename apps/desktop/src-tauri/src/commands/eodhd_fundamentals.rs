@@ -1676,6 +1676,11 @@ pub(super) async fn rebuild_snapshot_at(
         .await?;
     }
     transaction.commit().await?;
+    #[cfg(feature = "desktop")]
+    if let Err(error) = super::score_history::capture_macro_scores_at(state, Utc::now()).await {
+        // Snapshot publication succeeds independently; the periodic collector retries.
+        tracing::warn!(error = %error, "Neuer Fundamentals-Stand konnte noch nicht in der Score-Historie erfasst werden");
+    }
     Ok(true)
 }
 
@@ -1709,11 +1714,28 @@ async fn load_fundamental_dashboard_with_freshness(
     state: &AppState,
     evaluation_time: Option<DateTime<Utc>>,
 ) -> Result<MacroFundamentalsDashboard, AppError> {
-    let snapshot: Option<(String, String)> = sqlx::query_as(
-        "SELECT id,built_at FROM eodhd_fundamental_snapshots ORDER BY built_at DESC LIMIT 1",
-    )
-    .fetch_optional(&state.db)
-    .await?;
+    load_fundamental_dashboard_snapshot(state, evaluation_time, None).await
+}
+
+pub(super) async fn load_fundamental_dashboard_snapshot(
+    state: &AppState,
+    evaluation_time: Option<DateTime<Utc>>,
+    snapshot_id: Option<&str>,
+) -> Result<MacroFundamentalsDashboard, AppError> {
+    let snapshot: Option<(String, String)> = if let Some(id) = snapshot_id {
+        sqlx::query_as("SELECT id,built_at FROM eodhd_fundamental_snapshots WHERE id=?")
+            .bind(id)
+            .fetch_optional(&state.db)
+            .await?
+    } else {
+        sqlx::query_as(
+            "SELECT id,built_at FROM eodhd_fundamental_snapshots WHERE (? IS NULL OR julianday(built_at)<=julianday(?)) ORDER BY built_at DESC LIMIT 1",
+        )
+        .bind(evaluation_time.map(|time|time.to_rfc3339()))
+        .bind(evaluation_time.map(|time|time.to_rfc3339()))
+        .fetch_optional(&state.db)
+        .await?
+    };
     let (snapshot_id, as_of, mut rows) = if let Some((id, built_at)) = snapshot {
         let rows: Vec<EvaluationRow> = sqlx::query_as(
             "SELECT currency,canonical_key,source_label,actual_text,forecast_text,previous_text,surprise_text,score,evaluation_status,reason_codes_json,released_at,pending_newer_release_at,frequency,source_url,unit

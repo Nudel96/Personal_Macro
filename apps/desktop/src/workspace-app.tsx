@@ -68,6 +68,11 @@ const RegimeInsightsPage = lazy(() =>
     default: module.RegimeInsightsPage,
   })),
 );
+const ScoreHistoryPage = lazy(() =>
+  import("./features/macro/score-history-page").then((module) => ({
+    default: module.ScoreHistoryPage,
+  })),
+);
 const WorldAtlasPage = lazy(() =>
   import("./features/world-atlas/world-atlas-page").then((module) => ({
     default: module.WorldAtlasPage,
@@ -158,6 +163,10 @@ export default function App() {
                     <Route path="goals" element={<GoalsPage />} />
                     <Route path="learning" element={<LearningPage />} />
                     <Route path="macro" element={<MacroPage />} />
+                    <Route
+                      path="score-history"
+                      element={<ScoreHistoryPage />}
+                    />
                     <Route path="world-atlas" element={<WorldAtlasPage />} />
                     <Route
                       path="regime-insights"

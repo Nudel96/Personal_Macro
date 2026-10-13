@@ -23,6 +23,12 @@ import { MacroPage } from "./macro-page";
 vi.mock("../../services/commands", () => ({
   api: {
     macroFundamentalsDashboard: vi.fn(),
+    macroCommodityDashboard: vi.fn().mockResolvedValue({
+      asOf: "2026-10-13T12:00:00Z",
+      modelVersion: "macro-fundamentals-observed-v1",
+      assets: [],
+    }),
+    macroScoreHistory: vi.fn().mockResolvedValue({ points: [] }),
     eodhdFeedStatus: vi.fn().mockResolvedValue({
       configured: false,
       running: false,

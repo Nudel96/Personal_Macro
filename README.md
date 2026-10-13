@@ -18,6 +18,14 @@ Tests und die Definition of Done. `apps/desktop` ist die produktive Anwendung;
 
 ## Schnellstart zum Testen
 
+**Arbeitsstand vom 13.10.2026:** Auf `codex/score-history-commodities` gibt es
+eine dauerhafte Score-Historie mit separatem Daily-Vergleich sowie ein transparentes
+Fundamentals-Teilmodell für acht Metalle-/Energiemärkte. Die neue Arbeit bleibt
+zur Prüfung auf dem Branch; bestehende Änderungen wurden zuvor als `50c8f70`
+auf `main` gesichert. In der Desktop-App über **Marktkontext → Score-Historie**
+oder direkt aus Macro öffnen. [Methodik, Quellen und Grenzen](docs/planning/score-history-and-commodities.md).
+Eine neue Cloud-Bereitstellung ist damit nicht bestätigt.
+
 **Start und Smartphone-Erweiterung vom 06.10.2026:** Die Desktop-EXE liegt
 unter `D:\Macrotool\apps\desktop\src-tauri\target\x86_64-pc-windows-msvc\release\personal-macro-desktop.exe`.
 `START-MACROTOOL.cmd` berücksichtigt zusätzlich einen neueren separaten Windows-

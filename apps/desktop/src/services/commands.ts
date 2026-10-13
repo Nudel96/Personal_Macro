@@ -1,5 +1,12 @@
 import type { AtlasFiscalResponse } from "../types/domain";
 import type {
+  ScoreInstrument,
+  CommodityScoreDashboard,
+  MacroScoreHistoryInput,
+  MacroScoreHistoryResponse,
+  ScoreCaptureResult,
+} from "../types/domain";
+import type {
   MyfxbookConnection,
   MyfxbookLogin,
   MyfxbookPreview,
@@ -987,6 +994,38 @@ export const api = {
       : Promise.reject({
           message: "Der EODHD-Datenfeed benötigt die Desktop-App.",
         }),
+  macroScoreCatalog: (): Promise<ScoreInstrument[]> =>
+    usesCommandBackend()
+      ? call("get_macro_score_catalog")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Die Score-Historie benötigt die lokale Desktop-Datenbank.",
+        } satisfies CommandError),
+  macroCommodityDashboard: (): Promise<CommodityScoreDashboard> =>
+    usesCommandBackend()
+      ? call("get_macro_commodity_dashboard")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Rohstoff-Fundamentals benötigen die lokale Desktop-Datenbank.",
+        } satisfies CommandError),
+  macroScoreHistory: (
+    input: MacroScoreHistoryInput,
+  ): Promise<MacroScoreHistoryResponse> =>
+    usesCommandBackend()
+      ? call("get_macro_score_history", { input })
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message:
+            "Die Browser-Vorschau enthält keine aufgezeichneten Scores oder Daily-Kurse.",
+        } satisfies CommandError),
+  recordMacroScoreHistory: (): Promise<ScoreCaptureResult> =>
+    isTauri()
+      ? call("record_macro_score_history")
+      : Promise.reject({
+          code: "DESKTOP_REQUIRED",
+          message: "Scores werden in der laufenden Desktop-App aufgezeichnet.",
+        } satisfies CommandError),
   pairTechnicalSignals: (): Promise<PairTechnicalDashboard> =>
     usesCommandBackend()
       ? call("get_pair_technical_signals")

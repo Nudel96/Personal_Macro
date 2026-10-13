@@ -46,6 +46,11 @@ const commands = [
   { label: "Ziele öffnen", path: "/goals", icon: Goal },
   { label: "Learning öffnen", path: "/learning", icon: BookOpen },
   { label: "Macro Heatmap öffnen", path: "/macro", icon: Grid3X3 },
+  {
+    label: "Score-Historie öffnen",
+    path: "/score-history",
+    icon: ChartNoAxesCombined,
+  },
   { label: "Weltatlas öffnen", path: "/world-atlas", icon: Globe },
   { label: "Wetter & Rohstoffe öffnen", path: "/weather", icon: CloudRain },
   {

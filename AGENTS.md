@@ -479,6 +479,9 @@ apps/desktop/src
 - `/learning` – umfangreiche Lernbibliothek mit Wirkungsketten, Lernwegen,
   Glossar, Fokusmodus, Merkliste und eigenen Lernnotizen
 - `/macro` – Macro- und Pair-Heatmap
+- `/score-history` – gespeicherte Fundamentals-Beobachtungen, positive/negative
+  Phasen und Daily-Vergleich; der neue Arbeitsstand ist noch nicht in die Cloud
+  ausgerollt
 - `/weather` – Wetter & Rohstoffe: Produktionsschwerpunkte, öffentliche
   Punktprognosen, typischer Anbaukalender und erklärbare Wetterhinweise
 - `/world-atlas` – weltweites Länder-/Themenverzeichnis, öffentliche WDI-
@@ -600,7 +603,7 @@ apps/desktop/src-tauri/src
 
 Die tatsächliche Datenbank wird ausschließlich durch die SQL-Dateien unter
 `apps/desktop/src-tauri/migrations` definiert. Aktuell existieren Migrationen
-`0001` bis `0052`.
+`0001` bis `0053`.
 
 Wichtige Tabellengruppen:
 
@@ -835,6 +838,36 @@ bleiben lesbar; fehlende Metallhistorie wird nicht als neutral behandelt.
 Neue öffentliche Technicals-Pakete dürfen genau diese zwei USD-Spots ergänzen;
 das bestätigt keine Cloud-Bereitstellung oder MT5-Übertragung. Vertrag und
 Prüfungen: `docs/planning/precious-metals-heatmap.md`.
+
+### 10.7 Score-Historie und Rohstoff-Teilmodelle (Arbeitsstand 13.10.2026)
+
+Der Arbeitsbranch ergänzt `commands/score_history.rs`, `macro_scores.rs` und
+Migration `0053`. Unveränderliche lokale Beobachtungen speichern tatsächliche
+Erfassungszeit, Quelle, Modellversion, nullable Score und eingefrorene Beiträge.
+Vorhandene EODHD-Evaluierungen werden als Archiv-Snapshot-Inputs übernommen;
+aktuelle Events oder COT-Berichtsdatum werden nicht als früher bekannt rückdatiert.
+Die Desktop-App erfasst nach neuen Snapshots sowie bei laufender App täglich
+und bei geänderten Inputs. Eine Transaktion schützt parallele Erfassung und
+verspätete Aufgaben; A → B → A bleibt als eigener Verlauf erhalten.
+
+Die Forex-Summe bleibt beim tatsächlichen nativen 17-Zellen-Vertrag einschließlich
+einseitiger Nullbeiträge. Positive/negative Rohscores und Bullish/Bearish-Schwellen
+werden getrennt gezeigt; Standardschwelle für Paare ist ±5. Fehlende Evidenz bleibt
+unavailable. Die Fortschreibung ist auf 36 Stunden und Release-Gültigkeit begrenzt.
+MT5-Daily-Timestamps erlauben den Vergleich mit späteren Opens. EODHD-Handelsdaten
+ohne exakten Open-Zeitpunkt werden konservativ am UTC-Vortag zugeordnet und bekommen
+keine zeitgenaue Open-to-Close-Trefferquote. Energie-Einzelpreise bleiben Linien.
+Inverse MT5-/EODHD-Reihen tauschen High/Low korrekt; Preisachsen nennen ihre Einheit.
+
+Das eigenständige Rohstoff-Teilmodell umfasst Gold, Silber, Platin, Palladium,
+Kupfer, WTI, Brent und Henry Hub: USD-Einfluss, US-/China-Industrienachfrage und
+ausdrücklich identifizierte EIA-Lagerüberraschungen aus vorhandenen EODHD-Events.
+Actual und Forecast sind Pflicht; Zukunft, veraltete, ignorierte, später beobachtete
+und widersprüchliche Lagerdaten werden ausgeschlossen. Brent-US-Lager sind ausdrücklich
+ein Stellvertreter. Fehlende Realzinsen, physisches Angebot und Branchennachfrage
+bleiben sichtbare Datenlücken. COT steht separat, ohne Änderungen am Fundamentals-Score.
+Browser-Vorschau und nicht angebundene Cloud-Routen erfinden keine Historie.
+Vertrag, Quellen und Prüfnachweise: `docs/planning/score-history-and-commodities.md`.
 
 ## 11. Leitzinsmodell
 

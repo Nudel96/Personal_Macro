@@ -46,6 +46,13 @@ const analysisItems: MarketContextItem[] = [
     accent: "blue",
   },
   {
+    label: "Score-Historie",
+    description: "Score × Daily-Chart",
+    path: "/score-history",
+    icon: ChartNoAxesCombined,
+    accent: "violet",
+  },
+  {
     label: "Regime Insights",
     description: "China CPI × AUDUSD",
     path: "/regime-insights",

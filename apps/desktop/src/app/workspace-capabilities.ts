@@ -87,6 +87,7 @@ export const PRIVATE_OPTIONAL_ROUTE_COMMANDS: Readonly<
     "restore_cloud_backup",
   ],
   "/weather": ["get_weather_forecast"],
+  "/score-history": ["get_macro_score_catalog", "get_macro_score_history"],
   "/macro": [
     "get_eodhd_fundamentals_dashboard",
     "get_eodhd_feed_status",

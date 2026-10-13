@@ -1,4 +1,16 @@
 export type { AtlasFiscalResponse } from "../features/world-atlas/atlas-fiscal";
+export type {
+  ScoreInstrument,
+  ScoreContribution,
+  AssetScore,
+  CommodityScoreDashboard,
+  MacroScoreHistoryInput,
+  MacroScoreHistoryPoint,
+  ScoreDailyCandle,
+  ScorePriceSource,
+  MacroScoreHistoryResponse,
+  ScoreCaptureResult,
+} from "./score-history";
 export type { AtlasHouseholdsResponse } from "../features/world-atlas/atlas-households";
 export type { AtlasDebtResponse } from "../features/world-atlas/atlas-debt";
 export type TradeStatus =

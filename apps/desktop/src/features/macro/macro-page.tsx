@@ -33,6 +33,8 @@ import { dateTime } from "../../lib/utils";
 import { api, isTauri } from "../../services/commands";
 import { isPrivateWeb } from "../../services/runtime-mode";
 import { CloudMarketNotice } from "./cloud-market-notice";
+import { ScoreHistoryPreview } from "./score-history-preview";
+import { CommodityScoreHeatmap } from "./commodity-score-heatmap";
 import { useCloudCotRefresh } from "../cot/use-cloud-cot-refresh";
 import type {
   CotContractView,
@@ -335,8 +337,8 @@ export function MacroPage() {
         <PageHeader
           icon={PageIcon}
           eyebrow="Macro Workspace · EODHD Fundamentals"
-          title="Fundamentale Forex- & Edelmetall-Heatmap"
-          description="Actual, Forecast und Previous werden releasegenau gegenübergestellt. Vergleiche Fiat-Paare und den USD-Einfluss auf Gold und Silber mit ihren eigenen COT- und Kurstrends."
+          title="Fundamentale Forex-, Metall- & Rohstoff-Heatmap"
+          description="Vergleiche releasegenaue Fundamentals von Fiat-Paaren sowie den USD-, Nachfrage- und Lagereinfluss auf Metalle und Energie. Die Score-Historie zeigt gespeicherte positive und negative Phasen im Daily-Vergleich."
           actions={
             <>
               <Badge className={imported ? "positive" : "warning"}>
@@ -602,6 +604,18 @@ export function MacroPage() {
             technicals={technicals.data}
             onSelect={setSelectedCurrency}
           />
+
+          {selected && (
+            <ScoreHistoryPreview
+              instrumentId={
+                selectedMetal
+                  ? `commodity:${selected.currency}/USD`
+                  : `currency:${selected.currency}`
+              }
+            />
+          )}
+
+          <CommodityScoreHeatmap cot={cot.data} />
 
           {selected && (
             <CurrencyOverview

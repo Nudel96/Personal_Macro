@@ -58,6 +58,16 @@ pub fn run() {
             let atlas_startup = atlas.clone();
             app.manage(atlas);
             app.manage(state);
+            let score_scheduler_state = scheduler_state.clone();
+            tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(2)).await;
+                loop {
+                    if let Err(error) = commands::scheduled_macro_score_capture(&score_scheduler_state).await {
+                        tracing::warn!(error = %error, "Score-Historie konnte nicht erfasst werden");
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+                }
+            });
             let technical_scheduler_state = scheduler_state.clone();
             tauri::async_runtime::spawn(async move {
                 tokio::time::sleep(std::time::Duration::from_secs(8)).await;
@@ -214,6 +224,10 @@ pub fn run() {
             commands::calculate_dashboard,
             commands::calculate_calendar,
             commands::get_eodhd_fundamentals_dashboard,
+            commands::get_macro_score_catalog,
+            commands::get_macro_commodity_dashboard,
+            commands::get_macro_score_history,
+            commands::record_macro_score_history,
             commands::get_eodhd_indicator_history,
             commands::get_economic_calendar,
             commands::sync_eodhd_indicator_history,
