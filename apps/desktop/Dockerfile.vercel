@@ -9,6 +9,7 @@ COPY src-tauri/src ./src
 COPY src-tauri/examples/import_private_snapshot.rs ./examples/import_private_snapshot.rs
 COPY src-tauri/examples/finish_private_snapshot.rs ./examples/finish_private_snapshot.rs
 COPY src-tauri/examples/publish_public_snapshot.rs ./examples/publish_public_snapshot.rs
+COPY src-tauri/examples/export_public_scores.rs ./examples/export_public_scores.rs
 COPY src-tauri/examples/atlas_public_qa.rs ./examples/atlas_public_qa.rs
 COPY src-tauri/migrations ./migrations
 COPY src-tauri/postgres-migrations ./postgres-migrations
