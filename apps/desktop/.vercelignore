@@ -38,6 +38,7 @@
 !/src-tauri/examples/import_private_snapshot.rs
 !/src-tauri/examples/finish_private_snapshot.rs
 !/src-tauri/examples/publish_public_snapshot.rs
+!/src-tauri/examples/export_public_scores.rs
 !/src-tauri/examples/atlas_public_qa.rs
 !/src-tauri/src
 /src-tauri/src/*

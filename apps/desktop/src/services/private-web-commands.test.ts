@@ -153,8 +153,8 @@ describe("command runtime boundary", () => {
     expect(
       requests.every(
         (v) =>
-          !Object.hasOwn(v, "expectedRevision") &&
-          !Object.hasOwn(v, "operationId"),
+          !Object.prototype.hasOwnProperty.call(v, "expectedRevision") &&
+          !Object.prototype.hasOwnProperty.call(v, "operationId"),
       ),
     ).toBe(true);
     expect(get).not.toHaveBeenCalled();
