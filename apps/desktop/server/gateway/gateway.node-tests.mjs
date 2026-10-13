@@ -57,6 +57,38 @@ function sessionRequest(headers = {}, origin = ORIGIN) {
   return new globalThis.Request(`${origin}/api/session`, { headers });
 }
 
+test("an explicitly configured review origin preserves the primary origin and rejects wildcards", async () => {
+  const review = "https://protected-review.example.test";
+  const subject = harness({ env: { ...ENV, MACRO_WEB_REVIEW_ORIGIN: review } });
+  assert.equal((await subject.run(sessionRequest(), "session")).status, 200);
+  assert.equal(
+    (await subject.run(sessionRequest({}, review), "session")).status,
+    200,
+  );
+  assert.equal(
+    (await subject.run(sessionRequest({}, OTHER_ORIGIN), "session")).status,
+    403,
+  );
+  for (const invalid of [
+    "https://*.example.test",
+    `${review},${OTHER_ORIGIN}`,
+    "http://review.example.test",
+  ]) {
+    const denied = harness({
+      env: { ...ENV, MACRO_WEB_REVIEW_ORIGIN: invalid },
+    });
+    assert.equal((await denied.run(sessionRequest(), "session")).status, 503);
+    assert.equal(denied.calls.length, 0);
+  }
+  const missing = harness({
+    env: { ...ENV, MACRO_WEB_ORIGINS: "", MACRO_WEB_REVIEW_ORIGIN: review },
+  });
+  assert.equal(
+    (await missing.run(sessionRequest({}, review), "session")).status,
+    503,
+  );
+});
+
 async function openSession(subject) {
   const response = await subject.run(sessionRequest(), "session");
   assert.equal(response.status, 200);

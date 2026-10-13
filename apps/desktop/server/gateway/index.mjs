@@ -18,17 +18,27 @@ const SESSION_SECONDS = 8 * 60 * 60;
 const COOKIE_VERSION = "v1";
 const COMMAND_NAME = /^[a-z][a-z0-9_]{0,127}$/;
 const BUSINESS_ERRORS = {
-  MYFXBOOK_AUTH: "Die Myfxbook-Anmeldung fehlt oder ist abgelaufen. Bitte erneut anmelden.",
-  MYFXBOOK_GAP: "Myfxbook liefert höchstens 50 Transaktionen. Die Historie hat eine Lücke; bitte fehlende Trades ergänzen und die Verbindung erneut prüfen.",
-  MYFXBOOK_NETWORK: "Myfxbook ist vorübergehend nicht erreichbar. Dein Journal bleibt unverändert.",
-  MYFXBOOK_PROVIDER: "Myfxbook hat den Abruf abgelehnt. Bitte später erneut versuchen.",
-  MYFXBOOK_CHANGED: "Myfxbook wurde während des Abrufs geändert. Bitte erneut prüfen.",
-  MYFXBOOK_TIMEOUT: "Myfxbook hat nicht rechtzeitig geantwortet. Bitte erneut versuchen.",
+  MYFXBOOK_AUTH:
+    "Die Myfxbook-Anmeldung fehlt oder ist abgelaufen. Bitte erneut anmelden.",
+  MYFXBOOK_GAP:
+    "Myfxbook liefert höchstens 50 Transaktionen. Die Historie hat eine Lücke; bitte fehlende Trades ergänzen und die Verbindung erneut prüfen.",
+  MYFXBOOK_NETWORK:
+    "Myfxbook ist vorübergehend nicht erreichbar. Dein Journal bleibt unverändert.",
+  MYFXBOOK_PROVIDER:
+    "Myfxbook hat den Abruf abgelehnt. Bitte später erneut versuchen.",
+  MYFXBOOK_CHANGED:
+    "Myfxbook wurde während des Abrufs geändert. Bitte erneut prüfen.",
+  MYFXBOOK_TIMEOUT:
+    "Myfxbook hat nicht rechtzeitig geantwortet. Bitte erneut versuchen.",
   MYFXBOOK_CURRENCY: "Die Kontowährung stimmt nicht mit Myfxbook überein.",
-  MYFXBOOK_PNL: "Die Ergebnisberechnung ist nicht eindeutig. Bitte den Brokerbericht prüfen.",
-  MYFXBOOK_BALANCE: "Die Kontosummen stimmen nicht überein. Bitte die Vorschau prüfen.",
-  MYFXBOOK_CONCURRENT: "Das Konto wurde während des Abgleichs geändert. Bitte erneut prüfen.",
-  MYFXBOOK_AMBIGUOUS: "Die Myfxbook-Transaktionen sind nicht eindeutig zuzuordnen. Bitte den Brokerbericht prüfen.",
+  MYFXBOOK_PNL:
+    "Die Ergebnisberechnung ist nicht eindeutig. Bitte den Brokerbericht prüfen.",
+  MYFXBOOK_BALANCE:
+    "Die Kontosummen stimmen nicht überein. Bitte die Vorschau prüfen.",
+  MYFXBOOK_CONCURRENT:
+    "Das Konto wurde während des Abgleichs geändert. Bitte erneut prüfen.",
+  MYFXBOOK_AMBIGUOUS:
+    "Die Myfxbook-Transaktionen sind nicht eindeutig zuzuordnen. Bitte den Brokerbericht prüfen.",
   VALIDATION_ERROR:
     "Die Eingaben sind unvollständig oder ungültig. Bitte prüfe sie erneut.",
   CONFLICT:
@@ -209,15 +219,49 @@ export async function cotBackendRequest(
   dependencies,
   signal,
 ) {
-  return scheduledBackendRequest("cot", action, value, config, dependencies, signal);
+  return scheduledBackendRequest(
+    "cot",
+    action,
+    value,
+    config,
+    dependencies,
+    signal,
+  );
 }
 
-export async function providerBackendRequest(action, value, config, dependencies, signal) {
-  return scheduledBackendRequest("providers", action, value, config, dependencies, signal);
+export async function providerBackendRequest(
+  action,
+  value,
+  config,
+  dependencies,
+  signal,
+) {
+  return scheduledBackendRequest(
+    "providers",
+    action,
+    value,
+    config,
+    dependencies,
+    signal,
+  );
 }
 
-async function scheduledBackendRequest(family, action, value, config, dependencies, signal) {
-  if (!["plan", "run", "complete", ...(family === "providers" ? ["retire", "retired"] : [])].includes(action))
+async function scheduledBackendRequest(
+  family,
+  action,
+  value,
+  config,
+  dependencies,
+  signal,
+) {
+  if (
+    ![
+      "plan",
+      "run",
+      "complete",
+      ...(family === "providers" ? ["retire", "retired"] : []),
+    ].includes(action)
+  )
     throw new GatewayError("INVALID_REQUEST");
   const path = `/internal/${family}/${action}`;
   const body = Buffer.from(JSON.stringify(value));
@@ -314,7 +358,14 @@ function configuration(env) {
       throw new Error();
     if (!/^[A-Za-z0-9_-]{1,128}$/.test(env.MACRO_WORKSPACE_ID ?? ""))
       throw new Error();
-    const origins = (env.MACRO_WEB_ORIGINS ?? "")
+    if (!env.MACRO_WEB_ORIGINS) throw new Error();
+    if (env.MACRO_WEB_REVIEW_ORIGIN?.includes("*")) throw new Error();
+    const reviewOrigin = env.MACRO_WEB_REVIEW_ORIGIN
+      ? parseOrigin(env.MACRO_WEB_REVIEW_ORIGIN)
+      : null;
+    const origins = [env.MACRO_WEB_ORIGINS, reviewOrigin]
+      .filter(Boolean)
+      .join(",")
       .split(",")
       .map((part) => part.trim());
     if (!origins.length || origins.length > 20 || origins.some((part) => !part))
@@ -602,19 +653,36 @@ async function forward(request, route, config, origin, options, signal) {
   if (route === "commands") {
     const result = commandResponse(value);
     const submitted = parseJson(body, "INVALID_REQUEST");
-    if (value.ok === true && ((["myfxbook_activate", "myfxbook_set_enabled"].includes(submitted.command) && options.env.MACRO_MYFXBOOK_AUTOMATION === "1") || (submitted.command === "request_central_bank_report_refresh" && options.env.MACRO_REPORT_AUTOMATION === "1"))) {
+    if (
+      value.ok === true &&
+      ((["myfxbook_activate", "myfxbook_set_enabled"].includes(
+        submitted.command,
+      ) &&
+        options.env.MACRO_MYFXBOOK_AUTOMATION === "1") ||
+        (submitted.command === "request_central_bank_report_refresh" &&
+          options.env.MACRO_REPORT_AUTOMATION === "1"))
+    ) {
       // The committed mutation must remain successful if Queue dispatch fails.
       // Durable jobs and the daily dispatcher recover that transient failure.
       try {
         const { nudgeProviderJobs } = await import("../providers/index.mjs");
         await nudgeProviderJobs(options);
-      } catch { /* Status remains visible through the durable scheduler. */ }
+      } catch {
+        /* Status remains visible through the durable scheduler. */
+      }
     }
-    if (value.ok === true && submitted.command === "request_cot_refresh" && value.data?.job && options.env.MACRO_COT_AUTOMATION === "1") {
+    if (
+      value.ok === true &&
+      submitted.command === "request_cot_refresh" &&
+      value.data?.job &&
+      options.env.MACRO_COT_AUTOMATION === "1"
+    ) {
       try {
         const { nudgeCotJob } = await import("../cot/index.mjs");
         await nudgeCotJob(value.data.job, options);
-      } catch { /* The daily dispatcher recovers the committed job. */ }
+      } catch {
+        /* The daily dispatcher recovers the committed job. */
+      }
     }
     return result;
   }
