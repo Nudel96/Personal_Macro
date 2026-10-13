@@ -876,6 +876,18 @@ Generation und Millisekunden-Startzeit werden vor dem Commit geprüft;
 Journalrevision und persönliche Vorgangsbelege bleiben unverändert. Der explizite
 öffentliche Desktop-Export/Import ist datiert, geprüft und keine automatische
 Desktop-/Cloud-/MT5-Synchronisierung. Fehlende Preisreihen bleiben unavailable.
+Die private Browser-Abnahme vom 13.10.2026 besteht am stabilen Projektalias mit
+Build `dpl_7L6zohc7b4DHCJMfohehxACtBEjK` (Codestand `3eff2c6`, `fra1`,
+`public: false`). 6.141 Desktop-Beobachtungen, 89 neue Cloud-Beobachtungen sowie
+65 Preisreihen mit 29.090 Daily-Werten sind geprüft. Gold-OHLC wird ausdrücklich
+aus dem nativen EODHD-Bestand übernommen; vorhandene Seasonality-Symbolpakete
+enthalten nur `mid_close` und liefern Schlusskurslinien. Acht mobile Score-Karten
+zeigen Gesamtwert, Bias und Abdeckung ohne seitliches Scrollen. WebKit besteht
+320/390/430/768/1440 px, keine Laufzeit-/API-Fehler oder persönlichen Schreibversuche,
+Journalrevision 9 unverändert. Prüfadresse, zusätzliche Prüf-Origin und temporäre
+Testschlüssel sind entfernt; anonym/widerrufen HTTP 401. Keine physische iPhone-
+oder Prognosegüte-Abnahme behaupten. Die neue Arbeit bleibt bis zur Freigabe auf
+`codex/score-history-commodities` und ist nicht nach main gemergt.
 Vertrag, Quellen und Prüfnachweise: `docs/planning/score-history-and-commodities.md`.
 
 ## 11. Leitzinsmodell

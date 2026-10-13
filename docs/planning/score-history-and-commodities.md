@@ -145,4 +145,52 @@ deshalb nicht mit dem Dienstagstermin als früher bekanntes Signal ausgegeben.
 Die Softwareprüfungen bestätigen keine allgemeine Prognosegüte des Teilmodells.
 Die Bilder sind keine Live-Marktdaten. Browser-DTO-Prüfung und nativer
 Fensterstart ersetzen keine vollständige native UI-/Besitzerabnahme.
-Keine Cloud-Veröffentlichung und kein Merge der neuen Arbeit nach `main`.
+Die Desktop-Abnahme wurde zunächst ohne Cloud-Veröffentlichung abgeschlossen.
+Die ergänzende Browser-Abnahme folgt unten. Kein Merge der neuen Arbeit nach `main`.
+
+## Private Smartphone-Abnahme vom 13.10.2026
+
+Der geschützte Build `dpl_7L6zohc7b4DHCJMfohehxACtBEjK` mit Codestand
+`3eff2c6666e0572174a955f1022845b7827e2fe1` ist READY in Frankfurt (`fra1`),
+`public: false`. Nach der Abnahme über eine gesonderte geschützte Prüfadresse
+wurde exakt dieser Build auf den bestehenden Projektlink übernommen:
+`https://personal-macro-nudel96s-projects.vercel.app`.
+
+- Migrationen 0012 und 0013 wurden nach direkter Identitäts- und Prüfsummenprüfung
+  sowie verifizierter Sicherung auf D: additiv angewendet. Sämtliche zuvor
+  vorhandenen Tabellen und die Journalrevision 9 blieben unverändert.
+- 6.141 Desktop-Beobachtungen aus 69 gespeicherten Datenständen wurden atomar
+  übernommen. Die reale Cloud-Erfassung ergänzte 89 Beobachtungen; weitere
+  unveränderte Erfassungen erzeugten keine Duplikate. Der erneute Import prüfte
+  identische Inhalte und meldete null neue Score-Beobachtungen.
+- 65 datierte MT5-/EODHD-Preisreihen mit 29.090 Daily-Werten wurden übernommen.
+  Die Datei mit den vollständigen verfügbaren Daily-Daten ist 29.936.084 Byte
+  groß; SHA-256 `46da500d73e01b4e1dbc51d13bc44c3b1c96b53058d38e6119eaef84bc6f86ac`.
+  Es wurden keine persönlichen Tabellen, Medien oder Zugangsdaten übertragen.
+- Der Live-Lauf prüft Katalog (72 Forex-Paare, neun Währungen, acht Rohstoffe),
+  EUR/USD und USD/EUR einschließlich inverser High-/Low-Umrechnung, USD-Historie,
+  Gold-OHLC, WTI-Einzelpreise, fehlende Kupfer-Preiszuordnung, die acht
+  Commodity-Summen und sichtbare fehlende physische Treiber.
+- WebKit mit Touch-/Mobilkontext prüft echte Cloud-Antworten, Marktwechsel,
+  SMA-Steuerung, manuelle Erfassung sowie die acht kompakten Rohstoff-Karten.
+  Score-Seite bei 320/390/430/768/1440 px und Macro bei 320/390/768/1440 px
+  ohne Seitenüberlauf. Keine Laufzeit-/API-Fehler und keine persönlichen
+  Schreibversuche. Dieselbe Prüfung am tatsächlichen stabilen Projektlink besteht.
+- Temporäre Testschlüssel wurden widerrufen; anonyme und widerrufene
+  JSON-Anfragen liefern HTTP 401. Separate Prüfadresse und zusätzliches
+  `MACRO_WEB_REVIEW_ORIGIN` wurden wieder entfernt. Die bestehende sensible
+  Origin-Konfiguration und der Besitzerzugriffsschutz für alle Deployments
+  blieben erhalten. Vercel meldete bereits vor dieser Konfiguration Pro;
+  diese Arbeit führte keinen Tarifwechsel durch.
+- Typecheck, Format-/Lintprüfung, die betroffenen Frontend-Suites, vier
+  Cloud-History-Tests einschließlich echter isolierter PostgreSQL-Tests,
+  acht native History-Tests, drei Commodity-Tests, vier Cloud-Macro-Tests
+  und 30 Gateway-Tests bestehen. Das schmale öffentliche Schlusskurs-Schema
+  wird ausdrücklich read-only ohne OHLC-Spalten getestet.
+
+Prüfberichte und Screenshots liegen ausschließlich lokal auf D: unter
+`apps/desktop/.vercel/score-history-*-report.json` und
+`apps/desktop/output/playwright/`. Sie werden nicht versioniert.
+Die WebKit-Abnahme ersetzt keine physische iPhone-/Besitzer-SSO-Abnahme.
+Der Rohstoff-Score bleibt ein transparentes Teilmodell mit sichtbaren Lücken;
+diese Softwareprüfung bestätigt keine allgemeine Prognosegüte.

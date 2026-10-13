@@ -26,7 +26,9 @@ auf `main` gesichert. In der Desktop-App über **Marktkontext → Score-Historie
 oder direkt aus Macro öffnen. [Methodik, Quellen und Grenzen](docs/planning/score-history-and-commodities.md).
 Die beauftragte private Smartphone-Anbindung ergänzt dieselben Ansichten,
 getrennte dauerhafte Cloud-Beobachtungen und datierte Daily-Preisstände. Der
-aktuelle Bereitstellungsnachweis steht im Methodikdokument; keine automatische
+geschützte Stand ist am bestehenden Smartphone-Link bereitgestellt und mit
+WebKit bei 320 bis 1440 px geprüft. Der Bereitstellungsnachweis steht im
+Methodikdokument; keine automatische
 Synchronisierung mit dem lokalen MT5-Terminal.
 
 **Start und Smartphone-Erweiterung vom 06.10.2026:** Die Desktop-EXE liegt
