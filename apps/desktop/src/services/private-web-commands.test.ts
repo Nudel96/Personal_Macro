@@ -96,6 +96,71 @@ describe("command runtime boundary", () => {
     expect(get).not.toHaveBeenCalled();
   });
 
+  it("uses real cloud score reads and captures without changing the journal revision", async () => {
+    const { configurePrivateWebSession } = await import("./private-web-client");
+    configurePrivateWebSession({
+      authenticated: true,
+      workspaceId: "test",
+      revision: 9,
+      csrfToken: "a".repeat(48),
+      marketGeneration: "9aa3d4e2-1c44-4852-bc16-cf400fd72d3e",
+      capabilities: [
+        "get_macro_score_catalog",
+        "get_macro_score_history",
+        "get_macro_commodity_dashboard",
+        "record_macro_score_history",
+      ],
+      writableCommands: [],
+    });
+    const get = vi.spyOn(Storage.prototype, "getItem");
+    fetchMock.mockImplementation(
+      async () =>
+        new Response(
+          JSON.stringify({
+            ok: true,
+            revision: 9,
+            data: { inserted: 89, archiveCompleted: true },
+          }),
+          { status: 200, headers: { "Content-Type": "application/json" } },
+        ),
+    );
+    const { api } = await import("./commands");
+    await api.macroScoreCatalog();
+    await api.macroScoreHistory({
+      instrumentId: "forex:EUR/USD",
+      from: "2026-10-01",
+      to: "2026-10-13",
+    });
+    await api.macroCommodityDashboard();
+    await expect(api.recordMacroScoreHistory()).resolves.toMatchObject({
+      inserted: 89,
+    });
+    const requests = fetchMock.mock.calls.map(([, options]) =>
+      JSON.parse(String(options?.body)),
+    );
+    expect(
+      requests
+        .slice(0, 3)
+        .every(
+          (v) => v.args.generation === "9aa3d4e2-1c44-4852-bc16-cf400fd72d3e",
+        ),
+    ).toBe(true);
+    expect(requests[3]).toEqual({
+      workspaceId: "test",
+      command: "record_macro_score_history",
+      args: {},
+    });
+    expect(
+      requests.every(
+        (v) =>
+          !Object.hasOwn(v, "expectedRevision") &&
+          !Object.hasOwn(v, "operationId"),
+      ),
+    ).toBe(true);
+    expect(get).not.toHaveBeenCalled();
+    expect(invoke).not.toHaveBeenCalled();
+  });
+
   it("keeps the explicit local preview available lazily", async () => {
     vi.stubEnv("VITE_PRIVATE_WEB", "false");
     const get = vi.spyOn(Storage.prototype, "getItem");

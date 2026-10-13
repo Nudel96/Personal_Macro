@@ -40,6 +40,10 @@ name = "publish_public_snapshot"
 required-features = ["postgres"]
 
 [[example]]
+name = "export_public_scores"
+required-features = ["postgres"]
+
+[[example]]
 name = "atlas_public_qa"
 required-features = ["desktop"]
 

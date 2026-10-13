@@ -166,6 +166,12 @@ impl CloudServer {
         let rows:Vec<(String,i64)>=sqlx::query_as("SELECT id,GREATEST(due_at,retry_at,lease_until,$1) FROM cloud_provider_jobs WHERE status IN ('pending','running','staged') AND attempts<8 AND expires_at>$1 AND GREATEST(due_at,retry_at,lease_until)<$2 ORDER BY GREATEST(due_at,retry_at,lease_until,$1),due_at,id LIMIT 256")
             .bind(now.timestamp()).bind(now.timestamp()+86400).fetch_all(&mut *tx).await?;
         tx.commit().await?;
+        // Public observations use their own transaction after planning has
+        // released the journal connection. A transient capture cannot cancel
+        // unrelated provider jobs; the next daily/manual run can recover.
+        if let Err(error) = self.capture_cloud_scores().await {
+            tracing::warn!(code = %error.code, "Daily cloud score capture failed");
+        }
         Ok(
             json!({"jobs":rows.into_iter().map(|(id,at)|json!({"jobId":id,"dueAt":chrono::DateTime::from_timestamp(at,0).unwrap_or_default().to_rfc3339()})).collect::<Vec<_>>()}),
         )

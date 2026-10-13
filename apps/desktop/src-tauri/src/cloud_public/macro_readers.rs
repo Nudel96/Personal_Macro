@@ -13,6 +13,7 @@ use crate::{
 
 pub const COMMANDS: &[&str] = &[
     "get_eodhd_fundamentals_dashboard",
+    "get_macro_commodity_dashboard",
     "get_eodhd_indicator_history",
     "get_economic_calendar",
     "get_eodhd_feed_status",
@@ -95,8 +96,13 @@ pub async fn read(command: &str, args: &Value, shard: &LoadedShard) -> CommandRe
     if shard.artifact.kind != kind || shard.artifact.key != key {
         return Err(unavailable());
     }
+    let state = shard_state(shard);
+    read_state(command, args, &state).await
+}
+
+pub(crate) fn shard_state(shard: &LoadedShard) -> AppState {
     let root = shard.directory().to_owned();
-    let state = AppState {
+    AppState {
         db: shard.pool().clone(),
         paths: AppPaths {
             database: root.join("data.sqlite"),
@@ -108,8 +114,7 @@ pub async fn read(command: &str, args: &Value, shard: &LoadedShard) -> CommandRe
             central_bank_reports: root.join("unused-central-bank-reports"),
             root,
         },
-    };
-    read_state(command, args, &state).await
+    }
 }
 
 async fn read_state(command: &str, args: &Value, state: &AppState) -> CommandResult<Value> {
@@ -127,6 +132,11 @@ async fn read_state_at(
             commands::load_fundamental_dashboard_readonly_at(state, now)
                 .await
                 .map_err(|_| unavailable())?,
+        ),
+        "get_macro_commodity_dashboard" => serde_json::to_value(
+            commands::get_macro_commodity_dashboard(State::new(state))
+                .await
+                .map_err(safe_error)?,
         ),
         "get_eodhd_indicator_history" => serde_json::to_value(
             commands::load_indicator_history_at(state, argument(args, "input")?, now)

@@ -24,7 +24,10 @@ Fundamentals-Teilmodell für acht Metalle-/Energiemärkte. Die neue Arbeit bleib
 zur Prüfung auf dem Branch; bestehende Änderungen wurden zuvor als `50c8f70`
 auf `main` gesichert. In der Desktop-App über **Marktkontext → Score-Historie**
 oder direkt aus Macro öffnen. [Methodik, Quellen und Grenzen](docs/planning/score-history-and-commodities.md).
-Eine neue Cloud-Bereitstellung ist damit nicht bestätigt.
+Die beauftragte private Smartphone-Anbindung ergänzt dieselben Ansichten,
+getrennte dauerhafte Cloud-Beobachtungen und datierte Daily-Preisstände. Der
+aktuelle Bereitstellungsnachweis steht im Methodikdokument; keine automatische
+Synchronisierung mit dem lokalen MT5-Terminal.
 
 **Start und Smartphone-Erweiterung vom 06.10.2026:** Die Desktop-EXE liegt
 unter `D:\Macrotool\apps\desktop\src-tauri\target\x86_64-pc-windows-msvc\release\personal-macro-desktop.exe`.

@@ -12,6 +12,7 @@ mod provider_storage;
 #[cfg(test)]
 mod provider_tests;
 mod report_jobs;
+mod score_history;
 #[cfg(test)]
 mod tests;
 
@@ -371,6 +372,9 @@ impl CloudServer {
                     Some(revision),
                 ),
             };
+        }
+        if !internal_media && score_history::COMMANDS.contains(&request.command.as_str()) {
+            return self.score_command(request).await;
         }
         if !internal_media && market::is_command(&request.command) {
             return self.market_read(request).await;

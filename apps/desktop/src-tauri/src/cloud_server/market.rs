@@ -275,6 +275,9 @@ pub(super) fn capabilities(manifest: &PublishedManifest) -> Vec<&'static str> {
             .any(|artifact| artifact.kind == kind)
     };
     let mut commands = Vec::new();
+    if has(ArtifactKind::Macro) {
+        commands.extend(super::score_history::COMMANDS.iter().copied());
+    }
     if has(ArtifactKind::Rates) {
         commands.push("get_policy_rates");
     }

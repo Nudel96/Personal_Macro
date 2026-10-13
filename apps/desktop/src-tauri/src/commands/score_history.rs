@@ -36,7 +36,7 @@ pub struct MacroScoreHistoryPoint {
     pub available_components: i64,
     pub total_components: i64,
     #[serde(skip)]
-    evidence_json: String,
+    pub(crate) evidence_json: String,
 }
 
 #[derive(Debug, Clone, Serialize, FromRow)]
@@ -49,7 +49,7 @@ pub struct ScoreDailyCandle {
     pub close: f64,
 }
 
-#[derive(Debug, Serialize)]
+#[derive(Debug, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
 pub struct ScorePriceSource {
     pub provider: String,
@@ -58,6 +58,8 @@ pub struct ScorePriceSource {
     pub inverted: bool,
     pub data_kind: String,
     pub unit: String,
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    pub imported_at: Option<String>,
 }
 
 #[derive(Debug, Serialize)]
@@ -91,7 +93,7 @@ fn validation(message: &str) -> CommandError {
     }
 }
 
-fn bounds(
+pub(crate) fn bounds(
     input: &MacroScoreHistoryInput,
     now: DateTime<Utc>,
 ) -> CommandResult<(ScoreInstrument, i64, i64)> {
@@ -172,6 +174,57 @@ fn valid_until(
 async fn profiles(state: &AppState) -> Result<HashMap<(String, String), i64>, AppError> {
     let rows:Vec<(String,String,i64)>=sqlx::query_as("SELECT currency,canonical_key,freshness_days FROM eodhd_indicator_profiles WHERE enabled=1").fetch_all(&state.db).await?;
     Ok(rows.into_iter().map(|(c, k, d)| ((c, k), d)).collect())
+}
+
+/// Pure preparation shared by desktop SQLite and the separate cloud history.
+/// Loading a verified snapshot never mutates it or invents earlier observations.
+#[cfg(feature = "postgres")]
+pub(crate) struct PreparedScoreCapture {
+    pub snapshot_id: String,
+    pub observed_at: i64,
+    pub started_at_ms: i64,
+    pub day: String,
+    pub fingerprint: String,
+    pub observations: Vec<(AssetScore, i64)>,
+}
+
+#[cfg(feature = "postgres")]
+pub(crate) async fn prepare_score_capture_at(
+    state: &AppState,
+    now: DateTime<Utc>,
+) -> Result<Option<PreparedScoreCapture>, AppError> {
+    let dashboard =
+        eodhd_fundamentals::load_fundamental_dashboard_snapshot(state, Some(now), None).await?;
+    let Some(snapshot_id) = dashboard.snapshot_id.clone() else {
+        return Ok(None);
+    };
+    if DateTime::parse_from_rfc3339(&dashboard.as_of).map_or(true, |built| built > now) {
+        return Ok(None);
+    }
+    let mut assets = macro_scores::fundamental_assets(&dashboard);
+    assets.extend(macro_scores::commodity_assets(state, &dashboard, now, false).await?);
+    let fingerprint = Sha256::digest(serde_json::to_vec(&assets).map_err(|_| {
+        AppError::DataTransfer("Score-Beiträge konnten nicht geprüft werden.".into())
+    })?)
+    .iter()
+    .map(|byte| format!("{byte:02x}"))
+    .collect();
+    let observed_at = now.timestamp() + i64::from(now.timestamp_subsec_nanos() > 0);
+    let profiles = profiles(state).await?;
+    Ok(Some(PreparedScoreCapture {
+        snapshot_id,
+        observed_at,
+        started_at_ms: now.timestamp_millis(),
+        day: now.date_naive().to_string(),
+        fingerprint,
+        observations: assets
+            .into_iter()
+            .map(|asset| {
+                let expiry = valid_until(&asset, &dashboard, &profiles, observed_at);
+                (asset, expiry)
+            })
+            .collect(),
+    }))
 }
 
 async fn store(
@@ -341,7 +394,7 @@ fn invert(candle: &ScoreDailyCandle) -> ScoreDailyCandle {
     }
 }
 
-fn price_unit(instrument: &ScoreInstrument) -> String {
+pub(crate) fn price_unit(instrument: &ScoreInstrument) -> String {
     match instrument.base.as_str() {
         "XAU" | "XAG" | "XPT" | "XPD" => "USD/Feinunze".into(),
         "WTI" | "BRENT" => "USD/Barrel".into(),
@@ -354,7 +407,7 @@ fn price_unit(instrument: &ScoreInstrument) -> String {
     }
 }
 
-async fn daily_prices(
+pub(crate) async fn daily_prices(
     state: &AppState,
     instrument: &ScoreInstrument,
     from: i64,
@@ -396,10 +449,22 @@ async fn daily_prices(
                     inverted: invert_prices,
                     data_kind: "ohlc".into(),
                     unit: price_unit(instrument),
+                    imported_at: None,
                 }),
             ));
         }
     }
+    daily_provider_prices(&state.db, instrument, from, to, now).await
+}
+
+pub(crate) async fn daily_provider_prices(
+    pool: &sqlx::SqlitePool,
+    instrument: &ScoreInstrument,
+    from: i64,
+    to: i64,
+    now: i64,
+) -> Result<(Vec<ScoreDailyCandle>, Option<ScorePriceSource>), AppError> {
+    let quote = instrument.quote.as_deref().unwrap_or("");
     let Some(price_symbol) = instrument.price_symbol.as_deref() else {
         return Ok((vec![], None));
     };
@@ -411,7 +476,7 @@ async fn daily_prices(
     };
     for (index, symbol) in symbols.iter().enumerate() {
         let rows:Vec<ScoreDailyCandle>=sqlx::query_as("SELECT candle_time/1000 AS time,bid_open AS open,bid_high AS high,bid_low AS low,bid_close AS close FROM seasonality_provider_daily_candles WHERE provider='eodhd' AND provider_symbol=? AND candle_time>=? AND candle_time<? AND candle_time+86400000<=? ORDER BY candle_time LIMIT 2000")
-            .bind(symbol).bind(from*1000).bind(to*1000).bind(now*1000).fetch_all(&state.db).await?;
+            .bind(symbol).bind(from*1000).bind(to*1000).bind(now*1000).fetch_all(pool).await?;
         if !rows.is_empty() {
             return Ok((
                 if index == 1 {
@@ -436,6 +501,7 @@ async fn daily_prices(
                     }
                     .into(),
                     unit: price_unit(instrument),
+                    imported_at: None,
                 }),
             ));
         }

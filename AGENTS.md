@@ -480,8 +480,8 @@ apps/desktop/src
   Glossar, Fokusmodus, Merkliste und eigenen Lernnotizen
 - `/macro` – Macro- und Pair-Heatmap
 - `/score-history` – gespeicherte Fundamentals-Beobachtungen, positive/negative
-  Phasen und Daily-Vergleich; der neue Arbeitsstand ist noch nicht in die Cloud
-  ausgerollt
+  Phasen und Daily-Vergleich; private Browser-Anbindung mit getrennten Cloud-
+  Beobachtungen und datierten Daily-Preisständen
 - `/weather` – Wetter & Rohstoffe: Produktionsschwerpunkte, öffentliche
   Punktprognosen, typischer Anbaukalender und erklärbare Wetterhinweise
 - `/world-atlas` – weltweites Länder-/Themenverzeichnis, öffentliche WDI-
@@ -867,6 +867,15 @@ und widersprüchliche Lagerdaten werden ausgeschlossen. Brent-US-Lager sind ausd
 ein Stellvertreter. Fehlende Realzinsen, physisches Angebot und Branchennachfrage
 bleiben sichtbare Datenlücken. COT steht separat, ohne Änderungen am Fundamentals-Score.
 Browser-Vorschau und nicht angebundene Cloud-Routen erfinden keine Historie.
+Der ergänzende Smartphone-Auftrag nutzt die optionalen Commands
+`get_macro_score_catalog`, `get_macro_score_history`, `get_macro_commodity_dashboard`
+und `record_macro_score_history`. PostgreSQL-Migration 0013 trennt unveränderliche
+öffentliche Beobachtungen und D1-Preisstände vom Journal. Die vorhandene tägliche
+Providerplanung und neue Macro-Veröffentlichungen erfassen ohne eingeschalteten PC.
+Generation und Millisekunden-Startzeit werden vor dem Commit geprüft;
+Journalrevision und persönliche Vorgangsbelege bleiben unverändert. Der explizite
+öffentliche Desktop-Export/Import ist datiert, geprüft und keine automatische
+Desktop-/Cloud-/MT5-Synchronisierung. Fehlende Preisreihen bleiben unavailable.
 Vertrag, Quellen und Prüfnachweise: `docs/planning/score-history-and-commodities.md`.
 
 ## 11. Leitzinsmodell

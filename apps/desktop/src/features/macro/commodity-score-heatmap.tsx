@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
 import { ErrorState } from "../../components/ui/loading";
@@ -90,10 +92,14 @@ export function ContributionTable({
 
 export function CommodityScoreHeatmap({ cot }: { cot?: CotDashboard }) {
   const [selectedId, setSelectedId] = useState("commodity:XAU/USD");
+  const available =
+    isTauri() ||
+    (isPrivateWeb() &&
+      supportsPrivateWebCommand("get_macro_commodity_dashboard"));
   const dashboard = useQuery({
     queryKey: ["macro", "commodity-scores"],
     queryFn: api.macroCommodityDashboard,
-    enabled: isTauri(),
+    enabled: available,
     retry: false,
   });
   const selected = dashboard.data?.assets.find(
@@ -105,7 +111,7 @@ export function CommodityScoreHeatmap({ cot }: { cot?: CotDashboard }) {
         title="Metalle, Öl & weitere Rohstoffe"
         subtitle="Eigenständige USD-notierte Assets · transparente Fundamentals-Beiträge"
         action={
-          isTauri() ? (
+          available ? (
             <Button
               size="sm"
               onClick={() => void dashboard.refetch()}
@@ -117,11 +123,9 @@ export function CommodityScoreHeatmap({ cot }: { cot?: CotDashboard }) {
         }
       />
       <CardContent>
-        {!isTauri() ? (
+        {!available ? (
           <p className="score-explanation">
-            Das neue Rohstoff-Teilmodell wird auf dem Arbeitsbranch in der
-            Desktop-App geprüft. Eine neue Cloud-Bereitstellung ist noch nicht
-            erfolgt.
+            Für diesen Datenstand ist noch kein Rohstoff-Modell verfügbar.
           </p>
         ) : dashboard.isLoading ? (
           <p role="status">Rohstoff-Fundamentals werden geladen …</p>

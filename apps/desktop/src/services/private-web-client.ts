@@ -742,6 +742,7 @@ async function privateWebRequest<T>(
           : command === "myfxbook_login" ||
               command === "myfxbook_preview" ||
               command === "request_cot_refresh" ||
+              command === "record_macro_score_history" ||
               command === "request_central_bank_report_refresh"
             ? WRITE_TIMEOUT_MS
             : READ_TIMEOUT_MS,

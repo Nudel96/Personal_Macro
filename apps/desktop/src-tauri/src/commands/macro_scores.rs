@@ -12,7 +12,7 @@ use crate::{
     runtime::State,
 };
 
-pub(super) const MODEL_VERSION: &str = "macro-fundamentals-observed-v1";
+pub(crate) const MODEL_VERSION: &str = "macro-fundamentals-observed-v1";
 pub(super) const CURRENCIES: [&str; 9] = [
     "EUR", "GBP", "AUD", "NZD", "USD", "CAD", "CHF", "JPY", "CNY",
 ];
@@ -97,7 +97,7 @@ fn commodity_instruments() -> Vec<ScoreInstrument> {
     .collect()
 }
 
-pub(super) fn instruments() -> Vec<ScoreInstrument> {
+pub(crate) fn instruments() -> Vec<ScoreInstrument> {
     let mut result = CURRENCIES
         .iter()
         .map(|currency| ScoreInstrument {

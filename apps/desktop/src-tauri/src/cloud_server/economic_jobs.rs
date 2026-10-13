@@ -293,6 +293,9 @@ impl CloudServer {
             return Err(unavailable());
         }
         tx.commit().await?;
+        if let Err(error) = self.capture_cloud_scores().await {
+            tracing::warn!(code = %error.code, "Post-publication cloud score capture failed");
+        }
         Ok(if again {
             wait(now + 1800)
         } else {

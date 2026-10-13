@@ -22,11 +22,12 @@ export function ScoreHistoryPreview({
 }: {
   instrumentId: string;
 }) {
+  const available = canUseWorkspaceRoute("/score-history");
   const input = { instrumentId, from: utcDate(90), to: utcDate() };
   const history = useQuery({
     queryKey: ["macro", "score-history", input],
     queryFn: () => api.macroScoreHistory(input),
-    enabled: isTauri(),
+    enabled: available,
     retry: false,
     refetchInterval: isTauri() ? 60_000 : false,
   });
@@ -51,10 +52,9 @@ export function ScoreHistoryPreview({
         }
       />
       <CardContent>
-        {!isTauri() ? (
+        {!available ? (
           <p className="score-explanation">
-            Die dauerhafte Aufzeichnung liegt in der Desktop-Datenbank. Dieser
-            Cloud-Datenstand enthält noch keine Score-Historie.
+            Für diesen Datenstand ist noch keine Score-Historie verfügbar.
           </p>
         ) : history.isLoading ? (
           <p role="status">Score-Historie wird geladen …</p>
@@ -73,8 +73,8 @@ export function ScoreHistoryPreview({
           </Suspense>
         ) : (
           <p className="score-explanation">
-            Noch keine aufgezeichneten Scores für diesen Zeitraum. Bei laufender
-            App werden tägliche Beobachtungen und neue Datenstände gespeichert.
+            Noch keine aufgezeichneten Scores für diesen Zeitraum. Die Erfassung
+            speichert tägliche Beobachtungen und neue Datenstände.
           </p>
         )}
       </CardContent>

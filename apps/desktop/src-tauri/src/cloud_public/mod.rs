@@ -6,6 +6,7 @@ pub mod manifest;
 pub mod readers;
 pub mod report_readers;
 pub mod schema;
+pub mod score_transfer;
 pub mod seasonality_extended;
 
 #[cfg(test)]

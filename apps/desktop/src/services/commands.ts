@@ -1020,7 +1020,7 @@ export const api = {
             "Die Browser-Vorschau enthält keine aufgezeichneten Scores oder Daily-Kurse.",
         } satisfies CommandError),
   recordMacroScoreHistory: (): Promise<ScoreCaptureResult> =>
-    isTauri()
+    usesCommandBackend()
       ? call("record_macro_score_history")
       : Promise.reject({
           code: "DESKTOP_REQUIRED",

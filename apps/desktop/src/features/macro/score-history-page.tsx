@@ -4,6 +4,8 @@ import { useSearchParams } from "react-router-dom";
 import { History, RefreshCw } from "lucide-react";
 import { toast } from "sonner";
 import { api, isTauri } from "../../services/commands";
+import { isPrivateWeb } from "../../services/runtime-mode";
+import { supportsPrivateWebCommand } from "../../services/private-web-client";
 import { PageHeader } from "../../components/ui/page-header";
 import { Card, CardContent, CardHeader } from "../../components/ui/card";
 import { Button } from "../../components/ui/button";
@@ -128,7 +130,9 @@ export function ScoreHistoryPage() {
             >
               <RefreshCw size={14} /> Neu laden
             </Button>
-            {isTauri() && (
+            {(isTauri() ||
+              (isPrivateWeb() &&
+                supportsPrivateWebCommand("record_macro_score_history"))) && (
               <Button
                 size="sm"
                 variant="primary"
@@ -339,10 +343,10 @@ export function ScoreHistoryPage() {
                     ) : (
                       <p className="score-explanation">
                         Noch keine gespeicherten Beobachtungen in diesem
-                        Zeitraum. Bei laufender Desktop-App wird täglich und bei
-                        veränderten Fundamentaldaten aufgezeichnet. „Jetzt
-                        erfassen“ übernimmt auch vorhandene archivierte
-                        EODHD-Snapshots.
+                        Zeitraum. Die Desktop-App erfasst bei laufendem Betrieb;
+                        die Cloud erfasst über die täglichen Jobs und nach neuen
+                        Makro-Veröffentlichungen. „Jetzt erfassen“ speichert den
+                        aktuell verfügbaren Datenstand.
                       </p>
                     )}
                     <p className="score-explanation">
@@ -417,6 +421,23 @@ export function ScoreHistoryPage() {
                           Einzelpreis. Die Linie zeigt diese Werte; OHLC-Kerzen
                           und echte Tages-Eröffnungskurse liegen dafür nicht
                           vor.
+                        </p>
+                      )}
+                      {history.data.priceSource?.importedAt && (
+                        <p className="score-explanation">
+                          Daily-Daten übernommen am{" "}
+                          {dateTime(history.data.priceSource.importedAt)}.
+                          Letzter Kurstag:{" "}
+                          {history.data.candles.length
+                            ? new Date(
+                                history.data.candles[
+                                  history.data.candles.length - 1
+                                ].time * 1000,
+                              ).toLocaleDateString("de-DE", { timeZone: "UTC" })
+                            : "—"}
+                          . Cloud- und Desktop-Erfassung sind getrennt; dieser
+                          Preisstand wird nicht automatisch mit dem lokalen
+                          Terminal synchronisiert.
                         </p>
                       )}
                       <p className="score-explanation">
@@ -557,9 +578,15 @@ export function ScoreHistoryPage() {
                               <td
                                 title={`${point.snapshotId} · ${point.modelVersion}`}
                               >
-                                {point.origin === "captured"
-                                  ? "Aufgezeichnet"
-                                  : "Archiv-Snapshot"}
+                                {
+                                  {
+                                    captured: "Aufgezeichnet",
+                                    archived_snapshot: "Archiv-Snapshot",
+                                    cloud_captured: "Cloud-Aufzeichnung",
+                                    desktop_captured: "Desktop-Übernahme",
+                                    desktop_archived_snapshot: "Desktop-Archiv",
+                                  }[point.origin]
+                                }
                               </td>
                               <td>
                                 {dateTime(

@@ -59,9 +59,39 @@ Kupfer bleibt ohne exakt zugeordnete Kursreihe ausdrücklich ohne Chart.
 ## Laufzeit und Freigabe
 
 Desktop-Tracking läuft bei laufender App und nach neuen Fundamentals-Snapshots.
-Die Browser-Vorschau erfindet keine Historie. Neue Cloud-Capabilities sind
-optional; eine neue Live-Veröffentlichung oder automatische Desktop-/Cloud-
-Synchronisierung ist nicht beauftragt. Der neue Stand bleibt auf dem Branch.
+Die Browser-Vorschau erfindet keine Historie. Der ergänzende Auftrag vom
+13.10.2026 umfasst auch die private Smartphone-Version. Die neuen Cloud-
+Capabilities bleiben optional; der Journalzugang braucht sie nicht.
+Der neue Codestand bleibt bis zur gesonderten Freigabe auf dem Branch.
+
+### Private Browser-Anbindung
+
+PostgreSQL-Migration `0013_score_history.sql` führt getrennte öffentliche
+Beobachtungsbatches, Punkte, D1-Preisstände und den Erfassungszustand ein.
+Unveränderliche Beiträge bleiben beim ursprünglichen Beobachtungszeitpunkt.
+Die Cloud berechnet mit dem nativen Modell über das geprüfte Macro-Paket.
+Die vorhandene tägliche Providerplanung sowie die Veröffentlichung neuer
+Makro-Pakete lösen eine Erfassung aus; manuelle Erfassung ist ebenfalls verfügbar.
+Downloads laufen außerhalb von PostgreSQL-Transaktionen. Vor dem Speichern
+werden die aktive Generation und der Startzeitpunkt auf Millisekunden geprüft;
+parallele, identische oder verspätete Berechnungen verändern keinen neueren Stand.
+Journalrevision und persönliche Vorgangsbelege werden nicht verändert.
+
+Der explizite Exporter `export_public_scores` öffnet die lokale SQLite-Datei
+read-only und wählt ausschließlich Score-Felder sowie die nativen öffentlichen
+D1-Kerzen. Die Importdatei liegt außerhalb des Repository auf D:. Der Importer
+prüft SHA-256, Feldfreigabe, 89 bekannte Instrumente, Modellversion, Summen,
+Abdeckung, Zeitgrenzen, Duplikate und OHLC. Die Übernahme erfolgt atomar und
+prüft bei Wiederholung identische unveränderliche Inhalte. Accounts, Trades,
+Zugangsdaten, Terminalpfade, Medien und Notizen werden nicht übernommen.
+Desktop-Archiv, Desktop-Erfassung und Cloud-Erfassung bleiben unterscheidbar.
+
+Die Daily-Übernahme ist ein datierter Preisstand, keine automatische MT5-
+Synchronisierung. Fehlende Preise werden aus den generationstreuen EODHD-
+Paketen gelesen. EODHD-Einzelpreise und Handelsdatum-Grenzen behalten dieselbe
+Methodik wie auf dem Desktop. Eine fehlende exakte Kupfer-Preiszuordnung bleibt
+sichtbar. Mobile Filter, Charts, Kennzahlen und innerhalb der Cards scrollbare
+Tabellen erhalten die Desktop-Dichte ab 1024 px.
 
 ## Primärquellen (geprüft am 13.10.2026)
 

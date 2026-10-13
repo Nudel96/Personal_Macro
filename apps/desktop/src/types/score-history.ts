@@ -51,7 +51,12 @@ export interface MacroScoreHistoryPoint {
   validUntil: number;
   snapshotId: string;
   modelVersion: string;
-  origin: "captured" | "archived_snapshot";
+  origin:
+    | "captured"
+    | "archived_snapshot"
+    | "cloud_captured"
+    | "desktop_captured"
+    | "desktop_archived_snapshot";
   score: number | null;
   availableComponents: number;
   totalComponents: number;
@@ -72,6 +77,7 @@ export interface ScorePriceSource {
   inverted: boolean;
   dataKind: "ohlc" | "close";
   unit: string;
+  importedAt?: string;
 }
 
 export interface MacroScoreHistoryResponse {
