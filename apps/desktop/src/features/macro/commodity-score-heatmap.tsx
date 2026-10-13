@@ -140,7 +140,63 @@ export function CommodityScoreHeatmap({ cot }: { cot?: CotDashboard }) {
               physische Treiber bleiben offen. COT steht separat und verändert
               die Fundamentals-Summe nicht.
             </p>
-            <div className="score-table-scroll">
+            <div className="commodity-mobile-grid" aria-label="Rohstoff-Scores">
+              {dashboard.data?.assets.map((asset) => (
+                <div
+                  className="commodity-mobile-item"
+                  key={asset.instrument.id}
+                  data-selected={asset.instrument.id === selectedId}
+                >
+                  <button
+                    className="score-market-button commodity-mobile-select"
+                    onClick={() => setSelectedId(asset.instrument.id)}
+                    aria-pressed={asset.instrument.id === selectedId}
+                  >
+                    <span>{asset.instrument.label.split(" · ")[0]}</span>
+                    <strong data-bias={scoreBias(asset.score, 1)}>
+                      {signedScore(asset.score)}
+                    </strong>
+                    <small>
+                      {
+                        biasLabels[
+                          scoreBias(
+                            asset.score,
+                            asset.instrument.defaultThreshold,
+                          )
+                        ]
+                      }{" "}
+                      · {asset.availableComponents}/{asset.totalComponents}{" "}
+                      Daten
+                    </small>
+                  </button>
+                  <small>
+                    USD {signedScore(channel(asset, "usd"))} · Nachfrage{" "}
+                    {signedScore(channel(asset, "demand"))}
+                  </small>
+                  <small>
+                    Lager {signedScore(channel(asset, "inventory"))} · eigene
+                    Treiber {signedScore(channel(asset, "asset"))}
+                  </small>
+                  <small>
+                    COT separat:{" "}
+                    {asset.instrument.cotSymbol && cot
+                      ? signedScore(
+                          buildInstitutionalAssetActivity(
+                            asset.instrument.cotSymbol,
+                            cot,
+                          ).score,
+                        )
+                      : "—"}
+                  </small>
+                  <a
+                    href={`/score-history?instrument=${encodeURIComponent(asset.instrument.id)}`}
+                  >
+                    Daily-Vergleich
+                  </a>
+                </div>
+              ))}
+            </div>
+            <div className="score-table-scroll commodity-desktop-table">
               <table className="commodity-score-table">
                 <thead>
                   <tr>

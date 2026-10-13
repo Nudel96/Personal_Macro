@@ -163,7 +163,56 @@
 .score-history-preview a {
   font-size: 12px;
 }
+.commodity-mobile-grid {
+  display: none;
+}
 @media (max-width: 1023px) {
+  .commodity-desktop-table {
+    display: none;
+  }
+  .commodity-mobile-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .commodity-mobile-item {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .commodity-mobile-item[data-selected="true"] {
+    border-color: var(--primary);
+    background: var(--surface-2);
+  }
+  .commodity-mobile-select {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+  }
+  .commodity-mobile-select strong {
+    font-size: 24px;
+    font-variant-numeric: tabular-nums;
+  }
+  .commodity-mobile-item small {
+    color: var(--text-2);
+    font-size: 10px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+  }
+  .commodity-mobile-item a {
+    display: inline-flex;
+    min-height: 44px;
+    align-items: center;
+    font-size: 11px;
+  }
   .score-history-metrics,
   .score-outcome-grid {
     grid-template-columns: 1fr;

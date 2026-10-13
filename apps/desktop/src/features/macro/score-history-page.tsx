@@ -417,10 +417,9 @@ export function ScoreHistoryPage() {
                       )}
                       {history.data.priceSource?.dataKind === "close" && (
                         <p className="score-explanation">
-                          Diese Preisreihe liefert einen täglichen
-                          Einzelpreis. Die Linie zeigt diese Werte; OHLC-Kerzen
-                          und echte Tages-Eröffnungskurse liegen dafür nicht
-                          vor.
+                          Diese Preisreihe liefert einen täglichen Einzelpreis.
+                          Die Linie zeigt diese Werte; OHLC-Kerzen und echte
+                          Tages-Eröffnungskurse liegen dafür nicht vor.
                         </p>
                       )}
                       {history.data.priceSource?.importedAt && (
