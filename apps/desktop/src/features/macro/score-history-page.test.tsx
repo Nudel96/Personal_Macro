@@ -170,7 +170,7 @@ describe("Score History workspace", () => {
     );
     expect(
       await screen.findByText(
-        /Diese Energiereihe liefert einen täglichen Einzelpreis/,
+        /Diese Preisreihe liefert einen täglichen Einzelpreis/,
       ),
     ).toBeTruthy();
     expect(screen.queryByText("100.0 %")).toBeNull();

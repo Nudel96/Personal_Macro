@@ -417,7 +417,7 @@ export function ScoreHistoryPage() {
                       )}
                       {history.data.priceSource?.dataKind === "close" && (
                         <p className="score-explanation">
-                          Diese Energiereihe liefert einen täglichen
+                          Diese Preisreihe liefert einen täglichen
                           Einzelpreis. Die Linie zeigt diese Werte; OHLC-Kerzen
                           und echte Tages-Eröffnungskurse liegen dafür nicht
                           vor.

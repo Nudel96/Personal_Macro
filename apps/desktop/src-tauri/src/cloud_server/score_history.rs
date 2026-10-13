@@ -265,18 +265,33 @@ impl CloudServer {
                     continue;
                 };
                 let shard = runtime.load(&descriptor).await.map_err(|_| unavailable())?;
-                let prices = native::daily_provider_prices(
-                    shard.pool(),
-                    &instrument,
-                    from,
-                    to,
-                    now.timestamp(),
-                )
-                .await;
+                // The reviewed seasonality-symbol schema contains mid_close
+                // only. Preserve that contract; OHLC comes from explicit D1
+                // imports and is never reconstructed from a closing price.
+                let prices =
+                    public_daily_closes(shard.pool(), &symbol, from, to, now.timestamp()).await;
                 shard.close().await;
-                (candles, price_source) = prices.map_err(|_| unavailable())?;
-                if let Some(source) = &mut price_source {
-                    source.imported_at = Some(manifest.manifest.created_at.clone());
+                candles = prices.map_err(|_| unavailable())?;
+                let inverted = instrument.price_symbol.as_deref() != Some(&symbol);
+                if inverted {
+                    for candle in &mut candles {
+                        let value = 1.0 / candle.close;
+                        candle.open = value;
+                        candle.high = value;
+                        candle.low = value;
+                        candle.close = value;
+                    }
+                }
+                if !candles.is_empty() {
+                    price_source = Some(commands::ScorePriceSource {
+                        provider: "eodhd".into(),
+                        symbol,
+                        label: "EODHD Daily-Schlusskurs · Quellen-Kalendertag".into(),
+                        inverted,
+                        data_kind: "close".into(),
+                        unit: native::price_unit(&instrument),
+                        imported_at: Some(manifest.manifest.created_at.clone()),
+                    });
                 }
                 if !candles.is_empty() {
                     break;
@@ -312,3 +327,14 @@ impl CloudServer {
 
 #[cfg(test)]
 mod tests;
+
+async fn public_daily_closes(
+    pool: &sqlx::SqlitePool,
+    symbol: &str,
+    from: i64,
+    to: i64,
+    now: i64,
+) -> Result<Vec<commands::ScoreDailyCandle>, sqlx::Error> {
+    sqlx::query_as("SELECT candle_time/1000 AS time,mid_close AS open,mid_close AS high,mid_close AS low,mid_close AS close FROM seasonality_provider_daily_candles WHERE provider='eodhd' AND provider_symbol=? AND candle_time>=? AND candle_time<? AND candle_time+86400000<=? ORDER BY candle_time LIMIT 2000")
+        .bind(symbol).bind(from*1000).bind(to*1000).bind(now*1000).fetch_all(pool).await
+}

@@ -70,7 +70,8 @@ def validate(data):
         require(set(price) == {"instrumentId", "source", "candles"} and instrument(price["instrumentId"]) and price["instrumentId"] not in price_seen, "PRICE_FIELDS")
         price_seen.add(price["instrumentId"])
         source = price["source"]
-        require(set(source) == {"provider", "symbol", "label", "inverted", "dataKind", "unit"} and source["provider"] == "mt5" and source["dataKind"] == "ohlc", "PRICE_SOURCE")
+        require(set(source) == {"provider", "symbol", "label", "inverted", "dataKind", "unit"} and source["provider"] in {"mt5", "eodhd"} and source["dataKind"] in {"ohlc", "close"}, "PRICE_SOURCE")
+        require(source["provider"] != "mt5" or source["dataKind"] == "ohlc", "BROKER_OHLC_REQUIRED")
         require(type(source["inverted"]) is bool and all(isinstance(source[k], str) and len(source[k]) <= 300 for k in ("symbol", "label", "unit")), "PRICE_SOURCE_FIELDS")
         require(isinstance(price["candles"], list) and len(price["candles"]) <= 2000, "PRICE_CANDLES")
         last = 0
@@ -78,6 +79,8 @@ def validate(data):
             require(set(c) == {"time", "open", "high", "low", "close"} and integer(c["time"]) and last < c["time"] and c["time"] + 86400 <= data["exportedAt"], "CANDLE_TIME")
             require(all(type(c[k]) in (int, float) and math.isfinite(c[k]) and c[k] > 0 for k in ("open", "high", "low", "close")), "CANDLE_VALUES")
             require(c["low"] <= min(c["open"], c["close"]) <= max(c["open"], c["close"]) <= c["high"], "CANDLE_OHLC")
+            if source["dataKind"] == "close":
+                require(c["open"] == c["high"] == c["low"] == c["close"], "SINGLE_PRICE_CONTRACT")
             last = c["time"]
     return batches
 

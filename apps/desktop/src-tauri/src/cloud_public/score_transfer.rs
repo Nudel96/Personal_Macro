@@ -54,8 +54,9 @@ pub async fn export(state: &AppState, now: DateTime<Utc>) -> CloudResult<Value> 
                 "Daily-Kurse konnten nicht gelesen werden.",
             )
         })?;
-        // EODHD already has its own bounded, verified immutable cloud package.
-        if let Some(source) = source.filter(|s| s.provider == "mt5") {
+        // Existing seasonality cloud shards retain only mid_close. Transfer
+        // available native OHLC explicitly, with its original source contract.
+        if let Some(source) = source {
             prices.push(json!({"instrumentId":instrument.id,"source":source,"candles":candles}));
         }
     }

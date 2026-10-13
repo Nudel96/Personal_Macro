@@ -86,9 +86,11 @@ prüft bei Wiederholung identische unveränderliche Inhalte. Accounts, Trades,
 Zugangsdaten, Terminalpfade, Medien und Notizen werden nicht übernommen.
 Desktop-Archiv, Desktop-Erfassung und Cloud-Erfassung bleiben unterscheidbar.
 
-Die Daily-Übernahme ist ein datierter Preisstand, keine automatische MT5-
-Synchronisierung. Fehlende Preise werden aus den generationstreuen EODHD-
-Paketen gelesen. EODHD-Einzelpreise und Handelsdatum-Grenzen behalten dieselbe
+Die Daily-Übernahme umfasst verfügbare MT5- und EODHD-Daten. Sie ist ein
+datierter Preisstand, keine automatische MT5-Synchronisierung. Die bestehenden
+Seasonality-Symbolpakete enthalten nur `mid_close`; dieser Rückfall zeigt
+Schlusskurslinien. Native EODHD-OHLC wird ausdrücklich separat übernommen.
+EODHD-Einzelpreise und Handelsdatum-Grenzen behalten dieselbe
 Methodik wie auf dem Desktop. Eine fehlende exakte Kupfer-Preiszuordnung bleibt
 sichtbar. Mobile Filter, Charts, Kennzahlen und innerhalb der Cards scrollbare
 Tabellen erhalten die Desktop-Dichte ab 1024 px.

@@ -1,6 +1,59 @@
 use super::*;
 use crate::cloud_postgres::test_support::TestDatabase;
 
+#[tokio::test]
+async fn public_close_schema_needs_no_ohlc_columns_and_excludes_unfinished_days() {
+    let pool = sqlx::sqlite::SqlitePoolOptions::new()
+        .max_connections(1)
+        .connect("sqlite::memory:")
+        .await
+        .unwrap();
+    sqlx::query("CREATE TABLE seasonality_provider_daily_candles(provider TEXT,provider_symbol TEXT,candle_time INTEGER,mid_close REAL)").execute(&pool).await.unwrap();
+    let start = 1800000000;
+    for day in 0..=2 {
+        sqlx::query(
+            "INSERT INTO seasonality_provider_daily_candles VALUES('eodhd','XAUUSD.FOREX',?,?)",
+        )
+        .bind((start + day * 86400) * 1000)
+        .bind(2000.0 + day as f64)
+        .execute(&pool)
+        .await
+        .unwrap();
+    }
+    sqlx::query("PRAGMA query_only=ON")
+        .execute(&pool)
+        .await
+        .unwrap();
+    let rows = public_daily_closes(
+        &pool,
+        "XAUUSD.FOREX",
+        start,
+        start + 3 * 86400,
+        start + 2 * 86400,
+    )
+    .await
+    .unwrap();
+    assert_eq!(rows.len(), 2);
+    assert_eq!(rows[0].time, start);
+    assert!(
+        rows.iter()
+            .all(|c| c.open == c.close && c.high == c.close && c.low == c.close)
+    );
+    assert!(
+        public_daily_closes(
+            &pool,
+            "OTHER.FOREX",
+            start,
+            start + 3 * 86400,
+            start + 2 * 86400
+        )
+        .await
+        .unwrap()
+        .is_empty()
+    );
+    pool.close().await;
+}
+
 #[test]
 fn rejects_unbounded_or_unknown_score_arguments() {
     assert!(
