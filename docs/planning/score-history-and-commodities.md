@@ -205,3 +205,48 @@ Prüfberichte und Screenshots liegen ausschließlich lokal auf D: unter
 Die WebKit-Abnahme ersetzt keine physische iPhone-/Besitzer-SSO-Abnahme.
 Der Rohstoff-Score bleibt ein transparentes Teilmodell mit sichtbaren Lücken;
 diese Softwareprüfung bestätigt keine allgemeine Prognosegüte.
+
+## Erneute Main- und Smartphone-Abnahme vom 14.10.2026
+
+Ausgangspunkt ist der nach GitHub gepushte `main`-Stand `8873e76`. Der vollständige
+Anwendungsquellcode unter `apps/desktop` stimmt mit `3eff2c6` des bereits
+bereitgestellten geschützten Builds `dpl_7L6zohc7b4DHCJMfohehxACtBEjK` überein.
+Die zusätzlichen Main-Commits betreffen Dokumentation und Git-Zeilenendenregeln.
+Der stabile Projektlink verwendet weiterhin diesen READY-Build in `fra1`,
+`public: false`; ein zusätzlicher Anwendungs-Rollout war dafür nicht erforderlich.
+
+- Alle 89 Instrumente und sechs ausgewählte Historien bestehen den erneuten
+  API-Vertragscheck. Jede Historie besitzt 74 Beobachtungen. EUR/USD und USD/EUR
+  verwenden 51 datierte MT5-Kerzen mit korrekt inversen High-/Low-Werten; Gold
+  besitzt 73 OHLC-Werte, WTI 46 Einzelpreise. Die fehlende Kupferreihe bleibt
+  ausdrücklich nicht verfügbar. Acht Commodity-Summen und Datenlücken sind geprüft.
+- Score-Seite bei 320/390/430/768/1440 px und Macro bei 320/390/768/1440 px:
+  kein Seitenüberlauf, beide Score-/Daily-Charts vorhanden, Marktwechsel,
+  SMA-Steuerung, manuelle Erfassung und acht mobile Rohstoff-Karten funktionieren.
+  Screenshots der öffentlichen Marktansichten wurden zusätzlich visuell geprüft.
+- Ein erster früher Messlauf meldete einen Überlauf bei 320 px. Der detaillierte
+  Wiederholungslauf bestand unverändert alle Breiten. Ein weiterer frischer
+  Einstieg direkt bei 320 px wartet ausdrücklich auf beide Charts und abgeschlossene
+  Anfragen; auch dieser vollständige Lauf besteht ohne Überlauf. Für die übrigen
+  Seiten wurde ein veralteter Macro-Seitentitel im lokalen Prüfer aktualisiert.
+  Daraus entstand keine Änderung an der ausgelieferten Oberfläche.
+- 23 Ansichten wurden auf der tatsächlich bereitgestellten Oberfläche in WebKit
+  mit Mobil-/Touch-Kontext bei 390 px geprüft: Übersicht, Trades, die Score-Seite,
+  Macro, COT, Wirtschaftsdaten/-kalender, Zentralbankberichte, Staatsanleihen,
+  Learning, Wetter, Import/Export, Tradingkalender, Analytics, Reviews, Playbook,
+  Fehleranalyse, Medien, Ziele, Leitzinsen, Seasonality, Regime Insights und
+  Einstellungen. Keine Laufzeit-/API-Fehler, keine persönlichen Schreibversuche
+  und unveränderte Journalrevision 9. Atlasnavigation bleibt sichtbar; das Öffnen
+  mit automatischer Speicherung der letzten Ansicht wurde nicht ausgeführt.
+- Temporäre Testzugänge wurden in jedem Lauf widerrufen und anschließend separat
+  auf Abwesenheit geprüft. Anonyme und widerrufene Score-Testanfragen liefern
+  HTTP 401; der Besitzerzugriffsschutz für alle Deployments bleibt erhalten.
+
+Die abgeschlossenen lokalen Nachweise sind
+`apps/desktop/.vercel/main-mobile-score-320-2026-10-14-report.json`,
+`main-mobile-parity-2026-10-14-report.json` und
+`main-mobile-extra-2026-10-14-report.json`. Screenshots liegen auf D: unter
+`apps/desktop/output/playwright/main-mobile-2026-10-14/`. Berichte, Testhelfer und
+Medien werden nicht versioniert. Diese Abnahme ersetzt weder eine physische
+iPhone-/Besitzer-SSO-Prüfung noch die Prüfung sämtlicher persönlicher Schreibflows
+oder vollständige Desktop-/Browser-Parität.

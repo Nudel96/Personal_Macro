@@ -894,6 +894,15 @@ Testschlüssel sind entfernt; anonym/widerrufen HTTP 401. Keine physische iPhone
 oder Prognosegüte-Abnahme behaupten. Auf ausdrückliche Nutzerfreigabe vom
 14.10.2026 wurde `codex/score-history-commodities` per Fast-forward nach `main`
 übernommen; der zuvor geprüfte Funktionsstand bleibt unverändert.
+Die erneute Live-Abnahme vom 14.10.2026 bestätigt denselben Anwendungsquellcode
+unter `apps/desktop` auf `main` und im bereitgestellten Build. Score-Historie,
+Daily-Charts und acht Rohstoff-Karten bestehen in WebKit bei 320 bis 1440 px,
+einschließlich eines frischen Einstiegs bei 320 px. Insgesamt wurden 23 Ansichten
+bei 390 px geöffnet, ohne Seitenüberlauf, Laufzeit-/API-Fehler oder persönliche
+Schreibversuche. Atlasnavigation wurde geprüft, der Atlas selbst wegen seiner
+normalen Speicherung der letzten Ansicht nicht geöffnet. Journalrevision 9 blieb
+unverändert; alle temporären Testzugänge sind widerrufen. Die physische iPhone-
+und Besitzer-SSO-Abnahme bleibt gesondert.
 Vertrag, Quellen und Prüfnachweise: `docs/planning/score-history-and-commodities.md`.
 
 ## 11. Leitzinsmodell
