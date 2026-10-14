@@ -1,6 +1,7 @@
 # Score-Historie und Rohstoff-Fundamentals
 
-Stand: 13.10.2026. Arbeitsbranch: `codex/score-history-commodities`.
+Stand: 14.10.2026. Auf Nutzerfreigabe per Fast-forward nach `main` übernommen;
+Herkunftsbranch: `codex/score-history-commodities`, Funktionsstand `ab8c85a`.
 Der zuvor vorhandene Stand wurde als `50c8f70` auf `main` gesichert.
 
 ## Vertrag
@@ -62,7 +63,7 @@ Desktop-Tracking läuft bei laufender App und nach neuen Fundamentals-Snapshots.
 Die Browser-Vorschau erfindet keine Historie. Der ergänzende Auftrag vom
 13.10.2026 umfasst auch die private Smartphone-Version. Die neuen Cloud-
 Capabilities bleiben optional; der Journalzugang braucht sie nicht.
-Der neue Codestand bleibt bis zur gesonderten Freigabe auf dem Branch.
+Die ausdrückliche Nutzerfreigabe zur Übernahme nach `main` erfolgte am 14.10.2026.
 
 ### Private Browser-Anbindung
 
@@ -146,7 +147,9 @@ Die Softwareprüfungen bestätigen keine allgemeine Prognosegüte des Teilmodell
 Die Bilder sind keine Live-Marktdaten. Browser-DTO-Prüfung und nativer
 Fensterstart ersetzen keine vollständige native UI-/Besitzerabnahme.
 Die Desktop-Abnahme wurde zunächst ohne Cloud-Veröffentlichung abgeschlossen.
-Die ergänzende Browser-Abnahme folgt unten. Kein Merge der neuen Arbeit nach `main`.
+Die ergänzende Browser-Abnahme folgt unten. Zum Zeitpunkt dieser Abnahme war
+die Arbeit noch auf dem Feature-Branch; die Übernahme nach `main` erfolgte am
+14.10.2026 nach ausdrücklicher Nutzerfreigabe.
 
 ## Private Smartphone-Abnahme vom 13.10.2026
 

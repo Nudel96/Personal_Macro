@@ -839,9 +839,9 @@ Neue öffentliche Technicals-Pakete dürfen genau diese zwei USD-Spots ergänzen
 das bestätigt keine Cloud-Bereitstellung oder MT5-Übertragung. Vertrag und
 Prüfungen: `docs/planning/precious-metals-heatmap.md`.
 
-### 10.7 Score-Historie und Rohstoff-Teilmodelle (Arbeitsstand 13.10.2026)
+### 10.7 Score-Historie und Rohstoff-Teilmodelle (Stand 14.10.2026)
 
-Der Arbeitsbranch ergänzt `commands/score_history.rs`, `macro_scores.rs` und
+Die Anwendung ergänzt `commands/score_history.rs`, `macro_scores.rs` und
 Migration `0053`. Unveränderliche lokale Beobachtungen speichern tatsächliche
 Erfassungszeit, Quelle, Modellversion, nullable Score und eingefrorene Beiträge.
 Vorhandene EODHD-Evaluierungen werden als Archiv-Snapshot-Inputs übernommen;
@@ -886,8 +886,9 @@ zeigen Gesamtwert, Bias und Abdeckung ohne seitliches Scrollen. WebKit besteht
 320/390/430/768/1440 px, keine Laufzeit-/API-Fehler oder persönlichen Schreibversuche,
 Journalrevision 9 unverändert. Prüfadresse, zusätzliche Prüf-Origin und temporäre
 Testschlüssel sind entfernt; anonym/widerrufen HTTP 401. Keine physische iPhone-
-oder Prognosegüte-Abnahme behaupten. Die neue Arbeit bleibt bis zur Freigabe auf
-`codex/score-history-commodities` und ist nicht nach main gemergt.
+oder Prognosegüte-Abnahme behaupten. Auf ausdrückliche Nutzerfreigabe vom
+14.10.2026 wurde `codex/score-history-commodities` per Fast-forward nach `main`
+übernommen; der zuvor geprüfte Funktionsstand bleibt unverändert.
 Vertrag, Quellen und Prüfnachweise: `docs/planning/score-history-and-commodities.md`.
 
 ## 11. Leitzinsmodell

@@ -18,11 +18,11 @@ Tests und die Definition of Done. `apps/desktop` ist die produktive Anwendung;
 
 ## Schnellstart zum Testen
 
-**Arbeitsstand vom 13.10.2026:** Auf `codex/score-history-commodities` gibt es
+**Stand auf `main` vom 14.10.2026:** Die Anwendung enthält
 eine dauerhafte Score-Historie mit separatem Daily-Vergleich sowie ein transparentes
-Fundamentals-Teilmodell für acht Metalle-/Energiemärkte. Die neue Arbeit bleibt
-zur Prüfung auf dem Branch; bestehende Änderungen wurden zuvor als `50c8f70`
-auf `main` gesichert. In der Desktop-App über **Marktkontext → Score-Historie**
+Fundamentals-Teilmodell für acht Metalle-/Energiemärkte. Der geprüfte Branch
+`codex/score-history-commodities` wurde auf Nutzerfreigabe nach `main` übernommen.
+In der Desktop-App über **Marktkontext → Score-Historie**
 oder direkt aus Macro öffnen. [Methodik, Quellen und Grenzen](docs/planning/score-history-and-commodities.md).
 Die beauftragte private Smartphone-Anbindung ergänzt dieselben Ansichten,
 getrennte dauerhafte Cloud-Beobachtungen und datierte Daily-Preisstände. Der
