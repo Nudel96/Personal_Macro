@@ -1,0 +1,5 @@
+# Keep SQLx checksums stable across Windows checkouts for these new migrations.
+# Older migrations retain their existing byte contract.
+apps/desktop/src-tauri/migrations/0053_macro_score_history.sql text eol=lf
+apps/desktop/src-tauri/postgres-migrations/0012_cloud_transfer.sql text eol=lf
+apps/desktop/src-tauri/postgres-migrations/0013_score_history.sql text eol=lf

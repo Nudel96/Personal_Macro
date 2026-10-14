@@ -64,6 +64,14 @@ Die Browser-Vorschau erfindet keine Historie. Der ergänzende Auftrag vom
 13.10.2026 umfasst auch die private Smartphone-Version. Die neuen Cloud-
 Capabilities bleiben optional; der Journalzugang braucht sie nicht.
 Die ausdrückliche Nutzerfreigabe zur Übernahme nach `main` erfolgte am 14.10.2026.
+Der Windows-Checkout mit `core.autocrlf=true` hatte die neue SQLite-Migration
+von LF nach CRLF umgewandelt und dadurch ihren SQLx-Prüfsummenvergleich beim
+Start blockiert. Die gespeicherte Prüfsumme entspricht den unveränderten
+LF-Dateibytes aus Git. `.gitattributes` erhält diese Bytes für SQLite `0053`
+und die neu angewendeten PostgreSQL-Migrationen `0012`/`0013` ausdrücklich;
+auch deren gespeicherte Prüfsummen wurden lesend abgeglichen. Ältere Migrationen
+werden nicht normalisiert.
+Es wurden weder SQL-Inhalte noch gespeicherte Datenbankprüfsummen verändert.
 
 ### Private Browser-Anbindung
 

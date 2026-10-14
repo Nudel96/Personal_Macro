@@ -640,6 +640,11 @@ Wichtige Tabellengruppen:
    verändern. Tests verwenden temporäre Datenbanken.
 7. Direkte Reparaturen an der Benutzer-Datenbank sind nur mit expliziter
    Zustimmung und vorherigem Backup zulässig.
+8. SQLx prüft die exakten Dateibytes einschließlich Zeilenenden. Neue Migrationen
+   müssen vor ihrer ersten Anwendung feste Checkout-Zeilenenden erhalten.
+   `.gitattributes` sichert LF für SQLite `0053` und PostgreSQL `0012`/`0013`.
+   Ältere Migrationen nicht pauschal normalisieren; ihre gespeicherten
+   Prüfsummen können auf anderen Zeilenenden beruhen.
 
 ## 9. Lokale Daten, AppData und Backups
 
