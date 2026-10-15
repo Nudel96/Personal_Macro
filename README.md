@@ -104,9 +104,13 @@ Bei längerem Warten bietet die Seite nach acht Sekunden eine erneute Prüfung;
 Rückkehr und abgelaufene Versuche werden ausdrücklich behandelt.
 [Befund, Korrektur und Nachweise](docs/audit/private-web-iphone-startup.md).
 
-**Automatische Aktualisierung – Erweiterung vom 26.09.2026:** EODHD-Releases werden
-wöchentlich für die kommende Woche geplant und eine Stunde nach Veröffentlichung
-abgerufen. COT folgt dem offiziellen CFTC-Kalender einschließlich Feiertagen und
+**Automatische Aktualisierung – Stand 15.10.2026:** EODHD-Wirtschaftsdaten werden
+viermal täglich um **00, 06, 12 und 18 Uhr UTC** für alle neun Währungen abgerufen.
+Das entspricht in Deutschland im Sommer 02, 08, 14 und 20 Uhr, im Winter
+01, 07, 13 und 19 Uhr. In der lokalen Version muss die Desktop-App laufen;
+ein versäumter Abruf wird beim nächsten Start nachgeholt. Der private Smartphone-
+Workspace arbeitet unabhängig vom PC. Bekannte Cloud-Releases werden zusätzlich
+eine Stunde nach Veröffentlichung geprüft. COT folgt dem offiziellen CFTC-Kalender einschließlich Feiertagen und
 Sommerzeit, ebenfalls mit einer Stunde Abstand. Die Erweiterung ist privat
 bereitgestellt: Alle neun Währungsplanungen und der COT-Auftrag sind abgeschlossen;
 22 Analyseprüfungen und die mobile WebKit-Abnahme einschließlich Myfxbook-Einrichtung

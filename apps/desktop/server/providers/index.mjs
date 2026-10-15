@@ -361,7 +361,7 @@ export async function processProviderMessage(
             false,
           );
         }
-        // A weekly planner can discover releases due before the next daily tick.
+        // Each refresh can discover releases due before the next daily tick.
         // Queue idempotency and DB receipts make repeated dispatch harmless.
         await scheduleProviderJobs(settings, signal);
       },

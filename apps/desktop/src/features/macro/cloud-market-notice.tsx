@@ -31,8 +31,10 @@ export function CloudMarketNotice({
       {status.data?.economicEnabled && (
         <>
           {" "}
-          Wirtschaftsreleases werden wöchentlich vorausgeplant und eine Stunde
-          nach der Veröffentlichung automatisch geprüft.
+          EODHD-Wirtschaftsdaten werden viermal täglich um 00, 06, 12 und 18 Uhr
+          UTC automatisch abgerufen, auch bei ausgeschaltetem PC. Bekannte
+          Wirtschaftsreleases werden zusätzlich eine Stunde nach der
+          Veröffentlichung geprüft.
           {status.data.nextRunAt &&
             ` Nächster automatischer Abruf: ${dateTime(status.data.nextRunAt)}.`}
           {status.data.failedJobs > 0 &&

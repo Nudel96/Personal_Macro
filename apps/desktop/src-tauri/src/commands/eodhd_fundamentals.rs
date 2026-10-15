@@ -656,7 +656,7 @@ pub async fn scheduled_eodhd_sync(state: &AppState) -> Result<(), AppError> {
     if snapshot_refresh_is_due(state, Utc::now()).await? {
         rebuild_snapshot(state).await?;
     }
-    if eodhd_api_key().is_none() || !sync_is_due(state).await? {
+    if eodhd_api_key().is_none() || !sync_is_due(state, Utc::now()).await? {
         return Ok(());
     }
     let trigger = if last_success_at(state).await?.is_some() {
@@ -686,7 +686,7 @@ async fn sync_eodhd(
             "Eine EODHD-Synchronisierung läuft bereits.".into(),
         ));
     }
-    if !force && !sync_is_due(state).await? {
+    if !force && !sync_is_due(state, Utc::now()).await? {
         return Err(AppError::Conflict(
             "Aktuell ist keine EODHD-Prüfung fällig.".into(),
         ));
@@ -695,10 +695,16 @@ async fn sync_eodhd(
         AppError::Validation("EODHD_API_KEY ist im nativen Backend nicht konfiguriert.".into())
     })?;
     let run_id = Uuid::new_v4().to_string();
-    let started_at = Utc::now().to_rfc3339();
+    let now = Utc::now();
+    let started_at = now.to_rfc3339();
 
-    let due_currencies = due_release_currencies(state).await?;
-    let scoped = !force && !due_currencies.is_empty();
+    let due_currencies = due_release_currencies(state, now).await?;
+    // A release retry must never postpone the full refresh for this UTC slot.
+    // Nine requested currencies always mean a full window in the run history.
+    let scoped = !force
+        && !full_sync_is_due(state, now).await?
+        && !due_currencies.is_empty()
+        && due_currencies.len() < CURRENCIES.len();
     let currencies = if scoped {
         due_currencies
     } else {
@@ -715,7 +721,6 @@ async fn sync_eodhd(
     .execute(&state.db)
     .await?;
 
-    let now = Utc::now();
     let (from, to) = if scoped {
         (now - Duration::days(2), now + Duration::days(2))
     } else {
@@ -2110,11 +2115,31 @@ async fn load_feed_status(state: &AppState) -> Result<EodhdFeedStatus, AppError>
     )
     .fetch_one(&state.db)
     .await?;
-    let next_due_at = sqlx::query_scalar(
+    let release_due_at: Option<String> = sqlx::query_scalar(
         "SELECT MIN(scheduled_for) FROM eodhd_release_jobs WHERE status IN ('pending','failed')",
     )
     .fetch_one(&state.db)
     .await?;
+    let now = Utc::now();
+    let slot = eodhd::refresh_slot(now);
+    let regular_due_at = DateTime::from_timestamp(
+        if full_sync_is_due(state, now).await? {
+            slot
+        } else {
+            slot + eodhd::REFRESH_INTERVAL_SECONDS
+        },
+        0,
+    )
+    .expect("valid economic refresh slot");
+    let next_due_at = Some(
+        release_due_at
+            .as_deref()
+            .and_then(|value| DateTime::parse_from_rfc3339(value).ok())
+            .map_or(regular_due_at, |value| {
+                regular_due_at.min(value.with_timezone(&Utc))
+            })
+            .to_rfc3339(),
+    );
     let pending_mapping_reviews: i64 =
         sqlx::query_scalar("SELECT COUNT(*) FROM eodhd_mapping_candidates WHERE status='pending'")
             .fetch_one(&state.db)
@@ -2225,17 +2250,28 @@ async fn review_mapping_candidate(
     ).bind(id).fetch_one(&state.db).await.map_err(Into::into)
 }
 
-async fn sync_is_due(state: &AppState) -> Result<bool, AppError> {
-    if !due_release_currencies(state).await?.is_empty() {
-        return Ok(true);
-    }
-    let Some(last) = last_success_at(state).await? else {
-        return Ok(true);
-    };
-    let parsed = DateTime::parse_from_rfc3339(&last)
-        .ok()
-        .map(|value| value.with_timezone(&Utc));
-    Ok(parsed.is_none_or(|value| value <= Utc::now() - Duration::hours(24)))
+async fn full_sync_is_due(state: &AppState, now: DateTime<Utc>) -> Result<bool, AppError> {
+    // History imports and scoped release retries do not satisfy a full slot.
+    // Use start time so a run crossing a slot boundary cannot consume both slots.
+    let last: Option<String> = sqlx::query_scalar(
+        "SELECT started_at FROM eodhd_sync_runs
+         WHERE status='complete' AND countries_requested=? ORDER BY started_at DESC LIMIT 1",
+    )
+    .bind(CURRENCIES.len() as i64)
+    .fetch_optional(&state.db)
+    .await?;
+    let parsed = last
+        .as_deref()
+        .and_then(|value| DateTime::parse_from_rfc3339(value).ok())
+        .map(|value| value.timestamp());
+    Ok(parsed.is_none_or(|value| value < eodhd::refresh_slot(now) || value > now.timestamp()))
+}
+
+async fn sync_is_due(state: &AppState, now: DateTime<Utc>) -> Result<bool, AppError> {
+    Ok(
+        full_sync_is_due(state, now).await?
+            || !due_release_currencies(state, now).await?.is_empty(),
+    )
 }
 
 async fn snapshot_refresh_is_due(state: &AppState, now: DateTime<Utc>) -> Result<bool, AppError> {
@@ -2294,11 +2330,14 @@ async fn last_success_at(state: &AppState) -> Result<Option<String>, AppError> {
         .fetch_optional(&state.db).await.map_err(Into::into)
 }
 
-async fn due_release_currencies(state: &AppState) -> Result<Vec<String>, AppError> {
+async fn due_release_currencies(
+    state: &AppState,
+    now: DateTime<Utc>,
+) -> Result<Vec<String>, AppError> {
     sqlx::query_scalar(
         "SELECT DISTINCT e.currency FROM eodhd_release_jobs j JOIN eodhd_events e ON e.id=j.event_id
          WHERE j.status IN ('pending','failed') AND j.scheduled_for<=? ORDER BY e.currency",
-    ).bind(Utc::now().to_rfc3339()).fetch_all(&state.db).await.map_err(Into::into)
+    ).bind(now.to_rfc3339()).fetch_all(&state.db).await.map_err(Into::into)
 }
 
 fn eodhd_api_key() -> Option<String> {
@@ -2380,6 +2419,71 @@ fn pair_bias(score: i32) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[tokio::test]
+    async fn six_hour_refresh_requires_a_complete_all_currency_run_in_the_current_slot() {
+        let state = crate::database::initialize_headless().await.unwrap();
+        let at = |value: &str| {
+            DateTime::parse_from_rfc3339(value)
+                .unwrap()
+                .with_timezone(&Utc)
+        };
+        let now = at("2026-10-15T06:10:00Z");
+        assert!(sync_is_due(&state, now).await.unwrap());
+        for (id, status, started, completed, countries) in [
+            (
+                "previous-full",
+                "complete",
+                "2026-10-15T05:59:00Z",
+                "2026-10-15T06:01:00Z",
+                9,
+            ),
+            (
+                "release",
+                "complete",
+                "2026-10-15T06:02:00Z",
+                "2026-10-15T06:03:00Z",
+                1,
+            ),
+            (
+                "failed-full",
+                "failed",
+                "2026-10-15T06:04:00Z",
+                "2026-10-15T06:05:00Z",
+                9,
+            ),
+            (
+                "partial-full",
+                "partial",
+                "2026-10-15T06:06:00Z",
+                "2026-10-15T06:07:00Z",
+                9,
+            ),
+        ] {
+            sqlx::query("INSERT INTO eodhd_sync_runs(id,trigger_kind,status,started_at,completed_at,countries_requested) VALUES(?,'scheduled',?,?,?,?)")
+                .bind(id).bind(status).bind(started).bind(completed).bind(countries)
+                .execute(&state.db).await.unwrap();
+        }
+        assert!(full_sync_is_due(&state, now).await.unwrap());
+        sqlx::query("INSERT INTO eodhd_sync_runs(id,trigger_kind,status,started_at,completed_at,countries_requested) VALUES('current-full','manual','complete','2026-10-15T06:08:00Z','2026-10-15T06:09:00Z',9)")
+            .execute(&state.db).await.unwrap();
+        assert!(!sync_is_due(&state, now).await.unwrap());
+        assert!(
+            !full_sync_is_due(&state, at("2026-10-15T11:59:59Z"))
+                .await
+                .unwrap()
+        );
+        assert!(
+            full_sync_is_due(&state, at("2026-10-15T12:00:00Z"))
+                .await
+                .unwrap()
+        );
+        assert!(
+            full_sync_is_due(&state, at("2026-10-18T19:00:00Z"))
+                .await
+                .unwrap()
+        );
+    }
 
     fn release(
         currency: &str,

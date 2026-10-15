@@ -968,6 +968,11 @@ function MacroFeedOverview({
       )}
 
       <CardContent className="macro-feed-content">
+        <p className="macro-feed-run-summary">
+          Vier automatische EODHD-Abgleiche täglich: 00, 06, 12 und 18 Uhr UTC,
+          solange die Desktop-App läuft. Ein versäumter Abruf wird beim nächsten
+          Start nachgeholt; bekannte Releases werden zusätzlich nachgeprüft.
+        </p>
         <div className="macro-feed-metrics" aria-label="Feed-Kennzahlen">
           <div>
             <small>Release-Nachprüfungen</small>

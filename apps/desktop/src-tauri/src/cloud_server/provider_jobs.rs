@@ -2,7 +2,7 @@
 //! duplicate Queue deliveries. Provider network requests run outside transactions.
 use super::*;
 use crate::cloud_postgres::{CloudError, CloudResult};
-use chrono::{Datelike, Duration as ChronoDuration, TimeZone, Utc};
+use chrono::Utc;
 use serde::{Deserialize, Serialize};
 
 pub(super) const MAX_ATTEMPTS: i32 = 8;
@@ -51,12 +51,6 @@ pub(super) async fn enqueue(
         .bind(Uuid::new_v4().to_string()).bind(key).bind(kind).bind(payload.to_string()).bind(due).bind(expires).execute(conn).await?;
     Ok(())
 }
-pub(super) fn week_anchor(now: chrono::DateTime<Utc>) -> chrono::NaiveDate {
-    let local = now.with_timezone(&chrono_tz::Europe::Berlin).date_naive();
-    let weekday = local.weekday().num_days_from_monday();
-    local + ChronoDuration::days(if weekday == 6 { 1 } else { -(weekday as i64) })
-}
-
 impl CloudServer {
     pub(super) async fn provider_status(&self) -> CloudResult<Value> {
         if !(self.economic_enabled || self.myfxbook_enabled) {
@@ -96,30 +90,36 @@ impl CloudServer {
         Ok(job)
     }
     async fn providers_plan(&self) -> CloudResult<Value> {
-        let now = Utc::now();
+        self.providers_plan_at(Utc::now()).await
+    }
+    async fn providers_plan_at(&self, now: chrono::DateTime<Utc>) -> CloudResult<Value> {
         let mut tx = self.pool.begin().await?;
         self.scope(&mut tx).await?;
-        // Weekly planning is keyed by the next Monday on Sundays, current Monday
-        // otherwise. Daily dispatch recovers missed invocations without re-fetching.
+        // The daily cron and completed workers dispatch the current six-hour
+        // slot plus the next 24 hours. Queue delays stay below one day; UTC keys
+        // deduplicate repeated planning and remain stable across DST changes.
         if self.economic_enabled {
-            let week = week_anchor(now);
-            let start = Utc.from_utc_datetime(&week.and_hms_opt(0, 0, 0).ok_or_else(unavailable)?);
-            for currency in crate::commands::eodhd_cloud::CURRENCIES {
-                let payload = MacroPayload {
-                    currency: currency.into(),
-                    from: (start - ChronoDuration::days(7)).timestamp(),
-                    to: (start + ChronoDuration::days(7)).timestamp() - 1,
-                    released_at: None,
-                };
-                enqueue(
-                    &mut tx,
-                    &format!("macro-week:{week}:{currency}"),
-                    "macro-plan",
-                    serde_json::to_value(payload)?,
-                    now.timestamp(),
-                    now.timestamp() + 7 * 86400,
-                )
-                .await?;
+            let interval = crate::commands::eodhd::REFRESH_INTERVAL_SECONDS;
+            let first = crate::commands::eodhd::refresh_slot(now);
+            for n in 0..=4 {
+                let due = first + n * interval;
+                for currency in crate::commands::eodhd_cloud::CURRENCIES {
+                    let payload = MacroPayload {
+                        currency: currency.into(),
+                        from: due - 7 * 86400,
+                        to: due + 14 * 86400 - 1,
+                        released_at: None,
+                    };
+                    enqueue(
+                        &mut tx,
+                        &format!("macro-slot:{due}:{currency}"),
+                        "macro-plan",
+                        serde_json::to_value(payload)?,
+                        due,
+                        due + interval,
+                    )
+                    .await?;
+                }
             }
         }
         if self.myfxbook_enabled {
@@ -395,25 +395,6 @@ mod tests {
             std::panic::resume_unwind(error)
         }
     }
-    #[test]
-    fn sunday_prepares_next_week_and_other_days_recover_same_week() {
-        for (at, expected) in [
-            ("2026-09-27T12:00:00Z", "2026-09-28"),
-            ("2026-09-28T12:00:00Z", "2026-09-28"),
-            ("2026-10-25T02:30:00Z", "2026-10-26"),
-        ] {
-            assert_eq!(
-                week_anchor(
-                    chrono::DateTime::parse_from_rfc3339(at)
-                        .unwrap()
-                        .with_timezone(&Utc)
-                )
-                .to_string(),
-                expected
-            );
-        }
-    }
-
     #[tokio::test]
     #[ignore = "Requires explicitly selected isolated PostgreSQL test database"]
     async fn provider_planning_is_idempotent_release_delayed_and_reactivation_requeues_cancelled_slots()
@@ -425,8 +406,9 @@ mod tests {
         let result=AssertUnwindSafe(async {
             let mut server=CloudServer::from_pool(db.pool.clone(),db.schema.clone(),db.workspace_id.clone(),[7;32]).await.unwrap();
             let flags=Arc::get_mut(&mut server).unwrap();flags.economic_enabled=true;flags.myfxbook_enabled=true;
-            for _ in 0..2 {let plan=server.providers_plan().await.unwrap();assert_eq!(plan["jobs"].as_array().unwrap().len(),9);}
-            let count:i64=sqlx::query_scalar("SELECT COUNT(*) FROM cloud_provider_jobs").fetch_one(&db.pool).await.unwrap();assert_eq!(count,9);
+            let tick=chrono::DateTime::from_timestamp(crate::commands::eodhd::refresh_slot(Utc::now())+1,0).unwrap();
+            for _ in 0..2 {let plan=server.providers_plan_at(tick).await.unwrap();assert_eq!(plan["jobs"].as_array().unwrap().len(),45);}
+            let count:i64=sqlx::query_scalar("SELECT COUNT(*) FROM cloud_provider_jobs").fetch_one(&db.pool).await.unwrap();assert_eq!(count,45);
             let mut tx=db.pool.begin().await.unwrap();let now=Utc::now().timestamp();
             enqueue(&mut tx,"future-release","macro-release",json!({"currency":"USD","from":now,"to":now+86400,"releasedAt":now}),now+3600,now+86400).await.unwrap();
             enqueue(&mut tx,"account-slot","myfxbook",json!({"accountId":"synthetic-account"}),now-1,now+21600).await.unwrap();tx.commit().await.unwrap();
@@ -450,6 +432,84 @@ mod tests {
         db.close().await;
         if let Err(error) = result {
             resume_unwind(error);
+        }
+    }
+
+    #[tokio::test]
+    #[ignore = "Requires explicitly selected isolated PostgreSQL test database"]
+    async fn economic_slots_dispatch_four_daily_refreshes_and_recover_without_replaying_old_slots()
+    {
+        use crate::cloud_postgres::test_support::TestDatabase;
+        use futures_util::FutureExt;
+        let db = TestDatabase::open().await;
+        let result =
+            std::panic::AssertUnwindSafe(async {
+                let mut server = CloudServer::from_pool(
+                    db.pool.clone(),
+                    db.schema.clone(),
+                    db.workspace_id.clone(),
+                    [7; 32],
+                )
+                .await
+                .unwrap();
+                Arc::get_mut(&mut server).unwrap().economic_enabled = true;
+                let at = |value: &str| {
+                    chrono::DateTime::parse_from_rfc3339(value)
+                        .unwrap()
+                        .with_timezone(&Utc)
+                };
+                let midnight = at("2026-10-25T00:00:00Z");
+                for _ in 0..2 {
+                    let plan = server.providers_plan_at(midnight).await.unwrap();
+                    let jobs = plan["jobs"].as_array().unwrap();
+                    assert_eq!(jobs.len(), 36);
+                    for hour in [0, 6, 12, 18] {
+                        let due = midnight + chrono::Duration::hours(hour);
+                        assert_eq!(
+                            jobs.iter()
+                                .filter(|job| job["dueAt"] == due.to_rfc3339())
+                                .count(),
+                            9
+                        );
+                    }
+                }
+                let rows: Vec<(i64, i64, String)> = sqlx::query_as(
+                "SELECT due_at,expires_at,payload_json FROM cloud_provider_jobs ORDER BY due_at,id"
+            ).fetch_all(&db.pool).await.unwrap();
+                assert_eq!(rows.len(), 45);
+                for (due, expires, payload) in rows {
+                    let payload: MacroPayload = serde_json::from_str(&payload).unwrap();
+                    assert_eq!(expires - due, 21600);
+                    assert_eq!(payload.from, due - 7 * 86400);
+                    assert_eq!(payload.to, due + 14 * 86400 - 1);
+                    assert!(payload.released_at.is_none());
+                }
+                let recovered = server
+                    .providers_plan_at(at("2026-10-28T13:00:00Z"))
+                    .await
+                    .unwrap();
+                let jobs = recovered["jobs"].as_array().unwrap();
+                assert_eq!(jobs.len(), 45);
+                assert_eq!(
+                    jobs.iter()
+                        .filter(|job| job["dueAt"] == "2026-10-28T13:00:00+00:00")
+                        .count(),
+                    9
+                );
+                let expired: i64 = sqlx::query_scalar(
+                    "SELECT COUNT(*) FROM cloud_provider_jobs WHERE status='expired'",
+                )
+                .fetch_one(&db.pool)
+                .await
+                .unwrap();
+                assert_eq!(expired, 45);
+                assert_eq!(server.revision().await.unwrap(), 0);
+            })
+            .catch_unwind()
+            .await;
+        db.close().await;
+        if let Err(error) = result {
+            std::panic::resume_unwind(error);
         }
     }
 }

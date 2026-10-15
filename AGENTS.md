@@ -1773,7 +1773,20 @@ Details: `docs/planning/world-atlas/NOTEBOOK.md`.
 
 ## 14. EODHD-Release-Workflow
 
-Ein vollständiger Tagesabgleich lädt alle neun Währungen in begrenzten
+Seit 15.10.2026 läuft der vollständige EODHD-Abgleich in vier festen UTC-Slots
+um 00, 06, 12 und 18 Uhr. Desktop und Cloud nutzen `eodhd::refresh_slot`.
+Lokal arbeitet der Scheduler unabhängig von Seasonality jede Minute bei laufender
+App; nur erfolgreiche vollständige Neun-Währungs-Läufe mit Startzeit im aktuellen
+Slot erfüllen ihn. Einzelreihenimporte und Release-Retries dürfen ihn nicht
+verschieben. Nach einer Unterbrechung wird der aktuelle Slot nachgeholt.
+Die Cloud ersetzt ihre Wochenplanung durch deduplizierte `macro-plan`-Jobs mit
+`macro-slot:<UTC-Zeit>:<Währung>`, sechs Stunden Gültigkeit und rollierendem
+Fenster von sieben vergangenen/vierzehn kommenden Tagen. Der bestehende tägliche
+Cron und verzögerte Queue-Zustellungen planen die nächsten 24 Stunden; keine
+neue Migration, kein Tarifwechsel und keine Desktop-/Cloud-Synchronisierung.
+Details und Abnahme: `docs/planning/cloud-provider-automation.md`.
+
+Ein vollständiger lokaler Abgleich lädt alle neun Währungen in begrenzten
 Datumsfenstern und paginiert innerhalb der Providergrenzen. Bekannte kommende
 Releases erzeugen Nachprüfungen nach 2, 10, 30 und 120 Minuten. Nachträglich
 entdeckte unvollständige Releases der letzten sieben Tage erhalten denselben

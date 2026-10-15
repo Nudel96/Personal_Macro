@@ -8,6 +8,12 @@ use serde_json::Value;
 use crate::errors::AppError;
 
 pub const ECONOMIC_EVENTS_URL: &str = "https://eodhd.com/api/economic-events";
+pub const REFRESH_INTERVAL_SECONDS: i64 = 6 * 60 * 60;
+
+/// Four fixed UTC slots, shared by the desktop scheduler and durable cloud jobs.
+pub fn refresh_slot(now: DateTime<Utc>) -> i64 {
+    now.timestamp().div_euclid(REFRESH_INTERVAL_SECONDS) * REFRESH_INTERVAL_SECONDS
+}
 
 #[derive(Debug, Clone, Deserialize, Serialize)]
 pub struct EconomicEvent {
@@ -590,6 +596,32 @@ fn bounded_error(value: &str) -> String {
 #[cfg(test)]
 mod tests {
     use super::*;
+
+    #[test]
+    fn refresh_slots_cover_four_utc_boundaries_and_ignore_daylight_saving_changes() {
+        for (at, expected) in [
+            ("2026-10-15T00:00:00Z", "2026-10-15T00:00:00Z"),
+            ("2026-10-15T05:59:59Z", "2026-10-15T00:00:00Z"),
+            ("2026-10-15T06:00:00Z", "2026-10-15T06:00:00Z"),
+            ("2026-10-15T12:00:00Z", "2026-10-15T12:00:00Z"),
+            ("2026-10-15T18:00:00Z", "2026-10-15T18:00:00Z"),
+            ("2026-10-15T23:59:59Z", "2026-10-15T18:00:00Z"),
+            ("2026-10-16T00:00:00Z", "2026-10-16T00:00:00Z"),
+            ("2026-03-29T01:59:59+01:00", "2026-03-29T00:00:00Z"),
+            ("2026-03-29T03:00:00+02:00", "2026-03-29T00:00:00Z"),
+            ("2026-10-25T02:30:00+02:00", "2026-10-25T00:00:00Z"),
+            ("2026-10-25T02:30:00+01:00", "2026-10-25T00:00:00Z"),
+        ] {
+            let now = DateTime::parse_from_rfc3339(at)
+                .unwrap()
+                .with_timezone(&Utc);
+            assert_eq!(
+                refresh_slot(now),
+                DateTime::parse_from_rfc3339(expected).unwrap().timestamp(),
+                "{at}",
+            );
+        }
+    }
 
     #[test]
     fn canonical_mapping_covers_provider_special_cases() {

@@ -133,7 +133,7 @@ test("report-only production schedules through the existing protected provider w
   );
   assert.equal(disabled.calls.length, 0);
 });
-test("deferred queue acceptance does not interrupt the remaining weekly jobs", async () => {
+test("deferred queue acceptance does not interrupt the remaining economic jobs", async () => {
   const h = harness([
     JOB,
     { ...JOB, jobId: "b0149af0-3620-4b7c-8d5d-ab84f91fd897" },
@@ -148,6 +148,31 @@ test("deferred queue acceptance does not interrupt the remaining weekly jobs", a
   await assert.rejects(scheduleProviderJobs(h, new AbortController().signal), {
     code: "PROVIDERS_QUEUE_UNAVAILABLE",
   });
+});
+
+test("one daily dispatch queues all nine currencies in four six-hour UTC slots", async () => {
+  const jobs = [0, 6, 12, 18].flatMap((hour, slot) =>
+    Array.from({ length: 9 }, (_, currency) => ({
+      jobId: `00000000-0000-4000-8000-${String(slot * 9 + currency).padStart(12, "0")}`,
+      dueAt: new Date(NOW + hour * 3600000).toISOString(),
+    })),
+  );
+  const h = harness(jobs);
+  assert.equal((await handleProviderCronRequest(request(), h)).status, 200);
+  assert.equal(h.sent.length, 36);
+  for (const delaySeconds of [0, 21600, 43200, 64800]) {
+    const slot = h.sent.filter(
+      ([, , options]) => options.delaySeconds === delaySeconds,
+    );
+    assert.equal(slot.length, 9);
+    assert.ok(
+      slot.every(([, , options]) => options.retentionSeconds === 86400),
+    );
+  }
+  assert.equal(
+    new Set(h.sent.map(([, , options]) => options.idempotencyKey)).size,
+    36,
+  );
 });
 
 test("ready refreshes precede delayed retries and every bounded batch is awaited", async () => {

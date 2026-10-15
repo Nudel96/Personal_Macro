@@ -1,13 +1,18 @@
 # Automatische Cloud-Aktualisierung
 
-Stand: 26.09.2026. Implementiert, im bestehenden privaten Cloudprojekt
+Stand: 15.10.2026. Die ursprüngliche Automation ist im bestehenden privaten Cloudprojekt
 bereitgestellt und am veröffentlichten Host geprüft. Die persönliche
 Myfxbook-Verbindung wird durch den Besitzer in der App aktiviert.
 
 ## Vereinbarter Betrieb
 
-- Wirtschaftsdaten: sonntags den Kalender der kommenden Woche für AUD, CAD, CHF,
-  CNY, EUR, GBP, JPY, NZD und USD einlesen. Versäumte Planung wird nachgeholt.
+- Wirtschaftsdaten: viermal täglich um 00, 06, 12 und 18 Uhr UTC für AUD, CAD,
+  CHF, CNY, EUR, GBP, JPY, NZD und USD abrufen. Im deutschen Sommer entspricht
+  das 02, 08, 14 und 20 Uhr, im Winter 01, 07, 13 und 19 Uhr. Jeder Cloudabruf
+  prüft sieben vergangene und vierzehn kommende Tage; vorhandene Historie bleibt
+  erhalten. Die bisherige reine Wochenplanung wird dadurch ersetzt.
+  Nach einer Unterbrechung wird der aktuelle Slot nachgeholt, ohne alle
+  vergangenen Slots erneut abzuarbeiten.
   Freigegebene, aktivierte Indikatorreihen erhalten dauerhafte Jobs für eine
   Stunde nach ihrem jeweiligen Veröffentlichungstermin. Die vorhandene native
   Zuordnung und Actual/Forecast-Scoringlogik gelten auch in der Cloud.
@@ -29,7 +34,12 @@ sind begrenzt und der Aktualisierungsstatus ist in der Oberfläche sichtbar.
 
 Vercel Hobby bleibt unverändert. Zwei tägliche Cron-Auslöser rufen die internen
 Planer auf: `/api/cron/providers` um 00 UTC und `/api/cron/cot` um 16 UTC.
-Der tägliche Aufruf erzeugt dieselbe Wirtschaftswochenplanung nur einmal.
+Der tägliche Aufruf plant den aktuellen Sechs-Stunden-Slot und die nächsten
+24 Stunden für jede der neun Währungen. Eindeutige Slot-/Währungsschlüssel
+verhindern doppelte Abrufe bei wiederholter Planung. Der nächste Slot ist bereits
+dauerhaft gespeichert; jeder abgeschlossene Worker stößt den Dispatcher erneut an.
+Alte unerledigte Slotjobs verfallen nach sechs Stunden. Die vorhandenen separaten
+Release-Jobs behalten ihre begrenzten Wiederholungen.
 Die minütliche Ausführung vieler Cronjobs ist nicht nötig: Vercel Queues hält
 die fälligen Einzelaufgaben mit verzögerter Zustellung. Beide Queue-Worker
 arbeiten in `fra1`, jeweils mit maximal einer parallelen Zustellung.
@@ -64,6 +74,20 @@ Generation; fehlende Actual-/Forecast-Werte behalten ihren Wiederholungsstatus.
 Die Oberfläche überprüft Marktgeneration und Verbindungsstatus bei geöffneter
 Seite regelmäßig und bei Rückkehr. Änderungen invalidieren die betroffenen
 Abfragen. Ein laufender Scan behält seine ursprüngliche Generation.
+
+Die lokale Desktop-App verwendet dieselben vier UTC-Slots, solange sie läuft.
+Ihr eigener Scheduler prüft jede Minute, unabhängig von längeren Seasonality-
+oder Berichtsabrufen. Nur ein erfolgreicher vollständiger Abruf aller neun
+Währungen erfüllt einen Slot; Einzelreihenimporte, Release-Nachprüfungen sowie
+fehlgeschlagene oder unvollständige Läufe verschieben ihn nicht. Ein vollständiger
+manueller Abruf erfüllt den laufenden Slot ebenfalls. Maßgeblich ist die Startzeit,
+damit ein über die Zeitgrenze laufender Abruf keinen zweiten Slot verbraucht.
+Nach App-Neustart wird der aktuelle fehlende Abruf nachgeholt. Die bestehende
+lokale Historienbreite und Release-Nachprüfungen bleiben erhalten.
+
+Die Änderung benötigt keine SQLite-/PostgreSQL-Migration, keine neuen Secrets
+und keinen zusätzlichen Cronjob oder Tarifwechsel. Desktop und Cloud rufen den
+Provider weiterhin getrennt ab; ihre Datenbanken synchronisieren sich nicht.
 
 ## Myfxbook einrichten
 

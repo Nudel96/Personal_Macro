@@ -41,6 +41,7 @@ pub fn run() {
                 tracing::warn!("Myfxbook-Status konnte beim Start nicht wiederhergestellt werden");
             }
             let scheduler_state = state.clone();
+            let economic_scheduler_state = state.clone();
             let cot_scheduler_state = state.clone();
             let myfxbook_state = state.clone();
             let myfxbook_handle = handle.clone();
@@ -88,6 +89,15 @@ pub fn run() {
                 }
             });
             tauri::async_runtime::spawn(async move {
+                tokio::time::sleep(std::time::Duration::from_secs(8)).await;
+                loop {
+                    if let Err(error) = commands::scheduled_eodhd_sync(&economic_scheduler_state).await {
+                        tracing::warn!(error = %error, "Automatische EODHD-Aktualisierung fehlgeschlagen");
+                    }
+                    tokio::time::sleep(std::time::Duration::from_secs(60)).await;
+                }
+            });
+            tauri::async_runtime::spawn(async move {
                 match atlas_startup.0.db().await {
                     Ok(_) => tracing::info!("Lokaler Atlas-Speicher initialisiert"),
                     Err(_) => tracing::warn!("Atlas-Speicher nicht verfügbar; das Journal bleibt nutzbar"),
@@ -98,9 +108,6 @@ pub fn run() {
                 loop {
                     if let Err(error) = commands::scheduled_seasonality_sync(&scheduler_state).await {
                         tracing::warn!(error = ?error, "Automatische Seasonality-Aktualisierung fehlgeschlagen");
-                    }
-                    if let Err(error) = commands::scheduled_eodhd_sync(&scheduler_state).await {
-                        tracing::warn!(error = %error, "Automatische EODHD-Aktualisierung fehlgeschlagen");
                     }
                     if let Err(error) = commands::scheduled_central_bank_report_sync(&scheduler_state).await {
                         tracing::warn!(error = ?error, "Automatische Zentralbankbericht-Aktualisierung fehlgeschlagen");
