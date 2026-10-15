@@ -230,3 +230,63 @@ Sie enthalten keine Zugangsdaten oder persönlichen
 Journalinhalte. Der echte Windows-Start des separat gebauten Prüfprogramms wurde
 ebenfalls nachgewiesen; der bereits laufende Desktop-Prozess und seine EXE
 wurden erhalten. Das ist keine vollständige native UI-Abnahme.
+
+## Vier tägliche EODHD-Abrufe – Abnahme 15.10.2026
+
+Der Funktionsstand `26475e0` ist auf `main` committet und gepusht.
+Deployment `dpl_FgEF3DAUPv4zJb8CirM7obduMGFi` ist `READY`, `public: false`,
+mit Weboberfläche, Rust-Backend, Gateway und beiden Queue-Workern in `fra1`.
+Der feste Smartphone-Link `personal-macro-nudel96s-projects.vercel.app` wurde
+am 15.10.2026 um 01:01 UTC ausdrücklich diesem Deployment zugeordnet und
+über die aufgelöste Deployment-ID geprüft. Die Produktionsziel-ID allein reicht
+bei einem zuvor manuell festgelegten Alias nicht als Zuordnungsnachweis.
+
+Der echte Cron-Aufruf um 00:53 UTC erzeugte 45 deduplizierte Währungs-/Slotjobs.
+Alle neun Abrufe des aktuellen 00-UTC-Slots sind zwischen 00:53:44 und 00:55:57
+UTC erfolgreich abgeschlossen. Die Slots um 06, 12, 18 und den folgenden
+00 Uhr UTC enthalten jeweils neun dauerhafte Folgejobs. Die veröffentlichte
+Generation `9696faeb-e677-4f6d-ba0e-1b0e6ed5cab8` enthält weiterhin 555 Pakete;
+die Journalrevision blieb 9. Die getrennten Release-Nachprüfungen bleiben aktiv.
+
+Der neue lokale Windows-Release wurde gebaut und real gestartet:
+`apps/desktop/src-tauri/target/release/personal-macro-desktop.exe`.
+Das Fenster reagiert, der Atlas-Speicher ist initialisiert, stderr ist leer;
+keine Initialisierungs- oder automatischen EODHD-Fehler im geprüften Start.
+Der erste automatische vollständige Neun-Währungs-Abruf lief von 00:53:11
+bis 00:54:22 UTC und verarbeitete 6.797 Ereignisse. Diese Metadaten wurden
+ausschließlich lesend aus der bestehenden lokalen Datenbank geprüft.
+
+Prüfungen des Funktionsstands:
+
+- 34 relevante native Rust-Tests bestehen; drei gesonderte Provider-Livetests
+  blieben im Unit-Testlauf bewusst ausgenommen. Die obigen echten Abrufe sind
+  davon getrennte Produktionsnachweise.
+- Sechs PostgreSQL-Integrationstests bestehen in eigens erzeugten isolierten
+  Testschemas, darunter doppelte Zustellung, vier UTC-Slots mit je neun Währungen,
+  wiederholte Planung, Zeitumstellung und Wiederanlauf ohne Abspielen alter Slots.
+- 16 Node-Tests für Provider-Cron und Queue-Worker sowie 18 Macro-UI-Tests bestehen.
+- TypeScript, gezieltes ESLint/Prettier, Rustfmt, Desktop- und Cloud-Clippy mit
+  Warnungen als Fehler sowie privater Web- und Windows-Release-Build bestehen.
+- Die veröffentlichte Oberfläche am festen Link besteht in WebKit auf `/macro`,
+  `/economic-data` und `/economic-calendar` bei 320, 390, 768 und 1440 px:
+  zwölf Ansichten ohne Seitenüberlauf, sichtbare neue Zeitplanung, keine
+  Laufzeit-/API-Fehler und keine persönlichen Schreibversuche. Der API-Lesetest
+  bestätigt neun Macro-Währungen und 263 Ereignisse in der aktuellen Woche.
+
+Der erste erfolgreiche vollständige Browserlauf endete am 15.10.2026 um
+01:02:06 UTC; die abschließende Wiederholung einschließlich Bildnachweisen
+bestand um 01:03:32 UTC. Journalrevision und Besitzer-/SSO-Schutz blieben unverändert.
+Der temporäre Testzugang wurde widerrufen; anonyme und widerrufene Anfragen
+lieferten HTTP 401. Vorläufe am noch alten festen Alias bleiben als Diagnose
+erhalten. Die spätere explizite Alias-Zuordnung und erfolgreiche Wiederholung
+bestätigen die neue bereitgestellte Oberfläche. Eine physische iPhone-/Safari-
+Bedienung durch den Besitzer ist damit weiterhin nicht nachgewiesen.
+
+Nicht versionierte Nachweise unter `apps/desktop/.vercel/`:
+`eodhd-four-daily-deployment.json`, `eodhd-four-daily-ready.json`,
+`eodhd-four-daily-alias.json`, `eodhd-four-daily-cron.json`,
+`eodhd-four-daily-status.json`, `eodhd-four-daily-desktop-start.json`,
+`eodhd-four-daily-desktop-check.json`, `eodhd-four-daily-desktop-sync.json`
+und `eodhd-four-daily-live-first-success.json` beziehungsweise der abschließende
+`eodhd-four-daily-live.json`. Screenshots liegen ausschließlich unter
+`apps/desktop/output/playwright/eodhd-four-daily-2026-10-15/` auf D:.

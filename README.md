@@ -111,10 +111,11 @@ Das entspricht in Deutschland im Sommer 02, 08, 14 und 20 Uhr, im Winter
 ein versäumter Abruf wird beim nächsten Start nachgeholt. Der private Smartphone-
 Workspace arbeitet unabhängig vom PC. Bekannte Cloud-Releases werden zusätzlich
 eine Stunde nach Veröffentlichung geprüft. COT folgt dem offiziellen CFTC-Kalender einschließlich Feiertagen und
-Sommerzeit, ebenfalls mit einer Stunde Abstand. Die Erweiterung ist privat
-bereitgestellt: Alle neun Währungsplanungen und der COT-Auftrag sind abgeschlossen;
-22 Analyseprüfungen und die mobile WebKit-Abnahme einschließlich Myfxbook-Einrichtung
-bestehen am veröffentlichten Host. Der aktuelle Nachweis steht in der
+Sommerzeit, ebenfalls mit einer Stunde Abstand. Die vier täglichen Abrufe sind
+am bestehenden geschützten Smartphone-Link bereitgestellt und am 15.10.2026
+live geprüft: Alle neun Währungsabrufe des ersten Slots sind abgeschlossen;
+Macro, Wirtschaftsdaten und Wirtschaftskalender bestehen in WebKit bei 320,
+390, 768 und 1440 px. Der aktuelle Nachweis steht in der
 [Betriebsdokumentation](docs/planning/cloud-provider-automation.md).
 Für Myfxbook ist die geschützte Cloud-Anmeldung unter **Einstellungen → Konten →
 Myfxbook automatisch synchronisieren** implementiert. Nach Anmeldung, Auswahl
